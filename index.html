@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1606724667131">
+<link rel="shortcut icon" href="/favicon.ico?v=1606725758610">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -264,12 +264,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>9<span class="language" data-lan="minute">分钟</span></span>
+      <span>14<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>2545<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>3858<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
@@ -878,6 +878,52 @@ CR 表示回车 \r ，即回到一行的开头，而 LF 表示换行 \n ，即�
 &lt;p&gt;再比如，Typora 将更遵循 GFM 标准的 Markdown 语法模式称为「严格模式 Strict Mode」，这一说法常见于 HTML 和 JavaScript 编程中。类似「源代码模式」的说法也是同理。&lt;/p&gt;
 &lt;p&gt;当然，最明显的一点是当你按下 Shift + F12 快捷键时，页面会弹出一个基于 Chrome 的开发者工具栏，也就是我们在浏览器中常说的「审查元素」。&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606724640253.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;审查元素&lt;/p&gt;
 &lt;/center&gt; 
+&lt;h2 id=&#34;伪装从何而来&#34;&gt;伪装从何而来？&lt;/h2&gt;
+&lt;p&gt;当我们把视角放在「Typora 是一个支持 Markdown 语言的文本编辑器」的出发点来考虑这个问题，一切就都显得很明白了。&lt;/p&gt;
+&lt;p&gt;John Gruber 在 2004 年用 Perl 创造了 Markdown 语言，这个语言的目的是希望大家使用「易于阅读、易于撰写的纯文字格式，并选择性的转换成有效的 XHTML（或是 HTML）」。也就是说，&lt;strong&gt;在 Markdown 诞生之初，它就是为了被浏览器阅读而设计的。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们在用 Markdown 语言撰写文稿的时候，其实本质上是在借助某种编程语言的转化（解析器）来编写一个 HTML 网页。Markdown 从它诞生之初就与 Web 技术有着及其紧密的联系。&lt;/p&gt;
+&lt;p&gt;如果我说，我们每一篇文稿都是一个网页，那就很好理解了。Typora 利用解析器先将我们写的 Markdown 文档解析成为 HTML 文档，再为它嵌入一个 CSS 样式，最后再加上可能需要的脚本等。&lt;/p&gt;
+&lt;h2 id=&#34;html&#34;&gt;HTML&lt;/h2&gt;
+&lt;p&gt;HTML 是一种标记语言，主要负责构成网页的骨架，它包含所有不加装饰的网页元素。在 Typora 的使用场景下则是所有的&lt;strong&gt;文本、段落、标题等&lt;/strong&gt;的记号。&lt;/p&gt;
+&lt;p&gt;你可以把一张网页想象成一幅数字油画，HTML 就是那个黑白线条的底，上面写满了数字标记，示意你哪一块区域要涂什么颜色。而 CSS 则负责在对应的区域涂上颜色，甚至加上一些装饰等。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606724955000.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;数字油画
+&lt;/center&gt; 
+&lt;h3 id=&#34;html-标签&#34;&gt;HTML 标签&lt;/h3&gt;
+&lt;p&gt;Typora 支持许多常用的 HTML 标签，如果你了解 HTML 语法的话，你可以写出十分美观丰富的文档页面。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606725029628.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;HTML 标签
+&lt;/center&gt; 
+&lt;p&gt;事实上你可以在 Typora 中完成许多基本的 HTML 风格的文本输入，例如 HTML 字符、HTML 块、HTML 风格的注释，甚至是视频和音频。具体支持的功能和限制请在 &lt;a href=&#34;http://support.typora.io/HTML/&#34;&gt;官方文档&lt;/a&gt; 中查阅。&lt;/p&gt;
+&lt;h3 id=&#34;导出为-html&#34;&gt;导出为 HTML&lt;/h3&gt;
+&lt;p&gt;有了这一功能，我们就可以在 Typora 中创造出远超普通 Markdown 文档的页面效果。&lt;/p&gt;
+&lt;p&gt;Typora 原生支持将文档导出为 HTML 格式的文件，并选择是否要嵌入 style（也就是后文我将提到的 CSS 的部分）。&lt;/p&gt;
+&lt;p&gt;除此之外，由于其本身「浏览器」的属性，你可以直接在实时预览界面用 Ctrl +C 复制到 HTML 代码。一个实用的用处是将这些 HTML 代码直接 Ctrl + V 黏贴到微信公众号后台，基本可以保证两边显示效果相同。这一点不仅使公众号推送可以有更自由、美观的样式，也让编辑、排版更轻松了。（由于微信自带浏览器的一些特性，可能有少部分 CSS style 不能生效，建议多多校对。）&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606725222158.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;公众号
+&lt;/center&gt; 
+&lt;p&gt;具体如何用 Typora 完成公众号写作，你可以在 &lt;a href=&#34;https://sspai.com/post/40524&#34;&gt;这篇文章&lt;/a&gt; 中进一步了解。&lt;/p&gt;
+&lt;h2 id=&#34;css&#34;&gt;CSS&lt;/h2&gt;
+&lt;p&gt;为了让文档更美观，我们可以为其加上 CSS style。我认为 Typora 对 CSS 的支持让它成为一众桌面笔记应用中最与众不同的一个。在 Typora 中 CSS 被称为「主题」，但其本质仍是 CSS 文件。你可以在 文件 - 偏好设置 - 主题 - 打开主题文件夹 看到这些 CSS 文件。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606725328223.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;主题&lt;/p&gt;
+&lt;/center&gt; 
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606725342168.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;主题文件夹
+&lt;/center&gt; 
+&lt;p&gt;选择不同的主题可以使文档拥有不同的外观，但不会影响内容。Typora 自带了若干主题，你也可以在 &lt;a href=&#34;http://theme.typora.io&#34;&gt;官网&lt;/a&gt; 下载更多的主题。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606725423540.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;主题商店
+&lt;/center&gt; 
+&lt;p&gt;除此以外，如果你有一定的 Web 编程基础，你当然也可以自己修改、新建适合你使用需求的 CSS 文件。我自己就写了一份名为 WeChat 的 CSS 文件，来符合我公众号特定的排版需求，例如正文是 15px，页边距是 8，小标题是 18px 等等。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606725495732.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;CSS文件
+&lt;/center&gt; 
+&lt;p&gt;使用 Typora 的「主题」功能写公众号的一个好处是，只需要每次都套用同样的主题，我们就可以在保证每次排版规范都相同的同时，节省许多重复的工作。&lt;/p&gt;
+&lt;h2 id=&#34;yaml-front-matter&#34;&gt;YAML front-matter&lt;/h2&gt;
+&lt;p&gt;Typora 支持在文档头部加上基于 YAML 的 front-matter 信息，这一特性适用于把 Markdown 文档分类归档上传到用 Hexo 框架搭建的博客中。我对于这一点不太了解，这里就不误导大家了。有所了解的朋友可以在评论区谈谈！&lt;/p&gt;
+&lt;h2 id=&#34;写在最后&#34;&gt;写在最后&lt;/h2&gt;
+&lt;p&gt;因为移动端生产效率低，所以只有桌面端应用。因为左顾右盼的两栏式预览影响思路，所以他们甚至去掉了 Markdown 语法标记，只留下最终呈现的样式。因为 Markdown 是为了 HTML 呈现而设计的，所以他们提供了从入门到高级的一系列 Web 辅助功能…… 这一切都只是为了纯粹的&lt;strong&gt;生产效率&lt;/strong&gt;。如果我们回头想想，Markdown 语言本身，当初不也是为了高效地生成简单网页而诞生的吗？&lt;/p&gt;
+&lt;p&gt;最后，让我们一起期待这款&lt;strong&gt;顶级桌面文本生产力工具&lt;/strong&gt;的正式版的到来吧！😆&lt;/p&gt;
 &lt;p&gt;文章转自：https://sspai.com/post/54912&lt;/p&gt;
 ">Windows系统下Typora 完全使用详解</a>
       </div>
