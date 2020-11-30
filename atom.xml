@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Tyloo-code.github.io</id>
     <title>Tyloo</title>
-    <updated>2020-11-30T02:06:42.167Z</updated>
+    <updated>2020-11-30T02:31:39.178Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Tyloo-code.github.io"/>
     <link rel="self" href="https://Tyloo-code.github.io/atom.xml"/>
@@ -10,6 +10,29 @@
     <logo>https://Tyloo-code.github.io/images/avatar.png</logo>
     <icon>https://Tyloo-code.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Tyloo</rights>
+    <entry>
+        <title type="html"><![CDATA[Markdown基本语法]]></title>
+        <id>https://Tyloo-code.github.io/post/markdown-ji-ben-yu-fa/</id>
+        <link href="https://Tyloo-code.github.io/post/markdown-ji-ben-yu-fa/">
+        </link>
+        <updated>2020-11-30T02:09:55.000Z</updated>
+        <content type="html"><![CDATA[<p>Markdown是一种纯文本格式的标记语言。通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
+<p><strong>优点：</strong><br>
+1、因为是纯文本，所以只要支持Markdown的地方都能获得一样的编辑效果，可以让作者摆脱排版的困扰，专心写作。<br>
+2、操作简单。添加标题时Markdown只需要在标题内容前加#即可<br>
+<strong>缺点：</strong><br>
+1、需要记一些语法（当然，是很简单。五分钟学会）。<br>
+2、有些平台不支持Markdown编辑模式。</p>
+<h1 id="一-标题">一、标题</h1>
+<p>在想要设置为标题的文字前面加#来表示<br>
+一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。</p>
+<p>注：标准语法一般在#后跟个空格再写文字，貌似简书不加空格也行。</p>
+<p>示例：<br>
+<img src="https://Tyloo-code.github.io/post-images/1606703470701.png" alt="" loading="lazy"></p>
+<p>效果如下：<br>
+<img src="https://Tyloo-code.github.io/post-images/1606703334106.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[HelloWorld]]></title>
         <id>https://Tyloo-code.github.io/post/helloworld/</id>
