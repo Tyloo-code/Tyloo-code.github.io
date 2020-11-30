@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Windows系统下Typora 完全使用详解 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1606723910901">
+<link rel="shortcut icon" href="/favicon.ico?v=1606724667131">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -252,6 +252,7 @@
 <li><a href="#%E4%B8%80%E4%B8%AA%E5%AD%A6%E6%9C%AF%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91%E5%99%A8">一个学术文档编辑器</a></li>
 <li><a href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE">代码高亮</a></li>
 <li><a href="#%E9%93%BE%E6%8E%A5%E5%BC%95%E7%94%A8%E4%B8%8E%E8%84%9A%E6%B3%A8">链接引用与脚注</a></li>
+<li><a href="#%E4%B8%80%E4%B8%AA%E4%BC%AA%E8%A3%85%E6%88%90%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8">一个伪装成文本编辑器的浏览器</a></li>
 </ul>
 </li>
 </ul>
@@ -552,7 +553,7 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>2293<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>2545<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
@@ -646,6 +647,14 @@ CR 表示回车 \r ，即回到一行的开头，而 LF 表示换行 \n ，即�
 <strong>脚注</strong>在少数派的文章中也很常见，即某段话结尾右上角标有数字标记，页面底部进行注释的写法。你可以在需要插入脚注标号的位置写 [^ number ] ，再在下方通过 [^ number ]: 在文档中插入脚注。注意不要遗漏了脚注编号 number 前后的空格。<br>
 <img src="https://Tyloo-code.github.io/post-images/1606723891564.png" alt="" loading="lazy"></p>
 <center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">链接引用和脚注
+</center> 
+<h2 id="一个伪装成文本编辑器的浏览器">一个伪装成文本编辑器的浏览器</h2>
+<p>当我的一个朋友问我「Typora 有什么好写的？」时，我回答「Typora 是一个伪装成文本编辑器的浏览器」。是的，事实上如果你有一定的计算机基础，你可以找到许多有关于「Typora 其实是一个浏览器」的蛛丝马迹。<br>
+<img src="https://Tyloo-code.github.io/post-images/1606724542832.png" alt="" loading="lazy"><center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">图片插入</p>
+</center> 
+<p>在图片插入的选项中，Typora 用了「复制图片到 ./${filename}.assets 文件夹」的说法，而这其实是网页前端常用的 Javascript 字符串模板语法的风格。</p>
+<p>再比如，Typora 将更遵循 GFM 标准的 Markdown 语法模式称为「严格模式 Strict Mode」，这一说法常见于 HTML 和 JavaScript 编程中。类似「源代码模式」的说法也是同理。</p>
+<p>当然，最明显的一点是当你按下 Shift + F12 快捷键时，页面会弹出一个基于 Chrome 的开发者工具栏，也就是我们在浏览器中常说的「审查元素」。<img src="https://Tyloo-code.github.io/post-images/1606724640253.png" alt="" loading="lazy"><center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">审查元素</p>
 </center> 
 <p>文章转自：https://sspai.com/post/54912</p>
 
@@ -1231,6 +1240,14 @@ CR 表示回车 \r ，即回到一行的开头，而 LF 表示换行 \n ，即�
 &lt;strong&gt;脚注&lt;/strong&gt;在少数派的文章中也很常见，即某段话结尾右上角标有数字标记，页面底部进行注释的写法。你可以在需要插入脚注标号的位置写 [^ number ] ，再在下方通过 [^ number ]: 在文档中插入脚注。注意不要遗漏了脚注编号 number 前后的空格。&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606723891564.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;链接引用和脚注
+&lt;/center&gt; 
+&lt;h2 id=&#34;一个伪装成文本编辑器的浏览器&#34;&gt;一个伪装成文本编辑器的浏览器&lt;/h2&gt;
+&lt;p&gt;当我的一个朋友问我「Typora 有什么好写的？」时，我回答「Typora 是一个伪装成文本编辑器的浏览器」。是的，事实上如果你有一定的计算机基础，你可以找到许多有关于「Typora 其实是一个浏览器」的蛛丝马迹。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606724542832.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;图片插入&lt;/p&gt;
+&lt;/center&gt; 
+&lt;p&gt;在图片插入的选项中，Typora 用了「复制图片到 ./${filename}.assets 文件夹」的说法，而这其实是网页前端常用的 Javascript 字符串模板语法的风格。&lt;/p&gt;
+&lt;p&gt;再比如，Typora 将更遵循 GFM 标准的 Markdown 语法模式称为「严格模式 Strict Mode」，这一说法常见于 HTML 和 JavaScript 编程中。类似「源代码模式」的说法也是同理。&lt;/p&gt;
+&lt;p&gt;当然，最明显的一点是当你按下 Shift + F12 快捷键时，页面会弹出一个基于 Chrome 的开发者工具栏，也就是我们在浏览器中常说的「审查元素」。&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606724640253.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;审查元素&lt;/p&gt;
 &lt;/center&gt; 
 &lt;p&gt;文章转自：https://sspai.com/post/54912&lt;/p&gt;
 ">Windows系统下Typora 完全使用详解</a>
