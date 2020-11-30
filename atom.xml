@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Tyloo-code.github.io</id>
     <title>Tyloo</title>
-    <updated>2020-11-30T02:31:39.178Z</updated>
+    <updated>2020-11-30T03:51:36.527Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Tyloo-code.github.io"/>
     <link rel="self" href="https://Tyloo-code.github.io/atom.xml"/>
@@ -31,6 +31,48 @@
 <img src="https://Tyloo-code.github.io/post-images/1606703470701.png" alt="" loading="lazy"></p>
 <p>效果如下：<br>
 <img src="https://Tyloo-code.github.io/post-images/1606703334106.png" alt="" loading="lazy"></p>
+<h1 id="二-字体">二、字体</h1>
+<h3 id="加粗">加粗</h3>
+<p>要加粗的文字左右分别用两个*号包起来</p>
+<h3 id="斜体">斜体</h3>
+<p>要倾斜的文字左右分别用一个*号包起来</p>
+<h3 id="斜体加粗">斜体加粗</h3>
+<p>要倾斜和加粗的文字左右分别用三个*号包起来</p>
+<h3 id="删除线">删除线</h3>
+<p>要加删除线的文字左右分别用两个~~号包起来</p>
+<p>示例：<br>
+<img src="https://Tyloo-code.github.io/post-images/1606703939197.png" alt="" loading="lazy"></p>
+<p>效果如下：<br>
+<img src="https://Tyloo-code.github.io/post-images/1606703950939.png" alt="" loading="lazy"></p>
+<h1 id="三-引用">三、引用</h1>
+<p>在引用的文字前加&gt;即可。引用也可以嵌套，如加两个&gt;&gt;三个&gt;&gt;&gt;n个...</p>
+<p>示例：<br>
+<img src="https://Tyloo-code.github.io/post-images/1606704234954.png" alt="" loading="lazy"></p>
+<p>效果如下：<br>
+<img src="https://Tyloo-code.github.io/post-images/1606704248692.png" alt="" loading="lazy"></p>
+<h1 id="四-分割线">四、分割线</h1>
+<p>三个或者三个以上的 - 或者 * 都可以。</p>
+<p>示例：<br>
+<img src="https://Tyloo-code.github.io/post-images/1606704462750.png" alt="" loading="lazy"></p>
+<p>效果如下：<br>
+<img src="https://Tyloo-code.github.io/post-images/1606704477977.png" alt="" loading="lazy"></p>
+<h1 id="五-图片">五、图片</h1>
+<p>语法：![图片alt](图片地址 ''图片title'')<br>
+图片alt就是显示在图片下面的文字，相当于对图片内容的解释。<br>
+图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</p>
+<p>示例：<br>
+<img src="https://Tyloo-code.github.io/post-images/1606704900357.png" alt="" loading="lazy"></p>
+<p>效果如下：<br>
+<img src="https://Tyloo-code.github.io/post-images/1606704847120.png" alt="" loading="lazy"></p>
+<p><strong>上传本地图片直接点击导航栏的图片标志，选择图片即可</strong></p>
+<p>markdown格式追求的是简单、多平台统一。那么图片的存储就是一个问题，需要用图床，提供统一的外链，这样就不用在不同的平台去处理图片的问题了。才能做到书写一次，各处使用。</p>
+<h1 id="六-超链接">六、超链接</h1>
+<p>语法：<br>
+<img src="https://Tyloo-code.github.io/post-images/1606708259670.png" alt="" loading="lazy"></p>
+<p>示例：<br>
+<a href="http://jianshu.com">简书</a><br>
+<a href="http://baidu.com">百度</a></p>
+<p>效果如下：</p>
 ]]></content>
     </entry>
     <entry>
