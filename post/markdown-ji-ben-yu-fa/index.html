@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Markdown基本语法 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1606790135340">
+<link rel="shortcut icon" href="/favicon.ico?v=1606800832836">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1369,14 +1369,14 @@ plate orange:first-child&lt;br&gt;
 plate :only-child&lt;br&gt;
 所有plate元素下的元素&lt;/p&gt;
 &lt;p&gt;第十七关&lt;br&gt;
-#fancy :last-child,pickle:last-child&lt;br&gt;
+.small:last-child&lt;br&gt;
 id为fancy的元素的最后一个和pickle元素的最后一个&lt;/p&gt;
 &lt;p&gt;第十八关&lt;br&gt;
-div plate:nth-child(3)&lt;br&gt;
+plate:nth-child(3)&lt;br&gt;
 div元素中的第三个plate元素&lt;/p&gt;
 &lt;p&gt;第十九关&lt;br&gt;
-div bento :nth-last-child(4)&lt;br&gt;
-div元素中倒数第四个bento元素&lt;/p&gt;
+bento:nth-of-type(1)&lt;br&gt;
+第N个最后一个孩子选择器&lt;/p&gt;
 &lt;p&gt;第二十关&lt;br&gt;
 apple:first-of-type&lt;br&gt;
 第一个apple元素&lt;/p&gt;
@@ -1384,8 +1384,8 @@ apple:first-of-type&lt;br&gt;
 plate:nth-of-type(even)&lt;br&gt;
 所有偶数个的plate元素&lt;/p&gt;
 &lt;p&gt;第二十二关&lt;br&gt;
-plate:only-of-type(6n+3),plate:only-of-type(6n+5)&lt;br&gt;
-plate元素下的第3个和第5个元素&lt;/p&gt;
+plate:nth-of-type(2n+3)&lt;br&gt;
+同类型的，每2个选择一个plate，从第3 个开始，包括第3个&lt;/p&gt;
 &lt;p&gt;第二十三关&lt;br&gt;
 plate apple.small:only-of-type&lt;br&gt;
 plate元素下满足apple.small元素的唯一一个元素&lt;/p&gt;

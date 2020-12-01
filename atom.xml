@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Tyloo-code.github.io</id>
     <title>Tyloo</title>
-    <updated>2020-12-01T05:21:09.280Z</updated>
+    <updated>2020-12-01T05:33:54.829Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Tyloo-code.github.io"/>
     <link rel="self" href="https://Tyloo-code.github.io/atom.xml"/>
@@ -66,14 +66,14 @@ plate orange:first-child<br>
 plate :only-child<br>
 所有plate元素下的元素</p>
 <p>第十七关<br>
-#fancy :last-child,pickle:last-child<br>
+.small:last-child<br>
 id为fancy的元素的最后一个和pickle元素的最后一个</p>
 <p>第十八关<br>
-div plate:nth-child(3)<br>
+plate:nth-child(3)<br>
 div元素中的第三个plate元素</p>
 <p>第十九关<br>
-div bento :nth-last-child(4)<br>
-div元素中倒数第四个bento元素</p>
+bento:nth-of-type(1)<br>
+第N个最后一个孩子选择器</p>
 <p>第二十关<br>
 apple:first-of-type<br>
 第一个apple元素</p>
@@ -81,8 +81,8 @@ apple:first-of-type<br>
 plate:nth-of-type(even)<br>
 所有偶数个的plate元素</p>
 <p>第二十二关<br>
-plate:only-of-type(6n+3),plate:only-of-type(6n+5)<br>
-plate元素下的第3个和第5个元素</p>
+plate:nth-of-type(2n+3)<br>
+同类型的，每2个选择一个plate，从第3 个开始，包括第3个</p>
 <p>第二十三关<br>
 plate apple.small:only-of-type<br>
 plate元素下满足apple.small元素的唯一一个元素</p>
