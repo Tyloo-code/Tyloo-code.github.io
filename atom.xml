@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Tyloo-code.github.io</id>
     <title>Tyloo</title>
-    <updated>2020-12-01T02:06:14.536Z</updated>
+    <updated>2020-12-01T02:17:35.680Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Tyloo-code.github.io"/>
     <link rel="self" href="https://Tyloo-code.github.io/atom.xml"/>
@@ -11,12 +11,662 @@
     <icon>https://Tyloo-code.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Tyloo</rights>
     <entry>
+        <title type="html"><![CDATA[Vue课堂随笔]]></title>
+        <id>https://Tyloo-code.github.io/post/vue-ke-tang-sui-bi/</id>
+        <link href="https://Tyloo-code.github.io/post/vue-ke-tang-sui-bi/">
+        </link>
+        <updated>2020-12-01T02:11:48.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="day1">Day1</h1>
+<p>webstorm<br>
+vscode -&gt; 插件</p>
+<p>开发中什么时候称之为方法, 什么时候称之为函数?</p>
+<ul>
+<li>方法: method</li>
+<li>函数: function</li>
+</ul>
+<p>生命周期: 事物从诞生到消亡的整个过程.</p>
+<p>Vue生命周期:</p>
+<p>debug/release</p>
+<p>代码规范: 缩进4个空格, 2个空格.</p>
+<p>CLI -&gt; .editconfig 2个空格.</p>
+<p>机器学习 -&gt; 人脑学习过程</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Vue从入门到未完待续]]></title>
         <id>https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/</id>
         <link href="https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/">
         </link>
         <updated>2020-11-30T08:50:39.000Z</updated>
-        <content type="html"><![CDATA[<p>1</p>
+        <content type="html"><![CDATA[<h1 id="vue-day-01">Vue Day 01</h1>
+<h3 id="一-邂逅vuejs">一. 邂逅Vuejs</h3>
+<h4 id="11-认识vuejs">1.1. 认识Vuejs</h4>
+<ul>
+<li>为什么学习Vuejs</li>
+<li>Vue的读音</li>
+<li>Vue的渐进式</li>
+<li>Vue的特点</li>
+</ul>
+<h4 id="12-安装vue">1.2. 安装Vue</h4>
+<ul>
+<li>CDN引入</li>
+<li>下载引入</li>
+<li>npm安装</li>
+</ul>
+<h4 id="13-vue的初体验">1.3. Vue的初体验</h4>
+<ul>
+<li>Hello Vuejs
+<ul>
+<li>mustache -&gt; 体验vue响应式</li>
+</ul>
+</li>
+<li>Vue列表展示
+<ul>
+<li>v-for</li>
+<li>后面给数组追加元素的时候, 新的元素也可以在界面中渲染出来</li>
+</ul>
+</li>
+<li>Vue计数器小案例
+<ul>
+<li>事件监听: click -&gt; methods</li>
+</ul>
+</li>
+</ul>
+<h4 id="14-vue中的mvvm">1.4. Vue中的MVVM</h4>
+<h4 id="15-创建vue时-options可以放那些东西">1.5. 创建Vue时, options可以放那些东西</h4>
+<ul>
+<li>el:</li>
+<li>data:</li>
+<li>methods:</li>
+<li>生命周期函数</li>
+</ul>
+<h3 id="二插值语法">二.插值语法</h3>
+<ul>
+<li>mustache语法</li>
+<li>v-once</li>
+<li>v-html</li>
+<li>v-text</li>
+<li>v-pre: {{}}</li>
+<li>v-cloak: 斗篷</li>
+</ul>
+<h3 id="三-v-bind">三. v-bind</h3>
+<h4 id="31-v-bind绑定基本属性">3.1. v-bind绑定基本属性</h4>
+<ul>
+<li>v-bind:sr</li>
+<li>:href</li>
+</ul>
+<h4 id="32-v-bind动态绑定class">3.2. v-bind动态绑定class</h4>
+<ul>
+<li>对象语法: 作业 :class='{类名: boolean}'</li>
+<li>数组语法:</li>
+</ul>
+<h4 id="33-v-bind动态绑定style">3.3. v-bind动态绑定style</h4>
+<ul>
+<li>对象语法:</li>
+<li>数组语法:</li>
+</ul>
+<h3 id="四-计算属性">四. 计算属性</h3>
+<ul>
+<li>案例一: firstName+lastName</li>
+<li>案例二: books -&gt; price</li>
+</ul>
+<h1 id="vue-day-02">Vue Day 02</h1>
+<h3 id="一-计算属性">一. 计算属性</h3>
+<h4 id="11-计算属性的本质">1.1. 计算属性的本质</h4>
+<ul>
+<li>fullname: {set(), get()}</li>
+</ul>
+<h4 id="12-计算属性和methods对比">1.2. 计算属性和methods对比</h4>
+<ul>
+<li>计算属性在多次使用时, 只会调用一次.</li>
+<li>它是由缓存的</li>
+</ul>
+<h3 id="二-事件监听">二. 事件监听</h3>
+<h4 id="21-事件监听基本使用">2.1. 事件监听基本使用</h4>
+<h4 id="22-参数问题">2.2. 参数问题</h4>
+<ul>
+<li>btnClick</li>
+<li>btnClick(event)</li>
+<li>btnClick(abc, event) -&gt; $event</li>
+</ul>
+<h4 id="23-修饰符">2.3. 修饰符</h4>
+<ul>
+<li>stop</li>
+<li>prevent</li>
+<li>.enter</li>
+<li>.once</li>
+<li>.native</li>
+</ul>
+<h3 id="三-条件判断">三. 条件判断</h3>
+<h4 id="31-v-ifv-else-ifv-else">3.1. v-if/v-else-if/v-else</h4>
+<h4 id="32-登录小案例">3.2. 登录小案例</h4>
+<h4 id="33-v-show">3.3. v-show</h4>
+<ul>
+<li>v-show和v-if区别</li>
+</ul>
+<h3 id="四-循环遍历">四. 循环遍历</h3>
+<h4 id="41-遍历数组">4.1. 遍历数组</h4>
+<h4 id="42-遍历对象">4.2. 遍历对象</h4>
+<ul>
+<li>value</li>
+<li>value, key</li>
+<li>value, key, index</li>
+</ul>
+<h4 id="43-数组哪些方法是响应式的">4.3. 数组哪些方法是响应式的</h4>
+<h4 id="44-作业完成">4.4. 作业完成</h4>
+<h3 id="五-书籍案例">五. 书籍案例</h3>
+<h3 id="六-v-model的使用">六. v-model的使用</h3>
+<h4 id="61-v-model的基本使用">6.1. v-model的基本使用</h4>
+<ul>
+<li>v-model =&gt; v-bind:value v-on:input</li>
+</ul>
+<h4 id="62-v-model和radiocheckboxselect">6.2. v-model和radio/checkbox/select</h4>
+<h4 id="63-修饰符">6.3. 修饰符</h4>
+<ul>
+<li>lazy</li>
+<li>number</li>
+<li>trim</li>
+</ul>
+<h3 id="七-组件化开发">七. 组件化开发</h3>
+<h4 id="71-认识组件化">7.1. 认识组件化</h4>
+<h4 id="72-组件的基本使用">7.2. 组件的基本使用</h4>
+<h4 id="73-全局组件和局部组件">7.3. 全局组件和局部组件</h4>
+<h4 id="74-父组件和子组件">7.4. 父组件和子组件</h4>
+<h4 id="75-注册的语法糖">7.5. 注册的语法糖</h4>
+<h4 id="76-模板的分类写法">7.6. 模板的分类写法</h4>
+<ul>
+<li>script</li>
+<li>template</li>
+</ul>
+<h4 id="77-数据的存放">7.7. 数据的存放</h4>
+<ul>
+<li>子组件不能直接访问父组件</li>
+<li>子组件中有自己的data, 而且必须是一个函数.</li>
+<li>为什么必须是一个函数.</li>
+</ul>
+<h4 id="78-父子组件的通信">7.8. 父子组件的通信</h4>
+<ul>
+<li>父传子: props</li>
+<li>子传父: $emit</li>
+</ul>
+<h4 id="79-项目">7.9. 项目</h4>
+<ul>
+<li>npm install</li>
+<li>npm run serve</li>
+</ul>
+<h1 id="vue-day-03">Vue Day 03</h1>
+<h3 id="一-组件化开发">一. 组件化开发</h3>
+<h4 id="11-父子组件的访问">1.1. 父子组件的访问</h4>
+<ul>
+<li>children/refs</li>
+<li>parent/root</li>
+</ul>
+<h4 id="12-slot的使用">1.2. slot的使用</h4>
+<ul>
+<li>基本使用</li>
+<li>具名插槽</li>
+<li>编译的作用域</li>
+<li>作用域插槽</li>
+</ul>
+<h3 id="二-前端模块化">二. 前端模块化</h3>
+<h4 id="21-为什么要使用模块化">2.1. 为什么要使用模块化</h4>
+<ul>
+<li>简单写js代码带来的问题</li>
+<li>闭包引起代码不可复用.</li>
+<li>自己实现了简单的模块化</li>
+<li>AMD/CMD/CommonJS</li>
+</ul>
+<h4 id="22-es6中模块化的使用">2.2. ES6中模块化的使用</h4>
+<ul>
+<li>export</li>
+<li>import</li>
+</ul>
+<h3 id="三-webpack">三. webpack</h3>
+<h4 id="31-什么是webpack">3.1. 什么是webpack</h4>
+<ul>
+<li>webpack和gulp对比</li>
+<li>webpack依赖环境</li>
+<li>安装webpack</li>
+</ul>
+<h4 id="32-webpack的起步">3.2. webpack的起步</h4>
+<ul>
+<li>webpack命令</li>
+<li>webpack配置: webpack.config.js/package.json(scripts)</li>
+</ul>
+<h4 id="33-webpack的loader">3.3. webpack的loader</h4>
+<ul>
+<li>css-loader/style-loader</li>
+<li>less-loader/less</li>
+<li>url-loader/file-loader</li>
+<li>babel-loader</li>
+</ul>
+<h4 id="34-webpack中配置vue">3.4. webpack中配置Vue</h4>
+<ul>
+<li>vue-loader</li>
+</ul>
+<h4 id="35-webpack的plugin">3.5. webpack的plugin</h4>
+<h4 id="36-搭建本地服务器">3.6. 搭建本地服务器</h4>
+<ul>
+<li>webpack-dev-server</li>
+</ul>
+<h4 id="37-配置文件的分离">3.7. 配置文件的分离</h4>
+<h3 id="四-vue-cli">四. Vue CLI</h3>
+<h4 id="41-什么是cli">4.1. 什么是CLI</h4>
+<ul>
+<li>脚手架是什么东西.</li>
+<li>CLI依赖webpack,node,npm</li>
+<li>安装CLI3 -&gt; 拉去CLI2模块</li>
+</ul>
+<h4 id="42-cli2初始化项目的过程">4.2. CLI2初始化项目的过程</h4>
+<h4 id="43-cli2生产的目录结构的解析">4.3. CLI2生产的目录结构的解析</h4>
+<p>export(导出)/import(导入)</p>
+<p>.vue</p>
+<p>dist -&gt; distribution(发布)</p>
+<blockquote>
+<p>webpack ./src/main.js ./dist/bundle.js</p>
+</blockquote>
+<p>开发时依赖</p>
+<p>运行时依赖</p>
+<h1 id="vue-day-04">Vue Day 04</h1>
+<h3 id="一-vue-cli">一. Vue CLI</h3>
+<h4 id="11-runtime-compiler和runtime-only的区别">1.1. runtime-compiler和runtime-only的区别</h4>
+<ul>
+<li>
+<p>ESLint到底是什么?</p>
+</li>
+<li>
+<p>template -&gt; ast -&gt; render -&gt; vdom -&gt; 真实DOM</p>
+</li>
+<li>
+<p>render: (h) =&gt; h, -&gt; createElement</p>
+</li>
+</ul>
+<h4 id="12-vue-cli3">1.2. Vue CLI3</h4>
+<ul>
+<li>如何通过CLI3创建项目</li>
+<li>CLI3的目录结构</li>
+<li>配置文件: 1.Vue UI 2.隐藏的配置文件 3.自定义vue.config.js</li>
+</ul>
+<h3 id="二-vue-router">二. Vue-Router</h3>
+<h4 id="21-什么是前端路由">2.1. 什么是前端路由</h4>
+<ul>
+<li>后端渲染\后端路由</li>
+<li>前后端分离</li>
+<li>SPA\前端路由</li>
+</ul>
+<h4 id="22-路由的基本配置">2.2. 路由的基本配置</h4>
+<ul>
+<li>安装vue-router</li>
+<li>Vue.use -&gt; 创建VueRouter对象 -&gt; 挂在到Vue实例上</li>
+<li>配置映射关系: 1.创建组件 2.配置映射关系 3.使用router-link/router-view</li>
+</ul>
+<h4 id="23-细节处理">2.3. 细节处理</h4>
+<ul>
+<li>默认路由: redirect</li>
+<li>mode: history</li>
+<li>router-link -&gt; tag/replace/active-class</li>
+</ul>
+<h4 id="24-动态路由">2.4. 动态路由</h4>
+<ul>
+<li>/user/:id</li>
+<li>this.$route.params.id</li>
+</ul>
+<h4 id="25-参数的传递">2.5. 参数的传递</h4>
+<ul>
+<li>params</li>
+<li>query -&gt; URL</li>
+<li>URL:
+<ul>
+<li>协议://主机:端口/路径?查询</li>
+<li>scheme://host:port/path?query#fragment</li>
+</ul>
+</li>
+</ul>
+<h4 id="26-路由嵌套">2.6. 路由嵌套</h4>
+<ul>
+<li>children: []</li>
+</ul>
+<h4 id="27-导航守卫">2.7. 导航守卫</h4>
+<ul>
+<li>全局导航守卫</li>
+<li>路由独享守卫</li>
+<li>组件类守卫</li>
+</ul>
+<h4 id="28-keep-alive">2.8. Keep-alive</h4>
+<h4 id="29-tabbar的封装过程">2.9. TabBar的封装过程</h4>
+<p>C:\Users\Administrator\AppData\Roaming</p>
+<p>vue init webpack project</p>
+<p>runtime+compiler和runtime-only</p>
+<p>template -&gt; ast -&gt; render -&gt; virtual dom -&gt; 真实DOM</p>
+<p>vue2.5.21 -&gt; vue2.x -&gt; flow-type(facebook)</p>
+<p>Vue3.x -&gt; TypeScript(micro(微小)soft(软件))</p>
+<p>future: 将来/未来</p>
+<p>fut: 特性</p>
+<p>rc -&gt; run command</p>
+<p>vcs -&gt; version control system(版本控制git/svn)</p>
+<p>什么是前端渲染, 什么是后端渲染?</p>
+<p>什么是前后端分离?</p>
+<p>什么是前端路由, 什么是后端路由?</p>
+<p>href -&gt; hyper reference</p>
+<h1 id="vue-day-05">Vue Day 05</h1>
+<h3 id="一-promise">一. Promise</h3>
+<h4 id="11-promise的基本使用">1.1. Promise的基本使用</h4>
+<ul>
+<li>如何将异步操作放入到promise中</li>
+<li>(resolve, reject) =&gt; then/catch</li>
+</ul>
+<h4 id="12-promise的链式调用">1.2. Promise的链式调用</h4>
+<h4 id="13-promise的all方法">1.3. Promise的all方法</h4>
+<h3 id="二-vuex">二. Vuex</h3>
+<h4 id="21-什么是状态管理">2.1. 什么是状态管理</h4>
+<h4 id="22-vuex的基本使用">2.2. Vuex的基本使用</h4>
+<ul>
+<li>state -&gt; 直接修改state(错误)</li>
+<li>mutations -&gt; devtools</li>
+</ul>
+<h4 id="23-核心概念">2.3. 核心概念</h4>
+<ul>
+<li>state -&gt; 单一状态树</li>
+<li>getters -&gt;</li>
+<li>mutations -&gt;</li>
+<li>actions -&gt; 异步操作(Promise)</li>
+<li>modules</li>
+</ul>
+<h4 id="24-目录组织方式">2.4. 目录组织方式</h4>
+<h3 id="三-网络请求封装">三. 网络请求封装</h3>
+<h4 id="31-网络请求方式的选择">3.1. 网络请求方式的选择</h4>
+<h4 id="32-axios的基本使用">3.2. axios的基本使用</h4>
+<h4 id="33-axios的相关配置">3.3. axios的相关配置</h4>
+<h4 id="34-axios的创建实例">3.4. axios的创建实例</h4>
+<h4 id="35-axios的封装">3.5. axios的封装</h4>
+<h4 id="36-axios的拦截器">3.6. axios的拦截器</h4>
+<h3 id="四-项目开发">四. 项目开发</h3>
+<h4 id="41-划分目录结构">4.1. 划分目录结构</h4>
+<h4 id="42-引用了两个css文件">4.2. 引用了两个css文件</h4>
+<h4 id="43-vueconfigjs和editorconfig">4.3. vue.config.js和.editorconfig</h4>
+<h4 id="44-项目的模块划分-tabbar-路由映射关系">4.4. 项目的模块划分: tabbar -&gt; 路由映射关系</h4>
+<h4 id="45-首页开发">4.5. 首页开发</h4>
+<ul>
+<li>navbar 的封装</li>
+<li>网络数据的请求</li>
+<li>轮播图</li>
+<li>推荐信息</li>
+</ul>
+<pre><code>git remote add origin https://github.com/coderwhy/testmall.git
+git push -u origin master
+</code></pre>
+<p>sync -&gt; 同步</p>
+<p>async -&gt; 异步</p>
+<p>aysnc operation: 操作</p>
+<p>xcode/iphonex/xml</p>
+<p>token -&gt;</p>
+<p>linus -&gt; linux/git</p>
+<h1 id="vue-day-06">Vue Day 06</h1>
+<p>goods: (流行/新款/精选)</p>
+<pre><code class="language-js">goods: {
+  'pop': {page: 5, list: [150]},
+  'news': {page: 2, list: [60]},
+  'sell': {page: 1, list: [30]}
+}
+</code></pre>
+<p>ref如果是绑定在组件中的, 那么通过<strong>this.$refs.refname</strong>获取到的是一个组件对象.</p>
+<p>ref如果是绑定在普通的元素中, 那么通过<strong>this.$refs.refname</strong>获取到的是一个元素对象.</p>
+<p>44 + 49 = 93</p>
+<p>vh -&gt; viewport height</p>
+<p>568(100%) - 98 = 470</p>
+<p>修饰.native修饰什么时候使用?</p>
+<ul>
+<li>在我们需要监听一个组件的原生事件时, 必须给对应的事件加上.native修饰符, 才能进行监听.</li>
+</ul>
+<p>计算机中没有黑魔法.</p>
+<h1 id="vue-day-07">Vue Day 07</h1>
+<h3 id="一-featureview">一. FeatureView</h3>
+<ul>
+<li>独立组件封装FeatureView
+<ul>
+<li>div&gt;a&gt;img</li>
+</ul>
+</li>
+</ul>
+<h3 id="二-tabcontrol">二. TabControl</h3>
+<ul>
+<li>独立组件的封装
+<ul>
+<li>props -&gt; titles</li>
+<li>div&gt;根据titles v-for遍历 div -&gt; span{{title}}</li>
+<li>css相关</li>
+<li>选中哪一个tab, 哪一个tab的文字颜色变色, 下面border-bottom
+<ul>
+<li>currentIndex</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="三-首页商品数据的请求">三. 首页商品数据的请求</h3>
+<h4 id="31-设计数据结构-用于保存数据">3.1. 设计数据结构, 用于保存数据</h4>
+<p>goods: {</p>
+<p>pop: page/list</p>
+<p>new: page/list</p>
+<p>sell: page/list</p>
+<p>}</p>
+<h4 id="32-发送数据请求">3.2. 发送数据请求</h4>
+<ul>
+<li>在home.js中封装getHomeGoods(type, page)</li>
+<li>在Home.vue中, 又在methods中getHomeGoods(type)</li>
+<li>调用getHomeGoods('pop')/getHomeGoods('new')/getHomeGoods('sell')
+<ul>
+<li>page: 动态的获取对应的page</li>
+</ul>
+</li>
+<li>获取到数据: res
+<ul>
+<li>this.goods[type].list.push(...res.data.list)</li>
+<li>this.goods[type].page += 1</li>
+</ul>
+</li>
+</ul>
+<p>goods: {</p>
+<p>pop: page1:/list[30]</p>
+<p>new: page1/list[30]</p>
+<p>sell: page1/list[30]</p>
+<p>}</p>
+<h3 id="四-对商品数据进行展示">四. 对商品数据进行展示</h3>
+<h4 id="41-封装goodslistvue组件">4.1. 封装GoodsList.vue组件</h4>
+<ul>
+<li>props: goods -&gt; list[30]</li>
+<li>v-for goods -&gt; GoodsListItem[30]</li>
+<li>GoodListItem(组件) -&gt; GoodsItem(数据)</li>
+</ul>
+<h4 id="42-封装goodslistitemvue组件">4.2. 封装GoodsListItem.vue组件</h4>
+<ul>
+<li>props: goodsItem</li>
+<li>goodsItem 取出数据, 并且使用正确的div/span/img基本标签进行展示</li>
+</ul>
+<h3 id="五-对滚动进行重构-better-scroll">五. 对滚动进行重构: Better-Scroll</h3>
+<h4 id="51-在indexhtml中使用better-scroll">5.1. 在index.html中使用Better-Scroll</h4>
+<ul>
+<li>const bscroll = new BScroll(el, {   })</li>
+<li>注意: wrapper -&gt; content -&gt; 很多内容</li>
+<li>1.监听滚动
+<ul>
+<li>probeType: 0/1/2(手指滚动)/3(只要是滚动)</li>
+<li>bscroll .on('scroll', (position) =&gt; {})</li>
+</ul>
+</li>
+<li>2.上拉加载
+<ul>
+<li>pullUpLoad: true</li>
+<li>bscroll .on('pullingUp', () =&gt; {})</li>
+</ul>
+</li>
+<li>3.click: false
+<ul>
+<li>button可以监听点击</li>
+<li>div不可以</li>
+</ul>
+</li>
+</ul>
+<h4 id="52-在vue项目中使用better-scroll">5.2. 在Vue项目中使用Better-Scroll</h4>
+<ul>
+<li>在Profile.vue中简单的演示</li>
+<li>对Better-Scroll进行封装: Scroll.vue</li>
+<li>Home.vue和Scroll.vue之间进行通信
+<ul>
+<li>Home.vue将probeType设置为3</li>
+<li>Scroll.vue需要通过$emit, 实时将事件发送到Home.vue</li>
+</ul>
+</li>
+</ul>
+<h3 id="六-回到顶部backtop">六. 回到顶部BackTop</h3>
+<h4 id="61-对backtopvue组件的封装">6.1. 对BackTop.vue组件的封装</h4>
+<h4 id="62-如何监听组件的点击">6.2. 如何监听组件的点击</h4>
+<ul>
+<li>直接监听back-top的点击, 但是可以直接监听?
+<ul>
+<li>不可以, 必须添加修饰.native</li>
+</ul>
+</li>
+<li>回到顶部
+<ul>
+<li>scroll对象, scroll.scrollTo(x, y, time)</li>
+<li>this.$refs.scroll.scrollTo(0, 0, 500)</li>
+</ul>
+</li>
+</ul>
+<h4 id="63-backtop组件的显示和隐藏">6.3. BackTop组件的显示和隐藏</h4>
+<ul>
+<li>isShowBackTop: false</li>
+<li>监听滚动, 拿到滚动的位置:
+<ul>
+<li>-position.y &gt; 1000  -&gt; isShowBackTop: true</li>
+<li>isShowBackTop = -position.y &gt; 1000</li>
+</ul>
+</li>
+</ul>
+<h3 id="七-解决首页中可滚动区域的问题">七. 解决首页中可滚动区域的问题</h3>
+<ul>
+<li>
+<p>Better-Scroll在决定有多少区域可以滚动时, 是根据scrollerHeight属性决定</p>
+<ul>
+<li>scrollerHeight属性是根据放Better-Scroll的content中的子组件的高度</li>
+<li>但是我们的首页中, 刚开始在计算scrollerHeight属性时, 是没有将图片计算在内的</li>
+<li>所以, 计算出来的告诉是错误的(1300+)</li>
+<li>后来图片加载进来之后有了新的高度, 但是scrollerHeight属性并没有进行更新.</li>
+<li>所以滚动出现了问题</li>
+</ul>
+</li>
+<li>
+<p>如何解决这个问题了?</p>
+<ul>
+<li>监听每一张图片是否加载完成, 只要有一张图片加载完成了, 执行一次refresh()</li>
+<li>如何监听图片加载完成了?
+<ul>
+<li>原生的js监听图片: img.onload = function() {}</li>
+<li>Vue中监听: @load='方法'</li>
+</ul>
+</li>
+<li>调用scroll的refresh()</li>
+</ul>
+</li>
+<li>
+<p>如何将GoodsListItem.vue中的事件传入到Home.vue中</p>
+<ul>
+<li>因为涉及到非父子组件的通信, 所以这里我们选择了<strong>事件总线</strong>
+<ul>
+<li>bus -&gt;总线</li>
+<li>Vue.prototype.$bus = new Vue()</li>
+<li>this.bus.emit('事件名称', 参数)</li>
+<li>this.bus.on('事件名称', 回调函数(参数))</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>问题一: refresh找不到的问题</p>
+<ul>
+<li>第一: 在Scroll.vue中, 调用this.scroll的方法之前, 判断this.scroll对象是否有值</li>
+<li>第二: 在mounted生命周期函数中使用 this.$refs.scroll而不是created中</li>
+</ul>
+</li>
+<li>
+<p>问题二: 对于refresh非常频繁的问题, 进行防抖操作</p>
+<ul>
+<li>防抖debounce/节流throttle(课下研究一下)</li>
+<li>防抖函数起作用的过程:
+<ul>
+<li>如果我们直接执行refresh, 那么refresh函数会被执行30次.</li>
+<li>可以将refresh函数传入到debounce函数中, 生成一个新的函数.</li>
+<li>之后在调用非常频繁的时候, 就使用新生成的函数.</li>
+<li>而新生成的函数, 并不会非常频繁的调用, 如果下一次执行来的非常快, 那么会将上一次取消掉</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-js">      debounce(func, delay) {
+        let timer = null
+        return function (...args) {
+          if (timer) clearTimeout(timer)
+          timer = setTimeout(() =&gt; {
+            func.apply(this, args)
+          }, delay)
+        }
+      },
+</code></pre>
+<h3 id="八-上拉加载更多的功能">八. 上拉加载更多的功能</h3>
+<p>y  ifu</p>
+<h3 id="九-tabcontrol的吸顶效果">九. tabControl的吸顶效果</h3>
+<h4 id="91-获取到tabcontrol的offsettop">9.1. 获取到tabControl的offsetTop</h4>
+<ul>
+<li>必须知道滚动到多少时, 开始有吸顶效果, 这个时候就需要获取tabControl的offsetTop</li>
+<li>但是, 如果直接在mounted中获取tabControl的offsetTop, 那么值是不正确.</li>
+<li>如何获取正确的值了?
+<ul>
+<li>监听HomeSwiper中img的加载完成.</li>
+<li>加载完成后, 发出事件, 在Home.vue中, 获取正确的值.</li>
+<li>补充:
+<ul>
+<li>为了不让HomeSwiper多次发出事件,</li>
+<li>可以使用isLoad的变量进行状态的记录.</li>
+</ul>
+</li>
+<li>注意: 这里不进行多次调用和debounce的区别</li>
+</ul>
+</li>
+</ul>
+<h4 id="92-监听滚动-动态的改变tabcontrol的样式">9.2. 监听滚动, 动态的改变tabControl的样式</h4>
+<ul>
+<li>问题:动态的改变tabControl的样式时, 会出现两个问题:
+<ul>
+<li>问题一: 下面的商品内容, 会突然上移</li>
+<li>问题二: tabControl虽然设置了fixed, 但是也随着Better-Scroll一起滚出去了.</li>
+</ul>
+</li>
+<li>其他方案来解决停留问题.
+<ul>
+<li>在最上面, 多复制了一份PlaceHolderTabControl组件对象, 利用它来实现停留效果.</li>
+<li>当用户滚动到一定位置时, PlaceHolderTabControl显示出来.</li>
+<li>当用户滚动没有达到一定位置时, PlaceHolderTabControl隐藏起来.</li>
+</ul>
+</li>
+</ul>
+<h3 id="十-让home保持原来的状态">十. 让Home保持原来的状态</h3>
+<h4 id="101-让home不要随意销毁掉">10.1. 让Home不要随意销毁掉</h4>
+<ul>
+<li>keep-alive</li>
+</ul>
+<h4 id="102-让home中的内容保持原来的位置">10.2. 让Home中的内容保持原来的位置</h4>
+<ul>
+<li>离开时, 保存一个位置信息saveY.</li>
+<li>进来时, 将位置设置为原来保存的位置saveY信息即可.
+<ul>
+<li>注意: 最好回来时, 进行一次refresh()</li>
+</ul>
+</li>
+</ul>
+<p>非父子组件通信:</p>
+<p>https://www.jb51.net/article/132371.htm</p>
 ]]></content>
     </entry>
     <entry>
