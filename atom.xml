@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Tyloo-code.github.io</id>
     <title>Tyloo</title>
-    <updated>2020-12-01T02:22:02.062Z</updated>
+    <updated>2020-12-01T02:45:48.403Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Tyloo-code.github.io"/>
     <link rel="self" href="https://Tyloo-code.github.io/atom.xml"/>
@@ -10,6 +10,93 @@
     <logo>https://Tyloo-code.github.io/images/avatar.png</logo>
     <icon>https://Tyloo-code.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Tyloo</rights>
+    <entry>
+        <title type="html"><![CDATA[餐厅练习-Css选择器]]></title>
+        <id>https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/</id>
+        <link href="https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/">
+        </link>
+        <updated>2020-12-01T02:33:21.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://github.com/Tyloo-code/Restaurant">点此下载</a><br>
+第一关<br>
+plate<br>
+plate元素</p>
+<p>第二关<br>
+bento<br>
+bento元素</p>
+<p>第三关<br>
+#fancy<br>
+id为fancy的元素</p>
+<p>第四关<br>
+plate apple<br>
+plate祖先元素下的apple后代元素</p>
+<p>第五关<br>
+#fancy pickle<br>
+id为#fancy的祖先元素下的pickle后代元素</p>
+<p>第六关<br>
+.small<br>
+组为small的元素</p>
+<p>第七关<br>
+orange.small<br>
+组为small的orange元素</p>
+<p>第八关<br>
+bento&gt;orange.small<br>
+bento父元素下的组为small的orange子元素</p>
+<p>第九关<br>
+plate,bento,div<br>
+plate,bento兄弟元素在div元素中</p>
+<p>第十关<br>
+*<br>
+*代表所有元素</p>
+<p>第十一关<br>
+plate&gt;*<br>
+plate父元素的所有子元素</p>
+<p>第十二关<br>
+plate + apple<br>
+兄弟元素选择器，plate元素的后一个元素</p>
+<p>第十三关<br>
+bento~pickle<br>
+兄弟元素选择器,bento元素后的多个pickle元素</p>
+<p>第十四关<br>
+plate&gt;apple<br>
+plate父元素下的apple子元素</p>
+<p>第十五关<br>
+plate orange:first-child<br>
+子元素选择器，plate元素下的第一个orange元素</p>
+<p>第十六关<br>
+plate :only-child<br>
+所有plate元素下的元素</p>
+<p>第十七关<br>
+#fancy :last-child,pickle:last-child<br>
+id为fancy的元素的最后一个和pickle元素的最后一个</p>
+<p>第十八关<br>
+div plate:nth-child(3)<br>
+div元素中的第三个plate元素</p>
+<p>第十九关<br>
+div bento :nth-last-child(4)<br>
+div元素中倒数第四个bento元素</p>
+<p>第二十关<br>
+apple:first-of-type<br>
+第一个apple元素</p>
+<p>第二十一关<br>
+plate:nth-of-type(even)<br>
+所有偶数个的plate元素</p>
+<p>第二十二关<br>
+plate:only-of-type(6n+3),plate:only-of-type(6n+5)<br>
+plate元素下的第3个和第5个元素</p>
+<p>第二十三关<br>
+plate apple.small:only-of-type<br>
+plate元素下满足apple.small元素的唯一一个元素</p>
+<p>第二十四关<br>
+orange.small:last-of-type,apple.small:last-of-type<br>
+是orange.samll和apple.small元素的最后一个元素</p>
+<p>第二十五关<br>
+bento:empty<br>
+bento元素里没有包括额外元素</p>
+<p>第二十六关<br>
+apple:not(.small)<br>
+apple里没有组是.small的元素</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Vue从入门到未完待续]]></title>
         <id>https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/</id>
