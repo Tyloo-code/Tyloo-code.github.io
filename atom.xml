@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Tyloo-code.github.io</id>
     <title>Tyloo</title>
-    <updated>2020-12-03T05:27:48.941Z</updated>
+    <updated>2020-12-03T05:43:39.979Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Tyloo-code.github.io"/>
     <link rel="self" href="https://Tyloo-code.github.io/atom.xml"/>
@@ -11,7 +11,2082 @@
     <icon>https://Tyloo-code.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Tyloo</rights>
     <entry>
-        <title type="html"><![CDATA[Element UI 实战教程]]></title>
+        <title type="html"><![CDATA[Element UI 实战教程(二)]]></title>
+        <id>https://Tyloo-code.github.io/post/elementui/</id>
+        <link href="https://Tyloo-code.github.io/post/elementui/">
+        </link>
+        <updated>2020-12-03T05:32:07.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="8form相关组件">8.Form相关组件</h2>
+<h3 id="81-radio单选按钮">8.1 Radio单选按钮</h3>
+<h4 id="1创建radio按钮">1.创建Radio按钮</h4>
+<pre><code class="language-html">&lt;!--组件创建--&gt;
+&lt;el-radio v-model=&quot;label&quot; label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
+&lt;el-radio v-model=&quot;label&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Radio&quot;,
+        data(){
+            return{
+                label:'男'
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p><code>注意:在使用radio单选按钮是至少加入v-model和label两个属性</code></p>
+<h4 id="2radio按钮属性的使用">2.Radio按钮属性的使用</h4>
+<pre><code class="language-html">&lt;el-radio v-model=&quot;label&quot; name=&quot;sex&quot; disabled label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
+&lt;el-radio v-model=&quot;label&quot; name=&quot;sex&quot; border size=&quot;small&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
+&lt;el-radio v-model=&quot;label&quot; border size=&quot;mini&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
+&lt;el-radio v-model=&quot;label&quot; border size=&quot;medium&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
+</code></pre>
+<p><code>总结:属性使用还是直接卸载对应的组件标签上以 属性名=属性值 方式使用</code></p>
+<h4 id="3radio事件的使用">3.Radio事件的使用</h4>
+<pre><code class="language-html">&lt;el-radio v-model=&quot;label&quot; @change=&quot;aa&quot; name=&quot;sex&quot; label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
+&lt;el-radio v-model=&quot;label&quot; @change=&quot;aa&quot; name=&quot;sex&quot; border size=&quot;small&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
+
+
+
+&lt;script&gt;
+    export default {
+        name: &quot;Radio&quot;,
+        data(){
+            return{
+                label:'男'
+            }
+        },
+        methods:{
+            aa(){ //定义的事件处理函数
+                console.log(this.label);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p><code>总结:</code></p>
+<ul>
+<li>​	事件的使用也是和属性使用是一致都是直接写在对应的组件标签上</li>
+<li>事件在使用时必须使用Vue中绑定时间方式进行使用如 @事件名=事件处理函数(绑在在vue组件中对应函数)</li>
+</ul>
+<h4 id="4radio按钮组">4.radio按钮组</h4>
+<pre><code class="language-html">&lt;el-radio-group v-model=&quot;radio&quot;&gt;
+  &lt;el-radio :label=&quot;3&quot;&gt;备选项3&lt;/el-radio&gt;
+  &lt;el-radio :label=&quot;6&quot;&gt;备选项6&lt;/el-radio&gt;
+  &lt;el-radio :label=&quot;9&quot;&gt;备选项9&lt;/el-radio&gt;
+&lt;/el-radio-group&gt;
+&lt;script&gt;
+  export default {
+    name: &quot;Radio&quot;,
+    data() {
+      return {
+        radio: 6
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<hr>
+<h3 id="82-checkbox组件">8.2 checkbox组件</h3>
+<h4 id="1创建checkbox组件">1.创建checkbox组件</h4>
+<pre><code class="language-html">&lt;el-checkbox v-model=&quot;checked&quot;&gt;北京&lt;/el-checkbox&gt;
+&lt;el-checkbox v-model=&quot;checked&quot;&gt;上海&lt;/el-checkbox&gt;
+&lt;el-checkbox v-model=&quot;checked&quot;&gt;天津&lt;/el-checkbox&gt;
+</code></pre>
+<h4 id="2属性使用">2.属性使用</h4>
+<pre><code class="language-html">&lt;el-checkbox v-model=&quot;checked&quot;  disabled true-label=&quot;北京&quot;&gt;北京&lt;/el-checkbox&gt;
+&lt;el-checkbox checked border true-label=&quot;上海&quot;&gt;上海&lt;/el-checkbox&gt;
+&lt;el-checkbox v-model=&quot;checked&quot; true-label=&quot;天津&quot;&gt;天津&lt;/el-checkbox&gt;
+</code></pre>
+<h4 id="3事件使用">3.事件使用</h4>
+<pre><code class="language-html">&lt;el-checkbox @change=&quot;aa&quot;v-model=&quot;checked&quot;  true-label=&quot;上海&quot;&gt;上海&lt;/el-checkbox&gt;
+&lt;el-checkbox v-model=&quot;checked&quot; @change=&quot;aa&quot; true-label=&quot;天津&quot;&gt;天津&lt;/el-checkbox&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Checkbox&quot;,
+        data(){
+            return{
+                checked:true
+            }
+        },
+        methods:{
+            aa(){
+                console.log(this.checked);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="4复选框组的使用">4.复选框组的使用</h4>
+<pre><code class="language-html">&lt;el-checkbox-group @change=&quot;bb&quot; :min=&quot;1&quot; v-model=&quot;checkList&quot;&gt;
+  &lt;el-checkbox label=&quot;复选框 A&quot;&gt;&lt;/el-checkbox&gt;
+  &lt;el-checkbox label=&quot;复选框 B&quot;&gt;&lt;/el-checkbox&gt;
+  &lt;el-checkbox label=&quot;复选框 C&quot;&gt;&lt;/el-checkbox&gt;
+  &lt;el-checkbox label=&quot;禁用&quot; disabled&gt;&lt;/el-checkbox&gt;
+  &lt;el-checkbox label=&quot;选中且禁用&quot; disabled&gt;&lt;/el-checkbox&gt;
+&lt;/el-checkbox-group&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Checkbox&quot;,
+        data(){
+            return{
+                checked:true,
+                checkList:[],
+            }
+        },
+        methods:{
+            aa(){
+                console.log(this.checked);
+            },
+            bb(){
+                console.log(this.checkList);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<hr>
+<h3 id="83-input-输入框组件">8.3 Input 输入框组件</h3>
+<h4 id="1创建input组件">1.创建Input组件</h4>
+<pre><code class="language-html">&lt;el-input v-model=&quot;name&quot;&gt;&lt;/el-input&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Input&quot;,
+        data(){
+            return {
+                name:'xiaochen'
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="2常用属性">2.常用属性</h4>
+<pre><code class="language-html">&lt;el-input v-model=&quot;name&quot; disabled type=&quot;textarea&quot;&gt;&lt;/el-input&gt;
+&lt;el-input v-model=&quot;price&quot; :maxlength=&quot;10&quot; show-word-limit :minlength=&quot;5&quot;&gt;&lt;/el-input&gt;
+&lt;el-input prefix-icon=&quot;el-icon-user-solid&quot; placeholder=&quot;请输入用户名&quot; clearable v-model=&quot;username&quot;&gt;&lt;/el-input&gt;
+&lt;el-input suffix-icon=&quot;el-icon-star-off&quot; placeholder=&quot;请输入密码&quot; show-password type=&quot;password&quot; clearable v-model=&quot;password&quot;&gt;&lt;/el-input&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Input&quot;,
+        data() {
+            return {
+                restaurants: [],
+                state1: '',
+                state2: '',
+                name:'xiaochen',
+                price:0.0,
+                username:&quot;&quot;,
+                password:&quot;&quot;,
+            };
+        },
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="3事件使用-2">3.事件使用</h4>
+<pre><code class="language-html">&lt;el-input v-model=&quot;username&quot; @blur=&quot;aaa&quot; @focus=&quot;bbb&quot; @clear=&quot;clears&quot; clearable @input=&quot;ccc&quot;&gt;&lt;/el-input&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Input&quot;,
+        data() {
+            return {
+                restaurants: [],
+                state1: '',
+                state2: '',
+                name:'xiaochen',
+                price:0.0,
+                username:&quot;&quot;,
+                password:&quot;&quot;,
+            };
+        },
+        methods:{
+            aaa(){
+                console.log('失去焦点');
+                ;
+            },
+            bbb(){
+                console.log(&quot;获取焦点&quot;);
+            },
+            ccc(value){
+                console.log(&quot;改变:&quot;+value);
+            },
+            clears(){
+                console.log(&quot;清楚&quot;);
+            }
+
+
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="4方法的使用">4.方法的使用</h4>
+<pre><code class="language-html">&lt;h1&gt;方法的使用&lt;/h1&gt;
+&lt;el-input v-model=&quot;username&quot; ref=&quot;inputs&quot;&gt;&lt;/el-input&gt;
+
+&lt;el-button @click=&quot;focusInputs&quot;&gt;focus方法&lt;/el-button&gt;
+&lt;el-button @click=&quot;blurInputs&quot;&gt;blur方法&lt;/el-button&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;Input&quot;,
+        data() {
+            return{}
+        },
+        methods:{
+            //调用focus方法
+            focusInputs(){
+                this.$refs.inputs.focus();
+            },
+           //调用失去焦点方法
+            blurInputs(){
+                this.$refs.inputs.blur();
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p><code>总结</code></p>
+<ul>
+<li>​	在使用组件的方法时需要在对应的组件中加入 <code>ref=&quot;组件别名&quot;</code></li>
+<li>在调用方法时直接使用 <code>this.$refs.组件别名.方法名()</code></li>
+</ul>
+<blockquote>
+<p><code>注意:在elementui中所有组件 都存在 属性 事件 和方法</code></p>
+<p><code>属性:</code>直接写在对应的组件标签上 使用方式:<code>属性名=属性值</code>方式</p>
+<p><code>事件</code>: 直接使用vue绑定事件方式写在对应的组件标签上 使用方式:<code>@事件名=vue中事件处理函数</code></p>
+<p><code>方法</code>: 1.在对应组件标签上使用<code>ref=组件别名</code> 2.<code>通过使用this.$refs.组件别名.方法名()</code>进行调用</p>
+</blockquote>
+<h3 id="84-select选择器组件的使用">8.4 Select选择器组件的使用</h3>
+<h4 id="1组件创建">1.组件创建</h4>
+<pre><code class="language-markdown"># 1.数据写死在页面上
+&lt;el-select v-model=&quot;cityName&quot;&gt;
+  &lt;el-option value=&quot;北京&quot;&gt;北京&lt;/el-option&gt;
+  &lt;el-option value=&quot;天津&quot;&gt;天津&lt;/el-option&gt;
+&lt;/el-select&gt;
+	注意:1.要求下拉列表中必须存在option的value属性值 2.要求select中必须使用v-model进行数据绑定
+
+# 2.如何动态获取数据
+ &lt;el-select&gt;
+ 		&lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;
+ 		&lt;/el-option&gt;
+ &lt;/el-select&gt;
+
+  &lt;script&gt;
+      export default {
+          name: &quot;Select&quot;,
+          data(){
+              return{
+                  options:[
+                      {id:'1',name:&quot;研发部&quot;},
+                      {id:'2',name:&quot;小卖部&quot;},
+                      {id:'3',name:&quot;小米部&quot;},
+                  ]
+              }
+          },
+      }
+  &lt;/script&gt;
+  
+# 3.获取下拉列表选中数据
+ &lt;el-select v-model=&quot;cityId&quot; multiple clearable&gt;
+        &lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;&lt;/el-option&gt;
+&lt;/el-select&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Select&quot;,
+        data(){
+            return{
+                options:[
+                    {id:'1',name:&quot;研发部&quot;},
+                    {id:'2',name:&quot;小卖部&quot;},
+                    {id:'3',name:&quot;小米部&quot;},
+                ],
+                cityId:''
+            }
+        },
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="2属性使用-2">2.属性使用</h4>
+<pre><code class="language-html">&lt;el-select v-model=&quot;cityId&quot; multiple clearable&gt;
+  ......
+&lt;/el-select&gt;
+</code></pre>
+<h4 id="3事件的使用">3.事件的使用</h4>
+<pre><code class="language-html">&lt;el-select v-model=&quot;cityId&quot; @change=&quot;aaa&quot; multiple clearable&gt;
+  &lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;
+  &lt;/el-option&gt;
+&lt;/el-select&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Select&quot;,
+        data(){
+            return{
+                options:[
+                    {id:'1',name:&quot;研发部&quot;},
+                    {id:'2',name:&quot;小卖部&quot;},
+                    {id:'3',name:&quot;小米部&quot;},
+                ],
+                cityId:'',
+                cityName:''
+            }
+        },
+        methods:{
+            aaa(value){
+                console.log(value);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="4方法的使用-2">4.方法的使用</h4>
+<pre><code class="language-html">1.给组件通过ref起别名并绑定到vue实例中
+ &lt;el-select ref=&quot;selects&quot; v-model=&quot;cityId&quot; @change=&quot;aaa&quot; multiple clearable&gt;
+       ....
+ &lt;/el-select&gt;
+2.调用方法
+ this.$refs.selects.focus();//方法调用
+</code></pre>
+<hr>
+<h3 id="85-switch-开关组件">8.5 Switch 开关组件</h3>
+<h4 id="1switch组件的创建">1.Switch组件的创建</h4>
+<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot;&gt;&lt;/el-switch&gt;
+&lt;script&gt;
+  export default {
+    name: &quot;Switchs&quot;,
+    data(){
+      return{
+        value:true
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h4 id="2属性使用-3">2.属性使用</h4>
+<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot; active-text=&quot;打开&quot; active-color=&quot;#13ce66&quot; inactive-color=&quot;#ff4949&quot; :active-
+           value=&quot;true&quot; :inactive-value=&quot;false&quot; inactive-text=&quot;关闭&quot; :width=&quot;200&quot;&gt;
+&lt;/el-switch&gt;
+</code></pre>
+<h4 id="3事件使用-3">3.事件使用</h4>
+<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot; @change=&quot;aaa&quot;&gt;&lt;/el-switch&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Switchs&quot;,
+        data(){
+            return{
+                value:true
+            }
+        },
+        methods:{
+            aaa(value){
+                console.log(value);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="4方法使用">4.方法使用</h4>
+<pre><code class="language-html">&lt;el-switch ref=&quot;sw&quot; v-model=&quot;value&quot; @change=&quot;aaa&quot; active-text=&quot;打开&quot; active-color=&quot;#13ce66&quot; inactive-color=&quot;#ff4949&quot; :active-value=&quot;true&quot; :inactive-value=&quot;false&quot; inactive-text=&quot;关闭&quot; :width=&quot;200&quot;&gt;&lt;/el-switch&gt;
+&lt;el-button @click=&quot;bbb&quot;&gt;调用方法&lt;/el-button&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;Switchs&quot;,
+        data(){
+            return{
+                value:true
+            }
+        }
+        ,
+        methods:{
+            aaa(value){
+                console.log(value);
+            },
+            bbb(){
+                alert();
+                this.$refs.sw.focus();//方法调用
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<hr>
+<h3 id="86-datepicker组件">8.6 DatePicker组件</h3>
+<h4 id="1创建">1.创建</h4>
+<pre><code class="language-html">&lt;el-date-picker v-model=&quot;createDate&quot; &gt;&lt;/el-date-picker&gt;
+</code></pre>
+<h4 id="2属性的使用">2.属性的使用</h4>
+<pre><code class="language-html">&lt;el-date-picker
+        v-model=&quot;createDate&quot;
+        :editable=&quot;false&quot;
+        :clearable=&quot;false&quot;
+        placeholder=&quot;请输入创建时间&quot;
+        type=&quot;daterange&quot;
+        start-placeholder=&quot;生产时间&quot;
+        end-placeholder=&quot;过期时间&quot;
+        format=&quot;yyyy/MM/dd&quot;
+      &gt;
+&lt;/el-date-picker&gt;
+</code></pre>
+<h4 id="3picker-options-和-shortcuts使用">3.Picker Options 和 Shortcuts使用</h4>
+<ul>
+<li><strong>Shortcuts:</strong> 用来增加日期组件的快捷面板</li>
+<li><strong>Picker Options:</strong> 用来对日期控件做自定义配置</li>
+</ul>
+<h5 id="31-shortcuts使用">3.1 Shortcuts使用</h5>
+<pre><code class="language-html">&lt;/el-date-picker&gt;
+&lt;h1&gt;日期配置&lt;/h1&gt;
+&lt;el-date-picker
+                v-model=&quot;createDate&quot;
+                type=&quot;date&quot;
+                placeholder=&quot;请输入时间&quot;
+                :picker-options=&quot;pickerOptions&quot;
+                &gt;
+&lt;/el-date-picker&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;DatePrickers&quot;,
+        data(){
+            return{
+                createDate:&quot;&quot;,
+                pickerOptions: {
+                    disabledDate(time) {
+                        return time.getTime() &gt; Date.now();
+                    },
+                    shortcuts: [{  //定义的shortucts
+                        text: '今天',
+                        onClick(picker) {
+                            picker.$emit('pick', new Date());
+                        }
+                    }, {
+                        text: '昨天',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24);
+                            picker.$emit('pick', date);
+                        }
+                    }, {
+                        text: '一周前',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                            picker.$emit('pick', date);
+                        }
+                    }]
+                },
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1606970853719.png" alt="image-20200511100330078" loading="lazy"></figure>
+<h5 id="32-picker-options">3.2 Picker Options</h5>
+<pre><code class="language-html">&lt;el-date-picker
+                v-model=&quot;createDate&quot;
+                type=&quot;date&quot;
+                placeholder=&quot;请输入时间&quot;
+                :picker-options=&quot;pickerOptions&quot;
+                &gt;
+&lt;/el-date-picker&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;DatePrickers&quot;,
+        data(){
+            return{
+                createDate:&quot;&quot;,
+                pickerOptions: {
+                    disabledDate(time) { //用来对日期进行的控制
+                        return time.getTime() &lt; Date.now();
+                    }
+                },
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://Tyloo-code.github.io/post-images/1606970839111.png" alt="image-20200511100634677" loading="lazy"></figure>
+<h4 id="4事件使用">4.事件使用</h4>
+<pre><code class="language-html">&lt;el-date-picker
+                .....
+                :picker-options=&quot;pickerOptions&quot;
+                @change=&quot;aaa&quot;
+                &gt;
+&lt;/el-date-picker&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;DatePrickers&quot;,
+        data(){
+            return{
+                createDate:&quot;&quot;,
+            }
+        },
+        methods:{
+            aaa(value){  //发生change事件的函数
+                console.log(value);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<hr>
+<h3 id="87-upload组件">8.7 Upload组件</h3>
+<h4 id="1组件创建-2">1.组件创建</h4>
+<pre><code class="language-html">&lt;el-upload action=&quot;https://jsonplaceholder.typicode.com/posts/&quot; :file-list=&quot;fileList&quot;&gt;
+  &lt;el-button size=&quot;small&quot; type=&quot;primary&quot;&gt;点击上传&lt;/el-button&gt;
+  &lt;div slot=&quot;tip&quot; class=&quot;el-upload__tip&quot;&gt;只能上传jpg/png文件，且不超过500kb&lt;/div&gt;
+&lt;/el-upload&gt;
+</code></pre>
+<p><code>注意:在使用upload组件时必须设置action属性 action属性为必要参数不能省略</code></p>
+<h4 id="2属性和事件的使用">2.属性和事件的使用</h4>
+<pre><code class="language-html">&lt;el-upload :limit=&quot;3&quot; :on-exceed=&quot;exceed&quot; :multiple=&quot;false&quot; :before-remove=&quot;beforeRemove&quot; :on-remove=&quot;remove&quot; :on-preview=&quot;show&quot; :drag=&quot;true&quot; accept=&quot;.txt,.png&quot; :show-file-list=&quot;true&quot; name=&quot;aaa&quot; :data=&quot;info&quot; action=&quot;https://jsonplaceholder.typicode.com/posts/&quot;
+               :file-list=&quot;fileList&quot;&gt;
+  &lt;i class=&quot;el-icon-upload&quot;&gt;&lt;/i&gt;
+  &lt;div class=&quot;el-upload__text&quot;&gt;将文件拖到此处，或&lt;em&gt;点击上传&lt;/em&gt;&lt;/div&gt;
+  &lt;div class=&quot;el-upload__tip&quot; slot=&quot;tip&quot;&gt;只能上传jpg/png文件，且不超过500kb&lt;/div&gt;
+&lt;/el-upload&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;Uploads&quot;,
+        data() {
+            return {
+                fileList: [{
+                    name: 'food.jpeg',
+                    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+                }, {
+                    name: 'food2.jpeg',
+                    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+                }],
+                info: {id:&quot;21&quot;}
+            }
+        },
+        methods:{
+            show(file){
+                console.log(file);
+            },
+            remove(file,fileList){
+                console.log(file);
+                console.log(fileList);
+                //alert(fileList.length)
+            },
+            beforeRemove(file,fileList){
+                if(fileList.length&lt;3){
+                    alert(&quot;上传文件不能少于3个&quot;)
+                    return false;
+                }
+            },
+            exceed(file,fileList){
+                alert(&quot;文件超出上传的个数限制&quot;)
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<ul>
+<li><strong>注意:在使用upload组件时没有event事件,所有事件都是属性事件</strong></li>
+</ul>
+<h4 id="3方法的使用">3.方法的使用</h4>
+<pre><code class="language-html">&lt;el-upload ref=&quot;uploads&quot; ....&gt;........&lt;/el-upload&gt;
+
+方法调用:
+	this.$refs.uploads.clearFiles();
+	this.$refs.uploads.abort();
+	this.$refs.uploads.submit();
+</code></pre>
+<hr>
+<h3 id="88-form组件">8.8 Form组件</h3>
+<h4 id="1组件的创建">1.组件的创建</h4>
+<pre><code class="language-html">&lt;el-form ref=&quot;form&quot; :model=&quot;form&quot; label-width=&quot;80px&quot;&gt;
+  &lt;el-form-item label=&quot;活动名称&quot;&gt;
+    &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
+  &lt;/el-form-item&gt;
+  ......
+  &lt;el-form-item&gt;
+    &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit&quot;&gt;立即创建&lt;/el-button&gt;
+    &lt;el-button&gt;取消&lt;/el-button&gt;
+  &lt;/el-form-item&gt;
+&lt;/el-form&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Form&quot;,
+        data() {
+            return {
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                }
+            }
+        },
+        methods: {
+            onSubmit() {
+                console.log('submit!');
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="2内联表单">2.内联表单</h4>
+<pre><code class="language-html">&lt;el-form :inline=&quot;true&quot; :model=&quot;formInline&quot; class=&quot;demo-form-inline&quot;&gt;
+		.......
+&lt;/el-form&gt;
+</code></pre>
+<p><code>通过设置 inline=true方式将表单作为内联表单处理</code></p>
+<h4 id="3表单验证">3.表单验证</h4>
+<ul>
+<li><strong>使用说明:</strong></li>
+</ul>
+<blockquote>
+<p>Form 组件提供了表单验证的功能，只需要通过 <code>rules</code> 属性传入约定的验证规则，并将 Form-Item 的 <code>prop</code> 属性设置为需校验的字段名即可。校验规则参见 <a href="https://github.com/yiminghe/async-validator">async-validator</a></p>
+</blockquote>
+<h5 id="31-失去焦点自动验证">3.1 失去焦点自动验证</h5>
+<pre><code class="language-html">&lt;el-form :rules=&quot;rules&quot; ...&gt;
+  &lt;el-form-item label=&quot;活动名称&quot; prop=&quot;name&quot;&gt;
+      &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
+  &lt;/el-form-item&gt;
+  ....
+&lt;/el-form&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Form&quot;,
+        data() {
+            return {
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                },
+                rules: {
+                    name: [
+                        {required: true, message: '请输入活动名称', trigger: 'blur'},
+                        {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
+                    ],
+                }
+            }
+        },
+        methods: {
+            onSubmit() {
+                console.log('submit!');
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h5 id="32-表单提交调用表单组件的验证方法验证">3.2 表单提交调用表单组件的验证方法验证</h5>
+<pre><code class="language-html">&lt;el-form :rules=&quot;rules&quot;.... ref=&quot;form&quot; &gt;
+    &lt;el-form-item label=&quot;活动名称&quot; prop=&quot;name&quot;&gt;
+      &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
+  	&lt;/el-form-item&gt;
+  	&lt;el-form-item&gt;
+      &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit('form')&quot;&gt;立即创建&lt;/el-button&gt;
+      &lt;el-button&gt;取消&lt;/el-button&gt;
+  	&lt;/el-form-item&gt;
+&lt;/el-form&gt;
+...
+methods: {
+            onSubmit(formName) {
+                this.$refs[formName].validate((valid) =&gt; {
+                    if (valid) {
+                        alert('submit!');
+                        //发送异步请求 到 springboot项目
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            }
+        }
+</code></pre>
+<h4 id="4自定义表单的验证规则">4.自定义表单的验证规则</h4>
+<pre><code class="language-html">&lt;el-form :model=&quot;ruleForm&quot; :rules=&quot;rules&quot; ref=&quot;ruleForm&quot; label-width=&quot;100px&quot;&gt;
+  &lt;el-form-item label=&quot;手机号&quot; prop=&quot;phone&quot;&gt;
+    &lt;el-input type=&quot;password&quot; v-model=&quot;ruleForm.phone&quot; &gt;&lt;/el-input&gt;
+  &lt;/el-form-item&gt;
+  &lt;el-form-item&gt;
+    &lt;el-button type=&quot;primary&quot; @click=&quot;submitForm('ruleForm')&quot;&gt;提交&lt;/el-button&gt;
+    &lt;el-button @click=&quot;resetForm('ruleForm')&quot;&gt;重置&lt;/el-button&gt;
+  &lt;/el-form-item&gt;
+&lt;/el-form&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;Form&quot;,
+        data() {
+            let validatePhone = (rule,value,callback)=&gt;{ //定义自定义的验证规则
+                console.log(rule);
+                console.log(value);
+                console.log(callback);
+                if(!value){
+                    callback(new Error(&quot;手机号不能为空!&quot;));
+                }
+                if(!/^1[3456789]\d{9}$/.test(value)){
+                    callback(new Error(&quot;手机号码不正确!!&quot;))
+                }
+            }
+            return {
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                },
+                rules: { //验证规则
+                    name: [ //使用默认规则
+                        {required: true, message: '请输入活动名称', trigger: 'blur'},
+                        {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
+                    ],
+                    phone:[  //使用自定义规则
+                        {validator:validatePhone,trigger: 'blur'}
+                    ]
+                },
+                ruleForm:{
+                    phone:'',
+                },
+            }
+        },
+        methods: {
+           
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<hr>
+<h2 id="9消息提示">9.消息提示</h2>
+<h3 id="91警告提示">9.1警告提示</h3>
+<h4 id="11-创建警告提示">1.1 创建警告提示</h4>
+<pre><code class="language-html">&lt;el-alert title=&quot;成功信息提示&quot; :closable=&quot;false&quot; type=&quot;success&quot;&gt;
+  &lt;div slot&gt;我是辅助信息&lt;/div&gt;
+&lt;/el-alert&gt;
+&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;info&quot;&gt;&lt;/el-alert&gt;
+&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;warning&quot;&gt;&lt;/el-alert&gt;
+&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;error&quot;&gt;&lt;/el-alert&gt;
+</code></pre>
+<h4 id="12属性的使用">1.2属性的使用</h4>
+<pre><code class="language-html">&lt;el-alert title=&quot;成功信息提示&quot; effect=&quot;dark&quot; :show-icon=&quot;true&quot; center :closable=&quot;false&quot; type=&quot;success&quot;&gt;
+  &lt;div slot&gt;我是辅助信息&lt;/div&gt;
+&lt;/el-alert&gt;
+</code></pre>
+<h3 id="92-message消息提示">9.2 Message消息提示</h3>
+<h4 id="21-创建组件">2.1 创建组件</h4>
+<ul>
+<li><strong>注意:这个组件的创建无须在页面中书写任何标签,他是一个js插件,在需要展示消息提示的位置直接调用提供的js插件方法即可</strong></li>
+</ul>
+<pre><code class="language-js"># 1.创建最简单的消息
+	this.$message('这是一个消息提示!!')
+
+# 2.自定义消息内容
+	this.$message({
+    message: h('p', null, [
+      h('span', null, '订单创建成功,您的订单编号为: '),
+      h('i', { style: 'color: teal' }, '87')
+    ])
+  });
+
+# 3.不同主题的消息提示
+	 this.$message({
+     message:'这是信息提示',
+     type:&quot;success&quot;,
+   })
+		//主题样式:  success  info  warning  error
+
+# 4.属性使用
+	this.$message({
+    message:'这是信息提示',
+    type:&quot;success&quot;,
+    showClose:true,
+    center:true,
+    iconClass:'el-icon-user-solid',
+    duration:0
+  })
+# 5.方法的使用
+	this.$message.closeAll();
+
+</code></pre>
+<hr>
+<h2 id="10table表格组件">10.table表格组件</h2>
+<h3 id="1组件的创建-2">1.组件的创建</h3>
+<pre><code class="language-html">&lt;el-table :data=&quot;tableData&quot;&gt;
+  &lt;el-table-column prop=&quot;id&quot; label=&quot;编号&quot;&gt;&lt;/el-table-column&gt;
+  &lt;el-table-column prop=&quot;name&quot; label=&quot;姓名&quot;&gt;&lt;/el-table-column&gt;
+  &lt;el-table-column prop=&quot;age&quot; label=&quot;年龄&quot;&gt;&lt;/el-table-column&gt;
+  &lt;el-table-column prop=&quot;email&quot; label=&quot;邮箱&quot;&gt;&lt;/el-table-column&gt;
+&lt;/el-table&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Tables&quot;,
+        data(){
+            return {
+                tableData:[
+                    {id:21,name:&quot;小陈&quot;,age:23,email:&quot;60037647@qq.com&quot;},
+                    {id:22,name:&quot;小张&quot;,age:25,email:&quot;60038647@qq.com&quot;},
+                ]
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h3 id="2表格中列属性">2.表格中列属性</h3>
+<ul>
+<li><strong>el-table-column属性</strong></li>
+</ul>
+<pre><code class="language-html">&lt;el-table-column prop=&quot;id&quot; :resizable=&quot;false&quot; header-align=&quot;left&quot; align=&quot;center&quot; fixed=&quot;left&quot; width=&quot;200px;&quot; label=&quot;编号&quot;&gt;&lt;/el-table-column&gt;
+&lt;el-table-column prop=&quot;name&quot; label=&quot;姓名&quot;&gt;&lt;/el-table-column&gt;
+&lt;el-table-column prop=&quot;age&quot; :sort-method=&quot;sorts&quot; sortable label=&quot;年龄&quot;&gt;&lt;/el-table-column&gt;
+&lt;el-table-column prop=&quot;email&quot; label=&quot;邮箱&quot;&gt;&lt;/el-table-column&gt;
+&lt;el-table-column prop=&quot;dept.name&quot; :formatter=&quot;showDept&quot; label=&quot;部门&quot;&gt;&lt;/el-table-column&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Tables&quot;,
+        data() {
+            return {
+                tableData: [
+                    {
+                        id: 21, name: &quot;小陈&quot;, age: 23, email: &quot;60037647@qq.com&quot;,
+                        dept: {id: 1, name: &quot;研发部&quot;}
+                    },
+                    {
+                        id: 22, name: &quot;小张&quot;, age: 25, email: &quot;60038647@qq.com&quot;,
+                        dept: {id: 1, name: &quot;小卖部&quot;}
+                    },
+                    {
+                        id: 23, name: &quot;小李&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
+                        dept:{}
+                    },
+                ]
+            }
+        },
+        methods: {
+            sorts(a, b) {
+                return a.age - b.age;
+            },
+            showDept(row, column, cellValue, index){
+                console.log(row);
+                console.log(column);
+                console.log(cellValue);
+                console.log(index);
+                if(cellValue){
+                    return cellValue
+                }
+                return &quot;暂无部门&quot;;
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h3 id="3表格属性">3.表格属性</h3>
+<pre><code class="language-html">&lt;el-table :data=&quot;tableData&quot; empty-text=&quot;暂无数据&quot; :row-class-name=&quot;showCss&quot; highlight-current-row :show-header=&quot;true&quot; :fit=&quot;true&quot;
+              size=&quot;mini&quot; :height=&quot;600&quot; border&gt;
+
+&lt;/el-table&gt;
+&lt;script&gt;
+  .....
+	methods: {
+            showCss({row, rowIndex}) {
+                if (rowIndex % 2 == 0) {
+                    return &quot;warning-row&quot;;
+                }
+                return &quot;success-row&quot;;
+            }
+        }
+ &lt;/script&gt;
+</code></pre>
+<h3 id="4组件事件使用">4.组件事件使用</h3>
+<pre><code class="language-html">&lt;el-table @事件名=&quot;事件处理函数名&quot;&gt;&lt;el-table&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;Tables&quot;,
+        data() {
+            //....
+        },
+        methods: {
+            //...事件处理函数
+            selectRow(selection, row){
+                console.log(selection);
+                console.log(row);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h3 id="5组件方法的使用">5.组件方法的使用</h3>
+<pre><code class="language-html">&lt;el-table  ref=&quot;mytable&quot;&gt;........&lt;/el-table&gt;
+//调用方法
+	this.$refs.mytable.方法名  
+</code></pre>
+<h3 id="6表格中定义操作列">6.表格中定义操作列</h3>
+<pre><code class="language-html">&lt;el-table&gt;
+  ....
+	 &lt;el-table-column label=&quot;操作&quot;&gt;
+      &lt;template slot-scope=&quot;scope&quot;&gt;
+        &lt;el-button
+          size=&quot;mini&quot;
+          @click=&quot;handleEdit(scope.$index, scope.row)&quot;&gt;编辑&lt;/el-button&gt;
+        &lt;el-button
+          size=&quot;mini&quot;
+          type=&quot;danger&quot;
+          @click=&quot;handleDelete(scope.$index, scope.row)&quot;&gt;删除&lt;/el-button&gt;
+      &lt;/template&gt;
+    &lt;/el-table-column&gt;
+&lt;/el-table&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Tables&quot;,
+        data() {
+            .....
+        },
+        methods: {
+						//用来处理编辑和删除的事件函数
+            handleEdit(index,row){
+                console.log(index);
+                console.log(row);
+            },
+            handleDelete(index,row){
+                console.log(index);
+                console.log(row);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h2 id=""><img src="https://Tyloo-code.github.io/post-images/1606970684096.png" alt="image-20200513101148070" loading="lazy"></h2>
+<h3 id="7自定义表头">7.自定义表头</h3>
+<pre><code class="language-html"> &lt;el-table :data=&quot;tableData.filter(data =&gt; !search || data.name.toLowerCase().includes(search.toLowerCase()))&quot; &gt;
+   .....
+   &lt;!--展示搜索和操作--&gt;
+   &lt;el-table-column&gt;
+        &lt;template slot=&quot;header&quot; slot-scope=&quot;scope&quot;&gt;
+          &lt;el-input
+            v-model=&quot;search&quot;
+            size=&quot;mini&quot;
+            placeholder=&quot;输入关键字搜索&quot;/&gt;
+        &lt;/template&gt;
+        &lt;template slot-scope=&quot;scope&quot;&gt;
+          &lt;el-button
+            size=&quot;mini&quot;
+            @click=&quot;handleEdit(scope.$index, scope.row)&quot;&gt;编辑&lt;/el-button&gt;
+          &lt;el-button
+            size=&quot;mini&quot;
+            type=&quot;danger&quot;
+            @click=&quot;handleDelete(scope.$index, scope.row)&quot;&gt;删除&lt;/el-button&gt;
+        &lt;/template&gt;
+      &lt;/el-table-column&gt;
+&lt;/el-table&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Tables&quot;,
+        data() {
+            return {
+                tableData: [
+                    {
+                        id: 21, name: &quot;小陈&quot;, age: 23, email: &quot;60037647@qq.com&quot;,
+                        dept: {id: 1, name: &quot;研发部&quot;}
+                    },
+                    {
+                        id: 22, name: &quot;小张&quot;, age: 25, email: &quot;60038647@qq.com&quot;,
+                        dept: {id: 1, name: &quot;小卖部&quot;}
+                    },
+                    {
+                        id: 23, name: &quot;小李&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
+                        dept: {}
+                    },
+                    {
+                        id: 24, name: &quot;小四&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
+                        dept: {}
+                    },
+                ],
+                search: ''
+            }
+        },
+        methods: {
+            sorts(a, b) {
+                return a.age - b.age;
+            },
+            showDept(row, column, cellValue, index) {
+                if (cellValue) {
+                    return cellValue
+                }
+                return &quot;暂无部门&quot;;
+            },
+            showCss({row, rowIndex}) {
+                if (rowIndex % 2 == 0) {
+                    return &quot;warning-row&quot;;
+                }
+                return &quot;success-row&quot;;
+            },
+            selectRow(selection, row){
+                console.log(selection);
+                console.log(row);
+            },
+            clearSelect(){
+                this.$refs.mytable.clearSelection();
+            },
+            handleEdit(index,row){
+                console.log(index);
+                console.log(row);
+            },
+            handleDelete(index,row){
+                console.log(index);
+                console.log(row);
+            }
+        }
+    }
+&lt;/script&gt;
+
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://Tyloo-code.github.io/post-images/1606970641506.png" alt="image-20200513101814910" loading="lazy"></figure>
+<hr>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="8form相关组件">8.Form相关组件</h2>
+<h3 id="81-radio单选按钮">8.1 Radio单选按钮</h3>
+<h4 id="1创建radio按钮">1.创建Radio按钮</h4>
+<pre><code class="language-html">&lt;!--组件创建--&gt;
+&lt;el-radio v-model=&quot;label&quot; label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
+&lt;el-radio v-model=&quot;label&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Radio&quot;,
+        data(){
+            return{
+                label:'男'
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p><code>注意:在使用radio单选按钮是至少加入v-model和label两个属性</code></p>
+<h4 id="2radio按钮属性的使用">2.Radio按钮属性的使用</h4>
+<pre><code class="language-html">&lt;el-radio v-model=&quot;label&quot; name=&quot;sex&quot; disabled label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
+&lt;el-radio v-model=&quot;label&quot; name=&quot;sex&quot; border size=&quot;small&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
+&lt;el-radio v-model=&quot;label&quot; border size=&quot;mini&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
+&lt;el-radio v-model=&quot;label&quot; border size=&quot;medium&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
+</code></pre>
+<p><code>总结:属性使用还是直接卸载对应的组件标签上以 属性名=属性值 方式使用</code></p>
+<h4 id="3radio事件的使用">3.Radio事件的使用</h4>
+<pre><code class="language-html">&lt;el-radio v-model=&quot;label&quot; @change=&quot;aa&quot; name=&quot;sex&quot; label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
+&lt;el-radio v-model=&quot;label&quot; @change=&quot;aa&quot; name=&quot;sex&quot; border size=&quot;small&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
+
+
+
+&lt;script&gt;
+    export default {
+        name: &quot;Radio&quot;,
+        data(){
+            return{
+                label:'男'
+            }
+        },
+        methods:{
+            aa(){ //定义的事件处理函数
+                console.log(this.label);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p><code>总结:</code></p>
+<ul>
+<li>​	事件的使用也是和属性使用是一致都是直接写在对应的组件标签上</li>
+<li>事件在使用时必须使用Vue中绑定时间方式进行使用如 @事件名=事件处理函数(绑在在vue组件中对应函数)</li>
+</ul>
+<h4 id="4radio按钮组">4.radio按钮组</h4>
+<pre><code class="language-html">&lt;el-radio-group v-model=&quot;radio&quot;&gt;
+  &lt;el-radio :label=&quot;3&quot;&gt;备选项3&lt;/el-radio&gt;
+  &lt;el-radio :label=&quot;6&quot;&gt;备选项6&lt;/el-radio&gt;
+  &lt;el-radio :label=&quot;9&quot;&gt;备选项9&lt;/el-radio&gt;
+&lt;/el-radio-group&gt;
+&lt;script&gt;
+  export default {
+    name: &quot;Radio&quot;,
+    data() {
+      return {
+        radio: 6
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<hr>
+<h3 id="82-checkbox组件">8.2 checkbox组件</h3>
+<h4 id="1创建checkbox组件">1.创建checkbox组件</h4>
+<pre><code class="language-html">&lt;el-checkbox v-model=&quot;checked&quot;&gt;北京&lt;/el-checkbox&gt;
+&lt;el-checkbox v-model=&quot;checked&quot;&gt;上海&lt;/el-checkbox&gt;
+&lt;el-checkbox v-model=&quot;checked&quot;&gt;天津&lt;/el-checkbox&gt;
+</code></pre>
+<h4 id="2属性使用">2.属性使用</h4>
+<pre><code class="language-html">&lt;el-checkbox v-model=&quot;checked&quot;  disabled true-label=&quot;北京&quot;&gt;北京&lt;/el-checkbox&gt;
+&lt;el-checkbox checked border true-label=&quot;上海&quot;&gt;上海&lt;/el-checkbox&gt;
+&lt;el-checkbox v-model=&quot;checked&quot; true-label=&quot;天津&quot;&gt;天津&lt;/el-checkbox&gt;
+</code></pre>
+<h4 id="3事件使用">3.事件使用</h4>
+<pre><code class="language-html">&lt;el-checkbox @change=&quot;aa&quot;v-model=&quot;checked&quot;  true-label=&quot;上海&quot;&gt;上海&lt;/el-checkbox&gt;
+&lt;el-checkbox v-model=&quot;checked&quot; @change=&quot;aa&quot; true-label=&quot;天津&quot;&gt;天津&lt;/el-checkbox&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Checkbox&quot;,
+        data(){
+            return{
+                checked:true
+            }
+        },
+        methods:{
+            aa(){
+                console.log(this.checked);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="4复选框组的使用">4.复选框组的使用</h4>
+<pre><code class="language-html">&lt;el-checkbox-group @change=&quot;bb&quot; :min=&quot;1&quot; v-model=&quot;checkList&quot;&gt;
+  &lt;el-checkbox label=&quot;复选框 A&quot;&gt;&lt;/el-checkbox&gt;
+  &lt;el-checkbox label=&quot;复选框 B&quot;&gt;&lt;/el-checkbox&gt;
+  &lt;el-checkbox label=&quot;复选框 C&quot;&gt;&lt;/el-checkbox&gt;
+  &lt;el-checkbox label=&quot;禁用&quot; disabled&gt;&lt;/el-checkbox&gt;
+  &lt;el-checkbox label=&quot;选中且禁用&quot; disabled&gt;&lt;/el-checkbox&gt;
+&lt;/el-checkbox-group&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Checkbox&quot;,
+        data(){
+            return{
+                checked:true,
+                checkList:[],
+            }
+        },
+        methods:{
+            aa(){
+                console.log(this.checked);
+            },
+            bb(){
+                console.log(this.checkList);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<hr>
+<h3 id="83-input-输入框组件">8.3 Input 输入框组件</h3>
+<h4 id="1创建input组件">1.创建Input组件</h4>
+<pre><code class="language-html">&lt;el-input v-model=&quot;name&quot;&gt;&lt;/el-input&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Input&quot;,
+        data(){
+            return {
+                name:'xiaochen'
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="2常用属性">2.常用属性</h4>
+<pre><code class="language-html">&lt;el-input v-model=&quot;name&quot; disabled type=&quot;textarea&quot;&gt;&lt;/el-input&gt;
+&lt;el-input v-model=&quot;price&quot; :maxlength=&quot;10&quot; show-word-limit :minlength=&quot;5&quot;&gt;&lt;/el-input&gt;
+&lt;el-input prefix-icon=&quot;el-icon-user-solid&quot; placeholder=&quot;请输入用户名&quot; clearable v-model=&quot;username&quot;&gt;&lt;/el-input&gt;
+&lt;el-input suffix-icon=&quot;el-icon-star-off&quot; placeholder=&quot;请输入密码&quot; show-password type=&quot;password&quot; clearable v-model=&quot;password&quot;&gt;&lt;/el-input&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Input&quot;,
+        data() {
+            return {
+                restaurants: [],
+                state1: '',
+                state2: '',
+                name:'xiaochen',
+                price:0.0,
+                username:&quot;&quot;,
+                password:&quot;&quot;,
+            };
+        },
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="3事件使用-2">3.事件使用</h4>
+<pre><code class="language-html">&lt;el-input v-model=&quot;username&quot; @blur=&quot;aaa&quot; @focus=&quot;bbb&quot; @clear=&quot;clears&quot; clearable @input=&quot;ccc&quot;&gt;&lt;/el-input&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Input&quot;,
+        data() {
+            return {
+                restaurants: [],
+                state1: '',
+                state2: '',
+                name:'xiaochen',
+                price:0.0,
+                username:&quot;&quot;,
+                password:&quot;&quot;,
+            };
+        },
+        methods:{
+            aaa(){
+                console.log('失去焦点');
+                ;
+            },
+            bbb(){
+                console.log(&quot;获取焦点&quot;);
+            },
+            ccc(value){
+                console.log(&quot;改变:&quot;+value);
+            },
+            clears(){
+                console.log(&quot;清楚&quot;);
+            }
+
+
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="4方法的使用">4.方法的使用</h4>
+<pre><code class="language-html">&lt;h1&gt;方法的使用&lt;/h1&gt;
+&lt;el-input v-model=&quot;username&quot; ref=&quot;inputs&quot;&gt;&lt;/el-input&gt;
+
+&lt;el-button @click=&quot;focusInputs&quot;&gt;focus方法&lt;/el-button&gt;
+&lt;el-button @click=&quot;blurInputs&quot;&gt;blur方法&lt;/el-button&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;Input&quot;,
+        data() {
+            return{}
+        },
+        methods:{
+            //调用focus方法
+            focusInputs(){
+                this.$refs.inputs.focus();
+            },
+           //调用失去焦点方法
+            blurInputs(){
+                this.$refs.inputs.blur();
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p><code>总结</code></p>
+<ul>
+<li>​	在使用组件的方法时需要在对应的组件中加入 <code>ref=&quot;组件别名&quot;</code></li>
+<li>在调用方法时直接使用 <code>this.$refs.组件别名.方法名()</code></li>
+</ul>
+<blockquote>
+<p><code>注意:在elementui中所有组件 都存在 属性 事件 和方法</code></p>
+<p><code>属性:</code>直接写在对应的组件标签上 使用方式:<code>属性名=属性值</code>方式</p>
+<p><code>事件</code>: 直接使用vue绑定事件方式写在对应的组件标签上 使用方式:<code>@事件名=vue中事件处理函数</code></p>
+<p><code>方法</code>: 1.在对应组件标签上使用<code>ref=组件别名</code> 2.<code>通过使用this.$refs.组件别名.方法名()</code>进行调用</p>
+</blockquote>
+<h3 id="84-select选择器组件的使用">8.4 Select选择器组件的使用</h3>
+<h4 id="1组件创建">1.组件创建</h4>
+<pre><code class="language-markdown"># 1.数据写死在页面上
+&lt;el-select v-model=&quot;cityName&quot;&gt;
+  &lt;el-option value=&quot;北京&quot;&gt;北京&lt;/el-option&gt;
+  &lt;el-option value=&quot;天津&quot;&gt;天津&lt;/el-option&gt;
+&lt;/el-select&gt;
+	注意:1.要求下拉列表中必须存在option的value属性值 2.要求select中必须使用v-model进行数据绑定
+
+# 2.如何动态获取数据
+ &lt;el-select&gt;
+ 		&lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;
+ 		&lt;/el-option&gt;
+ &lt;/el-select&gt;
+
+  &lt;script&gt;
+      export default {
+          name: &quot;Select&quot;,
+          data(){
+              return{
+                  options:[
+                      {id:'1',name:&quot;研发部&quot;},
+                      {id:'2',name:&quot;小卖部&quot;},
+                      {id:'3',name:&quot;小米部&quot;},
+                  ]
+              }
+          },
+      }
+  &lt;/script&gt;
+  
+# 3.获取下拉列表选中数据
+ &lt;el-select v-model=&quot;cityId&quot; multiple clearable&gt;
+        &lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;&lt;/el-option&gt;
+&lt;/el-select&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Select&quot;,
+        data(){
+            return{
+                options:[
+                    {id:'1',name:&quot;研发部&quot;},
+                    {id:'2',name:&quot;小卖部&quot;},
+                    {id:'3',name:&quot;小米部&quot;},
+                ],
+                cityId:''
+            }
+        },
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="2属性使用-2">2.属性使用</h4>
+<pre><code class="language-html">&lt;el-select v-model=&quot;cityId&quot; multiple clearable&gt;
+  ......
+&lt;/el-select&gt;
+</code></pre>
+<h4 id="3事件的使用">3.事件的使用</h4>
+<pre><code class="language-html">&lt;el-select v-model=&quot;cityId&quot; @change=&quot;aaa&quot; multiple clearable&gt;
+  &lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;
+  &lt;/el-option&gt;
+&lt;/el-select&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Select&quot;,
+        data(){
+            return{
+                options:[
+                    {id:'1',name:&quot;研发部&quot;},
+                    {id:'2',name:&quot;小卖部&quot;},
+                    {id:'3',name:&quot;小米部&quot;},
+                ],
+                cityId:'',
+                cityName:''
+            }
+        },
+        methods:{
+            aaa(value){
+                console.log(value);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="4方法的使用-2">4.方法的使用</h4>
+<pre><code class="language-html">1.给组件通过ref起别名并绑定到vue实例中
+ &lt;el-select ref=&quot;selects&quot; v-model=&quot;cityId&quot; @change=&quot;aaa&quot; multiple clearable&gt;
+       ....
+ &lt;/el-select&gt;
+2.调用方法
+ this.$refs.selects.focus();//方法调用
+</code></pre>
+<hr>
+<h3 id="85-switch-开关组件">8.5 Switch 开关组件</h3>
+<h4 id="1switch组件的创建">1.Switch组件的创建</h4>
+<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot;&gt;&lt;/el-switch&gt;
+&lt;script&gt;
+  export default {
+    name: &quot;Switchs&quot;,
+    data(){
+      return{
+        value:true
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h4 id="2属性使用-3">2.属性使用</h4>
+<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot; active-text=&quot;打开&quot; active-color=&quot;#13ce66&quot; inactive-color=&quot;#ff4949&quot; :active-
+           value=&quot;true&quot; :inactive-value=&quot;false&quot; inactive-text=&quot;关闭&quot; :width=&quot;200&quot;&gt;
+&lt;/el-switch&gt;
+</code></pre>
+<h4 id="3事件使用-3">3.事件使用</h4>
+<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot; @change=&quot;aaa&quot;&gt;&lt;/el-switch&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Switchs&quot;,
+        data(){
+            return{
+                value:true
+            }
+        },
+        methods:{
+            aaa(value){
+                console.log(value);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="4方法使用">4.方法使用</h4>
+<pre><code class="language-html">&lt;el-switch ref=&quot;sw&quot; v-model=&quot;value&quot; @change=&quot;aaa&quot; active-text=&quot;打开&quot; active-color=&quot;#13ce66&quot; inactive-color=&quot;#ff4949&quot; :active-value=&quot;true&quot; :inactive-value=&quot;false&quot; inactive-text=&quot;关闭&quot; :width=&quot;200&quot;&gt;&lt;/el-switch&gt;
+&lt;el-button @click=&quot;bbb&quot;&gt;调用方法&lt;/el-button&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;Switchs&quot;,
+        data(){
+            return{
+                value:true
+            }
+        }
+        ,
+        methods:{
+            aaa(value){
+                console.log(value);
+            },
+            bbb(){
+                alert();
+                this.$refs.sw.focus();//方法调用
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<hr>
+<h3 id="86-datepicker组件">8.6 DatePicker组件</h3>
+<h4 id="1创建">1.创建</h4>
+<pre><code class="language-html">&lt;el-date-picker v-model=&quot;createDate&quot; &gt;&lt;/el-date-picker&gt;
+</code></pre>
+<h4 id="2属性的使用">2.属性的使用</h4>
+<pre><code class="language-html">&lt;el-date-picker
+        v-model=&quot;createDate&quot;
+        :editable=&quot;false&quot;
+        :clearable=&quot;false&quot;
+        placeholder=&quot;请输入创建时间&quot;
+        type=&quot;daterange&quot;
+        start-placeholder=&quot;生产时间&quot;
+        end-placeholder=&quot;过期时间&quot;
+        format=&quot;yyyy/MM/dd&quot;
+      &gt;
+&lt;/el-date-picker&gt;
+</code></pre>
+<h4 id="3picker-options-和-shortcuts使用">3.Picker Options 和 Shortcuts使用</h4>
+<ul>
+<li><strong>Shortcuts:</strong> 用来增加日期组件的快捷面板</li>
+<li><strong>Picker Options:</strong> 用来对日期控件做自定义配置</li>
+</ul>
+<h5 id="31-shortcuts使用">3.1 Shortcuts使用</h5>
+<pre><code class="language-html">&lt;/el-date-picker&gt;
+&lt;h1&gt;日期配置&lt;/h1&gt;
+&lt;el-date-picker
+                v-model=&quot;createDate&quot;
+                type=&quot;date&quot;
+                placeholder=&quot;请输入时间&quot;
+                :picker-options=&quot;pickerOptions&quot;
+                &gt;
+&lt;/el-date-picker&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;DatePrickers&quot;,
+        data(){
+            return{
+                createDate:&quot;&quot;,
+                pickerOptions: {
+                    disabledDate(time) {
+                        return time.getTime() &gt; Date.now();
+                    },
+                    shortcuts: [{  //定义的shortucts
+                        text: '今天',
+                        onClick(picker) {
+                            picker.$emit('pick', new Date());
+                        }
+                    }, {
+                        text: '昨天',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24);
+                            picker.$emit('pick', date);
+                        }
+                    }, {
+                        text: '一周前',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                            picker.$emit('pick', date);
+                        }
+                    }]
+                },
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1606970853719.png" alt="image-20200511100330078" loading="lazy"></figure>
+<h5 id="32-picker-options">3.2 Picker Options</h5>
+<pre><code class="language-html">&lt;el-date-picker
+                v-model=&quot;createDate&quot;
+                type=&quot;date&quot;
+                placeholder=&quot;请输入时间&quot;
+                :picker-options=&quot;pickerOptions&quot;
+                &gt;
+&lt;/el-date-picker&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;DatePrickers&quot;,
+        data(){
+            return{
+                createDate:&quot;&quot;,
+                pickerOptions: {
+                    disabledDate(time) { //用来对日期进行的控制
+                        return time.getTime() &lt; Date.now();
+                    }
+                },
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://Tyloo-code.github.io/post-images/1606970839111.png" alt="image-20200511100634677" loading="lazy"></figure>
+<h4 id="4事件使用">4.事件使用</h4>
+<pre><code class="language-html">&lt;el-date-picker
+                .....
+                :picker-options=&quot;pickerOptions&quot;
+                @change=&quot;aaa&quot;
+                &gt;
+&lt;/el-date-picker&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;DatePrickers&quot;,
+        data(){
+            return{
+                createDate:&quot;&quot;,
+            }
+        },
+        methods:{
+            aaa(value){  //发生change事件的函数
+                console.log(value);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<hr>
+<h3 id="87-upload组件">8.7 Upload组件</h3>
+<h4 id="1组件创建-2">1.组件创建</h4>
+<pre><code class="language-html">&lt;el-upload action=&quot;https://jsonplaceholder.typicode.com/posts/&quot; :file-list=&quot;fileList&quot;&gt;
+  &lt;el-button size=&quot;small&quot; type=&quot;primary&quot;&gt;点击上传&lt;/el-button&gt;
+  &lt;div slot=&quot;tip&quot; class=&quot;el-upload__tip&quot;&gt;只能上传jpg/png文件，且不超过500kb&lt;/div&gt;
+&lt;/el-upload&gt;
+</code></pre>
+<p><code>注意:在使用upload组件时必须设置action属性 action属性为必要参数不能省略</code></p>
+<h4 id="2属性和事件的使用">2.属性和事件的使用</h4>
+<pre><code class="language-html">&lt;el-upload :limit=&quot;3&quot; :on-exceed=&quot;exceed&quot; :multiple=&quot;false&quot; :before-remove=&quot;beforeRemove&quot; :on-remove=&quot;remove&quot; :on-preview=&quot;show&quot; :drag=&quot;true&quot; accept=&quot;.txt,.png&quot; :show-file-list=&quot;true&quot; name=&quot;aaa&quot; :data=&quot;info&quot; action=&quot;https://jsonplaceholder.typicode.com/posts/&quot;
+               :file-list=&quot;fileList&quot;&gt;
+  &lt;i class=&quot;el-icon-upload&quot;&gt;&lt;/i&gt;
+  &lt;div class=&quot;el-upload__text&quot;&gt;将文件拖到此处，或&lt;em&gt;点击上传&lt;/em&gt;&lt;/div&gt;
+  &lt;div class=&quot;el-upload__tip&quot; slot=&quot;tip&quot;&gt;只能上传jpg/png文件，且不超过500kb&lt;/div&gt;
+&lt;/el-upload&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;Uploads&quot;,
+        data() {
+            return {
+                fileList: [{
+                    name: 'food.jpeg',
+                    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+                }, {
+                    name: 'food2.jpeg',
+                    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+                }],
+                info: {id:&quot;21&quot;}
+            }
+        },
+        methods:{
+            show(file){
+                console.log(file);
+            },
+            remove(file,fileList){
+                console.log(file);
+                console.log(fileList);
+                //alert(fileList.length)
+            },
+            beforeRemove(file,fileList){
+                if(fileList.length&lt;3){
+                    alert(&quot;上传文件不能少于3个&quot;)
+                    return false;
+                }
+            },
+            exceed(file,fileList){
+                alert(&quot;文件超出上传的个数限制&quot;)
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<ul>
+<li><strong>注意:在使用upload组件时没有event事件,所有事件都是属性事件</strong></li>
+</ul>
+<h4 id="3方法的使用">3.方法的使用</h4>
+<pre><code class="language-html">&lt;el-upload ref=&quot;uploads&quot; ....&gt;........&lt;/el-upload&gt;
+
+方法调用:
+	this.$refs.uploads.clearFiles();
+	this.$refs.uploads.abort();
+	this.$refs.uploads.submit();
+</code></pre>
+<hr>
+<h3 id="88-form组件">8.8 Form组件</h3>
+<h4 id="1组件的创建">1.组件的创建</h4>
+<pre><code class="language-html">&lt;el-form ref=&quot;form&quot; :model=&quot;form&quot; label-width=&quot;80px&quot;&gt;
+  &lt;el-form-item label=&quot;活动名称&quot;&gt;
+    &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
+  &lt;/el-form-item&gt;
+  ......
+  &lt;el-form-item&gt;
+    &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit&quot;&gt;立即创建&lt;/el-button&gt;
+    &lt;el-button&gt;取消&lt;/el-button&gt;
+  &lt;/el-form-item&gt;
+&lt;/el-form&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Form&quot;,
+        data() {
+            return {
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                }
+            }
+        },
+        methods: {
+            onSubmit() {
+                console.log('submit!');
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="2内联表单">2.内联表单</h4>
+<pre><code class="language-html">&lt;el-form :inline=&quot;true&quot; :model=&quot;formInline&quot; class=&quot;demo-form-inline&quot;&gt;
+		.......
+&lt;/el-form&gt;
+</code></pre>
+<p><code>通过设置 inline=true方式将表单作为内联表单处理</code></p>
+<h4 id="3表单验证">3.表单验证</h4>
+<ul>
+<li><strong>使用说明:</strong></li>
+</ul>
+<blockquote>
+<p>Form 组件提供了表单验证的功能，只需要通过 <code>rules</code> 属性传入约定的验证规则，并将 Form-Item 的 <code>prop</code> 属性设置为需校验的字段名即可。校验规则参见 <a href="https://github.com/yiminghe/async-validator">async-validator</a></p>
+</blockquote>
+<h5 id="31-失去焦点自动验证">3.1 失去焦点自动验证</h5>
+<pre><code class="language-html">&lt;el-form :rules=&quot;rules&quot; ...&gt;
+  &lt;el-form-item label=&quot;活动名称&quot; prop=&quot;name&quot;&gt;
+      &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
+  &lt;/el-form-item&gt;
+  ....
+&lt;/el-form&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Form&quot;,
+        data() {
+            return {
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                },
+                rules: {
+                    name: [
+                        {required: true, message: '请输入活动名称', trigger: 'blur'},
+                        {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
+                    ],
+                }
+            }
+        },
+        methods: {
+            onSubmit() {
+                console.log('submit!');
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h5 id="32-表单提交调用表单组件的验证方法验证">3.2 表单提交调用表单组件的验证方法验证</h5>
+<pre><code class="language-html">&lt;el-form :rules=&quot;rules&quot;.... ref=&quot;form&quot; &gt;
+    &lt;el-form-item label=&quot;活动名称&quot; prop=&quot;name&quot;&gt;
+      &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
+  	&lt;/el-form-item&gt;
+  	&lt;el-form-item&gt;
+      &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit('form')&quot;&gt;立即创建&lt;/el-button&gt;
+      &lt;el-button&gt;取消&lt;/el-button&gt;
+  	&lt;/el-form-item&gt;
+&lt;/el-form&gt;
+...
+methods: {
+            onSubmit(formName) {
+                this.$refs[formName].validate((valid) =&gt; {
+                    if (valid) {
+                        alert('submit!');
+                        //发送异步请求 到 springboot项目
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            }
+        }
+</code></pre>
+<h4 id="4自定义表单的验证规则">4.自定义表单的验证规则</h4>
+<pre><code class="language-html">&lt;el-form :model=&quot;ruleForm&quot; :rules=&quot;rules&quot; ref=&quot;ruleForm&quot; label-width=&quot;100px&quot;&gt;
+  &lt;el-form-item label=&quot;手机号&quot; prop=&quot;phone&quot;&gt;
+    &lt;el-input type=&quot;password&quot; v-model=&quot;ruleForm.phone&quot; &gt;&lt;/el-input&gt;
+  &lt;/el-form-item&gt;
+  &lt;el-form-item&gt;
+    &lt;el-button type=&quot;primary&quot; @click=&quot;submitForm('ruleForm')&quot;&gt;提交&lt;/el-button&gt;
+    &lt;el-button @click=&quot;resetForm('ruleForm')&quot;&gt;重置&lt;/el-button&gt;
+  &lt;/el-form-item&gt;
+&lt;/el-form&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;Form&quot;,
+        data() {
+            let validatePhone = (rule,value,callback)=&gt;{ //定义自定义的验证规则
+                console.log(rule);
+                console.log(value);
+                console.log(callback);
+                if(!value){
+                    callback(new Error(&quot;手机号不能为空!&quot;));
+                }
+                if(!/^1[3456789]\d{9}$/.test(value)){
+                    callback(new Error(&quot;手机号码不正确!!&quot;))
+                }
+            }
+            return {
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                },
+                rules: { //验证规则
+                    name: [ //使用默认规则
+                        {required: true, message: '请输入活动名称', trigger: 'blur'},
+                        {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
+                    ],
+                    phone:[  //使用自定义规则
+                        {validator:validatePhone,trigger: 'blur'}
+                    ]
+                },
+                ruleForm:{
+                    phone:'',
+                },
+            }
+        },
+        methods: {
+           
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<hr>
+<h2 id="9消息提示">9.消息提示</h2>
+<h3 id="91警告提示">9.1警告提示</h3>
+<h4 id="11-创建警告提示">1.1 创建警告提示</h4>
+<pre><code class="language-html">&lt;el-alert title=&quot;成功信息提示&quot; :closable=&quot;false&quot; type=&quot;success&quot;&gt;
+  &lt;div slot&gt;我是辅助信息&lt;/div&gt;
+&lt;/el-alert&gt;
+&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;info&quot;&gt;&lt;/el-alert&gt;
+&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;warning&quot;&gt;&lt;/el-alert&gt;
+&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;error&quot;&gt;&lt;/el-alert&gt;
+</code></pre>
+<h4 id="12属性的使用">1.2属性的使用</h4>
+<pre><code class="language-html">&lt;el-alert title=&quot;成功信息提示&quot; effect=&quot;dark&quot; :show-icon=&quot;true&quot; center :closable=&quot;false&quot; type=&quot;success&quot;&gt;
+  &lt;div slot&gt;我是辅助信息&lt;/div&gt;
+&lt;/el-alert&gt;
+</code></pre>
+<h3 id="92-message消息提示">9.2 Message消息提示</h3>
+<h4 id="21-创建组件">2.1 创建组件</h4>
+<ul>
+<li><strong>注意:这个组件的创建无须在页面中书写任何标签,他是一个js插件,在需要展示消息提示的位置直接调用提供的js插件方法即可</strong></li>
+</ul>
+<pre><code class="language-js"># 1.创建最简单的消息
+	this.$message('这是一个消息提示!!')
+
+# 2.自定义消息内容
+	this.$message({
+    message: h('p', null, [
+      h('span', null, '订单创建成功,您的订单编号为: '),
+      h('i', { style: 'color: teal' }, '87')
+    ])
+  });
+
+# 3.不同主题的消息提示
+	 this.$message({
+     message:'这是信息提示',
+     type:&quot;success&quot;,
+   })
+		//主题样式:  success  info  warning  error
+
+# 4.属性使用
+	this.$message({
+    message:'这是信息提示',
+    type:&quot;success&quot;,
+    showClose:true,
+    center:true,
+    iconClass:'el-icon-user-solid',
+    duration:0
+  })
+# 5.方法的使用
+	this.$message.closeAll();
+
+</code></pre>
+<hr>
+<h2 id="10table表格组件">10.table表格组件</h2>
+<h3 id="1组件的创建-2">1.组件的创建</h3>
+<pre><code class="language-html">&lt;el-table :data=&quot;tableData&quot;&gt;
+  &lt;el-table-column prop=&quot;id&quot; label=&quot;编号&quot;&gt;&lt;/el-table-column&gt;
+  &lt;el-table-column prop=&quot;name&quot; label=&quot;姓名&quot;&gt;&lt;/el-table-column&gt;
+  &lt;el-table-column prop=&quot;age&quot; label=&quot;年龄&quot;&gt;&lt;/el-table-column&gt;
+  &lt;el-table-column prop=&quot;email&quot; label=&quot;邮箱&quot;&gt;&lt;/el-table-column&gt;
+&lt;/el-table&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Tables&quot;,
+        data(){
+            return {
+                tableData:[
+                    {id:21,name:&quot;小陈&quot;,age:23,email:&quot;60037647@qq.com&quot;},
+                    {id:22,name:&quot;小张&quot;,age:25,email:&quot;60038647@qq.com&quot;},
+                ]
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h3 id="2表格中列属性">2.表格中列属性</h3>
+<ul>
+<li><strong>el-table-column属性</strong></li>
+</ul>
+<pre><code class="language-html">&lt;el-table-column prop=&quot;id&quot; :resizable=&quot;false&quot; header-align=&quot;left&quot; align=&quot;center&quot; fixed=&quot;left&quot; width=&quot;200px;&quot; label=&quot;编号&quot;&gt;&lt;/el-table-column&gt;
+&lt;el-table-column prop=&quot;name&quot; label=&quot;姓名&quot;&gt;&lt;/el-table-column&gt;
+&lt;el-table-column prop=&quot;age&quot; :sort-method=&quot;sorts&quot; sortable label=&quot;年龄&quot;&gt;&lt;/el-table-column&gt;
+&lt;el-table-column prop=&quot;email&quot; label=&quot;邮箱&quot;&gt;&lt;/el-table-column&gt;
+&lt;el-table-column prop=&quot;dept.name&quot; :formatter=&quot;showDept&quot; label=&quot;部门&quot;&gt;&lt;/el-table-column&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Tables&quot;,
+        data() {
+            return {
+                tableData: [
+                    {
+                        id: 21, name: &quot;小陈&quot;, age: 23, email: &quot;60037647@qq.com&quot;,
+                        dept: {id: 1, name: &quot;研发部&quot;}
+                    },
+                    {
+                        id: 22, name: &quot;小张&quot;, age: 25, email: &quot;60038647@qq.com&quot;,
+                        dept: {id: 1, name: &quot;小卖部&quot;}
+                    },
+                    {
+                        id: 23, name: &quot;小李&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
+                        dept:{}
+                    },
+                ]
+            }
+        },
+        methods: {
+            sorts(a, b) {
+                return a.age - b.age;
+            },
+            showDept(row, column, cellValue, index){
+                console.log(row);
+                console.log(column);
+                console.log(cellValue);
+                console.log(index);
+                if(cellValue){
+                    return cellValue
+                }
+                return &quot;暂无部门&quot;;
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h3 id="3表格属性">3.表格属性</h3>
+<pre><code class="language-html">&lt;el-table :data=&quot;tableData&quot; empty-text=&quot;暂无数据&quot; :row-class-name=&quot;showCss&quot; highlight-current-row :show-header=&quot;true&quot; :fit=&quot;true&quot;
+              size=&quot;mini&quot; :height=&quot;600&quot; border&gt;
+
+&lt;/el-table&gt;
+&lt;script&gt;
+  .....
+	methods: {
+            showCss({row, rowIndex}) {
+                if (rowIndex % 2 == 0) {
+                    return &quot;warning-row&quot;;
+                }
+                return &quot;success-row&quot;;
+            }
+        }
+ &lt;/script&gt;
+</code></pre>
+<h3 id="4组件事件使用">4.组件事件使用</h3>
+<pre><code class="language-html">&lt;el-table @事件名=&quot;事件处理函数名&quot;&gt;&lt;el-table&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;Tables&quot;,
+        data() {
+            //....
+        },
+        methods: {
+            //...事件处理函数
+            selectRow(selection, row){
+                console.log(selection);
+                console.log(row);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h3 id="5组件方法的使用">5.组件方法的使用</h3>
+<pre><code class="language-html">&lt;el-table  ref=&quot;mytable&quot;&gt;........&lt;/el-table&gt;
+//调用方法
+	this.$refs.mytable.方法名  
+</code></pre>
+<h3 id="6表格中定义操作列">6.表格中定义操作列</h3>
+<pre><code class="language-html">&lt;el-table&gt;
+  ....
+	 &lt;el-table-column label=&quot;操作&quot;&gt;
+      &lt;template slot-scope=&quot;scope&quot;&gt;
+        &lt;el-button
+          size=&quot;mini&quot;
+          @click=&quot;handleEdit(scope.$index, scope.row)&quot;&gt;编辑&lt;/el-button&gt;
+        &lt;el-button
+          size=&quot;mini&quot;
+          type=&quot;danger&quot;
+          @click=&quot;handleDelete(scope.$index, scope.row)&quot;&gt;删除&lt;/el-button&gt;
+      &lt;/template&gt;
+    &lt;/el-table-column&gt;
+&lt;/el-table&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Tables&quot;,
+        data() {
+            .....
+        },
+        methods: {
+						//用来处理编辑和删除的事件函数
+            handleEdit(index,row){
+                console.log(index);
+                console.log(row);
+            },
+            handleDelete(index,row){
+                console.log(index);
+                console.log(row);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h2 id=""><img src="https://Tyloo-code.github.io/post-images/1606970684096.png" alt="image-20200513101148070" loading="lazy"></h2>
+<h3 id="7自定义表头">7.自定义表头</h3>
+<pre><code class="language-html"> &lt;el-table :data=&quot;tableData.filter(data =&gt; !search || data.name.toLowerCase().includes(search.toLowerCase()))&quot; &gt;
+   .....
+   &lt;!--展示搜索和操作--&gt;
+   &lt;el-table-column&gt;
+        &lt;template slot=&quot;header&quot; slot-scope=&quot;scope&quot;&gt;
+          &lt;el-input
+            v-model=&quot;search&quot;
+            size=&quot;mini&quot;
+            placeholder=&quot;输入关键字搜索&quot;/&gt;
+        &lt;/template&gt;
+        &lt;template slot-scope=&quot;scope&quot;&gt;
+          &lt;el-button
+            size=&quot;mini&quot;
+            @click=&quot;handleEdit(scope.$index, scope.row)&quot;&gt;编辑&lt;/el-button&gt;
+          &lt;el-button
+            size=&quot;mini&quot;
+            type=&quot;danger&quot;
+            @click=&quot;handleDelete(scope.$index, scope.row)&quot;&gt;删除&lt;/el-button&gt;
+        &lt;/template&gt;
+      &lt;/el-table-column&gt;
+&lt;/el-table&gt;
+&lt;script&gt;
+    export default {
+        name: &quot;Tables&quot;,
+        data() {
+            return {
+                tableData: [
+                    {
+                        id: 21, name: &quot;小陈&quot;, age: 23, email: &quot;60037647@qq.com&quot;,
+                        dept: {id: 1, name: &quot;研发部&quot;}
+                    },
+                    {
+                        id: 22, name: &quot;小张&quot;, age: 25, email: &quot;60038647@qq.com&quot;,
+                        dept: {id: 1, name: &quot;小卖部&quot;}
+                    },
+                    {
+                        id: 23, name: &quot;小李&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
+                        dept: {}
+                    },
+                    {
+                        id: 24, name: &quot;小四&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
+                        dept: {}
+                    },
+                ],
+                search: ''
+            }
+        },
+        methods: {
+            sorts(a, b) {
+                return a.age - b.age;
+            },
+            showDept(row, column, cellValue, index) {
+                if (cellValue) {
+                    return cellValue
+                }
+                return &quot;暂无部门&quot;;
+            },
+            showCss({row, rowIndex}) {
+                if (rowIndex % 2 == 0) {
+                    return &quot;warning-row&quot;;
+                }
+                return &quot;success-row&quot;;
+            },
+            selectRow(selection, row){
+                console.log(selection);
+                console.log(row);
+            },
+            clearSelect(){
+                this.$refs.mytable.clearSelection();
+            },
+            handleEdit(index,row){
+                console.log(index);
+                console.log(row);
+            },
+            handleDelete(index,row){
+                console.log(index);
+                console.log(row);
+            }
+        }
+    }
+&lt;/script&gt;
+
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://Tyloo-code.github.io/post-images/1606970641506.png" alt="image-20200513101814910" loading="lazy"></figure>
+<hr>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Element UI 实战教程(一)]]></title>
         <id>https://Tyloo-code.github.io/post/element-ui-shi-zhan-jiao-cheng/</id>
         <link href="https://Tyloo-code.github.io/post/element-ui-shi-zhan-jiao-cheng/">
         </link>
@@ -212,1039 +2287,6 @@
 &lt;/el-container&gt;
 </code></pre>
 <hr>
-<h2 id="8form相关组件">8.Form相关组件</h2>
-<h3 id="81-radio单选按钮">8.1 Radio单选按钮</h3>
-<h4 id="1创建radio按钮">1.创建Radio按钮</h4>
-<pre><code class="language-html">&lt;!--组件创建--&gt;
-&lt;el-radio v-model=&quot;label&quot; label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
-&lt;el-radio v-model=&quot;label&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Radio&quot;,
-        data(){
-            return{
-                label:'男'
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<p><code>注意:在使用radio单选按钮是至少加入v-model和label两个属性</code></p>
-<h4 id="2radio按钮属性的使用">2.Radio按钮属性的使用</h4>
-<pre><code class="language-html">&lt;el-radio v-model=&quot;label&quot; name=&quot;sex&quot; disabled label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
-&lt;el-radio v-model=&quot;label&quot; name=&quot;sex&quot; border size=&quot;small&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
-&lt;el-radio v-model=&quot;label&quot; border size=&quot;mini&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
-&lt;el-radio v-model=&quot;label&quot; border size=&quot;medium&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
-</code></pre>
-<p><code>总结:属性使用还是直接卸载对应的组件标签上以 属性名=属性值 方式使用</code></p>
-<h4 id="3radio事件的使用">3.Radio事件的使用</h4>
-<pre><code class="language-html">&lt;el-radio v-model=&quot;label&quot; @change=&quot;aa&quot; name=&quot;sex&quot; label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
-&lt;el-radio v-model=&quot;label&quot; @change=&quot;aa&quot; name=&quot;sex&quot; border size=&quot;small&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
-
-
-
-&lt;script&gt;
-    export default {
-        name: &quot;Radio&quot;,
-        data(){
-            return{
-                label:'男'
-            }
-        },
-        methods:{
-            aa(){ //定义的事件处理函数
-                console.log(this.label);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<p><code>总结:</code></p>
-<ul>
-<li>​	事件的使用也是和属性使用是一致都是直接写在对应的组件标签上</li>
-<li>事件在使用时必须使用Vue中绑定时间方式进行使用如 @事件名=事件处理函数(绑在在vue组件中对应函数)</li>
-</ul>
-<h4 id="4radio按钮组">4.radio按钮组</h4>
-<pre><code class="language-html">&lt;el-radio-group v-model=&quot;radio&quot;&gt;
-  &lt;el-radio :label=&quot;3&quot;&gt;备选项3&lt;/el-radio&gt;
-  &lt;el-radio :label=&quot;6&quot;&gt;备选项6&lt;/el-radio&gt;
-  &lt;el-radio :label=&quot;9&quot;&gt;备选项9&lt;/el-radio&gt;
-&lt;/el-radio-group&gt;
-&lt;script&gt;
-  export default {
-    name: &quot;Radio&quot;,
-    data() {
-      return {
-        radio: 6
-      }
-    }
-  }
-&lt;/script&gt;
-</code></pre>
-<hr>
-<h3 id="82-checkbox组件">8.2 checkbox组件</h3>
-<h4 id="1创建checkbox组件">1.创建checkbox组件</h4>
-<pre><code class="language-html">&lt;el-checkbox v-model=&quot;checked&quot;&gt;北京&lt;/el-checkbox&gt;
-&lt;el-checkbox v-model=&quot;checked&quot;&gt;上海&lt;/el-checkbox&gt;
-&lt;el-checkbox v-model=&quot;checked&quot;&gt;天津&lt;/el-checkbox&gt;
-</code></pre>
-<h4 id="2属性使用">2.属性使用</h4>
-<pre><code class="language-html">&lt;el-checkbox v-model=&quot;checked&quot;  disabled true-label=&quot;北京&quot;&gt;北京&lt;/el-checkbox&gt;
-&lt;el-checkbox checked border true-label=&quot;上海&quot;&gt;上海&lt;/el-checkbox&gt;
-&lt;el-checkbox v-model=&quot;checked&quot; true-label=&quot;天津&quot;&gt;天津&lt;/el-checkbox&gt;
-</code></pre>
-<h4 id="3事件使用">3.事件使用</h4>
-<pre><code class="language-html">&lt;el-checkbox @change=&quot;aa&quot;v-model=&quot;checked&quot;  true-label=&quot;上海&quot;&gt;上海&lt;/el-checkbox&gt;
-&lt;el-checkbox v-model=&quot;checked&quot; @change=&quot;aa&quot; true-label=&quot;天津&quot;&gt;天津&lt;/el-checkbox&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Checkbox&quot;,
-        data(){
-            return{
-                checked:true
-            }
-        },
-        methods:{
-            aa(){
-                console.log(this.checked);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="4复选框组的使用">4.复选框组的使用</h4>
-<pre><code class="language-html">&lt;el-checkbox-group @change=&quot;bb&quot; :min=&quot;1&quot; v-model=&quot;checkList&quot;&gt;
-  &lt;el-checkbox label=&quot;复选框 A&quot;&gt;&lt;/el-checkbox&gt;
-  &lt;el-checkbox label=&quot;复选框 B&quot;&gt;&lt;/el-checkbox&gt;
-  &lt;el-checkbox label=&quot;复选框 C&quot;&gt;&lt;/el-checkbox&gt;
-  &lt;el-checkbox label=&quot;禁用&quot; disabled&gt;&lt;/el-checkbox&gt;
-  &lt;el-checkbox label=&quot;选中且禁用&quot; disabled&gt;&lt;/el-checkbox&gt;
-&lt;/el-checkbox-group&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Checkbox&quot;,
-        data(){
-            return{
-                checked:true,
-                checkList:[],
-            }
-        },
-        methods:{
-            aa(){
-                console.log(this.checked);
-            },
-            bb(){
-                console.log(this.checkList);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<hr>
-<h3 id="83-input-输入框组件">8.3 Input 输入框组件</h3>
-<h4 id="1创建input组件">1.创建Input组件</h4>
-<pre><code class="language-html">&lt;el-input v-model=&quot;name&quot;&gt;&lt;/el-input&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Input&quot;,
-        data(){
-            return {
-                name:'xiaochen'
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="2常用属性">2.常用属性</h4>
-<pre><code class="language-html">&lt;el-input v-model=&quot;name&quot; disabled type=&quot;textarea&quot;&gt;&lt;/el-input&gt;
-&lt;el-input v-model=&quot;price&quot; :maxlength=&quot;10&quot; show-word-limit :minlength=&quot;5&quot;&gt;&lt;/el-input&gt;
-&lt;el-input prefix-icon=&quot;el-icon-user-solid&quot; placeholder=&quot;请输入用户名&quot; clearable v-model=&quot;username&quot;&gt;&lt;/el-input&gt;
-&lt;el-input suffix-icon=&quot;el-icon-star-off&quot; placeholder=&quot;请输入密码&quot; show-password type=&quot;password&quot; clearable v-model=&quot;password&quot;&gt;&lt;/el-input&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Input&quot;,
-        data() {
-            return {
-                restaurants: [],
-                state1: '',
-                state2: '',
-                name:'xiaochen',
-                price:0.0,
-                username:&quot;&quot;,
-                password:&quot;&quot;,
-            };
-        },
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="3事件使用-2">3.事件使用</h4>
-<pre><code class="language-html">&lt;el-input v-model=&quot;username&quot; @blur=&quot;aaa&quot; @focus=&quot;bbb&quot; @clear=&quot;clears&quot; clearable @input=&quot;ccc&quot;&gt;&lt;/el-input&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Input&quot;,
-        data() {
-            return {
-                restaurants: [],
-                state1: '',
-                state2: '',
-                name:'xiaochen',
-                price:0.0,
-                username:&quot;&quot;,
-                password:&quot;&quot;,
-            };
-        },
-        methods:{
-            aaa(){
-                console.log('失去焦点');
-                ;
-            },
-            bbb(){
-                console.log(&quot;获取焦点&quot;);
-            },
-            ccc(value){
-                console.log(&quot;改变:&quot;+value);
-            },
-            clears(){
-                console.log(&quot;清楚&quot;);
-            }
-
-
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="4方法的使用">4.方法的使用</h4>
-<pre><code class="language-html">&lt;h1&gt;方法的使用&lt;/h1&gt;
-&lt;el-input v-model=&quot;username&quot; ref=&quot;inputs&quot;&gt;&lt;/el-input&gt;
-
-&lt;el-button @click=&quot;focusInputs&quot;&gt;focus方法&lt;/el-button&gt;
-&lt;el-button @click=&quot;blurInputs&quot;&gt;blur方法&lt;/el-button&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;Input&quot;,
-        data() {
-            return{}
-        },
-        methods:{
-            //调用focus方法
-            focusInputs(){
-                this.$refs.inputs.focus();
-            },
-           //调用失去焦点方法
-            blurInputs(){
-                this.$refs.inputs.blur();
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<p><code>总结</code></p>
-<ul>
-<li>​	在使用组件的方法时需要在对应的组件中加入 <code>ref=&quot;组件别名&quot;</code></li>
-<li>在调用方法时直接使用 <code>this.$refs.组件别名.方法名()</code></li>
-</ul>
-<blockquote>
-<p><code>注意:在elementui中所有组件 都存在 属性 事件 和方法</code></p>
-<p><code>属性:</code>直接写在对应的组件标签上 使用方式:<code>属性名=属性值</code>方式</p>
-<p><code>事件</code>: 直接使用vue绑定事件方式写在对应的组件标签上 使用方式:<code>@事件名=vue中事件处理函数</code></p>
-<p><code>方法</code>: 1.在对应组件标签上使用<code>ref=组件别名</code> 2.<code>通过使用this.$refs.组件别名.方法名()</code>进行调用</p>
-</blockquote>
-<h3 id="84-select选择器组件的使用">8.4 Select选择器组件的使用</h3>
-<h4 id="1组件创建">1.组件创建</h4>
-<pre><code class="language-markdown"># 1.数据写死在页面上
-&lt;el-select v-model=&quot;cityName&quot;&gt;
-  &lt;el-option value=&quot;北京&quot;&gt;北京&lt;/el-option&gt;
-  &lt;el-option value=&quot;天津&quot;&gt;天津&lt;/el-option&gt;
-&lt;/el-select&gt;
-	注意:1.要求下拉列表中必须存在option的value属性值 2.要求select中必须使用v-model进行数据绑定
-
-# 2.如何动态获取数据
- &lt;el-select&gt;
- 		&lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;
- 		&lt;/el-option&gt;
- &lt;/el-select&gt;
-
-  &lt;script&gt;
-      export default {
-          name: &quot;Select&quot;,
-          data(){
-              return{
-                  options:[
-                      {id:'1',name:&quot;研发部&quot;},
-                      {id:'2',name:&quot;小卖部&quot;},
-                      {id:'3',name:&quot;小米部&quot;},
-                  ]
-              }
-          },
-      }
-  &lt;/script&gt;
-  
-# 3.获取下拉列表选中数据
- &lt;el-select v-model=&quot;cityId&quot; multiple clearable&gt;
-        &lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;&lt;/el-option&gt;
-&lt;/el-select&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Select&quot;,
-        data(){
-            return{
-                options:[
-                    {id:'1',name:&quot;研发部&quot;},
-                    {id:'2',name:&quot;小卖部&quot;},
-                    {id:'3',name:&quot;小米部&quot;},
-                ],
-                cityId:''
-            }
-        },
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="2属性使用-2">2.属性使用</h4>
-<pre><code class="language-html">&lt;el-select v-model=&quot;cityId&quot; multiple clearable&gt;
-  ......
-&lt;/el-select&gt;
-</code></pre>
-<h4 id="3事件的使用">3.事件的使用</h4>
-<pre><code class="language-html">&lt;el-select v-model=&quot;cityId&quot; @change=&quot;aaa&quot; multiple clearable&gt;
-  &lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;
-  &lt;/el-option&gt;
-&lt;/el-select&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Select&quot;,
-        data(){
-            return{
-                options:[
-                    {id:'1',name:&quot;研发部&quot;},
-                    {id:'2',name:&quot;小卖部&quot;},
-                    {id:'3',name:&quot;小米部&quot;},
-                ],
-                cityId:'',
-                cityName:''
-            }
-        },
-        methods:{
-            aaa(value){
-                console.log(value);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="4方法的使用-2">4.方法的使用</h4>
-<pre><code class="language-html">1.给组件通过ref起别名并绑定到vue实例中
- &lt;el-select ref=&quot;selects&quot; v-model=&quot;cityId&quot; @change=&quot;aaa&quot; multiple clearable&gt;
-       ....
- &lt;/el-select&gt;
-2.调用方法
- this.$refs.selects.focus();//方法调用
-</code></pre>
-<hr>
-<h3 id="85-switch-开关组件">8.5 Switch 开关组件</h3>
-<h4 id="1switch组件的创建">1.Switch组件的创建</h4>
-<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot;&gt;&lt;/el-switch&gt;
-&lt;script&gt;
-  export default {
-    name: &quot;Switchs&quot;,
-    data(){
-      return{
-        value:true
-      }
-    }
-  }
-&lt;/script&gt;
-</code></pre>
-<h4 id="2属性使用-3">2.属性使用</h4>
-<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot; active-text=&quot;打开&quot; active-color=&quot;#13ce66&quot; inactive-color=&quot;#ff4949&quot; :active-
-           value=&quot;true&quot; :inactive-value=&quot;false&quot; inactive-text=&quot;关闭&quot; :width=&quot;200&quot;&gt;
-&lt;/el-switch&gt;
-</code></pre>
-<h4 id="3事件使用-3">3.事件使用</h4>
-<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot; @change=&quot;aaa&quot;&gt;&lt;/el-switch&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Switchs&quot;,
-        data(){
-            return{
-                value:true
-            }
-        },
-        methods:{
-            aaa(value){
-                console.log(value);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="4方法使用">4.方法使用</h4>
-<pre><code class="language-html">&lt;el-switch ref=&quot;sw&quot; v-model=&quot;value&quot; @change=&quot;aaa&quot; active-text=&quot;打开&quot; active-color=&quot;#13ce66&quot; inactive-color=&quot;#ff4949&quot; :active-value=&quot;true&quot; :inactive-value=&quot;false&quot; inactive-text=&quot;关闭&quot; :width=&quot;200&quot;&gt;&lt;/el-switch&gt;
-&lt;el-button @click=&quot;bbb&quot;&gt;调用方法&lt;/el-button&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;Switchs&quot;,
-        data(){
-            return{
-                value:true
-            }
-        }
-        ,
-        methods:{
-            aaa(value){
-                console.log(value);
-            },
-            bbb(){
-                alert();
-                this.$refs.sw.focus();//方法调用
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<hr>
-<h3 id="86-datepicker组件">8.6 DatePicker组件</h3>
-<h4 id="1创建">1.创建</h4>
-<pre><code class="language-html">&lt;el-date-picker v-model=&quot;createDate&quot; &gt;&lt;/el-date-picker&gt;
-</code></pre>
-<h4 id="2属性的使用">2.属性的使用</h4>
-<pre><code class="language-html">&lt;el-date-picker
-        v-model=&quot;createDate&quot;
-        :editable=&quot;false&quot;
-        :clearable=&quot;false&quot;
-        placeholder=&quot;请输入创建时间&quot;
-        type=&quot;daterange&quot;
-        start-placeholder=&quot;生产时间&quot;
-        end-placeholder=&quot;过期时间&quot;
-        format=&quot;yyyy/MM/dd&quot;
-      &gt;
-&lt;/el-date-picker&gt;
-</code></pre>
-<h4 id="3picker-options-和-shortcuts使用">3.Picker Options 和 Shortcuts使用</h4>
-<ul>
-<li><strong>Shortcuts:</strong> 用来增加日期组件的快捷面板</li>
-<li><strong>Picker Options:</strong> 用来对日期控件做自定义配置</li>
-</ul>
-<h5 id="31-shortcuts使用">3.1 Shortcuts使用</h5>
-<pre><code class="language-html">&lt;/el-date-picker&gt;
-&lt;h1&gt;日期配置&lt;/h1&gt;
-&lt;el-date-picker
-                v-model=&quot;createDate&quot;
-                type=&quot;date&quot;
-                placeholder=&quot;请输入时间&quot;
-                :picker-options=&quot;pickerOptions&quot;
-                &gt;
-&lt;/el-date-picker&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;DatePrickers&quot;,
-        data(){
-            return{
-                createDate:&quot;&quot;,
-                pickerOptions: {
-                    disabledDate(time) {
-                        return time.getTime() &gt; Date.now();
-                    },
-                    shortcuts: [{  //定义的shortucts
-                        text: '今天',
-                        onClick(picker) {
-                            picker.$emit('pick', new Date());
-                        }
-                    }, {
-                        text: '昨天',
-                        onClick(picker) {
-                            const date = new Date();
-                            date.setTime(date.getTime() - 3600 * 1000 * 24);
-                            picker.$emit('pick', date);
-                        }
-                    }, {
-                        text: '一周前',
-                        onClick(picker) {
-                            const date = new Date();
-                            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-                            picker.$emit('pick', date);
-                        }
-                    }]
-                },
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://Tyloo-code.github.io/post-images/1606970853719.png" alt="image-20200511100330078" loading="lazy"></figure>
-<h5 id="32-picker-options">3.2 Picker Options</h5>
-<pre><code class="language-html">&lt;el-date-picker
-                v-model=&quot;createDate&quot;
-                type=&quot;date&quot;
-                placeholder=&quot;请输入时间&quot;
-                :picker-options=&quot;pickerOptions&quot;
-                &gt;
-&lt;/el-date-picker&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;DatePrickers&quot;,
-        data(){
-            return{
-                createDate:&quot;&quot;,
-                pickerOptions: {
-                    disabledDate(time) { //用来对日期进行的控制
-                        return time.getTime() &lt; Date.now();
-                    }
-                },
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<figure data-type="image" tabindex="3"><img src="https://Tyloo-code.github.io/post-images/1606970839111.png" alt="image-20200511100634677" loading="lazy"></figure>
-<h4 id="4事件使用">4.事件使用</h4>
-<pre><code class="language-html">&lt;el-date-picker
-                .....
-                :picker-options=&quot;pickerOptions&quot;
-                @change=&quot;aaa&quot;
-                &gt;
-&lt;/el-date-picker&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;DatePrickers&quot;,
-        data(){
-            return{
-                createDate:&quot;&quot;,
-            }
-        },
-        methods:{
-            aaa(value){  //发生change事件的函数
-                console.log(value);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<hr>
-<h3 id="87-upload组件">8.7 Upload组件</h3>
-<h4 id="1组件创建-2">1.组件创建</h4>
-<pre><code class="language-html">&lt;el-upload action=&quot;https://jsonplaceholder.typicode.com/posts/&quot; :file-list=&quot;fileList&quot;&gt;
-  &lt;el-button size=&quot;small&quot; type=&quot;primary&quot;&gt;点击上传&lt;/el-button&gt;
-  &lt;div slot=&quot;tip&quot; class=&quot;el-upload__tip&quot;&gt;只能上传jpg/png文件，且不超过500kb&lt;/div&gt;
-&lt;/el-upload&gt;
-</code></pre>
-<p><code>注意:在使用upload组件时必须设置action属性 action属性为必要参数不能省略</code></p>
-<h4 id="2属性和事件的使用">2.属性和事件的使用</h4>
-<pre><code class="language-html">&lt;el-upload :limit=&quot;3&quot; :on-exceed=&quot;exceed&quot; :multiple=&quot;false&quot; :before-remove=&quot;beforeRemove&quot; :on-remove=&quot;remove&quot; :on-preview=&quot;show&quot; :drag=&quot;true&quot; accept=&quot;.txt,.png&quot; :show-file-list=&quot;true&quot; name=&quot;aaa&quot; :data=&quot;info&quot; action=&quot;https://jsonplaceholder.typicode.com/posts/&quot;
-               :file-list=&quot;fileList&quot;&gt;
-  &lt;i class=&quot;el-icon-upload&quot;&gt;&lt;/i&gt;
-  &lt;div class=&quot;el-upload__text&quot;&gt;将文件拖到此处，或&lt;em&gt;点击上传&lt;/em&gt;&lt;/div&gt;
-  &lt;div class=&quot;el-upload__tip&quot; slot=&quot;tip&quot;&gt;只能上传jpg/png文件，且不超过500kb&lt;/div&gt;
-&lt;/el-upload&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;Uploads&quot;,
-        data() {
-            return {
-                fileList: [{
-                    name: 'food.jpeg',
-                    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-                }, {
-                    name: 'food2.jpeg',
-                    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-                }],
-                info: {id:&quot;21&quot;}
-            }
-        },
-        methods:{
-            show(file){
-                console.log(file);
-            },
-            remove(file,fileList){
-                console.log(file);
-                console.log(fileList);
-                //alert(fileList.length)
-            },
-            beforeRemove(file,fileList){
-                if(fileList.length&lt;3){
-                    alert(&quot;上传文件不能少于3个&quot;)
-                    return false;
-                }
-            },
-            exceed(file,fileList){
-                alert(&quot;文件超出上传的个数限制&quot;)
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<ul>
-<li><strong>注意:在使用upload组件时没有event事件,所有事件都是属性事件</strong></li>
-</ul>
-<h4 id="3方法的使用">3.方法的使用</h4>
-<pre><code class="language-html">&lt;el-upload ref=&quot;uploads&quot; ....&gt;........&lt;/el-upload&gt;
-
-方法调用:
-	this.$refs.uploads.clearFiles();
-	this.$refs.uploads.abort();
-	this.$refs.uploads.submit();
-</code></pre>
-<hr>
-<h3 id="88-form组件">8.8 Form组件</h3>
-<h4 id="1组件的创建">1.组件的创建</h4>
-<pre><code class="language-html">&lt;el-form ref=&quot;form&quot; :model=&quot;form&quot; label-width=&quot;80px&quot;&gt;
-  &lt;el-form-item label=&quot;活动名称&quot;&gt;
-    &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
-  &lt;/el-form-item&gt;
-  ......
-  &lt;el-form-item&gt;
-    &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit&quot;&gt;立即创建&lt;/el-button&gt;
-    &lt;el-button&gt;取消&lt;/el-button&gt;
-  &lt;/el-form-item&gt;
-&lt;/el-form&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Form&quot;,
-        data() {
-            return {
-                form: {
-                    name: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
-                }
-            }
-        },
-        methods: {
-            onSubmit() {
-                console.log('submit!');
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="2内联表单">2.内联表单</h4>
-<pre><code class="language-html">&lt;el-form :inline=&quot;true&quot; :model=&quot;formInline&quot; class=&quot;demo-form-inline&quot;&gt;
-		.......
-&lt;/el-form&gt;
-</code></pre>
-<p><code>通过设置 inline=true方式将表单作为内联表单处理</code></p>
-<h4 id="3表单验证">3.表单验证</h4>
-<ul>
-<li><strong>使用说明:</strong></li>
-</ul>
-<blockquote>
-<p>Form 组件提供了表单验证的功能，只需要通过 <code>rules</code> 属性传入约定的验证规则，并将 Form-Item 的 <code>prop</code> 属性设置为需校验的字段名即可。校验规则参见 <a href="https://github.com/yiminghe/async-validator">async-validator</a></p>
-</blockquote>
-<h5 id="31-失去焦点自动验证">3.1 失去焦点自动验证</h5>
-<pre><code class="language-html">&lt;el-form :rules=&quot;rules&quot; ...&gt;
-  &lt;el-form-item label=&quot;活动名称&quot; prop=&quot;name&quot;&gt;
-      &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
-  &lt;/el-form-item&gt;
-  ....
-&lt;/el-form&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Form&quot;,
-        data() {
-            return {
-                form: {
-                    name: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
-                },
-                rules: {
-                    name: [
-                        {required: true, message: '请输入活动名称', trigger: 'blur'},
-                        {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
-                    ],
-                }
-            }
-        },
-        methods: {
-            onSubmit() {
-                console.log('submit!');
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h5 id="32-表单提交调用表单组件的验证方法验证">3.2 表单提交调用表单组件的验证方法验证</h5>
-<pre><code class="language-html">&lt;el-form :rules=&quot;rules&quot;.... ref=&quot;form&quot; &gt;
-    &lt;el-form-item label=&quot;活动名称&quot; prop=&quot;name&quot;&gt;
-      &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
-  	&lt;/el-form-item&gt;
-  	&lt;el-form-item&gt;
-      &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit('form')&quot;&gt;立即创建&lt;/el-button&gt;
-      &lt;el-button&gt;取消&lt;/el-button&gt;
-  	&lt;/el-form-item&gt;
-&lt;/el-form&gt;
-...
-methods: {
-            onSubmit(formName) {
-                this.$refs[formName].validate((valid) =&gt; {
-                    if (valid) {
-                        alert('submit!');
-                        //发送异步请求 到 springboot项目
-                    } else {
-                        console.log('error submit!!');
-                        return false;
-                    }
-                });
-            }
-        }
-</code></pre>
-<h4 id="4自定义表单的验证规则">4.自定义表单的验证规则</h4>
-<pre><code class="language-html">&lt;el-form :model=&quot;ruleForm&quot; :rules=&quot;rules&quot; ref=&quot;ruleForm&quot; label-width=&quot;100px&quot;&gt;
-  &lt;el-form-item label=&quot;手机号&quot; prop=&quot;phone&quot;&gt;
-    &lt;el-input type=&quot;password&quot; v-model=&quot;ruleForm.phone&quot; &gt;&lt;/el-input&gt;
-  &lt;/el-form-item&gt;
-  &lt;el-form-item&gt;
-    &lt;el-button type=&quot;primary&quot; @click=&quot;submitForm('ruleForm')&quot;&gt;提交&lt;/el-button&gt;
-    &lt;el-button @click=&quot;resetForm('ruleForm')&quot;&gt;重置&lt;/el-button&gt;
-  &lt;/el-form-item&gt;
-&lt;/el-form&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;Form&quot;,
-        data() {
-            let validatePhone = (rule,value,callback)=&gt;{ //定义自定义的验证规则
-                console.log(rule);
-                console.log(value);
-                console.log(callback);
-                if(!value){
-                    callback(new Error(&quot;手机号不能为空!&quot;));
-                }
-                if(!/^1[3456789]\d{9}$/.test(value)){
-                    callback(new Error(&quot;手机号码不正确!!&quot;))
-                }
-            }
-            return {
-                form: {
-                    name: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
-                },
-                rules: { //验证规则
-                    name: [ //使用默认规则
-                        {required: true, message: '请输入活动名称', trigger: 'blur'},
-                        {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
-                    ],
-                    phone:[  //使用自定义规则
-                        {validator:validatePhone,trigger: 'blur'}
-                    ]
-                },
-                ruleForm:{
-                    phone:'',
-                },
-            }
-        },
-        methods: {
-           
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<hr>
-<h2 id="9消息提示">9.消息提示</h2>
-<h3 id="91警告提示">9.1警告提示</h3>
-<h4 id="11-创建警告提示">1.1 创建警告提示</h4>
-<pre><code class="language-html">&lt;el-alert title=&quot;成功信息提示&quot; :closable=&quot;false&quot; type=&quot;success&quot;&gt;
-  &lt;div slot&gt;我是辅助信息&lt;/div&gt;
-&lt;/el-alert&gt;
-&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;info&quot;&gt;&lt;/el-alert&gt;
-&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;warning&quot;&gt;&lt;/el-alert&gt;
-&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;error&quot;&gt;&lt;/el-alert&gt;
-</code></pre>
-<h4 id="12属性的使用">1.2属性的使用</h4>
-<pre><code class="language-html">&lt;el-alert title=&quot;成功信息提示&quot; effect=&quot;dark&quot; :show-icon=&quot;true&quot; center :closable=&quot;false&quot; type=&quot;success&quot;&gt;
-  &lt;div slot&gt;我是辅助信息&lt;/div&gt;
-&lt;/el-alert&gt;
-</code></pre>
-<h3 id="92-message消息提示">9.2 Message消息提示</h3>
-<h4 id="21-创建组件">2.1 创建组件</h4>
-<ul>
-<li><strong>注意:这个组件的创建无须在页面中书写任何标签,他是一个js插件,在需要展示消息提示的位置直接调用提供的js插件方法即可</strong></li>
-</ul>
-<pre><code class="language-js"># 1.创建最简单的消息
-	this.$message('这是一个消息提示!!')
-
-# 2.自定义消息内容
-	this.$message({
-    message: h('p', null, [
-      h('span', null, '订单创建成功,您的订单编号为: '),
-      h('i', { style: 'color: teal' }, '87')
-    ])
-  });
-
-# 3.不同主题的消息提示
-	 this.$message({
-     message:'这是信息提示',
-     type:&quot;success&quot;,
-   })
-		//主题样式:  success  info  warning  error
-
-# 4.属性使用
-	this.$message({
-    message:'这是信息提示',
-    type:&quot;success&quot;,
-    showClose:true,
-    center:true,
-    iconClass:'el-icon-user-solid',
-    duration:0
-  })
-# 5.方法的使用
-	this.$message.closeAll();
-
-</code></pre>
-<hr>
-<h2 id="10table表格组件">10.table表格组件</h2>
-<h3 id="1组件的创建-2">1.组件的创建</h3>
-<pre><code class="language-html">&lt;el-table :data=&quot;tableData&quot;&gt;
-  &lt;el-table-column prop=&quot;id&quot; label=&quot;编号&quot;&gt;&lt;/el-table-column&gt;
-  &lt;el-table-column prop=&quot;name&quot; label=&quot;姓名&quot;&gt;&lt;/el-table-column&gt;
-  &lt;el-table-column prop=&quot;age&quot; label=&quot;年龄&quot;&gt;&lt;/el-table-column&gt;
-  &lt;el-table-column prop=&quot;email&quot; label=&quot;邮箱&quot;&gt;&lt;/el-table-column&gt;
-&lt;/el-table&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Tables&quot;,
-        data(){
-            return {
-                tableData:[
-                    {id:21,name:&quot;小陈&quot;,age:23,email:&quot;60037647@qq.com&quot;},
-                    {id:22,name:&quot;小张&quot;,age:25,email:&quot;60038647@qq.com&quot;},
-                ]
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h3 id="2表格中列属性">2.表格中列属性</h3>
-<ul>
-<li><strong>el-table-column属性</strong></li>
-</ul>
-<pre><code class="language-html">&lt;el-table-column prop=&quot;id&quot; :resizable=&quot;false&quot; header-align=&quot;left&quot; align=&quot;center&quot; fixed=&quot;left&quot; width=&quot;200px;&quot; label=&quot;编号&quot;&gt;&lt;/el-table-column&gt;
-&lt;el-table-column prop=&quot;name&quot; label=&quot;姓名&quot;&gt;&lt;/el-table-column&gt;
-&lt;el-table-column prop=&quot;age&quot; :sort-method=&quot;sorts&quot; sortable label=&quot;年龄&quot;&gt;&lt;/el-table-column&gt;
-&lt;el-table-column prop=&quot;email&quot; label=&quot;邮箱&quot;&gt;&lt;/el-table-column&gt;
-&lt;el-table-column prop=&quot;dept.name&quot; :formatter=&quot;showDept&quot; label=&quot;部门&quot;&gt;&lt;/el-table-column&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Tables&quot;,
-        data() {
-            return {
-                tableData: [
-                    {
-                        id: 21, name: &quot;小陈&quot;, age: 23, email: &quot;60037647@qq.com&quot;,
-                        dept: {id: 1, name: &quot;研发部&quot;}
-                    },
-                    {
-                        id: 22, name: &quot;小张&quot;, age: 25, email: &quot;60038647@qq.com&quot;,
-                        dept: {id: 1, name: &quot;小卖部&quot;}
-                    },
-                    {
-                        id: 23, name: &quot;小李&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
-                        dept:{}
-                    },
-                ]
-            }
-        },
-        methods: {
-            sorts(a, b) {
-                return a.age - b.age;
-            },
-            showDept(row, column, cellValue, index){
-                console.log(row);
-                console.log(column);
-                console.log(cellValue);
-                console.log(index);
-                if(cellValue){
-                    return cellValue
-                }
-                return &quot;暂无部门&quot;;
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h3 id="3表格属性">3.表格属性</h3>
-<pre><code class="language-html">&lt;el-table :data=&quot;tableData&quot; empty-text=&quot;暂无数据&quot; :row-class-name=&quot;showCss&quot; highlight-current-row :show-header=&quot;true&quot; :fit=&quot;true&quot;
-              size=&quot;mini&quot; :height=&quot;600&quot; border&gt;
-
-&lt;/el-table&gt;
-&lt;script&gt;
-  .....
-	methods: {
-            showCss({row, rowIndex}) {
-                if (rowIndex % 2 == 0) {
-                    return &quot;warning-row&quot;;
-                }
-                return &quot;success-row&quot;;
-            }
-        }
- &lt;/script&gt;
-</code></pre>
-<h3 id="4组件事件使用">4.组件事件使用</h3>
-<pre><code class="language-html">&lt;el-table @事件名=&quot;事件处理函数名&quot;&gt;&lt;el-table&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;Tables&quot;,
-        data() {
-            //....
-        },
-        methods: {
-            //...事件处理函数
-            selectRow(selection, row){
-                console.log(selection);
-                console.log(row);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h3 id="5组件方法的使用">5.组件方法的使用</h3>
-<pre><code class="language-html">&lt;el-table  ref=&quot;mytable&quot;&gt;........&lt;/el-table&gt;
-//调用方法
-	this.$refs.mytable.方法名  
-</code></pre>
-<h3 id="6表格中定义操作列">6.表格中定义操作列</h3>
-<pre><code class="language-html">&lt;el-table&gt;
-  ....
-	 &lt;el-table-column label=&quot;操作&quot;&gt;
-      &lt;template slot-scope=&quot;scope&quot;&gt;
-        &lt;el-button
-          size=&quot;mini&quot;
-          @click=&quot;handleEdit(scope.$index, scope.row)&quot;&gt;编辑&lt;/el-button&gt;
-        &lt;el-button
-          size=&quot;mini&quot;
-          type=&quot;danger&quot;
-          @click=&quot;handleDelete(scope.$index, scope.row)&quot;&gt;删除&lt;/el-button&gt;
-      &lt;/template&gt;
-    &lt;/el-table-column&gt;
-&lt;/el-table&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Tables&quot;,
-        data() {
-            .....
-        },
-        methods: {
-						//用来处理编辑和删除的事件函数
-            handleEdit(index,row){
-                console.log(index);
-                console.log(row);
-            },
-            handleDelete(index,row){
-                console.log(index);
-                console.log(row);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h2 id=""><img src="https://Tyloo-code.github.io/post-images/1606970684096.png" alt="image-20200513101148070" loading="lazy"></h2>
-<h3 id="7自定义表头">7.自定义表头</h3>
-<pre><code class="language-html"> &lt;el-table :data=&quot;tableData.filter(data =&gt; !search || data.name.toLowerCase().includes(search.toLowerCase()))&quot; &gt;
-   .....
-   &lt;!--展示搜索和操作--&gt;
-   &lt;el-table-column&gt;
-        &lt;template slot=&quot;header&quot; slot-scope=&quot;scope&quot;&gt;
-          &lt;el-input
-            v-model=&quot;search&quot;
-            size=&quot;mini&quot;
-            placeholder=&quot;输入关键字搜索&quot;/&gt;
-        &lt;/template&gt;
-        &lt;template slot-scope=&quot;scope&quot;&gt;
-          &lt;el-button
-            size=&quot;mini&quot;
-            @click=&quot;handleEdit(scope.$index, scope.row)&quot;&gt;编辑&lt;/el-button&gt;
-          &lt;el-button
-            size=&quot;mini&quot;
-            type=&quot;danger&quot;
-            @click=&quot;handleDelete(scope.$index, scope.row)&quot;&gt;删除&lt;/el-button&gt;
-        &lt;/template&gt;
-      &lt;/el-table-column&gt;
-&lt;/el-table&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Tables&quot;,
-        data() {
-            return {
-                tableData: [
-                    {
-                        id: 21, name: &quot;小陈&quot;, age: 23, email: &quot;60037647@qq.com&quot;,
-                        dept: {id: 1, name: &quot;研发部&quot;}
-                    },
-                    {
-                        id: 22, name: &quot;小张&quot;, age: 25, email: &quot;60038647@qq.com&quot;,
-                        dept: {id: 1, name: &quot;小卖部&quot;}
-                    },
-                    {
-                        id: 23, name: &quot;小李&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
-                        dept: {}
-                    },
-                    {
-                        id: 24, name: &quot;小四&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
-                        dept: {}
-                    },
-                ],
-                search: ''
-            }
-        },
-        methods: {
-            sorts(a, b) {
-                return a.age - b.age;
-            },
-            showDept(row, column, cellValue, index) {
-                if (cellValue) {
-                    return cellValue
-                }
-                return &quot;暂无部门&quot;;
-            },
-            showCss({row, rowIndex}) {
-                if (rowIndex % 2 == 0) {
-                    return &quot;warning-row&quot;;
-                }
-                return &quot;success-row&quot;;
-            },
-            selectRow(selection, row){
-                console.log(selection);
-                console.log(row);
-            },
-            clearSelect(){
-                this.$refs.mytable.clearSelection();
-            },
-            handleEdit(index,row){
-                console.log(index);
-                console.log(row);
-            },
-            handleDelete(index,row){
-                console.log(index);
-                console.log(row);
-            }
-        }
-    }
-&lt;/script&gt;
-
-</code></pre>
-<figure data-type="image" tabindex="4"><img src="https://Tyloo-code.github.io/post-images/1606970641506.png" alt="image-20200513101814910" loading="lazy"></figure>
-<hr>
 ]]></summary>
         <content type="html"><![CDATA[<h2 id="1element-ui-引言">1.Element UI 引言</h2>
 <p>官网: https://element.eleme.io/#/zh-CN</p>
@@ -1441,1039 +2483,6 @@ methods: {
   &lt;el-footer&gt;&lt;div&gt;&lt;h1&gt;我是页脚&lt;/h1&gt;&lt;/div&gt;&lt;/el-footer&gt;
 &lt;/el-container&gt;
 </code></pre>
-<hr>
-<h2 id="8form相关组件">8.Form相关组件</h2>
-<h3 id="81-radio单选按钮">8.1 Radio单选按钮</h3>
-<h4 id="1创建radio按钮">1.创建Radio按钮</h4>
-<pre><code class="language-html">&lt;!--组件创建--&gt;
-&lt;el-radio v-model=&quot;label&quot; label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
-&lt;el-radio v-model=&quot;label&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Radio&quot;,
-        data(){
-            return{
-                label:'男'
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<p><code>注意:在使用radio单选按钮是至少加入v-model和label两个属性</code></p>
-<h4 id="2radio按钮属性的使用">2.Radio按钮属性的使用</h4>
-<pre><code class="language-html">&lt;el-radio v-model=&quot;label&quot; name=&quot;sex&quot; disabled label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
-&lt;el-radio v-model=&quot;label&quot; name=&quot;sex&quot; border size=&quot;small&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
-&lt;el-radio v-model=&quot;label&quot; border size=&quot;mini&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
-&lt;el-radio v-model=&quot;label&quot; border size=&quot;medium&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
-</code></pre>
-<p><code>总结:属性使用还是直接卸载对应的组件标签上以 属性名=属性值 方式使用</code></p>
-<h4 id="3radio事件的使用">3.Radio事件的使用</h4>
-<pre><code class="language-html">&lt;el-radio v-model=&quot;label&quot; @change=&quot;aa&quot; name=&quot;sex&quot; label=&quot;男&quot;&gt;男&lt;/el-radio&gt;
-&lt;el-radio v-model=&quot;label&quot; @change=&quot;aa&quot; name=&quot;sex&quot; border size=&quot;small&quot; label=&quot;女&quot;&gt;女&lt;/el-radio&gt;
-
-
-
-&lt;script&gt;
-    export default {
-        name: &quot;Radio&quot;,
-        data(){
-            return{
-                label:'男'
-            }
-        },
-        methods:{
-            aa(){ //定义的事件处理函数
-                console.log(this.label);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<p><code>总结:</code></p>
-<ul>
-<li>​	事件的使用也是和属性使用是一致都是直接写在对应的组件标签上</li>
-<li>事件在使用时必须使用Vue中绑定时间方式进行使用如 @事件名=事件处理函数(绑在在vue组件中对应函数)</li>
-</ul>
-<h4 id="4radio按钮组">4.radio按钮组</h4>
-<pre><code class="language-html">&lt;el-radio-group v-model=&quot;radio&quot;&gt;
-  &lt;el-radio :label=&quot;3&quot;&gt;备选项3&lt;/el-radio&gt;
-  &lt;el-radio :label=&quot;6&quot;&gt;备选项6&lt;/el-radio&gt;
-  &lt;el-radio :label=&quot;9&quot;&gt;备选项9&lt;/el-radio&gt;
-&lt;/el-radio-group&gt;
-&lt;script&gt;
-  export default {
-    name: &quot;Radio&quot;,
-    data() {
-      return {
-        radio: 6
-      }
-    }
-  }
-&lt;/script&gt;
-</code></pre>
-<hr>
-<h3 id="82-checkbox组件">8.2 checkbox组件</h3>
-<h4 id="1创建checkbox组件">1.创建checkbox组件</h4>
-<pre><code class="language-html">&lt;el-checkbox v-model=&quot;checked&quot;&gt;北京&lt;/el-checkbox&gt;
-&lt;el-checkbox v-model=&quot;checked&quot;&gt;上海&lt;/el-checkbox&gt;
-&lt;el-checkbox v-model=&quot;checked&quot;&gt;天津&lt;/el-checkbox&gt;
-</code></pre>
-<h4 id="2属性使用">2.属性使用</h4>
-<pre><code class="language-html">&lt;el-checkbox v-model=&quot;checked&quot;  disabled true-label=&quot;北京&quot;&gt;北京&lt;/el-checkbox&gt;
-&lt;el-checkbox checked border true-label=&quot;上海&quot;&gt;上海&lt;/el-checkbox&gt;
-&lt;el-checkbox v-model=&quot;checked&quot; true-label=&quot;天津&quot;&gt;天津&lt;/el-checkbox&gt;
-</code></pre>
-<h4 id="3事件使用">3.事件使用</h4>
-<pre><code class="language-html">&lt;el-checkbox @change=&quot;aa&quot;v-model=&quot;checked&quot;  true-label=&quot;上海&quot;&gt;上海&lt;/el-checkbox&gt;
-&lt;el-checkbox v-model=&quot;checked&quot; @change=&quot;aa&quot; true-label=&quot;天津&quot;&gt;天津&lt;/el-checkbox&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Checkbox&quot;,
-        data(){
-            return{
-                checked:true
-            }
-        },
-        methods:{
-            aa(){
-                console.log(this.checked);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="4复选框组的使用">4.复选框组的使用</h4>
-<pre><code class="language-html">&lt;el-checkbox-group @change=&quot;bb&quot; :min=&quot;1&quot; v-model=&quot;checkList&quot;&gt;
-  &lt;el-checkbox label=&quot;复选框 A&quot;&gt;&lt;/el-checkbox&gt;
-  &lt;el-checkbox label=&quot;复选框 B&quot;&gt;&lt;/el-checkbox&gt;
-  &lt;el-checkbox label=&quot;复选框 C&quot;&gt;&lt;/el-checkbox&gt;
-  &lt;el-checkbox label=&quot;禁用&quot; disabled&gt;&lt;/el-checkbox&gt;
-  &lt;el-checkbox label=&quot;选中且禁用&quot; disabled&gt;&lt;/el-checkbox&gt;
-&lt;/el-checkbox-group&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Checkbox&quot;,
-        data(){
-            return{
-                checked:true,
-                checkList:[],
-            }
-        },
-        methods:{
-            aa(){
-                console.log(this.checked);
-            },
-            bb(){
-                console.log(this.checkList);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<hr>
-<h3 id="83-input-输入框组件">8.3 Input 输入框组件</h3>
-<h4 id="1创建input组件">1.创建Input组件</h4>
-<pre><code class="language-html">&lt;el-input v-model=&quot;name&quot;&gt;&lt;/el-input&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Input&quot;,
-        data(){
-            return {
-                name:'xiaochen'
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="2常用属性">2.常用属性</h4>
-<pre><code class="language-html">&lt;el-input v-model=&quot;name&quot; disabled type=&quot;textarea&quot;&gt;&lt;/el-input&gt;
-&lt;el-input v-model=&quot;price&quot; :maxlength=&quot;10&quot; show-word-limit :minlength=&quot;5&quot;&gt;&lt;/el-input&gt;
-&lt;el-input prefix-icon=&quot;el-icon-user-solid&quot; placeholder=&quot;请输入用户名&quot; clearable v-model=&quot;username&quot;&gt;&lt;/el-input&gt;
-&lt;el-input suffix-icon=&quot;el-icon-star-off&quot; placeholder=&quot;请输入密码&quot; show-password type=&quot;password&quot; clearable v-model=&quot;password&quot;&gt;&lt;/el-input&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Input&quot;,
-        data() {
-            return {
-                restaurants: [],
-                state1: '',
-                state2: '',
-                name:'xiaochen',
-                price:0.0,
-                username:&quot;&quot;,
-                password:&quot;&quot;,
-            };
-        },
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="3事件使用-2">3.事件使用</h4>
-<pre><code class="language-html">&lt;el-input v-model=&quot;username&quot; @blur=&quot;aaa&quot; @focus=&quot;bbb&quot; @clear=&quot;clears&quot; clearable @input=&quot;ccc&quot;&gt;&lt;/el-input&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Input&quot;,
-        data() {
-            return {
-                restaurants: [],
-                state1: '',
-                state2: '',
-                name:'xiaochen',
-                price:0.0,
-                username:&quot;&quot;,
-                password:&quot;&quot;,
-            };
-        },
-        methods:{
-            aaa(){
-                console.log('失去焦点');
-                ;
-            },
-            bbb(){
-                console.log(&quot;获取焦点&quot;);
-            },
-            ccc(value){
-                console.log(&quot;改变:&quot;+value);
-            },
-            clears(){
-                console.log(&quot;清楚&quot;);
-            }
-
-
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="4方法的使用">4.方法的使用</h4>
-<pre><code class="language-html">&lt;h1&gt;方法的使用&lt;/h1&gt;
-&lt;el-input v-model=&quot;username&quot; ref=&quot;inputs&quot;&gt;&lt;/el-input&gt;
-
-&lt;el-button @click=&quot;focusInputs&quot;&gt;focus方法&lt;/el-button&gt;
-&lt;el-button @click=&quot;blurInputs&quot;&gt;blur方法&lt;/el-button&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;Input&quot;,
-        data() {
-            return{}
-        },
-        methods:{
-            //调用focus方法
-            focusInputs(){
-                this.$refs.inputs.focus();
-            },
-           //调用失去焦点方法
-            blurInputs(){
-                this.$refs.inputs.blur();
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<p><code>总结</code></p>
-<ul>
-<li>​	在使用组件的方法时需要在对应的组件中加入 <code>ref=&quot;组件别名&quot;</code></li>
-<li>在调用方法时直接使用 <code>this.$refs.组件别名.方法名()</code></li>
-</ul>
-<blockquote>
-<p><code>注意:在elementui中所有组件 都存在 属性 事件 和方法</code></p>
-<p><code>属性:</code>直接写在对应的组件标签上 使用方式:<code>属性名=属性值</code>方式</p>
-<p><code>事件</code>: 直接使用vue绑定事件方式写在对应的组件标签上 使用方式:<code>@事件名=vue中事件处理函数</code></p>
-<p><code>方法</code>: 1.在对应组件标签上使用<code>ref=组件别名</code> 2.<code>通过使用this.$refs.组件别名.方法名()</code>进行调用</p>
-</blockquote>
-<h3 id="84-select选择器组件的使用">8.4 Select选择器组件的使用</h3>
-<h4 id="1组件创建">1.组件创建</h4>
-<pre><code class="language-markdown"># 1.数据写死在页面上
-&lt;el-select v-model=&quot;cityName&quot;&gt;
-  &lt;el-option value=&quot;北京&quot;&gt;北京&lt;/el-option&gt;
-  &lt;el-option value=&quot;天津&quot;&gt;天津&lt;/el-option&gt;
-&lt;/el-select&gt;
-	注意:1.要求下拉列表中必须存在option的value属性值 2.要求select中必须使用v-model进行数据绑定
-
-# 2.如何动态获取数据
- &lt;el-select&gt;
- 		&lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;
- 		&lt;/el-option&gt;
- &lt;/el-select&gt;
-
-  &lt;script&gt;
-      export default {
-          name: &quot;Select&quot;,
-          data(){
-              return{
-                  options:[
-                      {id:'1',name:&quot;研发部&quot;},
-                      {id:'2',name:&quot;小卖部&quot;},
-                      {id:'3',name:&quot;小米部&quot;},
-                  ]
-              }
-          },
-      }
-  &lt;/script&gt;
-  
-# 3.获取下拉列表选中数据
- &lt;el-select v-model=&quot;cityId&quot; multiple clearable&gt;
-        &lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;&lt;/el-option&gt;
-&lt;/el-select&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Select&quot;,
-        data(){
-            return{
-                options:[
-                    {id:'1',name:&quot;研发部&quot;},
-                    {id:'2',name:&quot;小卖部&quot;},
-                    {id:'3',name:&quot;小米部&quot;},
-                ],
-                cityId:''
-            }
-        },
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="2属性使用-2">2.属性使用</h4>
-<pre><code class="language-html">&lt;el-select v-model=&quot;cityId&quot; multiple clearable&gt;
-  ......
-&lt;/el-select&gt;
-</code></pre>
-<h4 id="3事件的使用">3.事件的使用</h4>
-<pre><code class="language-html">&lt;el-select v-model=&quot;cityId&quot; @change=&quot;aaa&quot; multiple clearable&gt;
-  &lt;el-option v-for=&quot;option in options&quot; :label=&quot;option.name&quot; :value=&quot;option.id&quot; :key=&quot;option.id&quot;&gt;
-  &lt;/el-option&gt;
-&lt;/el-select&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Select&quot;,
-        data(){
-            return{
-                options:[
-                    {id:'1',name:&quot;研发部&quot;},
-                    {id:'2',name:&quot;小卖部&quot;},
-                    {id:'3',name:&quot;小米部&quot;},
-                ],
-                cityId:'',
-                cityName:''
-            }
-        },
-        methods:{
-            aaa(value){
-                console.log(value);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="4方法的使用-2">4.方法的使用</h4>
-<pre><code class="language-html">1.给组件通过ref起别名并绑定到vue实例中
- &lt;el-select ref=&quot;selects&quot; v-model=&quot;cityId&quot; @change=&quot;aaa&quot; multiple clearable&gt;
-       ....
- &lt;/el-select&gt;
-2.调用方法
- this.$refs.selects.focus();//方法调用
-</code></pre>
-<hr>
-<h3 id="85-switch-开关组件">8.5 Switch 开关组件</h3>
-<h4 id="1switch组件的创建">1.Switch组件的创建</h4>
-<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot;&gt;&lt;/el-switch&gt;
-&lt;script&gt;
-  export default {
-    name: &quot;Switchs&quot;,
-    data(){
-      return{
-        value:true
-      }
-    }
-  }
-&lt;/script&gt;
-</code></pre>
-<h4 id="2属性使用-3">2.属性使用</h4>
-<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot; active-text=&quot;打开&quot; active-color=&quot;#13ce66&quot; inactive-color=&quot;#ff4949&quot; :active-
-           value=&quot;true&quot; :inactive-value=&quot;false&quot; inactive-text=&quot;关闭&quot; :width=&quot;200&quot;&gt;
-&lt;/el-switch&gt;
-</code></pre>
-<h4 id="3事件使用-3">3.事件使用</h4>
-<pre><code class="language-html">&lt;el-switch v-model=&quot;value&quot; @change=&quot;aaa&quot;&gt;&lt;/el-switch&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Switchs&quot;,
-        data(){
-            return{
-                value:true
-            }
-        },
-        methods:{
-            aaa(value){
-                console.log(value);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="4方法使用">4.方法使用</h4>
-<pre><code class="language-html">&lt;el-switch ref=&quot;sw&quot; v-model=&quot;value&quot; @change=&quot;aaa&quot; active-text=&quot;打开&quot; active-color=&quot;#13ce66&quot; inactive-color=&quot;#ff4949&quot; :active-value=&quot;true&quot; :inactive-value=&quot;false&quot; inactive-text=&quot;关闭&quot; :width=&quot;200&quot;&gt;&lt;/el-switch&gt;
-&lt;el-button @click=&quot;bbb&quot;&gt;调用方法&lt;/el-button&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;Switchs&quot;,
-        data(){
-            return{
-                value:true
-            }
-        }
-        ,
-        methods:{
-            aaa(value){
-                console.log(value);
-            },
-            bbb(){
-                alert();
-                this.$refs.sw.focus();//方法调用
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<hr>
-<h3 id="86-datepicker组件">8.6 DatePicker组件</h3>
-<h4 id="1创建">1.创建</h4>
-<pre><code class="language-html">&lt;el-date-picker v-model=&quot;createDate&quot; &gt;&lt;/el-date-picker&gt;
-</code></pre>
-<h4 id="2属性的使用">2.属性的使用</h4>
-<pre><code class="language-html">&lt;el-date-picker
-        v-model=&quot;createDate&quot;
-        :editable=&quot;false&quot;
-        :clearable=&quot;false&quot;
-        placeholder=&quot;请输入创建时间&quot;
-        type=&quot;daterange&quot;
-        start-placeholder=&quot;生产时间&quot;
-        end-placeholder=&quot;过期时间&quot;
-        format=&quot;yyyy/MM/dd&quot;
-      &gt;
-&lt;/el-date-picker&gt;
-</code></pre>
-<h4 id="3picker-options-和-shortcuts使用">3.Picker Options 和 Shortcuts使用</h4>
-<ul>
-<li><strong>Shortcuts:</strong> 用来增加日期组件的快捷面板</li>
-<li><strong>Picker Options:</strong> 用来对日期控件做自定义配置</li>
-</ul>
-<h5 id="31-shortcuts使用">3.1 Shortcuts使用</h5>
-<pre><code class="language-html">&lt;/el-date-picker&gt;
-&lt;h1&gt;日期配置&lt;/h1&gt;
-&lt;el-date-picker
-                v-model=&quot;createDate&quot;
-                type=&quot;date&quot;
-                placeholder=&quot;请输入时间&quot;
-                :picker-options=&quot;pickerOptions&quot;
-                &gt;
-&lt;/el-date-picker&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;DatePrickers&quot;,
-        data(){
-            return{
-                createDate:&quot;&quot;,
-                pickerOptions: {
-                    disabledDate(time) {
-                        return time.getTime() &gt; Date.now();
-                    },
-                    shortcuts: [{  //定义的shortucts
-                        text: '今天',
-                        onClick(picker) {
-                            picker.$emit('pick', new Date());
-                        }
-                    }, {
-                        text: '昨天',
-                        onClick(picker) {
-                            const date = new Date();
-                            date.setTime(date.getTime() - 3600 * 1000 * 24);
-                            picker.$emit('pick', date);
-                        }
-                    }, {
-                        text: '一周前',
-                        onClick(picker) {
-                            const date = new Date();
-                            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-                            picker.$emit('pick', date);
-                        }
-                    }]
-                },
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://Tyloo-code.github.io/post-images/1606970853719.png" alt="image-20200511100330078" loading="lazy"></figure>
-<h5 id="32-picker-options">3.2 Picker Options</h5>
-<pre><code class="language-html">&lt;el-date-picker
-                v-model=&quot;createDate&quot;
-                type=&quot;date&quot;
-                placeholder=&quot;请输入时间&quot;
-                :picker-options=&quot;pickerOptions&quot;
-                &gt;
-&lt;/el-date-picker&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;DatePrickers&quot;,
-        data(){
-            return{
-                createDate:&quot;&quot;,
-                pickerOptions: {
-                    disabledDate(time) { //用来对日期进行的控制
-                        return time.getTime() &lt; Date.now();
-                    }
-                },
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<figure data-type="image" tabindex="3"><img src="https://Tyloo-code.github.io/post-images/1606970839111.png" alt="image-20200511100634677" loading="lazy"></figure>
-<h4 id="4事件使用">4.事件使用</h4>
-<pre><code class="language-html">&lt;el-date-picker
-                .....
-                :picker-options=&quot;pickerOptions&quot;
-                @change=&quot;aaa&quot;
-                &gt;
-&lt;/el-date-picker&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;DatePrickers&quot;,
-        data(){
-            return{
-                createDate:&quot;&quot;,
-            }
-        },
-        methods:{
-            aaa(value){  //发生change事件的函数
-                console.log(value);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<hr>
-<h3 id="87-upload组件">8.7 Upload组件</h3>
-<h4 id="1组件创建-2">1.组件创建</h4>
-<pre><code class="language-html">&lt;el-upload action=&quot;https://jsonplaceholder.typicode.com/posts/&quot; :file-list=&quot;fileList&quot;&gt;
-  &lt;el-button size=&quot;small&quot; type=&quot;primary&quot;&gt;点击上传&lt;/el-button&gt;
-  &lt;div slot=&quot;tip&quot; class=&quot;el-upload__tip&quot;&gt;只能上传jpg/png文件，且不超过500kb&lt;/div&gt;
-&lt;/el-upload&gt;
-</code></pre>
-<p><code>注意:在使用upload组件时必须设置action属性 action属性为必要参数不能省略</code></p>
-<h4 id="2属性和事件的使用">2.属性和事件的使用</h4>
-<pre><code class="language-html">&lt;el-upload :limit=&quot;3&quot; :on-exceed=&quot;exceed&quot; :multiple=&quot;false&quot; :before-remove=&quot;beforeRemove&quot; :on-remove=&quot;remove&quot; :on-preview=&quot;show&quot; :drag=&quot;true&quot; accept=&quot;.txt,.png&quot; :show-file-list=&quot;true&quot; name=&quot;aaa&quot; :data=&quot;info&quot; action=&quot;https://jsonplaceholder.typicode.com/posts/&quot;
-               :file-list=&quot;fileList&quot;&gt;
-  &lt;i class=&quot;el-icon-upload&quot;&gt;&lt;/i&gt;
-  &lt;div class=&quot;el-upload__text&quot;&gt;将文件拖到此处，或&lt;em&gt;点击上传&lt;/em&gt;&lt;/div&gt;
-  &lt;div class=&quot;el-upload__tip&quot; slot=&quot;tip&quot;&gt;只能上传jpg/png文件，且不超过500kb&lt;/div&gt;
-&lt;/el-upload&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;Uploads&quot;,
-        data() {
-            return {
-                fileList: [{
-                    name: 'food.jpeg',
-                    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-                }, {
-                    name: 'food2.jpeg',
-                    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-                }],
-                info: {id:&quot;21&quot;}
-            }
-        },
-        methods:{
-            show(file){
-                console.log(file);
-            },
-            remove(file,fileList){
-                console.log(file);
-                console.log(fileList);
-                //alert(fileList.length)
-            },
-            beforeRemove(file,fileList){
-                if(fileList.length&lt;3){
-                    alert(&quot;上传文件不能少于3个&quot;)
-                    return false;
-                }
-            },
-            exceed(file,fileList){
-                alert(&quot;文件超出上传的个数限制&quot;)
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<ul>
-<li><strong>注意:在使用upload组件时没有event事件,所有事件都是属性事件</strong></li>
-</ul>
-<h4 id="3方法的使用">3.方法的使用</h4>
-<pre><code class="language-html">&lt;el-upload ref=&quot;uploads&quot; ....&gt;........&lt;/el-upload&gt;
-
-方法调用:
-	this.$refs.uploads.clearFiles();
-	this.$refs.uploads.abort();
-	this.$refs.uploads.submit();
-</code></pre>
-<hr>
-<h3 id="88-form组件">8.8 Form组件</h3>
-<h4 id="1组件的创建">1.组件的创建</h4>
-<pre><code class="language-html">&lt;el-form ref=&quot;form&quot; :model=&quot;form&quot; label-width=&quot;80px&quot;&gt;
-  &lt;el-form-item label=&quot;活动名称&quot;&gt;
-    &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
-  &lt;/el-form-item&gt;
-  ......
-  &lt;el-form-item&gt;
-    &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit&quot;&gt;立即创建&lt;/el-button&gt;
-    &lt;el-button&gt;取消&lt;/el-button&gt;
-  &lt;/el-form-item&gt;
-&lt;/el-form&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Form&quot;,
-        data() {
-            return {
-                form: {
-                    name: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
-                }
-            }
-        },
-        methods: {
-            onSubmit() {
-                console.log('submit!');
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h4 id="2内联表单">2.内联表单</h4>
-<pre><code class="language-html">&lt;el-form :inline=&quot;true&quot; :model=&quot;formInline&quot; class=&quot;demo-form-inline&quot;&gt;
-		.......
-&lt;/el-form&gt;
-</code></pre>
-<p><code>通过设置 inline=true方式将表单作为内联表单处理</code></p>
-<h4 id="3表单验证">3.表单验证</h4>
-<ul>
-<li><strong>使用说明:</strong></li>
-</ul>
-<blockquote>
-<p>Form 组件提供了表单验证的功能，只需要通过 <code>rules</code> 属性传入约定的验证规则，并将 Form-Item 的 <code>prop</code> 属性设置为需校验的字段名即可。校验规则参见 <a href="https://github.com/yiminghe/async-validator">async-validator</a></p>
-</blockquote>
-<h5 id="31-失去焦点自动验证">3.1 失去焦点自动验证</h5>
-<pre><code class="language-html">&lt;el-form :rules=&quot;rules&quot; ...&gt;
-  &lt;el-form-item label=&quot;活动名称&quot; prop=&quot;name&quot;&gt;
-      &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
-  &lt;/el-form-item&gt;
-  ....
-&lt;/el-form&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Form&quot;,
-        data() {
-            return {
-                form: {
-                    name: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
-                },
-                rules: {
-                    name: [
-                        {required: true, message: '请输入活动名称', trigger: 'blur'},
-                        {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
-                    ],
-                }
-            }
-        },
-        methods: {
-            onSubmit() {
-                console.log('submit!');
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h5 id="32-表单提交调用表单组件的验证方法验证">3.2 表单提交调用表单组件的验证方法验证</h5>
-<pre><code class="language-html">&lt;el-form :rules=&quot;rules&quot;.... ref=&quot;form&quot; &gt;
-    &lt;el-form-item label=&quot;活动名称&quot; prop=&quot;name&quot;&gt;
-      &lt;el-input v-model=&quot;form.name&quot;&gt;&lt;/el-input&gt;
-  	&lt;/el-form-item&gt;
-  	&lt;el-form-item&gt;
-      &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit('form')&quot;&gt;立即创建&lt;/el-button&gt;
-      &lt;el-button&gt;取消&lt;/el-button&gt;
-  	&lt;/el-form-item&gt;
-&lt;/el-form&gt;
-...
-methods: {
-            onSubmit(formName) {
-                this.$refs[formName].validate((valid) =&gt; {
-                    if (valid) {
-                        alert('submit!');
-                        //发送异步请求 到 springboot项目
-                    } else {
-                        console.log('error submit!!');
-                        return false;
-                    }
-                });
-            }
-        }
-</code></pre>
-<h4 id="4自定义表单的验证规则">4.自定义表单的验证规则</h4>
-<pre><code class="language-html">&lt;el-form :model=&quot;ruleForm&quot; :rules=&quot;rules&quot; ref=&quot;ruleForm&quot; label-width=&quot;100px&quot;&gt;
-  &lt;el-form-item label=&quot;手机号&quot; prop=&quot;phone&quot;&gt;
-    &lt;el-input type=&quot;password&quot; v-model=&quot;ruleForm.phone&quot; &gt;&lt;/el-input&gt;
-  &lt;/el-form-item&gt;
-  &lt;el-form-item&gt;
-    &lt;el-button type=&quot;primary&quot; @click=&quot;submitForm('ruleForm')&quot;&gt;提交&lt;/el-button&gt;
-    &lt;el-button @click=&quot;resetForm('ruleForm')&quot;&gt;重置&lt;/el-button&gt;
-  &lt;/el-form-item&gt;
-&lt;/el-form&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;Form&quot;,
-        data() {
-            let validatePhone = (rule,value,callback)=&gt;{ //定义自定义的验证规则
-                console.log(rule);
-                console.log(value);
-                console.log(callback);
-                if(!value){
-                    callback(new Error(&quot;手机号不能为空!&quot;));
-                }
-                if(!/^1[3456789]\d{9}$/.test(value)){
-                    callback(new Error(&quot;手机号码不正确!!&quot;))
-                }
-            }
-            return {
-                form: {
-                    name: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
-                },
-                rules: { //验证规则
-                    name: [ //使用默认规则
-                        {required: true, message: '请输入活动名称', trigger: 'blur'},
-                        {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
-                    ],
-                    phone:[  //使用自定义规则
-                        {validator:validatePhone,trigger: 'blur'}
-                    ]
-                },
-                ruleForm:{
-                    phone:'',
-                },
-            }
-        },
-        methods: {
-           
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<hr>
-<h2 id="9消息提示">9.消息提示</h2>
-<h3 id="91警告提示">9.1警告提示</h3>
-<h4 id="11-创建警告提示">1.1 创建警告提示</h4>
-<pre><code class="language-html">&lt;el-alert title=&quot;成功信息提示&quot; :closable=&quot;false&quot; type=&quot;success&quot;&gt;
-  &lt;div slot&gt;我是辅助信息&lt;/div&gt;
-&lt;/el-alert&gt;
-&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;info&quot;&gt;&lt;/el-alert&gt;
-&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;warning&quot;&gt;&lt;/el-alert&gt;
-&lt;el-alert title=&quot;成功信息提示&quot; type=&quot;error&quot;&gt;&lt;/el-alert&gt;
-</code></pre>
-<h4 id="12属性的使用">1.2属性的使用</h4>
-<pre><code class="language-html">&lt;el-alert title=&quot;成功信息提示&quot; effect=&quot;dark&quot; :show-icon=&quot;true&quot; center :closable=&quot;false&quot; type=&quot;success&quot;&gt;
-  &lt;div slot&gt;我是辅助信息&lt;/div&gt;
-&lt;/el-alert&gt;
-</code></pre>
-<h3 id="92-message消息提示">9.2 Message消息提示</h3>
-<h4 id="21-创建组件">2.1 创建组件</h4>
-<ul>
-<li><strong>注意:这个组件的创建无须在页面中书写任何标签,他是一个js插件,在需要展示消息提示的位置直接调用提供的js插件方法即可</strong></li>
-</ul>
-<pre><code class="language-js"># 1.创建最简单的消息
-	this.$message('这是一个消息提示!!')
-
-# 2.自定义消息内容
-	this.$message({
-    message: h('p', null, [
-      h('span', null, '订单创建成功,您的订单编号为: '),
-      h('i', { style: 'color: teal' }, '87')
-    ])
-  });
-
-# 3.不同主题的消息提示
-	 this.$message({
-     message:'这是信息提示',
-     type:&quot;success&quot;,
-   })
-		//主题样式:  success  info  warning  error
-
-# 4.属性使用
-	this.$message({
-    message:'这是信息提示',
-    type:&quot;success&quot;,
-    showClose:true,
-    center:true,
-    iconClass:'el-icon-user-solid',
-    duration:0
-  })
-# 5.方法的使用
-	this.$message.closeAll();
-
-</code></pre>
-<hr>
-<h2 id="10table表格组件">10.table表格组件</h2>
-<h3 id="1组件的创建-2">1.组件的创建</h3>
-<pre><code class="language-html">&lt;el-table :data=&quot;tableData&quot;&gt;
-  &lt;el-table-column prop=&quot;id&quot; label=&quot;编号&quot;&gt;&lt;/el-table-column&gt;
-  &lt;el-table-column prop=&quot;name&quot; label=&quot;姓名&quot;&gt;&lt;/el-table-column&gt;
-  &lt;el-table-column prop=&quot;age&quot; label=&quot;年龄&quot;&gt;&lt;/el-table-column&gt;
-  &lt;el-table-column prop=&quot;email&quot; label=&quot;邮箱&quot;&gt;&lt;/el-table-column&gt;
-&lt;/el-table&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Tables&quot;,
-        data(){
-            return {
-                tableData:[
-                    {id:21,name:&quot;小陈&quot;,age:23,email:&quot;60037647@qq.com&quot;},
-                    {id:22,name:&quot;小张&quot;,age:25,email:&quot;60038647@qq.com&quot;},
-                ]
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h3 id="2表格中列属性">2.表格中列属性</h3>
-<ul>
-<li><strong>el-table-column属性</strong></li>
-</ul>
-<pre><code class="language-html">&lt;el-table-column prop=&quot;id&quot; :resizable=&quot;false&quot; header-align=&quot;left&quot; align=&quot;center&quot; fixed=&quot;left&quot; width=&quot;200px;&quot; label=&quot;编号&quot;&gt;&lt;/el-table-column&gt;
-&lt;el-table-column prop=&quot;name&quot; label=&quot;姓名&quot;&gt;&lt;/el-table-column&gt;
-&lt;el-table-column prop=&quot;age&quot; :sort-method=&quot;sorts&quot; sortable label=&quot;年龄&quot;&gt;&lt;/el-table-column&gt;
-&lt;el-table-column prop=&quot;email&quot; label=&quot;邮箱&quot;&gt;&lt;/el-table-column&gt;
-&lt;el-table-column prop=&quot;dept.name&quot; :formatter=&quot;showDept&quot; label=&quot;部门&quot;&gt;&lt;/el-table-column&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Tables&quot;,
-        data() {
-            return {
-                tableData: [
-                    {
-                        id: 21, name: &quot;小陈&quot;, age: 23, email: &quot;60037647@qq.com&quot;,
-                        dept: {id: 1, name: &quot;研发部&quot;}
-                    },
-                    {
-                        id: 22, name: &quot;小张&quot;, age: 25, email: &quot;60038647@qq.com&quot;,
-                        dept: {id: 1, name: &quot;小卖部&quot;}
-                    },
-                    {
-                        id: 23, name: &quot;小李&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
-                        dept:{}
-                    },
-                ]
-            }
-        },
-        methods: {
-            sorts(a, b) {
-                return a.age - b.age;
-            },
-            showDept(row, column, cellValue, index){
-                console.log(row);
-                console.log(column);
-                console.log(cellValue);
-                console.log(index);
-                if(cellValue){
-                    return cellValue
-                }
-                return &quot;暂无部门&quot;;
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h3 id="3表格属性">3.表格属性</h3>
-<pre><code class="language-html">&lt;el-table :data=&quot;tableData&quot; empty-text=&quot;暂无数据&quot; :row-class-name=&quot;showCss&quot; highlight-current-row :show-header=&quot;true&quot; :fit=&quot;true&quot;
-              size=&quot;mini&quot; :height=&quot;600&quot; border&gt;
-
-&lt;/el-table&gt;
-&lt;script&gt;
-  .....
-	methods: {
-            showCss({row, rowIndex}) {
-                if (rowIndex % 2 == 0) {
-                    return &quot;warning-row&quot;;
-                }
-                return &quot;success-row&quot;;
-            }
-        }
- &lt;/script&gt;
-</code></pre>
-<h3 id="4组件事件使用">4.组件事件使用</h3>
-<pre><code class="language-html">&lt;el-table @事件名=&quot;事件处理函数名&quot;&gt;&lt;el-table&gt;
-
-&lt;script&gt;
-    export default {
-        name: &quot;Tables&quot;,
-        data() {
-            //....
-        },
-        methods: {
-            //...事件处理函数
-            selectRow(selection, row){
-                console.log(selection);
-                console.log(row);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h3 id="5组件方法的使用">5.组件方法的使用</h3>
-<pre><code class="language-html">&lt;el-table  ref=&quot;mytable&quot;&gt;........&lt;/el-table&gt;
-//调用方法
-	this.$refs.mytable.方法名  
-</code></pre>
-<h3 id="6表格中定义操作列">6.表格中定义操作列</h3>
-<pre><code class="language-html">&lt;el-table&gt;
-  ....
-	 &lt;el-table-column label=&quot;操作&quot;&gt;
-      &lt;template slot-scope=&quot;scope&quot;&gt;
-        &lt;el-button
-          size=&quot;mini&quot;
-          @click=&quot;handleEdit(scope.$index, scope.row)&quot;&gt;编辑&lt;/el-button&gt;
-        &lt;el-button
-          size=&quot;mini&quot;
-          type=&quot;danger&quot;
-          @click=&quot;handleDelete(scope.$index, scope.row)&quot;&gt;删除&lt;/el-button&gt;
-      &lt;/template&gt;
-    &lt;/el-table-column&gt;
-&lt;/el-table&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Tables&quot;,
-        data() {
-            .....
-        },
-        methods: {
-						//用来处理编辑和删除的事件函数
-            handleEdit(index,row){
-                console.log(index);
-                console.log(row);
-            },
-            handleDelete(index,row){
-                console.log(index);
-                console.log(row);
-            }
-        }
-    }
-&lt;/script&gt;
-</code></pre>
-<h2 id=""><img src="https://Tyloo-code.github.io/post-images/1606970684096.png" alt="image-20200513101148070" loading="lazy"></h2>
-<h3 id="7自定义表头">7.自定义表头</h3>
-<pre><code class="language-html"> &lt;el-table :data=&quot;tableData.filter(data =&gt; !search || data.name.toLowerCase().includes(search.toLowerCase()))&quot; &gt;
-   .....
-   &lt;!--展示搜索和操作--&gt;
-   &lt;el-table-column&gt;
-        &lt;template slot=&quot;header&quot; slot-scope=&quot;scope&quot;&gt;
-          &lt;el-input
-            v-model=&quot;search&quot;
-            size=&quot;mini&quot;
-            placeholder=&quot;输入关键字搜索&quot;/&gt;
-        &lt;/template&gt;
-        &lt;template slot-scope=&quot;scope&quot;&gt;
-          &lt;el-button
-            size=&quot;mini&quot;
-            @click=&quot;handleEdit(scope.$index, scope.row)&quot;&gt;编辑&lt;/el-button&gt;
-          &lt;el-button
-            size=&quot;mini&quot;
-            type=&quot;danger&quot;
-            @click=&quot;handleDelete(scope.$index, scope.row)&quot;&gt;删除&lt;/el-button&gt;
-        &lt;/template&gt;
-      &lt;/el-table-column&gt;
-&lt;/el-table&gt;
-&lt;script&gt;
-    export default {
-        name: &quot;Tables&quot;,
-        data() {
-            return {
-                tableData: [
-                    {
-                        id: 21, name: &quot;小陈&quot;, age: 23, email: &quot;60037647@qq.com&quot;,
-                        dept: {id: 1, name: &quot;研发部&quot;}
-                    },
-                    {
-                        id: 22, name: &quot;小张&quot;, age: 25, email: &quot;60038647@qq.com&quot;,
-                        dept: {id: 1, name: &quot;小卖部&quot;}
-                    },
-                    {
-                        id: 23, name: &quot;小李&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
-                        dept: {}
-                    },
-                    {
-                        id: 24, name: &quot;小四&quot;, age: 25, email: &quot;60038657@qq.com&quot;,
-                        dept: {}
-                    },
-                ],
-                search: ''
-            }
-        },
-        methods: {
-            sorts(a, b) {
-                return a.age - b.age;
-            },
-            showDept(row, column, cellValue, index) {
-                if (cellValue) {
-                    return cellValue
-                }
-                return &quot;暂无部门&quot;;
-            },
-            showCss({row, rowIndex}) {
-                if (rowIndex % 2 == 0) {
-                    return &quot;warning-row&quot;;
-                }
-                return &quot;success-row&quot;;
-            },
-            selectRow(selection, row){
-                console.log(selection);
-                console.log(row);
-            },
-            clearSelect(){
-                this.$refs.mytable.clearSelection();
-            },
-            handleEdit(index,row){
-                console.log(index);
-                console.log(row);
-            },
-            handleDelete(index,row){
-                console.log(index);
-                console.log(row);
-            }
-        }
-    }
-&lt;/script&gt;
-
-</code></pre>
-<figure data-type="image" tabindex="4"><img src="https://Tyloo-code.github.io/post-images/1606970641506.png" alt="image-20200513101814910" loading="lazy"></figure>
 <hr>
 ]]></content>
     </entry>
