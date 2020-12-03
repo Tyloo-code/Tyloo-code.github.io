@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1606973808897">
+<link rel="shortcut icon" href="/favicon.ico?v=1606975903499">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -184,19 +184,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">7</span>
+        <span class="site-item-stat-count">6</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-count">2</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-count">2</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -232,47 +232,13 @@
         <div class="section-box box-shadow-wrapper">
           <section class="section tags-section bg-color posts-expand">
             <div class="tags-box">
-  <div class="tag-cloud-title language" data-lan="cloud-tags" data-count="3">
-    目前共计 3 个标签
+  <div class="tag-cloud-title language" data-lan="cloud-tags" data-count="2">
+    目前共计 2 个标签
   </div>
   <div class="tag-cloud-list" id="tags">
     
       
       
-        
-      
-        
-          
-            
-      
-        
-      
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-          
-        
-      
-      <a class="cloud-tag" href="https://Tyloo-code.github.io/tag/FuG-ZHeDO/" rel="1">Vue</a>
-    
-      
-      
-        
-      
-        
-          
         
       
         
@@ -299,10 +265,6 @@
     
       
       
-        
-      
-        
-          
         
       
         
@@ -587,8 +549,205 @@
     <div class="result" id="result">
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/elementui/"" data-c="
-          &lt;h2 id=&#34;8form相关组件&#34;&gt;8.Form相关组件&lt;/h2&gt;
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/ce-shi/"" data-c="
+          &lt;hr&gt;
+&lt;h2 id=&#34;1element-ui-引言&#34;&gt;1.Element UI 引言&lt;/h2&gt;
+&lt;p&gt;官网: https://element.eleme.io/#/zh-CN&lt;/p&gt;
+&lt;h3 id=&#34;11-官方定义&#34;&gt;1.1 官方定义&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;网站快速成型工具&lt;/code&gt; 和 &lt;code&gt;桌面端组件库&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;12-定义&#34;&gt;1.2 定义&lt;/h3&gt;
+&lt;p&gt;element ui 就是基于vue的一个ui框架,该框架基于vue开发了很多相关组件,方便我们快速开发页面。&lt;/p&gt;
+&lt;h3 id=&#34;13-由来&#34;&gt;1.3 由来&lt;/h3&gt;
+&lt;p&gt;饿了么前端团队 基于vue进行开发并且进行了开源  element ui 中提供全部都是封装好组件。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2安装element-ui&#34;&gt;2.安装Element UI&lt;/h2&gt;
+&lt;h3 id=&#34;21通过vue脚手架创建项目&#34;&gt;2.1通过vue脚手架创建项目&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;vue init webpack element(项目名)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;22在vue脚手架项目中安装elementui&#34;&gt;2.2在vue脚手架项目中安装elementui&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;# 1.下载elementui的依赖
+	npm i element-ui -S
+
+# 2.指定当前项目中使用elementui
+	import ElementUI from &#39;element-ui&#39;;
+	import &#39;element-ui/lib/theme-chalk/index.css&#39;;
+
+  //在vue脚手架中使用elementui
+	Vue.use(ElementUI);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3按钮组件示例&#34;&gt;3.按钮组件(示例)&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606975701437.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;31-默认样式按钮&#34;&gt;3.1 默认样式按钮&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+  &amp;lt;el-button&amp;gt;默认按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot;&amp;gt;主要按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;success&amp;quot;&amp;gt;成功按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;info&amp;quot;&amp;gt;信息按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;warning&amp;quot;&amp;gt;警告按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;danger&amp;quot;&amp;gt;危险按钮&amp;lt;/el-button&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;32-简洁按钮&#34;&gt;3.2 简洁按钮&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+  &amp;lt;el-button plain&amp;gt;朴素按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot; plain&amp;gt;主要按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;success&amp;quot; plain&amp;gt;成功按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;info&amp;quot; plain&amp;gt;信息按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;warning&amp;quot; plain&amp;gt;警告按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;danger&amp;quot; plain&amp;gt;危险按钮&amp;lt;/el-button&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;33-圆角按钮&#34;&gt;3.3 圆角按钮&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+  &amp;lt;el-button round&amp;gt;圆角按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot; round&amp;gt;主要按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;success&amp;quot; round&amp;gt;成功按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;info&amp;quot; round&amp;gt;信息按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;warning&amp;quot; round&amp;gt;警告按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;danger&amp;quot; round&amp;gt;危险按钮&amp;lt;/el-button&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;34-图标按钮&#34;&gt;3.4 图标按钮&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+  &amp;lt;el-button icon=&amp;quot;el-icon-search&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot; icon=&amp;quot;el-icon-edit&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;success&amp;quot; icon=&amp;quot;el-icon-check&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;info&amp;quot; icon=&amp;quot;el-icon-message&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;warning&amp;quot; icon=&amp;quot;el-icon-star-off&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;danger&amp;quot; icon=&amp;quot;el-icon-delete&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4按钮组件的详细使用&#34;&gt;4.按钮组件的详细使用&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;总结:日后使用element ui的相关组件时需要注意的是 所有组件都是el-组件名称开头&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;41创建按钮&#34;&gt;4.1创建按钮&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-button&amp;gt;默认按钮&amp;lt;/el-button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;42-按钮属性使用&#34;&gt;4.2 按钮属性使用&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-button type=&amp;quot;primary&amp;quot; 属性名=属性值&amp;gt;默认按钮&amp;lt;/el-button&amp;gt;
+&amp;lt;el-button type=&amp;quot;success&amp;quot; size=&amp;quot;medium&amp;quot; plain=true round circle icon=&amp;quot;el-icon-loading&amp;quot;&amp;gt;&amp;lt;/el-button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;总结:在elementui中所有组件的属性全部写在组件标签上&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;43-按钮组使用&#34;&gt;4.3 按钮组使用&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-button-group&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot; icon=&amp;quot;el-icon-back&amp;quot;&amp;gt;上一页&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot; icon=&amp;quot;el-icon-right&amp;quot;&amp;gt;下一页&amp;lt;/el-button&amp;gt;
+&amp;lt;/el-button-group&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;注意:&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在element ui中所有组件都是 &lt;code&gt;el-组件名称&lt;/code&gt; 方式进行命名&lt;/li&gt;
+&lt;li&gt;在element ui中组件的属性使用&lt;code&gt;都是直接将属性名=属性值方式写在对应的组件标签上&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;5link-文字链接组件&#34;&gt;5.Link 文字链接组件&lt;/h2&gt;
+&lt;h3 id=&#34;51-文字链接组件的创建&#34;&gt;5.1 文字链接组件的创建&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-link&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;52-文字链接组件的属性的使用&#34;&gt;5.2 文字链接组件的属性的使用&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-link  target=&amp;quot;_blank&amp;quot; href=&amp;quot;http://www.baidu.com&amp;quot; &amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&amp;lt;el-link type=&amp;quot;primary&amp;quot;:underline=&amp;quot;false&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&amp;lt;el-link type=&amp;quot;success&amp;quot; disabled&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&amp;lt;el-link type=&amp;quot;info&amp;quot; icon=&amp;quot;el-icon-platform-eleme&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&amp;lt;el-link type=&amp;quot;warning&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&amp;lt;el-link type=&amp;quot;danger&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;6layout-栅格布局组件的使用&#34;&gt;6.Layout (栅格)布局组件的使用&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;通过基础的 24 分栏，迅速简便地创建布局&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;在element ui中布局组件将页面划分为多个行row,每行最多分为24栏(列)&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;61-使用layout组件&#34;&gt;6.1 使用Layout组件&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+	&amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;占用8份&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;占用8份&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;占用8份&amp;lt;/el-col&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;注意:&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在一个布局组件中 是由 &lt;code&gt;row&lt;/code&gt; 和 &lt;code&gt;col&lt;/code&gt; 组合而成&lt;/li&gt;
+&lt;li&gt;在使用时要区分 &lt;code&gt;row属性&lt;/code&gt; 和 &lt;code&gt;col属性&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;62-属性的使用&#34;&gt;6.2 属性的使用&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;行属性使用&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row :gutter=&amp;quot;50&amp;quot; tag=&amp;quot;span&amp;quot;&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;4&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用4份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用8份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;3&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用3份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;9&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用9份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;列属性的使用&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;12&amp;quot; :offset=&amp;quot;9&amp;quot; :psuh=&amp;quot;3&amp;quot; xs&amp;gt;&amp;lt;div style=&amp;quot;border: 1px blue solid;&amp;quot;&amp;gt;我是占用12分&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;6&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px blue solid;&amp;quot;&amp;gt;我是占用6分&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;7container-布局容器组件&#34;&gt;7.Container 布局容器组件&lt;/h2&gt;
+&lt;h3 id=&#34;71-创建布局容器&#34;&gt;7.1 创建布局容器&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-container&amp;gt;
+	
+&amp;lt;/el-container&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;72-容器中包含的子元素&#34;&gt;7.2 容器中包含的子元素&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-header&amp;gt;：顶栏容器。
+&amp;lt;el-aside&amp;gt;：侧边栏容器。
+&amp;lt;el-main&amp;gt;：主要区域容器。
+&amp;lt;el-footer&amp;gt;：底栏容器。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;73-容器的嵌套使用&#34;&gt;7.3 容器的嵌套使用&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!--创建容器--&amp;gt;
+&amp;lt;el-container&amp;gt;
+  &amp;lt;!--header--&amp;gt;
+  &amp;lt;el-header&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是标题&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-header&amp;gt;
+  &amp;lt;!--容器嵌套使用--&amp;gt;
+  &amp;lt;el-container&amp;gt;
+    &amp;lt;!--aside--&amp;gt;
+    &amp;lt;el-aside&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是菜单&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-aside&amp;gt;
+    &amp;lt;!--main--&amp;gt;
+    &amp;lt;el-main&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是中心内容&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-main&amp;gt;
+  &amp;lt;/el-container&amp;gt;
+  &amp;lt;el-footer&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是页脚&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-footer&amp;gt;
+&amp;lt;/el-container&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;74-水平容器&#34;&gt;7.4 水平容器&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-container direction=&amp;quot;horizontal&amp;quot;&amp;gt;
+  &amp;lt;!--header--&amp;gt;
+  &amp;lt;el-header&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是标题&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-header&amp;gt;
+  &amp;lt;el-container&amp;gt;
+    &amp;lt;!--aside--&amp;gt;
+    &amp;lt;el-aside&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是菜单&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-aside&amp;gt;
+    &amp;lt;!--main--&amp;gt;
+    &amp;lt;el-main&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是中心内容&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-main&amp;gt;
+  &amp;lt;/el-container&amp;gt;
+  &amp;lt;el-footer&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是页脚&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-footer&amp;gt;
+&amp;lt;/el-container&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;注意:当子元素中没有有 el-header 或 el-footer 时容器排列为水平&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;75-垂直容器&#34;&gt;7.5 垂直容器&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-container direction=&amp;quot;vertical&amp;quot;&amp;gt;
+  &amp;lt;!--header--&amp;gt;
+  &amp;lt;el-header&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是标题&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-header&amp;gt;
+  &amp;lt;el-container&amp;gt;
+    &amp;lt;!--aside--&amp;gt;
+    &amp;lt;el-aside&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是菜单&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-aside&amp;gt;
+    &amp;lt;!--main--&amp;gt;
+    &amp;lt;el-main&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是中心内容&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-main&amp;gt;
+  &amp;lt;/el-container&amp;gt;
+  &amp;lt;!--footer--&amp;gt;
+  &amp;lt;el-footer&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是页脚&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-footer&amp;gt;
+&amp;lt;/el-container&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;8form相关组件&#34;&gt;8.Form相关组件&lt;/h2&gt;
 &lt;h3 id=&#34;81-radio单选按钮&#34;&gt;8.1 Radio单选按钮&lt;/h3&gt;
 &lt;h4 id=&#34;1创建radio按钮&#34;&gt;1.创建Radio按钮&lt;/h4&gt;
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!--组件创建--&amp;gt;
@@ -1048,7 +1207,7 @@
     }
 &amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606970853719.png&#34; alt=&#34;image-20200511100330078&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606975735552.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h5 id=&#34;32-picker-options&#34;&gt;3.2 Picker Options&lt;/h5&gt;
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-date-picker
                 v-model=&amp;quot;createDate&amp;quot;
@@ -1074,7 +1233,7 @@
     }
 &amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606970839111.png&#34; alt=&#34;image-20200511100634677&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606975746134.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h4 id=&#34;4事件使用&#34;&gt;4.事件使用&lt;/h4&gt;
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-date-picker
                 .....
@@ -1534,7 +1693,7 @@ methods: {
     }
 &amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606970684096.png&#34; alt=&#34;image-20200513101148070&#34; loading=&#34;lazy&#34;&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606975770913.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/h2&gt;
 &lt;h3 id=&#34;7自定义表头&#34;&gt;7.自定义表头&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; &amp;lt;el-table :data=&amp;quot;tableData.filter(data =&amp;gt; !search || data.name.toLowerCase().includes(search.toLowerCase()))&amp;quot; &amp;gt;
    .....
@@ -1619,214 +1778,10 @@ methods: {
 &amp;lt;/script&amp;gt;
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606970641506.png&#34; alt=&#34;image-20200513101814910&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606975779180.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;!&lt;/p&gt;
 &lt;hr&gt;
-&lt;!-- more --&gt;
-&lt;p&gt;视频教程：&lt;a href=&#34;https://www.bilibili.com/video/BV1NK4y187XH?t=474&amp;amp;p=2&#34;&gt;B站 编程不良人|百知教育&lt;/a&gt;&lt;/p&gt;
-">Element UI 实战教程(二)</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/element-ui-shi-zhan-jiao-cheng/"" data-c="
-          &lt;h2 id=&#34;1element-ui-引言&#34;&gt;1.Element UI 引言&lt;/h2&gt;
-&lt;p&gt;官网: https://element.eleme.io/#/zh-CN&lt;/p&gt;
-&lt;h3 id=&#34;11-官方定义&#34;&gt;1.1 官方定义&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;网站快速成型工具&lt;/code&gt; 和 &lt;code&gt;桌面端组件库&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;12-定义&#34;&gt;1.2 定义&lt;/h3&gt;
-&lt;p&gt;element ui 就是基于vue的一个ui框架,该框架基于vue开发了很多相关组件,方便我们快速开发页面。&lt;/p&gt;
-&lt;h3 id=&#34;13-由来&#34;&gt;1.3 由来&lt;/h3&gt;
-&lt;p&gt;饿了么前端团队 基于vue进行开发并且进行了开源  element ui 中提供全部都是封装好组件。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;2安装element-ui&#34;&gt;2.安装Element UI&lt;/h2&gt;
-&lt;h3 id=&#34;21通过vue脚手架创建项目&#34;&gt;2.1通过vue脚手架创建项目&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;vue init webpack element(项目名)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;22在vue脚手架项目中安装elementui&#34;&gt;2.2在vue脚手架项目中安装elementui&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;# 1.下载elementui的依赖
-	npm i element-ui -S
-
-# 2.指定当前项目中使用elementui
-	import ElementUI from &#39;element-ui&#39;;
-	import &#39;element-ui/lib/theme-chalk/index.css&#39;;
-
-  //在vue脚手架中使用elementui
-	Vue.use(ElementUI);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;3按钮组件示例&#34;&gt;3.按钮组件(示例)&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606970899616.png&#34; alt=&#34;image-20200503155535505&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h4 id=&#34;31-默认样式按钮&#34;&gt;3.1 默认样式按钮&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
-  &amp;lt;el-button&amp;gt;默认按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;primary&amp;quot;&amp;gt;主要按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;success&amp;quot;&amp;gt;成功按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;info&amp;quot;&amp;gt;信息按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;warning&amp;quot;&amp;gt;警告按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;danger&amp;quot;&amp;gt;危险按钮&amp;lt;/el-button&amp;gt;
-&amp;lt;/el-row&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id=&#34;32-简洁按钮&#34;&gt;3.2 简洁按钮&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
-  &amp;lt;el-button plain&amp;gt;朴素按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;primary&amp;quot; plain&amp;gt;主要按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;success&amp;quot; plain&amp;gt;成功按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;info&amp;quot; plain&amp;gt;信息按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;warning&amp;quot; plain&amp;gt;警告按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;danger&amp;quot; plain&amp;gt;危险按钮&amp;lt;/el-button&amp;gt;
-&amp;lt;/el-row&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id=&#34;33-圆角按钮&#34;&gt;3.3 圆角按钮&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
-  &amp;lt;el-button round&amp;gt;圆角按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;primary&amp;quot; round&amp;gt;主要按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;success&amp;quot; round&amp;gt;成功按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;info&amp;quot; round&amp;gt;信息按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;warning&amp;quot; round&amp;gt;警告按钮&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;danger&amp;quot; round&amp;gt;危险按钮&amp;lt;/el-button&amp;gt;
-&amp;lt;/el-row&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id=&#34;34-图标按钮&#34;&gt;3.4 图标按钮&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
-  &amp;lt;el-button icon=&amp;quot;el-icon-search&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;primary&amp;quot; icon=&amp;quot;el-icon-edit&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;success&amp;quot; icon=&amp;quot;el-icon-check&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;info&amp;quot; icon=&amp;quot;el-icon-message&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;warning&amp;quot; icon=&amp;quot;el-icon-star-off&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;danger&amp;quot; icon=&amp;quot;el-icon-delete&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
-&amp;lt;/el-row&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;4按钮组件的详细使用&#34;&gt;4.按钮组件的详细使用&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;总结:日后使用element ui的相关组件时需要注意的是 所有组件都是el-组件名称开头&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;41创建按钮&#34;&gt;4.1创建按钮&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-button&amp;gt;默认按钮&amp;lt;/el-button&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;42-按钮属性使用&#34;&gt;4.2 按钮属性使用&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-button type=&amp;quot;primary&amp;quot; 属性名=属性值&amp;gt;默认按钮&amp;lt;/el-button&amp;gt;
-&amp;lt;el-button type=&amp;quot;success&amp;quot; size=&amp;quot;medium&amp;quot; plain=true round circle icon=&amp;quot;el-icon-loading&amp;quot;&amp;gt;&amp;lt;/el-button&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;总结:在elementui中所有组件的属性全部写在组件标签上&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;43-按钮组使用&#34;&gt;4.3 按钮组使用&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-button-group&amp;gt;
-  &amp;lt;el-button type=&amp;quot;primary&amp;quot; icon=&amp;quot;el-icon-back&amp;quot;&amp;gt;上一页&amp;lt;/el-button&amp;gt;
-  &amp;lt;el-button type=&amp;quot;primary&amp;quot; icon=&amp;quot;el-icon-right&amp;quot;&amp;gt;下一页&amp;lt;/el-button&amp;gt;
-&amp;lt;/el-button-group&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;注意:&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在element ui中所有组件都是 &lt;code&gt;el-组件名称&lt;/code&gt; 方式进行命名&lt;/li&gt;
-&lt;li&gt;在element ui中组件的属性使用&lt;code&gt;都是直接将属性名=属性值方式写在对应的组件标签上&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;5link-文字链接组件&#34;&gt;5.Link 文字链接组件&lt;/h2&gt;
-&lt;h3 id=&#34;51-文字链接组件的创建&#34;&gt;5.1 文字链接组件的创建&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-link&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;52-文字链接组件的属性的使用&#34;&gt;5.2 文字链接组件的属性的使用&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-link  target=&amp;quot;_blank&amp;quot; href=&amp;quot;http://www.baidu.com&amp;quot; &amp;gt;默认链接&amp;lt;/el-link&amp;gt;
-&amp;lt;el-link type=&amp;quot;primary&amp;quot;:underline=&amp;quot;false&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
-&amp;lt;el-link type=&amp;quot;success&amp;quot; disabled&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
-&amp;lt;el-link type=&amp;quot;info&amp;quot; icon=&amp;quot;el-icon-platform-eleme&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
-&amp;lt;el-link type=&amp;quot;warning&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
-&amp;lt;el-link type=&amp;quot;danger&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;6layout-栅格布局组件的使用&#34;&gt;6.Layout (栅格)布局组件的使用&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;通过基础的 24 分栏，迅速简便地创建布局&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;在element ui中布局组件将页面划分为多个行row,每行最多分为24栏(列)&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;61-使用layout组件&#34;&gt;6.1 使用Layout组件&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
-	&amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;占用8份&amp;lt;/el-col&amp;gt;
-  &amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;占用8份&amp;lt;/el-col&amp;gt;
-  &amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;占用8份&amp;lt;/el-col&amp;gt;
-&amp;lt;/el-row&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;注意:&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在一个布局组件中 是由 &lt;code&gt;row&lt;/code&gt; 和 &lt;code&gt;col&lt;/code&gt; 组合而成&lt;/li&gt;
-&lt;li&gt;在使用时要区分 &lt;code&gt;row属性&lt;/code&gt; 和 &lt;code&gt;col属性&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;62-属性的使用&#34;&gt;6.2 属性的使用&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;行属性使用&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row :gutter=&amp;quot;50&amp;quot; tag=&amp;quot;span&amp;quot;&amp;gt;
-  &amp;lt;el-col :span=&amp;quot;4&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用4份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
-  &amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用8份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
-  &amp;lt;el-col :span=&amp;quot;3&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用3份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
-  &amp;lt;el-col :span=&amp;quot;9&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用9份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
-&amp;lt;/el-row&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;列属性的使用&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
-  &amp;lt;el-col :span=&amp;quot;12&amp;quot; :offset=&amp;quot;9&amp;quot; :psuh=&amp;quot;3&amp;quot; xs&amp;gt;&amp;lt;div style=&amp;quot;border: 1px blue solid;&amp;quot;&amp;gt;我是占用12分&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
-  &amp;lt;el-col :span=&amp;quot;6&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px blue solid;&amp;quot;&amp;gt;我是占用6分&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
-&amp;lt;/el-row&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;7container-布局容器组件&#34;&gt;7.Container 布局容器组件&lt;/h2&gt;
-&lt;h3 id=&#34;71-创建布局容器&#34;&gt;7.1 创建布局容器&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-container&amp;gt;
-	
-&amp;lt;/el-container&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;72-容器中包含的子元素&#34;&gt;7.2 容器中包含的子元素&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-header&amp;gt;：顶栏容器。
-&amp;lt;el-aside&amp;gt;：侧边栏容器。
-&amp;lt;el-main&amp;gt;：主要区域容器。
-&amp;lt;el-footer&amp;gt;：底栏容器。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;73-容器的嵌套使用&#34;&gt;7.3 容器的嵌套使用&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!--创建容器--&amp;gt;
-&amp;lt;el-container&amp;gt;
-  &amp;lt;!--header--&amp;gt;
-  &amp;lt;el-header&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是标题&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-header&amp;gt;
-  &amp;lt;!--容器嵌套使用--&amp;gt;
-  &amp;lt;el-container&amp;gt;
-    &amp;lt;!--aside--&amp;gt;
-    &amp;lt;el-aside&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是菜单&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-aside&amp;gt;
-    &amp;lt;!--main--&amp;gt;
-    &amp;lt;el-main&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是中心内容&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-main&amp;gt;
-  &amp;lt;/el-container&amp;gt;
-  &amp;lt;el-footer&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是页脚&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-footer&amp;gt;
-&amp;lt;/el-container&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;74-水平容器&#34;&gt;7.4 水平容器&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-container direction=&amp;quot;horizontal&amp;quot;&amp;gt;
-  &amp;lt;!--header--&amp;gt;
-  &amp;lt;el-header&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是标题&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-header&amp;gt;
-  &amp;lt;el-container&amp;gt;
-    &amp;lt;!--aside--&amp;gt;
-    &amp;lt;el-aside&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是菜单&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-aside&amp;gt;
-    &amp;lt;!--main--&amp;gt;
-    &amp;lt;el-main&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是中心内容&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-main&amp;gt;
-  &amp;lt;/el-container&amp;gt;
-  &amp;lt;el-footer&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是页脚&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-footer&amp;gt;
-&amp;lt;/el-container&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;注意:当子元素中没有有 el-header 或 el-footer 时容器排列为水平&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;75-垂直容器&#34;&gt;7.5 垂直容器&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-container direction=&amp;quot;vertical&amp;quot;&amp;gt;
-  &amp;lt;!--header--&amp;gt;
-  &amp;lt;el-header&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是标题&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-header&amp;gt;
-  &amp;lt;el-container&amp;gt;
-    &amp;lt;!--aside--&amp;gt;
-    &amp;lt;el-aside&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是菜单&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-aside&amp;gt;
-    &amp;lt;!--main--&amp;gt;
-    &amp;lt;el-main&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是中心内容&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-main&amp;gt;
-  &amp;lt;/el-container&amp;gt;
-  &amp;lt;!--footer--&amp;gt;
-  &amp;lt;el-footer&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是页脚&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-footer&amp;gt;
-&amp;lt;/el-container&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;!-- more --&gt;
-&lt;p&gt;视频教程：&lt;a href=&#34;https://www.bilibili.com/video/BV1NK4y187XH?t=474&amp;amp;p=2&#34;&gt;B站 编程不良人|百知教育&lt;/a&gt;&lt;/p&gt;
-">Element UI 实战教程(一)</a>
+&lt;p&gt;鸣谢：源自&lt;a href=&#34;https://www.bilibili.com/video/BV1NK4y187XH&#34;&gt;视频教程-陈老师&lt;/a&gt;&lt;/p&gt;
+">Element UI 实战教程</a>
       </div>
       
       <div class="item">
