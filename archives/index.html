@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1606876547165">
+<link rel="shortcut icon" href="/favicon.ico?v=1606972407603">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -185,7 +185,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-count">6</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -238,7 +238,7 @@
   <div class="archive-timeline-box">
     <div class="archive-timeline-title">
       
-        <h2 class="language" data-lan="archives" data-count="5">非常好！目前共计5篇日志，继续努力！</h2>
+        <h2 class="language" data-lan="archives" data-count="6">非常好！目前共计6篇日志，继续努力！</h2>
       
     </div>
     
@@ -248,6 +248,19 @@
           <h2 class="tag-year">2020</h2>
         </div>    
         
+      
+      <a href="https://Tyloo-code.github.io/post/element-ui-shi-zhan-jiao-cheng/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              12-03
+              <small>Element UI 实战教程</small>
+            </h1>
+          </div>  
+      </div>
+      </a>
+    
+      
       
       <a href="https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/">
         <div class="motion-warpper tag-archive-node">
@@ -535,6 +548,1242 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/element-ui-shi-zhan-jiao-cheng/"" data-c="
+          &lt;h2 id=&#34;1element-ui-引言&#34;&gt;1.Element UI 引言&lt;/h2&gt;
+&lt;p&gt;官网: https://element.eleme.io/#/zh-CN&lt;/p&gt;
+&lt;h3 id=&#34;11-官方定义&#34;&gt;1.1 官方定义&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;网站快速成型工具&lt;/code&gt; 和 &lt;code&gt;桌面端组件库&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;12-定义&#34;&gt;1.2 定义&lt;/h3&gt;
+&lt;p&gt;element ui 就是基于vue的一个ui框架,该框架基于vue开发了很多相关组件,方便我们快速开发页面。&lt;/p&gt;
+&lt;h3 id=&#34;13-由来&#34;&gt;1.3 由来&lt;/h3&gt;
+&lt;p&gt;饿了么前端团队 基于vue进行开发并且进行了开源  element ui 中提供全部都是封装好组件。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2安装element-ui&#34;&gt;2.安装Element UI&lt;/h2&gt;
+&lt;h3 id=&#34;21通过vue脚手架创建项目&#34;&gt;2.1通过vue脚手架创建项目&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;vue init webpack element(项目名)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;22在vue脚手架项目中安装elementui&#34;&gt;2.2在vue脚手架项目中安装elementui&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;# 1.下载elementui的依赖
+	npm i element-ui -S
+
+# 2.指定当前项目中使用elementui
+	import ElementUI from &#39;element-ui&#39;;
+	import &#39;element-ui/lib/theme-chalk/index.css&#39;;
+
+  //在vue脚手架中使用elementui
+	Vue.use(ElementUI);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3按钮组件示例&#34;&gt;3.按钮组件(示例)&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606970899616.png&#34; alt=&#34;image-20200503155535505&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;31-默认样式按钮&#34;&gt;3.1 默认样式按钮&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+  &amp;lt;el-button&amp;gt;默认按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot;&amp;gt;主要按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;success&amp;quot;&amp;gt;成功按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;info&amp;quot;&amp;gt;信息按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;warning&amp;quot;&amp;gt;警告按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;danger&amp;quot;&amp;gt;危险按钮&amp;lt;/el-button&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;32-简洁按钮&#34;&gt;3.2 简洁按钮&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+  &amp;lt;el-button plain&amp;gt;朴素按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot; plain&amp;gt;主要按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;success&amp;quot; plain&amp;gt;成功按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;info&amp;quot; plain&amp;gt;信息按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;warning&amp;quot; plain&amp;gt;警告按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;danger&amp;quot; plain&amp;gt;危险按钮&amp;lt;/el-button&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;33-圆角按钮&#34;&gt;3.3 圆角按钮&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+  &amp;lt;el-button round&amp;gt;圆角按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot; round&amp;gt;主要按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;success&amp;quot; round&amp;gt;成功按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;info&amp;quot; round&amp;gt;信息按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;warning&amp;quot; round&amp;gt;警告按钮&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;danger&amp;quot; round&amp;gt;危险按钮&amp;lt;/el-button&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;34-图标按钮&#34;&gt;3.4 图标按钮&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+  &amp;lt;el-button icon=&amp;quot;el-icon-search&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot; icon=&amp;quot;el-icon-edit&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;success&amp;quot; icon=&amp;quot;el-icon-check&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;info&amp;quot; icon=&amp;quot;el-icon-message&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;warning&amp;quot; icon=&amp;quot;el-icon-star-off&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;danger&amp;quot; icon=&amp;quot;el-icon-delete&amp;quot; circle&amp;gt;&amp;lt;/el-button&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4按钮组件的详细使用&#34;&gt;4.按钮组件的详细使用&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;总结:日后使用element ui的相关组件时需要注意的是 所有组件都是el-组件名称开头&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;41创建按钮&#34;&gt;4.1创建按钮&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-button&amp;gt;默认按钮&amp;lt;/el-button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;42-按钮属性使用&#34;&gt;4.2 按钮属性使用&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-button type=&amp;quot;primary&amp;quot; 属性名=属性值&amp;gt;默认按钮&amp;lt;/el-button&amp;gt;
+&amp;lt;el-button type=&amp;quot;success&amp;quot; size=&amp;quot;medium&amp;quot; plain=true round circle icon=&amp;quot;el-icon-loading&amp;quot;&amp;gt;&amp;lt;/el-button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;总结:在elementui中所有组件的属性全部写在组件标签上&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;43-按钮组使用&#34;&gt;4.3 按钮组使用&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-button-group&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot; icon=&amp;quot;el-icon-back&amp;quot;&amp;gt;上一页&amp;lt;/el-button&amp;gt;
+  &amp;lt;el-button type=&amp;quot;primary&amp;quot; icon=&amp;quot;el-icon-right&amp;quot;&amp;gt;下一页&amp;lt;/el-button&amp;gt;
+&amp;lt;/el-button-group&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;注意:&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在element ui中所有组件都是 &lt;code&gt;el-组件名称&lt;/code&gt; 方式进行命名&lt;/li&gt;
+&lt;li&gt;在element ui中组件的属性使用&lt;code&gt;都是直接将属性名=属性值方式写在对应的组件标签上&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;5link-文字链接组件&#34;&gt;5.Link 文字链接组件&lt;/h2&gt;
+&lt;h3 id=&#34;51-文字链接组件的创建&#34;&gt;5.1 文字链接组件的创建&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-link&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;52-文字链接组件的属性的使用&#34;&gt;5.2 文字链接组件的属性的使用&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-link  target=&amp;quot;_blank&amp;quot; href=&amp;quot;http://www.baidu.com&amp;quot; &amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&amp;lt;el-link type=&amp;quot;primary&amp;quot;:underline=&amp;quot;false&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&amp;lt;el-link type=&amp;quot;success&amp;quot; disabled&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&amp;lt;el-link type=&amp;quot;info&amp;quot; icon=&amp;quot;el-icon-platform-eleme&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&amp;lt;el-link type=&amp;quot;warning&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&amp;lt;el-link type=&amp;quot;danger&amp;quot;&amp;gt;默认链接&amp;lt;/el-link&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;6layout-栅格布局组件的使用&#34;&gt;6.Layout (栅格)布局组件的使用&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;通过基础的 24 分栏，迅速简便地创建布局&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;在element ui中布局组件将页面划分为多个行row,每行最多分为24栏(列)&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;61-使用layout组件&#34;&gt;6.1 使用Layout组件&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+	&amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;占用8份&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;占用8份&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;占用8份&amp;lt;/el-col&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;注意:&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在一个布局组件中 是由 &lt;code&gt;row&lt;/code&gt; 和 &lt;code&gt;col&lt;/code&gt; 组合而成&lt;/li&gt;
+&lt;li&gt;在使用时要区分 &lt;code&gt;row属性&lt;/code&gt; 和 &lt;code&gt;col属性&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;62-属性的使用&#34;&gt;6.2 属性的使用&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;行属性使用&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row :gutter=&amp;quot;50&amp;quot; tag=&amp;quot;span&amp;quot;&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;4&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用4份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;8&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用8份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;3&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用3份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;9&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px red solid;&amp;quot;&amp;gt;占用9份&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;列属性的使用&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-row&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;12&amp;quot; :offset=&amp;quot;9&amp;quot; :psuh=&amp;quot;3&amp;quot; xs&amp;gt;&amp;lt;div style=&amp;quot;border: 1px blue solid;&amp;quot;&amp;gt;我是占用12分&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+  &amp;lt;el-col :span=&amp;quot;6&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;border: 1px blue solid;&amp;quot;&amp;gt;我是占用6分&amp;lt;/div&amp;gt;&amp;lt;/el-col&amp;gt;
+&amp;lt;/el-row&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;7container-布局容器组件&#34;&gt;7.Container 布局容器组件&lt;/h2&gt;
+&lt;h3 id=&#34;71-创建布局容器&#34;&gt;7.1 创建布局容器&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-container&amp;gt;
+	
+&amp;lt;/el-container&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;72-容器中包含的子元素&#34;&gt;7.2 容器中包含的子元素&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-header&amp;gt;：顶栏容器。
+&amp;lt;el-aside&amp;gt;：侧边栏容器。
+&amp;lt;el-main&amp;gt;：主要区域容器。
+&amp;lt;el-footer&amp;gt;：底栏容器。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;73-容器的嵌套使用&#34;&gt;7.3 容器的嵌套使用&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!--创建容器--&amp;gt;
+&amp;lt;el-container&amp;gt;
+  &amp;lt;!--header--&amp;gt;
+  &amp;lt;el-header&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是标题&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-header&amp;gt;
+  &amp;lt;!--容器嵌套使用--&amp;gt;
+  &amp;lt;el-container&amp;gt;
+    &amp;lt;!--aside--&amp;gt;
+    &amp;lt;el-aside&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是菜单&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-aside&amp;gt;
+    &amp;lt;!--main--&amp;gt;
+    &amp;lt;el-main&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是中心内容&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-main&amp;gt;
+  &amp;lt;/el-container&amp;gt;
+  &amp;lt;el-footer&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是页脚&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-footer&amp;gt;
+&amp;lt;/el-container&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;74-水平容器&#34;&gt;7.4 水平容器&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-container direction=&amp;quot;horizontal&amp;quot;&amp;gt;
+  &amp;lt;!--header--&amp;gt;
+  &amp;lt;el-header&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是标题&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-header&amp;gt;
+  &amp;lt;el-container&amp;gt;
+    &amp;lt;!--aside--&amp;gt;
+    &amp;lt;el-aside&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是菜单&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-aside&amp;gt;
+    &amp;lt;!--main--&amp;gt;
+    &amp;lt;el-main&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是中心内容&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-main&amp;gt;
+  &amp;lt;/el-container&amp;gt;
+  &amp;lt;el-footer&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是页脚&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-footer&amp;gt;
+&amp;lt;/el-container&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;注意:当子元素中没有有 el-header 或 el-footer 时容器排列为水平&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;75-垂直容器&#34;&gt;7.5 垂直容器&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-container direction=&amp;quot;vertical&amp;quot;&amp;gt;
+  &amp;lt;!--header--&amp;gt;
+  &amp;lt;el-header&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是标题&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-header&amp;gt;
+  &amp;lt;el-container&amp;gt;
+    &amp;lt;!--aside--&amp;gt;
+    &amp;lt;el-aside&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是菜单&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-aside&amp;gt;
+    &amp;lt;!--main--&amp;gt;
+    &amp;lt;el-main&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是中心内容&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-main&amp;gt;
+  &amp;lt;/el-container&amp;gt;
+  &amp;lt;!--footer--&amp;gt;
+  &amp;lt;el-footer&amp;gt;&amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;我是页脚&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/el-footer&amp;gt;
+&amp;lt;/el-container&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;8form相关组件&#34;&gt;8.Form相关组件&lt;/h2&gt;
+&lt;h3 id=&#34;81-radio单选按钮&#34;&gt;8.1 Radio单选按钮&lt;/h3&gt;
+&lt;h4 id=&#34;1创建radio按钮&#34;&gt;1.创建Radio按钮&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!--组件创建--&amp;gt;
+&amp;lt;el-radio v-model=&amp;quot;label&amp;quot; label=&amp;quot;男&amp;quot;&amp;gt;男&amp;lt;/el-radio&amp;gt;
+&amp;lt;el-radio v-model=&amp;quot;label&amp;quot; label=&amp;quot;女&amp;quot;&amp;gt;女&amp;lt;/el-radio&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Radio&amp;quot;,
+        data(){
+            return{
+                label:&#39;男&#39;
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;注意:在使用radio单选按钮是至少加入v-model和label两个属性&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2radio按钮属性的使用&#34;&gt;2.Radio按钮属性的使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-radio v-model=&amp;quot;label&amp;quot; name=&amp;quot;sex&amp;quot; disabled label=&amp;quot;男&amp;quot;&amp;gt;男&amp;lt;/el-radio&amp;gt;
+&amp;lt;el-radio v-model=&amp;quot;label&amp;quot; name=&amp;quot;sex&amp;quot; border size=&amp;quot;small&amp;quot; label=&amp;quot;女&amp;quot;&amp;gt;女&amp;lt;/el-radio&amp;gt;
+&amp;lt;el-radio v-model=&amp;quot;label&amp;quot; border size=&amp;quot;mini&amp;quot; label=&amp;quot;女&amp;quot;&amp;gt;女&amp;lt;/el-radio&amp;gt;
+&amp;lt;el-radio v-model=&amp;quot;label&amp;quot; border size=&amp;quot;medium&amp;quot; label=&amp;quot;女&amp;quot;&amp;gt;女&amp;lt;/el-radio&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;总结:属性使用还是直接卸载对应的组件标签上以 属性名=属性值 方式使用&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3radio事件的使用&#34;&gt;3.Radio事件的使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-radio v-model=&amp;quot;label&amp;quot; @change=&amp;quot;aa&amp;quot; name=&amp;quot;sex&amp;quot; label=&amp;quot;男&amp;quot;&amp;gt;男&amp;lt;/el-radio&amp;gt;
+&amp;lt;el-radio v-model=&amp;quot;label&amp;quot; @change=&amp;quot;aa&amp;quot; name=&amp;quot;sex&amp;quot; border size=&amp;quot;small&amp;quot; label=&amp;quot;女&amp;quot;&amp;gt;女&amp;lt;/el-radio&amp;gt;
+
+
+
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Radio&amp;quot;,
+        data(){
+            return{
+                label:&#39;男&#39;
+            }
+        },
+        methods:{
+            aa(){ //定义的事件处理函数
+                console.log(this.label);
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;总结:&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;​	事件的使用也是和属性使用是一致都是直接写在对应的组件标签上&lt;/li&gt;
+&lt;li&gt;事件在使用时必须使用Vue中绑定时间方式进行使用如 @事件名=事件处理函数(绑在在vue组件中对应函数)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;4radio按钮组&#34;&gt;4.radio按钮组&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-radio-group v-model=&amp;quot;radio&amp;quot;&amp;gt;
+  &amp;lt;el-radio :label=&amp;quot;3&amp;quot;&amp;gt;备选项3&amp;lt;/el-radio&amp;gt;
+  &amp;lt;el-radio :label=&amp;quot;6&amp;quot;&amp;gt;备选项6&amp;lt;/el-radio&amp;gt;
+  &amp;lt;el-radio :label=&amp;quot;9&amp;quot;&amp;gt;备选项9&amp;lt;/el-radio&amp;gt;
+&amp;lt;/el-radio-group&amp;gt;
+&amp;lt;script&amp;gt;
+  export default {
+    name: &amp;quot;Radio&amp;quot;,
+    data() {
+      return {
+        radio: 6
+      }
+    }
+  }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;82-checkbox组件&#34;&gt;8.2 checkbox组件&lt;/h3&gt;
+&lt;h4 id=&#34;1创建checkbox组件&#34;&gt;1.创建checkbox组件&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-checkbox v-model=&amp;quot;checked&amp;quot;&amp;gt;北京&amp;lt;/el-checkbox&amp;gt;
+&amp;lt;el-checkbox v-model=&amp;quot;checked&amp;quot;&amp;gt;上海&amp;lt;/el-checkbox&amp;gt;
+&amp;lt;el-checkbox v-model=&amp;quot;checked&amp;quot;&amp;gt;天津&amp;lt;/el-checkbox&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;2属性使用&#34;&gt;2.属性使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-checkbox v-model=&amp;quot;checked&amp;quot;  disabled true-label=&amp;quot;北京&amp;quot;&amp;gt;北京&amp;lt;/el-checkbox&amp;gt;
+&amp;lt;el-checkbox checked border true-label=&amp;quot;上海&amp;quot;&amp;gt;上海&amp;lt;/el-checkbox&amp;gt;
+&amp;lt;el-checkbox v-model=&amp;quot;checked&amp;quot; true-label=&amp;quot;天津&amp;quot;&amp;gt;天津&amp;lt;/el-checkbox&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;3事件使用&#34;&gt;3.事件使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-checkbox @change=&amp;quot;aa&amp;quot;v-model=&amp;quot;checked&amp;quot;  true-label=&amp;quot;上海&amp;quot;&amp;gt;上海&amp;lt;/el-checkbox&amp;gt;
+&amp;lt;el-checkbox v-model=&amp;quot;checked&amp;quot; @change=&amp;quot;aa&amp;quot; true-label=&amp;quot;天津&amp;quot;&amp;gt;天津&amp;lt;/el-checkbox&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Checkbox&amp;quot;,
+        data(){
+            return{
+                checked:true
+            }
+        },
+        methods:{
+            aa(){
+                console.log(this.checked);
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;4复选框组的使用&#34;&gt;4.复选框组的使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-checkbox-group @change=&amp;quot;bb&amp;quot; :min=&amp;quot;1&amp;quot; v-model=&amp;quot;checkList&amp;quot;&amp;gt;
+  &amp;lt;el-checkbox label=&amp;quot;复选框 A&amp;quot;&amp;gt;&amp;lt;/el-checkbox&amp;gt;
+  &amp;lt;el-checkbox label=&amp;quot;复选框 B&amp;quot;&amp;gt;&amp;lt;/el-checkbox&amp;gt;
+  &amp;lt;el-checkbox label=&amp;quot;复选框 C&amp;quot;&amp;gt;&amp;lt;/el-checkbox&amp;gt;
+  &amp;lt;el-checkbox label=&amp;quot;禁用&amp;quot; disabled&amp;gt;&amp;lt;/el-checkbox&amp;gt;
+  &amp;lt;el-checkbox label=&amp;quot;选中且禁用&amp;quot; disabled&amp;gt;&amp;lt;/el-checkbox&amp;gt;
+&amp;lt;/el-checkbox-group&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Checkbox&amp;quot;,
+        data(){
+            return{
+                checked:true,
+                checkList:[],
+            }
+        },
+        methods:{
+            aa(){
+                console.log(this.checked);
+            },
+            bb(){
+                console.log(this.checkList);
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;83-input-输入框组件&#34;&gt;8.3 Input 输入框组件&lt;/h3&gt;
+&lt;h4 id=&#34;1创建input组件&#34;&gt;1.创建Input组件&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-input v-model=&amp;quot;name&amp;quot;&amp;gt;&amp;lt;/el-input&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Input&amp;quot;,
+        data(){
+            return {
+                name:&#39;xiaochen&#39;
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;2常用属性&#34;&gt;2.常用属性&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-input v-model=&amp;quot;name&amp;quot; disabled type=&amp;quot;textarea&amp;quot;&amp;gt;&amp;lt;/el-input&amp;gt;
+&amp;lt;el-input v-model=&amp;quot;price&amp;quot; :maxlength=&amp;quot;10&amp;quot; show-word-limit :minlength=&amp;quot;5&amp;quot;&amp;gt;&amp;lt;/el-input&amp;gt;
+&amp;lt;el-input prefix-icon=&amp;quot;el-icon-user-solid&amp;quot; placeholder=&amp;quot;请输入用户名&amp;quot; clearable v-model=&amp;quot;username&amp;quot;&amp;gt;&amp;lt;/el-input&amp;gt;
+&amp;lt;el-input suffix-icon=&amp;quot;el-icon-star-off&amp;quot; placeholder=&amp;quot;请输入密码&amp;quot; show-password type=&amp;quot;password&amp;quot; clearable v-model=&amp;quot;password&amp;quot;&amp;gt;&amp;lt;/el-input&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Input&amp;quot;,
+        data() {
+            return {
+                restaurants: [],
+                state1: &#39;&#39;,
+                state2: &#39;&#39;,
+                name:&#39;xiaochen&#39;,
+                price:0.0,
+                username:&amp;quot;&amp;quot;,
+                password:&amp;quot;&amp;quot;,
+            };
+        },
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;3事件使用-2&#34;&gt;3.事件使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-input v-model=&amp;quot;username&amp;quot; @blur=&amp;quot;aaa&amp;quot; @focus=&amp;quot;bbb&amp;quot; @clear=&amp;quot;clears&amp;quot; clearable @input=&amp;quot;ccc&amp;quot;&amp;gt;&amp;lt;/el-input&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Input&amp;quot;,
+        data() {
+            return {
+                restaurants: [],
+                state1: &#39;&#39;,
+                state2: &#39;&#39;,
+                name:&#39;xiaochen&#39;,
+                price:0.0,
+                username:&amp;quot;&amp;quot;,
+                password:&amp;quot;&amp;quot;,
+            };
+        },
+        methods:{
+            aaa(){
+                console.log(&#39;失去焦点&#39;);
+                ;
+            },
+            bbb(){
+                console.log(&amp;quot;获取焦点&amp;quot;);
+            },
+            ccc(value){
+                console.log(&amp;quot;改变:&amp;quot;+value);
+            },
+            clears(){
+                console.log(&amp;quot;清楚&amp;quot;);
+            }
+
+
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;4方法的使用&#34;&gt;4.方法的使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;h1&amp;gt;方法的使用&amp;lt;/h1&amp;gt;
+&amp;lt;el-input v-model=&amp;quot;username&amp;quot; ref=&amp;quot;inputs&amp;quot;&amp;gt;&amp;lt;/el-input&amp;gt;
+
+&amp;lt;el-button @click=&amp;quot;focusInputs&amp;quot;&amp;gt;focus方法&amp;lt;/el-button&amp;gt;
+&amp;lt;el-button @click=&amp;quot;blurInputs&amp;quot;&amp;gt;blur方法&amp;lt;/el-button&amp;gt;
+
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Input&amp;quot;,
+        data() {
+            return{}
+        },
+        methods:{
+            //调用focus方法
+            focusInputs(){
+                this.$refs.inputs.focus();
+            },
+           //调用失去焦点方法
+            blurInputs(){
+                this.$refs.inputs.blur();
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;总结&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;​	在使用组件的方法时需要在对应的组件中加入 &lt;code&gt;ref=&amp;quot;组件别名&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在调用方法时直接使用 &lt;code&gt;this.$refs.组件别名.方法名()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;注意:在elementui中所有组件 都存在 属性 事件 和方法&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;属性:&lt;/code&gt;直接写在对应的组件标签上 使用方式:&lt;code&gt;属性名=属性值&lt;/code&gt;方式&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;事件&lt;/code&gt;: 直接使用vue绑定事件方式写在对应的组件标签上 使用方式:&lt;code&gt;@事件名=vue中事件处理函数&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;方法&lt;/code&gt;: 1.在对应组件标签上使用&lt;code&gt;ref=组件别名&lt;/code&gt; 2.&lt;code&gt;通过使用this.$refs.组件别名.方法名()&lt;/code&gt;进行调用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;84-select选择器组件的使用&#34;&gt;8.4 Select选择器组件的使用&lt;/h3&gt;
+&lt;h4 id=&#34;1组件创建&#34;&gt;1.组件创建&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;# 1.数据写死在页面上
+&amp;lt;el-select v-model=&amp;quot;cityName&amp;quot;&amp;gt;
+  &amp;lt;el-option value=&amp;quot;北京&amp;quot;&amp;gt;北京&amp;lt;/el-option&amp;gt;
+  &amp;lt;el-option value=&amp;quot;天津&amp;quot;&amp;gt;天津&amp;lt;/el-option&amp;gt;
+&amp;lt;/el-select&amp;gt;
+	注意:1.要求下拉列表中必须存在option的value属性值 2.要求select中必须使用v-model进行数据绑定
+
+# 2.如何动态获取数据
+ &amp;lt;el-select&amp;gt;
+ 		&amp;lt;el-option v-for=&amp;quot;option in options&amp;quot; :label=&amp;quot;option.name&amp;quot; :value=&amp;quot;option.id&amp;quot; :key=&amp;quot;option.id&amp;quot;&amp;gt;
+ 		&amp;lt;/el-option&amp;gt;
+ &amp;lt;/el-select&amp;gt;
+
+  &amp;lt;script&amp;gt;
+      export default {
+          name: &amp;quot;Select&amp;quot;,
+          data(){
+              return{
+                  options:[
+                      {id:&#39;1&#39;,name:&amp;quot;研发部&amp;quot;},
+                      {id:&#39;2&#39;,name:&amp;quot;小卖部&amp;quot;},
+                      {id:&#39;3&#39;,name:&amp;quot;小米部&amp;quot;},
+                  ]
+              }
+          },
+      }
+  &amp;lt;/script&amp;gt;
+  
+# 3.获取下拉列表选中数据
+ &amp;lt;el-select v-model=&amp;quot;cityId&amp;quot; multiple clearable&amp;gt;
+        &amp;lt;el-option v-for=&amp;quot;option in options&amp;quot; :label=&amp;quot;option.name&amp;quot; :value=&amp;quot;option.id&amp;quot; :key=&amp;quot;option.id&amp;quot;&amp;gt;&amp;lt;/el-option&amp;gt;
+&amp;lt;/el-select&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Select&amp;quot;,
+        data(){
+            return{
+                options:[
+                    {id:&#39;1&#39;,name:&amp;quot;研发部&amp;quot;},
+                    {id:&#39;2&#39;,name:&amp;quot;小卖部&amp;quot;},
+                    {id:&#39;3&#39;,name:&amp;quot;小米部&amp;quot;},
+                ],
+                cityId:&#39;&#39;
+            }
+        },
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;2属性使用-2&#34;&gt;2.属性使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-select v-model=&amp;quot;cityId&amp;quot; multiple clearable&amp;gt;
+  ......
+&amp;lt;/el-select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;3事件的使用&#34;&gt;3.事件的使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-select v-model=&amp;quot;cityId&amp;quot; @change=&amp;quot;aaa&amp;quot; multiple clearable&amp;gt;
+  &amp;lt;el-option v-for=&amp;quot;option in options&amp;quot; :label=&amp;quot;option.name&amp;quot; :value=&amp;quot;option.id&amp;quot; :key=&amp;quot;option.id&amp;quot;&amp;gt;
+  &amp;lt;/el-option&amp;gt;
+&amp;lt;/el-select&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Select&amp;quot;,
+        data(){
+            return{
+                options:[
+                    {id:&#39;1&#39;,name:&amp;quot;研发部&amp;quot;},
+                    {id:&#39;2&#39;,name:&amp;quot;小卖部&amp;quot;},
+                    {id:&#39;3&#39;,name:&amp;quot;小米部&amp;quot;},
+                ],
+                cityId:&#39;&#39;,
+                cityName:&#39;&#39;
+            }
+        },
+        methods:{
+            aaa(value){
+                console.log(value);
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;4方法的使用-2&#34;&gt;4.方法的使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;1.给组件通过ref起别名并绑定到vue实例中
+ &amp;lt;el-select ref=&amp;quot;selects&amp;quot; v-model=&amp;quot;cityId&amp;quot; @change=&amp;quot;aaa&amp;quot; multiple clearable&amp;gt;
+       ....
+ &amp;lt;/el-select&amp;gt;
+2.调用方法
+ this.$refs.selects.focus();//方法调用
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;85-switch-开关组件&#34;&gt;8.5 Switch 开关组件&lt;/h3&gt;
+&lt;h4 id=&#34;1switch组件的创建&#34;&gt;1.Switch组件的创建&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-switch v-model=&amp;quot;value&amp;quot;&amp;gt;&amp;lt;/el-switch&amp;gt;
+&amp;lt;script&amp;gt;
+  export default {
+    name: &amp;quot;Switchs&amp;quot;,
+    data(){
+      return{
+        value:true
+      }
+    }
+  }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;2属性使用-3&#34;&gt;2.属性使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-switch v-model=&amp;quot;value&amp;quot; active-text=&amp;quot;打开&amp;quot; active-color=&amp;quot;#13ce66&amp;quot; inactive-color=&amp;quot;#ff4949&amp;quot; :active-
+           value=&amp;quot;true&amp;quot; :inactive-value=&amp;quot;false&amp;quot; inactive-text=&amp;quot;关闭&amp;quot; :width=&amp;quot;200&amp;quot;&amp;gt;
+&amp;lt;/el-switch&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;3事件使用-3&#34;&gt;3.事件使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-switch v-model=&amp;quot;value&amp;quot; @change=&amp;quot;aaa&amp;quot;&amp;gt;&amp;lt;/el-switch&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Switchs&amp;quot;,
+        data(){
+            return{
+                value:true
+            }
+        },
+        methods:{
+            aaa(value){
+                console.log(value);
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;4方法使用&#34;&gt;4.方法使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-switch ref=&amp;quot;sw&amp;quot; v-model=&amp;quot;value&amp;quot; @change=&amp;quot;aaa&amp;quot; active-text=&amp;quot;打开&amp;quot; active-color=&amp;quot;#13ce66&amp;quot; inactive-color=&amp;quot;#ff4949&amp;quot; :active-value=&amp;quot;true&amp;quot; :inactive-value=&amp;quot;false&amp;quot; inactive-text=&amp;quot;关闭&amp;quot; :width=&amp;quot;200&amp;quot;&amp;gt;&amp;lt;/el-switch&amp;gt;
+&amp;lt;el-button @click=&amp;quot;bbb&amp;quot;&amp;gt;调用方法&amp;lt;/el-button&amp;gt;
+
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Switchs&amp;quot;,
+        data(){
+            return{
+                value:true
+            }
+        }
+        ,
+        methods:{
+            aaa(value){
+                console.log(value);
+            },
+            bbb(){
+                alert();
+                this.$refs.sw.focus();//方法调用
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;86-datepicker组件&#34;&gt;8.6 DatePicker组件&lt;/h3&gt;
+&lt;h4 id=&#34;1创建&#34;&gt;1.创建&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-date-picker v-model=&amp;quot;createDate&amp;quot; &amp;gt;&amp;lt;/el-date-picker&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;2属性的使用&#34;&gt;2.属性的使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-date-picker
+        v-model=&amp;quot;createDate&amp;quot;
+        :editable=&amp;quot;false&amp;quot;
+        :clearable=&amp;quot;false&amp;quot;
+        placeholder=&amp;quot;请输入创建时间&amp;quot;
+        type=&amp;quot;daterange&amp;quot;
+        start-placeholder=&amp;quot;生产时间&amp;quot;
+        end-placeholder=&amp;quot;过期时间&amp;quot;
+        format=&amp;quot;yyyy/MM/dd&amp;quot;
+      &amp;gt;
+&amp;lt;/el-date-picker&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;3picker-options-和-shortcuts使用&#34;&gt;3.Picker Options 和 Shortcuts使用&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Shortcuts:&lt;/strong&gt; 用来增加日期组件的快捷面板&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Picker Options:&lt;/strong&gt; 用来对日期控件做自定义配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;31-shortcuts使用&#34;&gt;3.1 Shortcuts使用&lt;/h5&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;/el-date-picker&amp;gt;
+&amp;lt;h1&amp;gt;日期配置&amp;lt;/h1&amp;gt;
+&amp;lt;el-date-picker
+                v-model=&amp;quot;createDate&amp;quot;
+                type=&amp;quot;date&amp;quot;
+                placeholder=&amp;quot;请输入时间&amp;quot;
+                :picker-options=&amp;quot;pickerOptions&amp;quot;
+                &amp;gt;
+&amp;lt;/el-date-picker&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;DatePrickers&amp;quot;,
+        data(){
+            return{
+                createDate:&amp;quot;&amp;quot;,
+                pickerOptions: {
+                    disabledDate(time) {
+                        return time.getTime() &amp;gt; Date.now();
+                    },
+                    shortcuts: [{  //定义的shortucts
+                        text: &#39;今天&#39;,
+                        onClick(picker) {
+                            picker.$emit(&#39;pick&#39;, new Date());
+                        }
+                    }, {
+                        text: &#39;昨天&#39;,
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24);
+                            picker.$emit(&#39;pick&#39;, date);
+                        }
+                    }, {
+                        text: &#39;一周前&#39;,
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                            picker.$emit(&#39;pick&#39;, date);
+                        }
+                    }]
+                },
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606970853719.png&#34; alt=&#34;image-20200511100330078&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h5 id=&#34;32-picker-options&#34;&gt;3.2 Picker Options&lt;/h5&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-date-picker
+                v-model=&amp;quot;createDate&amp;quot;
+                type=&amp;quot;date&amp;quot;
+                placeholder=&amp;quot;请输入时间&amp;quot;
+                :picker-options=&amp;quot;pickerOptions&amp;quot;
+                &amp;gt;
+&amp;lt;/el-date-picker&amp;gt;
+
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;DatePrickers&amp;quot;,
+        data(){
+            return{
+                createDate:&amp;quot;&amp;quot;,
+                pickerOptions: {
+                    disabledDate(time) { //用来对日期进行的控制
+                        return time.getTime() &amp;lt; Date.now();
+                    }
+                },
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606970839111.png&#34; alt=&#34;image-20200511100634677&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;4事件使用&#34;&gt;4.事件使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-date-picker
+                .....
+                :picker-options=&amp;quot;pickerOptions&amp;quot;
+                @change=&amp;quot;aaa&amp;quot;
+                &amp;gt;
+&amp;lt;/el-date-picker&amp;gt;
+
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;DatePrickers&amp;quot;,
+        data(){
+            return{
+                createDate:&amp;quot;&amp;quot;,
+            }
+        },
+        methods:{
+            aaa(value){  //发生change事件的函数
+                console.log(value);
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;87-upload组件&#34;&gt;8.7 Upload组件&lt;/h3&gt;
+&lt;h4 id=&#34;1组件创建-2&#34;&gt;1.组件创建&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-upload action=&amp;quot;https://jsonplaceholder.typicode.com/posts/&amp;quot; :file-list=&amp;quot;fileList&amp;quot;&amp;gt;
+  &amp;lt;el-button size=&amp;quot;small&amp;quot; type=&amp;quot;primary&amp;quot;&amp;gt;点击上传&amp;lt;/el-button&amp;gt;
+  &amp;lt;div slot=&amp;quot;tip&amp;quot; class=&amp;quot;el-upload__tip&amp;quot;&amp;gt;只能上传jpg/png文件，且不超过500kb&amp;lt;/div&amp;gt;
+&amp;lt;/el-upload&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;注意:在使用upload组件时必须设置action属性 action属性为必要参数不能省略&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2属性和事件的使用&#34;&gt;2.属性和事件的使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-upload :limit=&amp;quot;3&amp;quot; :on-exceed=&amp;quot;exceed&amp;quot; :multiple=&amp;quot;false&amp;quot; :before-remove=&amp;quot;beforeRemove&amp;quot; :on-remove=&amp;quot;remove&amp;quot; :on-preview=&amp;quot;show&amp;quot; :drag=&amp;quot;true&amp;quot; accept=&amp;quot;.txt,.png&amp;quot; :show-file-list=&amp;quot;true&amp;quot; name=&amp;quot;aaa&amp;quot; :data=&amp;quot;info&amp;quot; action=&amp;quot;https://jsonplaceholder.typicode.com/posts/&amp;quot;
+               :file-list=&amp;quot;fileList&amp;quot;&amp;gt;
+  &amp;lt;i class=&amp;quot;el-icon-upload&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;
+  &amp;lt;div class=&amp;quot;el-upload__text&amp;quot;&amp;gt;将文件拖到此处，或&amp;lt;em&amp;gt;点击上传&amp;lt;/em&amp;gt;&amp;lt;/div&amp;gt;
+  &amp;lt;div class=&amp;quot;el-upload__tip&amp;quot; slot=&amp;quot;tip&amp;quot;&amp;gt;只能上传jpg/png文件，且不超过500kb&amp;lt;/div&amp;gt;
+&amp;lt;/el-upload&amp;gt;
+
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Uploads&amp;quot;,
+        data() {
+            return {
+                fileList: [{
+                    name: &#39;food.jpeg&#39;,
+                    url: &#39;https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100&#39;
+                }, {
+                    name: &#39;food2.jpeg&#39;,
+                    url: &#39;https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100&#39;
+                }],
+                info: {id:&amp;quot;21&amp;quot;}
+            }
+        },
+        methods:{
+            show(file){
+                console.log(file);
+            },
+            remove(file,fileList){
+                console.log(file);
+                console.log(fileList);
+                //alert(fileList.length)
+            },
+            beforeRemove(file,fileList){
+                if(fileList.length&amp;lt;3){
+                    alert(&amp;quot;上传文件不能少于3个&amp;quot;)
+                    return false;
+                }
+            },
+            exceed(file,fileList){
+                alert(&amp;quot;文件超出上传的个数限制&amp;quot;)
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;注意:在使用upload组件时没有event事件,所有事件都是属性事件&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3方法的使用&#34;&gt;3.方法的使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-upload ref=&amp;quot;uploads&amp;quot; ....&amp;gt;........&amp;lt;/el-upload&amp;gt;
+
+方法调用:
+	this.$refs.uploads.clearFiles();
+	this.$refs.uploads.abort();
+	this.$refs.uploads.submit();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;88-form组件&#34;&gt;8.8 Form组件&lt;/h3&gt;
+&lt;h4 id=&#34;1组件的创建&#34;&gt;1.组件的创建&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-form ref=&amp;quot;form&amp;quot; :model=&amp;quot;form&amp;quot; label-width=&amp;quot;80px&amp;quot;&amp;gt;
+  &amp;lt;el-form-item label=&amp;quot;活动名称&amp;quot;&amp;gt;
+    &amp;lt;el-input v-model=&amp;quot;form.name&amp;quot;&amp;gt;&amp;lt;/el-input&amp;gt;
+  &amp;lt;/el-form-item&amp;gt;
+  ......
+  &amp;lt;el-form-item&amp;gt;
+    &amp;lt;el-button type=&amp;quot;primary&amp;quot; @click=&amp;quot;onSubmit&amp;quot;&amp;gt;立即创建&amp;lt;/el-button&amp;gt;
+    &amp;lt;el-button&amp;gt;取消&amp;lt;/el-button&amp;gt;
+  &amp;lt;/el-form-item&amp;gt;
+&amp;lt;/el-form&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Form&amp;quot;,
+        data() {
+            return {
+                form: {
+                    name: &#39;&#39;,
+                    region: &#39;&#39;,
+                    date1: &#39;&#39;,
+                    date2: &#39;&#39;,
+                    delivery: false,
+                    type: [],
+                    resource: &#39;&#39;,
+                    desc: &#39;&#39;
+                }
+            }
+        },
+        methods: {
+            onSubmit() {
+                console.log(&#39;submit!&#39;);
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;2内联表单&#34;&gt;2.内联表单&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-form :inline=&amp;quot;true&amp;quot; :model=&amp;quot;formInline&amp;quot; class=&amp;quot;demo-form-inline&amp;quot;&amp;gt;
+		.......
+&amp;lt;/el-form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;通过设置 inline=true方式将表单作为内联表单处理&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3表单验证&#34;&gt;3.表单验证&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;使用说明:&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Form 组件提供了表单验证的功能，只需要通过 &lt;code&gt;rules&lt;/code&gt; 属性传入约定的验证规则，并将 Form-Item 的 &lt;code&gt;prop&lt;/code&gt; 属性设置为需校验的字段名即可。校验规则参见 &lt;a href=&#34;https://github.com/yiminghe/async-validator&#34;&gt;async-validator&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;31-失去焦点自动验证&#34;&gt;3.1 失去焦点自动验证&lt;/h5&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-form :rules=&amp;quot;rules&amp;quot; ...&amp;gt;
+  &amp;lt;el-form-item label=&amp;quot;活动名称&amp;quot; prop=&amp;quot;name&amp;quot;&amp;gt;
+      &amp;lt;el-input v-model=&amp;quot;form.name&amp;quot;&amp;gt;&amp;lt;/el-input&amp;gt;
+  &amp;lt;/el-form-item&amp;gt;
+  ....
+&amp;lt;/el-form&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Form&amp;quot;,
+        data() {
+            return {
+                form: {
+                    name: &#39;&#39;,
+                    region: &#39;&#39;,
+                    date1: &#39;&#39;,
+                    date2: &#39;&#39;,
+                    delivery: false,
+                    type: [],
+                    resource: &#39;&#39;,
+                    desc: &#39;&#39;
+                },
+                rules: {
+                    name: [
+                        {required: true, message: &#39;请输入活动名称&#39;, trigger: &#39;blur&#39;},
+                        {min: 3, max: 5, message: &#39;长度在 3 到 5 个字符&#39;, trigger: &#39;blur&#39;}
+                    ],
+                }
+            }
+        },
+        methods: {
+            onSubmit() {
+                console.log(&#39;submit!&#39;);
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;32-表单提交调用表单组件的验证方法验证&#34;&gt;3.2 表单提交调用表单组件的验证方法验证&lt;/h5&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-form :rules=&amp;quot;rules&amp;quot;.... ref=&amp;quot;form&amp;quot; &amp;gt;
+    &amp;lt;el-form-item label=&amp;quot;活动名称&amp;quot; prop=&amp;quot;name&amp;quot;&amp;gt;
+      &amp;lt;el-input v-model=&amp;quot;form.name&amp;quot;&amp;gt;&amp;lt;/el-input&amp;gt;
+  	&amp;lt;/el-form-item&amp;gt;
+  	&amp;lt;el-form-item&amp;gt;
+      &amp;lt;el-button type=&amp;quot;primary&amp;quot; @click=&amp;quot;onSubmit(&#39;form&#39;)&amp;quot;&amp;gt;立即创建&amp;lt;/el-button&amp;gt;
+      &amp;lt;el-button&amp;gt;取消&amp;lt;/el-button&amp;gt;
+  	&amp;lt;/el-form-item&amp;gt;
+&amp;lt;/el-form&amp;gt;
+...
+methods: {
+            onSubmit(formName) {
+                this.$refs[formName].validate((valid) =&amp;gt; {
+                    if (valid) {
+                        alert(&#39;submit!&#39;);
+                        //发送异步请求 到 springboot项目
+                    } else {
+                        console.log(&#39;error submit!!&#39;);
+                        return false;
+                    }
+                });
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;4自定义表单的验证规则&#34;&gt;4.自定义表单的验证规则&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-form :model=&amp;quot;ruleForm&amp;quot; :rules=&amp;quot;rules&amp;quot; ref=&amp;quot;ruleForm&amp;quot; label-width=&amp;quot;100px&amp;quot;&amp;gt;
+  &amp;lt;el-form-item label=&amp;quot;手机号&amp;quot; prop=&amp;quot;phone&amp;quot;&amp;gt;
+    &amp;lt;el-input type=&amp;quot;password&amp;quot; v-model=&amp;quot;ruleForm.phone&amp;quot; &amp;gt;&amp;lt;/el-input&amp;gt;
+  &amp;lt;/el-form-item&amp;gt;
+  &amp;lt;el-form-item&amp;gt;
+    &amp;lt;el-button type=&amp;quot;primary&amp;quot; @click=&amp;quot;submitForm(&#39;ruleForm&#39;)&amp;quot;&amp;gt;提交&amp;lt;/el-button&amp;gt;
+    &amp;lt;el-button @click=&amp;quot;resetForm(&#39;ruleForm&#39;)&amp;quot;&amp;gt;重置&amp;lt;/el-button&amp;gt;
+  &amp;lt;/el-form-item&amp;gt;
+&amp;lt;/el-form&amp;gt;
+
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Form&amp;quot;,
+        data() {
+            let validatePhone = (rule,value,callback)=&amp;gt;{ //定义自定义的验证规则
+                console.log(rule);
+                console.log(value);
+                console.log(callback);
+                if(!value){
+                    callback(new Error(&amp;quot;手机号不能为空!&amp;quot;));
+                }
+                if(!/^1[3456789]\d{9}$/.test(value)){
+                    callback(new Error(&amp;quot;手机号码不正确!!&amp;quot;))
+                }
+            }
+            return {
+                form: {
+                    name: &#39;&#39;,
+                    region: &#39;&#39;,
+                    date1: &#39;&#39;,
+                    date2: &#39;&#39;,
+                    delivery: false,
+                    type: [],
+                    resource: &#39;&#39;,
+                    desc: &#39;&#39;
+                },
+                rules: { //验证规则
+                    name: [ //使用默认规则
+                        {required: true, message: &#39;请输入活动名称&#39;, trigger: &#39;blur&#39;},
+                        {min: 3, max: 5, message: &#39;长度在 3 到 5 个字符&#39;, trigger: &#39;blur&#39;}
+                    ],
+                    phone:[  //使用自定义规则
+                        {validator:validatePhone,trigger: &#39;blur&#39;}
+                    ]
+                },
+                ruleForm:{
+                    phone:&#39;&#39;,
+                },
+            }
+        },
+        methods: {
+           
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;9消息提示&#34;&gt;9.消息提示&lt;/h2&gt;
+&lt;h3 id=&#34;91警告提示&#34;&gt;9.1警告提示&lt;/h3&gt;
+&lt;h4 id=&#34;11-创建警告提示&#34;&gt;1.1 创建警告提示&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-alert title=&amp;quot;成功信息提示&amp;quot; :closable=&amp;quot;false&amp;quot; type=&amp;quot;success&amp;quot;&amp;gt;
+  &amp;lt;div slot&amp;gt;我是辅助信息&amp;lt;/div&amp;gt;
+&amp;lt;/el-alert&amp;gt;
+&amp;lt;el-alert title=&amp;quot;成功信息提示&amp;quot; type=&amp;quot;info&amp;quot;&amp;gt;&amp;lt;/el-alert&amp;gt;
+&amp;lt;el-alert title=&amp;quot;成功信息提示&amp;quot; type=&amp;quot;warning&amp;quot;&amp;gt;&amp;lt;/el-alert&amp;gt;
+&amp;lt;el-alert title=&amp;quot;成功信息提示&amp;quot; type=&amp;quot;error&amp;quot;&amp;gt;&amp;lt;/el-alert&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;12属性的使用&#34;&gt;1.2属性的使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-alert title=&amp;quot;成功信息提示&amp;quot; effect=&amp;quot;dark&amp;quot; :show-icon=&amp;quot;true&amp;quot; center :closable=&amp;quot;false&amp;quot; type=&amp;quot;success&amp;quot;&amp;gt;
+  &amp;lt;div slot&amp;gt;我是辅助信息&amp;lt;/div&amp;gt;
+&amp;lt;/el-alert&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;92-message消息提示&#34;&gt;9.2 Message消息提示&lt;/h3&gt;
+&lt;h4 id=&#34;21-创建组件&#34;&gt;2.1 创建组件&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;注意:这个组件的创建无须在页面中书写任何标签,他是一个js插件,在需要展示消息提示的位置直接调用提供的js插件方法即可&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;# 1.创建最简单的消息
+	this.$message(&#39;这是一个消息提示!!&#39;)
+
+# 2.自定义消息内容
+	this.$message({
+    message: h(&#39;p&#39;, null, [
+      h(&#39;span&#39;, null, &#39;订单创建成功,您的订单编号为: &#39;),
+      h(&#39;i&#39;, { style: &#39;color: teal&#39; }, &#39;87&#39;)
+    ])
+  });
+
+# 3.不同主题的消息提示
+	 this.$message({
+     message:&#39;这是信息提示&#39;,
+     type:&amp;quot;success&amp;quot;,
+   })
+		//主题样式:  success  info  warning  error
+
+# 4.属性使用
+	this.$message({
+    message:&#39;这是信息提示&#39;,
+    type:&amp;quot;success&amp;quot;,
+    showClose:true,
+    center:true,
+    iconClass:&#39;el-icon-user-solid&#39;,
+    duration:0
+  })
+# 5.方法的使用
+	this.$message.closeAll();
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;10table表格组件&#34;&gt;10.table表格组件&lt;/h2&gt;
+&lt;h3 id=&#34;1组件的创建-2&#34;&gt;1.组件的创建&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-table :data=&amp;quot;tableData&amp;quot;&amp;gt;
+  &amp;lt;el-table-column prop=&amp;quot;id&amp;quot; label=&amp;quot;编号&amp;quot;&amp;gt;&amp;lt;/el-table-column&amp;gt;
+  &amp;lt;el-table-column prop=&amp;quot;name&amp;quot; label=&amp;quot;姓名&amp;quot;&amp;gt;&amp;lt;/el-table-column&amp;gt;
+  &amp;lt;el-table-column prop=&amp;quot;age&amp;quot; label=&amp;quot;年龄&amp;quot;&amp;gt;&amp;lt;/el-table-column&amp;gt;
+  &amp;lt;el-table-column prop=&amp;quot;email&amp;quot; label=&amp;quot;邮箱&amp;quot;&amp;gt;&amp;lt;/el-table-column&amp;gt;
+&amp;lt;/el-table&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Tables&amp;quot;,
+        data(){
+            return {
+                tableData:[
+                    {id:21,name:&amp;quot;小陈&amp;quot;,age:23,email:&amp;quot;60037647@qq.com&amp;quot;},
+                    {id:22,name:&amp;quot;小张&amp;quot;,age:25,email:&amp;quot;60038647@qq.com&amp;quot;},
+                ]
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2表格中列属性&#34;&gt;2.表格中列属性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;el-table-column属性&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-table-column prop=&amp;quot;id&amp;quot; :resizable=&amp;quot;false&amp;quot; header-align=&amp;quot;left&amp;quot; align=&amp;quot;center&amp;quot; fixed=&amp;quot;left&amp;quot; width=&amp;quot;200px;&amp;quot; label=&amp;quot;编号&amp;quot;&amp;gt;&amp;lt;/el-table-column&amp;gt;
+&amp;lt;el-table-column prop=&amp;quot;name&amp;quot; label=&amp;quot;姓名&amp;quot;&amp;gt;&amp;lt;/el-table-column&amp;gt;
+&amp;lt;el-table-column prop=&amp;quot;age&amp;quot; :sort-method=&amp;quot;sorts&amp;quot; sortable label=&amp;quot;年龄&amp;quot;&amp;gt;&amp;lt;/el-table-column&amp;gt;
+&amp;lt;el-table-column prop=&amp;quot;email&amp;quot; label=&amp;quot;邮箱&amp;quot;&amp;gt;&amp;lt;/el-table-column&amp;gt;
+&amp;lt;el-table-column prop=&amp;quot;dept.name&amp;quot; :formatter=&amp;quot;showDept&amp;quot; label=&amp;quot;部门&amp;quot;&amp;gt;&amp;lt;/el-table-column&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Tables&amp;quot;,
+        data() {
+            return {
+                tableData: [
+                    {
+                        id: 21, name: &amp;quot;小陈&amp;quot;, age: 23, email: &amp;quot;60037647@qq.com&amp;quot;,
+                        dept: {id: 1, name: &amp;quot;研发部&amp;quot;}
+                    },
+                    {
+                        id: 22, name: &amp;quot;小张&amp;quot;, age: 25, email: &amp;quot;60038647@qq.com&amp;quot;,
+                        dept: {id: 1, name: &amp;quot;小卖部&amp;quot;}
+                    },
+                    {
+                        id: 23, name: &amp;quot;小李&amp;quot;, age: 25, email: &amp;quot;60038657@qq.com&amp;quot;,
+                        dept:{}
+                    },
+                ]
+            }
+        },
+        methods: {
+            sorts(a, b) {
+                return a.age - b.age;
+            },
+            showDept(row, column, cellValue, index){
+                console.log(row);
+                console.log(column);
+                console.log(cellValue);
+                console.log(index);
+                if(cellValue){
+                    return cellValue
+                }
+                return &amp;quot;暂无部门&amp;quot;;
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3表格属性&#34;&gt;3.表格属性&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-table :data=&amp;quot;tableData&amp;quot; empty-text=&amp;quot;暂无数据&amp;quot; :row-class-name=&amp;quot;showCss&amp;quot; highlight-current-row :show-header=&amp;quot;true&amp;quot; :fit=&amp;quot;true&amp;quot;
+              size=&amp;quot;mini&amp;quot; :height=&amp;quot;600&amp;quot; border&amp;gt;
+
+&amp;lt;/el-table&amp;gt;
+&amp;lt;script&amp;gt;
+  .....
+	methods: {
+            showCss({row, rowIndex}) {
+                if (rowIndex % 2 == 0) {
+                    return &amp;quot;warning-row&amp;quot;;
+                }
+                return &amp;quot;success-row&amp;quot;;
+            }
+        }
+ &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;4组件事件使用&#34;&gt;4.组件事件使用&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-table @事件名=&amp;quot;事件处理函数名&amp;quot;&amp;gt;&amp;lt;el-table&amp;gt;
+
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Tables&amp;quot;,
+        data() {
+            //....
+        },
+        methods: {
+            //...事件处理函数
+            selectRow(selection, row){
+                console.log(selection);
+                console.log(row);
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;5组件方法的使用&#34;&gt;5.组件方法的使用&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-table  ref=&amp;quot;mytable&amp;quot;&amp;gt;........&amp;lt;/el-table&amp;gt;
+//调用方法
+	this.$refs.mytable.方法名  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;6表格中定义操作列&#34;&gt;6.表格中定义操作列&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;el-table&amp;gt;
+  ....
+	 &amp;lt;el-table-column label=&amp;quot;操作&amp;quot;&amp;gt;
+      &amp;lt;template slot-scope=&amp;quot;scope&amp;quot;&amp;gt;
+        &amp;lt;el-button
+          size=&amp;quot;mini&amp;quot;
+          @click=&amp;quot;handleEdit(scope.$index, scope.row)&amp;quot;&amp;gt;编辑&amp;lt;/el-button&amp;gt;
+        &amp;lt;el-button
+          size=&amp;quot;mini&amp;quot;
+          type=&amp;quot;danger&amp;quot;
+          @click=&amp;quot;handleDelete(scope.$index, scope.row)&amp;quot;&amp;gt;删除&amp;lt;/el-button&amp;gt;
+      &amp;lt;/template&amp;gt;
+    &amp;lt;/el-table-column&amp;gt;
+&amp;lt;/el-table&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Tables&amp;quot;,
+        data() {
+            .....
+        },
+        methods: {
+						//用来处理编辑和删除的事件函数
+            handleEdit(index,row){
+                console.log(index);
+                console.log(row);
+            },
+            handleDelete(index,row){
+                console.log(index);
+                console.log(row);
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606970684096.png&#34; alt=&#34;image-20200513101148070&#34; loading=&#34;lazy&#34;&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;7自定义表头&#34;&gt;7.自定义表头&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; &amp;lt;el-table :data=&amp;quot;tableData.filter(data =&amp;gt; !search || data.name.toLowerCase().includes(search.toLowerCase()))&amp;quot; &amp;gt;
+   .....
+   &amp;lt;!--展示搜索和操作--&amp;gt;
+   &amp;lt;el-table-column&amp;gt;
+        &amp;lt;template slot=&amp;quot;header&amp;quot; slot-scope=&amp;quot;scope&amp;quot;&amp;gt;
+          &amp;lt;el-input
+            v-model=&amp;quot;search&amp;quot;
+            size=&amp;quot;mini&amp;quot;
+            placeholder=&amp;quot;输入关键字搜索&amp;quot;/&amp;gt;
+        &amp;lt;/template&amp;gt;
+        &amp;lt;template slot-scope=&amp;quot;scope&amp;quot;&amp;gt;
+          &amp;lt;el-button
+            size=&amp;quot;mini&amp;quot;
+            @click=&amp;quot;handleEdit(scope.$index, scope.row)&amp;quot;&amp;gt;编辑&amp;lt;/el-button&amp;gt;
+          &amp;lt;el-button
+            size=&amp;quot;mini&amp;quot;
+            type=&amp;quot;danger&amp;quot;
+            @click=&amp;quot;handleDelete(scope.$index, scope.row)&amp;quot;&amp;gt;删除&amp;lt;/el-button&amp;gt;
+        &amp;lt;/template&amp;gt;
+      &amp;lt;/el-table-column&amp;gt;
+&amp;lt;/el-table&amp;gt;
+&amp;lt;script&amp;gt;
+    export default {
+        name: &amp;quot;Tables&amp;quot;,
+        data() {
+            return {
+                tableData: [
+                    {
+                        id: 21, name: &amp;quot;小陈&amp;quot;, age: 23, email: &amp;quot;60037647@qq.com&amp;quot;,
+                        dept: {id: 1, name: &amp;quot;研发部&amp;quot;}
+                    },
+                    {
+                        id: 22, name: &amp;quot;小张&amp;quot;, age: 25, email: &amp;quot;60038647@qq.com&amp;quot;,
+                        dept: {id: 1, name: &amp;quot;小卖部&amp;quot;}
+                    },
+                    {
+                        id: 23, name: &amp;quot;小李&amp;quot;, age: 25, email: &amp;quot;60038657@qq.com&amp;quot;,
+                        dept: {}
+                    },
+                    {
+                        id: 24, name: &amp;quot;小四&amp;quot;, age: 25, email: &amp;quot;60038657@qq.com&amp;quot;,
+                        dept: {}
+                    },
+                ],
+                search: &#39;&#39;
+            }
+        },
+        methods: {
+            sorts(a, b) {
+                return a.age - b.age;
+            },
+            showDept(row, column, cellValue, index) {
+                if (cellValue) {
+                    return cellValue
+                }
+                return &amp;quot;暂无部门&amp;quot;;
+            },
+            showCss({row, rowIndex}) {
+                if (rowIndex % 2 == 0) {
+                    return &amp;quot;warning-row&amp;quot;;
+                }
+                return &amp;quot;success-row&amp;quot;;
+            },
+            selectRow(selection, row){
+                console.log(selection);
+                console.log(row);
+            },
+            clearSelect(){
+                this.$refs.mytable.clearSelection();
+            },
+            handleEdit(index,row){
+                console.log(index);
+                console.log(row);
+            },
+            handleDelete(index,row){
+                console.log(index);
+                console.log(row);
+            }
+        }
+    }
+&amp;lt;/script&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1606970641506.png&#34; alt=&#34;image-20200513101814910&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;视频教程：&lt;a href=&#34;https://www.bilibili.com/video/BV1NK4y187XH?t=474&amp;amp;p=2&#34;&gt;B站 编程不良人|百知教育&lt;/a&gt;&lt;/p&gt;
+">Element UI 实战教程</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/"" data-c="

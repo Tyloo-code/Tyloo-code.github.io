@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>Tyloo</title>
+<title>Element UI 实战教程 | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1606972407603">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,6 +38,8 @@
 
 
 
+  <meta name="description" content="Element UI 实战教程" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -73,7 +75,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/" target="_self">
@@ -172,8 +174,24 @@
     <div
       class="section-layout pisces ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -214,27 +232,437 @@
   </div>
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1element-ui-%E5%BC%95%E8%A8%80">1.Element UI 引言</a>
+<ul>
+<li><a href="#11-%E5%AE%98%E6%96%B9%E5%AE%9A%E4%B9%89">1.1 官方定义</a></li>
+<li><a href="#12-%E5%AE%9A%E4%B9%89">1.2 定义</a></li>
+<li><a href="#13-%E7%94%B1%E6%9D%A5">1.3 由来</a></li>
+</ul>
+</li>
+<li><a href="#2%E5%AE%89%E8%A3%85element-ui">2.安装Element UI</a>
+<ul>
+<li><a href="#21%E9%80%9A%E8%BF%87vue%E8%84%9A%E6%89%8B%E6%9E%B6%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">2.1通过vue脚手架创建项目</a></li>
+<li><a href="#22%E5%9C%A8vue%E8%84%9A%E6%89%8B%E6%9E%B6%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%AE%89%E8%A3%85elementui">2.2在vue脚手架项目中安装elementui</a></li>
+</ul>
+</li>
+<li><a href="#3%E6%8C%89%E9%92%AE%E7%BB%84%E4%BB%B6%E7%A4%BA%E4%BE%8B">3.按钮组件(示例)</a><br>
+*
+<ul>
+<li><a href="#31-%E9%BB%98%E8%AE%A4%E6%A0%B7%E5%BC%8F%E6%8C%89%E9%92%AE">3.1 默认样式按钮</a></li>
+<li><a href="#32-%E7%AE%80%E6%B4%81%E6%8C%89%E9%92%AE">3.2 简洁按钮</a></li>
+<li><a href="#33-%E5%9C%86%E8%A7%92%E6%8C%89%E9%92%AE">3.3 圆角按钮</a></li>
+<li><a href="#34-%E5%9B%BE%E6%A0%87%E6%8C%89%E9%92%AE">3.4 图标按钮</a></li>
+</ul>
+</li>
+<li><a href="#4%E6%8C%89%E9%92%AE%E7%BB%84%E4%BB%B6%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8">4.按钮组件的详细使用</a>
+<ul>
+<li><a href="#41%E5%88%9B%E5%BB%BA%E6%8C%89%E9%92%AE">4.1创建按钮</a></li>
+<li><a href="#42-%E6%8C%89%E9%92%AE%E5%B1%9E%E6%80%A7%E4%BD%BF%E7%94%A8">4.2 按钮属性使用</a></li>
+<li><a href="#43-%E6%8C%89%E9%92%AE%E7%BB%84%E4%BD%BF%E7%94%A8">4.3 按钮组使用</a></li>
+</ul>
+</li>
+<li><a href="#5link-%E6%96%87%E5%AD%97%E9%93%BE%E6%8E%A5%E7%BB%84%E4%BB%B6">5.Link 文字链接组件</a>
+<ul>
+<li><a href="#51-%E6%96%87%E5%AD%97%E9%93%BE%E6%8E%A5%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA">5.1 文字链接组件的创建</a></li>
+<li><a href="#52-%E6%96%87%E5%AD%97%E9%93%BE%E6%8E%A5%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B1%9E%E6%80%A7%E7%9A%84%E4%BD%BF%E7%94%A8">5.2 文字链接组件的属性的使用</a></li>
+</ul>
+</li>
+<li><a href="#6layout-%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8">6.Layout (栅格)布局组件的使用</a>
+<ul>
+<li><a href="#61-%E4%BD%BF%E7%94%A8layout%E7%BB%84%E4%BB%B6">6.1 使用Layout组件</a></li>
+<li><a href="#62-%E5%B1%9E%E6%80%A7%E7%9A%84%E4%BD%BF%E7%94%A8">6.2 属性的使用</a></li>
+</ul>
+</li>
+<li><a href="#7container-%E5%B8%83%E5%B1%80%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6">7.Container 布局容器组件</a>
+<ul>
+<li><a href="#71-%E5%88%9B%E5%BB%BA%E5%B8%83%E5%B1%80%E5%AE%B9%E5%99%A8">7.1 创建布局容器</a></li>
+<li><a href="#72-%E5%AE%B9%E5%99%A8%E4%B8%AD%E5%8C%85%E5%90%AB%E7%9A%84%E5%AD%90%E5%85%83%E7%B4%A0">7.2 容器中包含的子元素</a></li>
+<li><a href="#73-%E5%AE%B9%E5%99%A8%E7%9A%84%E5%B5%8C%E5%A5%97%E4%BD%BF%E7%94%A8">7.3 容器的嵌套使用</a></li>
+<li><a href="#74-%E6%B0%B4%E5%B9%B3%E5%AE%B9%E5%99%A8">7.4 水平容器</a></li>
+<li><a href="#75-%E5%9E%82%E7%9B%B4%E5%AE%B9%E5%99%A8">7.5 垂直容器</a></li>
+</ul>
+</li>
+<li><a href="#8form%E7%9B%B8%E5%85%B3%E7%BB%84%E4%BB%B6">8.Form相关组件</a>
+<ul>
+<li><a href="#81-radio%E5%8D%95%E9%80%89%E6%8C%89%E9%92%AE">8.1 Radio单选按钮</a>
+<ul>
+<li><a href="#1%E5%88%9B%E5%BB%BAradio%E6%8C%89%E9%92%AE">1.创建Radio按钮</a></li>
+<li><a href="#2radio%E6%8C%89%E9%92%AE%E5%B1%9E%E6%80%A7%E7%9A%84%E4%BD%BF%E7%94%A8">2.Radio按钮属性的使用</a></li>
+<li><a href="#3radio%E4%BA%8B%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8">3.Radio事件的使用</a></li>
+<li><a href="#4radio%E6%8C%89%E9%92%AE%E7%BB%84">4.radio按钮组</a></li>
+</ul>
+</li>
+<li><a href="#82-checkbox%E7%BB%84%E4%BB%B6">8.2 checkbox组件</a>
+<ul>
+<li><a href="#1%E5%88%9B%E5%BB%BAcheckbox%E7%BB%84%E4%BB%B6">1.创建checkbox组件</a></li>
+<li><a href="#2%E5%B1%9E%E6%80%A7%E4%BD%BF%E7%94%A8">2.属性使用</a></li>
+<li><a href="#3%E4%BA%8B%E4%BB%B6%E4%BD%BF%E7%94%A8">3.事件使用</a></li>
+<li><a href="#4%E5%A4%8D%E9%80%89%E6%A1%86%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8">4.复选框组的使用</a></li>
+</ul>
+</li>
+<li><a href="#83-input-%E8%BE%93%E5%85%A5%E6%A1%86%E7%BB%84%E4%BB%B6">8.3 Input 输入框组件</a>
+<ul>
+<li><a href="#1%E5%88%9B%E5%BB%BAinput%E7%BB%84%E4%BB%B6">1.创建Input组件</a></li>
+<li><a href="#2%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7">2.常用属性</a></li>
+<li><a href="#3%E4%BA%8B%E4%BB%B6%E4%BD%BF%E7%94%A8-2">3.事件使用</a></li>
+<li><a href="#4%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8">4.方法的使用</a></li>
+</ul>
+</li>
+<li><a href="#84-select%E9%80%89%E6%8B%A9%E5%99%A8%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8">8.4 Select选择器组件的使用</a>
+<ul>
+<li><a href="#1%E7%BB%84%E4%BB%B6%E5%88%9B%E5%BB%BA">1.组件创建</a></li>
+<li><a href="#2%E5%B1%9E%E6%80%A7%E4%BD%BF%E7%94%A8-2">2.属性使用</a></li>
+<li><a href="#3%E4%BA%8B%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8">3.事件的使用</a></li>
+<li><a href="#4%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8-2">4.方法的使用</a></li>
+</ul>
+</li>
+<li><a href="#85-switch-%E5%BC%80%E5%85%B3%E7%BB%84%E4%BB%B6">8.5 Switch 开关组件</a>
+<ul>
+<li><a href="#1switch%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA">1.Switch组件的创建</a></li>
+<li><a href="#2%E5%B1%9E%E6%80%A7%E4%BD%BF%E7%94%A8-3">2.属性使用</a></li>
+<li><a href="#3%E4%BA%8B%E4%BB%B6%E4%BD%BF%E7%94%A8-3">3.事件使用</a></li>
+<li><a href="#4%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8">4.方法使用</a></li>
+</ul>
+</li>
+<li><a href="#86-datepicker%E7%BB%84%E4%BB%B6">8.6 DatePicker组件</a>
+<ul>
+<li><a href="#1%E5%88%9B%E5%BB%BA">1.创建</a></li>
+<li><a href="#2%E5%B1%9E%E6%80%A7%E7%9A%84%E4%BD%BF%E7%94%A8">2.属性的使用</a></li>
+<li><a href="#3picker-options-%E5%92%8C-shortcuts%E4%BD%BF%E7%94%A8">3.Picker Options 和 Shortcuts使用</a>
+<ul>
+<li><a href="#31-shortcuts%E4%BD%BF%E7%94%A8">3.1 Shortcuts使用</a></li>
+<li><a href="#32-picker-options">3.2 Picker Options</a></li>
+</ul>
+</li>
+<li><a href="#4%E4%BA%8B%E4%BB%B6%E4%BD%BF%E7%94%A8">4.事件使用</a></li>
+</ul>
+</li>
+<li><a href="#87-upload%E7%BB%84%E4%BB%B6">8.7 Upload组件</a>
+<ul>
+<li><a href="#1%E7%BB%84%E4%BB%B6%E5%88%9B%E5%BB%BA-2">1.组件创建</a></li>
+<li><a href="#2%E5%B1%9E%E6%80%A7%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8">2.属性和事件的使用</a></li>
+<li><a href="#3%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8">3.方法的使用</a></li>
+</ul>
+</li>
+<li><a href="#88-form%E7%BB%84%E4%BB%B6">8.8 Form组件</a>
+<ul>
+<li><a href="#1%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA">1.组件的创建</a></li>
+<li><a href="#2%E5%86%85%E8%81%94%E8%A1%A8%E5%8D%95">2.内联表单</a></li>
+<li><a href="#3%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81">3.表单验证</a>
+<ul>
+<li><a href="#31-%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E8%87%AA%E5%8A%A8%E9%AA%8C%E8%AF%81">3.1 失去焦点自动验证</a></li>
+<li><a href="#32-%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4%E8%B0%83%E7%94%A8%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6%E7%9A%84%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E9%AA%8C%E8%AF%81">3.2 表单提交调用表单组件的验证方法验证</a></li>
+</ul>
+</li>
+<li><a href="#4%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A1%A8%E5%8D%95%E7%9A%84%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99">4.自定义表单的验证规则</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#9%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA">9.消息提示</a>
+<ul>
+<li><a href="#91%E8%AD%A6%E5%91%8A%E6%8F%90%E7%A4%BA">9.1警告提示</a>
+<ul>
+<li><a href="#11-%E5%88%9B%E5%BB%BA%E8%AD%A6%E5%91%8A%E6%8F%90%E7%A4%BA">1.1 创建警告提示</a></li>
+<li><a href="#12%E5%B1%9E%E6%80%A7%E7%9A%84%E4%BD%BF%E7%94%A8">1.2属性的使用</a></li>
+</ul>
+</li>
+<li><a href="#92-message%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA">9.2 Message消息提示</a>
+<ul>
+<li><a href="#21-%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6">2.1 创建组件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#10table%E8%A1%A8%E6%A0%BC%E7%BB%84%E4%BB%B6">10.table表格组件</a>
+<ul>
+<li><a href="#1%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA-2">1.组件的创建</a></li>
+<li><a href="#2%E8%A1%A8%E6%A0%BC%E4%B8%AD%E5%88%97%E5%B1%9E%E6%80%A7">2.表格中列属性</a></li>
+<li><a href="#3%E8%A1%A8%E6%A0%BC%E5%B1%9E%E6%80%A7">3.表格属性</a></li>
+<li><a href="#4%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6%E4%BD%BF%E7%94%A8">4.组件事件使用</a></li>
+<li><a href="#5%E7%BB%84%E4%BB%B6%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8">5.组件方法的使用</a></li>
+<li><a href="#6%E8%A1%A8%E6%A0%BC%E4%B8%AD%E5%AE%9A%E4%B9%89%E6%93%8D%E4%BD%9C%E5%88%97">6.表格中定义操作列</a></li>
+</ul>
+</li>
+<li><a href="#">!image-20200513101148070</a>
+<ul>
+<li><a href="#7%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A1%A8%E5%A4%B4">7.自定义表头</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
 </div>
+
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'pisces';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
       }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
     });
   }
-  </script>
-        <div class="section-box pisces">
-          <section class="section bg-color posts-expand slide-down-in">
-            
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
   <h1 class="post-title">
     <a class="post-title-link" href="https://Tyloo-code.github.io/post/element-ui-shi-zhan-jiao-cheng/">
       Element UI 实战教程
@@ -259,13 +687,18 @@
       <span>7014<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
+    
+    
+    <span id="/post/element-ui-shi-zhan-jiao-cheng/" data-flag-title="Element UI 实战教程" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
+    </span>
+    
   </div>
 </section>
-      <div class="post-body">
-        
-        
-          
-            <h2 id="1element-ui-引言">1.Element UI 引言</h2>
+            <div class="post-body next-md-body" id="post_body">
+              <h2 id="1element-ui-引言">1.Element UI 引言</h2>
 <p>官网: https://element.eleme.io/#/zh-CN</p>
 <h3 id="11-官方定义">1.1 官方定义</h3>
 <p><code>网站快速成型工具</code> 和 <code>桌面端组件库</code></p>
@@ -1494,419 +1927,73 @@ methods: {
 </code></pre>
 <figure data-type="image" tabindex="4"><img src="https://Tyloo-code.github.io/post-images/1606970641506.png" alt="image-20200513101814910" loading="lazy"></figure>
 <hr>
+<!-- more -->
+<p>视频教程：<a href="https://www.bilibili.com/video/BV1NK4y187XH?t=474&amp;p=2">B站 编程不良人|百知教育</a></p>
 
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/element-ui-shi-zhan-jiao-cheng/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/">
-      餐厅练习-Css选择器
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-01 10:33:21">2020-12-01</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>466<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
+            </div>
+            
+              <div class="reward-btn">
+                <div class="reward-btn-text">赞赏</div>
+              </div>
             
             
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><p><a href="https://github.com/Tyloo-code/Restaurant">点此下载</a><br>
-第一关<br>
-plate<br>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/">
-      Vue从入门到未完待续
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-11-30 16:50:39">2020-11-30</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>13<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>3036<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="vue-day-01">Vue Day 01</h1>
-<h3 id="一-邂逅vuejs">一. 邂逅Vuejs</h3>
-<h4 id="11-认识vuejs">1.1. 认识Vuejs</h4>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/windows-xi-tong-xia-typora-wan-quan-shi-yong-xiang-jie/">
-      Windows系统下Typora 完全使用详解
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-11-30 13:40:48">2020-11-30</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://Tyloo-code.github.io/tag/p-439WajB/">
-        <span>Typora</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>14<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>3858<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><p>最近在用这个软件，亲测确实觉得这个软件比较好用，所以写下这篇文章，分享给大家Typora 是一款极致简洁的 markdown 文本编辑器。 支持即时渲染技术 ，没有编辑工具栏！在快速文字排版以及代码编辑方面的效率是显而易见的，自己感觉比MarkdownPad好用。「它的功能之强大、设计之冷静、体验之美妙、理念之先进，我认为值得所有笔记应用厂商学习。」</p>
-<h2 id="邂逅typora">邂逅Typora</h2>
-<p><a href="https://www.typora.io/#windows" target="_blank" style="">初遇Typora</a></p>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/windows-xi-tong-xia-typora-wan-quan-shi-yong-xiang-jie/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/markdown-ji-ben-yu-fa/">
-      Markdown基本语法
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-11-30 10:09:55">2020-11-30</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://Tyloo-code.github.io/tag/Q1Pa9qPQr/">
-        <span>Gridea</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>4<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1023<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><p>Markdown是一种纯文本格式的标记语言。通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
-<p><strong>优点：</strong><br>
-1、因为是纯文本，所以只要支持Markdown的地方都能获得一样的编辑效果，可以让作者摆脱排版的困扰，专心写作。<br>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/markdown-ji-ben-yu-fa/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/helloworld/">
-      HelloWorld
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-11-29 22:23:07">2020-11-29</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>170<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <p>与Gridea的初次邂逅!😘<br>
-<img src="https://Tyloo-code.github.io/post-images/1606659885219.jpg" alt="" loading="lazy"></p>
-
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/helloworld/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-  
-            
-            
-<div class="page bg-color">
-  <ul class="pagination-ul">
-    
-    
-      
-        <li class="pagination-li pagination-active">
-            <a href="/page/../">
-              1
-            </a>
-        </li>
-      
-    
-    
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      来碗鸡丁炒饭
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://Tyloo-code.github.io/post/element-ui-shi-zhan-jiao-cheng/" title="Element UI 实战教程">https://Tyloo-code.github.io/post/element-ui-shi-zhan-jiao-cheng/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
   </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="餐厅练习-Css选择器" href="https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/">餐厅练习-Css选择器</a>
+        <a class="nav-mobile-next" title="餐厅练习-Css选择器" href="https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
 </div>
-          </section>
+            
+            
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '1d7311971e46d3cb2b7f',
+    clientSecret: '825202727778b1d14410ce66b7952398e1213211',
+    repo: 'tyloo-code.github.io',
+    owner: 'tyloo-code',
+    admin: ['tyloo-code'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+    
+    
+  
+
+          </div>
         </div>
       </div>
     </div>
@@ -2123,6 +2210,235 @@ plate<br>
     }
   })
 </script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+            <img id="zfb" class="reward-img" src="\media\images\custom-zfbImg.png" alt="赞赏码">
+          
+          
+            <img id="wx" class="reward-img" src="\media\images\custom-wxImg.png" alt="赞赏码">
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      <div id="zfbBtn" class="pay-text">
+        支付宝
+      </div>
+      
+      
+      <div id="wxBtn" class="pay-text">
+        微信支付
+      </div>
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        window.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        window.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        window.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        window.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      window.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
   </div>
 </body>
 
@@ -4767,7 +5083,6 @@ cond(no)-&amp;gt;op
     speed: 200
   });
 </script>
-
 
 
 
