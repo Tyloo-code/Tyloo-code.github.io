@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>Windows系统下Typora 完全使用详解 | Tyloo</title>
+<title>ECMAScript 6-11 | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1607774809330">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="Windows系统下Typora 完全使用详解" />
-  <meta name="keywords" content="Typora" />
+  <meta name="description" content="ECMAScript 6-11" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -238,31 +238,25 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li>
+<li><a href="#%E7%AC%AC-1-%E7%AB%A0-ecmasript-%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D">第 1 章 ECMASript 相关介绍</a>
 <ul>
-<li><a href="#%E9%82%82%E9%80%85typora">邂逅Typora</a></li>
-<li><a href="#typora%E6%98%AF%E4%BB%80%E4%B9%88">Typora是什么？</a></li>
-<li><a href="#%E4%B8%80%E4%B8%AA-markdown-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8">一个 Markdown 文本编辑器</a></li>
-<li><a href="#%E5%85%B3%E4%BA%8Emarkdown">关于Markdown</a></li>
-<li><a href="#%E5%86%99%E5%BE%97%E8%88%92%E6%9C%8D">写得舒服</a></li>
-<li><a href="#%E6%89%93%E5%AD%97%E6%9C%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%B8%93%E6%B3%A8%E6%A8%A1%E5%BC%8F">打字机模式和专注模式</a></li>
-<li><a href="#%E5%AE%9E%E6%97%B6%E9%A2%84%E8%A7%88">实时预览</a></li>
-<li><a href="#%E5%A4%A7%E7%BA%B2-%E6%96%87%E4%BB%B6%E4%BE%A7%E8%BE%B9%E6%A0%8F">大纲 / 文件侧边栏</a></li>
-<li><a href="#%E7%A9%BA%E6%A0%BC%E4%B8%8E%E6%8D%A2%E8%A1%8C">空格与换行</a></li>
-<li><a href="#%E4%B8%80%E4%B8%AA%E5%AD%A6%E6%9C%AF%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91%E5%99%A8">一个学术文档编辑器</a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE">代码高亮</a></li>
-<li><a href="#%E9%93%BE%E6%8E%A5%E5%BC%95%E7%94%A8%E4%B8%8E%E8%84%9A%E6%B3%A8">链接引用与脚注</a></li>
-<li><a href="#%E4%B8%80%E4%B8%AA%E4%BC%AA%E8%A3%85%E6%88%90%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8">一个伪装成文本编辑器的浏览器</a></li>
-<li><a href="#%E4%BC%AA%E8%A3%85%E4%BB%8E%E4%BD%95%E8%80%8C%E6%9D%A5">伪装从何而来？</a></li>
-<li><a href="#html">HTML</a>
-<ul>
-<li><a href="#html-%E6%A0%87%E7%AD%BE">HTML 标签</a></li>
-<li><a href="#%E5%AF%BC%E5%87%BA%E4%B8%BA-html">导出为 HTML</a></li>
+<li><a href="#11%E4%BB%80%E4%B9%88%E6%98%AF-ecma">1.1.什么是 ECMA</a></li>
+<li><a href="#12%E4%BB%80%E4%B9%88%E6%98%AF-ecmascript">1.2.什么是 ECMAScript</a></li>
+<li><a href="#13%E4%BB%80%E4%B9%88%E6%98%AF-ecma-262">1.3.什么是 ECMA-262</a></li>
+<li><a href="#14ecma-262-%E5%8E%86%E5%8F%B2">1.4.ECMA-262 历史</a></li>
+<li><a href="#15%E8%B0%81%E5%9C%A8%E7%BB%B4%E6%8A%A4-ecma-262">1.5.谁在维护 ECMA-262</a></li>
+<li><a href="#16%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0-es6">1.6.为什么要学习 ES6</a></li>
+<li><a href="#17es6-%E5%85%BC%E5%AE%B9%E6%80%A7">1.7.ES6 兼容性</a></li>
 </ul>
 </li>
-<li><a href="#css">CSS</a></li>
-<li><a href="#yaml-front-matter">YAML front-matter</a></li>
-<li><a href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E">写在最后</a></li>
+<li><a href="#%E7%AC%AC-2-%E7%AB%A0-ecmasript-6-%E6%96%B0%E7%89%B9%E6%80%A7">第 2 章 ECMASript 6 新特性</a>
+<ul>
+<li><a href="#21let-%E5%85%B3%E9%94%AE%E5%AD%97">2.1.let 关键字</a></li>
+<li><a href="#22-const-%E5%85%B3%E9%94%AE%E5%AD%97">2.2. const 关键字</a></li>
+<li><a href="#23%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC">2.3.变量的解构赋值</a></li>
+<li><a href="#24%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2">2.4.模板字符串</a></li>
+<li><a href="#25%E7%AE%80%E5%8C%96%E5%AF%B9%E8%B1%A1%E5%86%99%E6%B3%95">2.5.简化对象写法</a></li>
+<li><a href="#26%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">2.6.箭头函数</a></li>
 </ul>
 </li>
 </ul>
@@ -530,8 +524,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/windows-xi-tong-xia-typora-wan-quan-shi-yong-xiang-jie/">
-      Windows系统下Typora 完全使用详解
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/ecmascript-6-11/">
+      ECMAScript 6-11
     </a>
   </h1>
   <div class="post-meta">
@@ -539,36 +533,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-11-30 13:40:48">2020-11-30</span>
+      <span class="publish-time" data-t="2020-12-12 17:07:54">2020-12-12</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://Tyloo-code.github.io/tag/p-439WajB/">
-        <span>Typora</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>14<span class="language" data-lan="minute">分钟</span></span>
+      <span>5<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>3858<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1182<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/windows-xi-tong-xia-typora-wan-quan-shi-yong-xiang-jie/" data-flag-title="Windows系统下Typora 完全使用详解" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/ecmascript-6-11/" data-flag-title="ECMAScript 6-11" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -577,150 +558,168 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>最近在用这个软件，亲测确实觉得这个软件比较好用，所以写下这篇文章，分享给大家Typora 是一款极致简洁的 markdown 文本编辑器。 支持即时渲染技术 ，没有编辑工具栏！在快速文字排版以及代码编辑方面的效率是显而易见的，自己感觉比MarkdownPad好用。「它的功能之强大、设计之冷静、体验之美妙、理念之先进，我认为值得所有笔记应用厂商学习。」</p>
-<h2 id="邂逅typora">邂逅Typora</h2>
-<p><a href="https://www.typora.io/#windows" target="_blank" style="">初遇Typora</a></p>
-<h2 id="typora是什么">Typora是什么？</h2>
-<p>Typora 是一款支持实时预览的 Markdown 文本编辑器。它有 OS X、Windows、Linux 三个平台的版本，并且由于仍在测试中，是完全免费的。</p>
-<h2 id="一个-markdown-文本编辑器">一个 Markdown 文本编辑器</h2>
-<p>Typora 首先是一个 Markdown 文本编辑器，它支持且仅支持 Markdown 语法的文本编辑。在 Typora 官网 上他们将 Typora 描述为 「A truly minimal markdown editor. 」。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606715264191.png" alt="官网首页" loading="lazy"><center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">官网首页</center></p>
-<h2 id="关于markdown">关于Markdown</h2>
-<p>Markdown 是用来编写结构化文档的一种纯文本格式，它使我们在双手不离开键盘的情况下，可以对文本进行一定程度的格式排版。你可以在<a href="https://tyloo-code.github.io/post/markdown-ji-ben-yu-fa/">这篇文章</a>中快速入门 Markdown。</p>
-<p>由于目前还没有一个权威机构对 Markdown 的语法进行规范，各应用厂商制作时遵循的 Markdown 语法也是不尽相同的。其中比较受到认可的是<a href="https://Tyloo-code.github.io/post-images/1606715866342.png">GFM标准</a><br>
-<img src="https://Tyloo-code.github.io/post-images/1606718544020.png" alt="严格模式" loading="lazy"><center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">严格模式</center></p>
-<h2 id="写得舒服">写得舒服</h2>
-<p>一个文本编辑器，<strong>写得舒服</strong>是关键。我曾说过，「更有趣的是，一个笔记应用不会因为它支持 Markdown 语法而高级或易用很多。」，细枝末节处的人性化考虑才是最重要的。而 Typora 的编辑体验显然是经过深思熟虑设计的产物。</p>
-<p>我认为：一个优秀的笔记应用应该给用户<strong>选择 Markdown 语法风格的权利</strong>。而 Typora 在这一点上是我目前见过所有 Markdown 笔记应用中做得最好的。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606718646444.jpg" alt="文本编辑设置" loading="lazy"><center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">文本编辑设置</center><br>
-通过打开 文件 - 偏好设置 你会发现 Typora 为编辑体验的考虑细致到了令人叹为观止的程度。Typora 中提供了大量有关 Markdown 偏好的设置，据此，你可以构建一个几乎完全适合自己的 Markdown 编辑器。下面我将依次介绍一些与文本编辑体验有关的功能亮点。</p>
-<p>##图片插入<br>
-Typora 的图片插入功能是广受好评的。要知道，Markdown 原生不太注重图片插入的功能，但你可以在 Typora 中：</p>
+              <h1 id="第-1-章-ecmasript-相关介绍">第 1 章 ECMASript 相关介绍</h1>
+<h2 id="11什么是-ecma">1.1.什么是 ECMA</h2>
+<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1607764166027.png" alt="ECMA" loading="lazy"></figure>
+<p>ECMA（European Computer Manufacturers Association）中文名称为欧洲计算机制造商协会，这个组织的目标是评估、开发和认可电信和计算机标准。1994 年后该组织改名为 Ecma 国际。</p>
+<h2 id="12什么是-ecmascript">1.2.什么是 ECMAScript</h2>
+<p>ECMAScript 是由 Ecma 国际通过 ECMA-262 标准化的脚本程序设计语言。</p>
+<h2 id="13什么是-ecma-262">1.3.什么是 ECMA-262</h2>
+<p>Ecma 国际制定了许多标准，而 ECMA-262 只是其中的一个，所有标准列表查看<br>
+<a href="http://www.ecma-international.org/publications/standards/Standard.htm">http://www.ecma-international.org/publications/standards/Standard.htm</a></p>
+<h2 id="14ecma-262-历史">1.4.ECMA-262 历史</h2>
+<p>ECMA-262（ECMAScript）历史版本查看网址<br>
+<a href="http://www.ecma-international.org/publications/standards/Ecma-262-arch.htm">http://www.ecma-international.org/publications/standards/Ecma-262-arch.htm</a><br>
+<img src="https://Tyloo-code.github.io/post-images/1607764588998.png" alt="" loading="lazy"></p>
+<div style="color:red"> 注：从 ES6 开始，每年发布一个版本，版本号比年份最后一位大 1</div>
+<br>
+<h2 id="15谁在维护-ecma-262">1.5.谁在维护 ECMA-262</h2>
+<p>TC39（Technical Committee 39）是推进 ECMAScript 发展的委员会。其会员都是公司（其中主要是浏览器厂商，有苹果、谷歌、微软、因特尔等）。TC39 定期召开会议，会议由会员公司的代表与特邀专家出席。</p>
+<h2 id="16为什么要学习-es6">1.6.为什么要学习 ES6</h2>
 <ul>
-<li>直接使用 右键 - 复制 Ctrl + V 将网络图片、剪贴板图片复制到文档中</li>
-<li>拖动本地图片到文档中</li>
+<li>ES6 的版本变动内容最多，具有里程碑意义</li>
+<li>ES6 加入许多新的语法特性，编程实现更简单、高效</li>
+<li>ES6 是前端发展趋势，就业必备技能</li>
 </ul>
-<p>Typora 会自动帮你插入符合 Markdown 语法的图片语句，并给它加上标题。</p>
-<p>更强大的是，Typora 支持在拖动或 Ctrl + V 网络图片后自动将其保存到本地。你可以在 文件 - 偏好设置 - 编辑器 - 图片插入 中选择复制到哪个路径，什么情况下需要复制。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606719092672.png" alt="" loading="lazy"><center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">图片插入</center></p>
-<p>这一功能保证了即使网络图片源失效了，你还有本地的备份可用。同时也能使你的文档文件夹更合理、完整。</p>
-<h2 id="打字机模式和专注模式">打字机模式和专注模式</h2>
-<p><strong>打字机模式</strong>使得你所编辑的那一行永远处于屏幕正中。<br>
-<strong>专注模式</strong>使你正在编辑的那一行保留颜色，而其他行的字体呈灰色。</p>
-<p>你可以在 视图 - 专注模式 / 打字机模式 中勾选使用这两个模式。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606720738399.gif" alt="" loading="lazy"></p>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">两种模式</center> 
-<h2 id="实时预览">实时预览</h2>
-<p>我想很果断地下这个结论：到现在还不支持编辑界面实时预览的 Markdown 编辑器基本可以退出市场了。Typora 在这一方面显然已经领先了一大步——他们连 Markdown 语法的标记都在实时预览中消去了。当你离开正在编辑的有格式的文本段后，Typora 会自动隐藏 Markdown 标记，只留下 <strong>所见即所得</strong> 的美妙。他们把这称为<em>Hybrid View</em> 。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606721116860.gif" alt="" loading="lazy"></p>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">所见即所得</center> 
-<p>为了防止一些程序 bug 的发生（虽然在我使用下来感到是很少的）导致格式问题无法修改，Typora 保留了一个「源代码模式」。你可以通过 视图 - 源代码模式 或左下角的 &lt;/&gt; 按钮进入。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606721181434.gif" alt="" loading="lazy"></p>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">源代码模式</center> 
-<h2 id="大纲-文件侧边栏">大纲 / 文件侧边栏</h2>
-<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1606721243748.png" alt="" loading="lazy"></figure>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">侧边栏</center> 
-<p>Typora 会根据你 Markdown 标记的 H1、H2、H3…… 各级标题为你呈现一个大纲。</p>
-<p>你也可以选择查看文件夹中的文件，但由于目前 Typora 只支持查看 md 文件，因此我认为文件侧边栏这个功能还是很鸡肋的。</p>
-<h2 id="空格与换行">空格与换行</h2>
-<p>Typora 在空格与换行部分主要是使用 <a href="https://commonmark.org">CommonMark</a> 作为标注规范。与前文提到的 GFM 一样，CommonMark 也是比较流行的 Markdown 语言规范（解析器）之一。</p>
-<ul>
-<li><strong>空格：</strong><br>
-在输入连续的空格后，Typora 会在编辑器视图里为你保留这些空格，但当你打印或导出时，这些空格会被省略成一个。<br>
-你可以在源代码模式下，为每个空格前加一个 \ 转义符，或者直接使用 HTML 风格的 &amp;nbps; 来保持连续的空格。</li>
-<li><strong>软换行：</strong><br>
-需要说明的是，在 Markdown 语法中，换行（line break）与换段是不同的。且换行分为软换行和硬换行。在 Typora 中，你可以通过 Shift + Enter 完成一次软换行。软换行只在编辑界面可见，当文档被导出时换行会被省略。</li>
-<li><strong>硬换行：</strong><br>
-你可以通过 空格 + 空格 + Shift + Enter 完成一次硬换行，而这也是许多 Markdown 编辑器所原生支持的。硬换行在文档被导出时将被保留，且没有换段的段后距。</li>
-<li><strong>换段：</strong><br>
-你可以通过 Enter 完成一次换段。Typora 会自动帮你完成两次 Shift + Enter 的软换行，从而完成一次换段。这也意味着在 Markdown 语法下，换段是通过在段与段之间加入空行来实现的。</li>
-<li><strong>Windows 风格（CR+LF）与 Unix 风格（CR）的换行符：</strong><br>
-CR 表示回车 \r ，即回到一行的开头，而 LF 表示换行 \n ，即另起一行。<br>
-所以 Windows 风格的换行符本质是「回车 + 换行」，而 Unix 风格的换行符是「换行」。这也是为什么 Unix / Mac 系统下的文件，如果在 Windows 系统直接打开会全部在同一行内。 你可以在 文件 - 偏好设置 - 编辑器 - 默认换行符 中对此进行切换。</li>
-</ul>
-<p>下附以上各空格、换行、换段的测试结果图。具体内容你可以在官网的 <a href="http://support.typora.io/Line-Break/">这篇文档</a> 中查阅。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606722389444.png" alt="" loading="lazy"></p>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">空格、换行、换段</center> 
-<h2 id="一个学术文档编辑器">一个学术文档编辑器</h2>
-<p>除了基本的文本编辑体验极佳之外，Typora 还是一个非常优秀的学术文档编辑器。当然作为一个轻量级的、基于 Markdown 的编辑器，它不能与那些 LaTeX 编辑器相提并论，但它仍支持了许多可用于学术写作的功能。</p>
-<p><strong>LaTeX</strong></p>
-<blockquote>
-<p>LaTeX 是一种基于 TeX 的排版系统，由于它易于快速生成复杂表格和数学公式，非常适用于生成高印刷质量的科技和数学类文档。如果你常阅读数学、计算机等领域的学术论文，你一定对 LaTeX 不陌生。</p>
-</blockquote>
-<p>Typora 原生支持 LaTeX 语法，你有两种方式输入 LaTeX 风格的数学公式：</p>
+<h2 id="17es6-兼容性">1.7.ES6 兼容性</h2>
+<p><a href="http://kangax.github.io/compat-table/es6/">可查看兼容性</a></p>
+<h1 id="第-2-章-ecmasript-6-新特性">第 2 章 ECMASript 6 新特性</h1>
+<h2 id="21let-关键字">2.1.let 关键字</h2>
+<p>let 关键字用来声明变量，使用 let 声明的变量有几个特点：</p>
 <ol>
-<li><strong>行内公式（inline）：</strong> 用 $...$ 括起公式，公式会出现在行内。</li>
-<li><strong>块间公式（display）：</strong> 用 $$...$$ 括起公式（注意 $$ 后需要换行），公式会默认显示在行中间。</li>
+<li>不允许重复声明</li>
+<li>块儿级作用域</li>
+<li>不存在变量提升</li>
+<li>不影响作用域链</li>
 </ol>
-<p>具体的 LaTeX 语法在此不赘述了，你可以在 <a href="https://blog.csdn.net/happyday_d/article/details/83715440">这篇文章</a> 中查看。</p>
-<h2 id="代码高亮">代码高亮</h2>
-<p>Typora 中代码的插入也可以分为行内和块间两种：</p>
+<div style="color:red"> 应用场景：以后声明变量使用 let 就对了</div>
+<br>
+<h2 id="22-const-关键字">2.2. const 关键字</h2>
+<p>const 关键字用来声明常量，const 声明有以下特点</p>
 <ol>
-<li>行内代码：用`...` 或``...`` 括起代码，代码会以主题中设置的样式出现在行内，但不会实现代码高亮。</li>
-<li>代码块：输入 ``` 后并输入语言名，换行，开始写代码，Typora 就会自动帮你实现代码高亮。Typora 原生支持许多编程语言代码块的语法高亮，基本日常常用的编程语言它都能很好地支持。<br>
-除此以外，你也可以直接换行开始写，而后再选择语言。</li>
+<li>声明必须赋初始值</li>
+<li>标识符一般为大写</li>
+<li>不允许重复声明</li>
+<li>值不允许修改</li>
+<li>块儿级作用域</li>
 </ol>
-<h2 id="链接引用与脚注">链接引用与脚注</h2>
-<p><strong>链接引用</strong>类似于我们常在论文末尾看到的「参考文献」的写法，你可以通过 []: 的语法来为你的文档加上链接引用。<br>
-<strong>脚注</strong>在少数派的文章中也很常见，即某段话结尾右上角标有数字标记，页面底部进行注释的写法。你可以在需要插入脚注标号的位置写 [^ number ] ，再在下方通过 [^ number ]: 在文档中插入脚注。注意不要遗漏了脚注编号 number 前后的空格。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606723891564.png" alt="" loading="lazy"></p>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">链接引用和脚注
-</center> 
-<h2 id="一个伪装成文本编辑器的浏览器">一个伪装成文本编辑器的浏览器</h2>
-<p>当我的一个朋友问我「Typora 有什么好写的？」时，我回答「Typora 是一个伪装成文本编辑器的浏览器」。是的，事实上如果你有一定的计算机基础，你可以找到许多有关于「Typora 其实是一个浏览器」的蛛丝马迹。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606724542832.png" alt="" loading="lazy"><center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">图片插入</p>
-</center> 
-<p>在图片插入的选项中，Typora 用了「复制图片到 ./${filename}.assets 文件夹」的说法，而这其实是网页前端常用的 Javascript 字符串模板语法的风格。</p>
-<p>再比如，Typora 将更遵循 GFM 标准的 Markdown 语法模式称为「严格模式 Strict Mode」，这一说法常见于 HTML 和 JavaScript 编程中。类似「源代码模式」的说法也是同理。</p>
-<p>当然，最明显的一点是当你按下 Shift + F12 快捷键时，页面会弹出一个基于 Chrome 的开发者工具栏，也就是我们在浏览器中常说的「审查元素」。<img src="https://Tyloo-code.github.io/post-images/1606724640253.png" alt="" loading="lazy"><center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">审查元素</p>
-</center> 
-<h2 id="伪装从何而来">伪装从何而来？</h2>
-<p>当我们把视角放在「Typora 是一个支持 Markdown 语言的文本编辑器」的出发点来考虑这个问题，一切就都显得很明白了。</p>
-<p>John Gruber 在 2004 年用 Perl 创造了 Markdown 语言，这个语言的目的是希望大家使用「易于阅读、易于撰写的纯文字格式，并选择性的转换成有效的 XHTML（或是 HTML）」。也就是说，<strong>在 Markdown 诞生之初，它就是为了被浏览器阅读而设计的。</strong></p>
-<p>我们在用 Markdown 语言撰写文稿的时候，其实本质上是在借助某种编程语言的转化（解析器）来编写一个 HTML 网页。Markdown 从它诞生之初就与 Web 技术有着及其紧密的联系。</p>
-<p>如果我说，我们每一篇文稿都是一个网页，那就很好理解了。Typora 利用解析器先将我们写的 Markdown 文档解析成为 HTML 文档，再为它嵌入一个 CSS 样式，最后再加上可能需要的脚本等。</p>
-<h2 id="html">HTML</h2>
-<p>HTML 是一种标记语言，主要负责构成网页的骨架，它包含所有不加装饰的网页元素。在 Typora 的使用场景下则是所有的<strong>文本、段落、标题等</strong>的记号。</p>
-<p>你可以把一张网页想象成一幅数字油画，HTML 就是那个黑白线条的底，上面写满了数字标记，示意你哪一块区域要涂什么颜色。而 CSS 则负责在对应的区域涂上颜色，甚至加上一些装饰等。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606724955000.jpg" alt="" loading="lazy"></p>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">数字油画
-</center> 
-<h3 id="html-标签">HTML 标签</h3>
-<p>Typora 支持许多常用的 HTML 标签，如果你了解 HTML 语法的话，你可以写出十分美观丰富的文档页面。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606725029628.png" alt="" loading="lazy"></p>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">HTML 标签
-</center> 
-<p>事实上你可以在 Typora 中完成许多基本的 HTML 风格的文本输入，例如 HTML 字符、HTML 块、HTML 风格的注释，甚至是视频和音频。具体支持的功能和限制请在 <a href="http://support.typora.io/HTML/">官方文档</a> 中查阅。</p>
-<h3 id="导出为-html">导出为 HTML</h3>
-<p>有了这一功能，我们就可以在 Typora 中创造出远超普通 Markdown 文档的页面效果。</p>
-<p>Typora 原生支持将文档导出为 HTML 格式的文件，并选择是否要嵌入 style（也就是后文我将提到的 CSS 的部分）。</p>
-<p>除此之外，由于其本身「浏览器」的属性，你可以直接在实时预览界面用 Ctrl +C 复制到 HTML 代码。一个实用的用处是将这些 HTML 代码直接 Ctrl + V 黏贴到微信公众号后台，基本可以保证两边显示效果相同。这一点不仅使公众号推送可以有更自由、美观的样式，也让编辑、排版更轻松了。（由于微信自带浏览器的一些特性，可能有少部分 CSS style 不能生效，建议多多校对。）<br>
-<img src="https://Tyloo-code.github.io/post-images/1606725222158.png" alt="" loading="lazy"></p>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">公众号
-</center> 
-<p>具体如何用 Typora 完成公众号写作，你可以在 <a href="https://sspai.com/post/40524">这篇文章</a> 中进一步了解。</p>
-<h2 id="css">CSS</h2>
-<p>为了让文档更美观，我们可以为其加上 CSS style。我认为 Typora 对 CSS 的支持让它成为一众桌面笔记应用中最与众不同的一个。在 Typora 中 CSS 被称为「主题」，但其本质仍是 CSS 文件。你可以在 文件 - 偏好设置 - 主题 - 打开主题文件夹 看到这些 CSS 文件。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606725328223.png" alt="" loading="lazy"><center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">主题</p>
-</center> 
-<figure data-type="image" tabindex="2"><img src="https://Tyloo-code.github.io/post-images/1606725342168.png" alt="" loading="lazy"></figure>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">主题文件夹
-</center> 
-<p>选择不同的主题可以使文档拥有不同的外观，但不会影响内容。Typora 自带了若干主题，你也可以在 <a href="http://theme.typora.io">官网</a> 下载更多的主题。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606725423540.png" alt="" loading="lazy"></p>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">主题商店
-</center> 
-<p>除此以外，如果你有一定的 Web 编程基础，你当然也可以自己修改、新建适合你使用需求的 CSS 文件。我自己就写了一份名为 WeChat 的 CSS 文件，来符合我公众号特定的排版需求，例如正文是 15px，页边距是 8，小标题是 18px 等等。<br>
-<img src="https://Tyloo-code.github.io/post-images/1606725495732.png" alt="" loading="lazy"></p>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px">CSS文件
-</center> 
-<p>使用 Typora 的「主题」功能写公众号的一个好处是，只需要每次都套用同样的主题，我们就可以在保证每次排版规范都相同的同时，节省许多重复的工作。</p>
-<h2 id="yaml-front-matter">YAML front-matter</h2>
-<p>Typora 支持在文档头部加上基于 YAML 的 front-matter 信息，这一特性适用于把 Markdown 文档分类归档上传到用 Hexo 框架搭建的博客中。我对于这一点不太了解，这里就不误导大家了。有所了解的朋友可以在评论区谈谈！</p>
-<h2 id="写在最后">写在最后</h2>
-<p>因为移动端生产效率低，所以只有桌面端应用。因为左顾右盼的两栏式预览影响思路，所以他们甚至去掉了 Markdown 语法标记，只留下最终呈现的样式。因为 Markdown 是为了 HTML 呈现而设计的，所以他们提供了从入门到高级的一系列 Web 辅助功能…… 这一切都只是为了纯粹的<strong>生产效率</strong>。如果我们回头想想，Markdown 语言本身，当初不也是为了高效地生成简单网页而诞生的吗？</p>
-<p>最后，让我们一起期待这款<strong>顶级桌面文本生产力工具</strong>的正式版的到来吧！😆</p>
-<p>文章转自：https://sspai.com/post/54912</p>
+<div style="color:red"> 注意: 对象属性修改和数组元素变化不会出发 const 错误</div>
+<div style="color:red"> 应用场景：声明对象类型使用 const，非对象类型声明选择 let</div>
+<br>
+<h2 id="23变量的解构赋值">2.3.变量的解构赋值</h2>
+<p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构赋值。</p>
+<pre><code>//数组的解构赋值
+const arr = ['张学友', '刘德华', '黎明', '郭富城'];
+let [zhang, liu, li, guo] = arr;
+</code></pre>
+<pre><code>//对象的解构赋值
+const lin = {
+ name: '林志颖',
+ tags: ['车手', '歌手', '小旋风', '演员']
+};
+let {name, tags} = lin;
+//复杂解构
+let wangfei = {
+ name: '王菲',
+ age: 18,
+ songs: ['红豆', '流年', '暧昧', '传奇'],
+ history: [
+ {name: '窦唯'},
+ {name: '李亚鹏'},
+ {name: '谢霆锋'}
+ ]
+};
+let {songs: [one, two, three], history: [first, second, third]} = 
+wangfei;
+</code></pre>
+<div style="color:red">注意：频繁使用对象方法、数组元素，就可以使用解构赋值形式</div>
+<br>
+<h2 id="24模板字符串">2.4.模板字符串</h2>
+<p>模板字符串（template string）是增强版的字符串，用反引号（`）标识，特点：</p>
+<ol>
+<li>字符串中可以出现换行符</li>
+<li>可以使用 ${xxx} 形式输出变量</li>
+</ol>
+<pre><code>// 定义字符串
+let str = `&lt;ul&gt;
+&lt;li&gt;沈腾&lt;/li&gt;
+ &lt;li&gt;玛丽&lt;/li&gt;
+ &lt;li&gt;魏翔&lt;/li&gt;
+ &lt;li&gt;艾伦&lt;/li&gt;
+ &lt;/ul&gt;`;
+// 变量拼接
+let star = '王宁';
+let result = `${star}在前几年离开了开心麻花`;
+</code></pre>
+<div style="color:red">注意：当遇到字符串与变量拼接的情况使用模板字符串</div>
+<br>
+<h2 id="25简化对象写法">2.5.简化对象写法</h2>
+<p>ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁。</p>
+<pre><code>let name = '尚硅谷';
+let slogon = '永远追求行业更高标准';
+let improve = function () {
+ console.log('可以提高你的技能');
+}
+//属性和方法简写
+let atguigu = {
+ name,
+ slogon,
+ improve,
+ change() {
+ console.log('可以改变你')
+ }
+};
+</code></pre>
+<div style="color:red">注意：对象简写形式简化了代码，所以以后用简写就对了</div>
+<br>
+<h2 id="26箭头函数">2.6.箭头函数</h2>
+<p>ES6 允许使用「箭头」（=&gt;）定义函数。</p>
+<pre><code>/**
+* 1. 通用写法
+*/
+let fn = (arg1, arg2, arg3) =&gt; {
+ return arg1 + arg2 + arg3;
+}
+</code></pre>
+<p>箭头函数的注意点:</p>
+<ol>
+<li>如果形参只有一个，则小括号可以省略</li>
+<li>函数体如果只有一条语句，则花括号可以省略，函数的返回值为该条语句的<br>
+执行结果</li>
+<li>箭头函数 this 指向声明时所在作用域下 this 的值</li>
+<li>箭头函数不能作为构造函数实例化</li>
+<li>不能使用 arguments</li>
+</ol>
+<pre><code>/**
+* 2. 省略小括号的情况
+*/
+let fn2 = num =&gt; {
+ return num * 10;
+};
+/**
+* 3. 省略花括号的情况
+*/
+let fn3 = score =&gt; score * 20;
+/**
+* 4. this 指向声明时所在作用域中 this 的值
+*/
+let fn4 = () =&gt; {
+ console.log(this);
+}
+let school = {
+ name: '尚硅谷',
+ getName(){
+ let fn5 = () =&gt; {
+ console.log(this);
+ }
+ fn5();
+ }
+};
+</code></pre>
+<div style="color:red">注意：箭头函数不会更改 this 指向，用来指定回调函数会非常合适</div>
+<br>
+<!-- more -->
+<p>鸣谢：源自<a href="https://www.bilibili.com/video/BV1uK411H7on">视频教程-尚硅谷</a></p>
 
             </div>
             
@@ -737,7 +736,7 @@ CR 表示回车 \r ，即回到一行的开头，而 LF 表示换行 \n ，即�
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/windows-xi-tong-xia-typora-wan-quan-shi-yong-xiang-jie/" title="Windows系统下Typora 完全使用详解">https://Tyloo-code.github.io/post/windows-xi-tong-xia-typora-wan-quan-shi-yong-xiang-jie/</a>
+      <a href="https://Tyloo-code.github.io/post/ecmascript-6-11/" title="ECMAScript 6-11">https://Tyloo-code.github.io/post/ecmascript-6-11/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -746,21 +745,15 @@ CR 表示回车 \r ，即回到一行的开头，而 LF 表示换行 \n ，即�
   </ul>
   <div class="tags">
     
-      <a href="https://Tyloo-code.github.io/tag/p-439WajB/"># Typora</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Vue从入门到未完待续" href="https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/">Vue从入门到未完待续</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Vue从入门到未完待续" href="https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Markdown基本语法" href="https://Tyloo-code.github.io/post/markdown-ji-ben-yu-fa/">Markdown基本语法</a>
-        <a class="nav-mobile-next" title="Markdown基本语法" href="https://Tyloo-code.github.io/post/markdown-ji-ben-yu-fa/">下一篇</a>
+        <a class="nav-pc-next" title="Element UI 实战教程" href="https://Tyloo-code.github.io/post/ce-shi/">Element UI 实战教程</a>
+        <a class="nav-mobile-next" title="Element UI 实战教程" href="https://Tyloo-code.github.io/post/ce-shi/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
