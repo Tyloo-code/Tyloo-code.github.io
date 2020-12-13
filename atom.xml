@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Tyloo-code.github.io</id>
     <title>Tyloo</title>
-    <updated>2020-12-12T12:06:53.296Z</updated>
+    <updated>2020-12-13T08:01:44.757Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Tyloo-code.github.io"/>
     <link rel="self" href="https://Tyloo-code.github.io/atom.xml"/>
@@ -176,6 +176,117 @@ let school = {
 </code></pre>
 <div style="color:red">注意：箭头函数不会更改 this 指向，用来指定回调函数会非常合适</div>
 <br>
+<h2 id="27-rest-参数">2.7. rest 参数</h2>
+<p>ES6 引入 rest 参数，用于获取函数的实参，用来代替 arguments</p>
+<pre><code>/**
+* 作用与 arguments 类似
+*/
+function add(...args){
+ console.log(args);
+}
+add(1,2,3,4,5);
+/**
+* rest 参数必须是最后一个形参
+*/
+function minus(a,b,...args){
+ console.log(a,b,args);
+}
+minus(100,1,2,3,4,5,19);
+</code></pre>
+<div style="color:red">注意：rest 参数非常适合不定个数参数函数的场景</div>
+<br>
+<h2 id="28-spread-扩展运算符">2.8. spread 扩展运算符</h2>
+<p>扩展运算符（spread）也是三个点（...）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列，对数组进行解包。</p>
+<pre><code>/**
+* 展开数组
+*/ 
+let tfboys = ['德玛西亚之力','德玛西亚之翼','德玛西亚皇子'];
+function fn(){
+ console.log(arguments);
+}
+fn(...tfboys)
+/**
+* 展开对象
+*/
+let skillOne = {
+ q: '致命打击',
+};
+let skillTwo = {
+ w: '勇气'
+};
+let skillThree = {
+ e: '审判'
+};
+let skillFour = {
+ r: '德玛西亚正义'
+};
+let gailun = {...skillOne, ...skillTwo,...skillThree,...skillFour};
+</code></pre>
+<h2 id="29symbol">2.9.Symbol</h2>
+<h3 id="291symbol-基本使用">2.9.1.Symbol 基本使用</h3>
+<p>ES6 引入了一种新的原始数据类型 Symbol，表示独一无二的值。它是JavaScript 语言的第七种数据类型，是一种类似于字符串的数据类型。</p>
+<p>Symbol 特点</p>
+<ol>
+<li>Symbol 的值是唯一的，用来解决命名冲突的问题</li>
+<li>Symbol 值不能与其他数据进行运算</li>
+<li>Symbol 定义 的 对象属 性 不能 使 用 for…in 循 环遍 历 ，但 是可 以 使 用<br>
+Reflect.ownKeys 来获取对象的所有键名</li>
+</ol>
+<pre><code>//创建 Symbol
+let s1 = Symbol();
+console.log(s1, typeof s1);
+//添加标识的 Symbol
+let s2 = Symbol('尚硅谷');
+let s2_2 = Symbol('尚硅谷');
+console.log(s2 === s2_2);
+//使用 Symbol for 定义
+let s3 = Symbol.for('尚硅谷');
+let s3_2 = Symbol.for('尚硅谷');
+console.log(s3 === s3_2);
+</code></pre>
+<div style="color:red">注: 遇到唯一性的场景时要想到 Symbol</div>
+<br>
+<h3 id="292symbol-内置值">2.9.2.Symbol 内置值</h3>
+<p>除了定义自己使用的 Symbol 值以外，ES6 还提供了 11 个内置的 Symbol 值，指向语言内部使用的方法。可以称这些方法为魔术方法，因为它们会在特定的场景下自动执行。<br>
+<img src="https://Tyloo-code.github.io/post-images/1607828563219.png" alt="" loading="lazy"></p>
+<h2 id="210-迭代器">2.10. 迭代器</h2>
+<p>遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作。</p>
+<ol>
+<li>ES6 创造了一种新的遍历命令 for...of 循环，Iterator 接口主要供 for...of 消费</li>
+<li>原生具备 iterator 接口的数据(可用 for of 遍历)<br>
+a) Array<br>
+b) Arguments<br>
+c) Set<br>
+d) Map<br>
+e) String<br>
+f) TypedArray<br>
+g) NodeList</li>
+<li>工作原理<br>
+a) 创建一个指针对象，指向当前数据结构的起始位置<br>
+b) 第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员<br>
+c) 接下来不断调用 next 方法，指针一直往后移动，直到指向最后一个成员<br>
+d) 每调用 next 方法返回一个包含 value 和 done 属性的对象</li>
+</ol>
+<div style="color:red">注: 需要自定义遍历数据的时候，要想到迭代器。</div>
+<br>
+<h2 id="211-生成器">2.11. 生成器</h2>
+<p>生成器函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同</p>
+<pre><code>function * gen(){
+ yield '一只没有耳朵';
+ yield '一只没有尾巴';
+ return '真奇怪'; }
+let iterator = gen();
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+</code></pre>
+<p>代码说明：</p>
+<ol>
+<li>* 的位置没有限制</li>
+<li>生成器函数返回的结果是迭代器对象，调用迭代器对象的 next 方法可以得到yield 语句后的值</li>
+<li>yield 相当于函数的暂停标记，也可以认为是函数的分隔符，每调用一次 next方法，执行一段代码</li>
+<li>next 方法可以传递实参，作为 yield 语句的返回值</li>
+</ol>
 ]]></summary>
         <content type="html"><![CDATA[<h1 id="第-1-章-ecmasript-相关介绍">第 1 章 ECMASript 相关介绍</h1>
 <h2 id="11什么是-ecma">1.1.什么是 ECMA</h2>
@@ -337,6 +448,117 @@ let school = {
 </code></pre>
 <div style="color:red">注意：箭头函数不会更改 this 指向，用来指定回调函数会非常合适</div>
 <br>
+<h2 id="27-rest-参数">2.7. rest 参数</h2>
+<p>ES6 引入 rest 参数，用于获取函数的实参，用来代替 arguments</p>
+<pre><code>/**
+* 作用与 arguments 类似
+*/
+function add(...args){
+ console.log(args);
+}
+add(1,2,3,4,5);
+/**
+* rest 参数必须是最后一个形参
+*/
+function minus(a,b,...args){
+ console.log(a,b,args);
+}
+minus(100,1,2,3,4,5,19);
+</code></pre>
+<div style="color:red">注意：rest 参数非常适合不定个数参数函数的场景</div>
+<br>
+<h2 id="28-spread-扩展运算符">2.8. spread 扩展运算符</h2>
+<p>扩展运算符（spread）也是三个点（...）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列，对数组进行解包。</p>
+<pre><code>/**
+* 展开数组
+*/ 
+let tfboys = ['德玛西亚之力','德玛西亚之翼','德玛西亚皇子'];
+function fn(){
+ console.log(arguments);
+}
+fn(...tfboys)
+/**
+* 展开对象
+*/
+let skillOne = {
+ q: '致命打击',
+};
+let skillTwo = {
+ w: '勇气'
+};
+let skillThree = {
+ e: '审判'
+};
+let skillFour = {
+ r: '德玛西亚正义'
+};
+let gailun = {...skillOne, ...skillTwo,...skillThree,...skillFour};
+</code></pre>
+<h2 id="29symbol">2.9.Symbol</h2>
+<h3 id="291symbol-基本使用">2.9.1.Symbol 基本使用</h3>
+<p>ES6 引入了一种新的原始数据类型 Symbol，表示独一无二的值。它是JavaScript 语言的第七种数据类型，是一种类似于字符串的数据类型。</p>
+<p>Symbol 特点</p>
+<ol>
+<li>Symbol 的值是唯一的，用来解决命名冲突的问题</li>
+<li>Symbol 值不能与其他数据进行运算</li>
+<li>Symbol 定义 的 对象属 性 不能 使 用 for…in 循 环遍 历 ，但 是可 以 使 用<br>
+Reflect.ownKeys 来获取对象的所有键名</li>
+</ol>
+<pre><code>//创建 Symbol
+let s1 = Symbol();
+console.log(s1, typeof s1);
+//添加标识的 Symbol
+let s2 = Symbol('尚硅谷');
+let s2_2 = Symbol('尚硅谷');
+console.log(s2 === s2_2);
+//使用 Symbol for 定义
+let s3 = Symbol.for('尚硅谷');
+let s3_2 = Symbol.for('尚硅谷');
+console.log(s3 === s3_2);
+</code></pre>
+<div style="color:red">注: 遇到唯一性的场景时要想到 Symbol</div>
+<br>
+<h3 id="292symbol-内置值">2.9.2.Symbol 内置值</h3>
+<p>除了定义自己使用的 Symbol 值以外，ES6 还提供了 11 个内置的 Symbol 值，指向语言内部使用的方法。可以称这些方法为魔术方法，因为它们会在特定的场景下自动执行。<br>
+<img src="https://Tyloo-code.github.io/post-images/1607828563219.png" alt="" loading="lazy"></p>
+<h2 id="210-迭代器">2.10. 迭代器</h2>
+<p>遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作。</p>
+<ol>
+<li>ES6 创造了一种新的遍历命令 for...of 循环，Iterator 接口主要供 for...of 消费</li>
+<li>原生具备 iterator 接口的数据(可用 for of 遍历)<br>
+a) Array<br>
+b) Arguments<br>
+c) Set<br>
+d) Map<br>
+e) String<br>
+f) TypedArray<br>
+g) NodeList</li>
+<li>工作原理<br>
+a) 创建一个指针对象，指向当前数据结构的起始位置<br>
+b) 第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员<br>
+c) 接下来不断调用 next 方法，指针一直往后移动，直到指向最后一个成员<br>
+d) 每调用 next 方法返回一个包含 value 和 done 属性的对象</li>
+</ol>
+<div style="color:red">注: 需要自定义遍历数据的时候，要想到迭代器。</div>
+<br>
+<h2 id="211-生成器">2.11. 生成器</h2>
+<p>生成器函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同</p>
+<pre><code>function * gen(){
+ yield '一只没有耳朵';
+ yield '一只没有尾巴';
+ return '真奇怪'; }
+let iterator = gen();
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+</code></pre>
+<p>代码说明：</p>
+<ol>
+<li>* 的位置没有限制</li>
+<li>生成器函数返回的结果是迭代器对象，调用迭代器对象的 next 方法可以得到yield 语句后的值</li>
+<li>yield 相当于函数的暂停标记，也可以认为是函数的分隔符，每调用一次 next方法，执行一段代码</li>
+<li>next 方法可以传递实参，作为 yield 语句的返回值</li>
+</ol>
 ]]></content>
     </entry>
     <entry>

@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1607774809330">
+<link rel="shortcut icon" href="/favicon.ico?v=1607846502463">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -657,6 +657,117 @@ let school = {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;div style=&#34;color:red&#34;&gt;注意：箭头函数不会更改 this 指向，用来指定回调函数会非常合适&lt;/div&gt;
 &lt;br&gt;
+&lt;h2 id=&#34;27-rest-参数&#34;&gt;2.7. rest 参数&lt;/h2&gt;
+&lt;p&gt;ES6 引入 rest 参数，用于获取函数的实参，用来代替 arguments&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+* 作用与 arguments 类似
+*/
+function add(...args){
+ console.log(args);
+}
+add(1,2,3,4,5);
+/**
+* rest 参数必须是最后一个形参
+*/
+function minus(a,b,...args){
+ console.log(a,b,args);
+}
+minus(100,1,2,3,4,5,19);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div style=&#34;color:red&#34;&gt;注意：rest 参数非常适合不定个数参数函数的场景&lt;/div&gt;
+&lt;br&gt;
+&lt;h2 id=&#34;28-spread-扩展运算符&#34;&gt;2.8. spread 扩展运算符&lt;/h2&gt;
+&lt;p&gt;扩展运算符（spread）也是三个点（...）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列，对数组进行解包。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+* 展开数组
+*/ 
+let tfboys = [&#39;德玛西亚之力&#39;,&#39;德玛西亚之翼&#39;,&#39;德玛西亚皇子&#39;];
+function fn(){
+ console.log(arguments);
+}
+fn(...tfboys)
+/**
+* 展开对象
+*/
+let skillOne = {
+ q: &#39;致命打击&#39;,
+};
+let skillTwo = {
+ w: &#39;勇气&#39;
+};
+let skillThree = {
+ e: &#39;审判&#39;
+};
+let skillFour = {
+ r: &#39;德玛西亚正义&#39;
+};
+let gailun = {...skillOne, ...skillTwo,...skillThree,...skillFour};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;29symbol&#34;&gt;2.9.Symbol&lt;/h2&gt;
+&lt;h3 id=&#34;291symbol-基本使用&#34;&gt;2.9.1.Symbol 基本使用&lt;/h3&gt;
+&lt;p&gt;ES6 引入了一种新的原始数据类型 Symbol，表示独一无二的值。它是JavaScript 语言的第七种数据类型，是一种类似于字符串的数据类型。&lt;/p&gt;
+&lt;p&gt;Symbol 特点&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Symbol 的值是唯一的，用来解决命名冲突的问题&lt;/li&gt;
+&lt;li&gt;Symbol 值不能与其他数据进行运算&lt;/li&gt;
+&lt;li&gt;Symbol 定义 的 对象属 性 不能 使 用 for…in 循 环遍 历 ，但 是可 以 使 用&lt;br&gt;
+Reflect.ownKeys 来获取对象的所有键名&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;//创建 Symbol
+let s1 = Symbol();
+console.log(s1, typeof s1);
+//添加标识的 Symbol
+let s2 = Symbol(&#39;尚硅谷&#39;);
+let s2_2 = Symbol(&#39;尚硅谷&#39;);
+console.log(s2 === s2_2);
+//使用 Symbol for 定义
+let s3 = Symbol.for(&#39;尚硅谷&#39;);
+let s3_2 = Symbol.for(&#39;尚硅谷&#39;);
+console.log(s3 === s3_2);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div style=&#34;color:red&#34;&gt;注: 遇到唯一性的场景时要想到 Symbol&lt;/div&gt;
+&lt;br&gt;
+&lt;h3 id=&#34;292symbol-内置值&#34;&gt;2.9.2.Symbol 内置值&lt;/h3&gt;
+&lt;p&gt;除了定义自己使用的 Symbol 值以外，ES6 还提供了 11 个内置的 Symbol 值，指向语言内部使用的方法。可以称这些方法为魔术方法，因为它们会在特定的场景下自动执行。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1607828563219.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;210-迭代器&#34;&gt;2.10. 迭代器&lt;/h2&gt;
+&lt;p&gt;遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ES6 创造了一种新的遍历命令 for...of 循环，Iterator 接口主要供 for...of 消费&lt;/li&gt;
+&lt;li&gt;原生具备 iterator 接口的数据(可用 for of 遍历)&lt;br&gt;
+a) Array&lt;br&gt;
+b) Arguments&lt;br&gt;
+c) Set&lt;br&gt;
+d) Map&lt;br&gt;
+e) String&lt;br&gt;
+f) TypedArray&lt;br&gt;
+g) NodeList&lt;/li&gt;
+&lt;li&gt;工作原理&lt;br&gt;
+a) 创建一个指针对象，指向当前数据结构的起始位置&lt;br&gt;
+b) 第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员&lt;br&gt;
+c) 接下来不断调用 next 方法，指针一直往后移动，直到指向最后一个成员&lt;br&gt;
+d) 每调用 next 方法返回一个包含 value 和 done 属性的对象&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div style=&#34;color:red&#34;&gt;注: 需要自定义遍历数据的时候，要想到迭代器。&lt;/div&gt;
+&lt;br&gt;
+&lt;h2 id=&#34;211-生成器&#34;&gt;2.11. 生成器&lt;/h2&gt;
+&lt;p&gt;生成器函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function * gen(){
+ yield &#39;一只没有耳朵&#39;;
+ yield &#39;一只没有尾巴&#39;;
+ return &#39;真奇怪&#39;; }
+let iterator = gen();
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;代码说明：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;* 的位置没有限制&lt;/li&gt;
+&lt;li&gt;生成器函数返回的结果是迭代器对象，调用迭代器对象的 next 方法可以得到yield 语句后的值&lt;/li&gt;
+&lt;li&gt;yield 相当于函数的暂停标记，也可以认为是函数的分隔符，每调用一次 next方法，执行一段代码&lt;/li&gt;
+&lt;li&gt;next 方法可以传递实参，作为 yield 语句的返回值&lt;/li&gt;
+&lt;/ol&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;鸣谢：源自&lt;a href=&#34;https://www.bilibili.com/video/BV1uK411H7on&#34;&gt;视频教程-尚硅谷&lt;/a&gt;&lt;/p&gt;
 ">ECMAScript 6-11</a>
