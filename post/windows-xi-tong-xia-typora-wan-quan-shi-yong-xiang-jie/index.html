@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Windows系统下Typora 完全使用详解 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1607927917298">
+<link rel="shortcut icon" href="/favicon.ico?v=1607933830566">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1694,6 +1694,100 @@ Number.isNaN() 用来检查一个值是否为 NaN&lt;/p&gt;
 &lt;h2 id=&#34;32指数操作符&#34;&gt;3.2.指数操作符&lt;/h2&gt;
 &lt;p&gt;在 ES7 中引入指数运算符「**」，用来实现幂运算，功能与 Math.pow 结果相同&lt;/p&gt;
 &lt;h1 id=&#34;第-4-章-ecmasript-8-新特性&#34;&gt;第 4 章 ECMASript 8 新特性&lt;/h1&gt;
+&lt;h2 id=&#34;41async-和-await&#34;&gt;4.1.async 和 await&lt;/h2&gt;
+&lt;p&gt;async 和 await 两种语法结合可以让异步代码像同步代码一样&lt;/p&gt;
+&lt;h3 id=&#34;411async-函数&#34;&gt;4.1.1.async 函数&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;async 函数的返回值为 promise 对象，&lt;/li&gt;
+&lt;li&gt;promise 对象的结果由 async 函数执行的返回值决定&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;412await-表达式&#34;&gt;4.1.2.await 表达式&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;await 必须写在 async 函数中&lt;/li&gt;
+&lt;li&gt;await 右侧的表达式一般为 promise 对象&lt;/li&gt;
+&lt;li&gt;await 返回的是 promise 成功的值&lt;/li&gt;
+&lt;li&gt;await 的 promise 失败了, 就会抛出异常, 需要通过 try...catch 捕获处理&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;42objectvalues-和-objectentries&#34;&gt;4.2.Object.values 和 Object.entries&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Object.values()方法返回一个给定对象的所有可枚举属性值的数组&lt;/li&gt;
+&lt;li&gt;Object.entries()方法返回一个给定对象自身可遍历属性 [key,value] 的数组&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;43objectgetownpropertydescriptors&#34;&gt;4.3.Object.getOwnPropertyDescriptors&lt;/h2&gt;
+&lt;p&gt;该方法返回指定对象所有自身属性的描述对象&lt;/p&gt;
+&lt;h1 id=&#34;第-5-章-ecmasript-9-新特性&#34;&gt;第 5 章 ECMASript 9 新特性&lt;/h1&gt;
+&lt;h2 id=&#34;51restspread-属性&#34;&gt;5.1.Rest/Spread 属性&lt;/h2&gt;
+&lt;p&gt;Rest 参数与 spread 扩展运算符在 ES6 中已经引入，不过 ES6 中只针对于数组，在 ES9 中为对象提供了像数组一样的 rest 参数和扩展运算符。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function connect({host, port, ...user}) {
+ console.log(host);
+ console.log(port);
+ console.log(user);
+}
+connect({
+ host: &#39;127.0.0.1&#39;,
+ port: 3306,
+ username: &#39;root&#39;,
+ password: &#39;root&#39;,
+ type: &#39;master&#39;
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;52正则表达式命名捕获组&#34;&gt;5.2.正则表达式命名捕获组&lt;/h2&gt;
+&lt;p&gt;ES9 允许命名捕获组使用符号『?&lt;name&gt;』,这样获取捕获结果可读性更强&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let str = &#39;&amp;lt;a href=&amp;quot;http://www.atguigu.com&amp;quot;&amp;gt;尚硅谷&amp;lt;/a&amp;gt;&#39;;
+const reg = /&amp;lt;a href=&amp;quot;(?&amp;lt;url&amp;gt;.*)&amp;quot;&amp;gt;(?&amp;lt;text&amp;gt;.*)&amp;lt;\/a&amp;gt;/;
+const result = reg.exec(str);
+console.log(result.groups.url);
+console.log(result.groups.text);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;53正则表达式反向断言&#34;&gt;5.3.正则表达式反向断言&lt;/h2&gt;
+&lt;p&gt;ES9 支持反向断言，通过对匹配结果前面的内容进行判断，对匹配进行筛选。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//声明字符串
+let str = &#39;JS5211314 你知道么 555 啦啦啦&#39;;
+//正向断言
+const reg = /\d+(?=啦)/;
+const result = reg.exec(str);
+//反向断言
+const reg = /(?&amp;lt;=么)\d+/;
+const result = reg.exec(str);
+console.log(result);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;54正则表达式-dotall-模式&#34;&gt;5.4.正则表达式 dotAll 模式&lt;/h2&gt;
+&lt;p&gt;正则表达式中点.匹配除回车外的任何单字符，标记『s』改变这种行为，允许行终止符出现&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let str = `
+&amp;lt;ul&amp;gt;
+ &amp;lt;li&amp;gt;
+ &amp;lt;a&amp;gt;肖生克的救赎&amp;lt;/a&amp;gt;
+ &amp;lt;p&amp;gt;上映日期: 1994-09-10&amp;lt;/p&amp;gt;
+ &amp;lt;/li&amp;gt;
+ &amp;lt;li&amp;gt;
+ &amp;lt;a&amp;gt;阿甘正传&amp;lt;/a&amp;gt;
+ &amp;lt;p&amp;gt;上映日期: 1994-07-06&amp;lt;/p&amp;gt;
+ &amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;`;
+//声明正则
+const reg = /&amp;lt;li&amp;gt;.*?&amp;lt;a&amp;gt;(.*?)&amp;lt;\/a&amp;gt;.*?&amp;lt;p&amp;gt;(.*?)&amp;lt;\/p&amp;gt;/gs;
+//执行匹配
+const result = reg.exec(str);
+let result;
+let data = [];
+while(result = reg.exec(str)){
+ data.push({title: result[1], time: result[2]});
+}
+//输出结果
+console.log(data);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;第-6-章-ecmasript-10-新特性&#34;&gt;第 6 章 ECMASript 10 新特性&lt;/h1&gt;
+&lt;h2 id=&#34;61objectfromentries&#34;&gt;6.1.Object.fromEntries&lt;/h2&gt;
+&lt;h2 id=&#34;62trimstart-和-trimend&#34;&gt;6.2.trimStart 和 trimEnd&lt;/h2&gt;
+&lt;h2 id=&#34;63arrayprototypeflat-与-flatmap&#34;&gt;6.3.Array.prototype.flat 与 flatMap&lt;/h2&gt;
+&lt;h2 id=&#34;64symbolprototypedescription&#34;&gt;6.4.Symbol.prototype.description&lt;/h2&gt;
+&lt;h1 id=&#34;第-7-章-ecmasript-11-新特性&#34;&gt;第 7 章 ECMASript 11 新特性&lt;/h1&gt;
+&lt;h2 id=&#34;71stringprototypematchall&#34;&gt;7.1.String.prototype.matchAll&lt;/h2&gt;
+&lt;h2 id=&#34;72类的私有属性&#34;&gt;7.2.类的私有属性&lt;/h2&gt;
+&lt;h2 id=&#34;73promiseallsettled&#34;&gt;7.3.Promise.allSettled&lt;/h2&gt;
+&lt;h2 id=&#34;74可选链操作符&#34;&gt;7.4.可选链操作符&lt;/h2&gt;
+&lt;h2 id=&#34;75动态-import-导入&#34;&gt;7.5.动态 import 导入&lt;/h2&gt;
+&lt;h2 id=&#34;76globalthis-对象&#34;&gt;7.6.globalThis 对象&lt;/h2&gt;
 &lt;p&gt;鸣谢：源自&lt;a href=&#34;https://www.bilibili.com/video/BV1uK411H7on&#34;&gt;视频教程-尚硅谷&lt;/a&gt;&lt;/p&gt;
 ">ECMAScript 6-11</a>
       </div>
