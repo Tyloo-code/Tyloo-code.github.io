@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1607911886582">
+<link rel="shortcut icon" href="/favicon.ico?v=1607927917298">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -825,6 +825,172 @@ console.log(iterator.next());
 &lt;li&gt;yield 相当于函数的暂停标记，也可以认为是函数的分隔符，每调用一次 next方法，执行一段代码&lt;/li&gt;
 &lt;li&gt;next 方法可以传递实参，作为 yield 语句的返回值&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;212-promise&#34;&gt;2.12. Promise&lt;/h2&gt;
+&lt;p&gt;Promise 是 ES6 引入的异步编程的新解决方案。语法上 Promise 是一个构造函数，用来封装异步操作并可以获取其成功或失败的结果。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Promise 构造函数: Promise (excutor) {}&lt;/li&gt;
+&lt;li&gt;Promise.prototype.then 方法&lt;/li&gt;
+&lt;li&gt;Promise.prototype.catch 方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;213-set&#34;&gt;2.13. Set&lt;/h2&gt;
+&lt;p&gt;ES6 提供了新的数据结构 Set（集合）。它类似于数组，但成员的值都是唯一的，集合实现了 iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历，集合的属性和方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;size 返回集合的元素个数&lt;/li&gt;
+&lt;li&gt;add 增加一个新元素，返回当前集合&lt;/li&gt;
+&lt;li&gt;delete 删除元素，返回 boolean 值&lt;/li&gt;
+&lt;li&gt;has 检测集合中是否包含某个元素，返回 boolean 值&lt;/li&gt;
+&lt;li&gt;clear 清空集合，返回 undefined&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;//创建一个空集合
+let s = new Set();
+//创建一个非空集合
+let s1 = new Set([1,2,3,1,2,3]);
+//集合属性与方法
+//返回集合的元素个数
+console.log(s1.size);
+//添加新元素
+console.log(s1.add(4));
+//删除元素
+console.log(s1.delete(1));
+//检测是否存在某个值
+console.log(s1.has(2));
+//清空集合
+console.log(s1.clear());
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;214-map&#34;&gt;2.14. Map&lt;/h2&gt;
+&lt;p&gt;ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合。但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。Map 也实现了iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历。Map 的属性和方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;size 返回 Map 的元素个数&lt;/li&gt;
+&lt;li&gt;set 增加一个新元素，返回当前 Map&lt;/li&gt;
+&lt;li&gt;get 返回键名对象的键值&lt;/li&gt;
+&lt;li&gt;has 检测 Map 中是否包含某个元素，返回 boolean 值&lt;/li&gt;
+&lt;li&gt;clear 清空集合，返回 undefined&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;//创建一个空 map
+let m = new Map();
+//创建一个非空 map
+let m2 = new Map([
+ [&#39;name&#39;,&#39;尚硅谷&#39;],
+ [&#39;slogon&#39;,&#39;不断提高行业标准&#39;]
+]);
+//属性和方法
+//获取映射元素的个数
+console.log(m2.size);
+//添加映射值
+console.log(m2.set(&#39;age&#39;, 6));
+//获取映射值
+console.log(m2.get(&#39;age&#39;));
+//检测是否有该映射
+console.log(m2.has(&#39;age&#39;));
+//清除
+console.log(m2.clear());
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;215-class-类&#34;&gt;2.15. class 类&lt;/h2&gt;
+&lt;p&gt;ES6 提供了更接近传统语言的写法，引入了 Class（类）这个概念，作为对象的模板。通过 class 关键字，可以定义类。基本上，ES6 的 class 可以看作只是一个语法糖，它的绝大部分功能，ES5 都可以做到，新的 class 写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。&lt;br&gt;
+知识点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;class 声明类&lt;/li&gt;
+&lt;li&gt;constructor 定义构造函数初始化&lt;/li&gt;
+&lt;li&gt;extends 继承父类&lt;/li&gt;
+&lt;li&gt;super 调用父级构造方法&lt;/li&gt;
+&lt;li&gt;static 定义静态方法和属性&lt;/li&gt;
+&lt;li&gt;父类方法可以重写&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;//父类
+class Phone {
+ //构造方法
+ constructor(brand, color, price) {
+ this.brand = brand;
+ this.color = color;
+ this.price = price;
+ }
+ //对象方法
+ call() {
+     console.log(&#39;我可以打电话!!!&#39;)
+ } }
+//子类
+class SmartPhone extends Phone {
+ constructor(brand, color, price, screen, pixel) {
+ super(brand, color, price);
+ this.screen = screen;
+ this.pixel = pixel;
+ }
+ //子类方法
+ photo(){
+ console.log(&#39;我可以拍照!!&#39;);
+ }
+ playGame(){
+ console.log(&#39;我可以玩游戏!!&#39;);
+ }
+ //方法重写
+ call(){
+ console.log(&#39;我可以进行视频通话!!&#39;);
+ }
+ //静态方法
+ static run(){
+ console.log(&#39;我可以运行程序&#39;)
+ }
+ static connect(){
+ console.log(&#39;我可以建立连接&#39;)
+ } }
+ //实例化对象
+const Nokia = new Phone(&#39;诺基亚&#39;, &#39;灰色&#39;, 230);
+const iPhone6s = new SmartPhone(&#39;苹果&#39;, &#39;白色&#39;, 6088, 
+&#39;4.7inch&#39;,&#39;500w&#39;);
+//调用子类方法
+iPhone6s.playGame();
+//调用重写方法
+iPhone6s.call();
+//调用静态方法
+SmartPhone.run();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;216-数值扩展&#34;&gt;2.16. 数值扩展&lt;/h2&gt;
+&lt;h3 id=&#34;2161-二进制和八进制&#34;&gt;2.16.1. 二进制和八进制&lt;/h3&gt;
+&lt;p&gt;ES6 提供了二进制和八进制数值的新的写法，分别用前缀 0b 和 0o 表示。&lt;/p&gt;
+&lt;h3 id=&#34;2162-numberisfinite-与-numberisnan&#34;&gt;2.16.2. Number.isFinite() 与 Number.isNaN()&lt;/h3&gt;
+&lt;p&gt;Number.isFinite() 用来检查一个数值是否为有限的&lt;br&gt;
+Number.isNaN() 用来检查一个值是否为 NaN&lt;/p&gt;
+&lt;h3 id=&#34;2163-numberparseint-与-numberparsefloat&#34;&gt;2.16.3. Number.parseInt() 与 Number.parseFloat()&lt;/h3&gt;
+&lt;p&gt;ES6 将全局方法 parseInt 和 parseFloat，移植到 Number 对象上面，使用不变。&lt;/p&gt;
+&lt;h3 id=&#34;2164-mathtrunc&#34;&gt;2.16.4. Math.trunc&lt;/h3&gt;
+&lt;p&gt;用于去除一个数的小数部分，返回整数部分。&lt;/p&gt;
+&lt;h3 id=&#34;2165-numberisinteger&#34;&gt;2.16.5. Number.isInteger&lt;/h3&gt;
+&lt;p&gt;Number.isInteger() 用来判断一个数值是否为整数&lt;/p&gt;
+&lt;h2 id=&#34;217-对象扩展&#34;&gt;2.17. 对象扩展&lt;/h2&gt;
+&lt;p&gt;ES6 新增了一些 Object 对象的方法&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Object.is 比较两个值是否严格相等，与『===』行为基本一致（+0 与 NaN）&lt;/li&gt;
+&lt;li&gt;Object.assign 对象的合并，将源对象的所有可枚举属性，复制到目标对象&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;proto&lt;/strong&gt;、setPrototypeOf、 setPrototypeOf 可以直接设置对象的原型&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;218-模块化&#34;&gt;2.18. 模块化&lt;/h2&gt;
+&lt;p&gt;模块化是指将一个大的程序文件，拆分成许多小的文件，然后将小文件组合起来。&lt;/p&gt;
+&lt;h3 id=&#34;2181-模块化的好处&#34;&gt;2.18.1. 模块化的好处&lt;/h3&gt;
+&lt;p&gt;模块化的优势有以下几点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;防止命名冲突&lt;/li&gt;
+&lt;li&gt;代码复用&lt;/li&gt;
+&lt;li&gt;高维护性&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2182-模块化规范产品&#34;&gt;2.18.2. 模块化规范产品&lt;/h3&gt;
+&lt;p&gt;ES6 之前的模块化规范有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CommonJS =&amp;gt; NodeJS、Browserify&lt;/li&gt;
+&lt;li&gt;AMD =&amp;gt; requireJS&lt;/li&gt;
+&lt;li&gt;CMD =&amp;gt; seaJS&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2183-es6-模块化语法&#34;&gt;2.18.3. ES6 模块化语法&lt;/h3&gt;
+&lt;p&gt;模块功能主要由两个命令构成：export 和 import。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;export 命令用于规定模块的对外接口&lt;/li&gt;
+&lt;li&gt;import 命令用于输入其他模块提供的功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;第-3-章-ecmasript-7-新特性&#34;&gt;第 3 章 ECMASript 7 新特性&lt;/h1&gt;
+&lt;h2 id=&#34;31arrayprototypeincludes&#34;&gt;3.1.Array.prototype.includes&lt;/h2&gt;
+&lt;p&gt;Includes 方法用来检测数组中是否包含某个元素，返回布尔类型值&lt;/p&gt;
+&lt;h2 id=&#34;32指数操作符&#34;&gt;3.2.指数操作符&lt;/h2&gt;
+&lt;p&gt;在 ES7 中引入指数运算符「**」，用来实现幂运算，功能与 Math.pow 结果相同&lt;/p&gt;
+&lt;h1 id=&#34;第-4-章-ecmasript-8-新特性&#34;&gt;第 4 章 ECMASript 8 新特性&lt;/h1&gt;
 &lt;p&gt;鸣谢：源自&lt;a href=&#34;https://www.bilibili.com/video/BV1uK411H7on&#34;&gt;视频教程-尚硅谷&lt;/a&gt;&lt;/p&gt;
 ">ECMAScript 6-11</a>
       </div>
