@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Tyloo-code.github.io</id>
     <title>Tyloo</title>
-    <updated>2020-12-14T08:17:17.204Z</updated>
+    <updated>2020-12-23T13:19:23.076Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Tyloo-code.github.io"/>
     <link rel="self" href="https://Tyloo-code.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://Tyloo-code.github.io/images/avatar.png</logo>
     <icon>https://Tyloo-code.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Tyloo</rights>
+    <entry>
+        <title type="html"><![CDATA[NodeJs从零单排]]></title>
+        <id>https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai/</id>
+        <link href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai/">
+        </link>
+        <updated>2020-12-23T12:46:52.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ECMAScript 6-11]]></title>
         <id>https://Tyloo-code.github.io/post/ecmascript-6-11/</id>
