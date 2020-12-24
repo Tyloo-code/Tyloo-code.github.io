@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>NodeJs从零单排(4) | Tyloo</title>
+<title>Vue&amp;markdown编辑器--mavonEditor | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1608806482448">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="NodeJs从零单排(4)" />
+  <meta name="description" content="Vue&markdown编辑器--mavonEditor" />
   <meta name="keywords" content="" />
 </head>
 
@@ -238,18 +238,15 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#1-fsstat-%E6%A3%80%E6%B5%8B%E6%98%AF%E6%96%87%E4%BB%B6%E8%BF%98%E6%98%AF%E7%9B%AE%E5%BD%95">1. fs.stat 检测是文件还是目录</a></li>
-<li><a href="#2-fsmkdir-%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95">2. fs.mkdir 创建目录</a></li>
-<li><a href="#3-fswritefile-%E5%88%9B%E5%BB%BA%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6">3. fs.writeFile 创建写入文件</a></li>
-<li><a href="#4-fsappendfile-%E8%BF%BD%E5%8A%A0%E6%96%87%E4%BB%B6">4. fs.appendFile 追加文件</a></li>
-<li><a href="#5fsreadfile-%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6">5.fs.readFile 读取文件</a></li>
-<li><a href="#6fsreaddir-%E8%AF%BB%E5%8F%96%E7%9B%AE%E5%BD%95">6.fs.readdir 读取目录</a></li>
-<li><a href="#7fsrename-%E9%87%8D%E5%91%BD%E5%90%8D">7.fs.rename 重命名</a></li>
-<li><a href="#8-fsrmdir-%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95">8. fs.rmdir 删除目录</a></li>
-<li><a href="#9-fsunlink-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6">9. fs.unlink 删除文件</a></li>
-<li><a href="#10-fscreatereadstream-%E4%BB%8E%E6%96%87%E4%BB%B6%E6%B5%81%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE">10. fs.createReadStream 从文件流中读取数据</a></li>
-<li><a href="#11-fscreatewritestream-%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6">11. fs.createWriteStream 写入文件</a></li>
-<li><a href="#12-%E7%AE%A1%E9%81%93%E6%B5%81">12. 管道流</a></li>
+<li><a href="#%E4%B8%80-%E4%BB%8B%E7%BB%8D">一、介绍</a></li>
+<li><a href="#%E4%BA%8C-%E5%AE%89%E8%A3%85">二、安装</a></li>
+<li><a href="#%E4%B8%89-%E4%BD%BF%E7%94%A8">三、使用</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%B8%80">方法一：</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%BA%8C">方法二：</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0">四、图片上传</a></li>
 </ul>
 
   </div>
@@ -515,8 +512,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/">
-      NodeJs从零单排(4)
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/vueandmarkdown-bian-ji-qi-mavoneditor/">
+      Vue&amp;markdown编辑器--mavonEditor
     </a>
   </h1>
   <div class="post-meta">
@@ -524,23 +521,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-24 10:50:08">2020-12-24</span>
+      <span class="publish-time" data-t="2020-12-24 15:14:34">2020-12-24</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>4<span class="language" data-lan="minute">分钟</span></span>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>717<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>464<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/nodejs-cong-ling-dan-pai-4/" data-flag-title="NodeJs从零单排(4)" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/vueandmarkdown-bian-ji-qi-mavoneditor/" data-flag-title="Vue&amp;markdown编辑器--mavonEditor" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -549,148 +546,107 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="1-fsstat-检测是文件还是目录">1. fs.stat 检测是文件还是目录</h1>
-<pre><code>const fs = require('fs') 
-fs.stat('hello.js', (error, stats) =&gt;{ 
-    if(error){
-         console.log(error) 
-         } else {
-        console.log(stats) 
-        console.log(`文件：${stats.isFile()}`) 
-        console.log(`目录：${stats.isDirectory()}`) 
-        } 
-})
+              <h1 id="一-介绍">一、介绍</h1>
+<p>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。mavonEditor是国人开源的一款比较好用的markdown编辑器，GitHub地址：<a href="https://github.com/hinesboy/mavonEditor">https://github.com/hinesboy/mavonEditor</a></p>
+<h1 id="二-安装">二、安装</h1>
+<pre><code>npm install mavon-editor --save
 </code></pre>
-<h1 id="2-fsmkdir-创建目录">2. fs.mkdir 创建目录</h1>
-<pre><code>const fs = require('fs')
-fs.mkdir('logs', (error) =&gt; { 
-    if(error){ 
-       console.log(error) 
-   } else { 
-    console.log('成功创建目录：logs') 
-     } 
- })
+<h1 id="三-使用">三、使用</h1>
+<h2 id="方法一">方法一：</h2>
+<p>main.js:</p>
+<pre><code> // 全局注册
+    // import with ES6
+    import Vue from 'vue'
+    import mavonEditor from 'mavon-editor'
+    import 'mavon-editor/dist/css/index.css'
+    // use
+    Vue.use(mavonEditor)
+    new Vue({
+        'el': '#main',
+        data() {
+            return { value: '' }
+        }
+    })
 </code></pre>
-<h1 id="3-fswritefile-创建写入文件">3. fs.writeFile 创建写入文件</h1>
-<pre><code>fs.writeFile('logs/hello.log', '您好 ~ \n', (error) =&gt; { 
-    if(error) { 
-        console.log(error) 
-   } else { 
-        console.log('成功写入文件') 
-    } 
- })
+<p>index.html</p>
+<pre><code>&lt;div id=&quot;main&quot;&gt;
+    &lt;mavon-editor v-model=&quot;value&quot;/&gt;
+&lt;/div&gt;
 </code></pre>
-<h1 id="4-fsappendfile-追加文件">4. fs.appendFile 追加文件</h1>
-<pre><code>const fs = require('fs') 
-fs.appendFile('logs/hello.log', 'hello ~ \n', (error) =&gt; { 
-    if(error) { 
-    console.log(error) 
-    } else { 
-        console.log('成功写入文件') 
-    } 
-})
-</code></pre>
-<h1 id="5fsreadfile-读取文件">5.fs.readFile 读取文件</h1>
-<pre><code>const fs = require('fs') 
-fs.readFile('logs/hello.log', 'utf8', (error, data) =&gt;{ 
-    if (error) { 
-     console.log(error) 
-} else { 
-    console.log(data) 
-    } 
-})
-</code></pre>
-<h1 id="6fsreaddir-读取目录">6.fs.readdir 读取目录</h1>
-<pre><code>const fs = require('fs') 
-fs.readdir('logs', (error, files) =&gt; { 
-   if (error) { 
-     console.log(error) 
-  } else { 
-    console.log(files) 
+<h2 id="方法二">方法二：</h2>
+<p>editor.vue:</p>
+<pre><code> &lt;template&gt;
+        &lt;div id=&quot;editor&quot;&gt;
+            &lt;mavon-editor style=&quot;height: 100%&quot;&gt;&lt;/mavon-editor&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+    &lt;script&gt;
+    // Local Registration
+    import { mavonEditor } from 'mavon-editor'
+    import 'mavon-editor/dist/css/index.css'
+    export default {
+        name: 'editor',
+        components: {
+            mavonEditor
+            // or 'mavon-editor': mavonEditor
+        }
     }
- })
-</code></pre>
-<h1 id="7fsrename-重命名">7.fs.rename 重命名</h1>
-<pre><code>const fs = require('fs') 
-fs.rename('js/hello.log', 'js/greeting.log', (error) =&gt;{ 
- if (error) { 
-     console.log(error) 
-  } else { 
-console.log('重命名成功') 
+    &lt;/script&gt;
+    &lt;style&gt;
+    #editor {
+        margin: auto;
+        width: 80%;
+        height: 580px;
     }
- })
+    &lt;/style&gt;
 </code></pre>
-<h1 id="8-fsrmdir-删除目录">8. fs.rmdir 删除目录</h1>
-<pre><code>const fs = require('fs') 
-fs.rmdir('logs', (error) =&gt;{ 
- if (error) { 
-    console.log(error) 
-    } else { 
-    console.log('成功的删除了目录：logs') 
-     } 
- })
+<p>index.js:</p>
+<pre><code>// 下同
+    import Vue from 'vue';
+    var editor = require('./editor.vue');
+    new Vue({
+        el: '#main',
+        render: h =&gt; h(editor)
+    });
 </code></pre>
-<h1 id="9-fsunlink-删除文件">9. fs.unlink 删除文件</h1>
-<pre><code>const fs = require('fs') 
-fs.unlink(`logs/${file}`, (error) =&gt; { 
-  if (error) { 
-    console.log(error) 
-    } else { 
-    console.log(`成功的删除了文件: ${file}`) 
-    } 
- })
+<p>index.html:</p>
+<pre><code>// 下同
+&lt;div id=&quot;main&quot;&gt;
+&lt;/div&gt;
 </code></pre>
-<h1 id="10-fscreatereadstream-从文件流中读取数据">10. fs.createReadStream 从文件流中读取数据</h1>
-<pre><code>const fs = require('fs') 
-var fileReadStream = fs.createReadStream('data.json') 
-let count=0; 
-var str=''; 
-fileReadStream.on('data', (chunk) =&gt; { 
-    console.log(`${ ++count } 接收到：${chunk.length}`);
-     str+=chunk
-     })
-fileReadStream.on('end', () =&gt; { 
-    console.log('--- 结束 ---'); 
-    console.log(count); 
-    console.log(str); 
-})
-fileReadStream.on('error', (error) =&gt; { 
-    console.log(error)
-})
+<h1 id="四-图片上传">四、图片上传</h1>
+<pre><code>&lt;template&gt;
+    &lt;mavon-editor ref=md @imgAdd=&quot;$imgAdd&quot; @imgDel=&quot;$imgDel&quot;&gt;&lt;/mavon-editor&gt;
+&lt;/template&gt;
+exports default {
+    methods: {
+        // 绑定@imgAdd event
+        $imgAdd(pos, $file){
+            // 第一步.将图片上传到服务器.
+           var formdata = new FormData();
+           formdata.append('image', $file);
+           axios({
+               url: 'server url',
+               method: 'post',
+               data: formdata,
+               headers: { 'Content-Type': 'multipart/form-data' },
+           }).then((url) =&gt; {
+               // 第二步.将返回的url替换到文本原位置![...](0) -&gt; ![...](url)
+               /**
+               * $vm 指为mavonEditor实例，可以通过如下两种方式获取
+               * 1. 通过引入对象获取: `import {mavonEditor} from ...` 等方式引入后，`$vm`为`mavonEditor`
+               * 2. 通过$refs获取: html声明ref : `&lt;mavon-editor ref=md &gt;&lt;/mavon-editor&gt;，`$vm`为 `this.$refs.md`
+               */
+               $vm.$img2Url(pos, url);
+           })
+        }
+    }
+}
 </code></pre>
-<h1 id="11-fscreatewritestream-写入文件">11. fs.createWriteStream 写入文件</h1>
-<pre><code>var fs = require(&quot;fs&quot;); 
-var data = '我是从数据库获取的数据，我要保存起来'; 
-// 创建一个可以写入的流，写入到文件 output.txt 中
-var writerStream = fs.createWriteStream('output.txt'); 
-// 使用 utf8 编码写入数据 
-writerStream.write(data,'UTF8'); 
-// 标记文件末尾 
-writerStream.end();
-// 处理流事件 --&gt; finish 事件
-writerStream.on('finish', function() { 
-    /*finish - 所有数据已被写入到底层系统时触发。*/
-console.log(&quot;写入完成。&quot;); 
-}); 
-writerStream.on('error', function(err){ 
-    console.log(err.stack); 
-}); 
-console.log(&quot;程序执行完毕&quot;);
-</code></pre>
-<h1 id="12-管道流">12. 管道流</h1>
-<p>管道提供了一个输出流到输入流的机制。通常我们用于从一个流中获取数据并将数据传 递到另外一个流中。<br>
-<img src="https://Tyloo-code.github.io/post-images/1608779085554.png" alt="" loading="lazy"><br>
-如上面的图片所示，我们把文件比作装水的桶，而水就是文件里的内容，我们用一根管子(pipe)连接两个桶使得水从一个桶流入另一个桶，这样就慢慢的实现了大文件的复制过程。 以下实例我们通过读取一个文件内容并将内容写入到另外一个文件中。</p>
-<pre><code>var fs = require(&quot;fs&quot;); 
-// 创建一个可读流 
-var readerStream = fs.createReadStream('input.txt'); 
-// 创建一个可写流 
-var writerStream = fs.createWriteStream('output.txt'); 
-// 管道读写操作 
-// 读取 input.txt 文件内容，并将内容写入到 output.txt 文件中 
-readerStream.pipe(writerStream);
-console.log(&quot;程序执行完毕&quot;);
-</code></pre>
+<p><strong>注:</strong><br>
+<strong>默认大小样式为 min-height: 300px , min-width: 300px 可自行覆盖</strong><br>
+<strong>基础z-index: 1500</strong><br>
+<strong>仅用作展示可以设置props: toolbarsFlag: false , subfield: false, defaultOpen: &quot;preview&quot;</strong></p>
 
             </div>
             
@@ -707,7 +663,7 @@ console.log(&quot;程序执行完毕&quot;);
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/" title="NodeJs从零单排(4)">https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/</a>
+      <a href="https://Tyloo-code.github.io/post/vueandmarkdown-bian-ji-qi-mavoneditor/" title="Vue&amp;markdown编辑器--mavonEditor">https://Tyloo-code.github.io/post/vueandmarkdown-bian-ji-qi-mavoneditor/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -720,15 +676,11 @@ console.log(&quot;程序执行完毕&quot;);
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="NodeJs从零单排(5)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/">NodeJs从零单排(5)</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="NodeJs从零单排(5)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="NodeJs从零单排(3)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-3/">NodeJs从零单排(3)</a>
-        <a class="nav-mobile-next" title="NodeJs从零单排(3)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-3/">下一篇</a>
+        <a class="nav-pc-next" title="NodeJs从零单排(9)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-9/">NodeJs从零单排(9)</a>
+        <a class="nav-mobile-next" title="NodeJs从零单排(9)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-9/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
