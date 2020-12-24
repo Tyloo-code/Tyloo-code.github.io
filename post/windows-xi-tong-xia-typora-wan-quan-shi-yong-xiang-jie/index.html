@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Windows系统下Typora 完全使用详解 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1608806482448">
+<link rel="shortcut icon" href="/favicon.ico?v=1608808180944">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">17</span>
+        <span class="site-item-stat-count">18</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1254,6 +1254,148 @@ CR 表示回车 \r ，即回到一行的开头，而 LF 表示换行 \n ，即�
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/vueandmock-mo-ni-shu-ju/"" data-c="
+          &lt;h1 id=&#34;mock在vue里怎么用&#34;&gt;mock在vue里怎么用？&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/nuysoft/Mock/wiki/Getting-Started&#34;&gt;https://github.com/nuysoft/Mock/wiki/Getting-Started&lt;/a&gt;&lt;br&gt;
+以上是官方文档，不知道mock是什么的自行查看&lt;/p&gt;
+&lt;h1 id=&#34;一-下载nodejs-的npm-自行下载&#34;&gt;一、下载node.js 的npm 自行下载&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;+ npm install -g cnpm --registry=https://registry.npm.taobao.org
+     //npm的镜像
+	+ npm install -g @vue/cli    //安装全局脚手架  
+	    自己新建一个文件夹，并在文件夹中打开  powershell 
+	+ vue create mypro(文件名可随意换)   //创建并下载一个文件夹
+	+ npm install vue-router --save //启路由的插件
+		--save 代表局部
+	+ cd mypro
+	+ npm run serve //运行 
+	+ 用local 地址打开
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;11-创建项目&#34;&gt;1.1 创建项目&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;vue create mock-demo 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608807847530.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;12-安装依赖-不懂请看上面&#34;&gt;1.2 安装依赖 （不懂请看上面）&lt;/h2&gt;
+&lt;p&gt;vue环境搭建好后，开始安装 mock依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;     //使用axios发送  ajax
+	  	cnpm install axios --save
+	//使用mockjs产生随机数据
+	  	cnpm install mockjs --save-dev
+	//使用json5解决json文件,无法添加注释问题
+	  	cnpm install json5 --save-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;二-学习mockjs&#34;&gt;二、学习MOCKJS&lt;/h1&gt;
+&lt;p&gt;新建mock文件夹,新建testMockjs.js&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const Mock = require(&#39;mockjs&#39;);//mockjs 导入依赖模块
+var id = Mock.mock(&#39;@id&#39;)//得到随机的id,字符串
+console.log(Mock.mock(&#39;@id&#39;), typeof id)
+
+var obj = Mock.mock({
+    id: &amp;quot;@id()&amp;quot;,//得到随机的id,对象
+    username: &amp;quot;@cname()&amp;quot;,//随机生成中文名字
+    date: &amp;quot;@date()&amp;quot;,//随机生成日期
+    avatar: &amp;quot;@image(&#39;200x200&#39;,&#39;red&#39;,&#39;#fff&#39;,&#39;avatar&#39;)&amp;quot;,//生成图片,参数:size, background, foreground, text
+    description: &amp;quot;@paragraph()&amp;quot;,//描述
+    ip: &amp;quot;@ip()&amp;quot;,//IP地址
+    email: &amp;quot;@email()&amp;quot;//email
+})
+console.log(obj)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;三-学习json5&#34;&gt;三、学习JSON5&lt;/h1&gt;
+&lt;p&gt;json文件,中如果说存在注释文件和编辑器都会报错,我们采用json5格式来让json格式可以存在注释&lt;/p&gt;
+&lt;h2 id=&#34;31编辑器安装json5扩展&#34;&gt;3.1编辑器安装JSON5扩展&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608807967957.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;32引入json5库来解析json5格式&#34;&gt;3.2引入JSON5库来解析JSON5格式&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;);
+const path = require(&#39;path&#39;);
+const JSON5 = require(&#39;json5&#39;);
+//读取json文件
+function getJsonFile(filePath) {
+    //读取指定json文件
+    var json = fs.readFileSync(path.resolve(__dirname,filePath), &#39;utf-8&#39;);
+    //解析并返回
+    return JSON5.parse(json);
+}
+var json = getJsonFile(&#39;./userInfo.json5&#39;);
+console.log(&#39;json&#39;, json) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;四-mock和vue-cli结合&#34;&gt;四、MOCK和VUE-CLI结合&lt;/h1&gt;
+&lt;h2 id=&#34;41新建indexjs&#34;&gt;4.1新建INDEX.JS&lt;/h2&gt;
+&lt;p&gt;在mock文件夹下,新建index.js&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;);
+const path = require(&#39;path&#39;);
+const Mock = require(&#39;mockjs&#39;);//mockjs 导入依赖模块
+const JSON5 = require(&#39;json5&#39;);
+//读取json文件
+function getJsonFile(filePath) {
+    //读取指定json文件
+    var json = fs.readFileSync(path.resolve(__dirname,filePath), &#39;utf-8&#39;);
+    //解析并返回
+    return JSON5.parse(json);
+}
+
+//返回一个函数
+module.exports = function(app){
+    //监听http请求
+    app.get(&#39;/user/userinfo&#39;, function (rep, res) {
+        //每次响应请求时读取mock data的json文件
+        //getJsonFile方法定义了如何读取json文件并解析成数据对象
+        var json = getJsonFile(&#39;./userInfo.json5&#39;);
+        //将json传入 Mock.mock 方法中，生成的数据返回给浏览器
+        res.json(Mock.mock(json));
+    });
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;42-新建vueconfigjs&#34;&gt;4.2 新建VUE.CONFIG.JS&lt;/h2&gt;
+&lt;p&gt;在项目根目录下,新建vue.config.js&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;module.exports = {
+    devServer: {
+        before: require(&#39;./mock/index.js&#39;)//引入mock/index.js
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;43-发送ajax请求&#34;&gt;4.3 发送AJAX请求&lt;/h2&gt;
+&lt;p&gt;在src\components\HelloWorld.vue中发送ajax请求&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import axios from &#39;axios&#39;
+	export default {
+	  name: &#39;HelloWorld&#39;,
+	  props: {
+	    msg: String
+	  },
+	  mounted() {
+	    axios.get(&#39;/user/userinfo&#39;)
+	    .then(res =&amp;gt; {
+	      console.log(res)
+	    })
+	    .catch(err =&amp;gt; {
+	      console.error(err); 
+	    })
+	  }
+	} 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;五-移除mock-连接实际api&#34;&gt;五、移除MOCK （连接实际api）&lt;/h1&gt;
+&lt;p&gt;在项目根路径新建.env.development&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MOCK=true 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;完善mock\index.js&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;module.exports = function(app){
+    if(process.env.MOCK == &#39;true&#39;){
+        //监听http请求
+        app.get(&#39;/user/userinfo&#39;, function (rep, res) {
+            //每次响应请求时读取mock data的json文件
+            //getJsonFile方法定义了如何读取json文件并解析成数据对象
+            var json = getJsonFile(&#39;./userInfo.json5&#39;);
+            //将json传入 Mock.mock 方法中，生成的数据返回给浏览器
+            res.json(Mock.mock(json));
+        });
+    }
+} 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;总结mock-json5-devserver-axios职责&#34;&gt;总结,MOCK-JSON5-DEVSERVER-AXIOS职责&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608808179446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+">Vue&mock模拟数据</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/vueandmarkdown-bian-ji-qi-mavoneditor/"" data-c="

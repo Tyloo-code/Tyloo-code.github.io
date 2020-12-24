@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>Vue从入门到未完待续 | Tyloo</title>
+<title>Vue&amp;mock模拟数据 | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1608808180944">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="Vue从入门到未完待续" />
+  <meta name="description" content="Vue&mock模拟数据" />
   <meta name="keywords" content="" />
 </head>
 
@@ -238,228 +238,29 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#vue-day-01">Vue Day 01</a><br>
-*
+<li><a href="#mock%E5%9C%A8vue%E9%87%8C%E6%80%8E%E4%B9%88%E7%94%A8">mock在vue里怎么用？</a></li>
+<li><a href="#%E4%B8%80-%E4%B8%8B%E8%BD%BDnodejs-%E7%9A%84npm-%E8%87%AA%E8%A1%8C%E4%B8%8B%E8%BD%BD">一、下载node.js 的npm 自行下载</a>
 <ul>
-<li><a href="#%E4%B8%80-%E9%82%82%E9%80%85vuejs">一. 邂逅Vuejs</a>
-<ul>
-<li><a href="#11-%E8%AE%A4%E8%AF%86vuejs">1.1. 认识Vuejs</a></li>
-<li><a href="#12-%E5%AE%89%E8%A3%85vue">1.2. 安装Vue</a></li>
-<li><a href="#13-vue%E7%9A%84%E5%88%9D%E4%BD%93%E9%AA%8C">1.3. Vue的初体验</a></li>
-<li><a href="#14-vue%E4%B8%AD%E7%9A%84mvvm">1.4. Vue中的MVVM</a></li>
-<li><a href="#15-%E5%88%9B%E5%BB%BAvue%E6%97%B6-options%E5%8F%AF%E4%BB%A5%E6%94%BE%E9%82%A3%E4%BA%9B%E4%B8%9C%E8%A5%BF">1.5. 创建Vue时, options可以放那些东西</a></li>
+<li><a href="#11-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">1.1 创建项目</a></li>
+<li><a href="#12-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96-%E4%B8%8D%E6%87%82%E8%AF%B7%E7%9C%8B%E4%B8%8A%E9%9D%A2">1.2 安装依赖 （不懂请看上面）</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BA%8C%E6%8F%92%E5%80%BC%E8%AF%AD%E6%B3%95">二.插值语法</a></li>
-<li><a href="#%E4%B8%89-v-bind">三. v-bind</a>
+<li><a href="#%E4%BA%8C-%E5%AD%A6%E4%B9%A0mockjs">二、学习MOCKJS</a></li>
+<li><a href="#%E4%B8%89-%E5%AD%A6%E4%B9%A0json5">三、学习JSON5</a>
 <ul>
-<li><a href="#31-v-bind%E7%BB%91%E5%AE%9A%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7">3.1. v-bind绑定基本属性</a></li>
-<li><a href="#32-v-bind%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9Aclass">3.2. v-bind动态绑定class</a></li>
-<li><a href="#33-v-bind%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9Astyle">3.3. v-bind动态绑定style</a></li>
+<li><a href="#31%E7%BC%96%E8%BE%91%E5%99%A8%E5%AE%89%E8%A3%85json5%E6%89%A9%E5%B1%95">3.1编辑器安装JSON5扩展</a></li>
+<li><a href="#32%E5%BC%95%E5%85%A5json5%E5%BA%93%E6%9D%A5%E8%A7%A3%E6%9E%90json5%E6%A0%BC%E5%BC%8F">3.2引入JSON5库来解析JSON5格式</a></li>
 </ul>
 </li>
-<li><a href="#%E5%9B%9B-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7">四. 计算属性</a></li>
-</ul>
-</li>
-<li><a href="#vue-day-02">Vue Day 02</a><br>
-*
+<li><a href="#%E5%9B%9B-mock%E5%92%8Cvue-cli%E7%BB%93%E5%90%88">四、MOCK和VUE-CLI结合</a>
 <ul>
-<li><a href="#%E4%B8%80-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7">一. 计算属性</a>
-<ul>
-<li><a href="#11-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E6%9C%AC%E8%B4%A8">1.1. 计算属性的本质</a></li>
-<li><a href="#12-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8Cmethods%E5%AF%B9%E6%AF%94">1.2. 计算属性和methods对比</a></li>
+<li><a href="#41%E6%96%B0%E5%BB%BAindexjs">4.1新建INDEX.JS</a></li>
+<li><a href="#42-%E6%96%B0%E5%BB%BAvueconfigjs">4.2 新建VUE.CONFIG.JS</a></li>
+<li><a href="#43-%E5%8F%91%E9%80%81ajax%E8%AF%B7%E6%B1%82">4.3 发送AJAX请求</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BA%8C-%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC">二. 事件监听</a>
-<ul>
-<li><a href="#21-%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">2.1. 事件监听基本使用</a></li>
-<li><a href="#22-%E5%8F%82%E6%95%B0%E9%97%AE%E9%A2%98">2.2. 参数问题</a></li>
-<li><a href="#23-%E4%BF%AE%E9%A5%B0%E7%AC%A6">2.3. 修饰符</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD">三. 条件判断</a>
-<ul>
-<li><a href="#31-v-ifv-else-ifv-else">3.1. v-if/v-else-if/v-else</a></li>
-<li><a href="#32-%E7%99%BB%E5%BD%95%E5%B0%8F%E6%A1%88%E4%BE%8B">3.2. 登录小案例</a></li>
-<li><a href="#33-v-show">3.3. v-show</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9B%9B-%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86">四. 循环遍历</a>
-<ul>
-<li><a href="#41-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84">4.1. 遍历数组</a></li>
-<li><a href="#42-%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1">4.2. 遍历对象</a></li>
-<li><a href="#43-%E6%95%B0%E7%BB%84%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%E6%98%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84">4.3. 数组哪些方法是响应式的</a></li>
-<li><a href="#44-%E4%BD%9C%E4%B8%9A%E5%AE%8C%E6%88%90">4.4. 作业完成</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%94-%E4%B9%A6%E7%B1%8D%E6%A1%88%E4%BE%8B">五. 书籍案例</a></li>
-<li><a href="#%E5%85%AD-v-model%E7%9A%84%E4%BD%BF%E7%94%A8">六. v-model的使用</a>
-<ul>
-<li><a href="#61-v-model%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">6.1. v-model的基本使用</a></li>
-<li><a href="#62-v-model%E5%92%8Cradiocheckboxselect">6.2. v-model和radio/checkbox/select</a></li>
-<li><a href="#63-%E4%BF%AE%E9%A5%B0%E7%AC%A6">6.3. 修饰符</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%83-%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91">七. 组件化开发</a>
-<ul>
-<li><a href="#71-%E8%AE%A4%E8%AF%86%E7%BB%84%E4%BB%B6%E5%8C%96">7.1. 认识组件化</a></li>
-<li><a href="#72-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">7.2. 组件的基本使用</a></li>
-<li><a href="#73-%E5%85%A8%E5%B1%80%E7%BB%84%E4%BB%B6%E5%92%8C%E5%B1%80%E9%83%A8%E7%BB%84%E4%BB%B6">7.3. 全局组件和局部组件</a></li>
-<li><a href="#74-%E7%88%B6%E7%BB%84%E4%BB%B6%E5%92%8C%E5%AD%90%E7%BB%84%E4%BB%B6">7.4. 父组件和子组件</a></li>
-<li><a href="#75-%E6%B3%A8%E5%86%8C%E7%9A%84%E8%AF%AD%E6%B3%95%E7%B3%96">7.5. 注册的语法糖</a></li>
-<li><a href="#76-%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%88%86%E7%B1%BB%E5%86%99%E6%B3%95">7.6. 模板的分类写法</a></li>
-<li><a href="#77-%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E6%94%BE">7.7. 数据的存放</a></li>
-<li><a href="#78-%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E7%9A%84%E9%80%9A%E4%BF%A1">7.8. 父子组件的通信</a></li>
-<li><a href="#79-%E9%A1%B9%E7%9B%AE">7.9. 项目</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#vue-day-03">Vue Day 03</a><br>
-*
-<ul>
-<li><a href="#%E4%B8%80-%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91">一. 组件化开发</a>
-<ul>
-<li><a href="#11-%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E7%9A%84%E8%AE%BF%E9%97%AE">1.1. 父子组件的访问</a></li>
-<li><a href="#12-slot%E7%9A%84%E4%BD%BF%E7%94%A8">1.2. slot的使用</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96">二. 前端模块化</a>
-<ul>
-<li><a href="#21-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%9D%97%E5%8C%96">2.1. 为什么要使用模块化</a></li>
-<li><a href="#22-es6%E4%B8%AD%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E4%BD%BF%E7%94%A8">2.2. ES6中模块化的使用</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-webpack">三. webpack</a>
-<ul>
-<li><a href="#31-%E4%BB%80%E4%B9%88%E6%98%AFwebpack">3.1. 什么是webpack</a></li>
-<li><a href="#32-webpack%E7%9A%84%E8%B5%B7%E6%AD%A5">3.2. webpack的起步</a></li>
-<li><a href="#33-webpack%E7%9A%84loader">3.3. webpack的loader</a></li>
-<li><a href="#34-webpack%E4%B8%AD%E9%85%8D%E7%BD%AEvue">3.4. webpack中配置Vue</a></li>
-<li><a href="#35-webpack%E7%9A%84plugin">3.5. webpack的plugin</a></li>
-<li><a href="#36-%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8">3.6. 搭建本地服务器</a></li>
-<li><a href="#37-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%86%E7%A6%BB">3.7. 配置文件的分离</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9B%9B-vue-cli">四. Vue CLI</a>
-<ul>
-<li><a href="#41-%E4%BB%80%E4%B9%88%E6%98%AFcli">4.1. 什么是CLI</a></li>
-<li><a href="#42-cli2%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE%E7%9A%84%E8%BF%87%E7%A8%8B">4.2. CLI2初始化项目的过程</a></li>
-<li><a href="#43-cli2%E7%94%9F%E4%BA%A7%E7%9A%84%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E7%9A%84%E8%A7%A3%E6%9E%90">4.3. CLI2生产的目录结构的解析</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#vue-day-04">Vue Day 04</a><br>
-*
-<ul>
-<li><a href="#%E4%B8%80-vue-cli">一. Vue CLI</a>
-<ul>
-<li><a href="#11-runtime-compiler%E5%92%8Cruntime-only%E7%9A%84%E5%8C%BA%E5%88%AB">1.1. runtime-compiler和runtime-only的区别</a></li>
-<li><a href="#12-vue-cli3">1.2. Vue CLI3</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-vue-router">二. Vue-Router</a>
-<ul>
-<li><a href="#21-%E4%BB%80%E4%B9%88%E6%98%AF%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1">2.1. 什么是前端路由</a></li>
-<li><a href="#22-%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE">2.2. 路由的基本配置</a></li>
-<li><a href="#23-%E7%BB%86%E8%8A%82%E5%A4%84%E7%90%86">2.3. 细节处理</a></li>
-<li><a href="#24-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1">2.4. 动态路由</a></li>
-<li><a href="#25-%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92">2.5. 参数的传递</a></li>
-<li><a href="#26-%E8%B7%AF%E7%94%B1%E5%B5%8C%E5%A5%97">2.6. 路由嵌套</a></li>
-<li><a href="#27-%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB">2.7. 导航守卫</a></li>
-<li><a href="#28-keep-alive">2.8. Keep-alive</a></li>
-<li><a href="#29-tabbar%E7%9A%84%E5%B0%81%E8%A3%85%E8%BF%87%E7%A8%8B">2.9. TabBar的封装过程</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#vue-day-05">Vue Day 05</a><br>
-*
-<ul>
-<li><a href="#%E4%B8%80-promise">一. Promise</a>
-<ul>
-<li><a href="#11-promise%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">1.1. Promise的基本使用</a></li>
-<li><a href="#12-promise%E7%9A%84%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8">1.2. Promise的链式调用</a></li>
-<li><a href="#13-promise%E7%9A%84all%E6%96%B9%E6%B3%95">1.3. Promise的all方法</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-vuex">二. Vuex</a>
-<ul>
-<li><a href="#21-%E4%BB%80%E4%B9%88%E6%98%AF%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86">2.1. 什么是状态管理</a></li>
-<li><a href="#22-vuex%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">2.2. Vuex的基本使用</a></li>
-<li><a href="#23-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5">2.3. 核心概念</a></li>
-<li><a href="#24-%E7%9B%AE%E5%BD%95%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F">2.4. 目录组织方式</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85">三. 网络请求封装</a>
-<ul>
-<li><a href="#31-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E7%9A%84%E9%80%89%E6%8B%A9">3.1. 网络请求方式的选择</a></li>
-<li><a href="#32-axios%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">3.2. axios的基本使用</a></li>
-<li><a href="#33-axios%E7%9A%84%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE">3.3. axios的相关配置</a></li>
-<li><a href="#34-axios%E7%9A%84%E5%88%9B%E5%BB%BA%E5%AE%9E%E4%BE%8B">3.4. axios的创建实例</a></li>
-<li><a href="#35-axios%E7%9A%84%E5%B0%81%E8%A3%85">3.5. axios的封装</a></li>
-<li><a href="#36-axios%E7%9A%84%E6%8B%A6%E6%88%AA%E5%99%A8">3.6. axios的拦截器</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9B%9B-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91">四. 项目开发</a>
-<ul>
-<li><a href="#41-%E5%88%92%E5%88%86%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">4.1. 划分目录结构</a></li>
-<li><a href="#42-%E5%BC%95%E7%94%A8%E4%BA%86%E4%B8%A4%E4%B8%AAcss%E6%96%87%E4%BB%B6">4.2. 引用了两个css文件</a></li>
-<li><a href="#43-vueconfigjs%E5%92%8Ceditorconfig">4.3. vue.config.js和.editorconfig</a></li>
-<li><a href="#44-%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%A8%A1%E5%9D%97%E5%88%92%E5%88%86-tabbar-%E8%B7%AF%E7%94%B1%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB">4.4. 项目的模块划分: tabbar -&gt; 路由映射关系</a></li>
-<li><a href="#45-%E9%A6%96%E9%A1%B5%E5%BC%80%E5%8F%91">4.5. 首页开发</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#vue-day-06">Vue Day 06</a></li>
-<li><a href="#vue-day-07">Vue Day 07</a><br>
-*
-<ul>
-<li><a href="#%E4%B8%80-featureview">一. FeatureView</a></li>
-<li><a href="#%E4%BA%8C-tabcontrol">二. TabControl</a></li>
-<li><a href="#%E4%B8%89-%E9%A6%96%E9%A1%B5%E5%95%86%E5%93%81%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AF%B7%E6%B1%82">三. 首页商品数据的请求</a>
-<ul>
-<li><a href="#31-%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%94%A8%E4%BA%8E%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE">3.1. 设计数据结构, 用于保存数据</a></li>
-<li><a href="#32-%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82">3.2. 发送数据请求</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9B%9B-%E5%AF%B9%E5%95%86%E5%93%81%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E5%B1%95%E7%A4%BA">四. 对商品数据进行展示</a>
-<ul>
-<li><a href="#41-%E5%B0%81%E8%A3%85goodslistvue%E7%BB%84%E4%BB%B6">4.1. 封装GoodsList.vue组件</a></li>
-<li><a href="#42-%E5%B0%81%E8%A3%85goodslistitemvue%E7%BB%84%E4%BB%B6">4.2. 封装GoodsListItem.vue组件</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%94-%E5%AF%B9%E6%BB%9A%E5%8A%A8%E8%BF%9B%E8%A1%8C%E9%87%8D%E6%9E%84-better-scroll">五. 对滚动进行重构: Better-Scroll</a>
-<ul>
-<li><a href="#51-%E5%9C%A8indexhtml%E4%B8%AD%E4%BD%BF%E7%94%A8better-scroll">5.1. 在index.html中使用Better-Scroll</a></li>
-<li><a href="#52-%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8better-scroll">5.2. 在Vue项目中使用Better-Scroll</a></li>
-</ul>
-</li>
-<li><a href="#%E5%85%AD-%E5%9B%9E%E5%88%B0%E9%A1%B6%E9%83%A8backtop">六. 回到顶部BackTop</a>
-<ul>
-<li><a href="#61-%E5%AF%B9backtopvue%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B0%81%E8%A3%85">6.1. 对BackTop.vue组件的封装</a></li>
-<li><a href="#62-%E5%A6%82%E4%BD%95%E7%9B%91%E5%90%AC%E7%BB%84%E4%BB%B6%E7%9A%84%E7%82%B9%E5%87%BB">6.2. 如何监听组件的点击</a></li>
-<li><a href="#63-backtop%E7%BB%84%E4%BB%B6%E7%9A%84%E6%98%BE%E7%A4%BA%E5%92%8C%E9%9A%90%E8%97%8F">6.3. BackTop组件的显示和隐藏</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%83-%E8%A7%A3%E5%86%B3%E9%A6%96%E9%A1%B5%E4%B8%AD%E5%8F%AF%E6%BB%9A%E5%8A%A8%E5%8C%BA%E5%9F%9F%E7%9A%84%E9%97%AE%E9%A2%98">七. 解决首页中可滚动区域的问题</a></li>
-<li><a href="#%E5%85%AB-%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A%E7%9A%84%E5%8A%9F%E8%83%BD">八. 上拉加载更多的功能</a></li>
-<li><a href="#%E4%B9%9D-tabcontrol%E7%9A%84%E5%90%B8%E9%A1%B6%E6%95%88%E6%9E%9C">九. tabControl的吸顶效果</a>
-<ul>
-<li><a href="#91-%E8%8E%B7%E5%8F%96%E5%88%B0tabcontrol%E7%9A%84offsettop">9.1. 获取到tabControl的offsetTop</a></li>
-<li><a href="#92-%E7%9B%91%E5%90%AC%E6%BB%9A%E5%8A%A8-%E5%8A%A8%E6%80%81%E7%9A%84%E6%94%B9%E5%8F%98tabcontrol%E7%9A%84%E6%A0%B7%E5%BC%8F">9.2. 监听滚动, 动态的改变tabControl的样式</a></li>
-</ul>
-</li>
-<li><a href="#%E5%8D%81-%E8%AE%A9home%E4%BF%9D%E6%8C%81%E5%8E%9F%E6%9D%A5%E7%9A%84%E7%8A%B6%E6%80%81">十. 让Home保持原来的状态</a>
-<ul>
-<li><a href="#101-%E8%AE%A9home%E4%B8%8D%E8%A6%81%E9%9A%8F%E6%84%8F%E9%94%80%E6%AF%81%E6%8E%89">10.1. 让Home不要随意销毁掉</a></li>
-<li><a href="#102-%E8%AE%A9home%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9%E4%BF%9D%E6%8C%81%E5%8E%9F%E6%9D%A5%E7%9A%84%E4%BD%8D%E7%BD%AE">10.2. 让Home中的内容保持原来的位置</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#%E4%BA%94-%E7%A7%BB%E9%99%A4mock-%E8%BF%9E%E6%8E%A5%E5%AE%9E%E9%99%85api">五、移除MOCK （连接实际api）</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93mock-json5-devserver-axios%E8%81%8C%E8%B4%A3">总结,MOCK-JSON5-DEVSERVER-AXIOS职责</a></li>
 </ul>
 
   </div>
@@ -725,8 +526,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/">
-      Vue从入门到未完待续
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/vueandmock-mo-ni-shu-ju/">
+      Vue&amp;mock模拟数据
     </a>
   </h1>
   <div class="post-meta">
@@ -734,23 +535,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-11-30 16:50:39">2020-11-30</span>
+      <span class="publish-time" data-t="2020-12-24 18:54:08">2020-12-24</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>13<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>3036<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>816<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/vue-cong-ru-men-dao-wei-wan-dai-xu/" data-flag-title="Vue从入门到未完待续" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/vueandmock-mo-ni-shu-ju/" data-flag-title="Vue&amp;mock模拟数据" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -759,635 +560,143 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="vue-day-01">Vue Day 01</h1>
-<h3 id="一-邂逅vuejs">一. 邂逅Vuejs</h3>
-<h4 id="11-认识vuejs">1.1. 认识Vuejs</h4>
-<ul>
-<li>为什么学习Vuejs</li>
-<li>Vue的读音</li>
-<li>Vue的渐进式</li>
-<li>Vue的特点</li>
-</ul>
-<h4 id="12-安装vue">1.2. 安装Vue</h4>
-<ul>
-<li>CDN引入</li>
-<li>下载引入</li>
-<li>npm安装</li>
-</ul>
-<h4 id="13-vue的初体验">1.3. Vue的初体验</h4>
-<ul>
-<li>Hello Vuejs
-<ul>
-<li>mustache -&gt; 体验vue响应式</li>
-</ul>
-</li>
-<li>Vue列表展示
-<ul>
-<li>v-for</li>
-<li>后面给数组追加元素的时候, 新的元素也可以在界面中渲染出来</li>
-</ul>
-</li>
-<li>Vue计数器小案例
-<ul>
-<li>事件监听: click -&gt; methods</li>
-</ul>
-</li>
-</ul>
-<h4 id="14-vue中的mvvm">1.4. Vue中的MVVM</h4>
-<h4 id="15-创建vue时-options可以放那些东西">1.5. 创建Vue时, options可以放那些东西</h4>
-<ul>
-<li>el:</li>
-<li>data:</li>
-<li>methods:</li>
-<li>生命周期函数</li>
-</ul>
-<h3 id="二插值语法">二.插值语法</h3>
-<ul>
-<li>mustache语法</li>
-<li>v-once</li>
-<li>v-html</li>
-<li>v-text</li>
-<li>v-pre: {{}}</li>
-<li>v-cloak: 斗篷</li>
-</ul>
-<h3 id="三-v-bind">三. v-bind</h3>
-<h4 id="31-v-bind绑定基本属性">3.1. v-bind绑定基本属性</h4>
-<ul>
-<li>v-bind:sr</li>
-<li>:href</li>
-</ul>
-<h4 id="32-v-bind动态绑定class">3.2. v-bind动态绑定class</h4>
-<ul>
-<li>对象语法: 作业 :class='{类名: boolean}'</li>
-<li>数组语法:</li>
-</ul>
-<h4 id="33-v-bind动态绑定style">3.3. v-bind动态绑定style</h4>
-<ul>
-<li>对象语法:</li>
-<li>数组语法:</li>
-</ul>
-<h3 id="四-计算属性">四. 计算属性</h3>
-<ul>
-<li>案例一: firstName+lastName</li>
-<li>案例二: books -&gt; price</li>
-</ul>
-<h1 id="vue-day-02">Vue Day 02</h1>
-<h3 id="一-计算属性">一. 计算属性</h3>
-<h4 id="11-计算属性的本质">1.1. 计算属性的本质</h4>
-<ul>
-<li>fullname: {set(), get()}</li>
-</ul>
-<h4 id="12-计算属性和methods对比">1.2. 计算属性和methods对比</h4>
-<ul>
-<li>计算属性在多次使用时, 只会调用一次.</li>
-<li>它是由缓存的</li>
-</ul>
-<h3 id="二-事件监听">二. 事件监听</h3>
-<h4 id="21-事件监听基本使用">2.1. 事件监听基本使用</h4>
-<h4 id="22-参数问题">2.2. 参数问题</h4>
-<ul>
-<li>btnClick</li>
-<li>btnClick(event)</li>
-<li>btnClick(abc, event) -&gt; $event</li>
-</ul>
-<h4 id="23-修饰符">2.3. 修饰符</h4>
-<ul>
-<li>stop</li>
-<li>prevent</li>
-<li>.enter</li>
-<li>.once</li>
-<li>.native</li>
-</ul>
-<h3 id="三-条件判断">三. 条件判断</h3>
-<h4 id="31-v-ifv-else-ifv-else">3.1. v-if/v-else-if/v-else</h4>
-<h4 id="32-登录小案例">3.2. 登录小案例</h4>
-<h4 id="33-v-show">3.3. v-show</h4>
-<ul>
-<li>v-show和v-if区别</li>
-</ul>
-<h3 id="四-循环遍历">四. 循环遍历</h3>
-<h4 id="41-遍历数组">4.1. 遍历数组</h4>
-<h4 id="42-遍历对象">4.2. 遍历对象</h4>
-<ul>
-<li>value</li>
-<li>value, key</li>
-<li>value, key, index</li>
-</ul>
-<h4 id="43-数组哪些方法是响应式的">4.3. 数组哪些方法是响应式的</h4>
-<h4 id="44-作业完成">4.4. 作业完成</h4>
-<h3 id="五-书籍案例">五. 书籍案例</h3>
-<h3 id="六-v-model的使用">六. v-model的使用</h3>
-<h4 id="61-v-model的基本使用">6.1. v-model的基本使用</h4>
-<ul>
-<li>v-model =&gt; v-bind:value v-on:input</li>
-</ul>
-<h4 id="62-v-model和radiocheckboxselect">6.2. v-model和radio/checkbox/select</h4>
-<h4 id="63-修饰符">6.3. 修饰符</h4>
-<ul>
-<li>lazy</li>
-<li>number</li>
-<li>trim</li>
-</ul>
-<h3 id="七-组件化开发">七. 组件化开发</h3>
-<h4 id="71-认识组件化">7.1. 认识组件化</h4>
-<h4 id="72-组件的基本使用">7.2. 组件的基本使用</h4>
-<h4 id="73-全局组件和局部组件">7.3. 全局组件和局部组件</h4>
-<h4 id="74-父组件和子组件">7.4. 父组件和子组件</h4>
-<h4 id="75-注册的语法糖">7.5. 注册的语法糖</h4>
-<h4 id="76-模板的分类写法">7.6. 模板的分类写法</h4>
-<ul>
-<li>script</li>
-<li>template</li>
-</ul>
-<h4 id="77-数据的存放">7.7. 数据的存放</h4>
-<ul>
-<li>子组件不能直接访问父组件</li>
-<li>子组件中有自己的data, 而且必须是一个函数.</li>
-<li>为什么必须是一个函数.</li>
-</ul>
-<h4 id="78-父子组件的通信">7.8. 父子组件的通信</h4>
-<ul>
-<li>父传子: props</li>
-<li>子传父: $emit</li>
-</ul>
-<h4 id="79-项目">7.9. 项目</h4>
-<ul>
-<li>npm install</li>
-<li>npm run serve</li>
-</ul>
-<h1 id="vue-day-03">Vue Day 03</h1>
-<h3 id="一-组件化开发">一. 组件化开发</h3>
-<h4 id="11-父子组件的访问">1.1. 父子组件的访问</h4>
-<ul>
-<li>children/refs</li>
-<li>parent/root</li>
-</ul>
-<h4 id="12-slot的使用">1.2. slot的使用</h4>
-<ul>
-<li>基本使用</li>
-<li>具名插槽</li>
-<li>编译的作用域</li>
-<li>作用域插槽</li>
-</ul>
-<h3 id="二-前端模块化">二. 前端模块化</h3>
-<h4 id="21-为什么要使用模块化">2.1. 为什么要使用模块化</h4>
-<ul>
-<li>简单写js代码带来的问题</li>
-<li>闭包引起代码不可复用.</li>
-<li>自己实现了简单的模块化</li>
-<li>AMD/CMD/CommonJS</li>
-</ul>
-<h4 id="22-es6中模块化的使用">2.2. ES6中模块化的使用</h4>
-<ul>
-<li>export</li>
-<li>import</li>
-</ul>
-<h3 id="三-webpack">三. webpack</h3>
-<h4 id="31-什么是webpack">3.1. 什么是webpack</h4>
-<ul>
-<li>webpack和gulp对比</li>
-<li>webpack依赖环境</li>
-<li>安装webpack</li>
-</ul>
-<h4 id="32-webpack的起步">3.2. webpack的起步</h4>
-<ul>
-<li>webpack命令</li>
-<li>webpack配置: webpack.config.js/package.json(scripts)</li>
-</ul>
-<h4 id="33-webpack的loader">3.3. webpack的loader</h4>
-<ul>
-<li>css-loader/style-loader</li>
-<li>less-loader/less</li>
-<li>url-loader/file-loader</li>
-<li>babel-loader</li>
-</ul>
-<h4 id="34-webpack中配置vue">3.4. webpack中配置Vue</h4>
-<ul>
-<li>vue-loader</li>
-</ul>
-<h4 id="35-webpack的plugin">3.5. webpack的plugin</h4>
-<h4 id="36-搭建本地服务器">3.6. 搭建本地服务器</h4>
-<ul>
-<li>webpack-dev-server</li>
-</ul>
-<h4 id="37-配置文件的分离">3.7. 配置文件的分离</h4>
-<h3 id="四-vue-cli">四. Vue CLI</h3>
-<h4 id="41-什么是cli">4.1. 什么是CLI</h4>
-<ul>
-<li>脚手架是什么东西.</li>
-<li>CLI依赖webpack,node,npm</li>
-<li>安装CLI3 -&gt; 拉去CLI2模块</li>
-</ul>
-<h4 id="42-cli2初始化项目的过程">4.2. CLI2初始化项目的过程</h4>
-<h4 id="43-cli2生产的目录结构的解析">4.3. CLI2生产的目录结构的解析</h4>
-<p>export(导出)/import(导入)</p>
-<p>.vue</p>
-<p>dist -&gt; distribution(发布)</p>
-<blockquote>
-<p>webpack ./src/main.js ./dist/bundle.js</p>
-</blockquote>
-<p>开发时依赖</p>
-<p>运行时依赖</p>
-<h1 id="vue-day-04">Vue Day 04</h1>
-<h3 id="一-vue-cli">一. Vue CLI</h3>
-<h4 id="11-runtime-compiler和runtime-only的区别">1.1. runtime-compiler和runtime-only的区别</h4>
-<ul>
-<li>
-<p>ESLint到底是什么?</p>
-</li>
-<li>
-<p>template -&gt; ast -&gt; render -&gt; vdom -&gt; 真实DOM</p>
-</li>
-<li>
-<p>render: (h) =&gt; h, -&gt; createElement</p>
-</li>
-</ul>
-<h4 id="12-vue-cli3">1.2. Vue CLI3</h4>
-<ul>
-<li>如何通过CLI3创建项目</li>
-<li>CLI3的目录结构</li>
-<li>配置文件: 1.Vue UI 2.隐藏的配置文件 3.自定义vue.config.js</li>
-</ul>
-<h3 id="二-vue-router">二. Vue-Router</h3>
-<h4 id="21-什么是前端路由">2.1. 什么是前端路由</h4>
-<ul>
-<li>后端渲染\后端路由</li>
-<li>前后端分离</li>
-<li>SPA\前端路由</li>
-</ul>
-<h4 id="22-路由的基本配置">2.2. 路由的基本配置</h4>
-<ul>
-<li>安装vue-router</li>
-<li>Vue.use -&gt; 创建VueRouter对象 -&gt; 挂在到Vue实例上</li>
-<li>配置映射关系: 1.创建组件 2.配置映射关系 3.使用router-link/router-view</li>
-</ul>
-<h4 id="23-细节处理">2.3. 细节处理</h4>
-<ul>
-<li>默认路由: redirect</li>
-<li>mode: history</li>
-<li>router-link -&gt; tag/replace/active-class</li>
-</ul>
-<h4 id="24-动态路由">2.4. 动态路由</h4>
-<ul>
-<li>/user/:id</li>
-<li>this.$route.params.id</li>
-</ul>
-<h4 id="25-参数的传递">2.5. 参数的传递</h4>
-<ul>
-<li>params</li>
-<li>query -&gt; URL</li>
-<li>URL:
-<ul>
-<li>协议://主机:端口/路径?查询</li>
-<li>scheme://host:port/path?query#fragment</li>
-</ul>
-</li>
-</ul>
-<h4 id="26-路由嵌套">2.6. 路由嵌套</h4>
-<ul>
-<li>children: []</li>
-</ul>
-<h4 id="27-导航守卫">2.7. 导航守卫</h4>
-<ul>
-<li>全局导航守卫</li>
-<li>路由独享守卫</li>
-<li>组件类守卫</li>
-</ul>
-<h4 id="28-keep-alive">2.8. Keep-alive</h4>
-<h4 id="29-tabbar的封装过程">2.9. TabBar的封装过程</h4>
-<p>C:\Users\Administrator\AppData\Roaming</p>
-<p>vue init webpack project</p>
-<p>runtime+compiler和runtime-only</p>
-<p>template -&gt; ast -&gt; render -&gt; virtual dom -&gt; 真实DOM</p>
-<p>vue2.5.21 -&gt; vue2.x -&gt; flow-type(facebook)</p>
-<p>Vue3.x -&gt; TypeScript(micro(微小)soft(软件))</p>
-<p>future: 将来/未来</p>
-<p>fut: 特性</p>
-<p>rc -&gt; run command</p>
-<p>vcs -&gt; version control system(版本控制git/svn)</p>
-<p>什么是前端渲染, 什么是后端渲染?</p>
-<p>什么是前后端分离?</p>
-<p>什么是前端路由, 什么是后端路由?</p>
-<p>href -&gt; hyper reference</p>
-<h1 id="vue-day-05">Vue Day 05</h1>
-<h3 id="一-promise">一. Promise</h3>
-<h4 id="11-promise的基本使用">1.1. Promise的基本使用</h4>
-<ul>
-<li>如何将异步操作放入到promise中</li>
-<li>(resolve, reject) =&gt; then/catch</li>
-</ul>
-<h4 id="12-promise的链式调用">1.2. Promise的链式调用</h4>
-<h4 id="13-promise的all方法">1.3. Promise的all方法</h4>
-<h3 id="二-vuex">二. Vuex</h3>
-<h4 id="21-什么是状态管理">2.1. 什么是状态管理</h4>
-<h4 id="22-vuex的基本使用">2.2. Vuex的基本使用</h4>
-<ul>
-<li>state -&gt; 直接修改state(错误)</li>
-<li>mutations -&gt; devtools</li>
-</ul>
-<h4 id="23-核心概念">2.3. 核心概念</h4>
-<ul>
-<li>state -&gt; 单一状态树</li>
-<li>getters -&gt;</li>
-<li>mutations -&gt;</li>
-<li>actions -&gt; 异步操作(Promise)</li>
-<li>modules</li>
-</ul>
-<h4 id="24-目录组织方式">2.4. 目录组织方式</h4>
-<h3 id="三-网络请求封装">三. 网络请求封装</h3>
-<h4 id="31-网络请求方式的选择">3.1. 网络请求方式的选择</h4>
-<h4 id="32-axios的基本使用">3.2. axios的基本使用</h4>
-<h4 id="33-axios的相关配置">3.3. axios的相关配置</h4>
-<h4 id="34-axios的创建实例">3.4. axios的创建实例</h4>
-<h4 id="35-axios的封装">3.5. axios的封装</h4>
-<h4 id="36-axios的拦截器">3.6. axios的拦截器</h4>
-<h3 id="四-项目开发">四. 项目开发</h3>
-<h4 id="41-划分目录结构">4.1. 划分目录结构</h4>
-<h4 id="42-引用了两个css文件">4.2. 引用了两个css文件</h4>
-<h4 id="43-vueconfigjs和editorconfig">4.3. vue.config.js和.editorconfig</h4>
-<h4 id="44-项目的模块划分-tabbar-路由映射关系">4.4. 项目的模块划分: tabbar -&gt; 路由映射关系</h4>
-<h4 id="45-首页开发">4.5. 首页开发</h4>
-<ul>
-<li>navbar 的封装</li>
-<li>网络数据的请求</li>
-<li>轮播图</li>
-<li>推荐信息</li>
-</ul>
-<pre><code>git remote add origin https://github.com/coderwhy/testmall.git
-git push -u origin master
+              <h1 id="mock在vue里怎么用">mock在vue里怎么用？</h1>
+<p><a href="https://github.com/nuysoft/Mock/wiki/Getting-Started">https://github.com/nuysoft/Mock/wiki/Getting-Started</a><br>
+以上是官方文档，不知道mock是什么的自行查看</p>
+<h1 id="一-下载nodejs-的npm-自行下载">一、下载node.js 的npm 自行下载</h1>
+<pre><code>+ npm install -g cnpm --registry=https://registry.npm.taobao.org
+     //npm的镜像
+	+ npm install -g @vue/cli    //安装全局脚手架  
+	    自己新建一个文件夹，并在文件夹中打开  powershell 
+	+ vue create mypro(文件名可随意换)   //创建并下载一个文件夹
+	+ npm install vue-router --save //启路由的插件
+		--save 代表局部
+	+ cd mypro
+	+ npm run serve //运行 
+	+ 用local 地址打开
 </code></pre>
-<p>sync -&gt; 同步</p>
-<p>async -&gt; 异步</p>
-<p>aysnc operation: 操作</p>
-<p>xcode/iphonex/xml</p>
-<p>token -&gt;</p>
-<p>linus -&gt; linux/git</p>
-<h1 id="vue-day-06">Vue Day 06</h1>
-<p>goods: (流行/新款/精选)</p>
-<pre><code class="language-js">goods: {
-  'pop': {page: 5, list: [150]},
-  'news': {page: 2, list: [60]},
-  'sell': {page: 1, list: [30]}
+<h2 id="11-创建项目">1.1 创建项目</h2>
+<pre><code>vue create mock-demo 
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1608807847530.png" alt="" loading="lazy"></figure>
+<h2 id="12-安装依赖-不懂请看上面">1.2 安装依赖 （不懂请看上面）</h2>
+<p>vue环境搭建好后，开始安装 mock依赖</p>
+<pre><code>     //使用axios发送  ajax
+	  	cnpm install axios --save
+	//使用mockjs产生随机数据
+	  	cnpm install mockjs --save-dev
+	//使用json5解决json文件,无法添加注释问题
+	  	cnpm install json5 --save-dev
+</code></pre>
+<h1 id="二-学习mockjs">二、学习MOCKJS</h1>
+<p>新建mock文件夹,新建testMockjs.js</p>
+<pre><code>const Mock = require('mockjs');//mockjs 导入依赖模块
+var id = Mock.mock('@id')//得到随机的id,字符串
+console.log(Mock.mock('@id'), typeof id)
+
+var obj = Mock.mock({
+    id: &quot;@id()&quot;,//得到随机的id,对象
+    username: &quot;@cname()&quot;,//随机生成中文名字
+    date: &quot;@date()&quot;,//随机生成日期
+    avatar: &quot;@image('200x200','red','#fff','avatar')&quot;,//生成图片,参数:size, background, foreground, text
+    description: &quot;@paragraph()&quot;,//描述
+    ip: &quot;@ip()&quot;,//IP地址
+    email: &quot;@email()&quot;//email
+})
+console.log(obj)
+</code></pre>
+<h1 id="三-学习json5">三、学习JSON5</h1>
+<p>json文件,中如果说存在注释文件和编辑器都会报错,我们采用json5格式来让json格式可以存在注释</p>
+<h2 id="31编辑器安装json5扩展">3.1编辑器安装JSON5扩展</h2>
+<figure data-type="image" tabindex="2"><img src="https://Tyloo-code.github.io/post-images/1608807967957.jpg" alt="" loading="lazy"></figure>
+<h2 id="32引入json5库来解析json5格式">3.2引入JSON5库来解析JSON5格式</h2>
+<pre><code>const fs = require('fs');
+const path = require('path');
+const JSON5 = require('json5');
+//读取json文件
+function getJsonFile(filePath) {
+    //读取指定json文件
+    var json = fs.readFileSync(path.resolve(__dirname,filePath), 'utf-8');
+    //解析并返回
+    return JSON5.parse(json);
+}
+var json = getJsonFile('./userInfo.json5');
+console.log('json', json) 
+</code></pre>
+<h1 id="四-mock和vue-cli结合">四、MOCK和VUE-CLI结合</h1>
+<h2 id="41新建indexjs">4.1新建INDEX.JS</h2>
+<p>在mock文件夹下,新建index.js</p>
+<pre><code>const fs = require('fs');
+const path = require('path');
+const Mock = require('mockjs');//mockjs 导入依赖模块
+const JSON5 = require('json5');
+//读取json文件
+function getJsonFile(filePath) {
+    //读取指定json文件
+    var json = fs.readFileSync(path.resolve(__dirname,filePath), 'utf-8');
+    //解析并返回
+    return JSON5.parse(json);
+}
+
+//返回一个函数
+module.exports = function(app){
+    //监听http请求
+    app.get('/user/userinfo', function (rep, res) {
+        //每次响应请求时读取mock data的json文件
+        //getJsonFile方法定义了如何读取json文件并解析成数据对象
+        var json = getJsonFile('./userInfo.json5');
+        //将json传入 Mock.mock 方法中，生成的数据返回给浏览器
+        res.json(Mock.mock(json));
+    });
 }
 </code></pre>
-<p>ref如果是绑定在组件中的, 那么通过<strong>this.$refs.refname</strong>获取到的是一个组件对象.</p>
-<p>ref如果是绑定在普通的元素中, 那么通过<strong>this.$refs.refname</strong>获取到的是一个元素对象.</p>
-<p>44 + 49 = 93</p>
-<p>vh -&gt; viewport height</p>
-<p>568(100%) - 98 = 470</p>
-<p>修饰.native修饰什么时候使用?</p>
-<ul>
-<li>在我们需要监听一个组件的原生事件时, 必须给对应的事件加上.native修饰符, 才能进行监听.</li>
-</ul>
-<p>计算机中没有黑魔法.</p>
-<h1 id="vue-day-07">Vue Day 07</h1>
-<h3 id="一-featureview">一. FeatureView</h3>
-<ul>
-<li>独立组件封装FeatureView
-<ul>
-<li>div&gt;a&gt;img</li>
-</ul>
-</li>
-</ul>
-<h3 id="二-tabcontrol">二. TabControl</h3>
-<ul>
-<li>独立组件的封装
-<ul>
-<li>props -&gt; titles</li>
-<li>div&gt;根据titles v-for遍历 div -&gt; span{{title}}</li>
-<li>css相关</li>
-<li>选中哪一个tab, 哪一个tab的文字颜色变色, 下面border-bottom
-<ul>
-<li>currentIndex</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="三-首页商品数据的请求">三. 首页商品数据的请求</h3>
-<h4 id="31-设计数据结构-用于保存数据">3.1. 设计数据结构, 用于保存数据</h4>
-<p>goods: {</p>
-<p>pop: page/list</p>
-<p>new: page/list</p>
-<p>sell: page/list</p>
-<p>}</p>
-<h4 id="32-发送数据请求">3.2. 发送数据请求</h4>
-<ul>
-<li>在home.js中封装getHomeGoods(type, page)</li>
-<li>在Home.vue中, 又在methods中getHomeGoods(type)</li>
-<li>调用getHomeGoods('pop')/getHomeGoods('new')/getHomeGoods('sell')
-<ul>
-<li>page: 动态的获取对应的page</li>
-</ul>
-</li>
-<li>获取到数据: res
-<ul>
-<li>this.goods[type].list.push(...res.data.list)</li>
-<li>this.goods[type].page += 1</li>
-</ul>
-</li>
-</ul>
-<p>goods: {</p>
-<p>pop: page1:/list[30]</p>
-<p>new: page1/list[30]</p>
-<p>sell: page1/list[30]</p>
-<p>}</p>
-<h3 id="四-对商品数据进行展示">四. 对商品数据进行展示</h3>
-<h4 id="41-封装goodslistvue组件">4.1. 封装GoodsList.vue组件</h4>
-<ul>
-<li>props: goods -&gt; list[30]</li>
-<li>v-for goods -&gt; GoodsListItem[30]</li>
-<li>GoodListItem(组件) -&gt; GoodsItem(数据)</li>
-</ul>
-<h4 id="42-封装goodslistitemvue组件">4.2. 封装GoodsListItem.vue组件</h4>
-<ul>
-<li>props: goodsItem</li>
-<li>goodsItem 取出数据, 并且使用正确的div/span/img基本标签进行展示</li>
-</ul>
-<h3 id="五-对滚动进行重构-better-scroll">五. 对滚动进行重构: Better-Scroll</h3>
-<h4 id="51-在indexhtml中使用better-scroll">5.1. 在index.html中使用Better-Scroll</h4>
-<ul>
-<li>const bscroll = new BScroll(el, {   })</li>
-<li>注意: wrapper -&gt; content -&gt; 很多内容</li>
-<li>1.监听滚动
-<ul>
-<li>probeType: 0/1/2(手指滚动)/3(只要是滚动)</li>
-<li>bscroll .on('scroll', (position) =&gt; {})</li>
-</ul>
-</li>
-<li>2.上拉加载
-<ul>
-<li>pullUpLoad: true</li>
-<li>bscroll .on('pullingUp', () =&gt; {})</li>
-</ul>
-</li>
-<li>3.click: false
-<ul>
-<li>button可以监听点击</li>
-<li>div不可以</li>
-</ul>
-</li>
-</ul>
-<h4 id="52-在vue项目中使用better-scroll">5.2. 在Vue项目中使用Better-Scroll</h4>
-<ul>
-<li>在Profile.vue中简单的演示</li>
-<li>对Better-Scroll进行封装: Scroll.vue</li>
-<li>Home.vue和Scroll.vue之间进行通信
-<ul>
-<li>Home.vue将probeType设置为3</li>
-<li>Scroll.vue需要通过$emit, 实时将事件发送到Home.vue</li>
-</ul>
-</li>
-</ul>
-<h3 id="六-回到顶部backtop">六. 回到顶部BackTop</h3>
-<h4 id="61-对backtopvue组件的封装">6.1. 对BackTop.vue组件的封装</h4>
-<h4 id="62-如何监听组件的点击">6.2. 如何监听组件的点击</h4>
-<ul>
-<li>直接监听back-top的点击, 但是可以直接监听?
-<ul>
-<li>不可以, 必须添加修饰.native</li>
-</ul>
-</li>
-<li>回到顶部
-<ul>
-<li>scroll对象, scroll.scrollTo(x, y, time)</li>
-<li>this.$refs.scroll.scrollTo(0, 0, 500)</li>
-</ul>
-</li>
-</ul>
-<h4 id="63-backtop组件的显示和隐藏">6.3. BackTop组件的显示和隐藏</h4>
-<ul>
-<li>isShowBackTop: false</li>
-<li>监听滚动, 拿到滚动的位置:
-<ul>
-<li>-position.y &gt; 1000  -&gt; isShowBackTop: true</li>
-<li>isShowBackTop = -position.y &gt; 1000</li>
-</ul>
-</li>
-</ul>
-<h3 id="七-解决首页中可滚动区域的问题">七. 解决首页中可滚动区域的问题</h3>
-<ul>
-<li>
-<p>Better-Scroll在决定有多少区域可以滚动时, 是根据scrollerHeight属性决定</p>
-<ul>
-<li>scrollerHeight属性是根据放Better-Scroll的content中的子组件的高度</li>
-<li>但是我们的首页中, 刚开始在计算scrollerHeight属性时, 是没有将图片计算在内的</li>
-<li>所以, 计算出来的告诉是错误的(1300+)</li>
-<li>后来图片加载进来之后有了新的高度, 但是scrollerHeight属性并没有进行更新.</li>
-<li>所以滚动出现了问题</li>
-</ul>
-</li>
-<li>
-<p>如何解决这个问题了?</p>
-<ul>
-<li>监听每一张图片是否加载完成, 只要有一张图片加载完成了, 执行一次refresh()</li>
-<li>如何监听图片加载完成了?
-<ul>
-<li>原生的js监听图片: img.onload = function() {}</li>
-<li>Vue中监听: @load='方法'</li>
-</ul>
-</li>
-<li>调用scroll的refresh()</li>
-</ul>
-</li>
-<li>
-<p>如何将GoodsListItem.vue中的事件传入到Home.vue中</p>
-<ul>
-<li>因为涉及到非父子组件的通信, 所以这里我们选择了<strong>事件总线</strong>
-<ul>
-<li>bus -&gt;总线</li>
-<li>Vue.prototype.$bus = new Vue()</li>
-<li>this.bus.emit('事件名称', 参数)</li>
-<li>this.bus.on('事件名称', 回调函数(参数))</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>问题一: refresh找不到的问题</p>
-<ul>
-<li>第一: 在Scroll.vue中, 调用this.scroll的方法之前, 判断this.scroll对象是否有值</li>
-<li>第二: 在mounted生命周期函数中使用 this.$refs.scroll而不是created中</li>
-</ul>
-</li>
-<li>
-<p>问题二: 对于refresh非常频繁的问题, 进行防抖操作</p>
-<ul>
-<li>防抖debounce/节流throttle(课下研究一下)</li>
-<li>防抖函数起作用的过程:
-<ul>
-<li>如果我们直接执行refresh, 那么refresh函数会被执行30次.</li>
-<li>可以将refresh函数传入到debounce函数中, 生成一个新的函数.</li>
-<li>之后在调用非常频繁的时候, 就使用新生成的函数.</li>
-<li>而新生成的函数, 并不会非常频繁的调用, 如果下一次执行来的非常快, 那么会将上一次取消掉</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code class="language-js">      debounce(func, delay) {
-        let timer = null
-        return function (...args) {
-          if (timer) clearTimeout(timer)
-          timer = setTimeout(() =&gt; {
-            func.apply(this, args)
-          }, delay)
-        }
-      },
+<h2 id="42-新建vueconfigjs">4.2 新建VUE.CONFIG.JS</h2>
+<p>在项目根目录下,新建vue.config.js</p>
+<pre><code>module.exports = {
+    devServer: {
+        before: require('./mock/index.js')//引入mock/index.js
+    }
+}
 </code></pre>
-<h3 id="八-上拉加载更多的功能">八. 上拉加载更多的功能</h3>
-<p>y  ifu</p>
-<h3 id="九-tabcontrol的吸顶效果">九. tabControl的吸顶效果</h3>
-<h4 id="91-获取到tabcontrol的offsettop">9.1. 获取到tabControl的offsetTop</h4>
-<ul>
-<li>必须知道滚动到多少时, 开始有吸顶效果, 这个时候就需要获取tabControl的offsetTop</li>
-<li>但是, 如果直接在mounted中获取tabControl的offsetTop, 那么值是不正确.</li>
-<li>如何获取正确的值了?
-<ul>
-<li>监听HomeSwiper中img的加载完成.</li>
-<li>加载完成后, 发出事件, 在Home.vue中, 获取正确的值.</li>
-<li>补充:
-<ul>
-<li>为了不让HomeSwiper多次发出事件,</li>
-<li>可以使用isLoad的变量进行状态的记录.</li>
-</ul>
-</li>
-<li>注意: 这里不进行多次调用和debounce的区别</li>
-</ul>
-</li>
-</ul>
-<h4 id="92-监听滚动-动态的改变tabcontrol的样式">9.2. 监听滚动, 动态的改变tabControl的样式</h4>
-<ul>
-<li>问题:动态的改变tabControl的样式时, 会出现两个问题:
-<ul>
-<li>问题一: 下面的商品内容, 会突然上移</li>
-<li>问题二: tabControl虽然设置了fixed, 但是也随着Better-Scroll一起滚出去了.</li>
-</ul>
-</li>
-<li>其他方案来解决停留问题.
-<ul>
-<li>在最上面, 多复制了一份PlaceHolderTabControl组件对象, 利用它来实现停留效果.</li>
-<li>当用户滚动到一定位置时, PlaceHolderTabControl显示出来.</li>
-<li>当用户滚动没有达到一定位置时, PlaceHolderTabControl隐藏起来.</li>
-</ul>
-</li>
-</ul>
-<h3 id="十-让home保持原来的状态">十. 让Home保持原来的状态</h3>
-<h4 id="101-让home不要随意销毁掉">10.1. 让Home不要随意销毁掉</h4>
-<ul>
-<li>keep-alive</li>
-</ul>
-<h4 id="102-让home中的内容保持原来的位置">10.2. 让Home中的内容保持原来的位置</h4>
-<ul>
-<li>离开时, 保存一个位置信息saveY.</li>
-<li>进来时, 将位置设置为原来保存的位置saveY信息即可.
-<ul>
-<li>注意: 最好回来时, 进行一次refresh()</li>
-</ul>
-</li>
-</ul>
-<p>非父子组件通信:</p>
-<p>https://www.jb51.net/article/132371.htm</p>
+<h2 id="43-发送ajax请求">4.3 发送AJAX请求</h2>
+<p>在src\components\HelloWorld.vue中发送ajax请求</p>
+<pre><code>import axios from 'axios'
+	export default {
+	  name: 'HelloWorld',
+	  props: {
+	    msg: String
+	  },
+	  mounted() {
+	    axios.get('/user/userinfo')
+	    .then(res =&gt; {
+	      console.log(res)
+	    })
+	    .catch(err =&gt; {
+	      console.error(err); 
+	    })
+	  }
+	} 
+</code></pre>
+<h1 id="五-移除mock-连接实际api">五、移除MOCK （连接实际api）</h1>
+<p>在项目根路径新建.env.development</p>
+<pre><code>MOCK=true 
+</code></pre>
+<p>完善mock\index.js</p>
+<pre><code>module.exports = function(app){
+    if(process.env.MOCK == 'true'){
+        //监听http请求
+        app.get('/user/userinfo', function (rep, res) {
+            //每次响应请求时读取mock data的json文件
+            //getJsonFile方法定义了如何读取json文件并解析成数据对象
+            var json = getJsonFile('./userInfo.json5');
+            //将json传入 Mock.mock 方法中，生成的数据返回给浏览器
+            res.json(Mock.mock(json));
+        });
+    }
+} 
+</code></pre>
+<h1 id="总结mock-json5-devserver-axios职责">总结,MOCK-JSON5-DEVSERVER-AXIOS职责</h1>
+<figure data-type="image" tabindex="3"><img src="https://Tyloo-code.github.io/post-images/1608808179446.png" alt="" loading="lazy"></figure>
 
             </div>
             
@@ -1404,7 +713,7 @@ git push -u origin master
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/" title="Vue从入门到未完待续">https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/</a>
+      <a href="https://Tyloo-code.github.io/post/vueandmock-mo-ni-shu-ju/" title="Vue&amp;mock模拟数据">https://Tyloo-code.github.io/post/vueandmock-mo-ni-shu-ju/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -1417,15 +726,11 @@ git push -u origin master
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="餐厅练习-Css选择器" href="https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/">餐厅练习-Css选择器</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="餐厅练习-Css选择器" href="https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Windows系统下Typora 完全使用详解" href="https://Tyloo-code.github.io/post/windows-xi-tong-xia-typora-wan-quan-shi-yong-xiang-jie/">Windows系统下Typora 完全使用详解</a>
-        <a class="nav-mobile-next" title="Windows系统下Typora 完全使用详解" href="https://Tyloo-code.github.io/post/windows-xi-tong-xia-typora-wan-quan-shi-yong-xiang-jie/">下一篇</a>
+        <a class="nav-pc-next" title="Vue&amp;markdown编辑器--mavonEditor" href="https://Tyloo-code.github.io/post/vueandmarkdown-bian-ji-qi-mavoneditor/">Vue&amp;markdown编辑器--mavonEditor</a>
+        <a class="nav-mobile-next" title="Vue&amp;markdown编辑器--mavonEditor" href="https://Tyloo-code.github.io/post/vueandmarkdown-bian-ji-qi-mavoneditor/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
