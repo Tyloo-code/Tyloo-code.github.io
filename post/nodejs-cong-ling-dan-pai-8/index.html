@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>NodeJs从零单排(3) | Tyloo</title>
+<title>NodeJs从零单排(8) | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1608782612948">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="NodeJs从零单排(3)" />
+  <meta name="description" content="NodeJs从零单排(8)" />
   <meta name="keywords" content="" />
 </head>
 
@@ -238,16 +238,8 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-%E5%8C%85%E4%B8%8E-npm">一、包与 NPM</a><br>
-*
-<ul>
-<li><a href="#1-%E5%8C%85">1. 包</a></li>
-<li><a href="#2-npm-%E4%BB%8B%E7%BB%8D">2. NPM 介绍</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-npm-%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3">二、NPM 命令详解。</a></li>
-<li><a href="#%E4%B8%89-packagejson">三、package.json</a></li>
-<li><a href="#%E5%9B%9B-%E5%AE%89%E8%A3%85%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F">四、安装淘宝镜像</a></li>
+<li><a href="#1-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E6%96%B9%E5%BC%8F%E5%B0%81%E8%A3%85">1、模块化的方式封装</a></li>
+<li><a href="#2-%E5%B0%81%E8%A3%85%E4%BB%BF%E7%85%A7-express-%E7%9A%84%E8%B7%AF%E7%94%B1">2、封装仿照 express 的路由</a></li>
 </ul>
 
   </div>
@@ -513,8 +505,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-3/">
-      NodeJs从零单排(3)
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-8/">
+      NodeJs从零单排(8)
     </a>
   </h1>
   <div class="post-meta">
@@ -522,23 +514,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-24 09:55:45">2020-12-24</span>
+      <span class="publish-time" data-t="2020-12-24 11:59:42">2020-12-24</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>4<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>883<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>158<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/nodejs-cong-ling-dan-pai-3/" data-flag-title="NodeJs从零单排(3)" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/nodejs-cong-ling-dan-pai-8/" data-flag-title="NodeJs从零单排(8)" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -547,104 +539,51 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="一-包与-npm">一、包与 NPM</h1>
-<h3 id="1-包">1. 包</h3>
-<p>Nodejs 中除了它自己提供的<span style="color:red">核心模块</span>外，我们可以<span style="color:red">自定义模块</span>，也可以使用<span style="color:red">第三方的模块</span>。Nodejs 中第三方模块由包组成，可以通过包来对一组具有相互依赖关系的模块进行统一管理。<br>
-<img src="https://Tyloo-code.github.io/post-images/1608777425715.png" alt="" loading="lazy"></p>
-<p>完全符合CommonJs规范的<span style="color:red">包目录</span>一般包含如下这些文件。<br>
-• package.json :包描述文件。<br>
-• bin :用于存放可执行二进制文件的目录。<br>
-• lib :用于存放 JavaScript 代码的目录。<br>
-• doc :用于存放文档的目录。</p>
-<p><code>在 NodeJs 中通过 NPM 命令来下载第三方的模块（包）。</code><br>
-<a href="https://www.npmjs.com/package/silly-datetime">https://www.npmjs.com/package/silly-datetime</a></p>
-<pre><code>npm i silly-datetime –save 
-var sd = require('silly-datetime'); 
-sd.format(new Date(), 'YYYY-MM-DD HH:mm');
+              <h1 id="1-模块化的方式封装">1、模块化的方式封装</h1>
+<pre><code>var app={ 
+    static:function (req, res, staticPath) { 
+        //处理静态资源 
+    },
+    login:function(req,res){ 
+        console.log('login'); 
+        res.end('login'); 
+    },
+    dologin:function(req,res){ 
+        res.end('doLogin'); 
+    }, 
+    register:function(req,res){ 
+        res.end('register'); 
+    },error:function(req,res){ 
+        res.end('error'); 
+    } 
+}
+module.exports=app;
 </code></pre>
-<br>
-<h3 id="2-npm-介绍">2. NPM 介绍</h3>
-<p>npm 是<code>世界上最大的开放源代码</code>的生态系统。我们可以通过 npm 下载各种各样的包， 这些源代码（包）我们可以在<a href="https://www.npmjs.com">https://www.npmjs.com</a>找到。</p>
-<p><strong>npm 是随同 NodeJS 一起安装的包管理工具，能解决 NodeJS 代码部署上的很多问题， 常见的使用场景有以下几种：</strong><br>
- 允许用户从 NPM 服务器下载别人编写的第三方包到本地使用。(silly-datetime)<br>
- 允许用户从 NPM 服务器下载并安装别人编写的命令行程序(工具)到本地使用。 （supervisor）<br>
- 允许用户将自己编写的包或命令行程序上传到 NPM 服务器供别人使用。</p>
-<h1 id="二-npm-命令详解">二、NPM 命令详解。</h1>
-<ol>
-<li>npm -v 查看 npm 版本</li>
-<li>使用 npm 命令安装模块</li>
-</ol>
-<pre><code>npm install Module Name 
-如安装 jq 模块：
-npm install jquery
+<pre><code>http.createServer(function (req, res) { 
+    //创建静态 web 服务 
+    routes.static(req,res,'static'); 
+    //路由 
+    let pathname=url.parse(req.url).pathname.replace('/',''); 
+    try { 
+        routes[pathname](req, res); 
+    } catch (err) { 
+        routes['error'](req, res); 
+        }
+}).listen(3000);
 </code></pre>
-<ol start="3">
-<li>npm uninstall moudleName <strong>卸载模块</strong></li>
-</ol>
-<pre><code>npm uninstall ModuleName
-</code></pre>
-<ol start="4">
-<li>npm list 查看当前目录下已安装的 node 包</li>
-</ol>
-<pre><code>npm list
-</code></pre>
-<ol start="5">
-<li>npm info jquery 查看 jquery 的版本</li>
-</ol>
-<pre><code>npm info 模块 //查看模块的版本
-</code></pre>
-<ol start="6">
-<li><code>指定版本安装 npm install jquery@1.8.0</code></li>
-</ol>
-<h1 id="三-packagejson">三、package.json</h1>
-<p>package.json定义了这个项目所需要的各种模块,以及项目的配置信息(比如名称、版本、 许可证等元数据)<br>
-1、<code>创建 package.json</code></p>
-<pre><code>npm init 或者 npm init –yes
-</code></pre>
-<p>2、<code>package.json 文件</code></p>
-<pre><code>{
-     &quot;name&quot;: &quot;test&quot;, 
-     &quot;version&quot;: &quot;1.0.0&quot;, 
-     &quot;description&quot;: &quot;test&quot;, 
-     &quot;main&quot;: &quot;main.js&quot;, 
-     &quot;keywords&quot;: [ &quot;test&quot; ],
-     &quot;author&quot;: &quot;wade&quot;,
-     &quot;license&quot;: &quot;MIT&quot;, 
-     &quot;dependencies&quot;: { 
-        &quot;express&quot;: &quot;^4.10.1&quot;
-        },
-        &quot;devDependencies&quot;: {
-        &quot;jslint&quot;: &quot;^0.6.5&quot; 
-     }
- }
-</code></pre>
-<p>3、安装模块并把模块写入 package.json(依赖)</p>
-<pre><code>npm install babel-cli --save-dev 
-npm install 模块 --save 
-npm install 模块 --save-dev
-</code></pre>
-<p>4、<code>dependencies 与 devDependencies 之间的区别?</code></p>
-<p>使用 npm install node_module –save 自动更新 dependencies 字段值;<br>
-使用 npm install node_module –save-dev 自动更新 devDependencies 字段值;</p>
-<p>dependencie 配置当前程序所依赖的其他包。<br>
-devDependencie 配置当前程序所依赖的其他包，比如一些工具之类的配置在这里</p>
-<pre><code>&quot;dependencies&quot;: { 
-    &quot;ejs&quot;: &quot;^2.3.4&quot;, 
-    &quot;express&quot;: &quot;^4.13.3&quot;,
-     &quot;formidable&quot;: &quot;^1.0.17&quot;
- }
-</code></pre>
-<div style="color:red">
-^表示第一位版本号不变，后面两位取最新的<br>
-~表示前两位不变，最后一个取最新<br>
-*表示全部取最新
-</div>
-<h1 id="四-安装淘宝镜像">四、安装淘宝镜像</h1>
-<p><a href="http://www.npmjs.org">http://www.npmjs.org</a>  npm 包官网<br>
-<a href="https://npm.taobao.org/">https://npm.taobao.org/</a> 淘宝 npm 镜像官网</p>
-<p><strong>淘宝 NPM 镜像</strong>是一个完整 <strong>npmjs.org</strong> 镜像，你可以用此代替官方版本(只读)，同步频 率目前为 10 分钟 一次以保证尽量与官方服务同步。</p>
-<p><strong>我们可以使用我们定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:</strong></p>
-<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
+<h1 id="2-封装仿照-express-的路由">2、封装仿照 express 的路由</h1>
+<p>Express 官网：<a href="https://www.expressjs.com.cn/">https://www.expressjs.com.cn/</a></p>
+<pre><code>var express = require('express') 
+var app = express() 
+app.get(&quot;/&quot;, function (req, res) { 
+    res.send('hello world') 
+})
+app.get(&quot;/login&quot;, function (req, res) {
+    res.send('hello world') 
+})
+app.post(&quot;/doLogin&quot;, function (req, res) { 
+    res.send('POST request to the homepage') 
+})
 </code></pre>
 
             </div>
@@ -662,7 +601,7 @@ devDependencie 配置当前程序所依赖的其他包，比如一些工具之�
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-3/" title="NodeJs从零单排(3)">https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-3/</a>
+      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-8/" title="NodeJs从零单排(8)">https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-8/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -675,15 +614,11 @@ devDependencie 配置当前程序所依赖的其他包，比如一些工具之�
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="NodeJs从零单排(4)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/">NodeJs从零单排(4)</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="NodeJs从零单排(4)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="NodeJs从零单排(2)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-2/">NodeJs从零单排(2)</a>
-        <a class="nav-mobile-next" title="NodeJs从零单排(2)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-2/">下一篇</a>
+        <a class="nav-pc-next" title="NodeJs从零单排(7)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-7/">NodeJs从零单排(7)</a>
+        <a class="nav-mobile-next" title="NodeJs从零单排(7)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-7/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

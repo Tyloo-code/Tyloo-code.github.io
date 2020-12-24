@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Element UI 实战教程 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1608781185263">
+<link rel="shortcut icon" href="/favicon.ico?v=1608782612948">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">13</span>
+        <span class="site-item-stat-count">15</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -2459,6 +2459,116 @@ methods: {
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-8/"" data-c="
+          &lt;h1 id=&#34;1-模块化的方式封装&#34;&gt;1、模块化的方式封装&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;var app={ 
+    static:function (req, res, staticPath) { 
+        //处理静态资源 
+    },
+    login:function(req,res){ 
+        console.log(&#39;login&#39;); 
+        res.end(&#39;login&#39;); 
+    },
+    dologin:function(req,res){ 
+        res.end(&#39;doLogin&#39;); 
+    }, 
+    register:function(req,res){ 
+        res.end(&#39;register&#39;); 
+    },error:function(req,res){ 
+        res.end(&#39;error&#39;); 
+    } 
+}
+module.exports=app;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;http.createServer(function (req, res) { 
+    //创建静态 web 服务 
+    routes.static(req,res,&#39;static&#39;); 
+    //路由 
+    let pathname=url.parse(req.url).pathname.replace(&#39;/&#39;,&#39;&#39;); 
+    try { 
+        routes[pathname](req, res); 
+    } catch (err) { 
+        routes[&#39;error&#39;](req, res); 
+        }
+}).listen(3000);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;2-封装仿照-express-的路由&#34;&gt;2、封装仿照 express 的路由&lt;/h1&gt;
+&lt;p&gt;Express 官网：&lt;a href=&#34;https://www.expressjs.com.cn/&#34;&gt;https://www.expressjs.com.cn/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var express = require(&#39;express&#39;) 
+var app = express() 
+app.get(&amp;quot;/&amp;quot;, function (req, res) { 
+    res.send(&#39;hello world&#39;) 
+})
+app.get(&amp;quot;/login&amp;quot;, function (req, res) {
+    res.send(&#39;hello world&#39;) 
+})
+app.post(&amp;quot;/doLogin&amp;quot;, function (req, res) { 
+    res.send(&#39;POST request to the homepage&#39;) 
+})
+&lt;/code&gt;&lt;/pre&gt;
+">NodeJs从零单排(8)</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-7/"" data-c="
+          &lt;h1 id=&#34;1-nodejs-封装静态-web-服务&#34;&gt;1、 Nodejs 封装静态 web 服务&lt;/h1&gt;
+&lt;p&gt;上一讲的静态 web 服务器封装&lt;/p&gt;
+&lt;h1 id=&#34;2-路由&#34;&gt;2、 路由&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;官方解释：&lt;/strong&gt;&lt;br&gt;
+路由（Routing）是由一个 URI（或者叫路径）和一个特定的 HTTP 方法（GET、POST 等）组成的，涉及到应用如何响应客户端对某个网站节点的访问。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;通俗的说：&lt;/strong&gt;&lt;br&gt;
+路由指的就是针对不同请求的 URL，处理不同的业务逻辑。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608781577104.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3-初识-ejs-模块引擎&#34;&gt;3、 初识 EJS 模块引擎&lt;/h1&gt;
+&lt;p&gt;我们学的 EJS 是后台模板，可以把我们数据库和文件读取的数据显示到 Html 页面上面。它是一个第三方模块，需要通过 npm 安装&lt;br&gt;
+&lt;a href=&#34;https://www.npmjs.com/package/ejs&#34;&gt;https://www.npmjs.com/package/ejs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm install ejs –save / cnpm install ejs --save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nodejs 中使用：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ejs.renderFile(filename, data, options, function(err, str){ 
+    // str =&amp;gt;  Rendered HTML string 
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;EJS 常用标签&lt;br&gt;
+ &amp;lt;% %&amp;gt;流程控制标签&lt;br&gt;
+ &amp;lt;%= %&amp;gt;输出标签（原文输出 HTML 标签）&lt;br&gt;
+ &amp;lt;%- %&amp;gt;输出标签（HTML 会被浏览器解析）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;&amp;lt;%= url %&amp;gt;&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;&amp;lt;%= imageURL %&amp;gt;&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul&amp;gt; 
+    &amp;lt;% for(var i = 0 ; i &amp;lt; news.length ; i++){ %&amp;gt; 
+         &amp;lt;li&amp;gt;&amp;lt;%= news[i] %&amp;gt;&amp;lt;/li&amp;gt; 
+    &amp;lt;% } %&amp;gt; 
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;4-get-post&#34;&gt;4、 Get、Post&lt;/h1&gt;
+&lt;p&gt;超文本传输协议（HTTP）的设计目的是保证客户端机器与服务器之间的通信。&lt;br&gt;
+在客户端和服务器之间进行请求-响应时，两种最常被用到的方法是：GET 和 POST。&lt;/p&gt;
+&lt;p&gt;GET - 从指定的资源请求数据。（一般用于获取数据）&lt;br&gt;
+POST - 向指定的资源提交要被处理的数据。（一般用于提交数据）&lt;/p&gt;
+&lt;p&gt;获取 GET 传值：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var urlinfo=url.parse(req.url,true); 
+urlinfo.query;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;获取 POST 传值：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var postData = &#39;&#39;; 
+// 数据块接收中 
+req.on(&#39;data&#39;, function (postDataChunk) { 
+    postData += postDataChunk; 
+}); 
+// 数据接收完毕，执行回调函数 
+req.on(&#39;end&#39;, function () { 
+    try {postData = JSON.parse(postData); 
+    } catch (e) { } 
+    req.query = postData; 
+    console.log(querystring.parse(postData)); 
+});
+&lt;/code&gt;&lt;/pre&gt;
+">NodeJs从零单排(7)</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-6/"" data-c="
