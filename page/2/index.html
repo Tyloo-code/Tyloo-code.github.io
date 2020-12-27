@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1608808180944">
+<link rel="shortcut icon" href="/favicon.ico?v=1609051090027">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1231,8 +1231,33 @@ module.exports = function(app){
     }
 } 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;总结mock-json5-devserver-axios职责&#34;&gt;总结,MOCK-JSON5-DEVSERVER-AXIOS职责&lt;/h1&gt;
+&lt;h1 id=&#34;六-总结mock-json5-devserver-axios职责&#34;&gt;六、总结,MOCK-JSON5-DEVSERVER-AXIOS职责&lt;/h1&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608808179446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;七-mockjs-中常用的函数&#34;&gt;七、mockjs 中常用的函数&lt;/h1&gt;
+&lt;p&gt;&#39;Boolean&#39;: &#39;@boolean&#39;, // 随机生成布尔类型&lt;br&gt;
+&#39;Natural&#39;: &#39;@natural(1, 100)&#39;, // 随机生成1到100之间自然数&lt;br&gt;
+&#39;Integer&#39;: &#39;@integer(1, 100)&#39;, // 生成1到100之间的整数&lt;br&gt;
+&#39;Float&#39;: &#39;@float(0, 100, 0, 5)&#39;, // 生成0到100之间的浮点数,小数点后尾数为0到5位&lt;br&gt;
+&#39;Character&#39;: &#39;@character(&amp;quot;aeiou&amp;quot;)&#39;, // 在aeiou中，生成随机字符，不传参表示生成随机字符&lt;br&gt;
+&#39;String&#39;: &#39;@string( 2, 10)&#39;, // 生成2到10个字符之间的字符串&lt;br&gt;
+&#39;Range&#39;: &#39;@range(0, 10, 2)&#39;, // 生成一个数组，数组元素从0开始到10结束，间隔为2&lt;br&gt;
+&#39;Date&#39;: &#39;@date(&amp;quot;yyyy yy y MM M dd d&amp;quot;)&#39;, // 生成一个随机日期,可加参数定义日期格式，默认yyyy-mm-dd&lt;br&gt;
+&#39;Color1&#39;: &#39;@color&#39;, // 生成一个颜色16进制随机值&lt;br&gt;
+&#39;Color2&#39;: &#39;@rgb&#39;, //生成一个颜色rgb随机值&lt;br&gt;
+&#39;Paragraph&#39;:&#39;@paragraph(2, 5)&#39;, //生成2至5个句子的文本&lt;br&gt;
+&#39;Sentence&#39;:&#39;@sentence(3, 5)&#39;, //生成3至5个单词组成的一个句子&lt;br&gt;
+&#39;World&#39;:&#39;@word(3, 5)&#39;, //生成3-5个字母组成的单词&lt;br&gt;
+&#39;title&#39;:&#39;@title(3,5)&#39;, //生成3-5个单词组成的标题&lt;br&gt;
+&#39;cParagraph&#39;:&#39;@cparagraph(2, 5)&#39;, //生成2至5个句子的中文文本&lt;br&gt;
+&#39;cSentence&#39;:&#39;@csentence(3, 5)&#39;, //生成3至5个词语组成的一个中文句子&lt;br&gt;
+&#39;cWorld&#39;:&#39;@cword(3, 5)&#39;, //生成3-5个字组成的中文词语&lt;br&gt;
+&#39;ctitle&#39;:&#39;@ctitle(3,5)&#39;, //生成3-5个词语组成的中文标题&lt;br&gt;
+&#39;Name&#39;: &#39;@name&#39;, // 生成姓名&lt;br&gt;
+&#39;cName&#39;: &#39;@cname&#39;, // 生成中文姓名&lt;br&gt;
+&#39;Url&#39;: &#39;@url&#39;, // 生成url地址&lt;br&gt;
+&#39;Email&#39;:&#39;@email&#39;,//生成邮箱&lt;br&gt;
+&#39;Address&#39;: &#39;@county(true)&#39;， // 生成省 市 县组成的地址&lt;br&gt;
+&#39;Guid&#39;:&#39;@guid()&#39;, //生成Guid值&lt;/p&gt;
 ">Vue&mock模拟数据</a>
       </div>
       
