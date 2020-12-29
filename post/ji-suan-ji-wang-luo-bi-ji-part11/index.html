@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>计算机网络笔记Part1 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1609227188302">
+<link rel="shortcut icon" href="/favicon.ico?v=1609229752769">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -241,6 +241,39 @@
 <li><a href="#1-%E9%80%9F%E7%8E%87%E7%9B%B8%E5%85%B3%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87">1. 速率相关性能指标</a>
 <ul>
 <li><a href="#11-%E9%80%9F%E7%8E%87">1.1 速率</a></li>
+<li><a href="#12-%E5%B8%A6%E5%AE%BD">1.2 带宽</a></li>
+<li><a href="#13-%E5%90%9E%E5%90%90%E9%87%8F">1.3 吞吐量</a>
+<ul>
+<li><a href="#%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3">个人理解</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2%E6%97%B6%E5%BB%B6%E7%9B%B8%E5%85%B3%E6%8C%87%E6%A0%87">2.时延相关指标</a>
+<ul>
+<li><a href="#21-%E6%97%B6%E5%BB%B6">2.1 时延</a></li>
+<li><a href="#22-%E6%97%B6%E5%BB%B6%E5%B8%A6%E5%AE%BD%E7%A7%AF">2.2 时延带宽积</a></li>
+<li><a href="#23%E5%BE%80%E8%BF%94%E6%97%B6%E5%BB%B6rtt">2.3往返时延RTT</a></li>
+<li><a href="#24-%E5%88%A9%E7%94%A8%E7%8E%87">2.4 利用率</a>
+<ul>
+<li><a href="#241-%E4%BF%A1%E9%81%93%E5%88%A9%E7%94%A8%E7%8E%87">2.4.1 信道利用率</a></li>
+<li><a href="#242-%E7%BD%91%E7%BB%9C%E5%88%A9%E7%94%A8%E7%8E%87">2.4.2 网络利用率</a></li>
+<li><a href="#243-%E6%97%B6%E5%BB%B6%E5%92%8C%E5%88%A9%E7%94%A8%E7%8E%87%E7%9A%84%E5%85%B3%E7%B3%BB%E5%9B%BE">2.4.3 时延和利用率的关系图</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84">3. 分层结构</a>
+<ul>
+<li><a href="#31-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%86%E5%B1%82%E5%88%86%E5%B1%82%E8%A6%81%E5%81%9A%E4%BB%80%E4%B9%88">3.1 为什么要分层，分层要做什么</a></li>
+<li><a href="#32-%E6%AD%A3%E5%BC%8F%E8%AE%A4%E8%AF%86%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84">3.2 正式认识分层结构</a></li>
+</ul>
+</li>
+<li><a href="#4-%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B">4. 参考模型</a>
+<ul>
+<li><a href="#41-osi%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B">4.1 OSI流程简介</a></li>
+<li><a href="#42-tcpip%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B">4.2 TCP/IP参考模型</a></li>
+<li><a href="#43-%E4%BA%94%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E5%8F%8A%E5%85%B6%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E7%AE%80%E4%BB%8B">4.3 五层参考模型及其传输过程简介</a></li>
 </ul>
 </li>
 </ul>
@@ -523,12 +556,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>71<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1079<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -547,7 +580,131 @@
 <p>定义：连接在计算机网络上的主机在数字信道上传送数据位数的速率<br>
 单位:b/s,Kb/s,Mb/s,Tb/s，<br>
 如果用字节表示，则是B/s,KB/s,MB/s,TB/s<br>
-1Byte=8Bit</p>
+1Byte=8Bit<br>
+<img src="https://Tyloo-code.github.io/post-images/1609227285065.png" alt="" loading="lazy"></p>
+<h2 id="12-带宽">1.2 带宽</h2>
+<p>在计算机网络中，指的是网络设备所支持的最高速度，单位同速率，是<strong>理想条件下最高速率</strong></p>
+<h2 id="13-吞吐量">1.3 吞吐量</h2>
+<p>指的是单位时间内通过某个网络的数据<strong>总</strong>量</p>
+<h3 id="个人理解">个人理解</h3>
+<p>速率就是实际网速，带宽是理论网速（长城宽带警告），吞吐量是一个或多个设备的综合速率，比如说1000m宽带的路由器连着三部手机，每部手机都是10mb/s看片，那么速率就是10mb/s，带宽是宽带的1000m，路由器吞吐量是30mb/s，即三者之和</p>
+<h1 id="2时延相关指标">2.时延相关指标</h1>
+<h2 id="21-时延">2.1 时延</h2>
+<p>时延包括四大类</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">计算公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发送时延</td>
+<td style="text-align:center">数据从主机到信道上所用的时间</td>
+<td style="text-align:center">数据从主机到信道上所用的时间</td>
+</tr>
+<tr>
+<td>传播时延</td>
+<td style="text-align:center">数据在信道上传播所花费的时间</td>
+<td style="text-align:center">信道长度/电磁波在信道上传播的速率</td>
+</tr>
+<tr>
+<td>排队时延</td>
+<td style="text-align:center">数据在路由器前等待前面数据处理的时间</td>
+<td style="text-align:center">无计算方式</td>
+</tr>
+<tr>
+<td>处理时延</td>
+<td style="text-align:center">数据在路由器中处理需求的时间</td>
+<td style="text-align:center">无计算方式</td>
+</tr>
+</tbody>
+</table>
+<p>使用高速链路(提高网速)，只能减小发送时延，无法减少其他三个时延</p>
+<h2 id="22-时延带宽积">2.2 时延带宽积</h2>
+<p>公式：时延带宽积=传播时延x带宽<br>
+意思是链路上有多少比特的数据</p>
+<h2 id="23往返时延rtt">2.3往返时延RTT</h2>
+<p>从发送方发送数据开始，到接收方确认收到为止所花费的时间<br>
+RTT=传播时延x2+处理时间(有时可能直接忽略)</p>
+<h2 id="24-利用率">2.4 利用率</h2>
+<h3 id="241-信道利用率">2.4.1 信道利用率</h3>
+<p>信道利用率=有数据通过<strong>时间</strong>/有+无数据通过<strong>时间</strong></p>
+<h3 id="242-网络利用率">2.4.2 网络利用率</h3>
+<p>网络利用率=所有信道利用率加权求平均值</p>
+<h3 id="243-时延和利用率的关系图">2.4.3 时延和利用率的关系图</h3>
+<p>利用率越高，延迟越大<br>
+<img src="https://Tyloo-code.github.io/post-images/1609228615004.png" alt="" loading="lazy"></p>
+<h1 id="3-分层结构">3. 分层结构</h1>
+<h2 id="31-为什么要分层分层要做什么">3.1 为什么要分层，分层要做什么</h2>
+<p>（1）发起通信的计算机必须将数据通信的通路进行激活。<br>
+（2）要告诉网络如何识别目的主机。<br>
+（3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。<br>
+（4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。<br>
+（5）确保差错和意外可以解决。</p>
+<h2 id="32-正式认识分层结构">3.2 正式认识分层结构</h2>
+<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1609229035668.png" alt="" loading="lazy"></figure>
+<h1 id="4-参考模型">4. 参考模型</h1>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:center">英文</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td style="text-align:center">Application Layer</td>
+<td style="text-align:center">直接为用户的应用进程（例如电子邮件、文件传输和终端仿真）提供服务。如HTTP、SMTP、FTP、DNS等</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td style="text-align:center">Presentation Layer</td>
+<td style="text-align:center">把数据转换为能与接收者的系统格式兼容并适合传输的格式，即让两个系统可以交换信息</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td style="text-align:center">Session Layer</td>
+<td style="text-align:center">负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td style="text-align:center">Transport Layer</td>
+<td style="text-align:center">负责端到端通讯，可靠传输，不可靠传输 ，流量控制，复用分用</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td style="text-align:center">Network Layer</td>
+<td style="text-align:center">负责选择路由最佳路径，规划IP地址(ipv4和ipv6变化只会影响网络层)，拥塞控制</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td style="text-align:center">Data Link Layer</td>
+<td style="text-align:center">帧的开始和结束，还有透明传输，差错校验(纠错由传输层解决)</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td style="text-align:center">Physical Layer</td>
+<td style="text-align:center">定义网络设备接口标准，电气标准(电压)，如何在物理链路上传输的更快</td>
+</tr>
+</tbody>
+</table>
+<h2 id="41-osi流程简介">4.1 OSI流程简介</h2>
+<p>网络层及以上，每一层都要对上一层发送的数据进行处理（加个头部）<br>
+数据链路层不仅需要加头部，还需要加尾部<br>
+物理层什么都不加，只管发送数据（比特流）<br>
+<img src="https://Tyloo-code.github.io/post-images/1609229644091.png" alt="" loading="lazy"></p>
+<h2 id="42-tcpip参考模型">4.2 TCP/IP参考模型</h2>
+<figure data-type="image" tabindex="2"><img src="https://Tyloo-code.github.io/post-images/1609229668243.png" alt="" loading="lazy"></figure>
+<h2 id="43-五层参考模型及其传输过程简介">4.3 五层参考模型及其传输过程简介</h2>
+<p><img src="https://Tyloo-code.github.io/post-images/1609229701190.png" alt="" loading="lazy"><br>
+<img src="https://Tyloo-code.github.io/post-images/1609229703634.png" alt="" loading="lazy"></p>
+<p>参考资料<br>
+<a href="https://www.bilibili.com/video/BV19E411D78Q">2019 王道考研 计算机网络</a></p>
 
             </div>
             
@@ -1083,7 +1240,131 @@
 &lt;p&gt;定义：连接在计算机网络上的主机在数字信道上传送数据位数的速率&lt;br&gt;
 单位:b/s,Kb/s,Mb/s,Tb/s，&lt;br&gt;
 如果用字节表示，则是B/s,KB/s,MB/s,TB/s&lt;br&gt;
-1Byte=8Bit&lt;/p&gt;
+1Byte=8Bit&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609227285065.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;12-带宽&#34;&gt;1.2 带宽&lt;/h2&gt;
+&lt;p&gt;在计算机网络中，指的是网络设备所支持的最高速度，单位同速率，是&lt;strong&gt;理想条件下最高速率&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;13-吞吐量&#34;&gt;1.3 吞吐量&lt;/h2&gt;
+&lt;p&gt;指的是单位时间内通过某个网络的数据&lt;strong&gt;总&lt;/strong&gt;量&lt;/p&gt;
+&lt;h3 id=&#34;个人理解&#34;&gt;个人理解&lt;/h3&gt;
+&lt;p&gt;速率就是实际网速，带宽是理论网速（长城宽带警告），吞吐量是一个或多个设备的综合速率，比如说1000m宽带的路由器连着三部手机，每部手机都是10mb/s看片，那么速率就是10mb/s，带宽是宽带的1000m，路由器吞吐量是30mb/s，即三者之和&lt;/p&gt;
+&lt;h1 id=&#34;2时延相关指标&#34;&gt;2.时延相关指标&lt;/h1&gt;
+&lt;h2 id=&#34;21-时延&#34;&gt;2.1 时延&lt;/h2&gt;
+&lt;p&gt;时延包括四大类&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;描述&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;计算公式&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;发送时延&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据从主机到信道上所用的时间&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据从主机到信道上所用的时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;传播时延&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据在信道上传播所花费的时间&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;信道长度/电磁波在信道上传播的速率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;排队时延&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据在路由器前等待前面数据处理的时间&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;无计算方式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;处理时延&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据在路由器中处理需求的时间&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;无计算方式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;使用高速链路(提高网速)，只能减小发送时延，无法减少其他三个时延&lt;/p&gt;
+&lt;h2 id=&#34;22-时延带宽积&#34;&gt;2.2 时延带宽积&lt;/h2&gt;
+&lt;p&gt;公式：时延带宽积=传播时延x带宽&lt;br&gt;
+意思是链路上有多少比特的数据&lt;/p&gt;
+&lt;h2 id=&#34;23往返时延rtt&#34;&gt;2.3往返时延RTT&lt;/h2&gt;
+&lt;p&gt;从发送方发送数据开始，到接收方确认收到为止所花费的时间&lt;br&gt;
+RTT=传播时延x2+处理时间(有时可能直接忽略)&lt;/p&gt;
+&lt;h2 id=&#34;24-利用率&#34;&gt;2.4 利用率&lt;/h2&gt;
+&lt;h3 id=&#34;241-信道利用率&#34;&gt;2.4.1 信道利用率&lt;/h3&gt;
+&lt;p&gt;信道利用率=有数据通过&lt;strong&gt;时间&lt;/strong&gt;/有+无数据通过&lt;strong&gt;时间&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;242-网络利用率&#34;&gt;2.4.2 网络利用率&lt;/h3&gt;
+&lt;p&gt;网络利用率=所有信道利用率加权求平均值&lt;/p&gt;
+&lt;h3 id=&#34;243-时延和利用率的关系图&#34;&gt;2.4.3 时延和利用率的关系图&lt;/h3&gt;
+&lt;p&gt;利用率越高，延迟越大&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609228615004.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3-分层结构&#34;&gt;3. 分层结构&lt;/h1&gt;
+&lt;h2 id=&#34;31-为什么要分层分层要做什么&#34;&gt;3.1 为什么要分层，分层要做什么&lt;/h2&gt;
+&lt;p&gt;（1）发起通信的计算机必须将数据通信的通路进行激活。&lt;br&gt;
+（2）要告诉网络如何识别目的主机。&lt;br&gt;
+（3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。&lt;br&gt;
+（4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。&lt;br&gt;
+（5）确保差错和意外可以解决。&lt;/p&gt;
+&lt;h2 id=&#34;32-正式认识分层结构&#34;&gt;3.2 正式认识分层结构&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609229035668.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;4-参考模型&#34;&gt;4. 参考模型&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;英文&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;应用层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Application Layer&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;直接为用户的应用进程（例如电子邮件、文件传输和终端仿真）提供服务。如HTTP、SMTP、FTP、DNS等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;表示层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Presentation Layer&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;把数据转换为能与接收者的系统格式兼容并适合传输的格式，即让两个系统可以交换信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;会话层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Session Layer&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;传输层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Transport Layer&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;负责端到端通讯，可靠传输，不可靠传输 ，流量控制，复用分用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;网络层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Network Layer&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;负责选择路由最佳路径，规划IP地址(ipv4和ipv6变化只会影响网络层)，拥塞控制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据链路层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Data Link Layer&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;帧的开始和结束，还有透明传输，差错校验(纠错由传输层解决)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;物理层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Physical Layer&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;定义网络设备接口标准，电气标准(电压)，如何在物理链路上传输的更快&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;41-osi流程简介&#34;&gt;4.1 OSI流程简介&lt;/h2&gt;
+&lt;p&gt;网络层及以上，每一层都要对上一层发送的数据进行处理（加个头部）&lt;br&gt;
+数据链路层不仅需要加头部，还需要加尾部&lt;br&gt;
+物理层什么都不加，只管发送数据（比特流）&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609229644091.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;42-tcpip参考模型&#34;&gt;4.2 TCP/IP参考模型&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609229668243.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;43-五层参考模型及其传输过程简介&#34;&gt;4.3 五层参考模型及其传输过程简介&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609229701190.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609229703634.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;参考资料&lt;br&gt;
+&lt;a href=&#34;https://www.bilibili.com/video/BV19E411D78Q&#34;&gt;2019 王道考研 计算机网络&lt;/a&gt;&lt;/p&gt;
 ">计算机网络笔记Part1</a>
       </div>
       
