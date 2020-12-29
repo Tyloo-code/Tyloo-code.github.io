@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>NodeJs从零单排(8) | Tyloo</title>
+<title>计算机网络笔记Part0 | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1609226833882">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="NodeJs从零单排(8)" />
+  <meta name="description" content="计算机网络笔记Part0" />
   <meta name="keywords" content="" />
 </head>
 
@@ -238,8 +238,15 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#1-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E6%96%B9%E5%BC%8F%E5%B0%81%E8%A3%85">1、模块化的方式封装</a></li>
-<li><a href="#2-%E5%B0%81%E8%A3%85%E4%BB%BF%E7%85%A7-express-%E7%9A%84%E8%B7%AF%E7%94%B1">2、封装仿照 express 的路由</a></li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E6%A6%82%E5%BF%B5">计算机网络的概念</a></li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E5%8A%9F%E8%83%BD">计算机网络的功能</a></li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BB%84%E6%88%90">计算机网络的组成</a></li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E7%B1%BB">计算机网络的分类</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93%E4%B8%80">总结一</a></li>
+<li><a href="#%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C">标准化工作</a></li>
+<li><a href="#%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B">标准化工作流程</a></li>
+<li><a href="#%E6%A0%87%E5%87%86%E5%8C%96%E7%9B%B8%E5%85%B3%E7%BB%84%E7%BB%87">标准化相关组织</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93%E4%BA%8C">总结二</a></li>
 </ul>
 
   </div>
@@ -505,8 +512,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-8/">
-      NodeJs从零单排(8)
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part0/">
+      计算机网络笔记Part0
     </a>
   </h1>
   <div class="post-meta">
@@ -514,7 +521,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-24 11:59:42">2020-12-24</span>
+      <span class="publish-time" data-t="2020-12-29 15:13:35">2020-12-29</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -525,12 +532,12 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>158<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>87<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/nodejs-cong-ling-dan-pai-8/" data-flag-title="NodeJs从零单排(8)" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/ji-suan-ji-wang-luo-bi-ji-part0/" data-flag-title="计算机网络笔记Part0" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -539,52 +546,24 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="1-模块化的方式封装">1、模块化的方式封装</h1>
-<pre><code>var app={ 
-    static:function (req, res, staticPath) { 
-        //处理静态资源 
-    },
-    login:function(req,res){ 
-        console.log('login'); 
-        res.end('login'); 
-    },
-    dologin:function(req,res){ 
-        res.end('doLogin'); 
-    }, 
-    register:function(req,res){ 
-        res.end('register'); 
-    },error:function(req,res){ 
-        res.end('error'); 
-    } 
-}
-module.exports=app;
-</code></pre>
-<pre><code>http.createServer(function (req, res) { 
-    //创建静态 web 服务 
-    routes.static(req,res,'static'); 
-    //路由 
-    let pathname=url.parse(req.url).pathname.replace('/',''); 
-    try { 
-        routes[pathname](req, res); 
-    } catch (err) { 
-        routes['error'](req, res); 
-        }
-}).listen(3000);
-</code></pre>
-<h1 id="2-封装仿照-express-的路由">2、封装仿照 express 的路由</h1>
-<p>Express 官网：<a href="https://www.expressjs.com.cn/">https://www.expressjs.com.cn/</a></p>
-<pre><code>var express = require('express') 
-var app = express() 
-app.get(&quot;/&quot;, function (req, res) { 
-    res.send('hello world') 
-})
-app.get(&quot;/login&quot;, function (req, res) {
-    res.send('hello world') 
-})
-app.post(&quot;/doLogin&quot;, function (req, res) { 
-    res.send('POST request to the homepage') 
-})
-</code></pre>
+              <h1 id="计算机网络的概念">计算机网络的概念</h1>
+<p>计算机网络是<code>互连</code>的、<code>自治</code>的计算机集合。(互连：互联互通，自治：无助从关系)</p>
+<h1 id="计算机网络的功能">计算机网络的功能</h1>
+<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1609226192060.png" alt="" loading="lazy"></figure>
+<h1 id="计算机网络的组成">计算机网络的组成</h1>
+<figure data-type="image" tabindex="2"><img src="https://Tyloo-code.github.io/post-images/1609226327918.png" alt="" loading="lazy"></figure>
+<h1 id="计算机网络的分类">计算机网络的分类</h1>
+<figure data-type="image" tabindex="3"><img src="https://Tyloo-code.github.io/post-images/1609226484564.png" alt="" loading="lazy"></figure>
+<h1 id="总结一">总结一</h1>
+<figure data-type="image" tabindex="4"><img src="https://Tyloo-code.github.io/post-images/1609226548838.png" alt="" loading="lazy"></figure>
+<h1 id="标准化工作">标准化工作</h1>
+<figure data-type="image" tabindex="5"><img src="https://Tyloo-code.github.io/post-images/1609226653873.png" alt="" loading="lazy"></figure>
+<h1 id="标准化工作流程">标准化工作流程</h1>
+<figure data-type="image" tabindex="6"><img src="https://Tyloo-code.github.io/post-images/1609226712307.png" alt="" loading="lazy"></figure>
+<h1 id="标准化相关组织">标准化相关组织</h1>
+<figure data-type="image" tabindex="7"><img src="https://Tyloo-code.github.io/post-images/1609226782253.png" alt="" loading="lazy"></figure>
+<h1 id="总结二">总结二</h1>
+<figure data-type="image" tabindex="8"><img src="https://Tyloo-code.github.io/post-images/1609226812168.png" alt="" loading="lazy"></figure>
 
             </div>
             
@@ -601,7 +580,7 @@ app.post(&quot;/doLogin&quot;, function (req, res) {
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-8/" title="NodeJs从零单排(8)">https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-8/</a>
+      <a href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part0/" title="计算机网络笔记Part0">https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part0/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -614,15 +593,11 @@ app.post(&quot;/doLogin&quot;, function (req, res) {
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="NodeJs从零单排(9)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-9/">NodeJs从零单排(9)</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="NodeJs从零单排(9)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-9/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="NodeJs从零单排(7)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-7/">NodeJs从零单排(7)</a>
-        <a class="nav-mobile-next" title="NodeJs从零单排(7)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-7/">下一篇</a>
+        <a class="nav-pc-next" title="计算机网络笔记Part1" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part1/">计算机网络笔记Part1</a>
+        <a class="nav-mobile-next" title="计算机网络笔记Part1" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part1/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
