@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1609229752769">
+<link rel="shortcut icon" href="/favicon.ico?v=1609380153623">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -184,7 +184,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">20</span>
+        <span class="site-item-stat-count">21</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -232,6 +232,83 @@
         <div class="section-box pisces">
           <section class="section bg-color posts-expand slide-down-in">
             
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/">
+      NodeJs从零单排(4)
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2020-12-24 10:50:08">2020-12-24</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>717<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+      <div class="post-body">
+        
+        
+          
+            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
+            
+            
+              
+              
+              
+            
+              
+              
+              
+            
+              
+              
+              
+            
+            
+              <p><h1 id="1-fsstat-检测是文件还是目录">1. fs.stat 检测是文件还是目录</h1>
+<pre><code>const fs = require('fs') 
+fs.stat('hello.js', (error, stats) =&gt;{ 
+
+                
+                  <!-- 自动摘要出来的内容有<code则补上结尾,防止格式错误 -->
+                  </code></pre>
+                
+              <p>
+            
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
   <article class="post-list-box  post box-shadow-wrapper">
     <div class="article-wrapper bg-color">
       <section class="post-header">
@@ -926,60 +1003,6 @@ plate<br>
       
     </div>
   </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/helloworld/">
-      HelloWorld
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-11-29 22:23:07">2020-11-29</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>170<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <p>与Gridea的初次邂逅!😘<br>
-<img src="https://Tyloo-code.github.io/post-images/1606659885219.jpg" alt="" loading="lazy"></p>
-
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/helloworld/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
   
             
             
@@ -1006,7 +1029,19 @@ plate<br>
             </a>
         </li>
       
+        <li class="pagination-li ">
+            <a href="/page/3">
+              3
+            </a>
+        </li>
+      
     
+    
+      <li class="pagination-dir">
+        <a href="/page/3">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </li>
     
   </ul>
 </div>
@@ -1246,6 +1281,162 @@ plate<br>
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part2-wu-li-ceng-physical-layer/"" data-c="
+          &lt;h1 id=&#34;1-基本概念&#34;&gt;1. 基本概念&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609332989754.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;2-数据通信基本知识&#34;&gt;2. 数据通信基本知识&lt;/h1&gt;
+&lt;h2 id=&#34;21-一个数据通信例子&#34;&gt;2.1 一个数据通信例子&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609333260138.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;22-相关术语&#34;&gt;2.2 相关术语&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609333847379.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;23-三种通讯方式&#34;&gt;2.3 三种通讯方式&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;英文&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;定义&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;需要信道条数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;单工通信&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Simplex&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;只能一个发一个收&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;一条&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;半双工通信&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;half-duplex&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;都可以发或者收，但是同一时间只能进行一个&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;两条&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;全双工通信&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;duplex&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;都可以同时收发数据&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;两条&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;24-两种数据传输方式&#34;&gt;2.4 两种数据传输方式&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;传输方式&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;特点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;串行传输&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;速度慢，省钱，适合远距离&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;并行传输&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;速度快，耗钱，适合近距离&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379006539.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;25-码元symbol&#34;&gt;2.5 码元（Symbol）&lt;/h2&gt;
+&lt;p&gt;定义：码元是指用一个固定时长的信号波形（数字脉冲），代表离散数值的基本波形。当有多个离散状态时，成为M进制码元。一个码元可以携带多个比特的信息&lt;br&gt;
+个人理解：码元就是在网线上传输的一个个信号段。码元的不同进制就是用来表示不同的数值的&lt;/p&gt;
+&lt;h2 id=&#34;26-波特baud&#34;&gt;2.6 波特（Baud）&lt;/h2&gt;
+&lt;p&gt;用来指一秒可以传输多少个码元&lt;/p&gt;
+&lt;h2 id=&#34;27-速率&#34;&gt;2.7 速率&lt;/h2&gt;
+&lt;p&gt;分为&lt;strong&gt;码元传输速率&lt;/strong&gt;和&lt;strong&gt;信息传输速率&lt;/strong&gt;&lt;br&gt;
+信息传输速率就是b/s，就是我们平常说的&lt;strong&gt;网速&lt;/strong&gt;&lt;br&gt;
+码元可以理解为几个比特的&lt;strong&gt;集合&lt;/strong&gt;，所以信息传输速率（网速）=码元传输速率x码元所带信息量（多少比特）&lt;br&gt;
+码元所带信息量（比特数）=log2（码元进制数）&lt;/p&gt;
+&lt;h2 id=&#34;28-带宽band-width&#34;&gt;2.8 带宽（Band Width）&lt;/h2&gt;
+&lt;p&gt;用来表示最高数据速率&lt;/p&gt;
+&lt;h2 id=&#34;29-奈式准则nyquist&#34;&gt;2.9 奈式准则（Nyquist）&lt;/h2&gt;
+&lt;p&gt;是在&lt;strong&gt;理想状态下&lt;/strong&gt;得出的结论&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379171027.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;210-香农公式shannon&#34;&gt;2.10 香农公式（Shannon）&lt;/h2&gt;
+&lt;p&gt;是在&lt;strong&gt;有噪声的信道中&lt;/strong&gt;得出的结论&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379224887.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379228696.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;211-基带信号和宽带带通信号base-bandpass-band&#34;&gt;2.11 基带信号和宽带/带通信号（Base band，pass band）&lt;/h2&gt;
+&lt;p&gt;计算机网络中用的基带信号是&lt;strong&gt;数字信号&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379264723.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;212-编码&#34;&gt;2.12 编码&lt;/h2&gt;
+&lt;p&gt;将数据转化为&lt;strong&gt;数字信号&lt;/strong&gt;&lt;br&gt;
+数字数据(digtal data)通过 数字发送器(digit emitter) 转化为 数字信号(digtal signal)&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379325314.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+模拟数据(analog data)通过 PCM编码器(PCM coder) 转化为 数字信号 (digtal signal)&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379338474.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;单极性不归零编码：只使用一个电压值，高电平表示1，低电平表示0。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;双极性不归零编码：用幅值相等的正负电平表示二进制数1和0。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;单极性归零编码：发送码1时高电平在整个码元期间只持续一段时间，其余时间返回零电平。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;双极性归零编码：正负零三个电平，信号本身携带同步信息。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379405647.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;曼彻斯特编码：&lt;/code&gt;单极性编码的缺点是没有办法区分此时是没有信号，还是有信号，但是信号是0.&lt;br&gt;
+这种编码方式是bit中间有信号，低-高跳转表示0，高-低跳转表示1，一个时钟周期只可以表示一个bit，并且必须通过两次采样才能得到一个bit。它能携带时钟信号，而且能区分此时是没有信号还是信号为0.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;差分曼彻斯特编码：&lt;/code&gt;抗干扰能力比曼彻斯特编码更强。bit与bit之间有信号跳变，表示下一个bit为0，bit与bit之间没有信号跳变，表示下一个bit为1。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379572032.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;213-调制数据转化为模拟信号了解&#34;&gt;2.13 调制：数据转化为模拟信号（了解）&lt;/h2&gt;
+&lt;p&gt;常用的调制方法：调频(AM)，调频(FM)，调相(PM)&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379690610.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+模拟数据(analog data)通过 调制器(modulaotr) 转化为 模拟信号 (analog signal)&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379708749.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+数字数据(digtal data)通过 调制器(modulaotr) 转化为 模拟信号 (analog signal)&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379737643.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3-物理层传输介质&#34;&gt;3. 物理层传输介质&lt;/h1&gt;
+&lt;p&gt;传输介质分为&lt;strong&gt;导向性&lt;/strong&gt;传输介质和&lt;strong&gt;非导向性&lt;/strong&gt;传输介质&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;导向性传输介质&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;电磁波沿着固体媒介（铜线or光纤）被导向传播&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;非导向性传输介质&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;自由空间，如空气，水等等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;31-常见的导向性传输介质&#34;&gt;3.1 常见的导向性传输介质&lt;/h2&gt;
+&lt;h3 id=&#34;311-双绞线&#34;&gt;3.1.1 双绞线&lt;/h3&gt;
+&lt;p&gt;根据有无屏蔽层分为&lt;strong&gt;屏蔽双绞线（STP）和无屏蔽双绞线（UTP）&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379878165.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;312-同轴电缆coaxial-cable&#34;&gt;3.1.2 同轴电缆（Coaxial Cable）&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379892737.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;313-光纤optical-fiber&#34;&gt;3.1.3 光纤（Optical fiber）&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379932961.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+根据&lt;strong&gt;入射角&lt;/strong&gt;不同，又分为单模光纤和多模光纤&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379946815.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;32-常见的非导向性传输介质&#34;&gt;3.2 常见的非导向性传输介质&lt;/h2&gt;
+&lt;p&gt;包括&lt;strong&gt;无线电波&lt;/strong&gt;，&lt;strong&gt;微波&lt;/strong&gt;，&lt;strong&gt;红外线&lt;/strong&gt;和&lt;strong&gt;激光&lt;/strong&gt;等&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609379994768.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;4-物理层设备&#34;&gt;4. 物理层设备&lt;/h1&gt;
+&lt;h2 id=&#34;41-中继器rp-repeater&#34;&gt;4.1 中继器（RP repeater）&lt;/h2&gt;
+&lt;p&gt;注释：5-4-3规则是为了限制中继器使用次数的，理由可见图&lt;br&gt;
+5是指不能超过5个网段&lt;br&gt;
+4是指在这些网段中的物理层网络设备（中继器，集线器）最多不超过4个&lt;br&gt;
+3是指这些网段中最多只有三个网段挂有计算机&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609380050132.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;42-集线器hub&#34;&gt;4.2 集线器（Hub）&lt;/h2&gt;
+&lt;p&gt;集线器是个大的冲突域，同时&lt;strong&gt;只能有两个设备进行通讯&lt;/strong&gt;，只会传输信号，没有智能。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609380082969.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;5-本章思维导图&#34;&gt;5. 本章思维导图&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609380107652.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+参考资料&lt;br&gt;
+&lt;a href=&#34;https://www.bilibili.com/video/BV19E411D78Q&#34;&gt;2019 王道考研 计算机网络&lt;/a&gt;&lt;/p&gt;
+">计算机网络笔记Part2 物理层（Physical Layer）</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part11/"" data-c="
           &lt;h1 id=&#34;1-速率相关性能指标&#34;&gt;1. 速率相关性能指标&lt;/h1&gt;
 &lt;h2 id=&#34;11-速率&#34;&gt;1.1 速率&lt;/h2&gt;
@@ -1377,7 +1568,7 @@ RTT=传播时延x2+处理时间(有时可能直接忽略)&lt;/p&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609229703634.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;p&gt;参考资料&lt;br&gt;
 &lt;a href=&#34;https://www.bilibili.com/video/BV19E411D78Q&#34;&gt;2019 王道考研 计算机网络&lt;/a&gt;&lt;/p&gt;
-">计算机网络笔记Part1</a>
+">计算机网络笔记Part1 概述</a>
       </div>
       
       <div class="item">

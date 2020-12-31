@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>NodeJs从零单排(5) | Tyloo</title>
+<title>计算机网络笔记Part2 物理层（Physical Layer） | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1609380153623">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="NodeJs从零单排(5)" />
+  <meta name="description" content="计算机网络笔记Part2 物理层（Physical Layer）" />
   <meta name="keywords" content="" />
 </head>
 
@@ -238,8 +238,43 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-es6-%E5%B8%B8%E8%A7%81%E8%AF%AD%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8">一、 Es6 常见语法的使用</a></li>
-<li><a href="#%E4%BA%8C-async-await-%E5%92%8C-promise-%E7%9A%84%E4%BD%BF%E7%94%A8">二、 Async、Await 和 Promise 的使用</a></li>
+<li><a href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">1. 基本概念</a></li>
+<li><a href="#2-%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86">2. 数据通信基本知识</a>
+<ul>
+<li><a href="#21-%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E4%BE%8B%E5%AD%90">2.1 一个数据通信例子</a></li>
+<li><a href="#22-%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD">2.2 相关术语</a></li>
+<li><a href="#23-%E4%B8%89%E7%A7%8D%E9%80%9A%E8%AE%AF%E6%96%B9%E5%BC%8F">2.3 三种通讯方式</a></li>
+<li><a href="#24-%E4%B8%A4%E7%A7%8D%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F">2.4 两种数据传输方式</a></li>
+<li><a href="#25-%E7%A0%81%E5%85%83symbol">2.5 码元（Symbol）</a></li>
+<li><a href="#26-%E6%B3%A2%E7%89%B9baud">2.6 波特（Baud）</a></li>
+<li><a href="#27-%E9%80%9F%E7%8E%87">2.7 速率</a></li>
+<li><a href="#28-%E5%B8%A6%E5%AE%BDband-width">2.8 带宽（Band Width）</a></li>
+<li><a href="#29-%E5%A5%88%E5%BC%8F%E5%87%86%E5%88%99nyquist">2.9 奈式准则（Nyquist）</a></li>
+<li><a href="#210-%E9%A6%99%E5%86%9C%E5%85%AC%E5%BC%8Fshannon">2.10 香农公式（Shannon）</a></li>
+<li><a href="#211-%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E5%AE%BD%E5%B8%A6%E5%B8%A6%E9%80%9A%E4%BF%A1%E5%8F%B7base-bandpass-band">2.11 基带信号和宽带/带通信号（Base band，pass band）</a></li>
+<li><a href="#212-%E7%BC%96%E7%A0%81">2.12 编码</a></li>
+<li><a href="#213-%E8%B0%83%E5%88%B6%E6%95%B0%E6%8D%AE%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E4%BA%86%E8%A7%A3">2.13 调制：数据转化为模拟信号（了解）</a></li>
+</ul>
+</li>
+<li><a href="#3-%E7%89%A9%E7%90%86%E5%B1%82%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8">3. 物理层传输介质</a>
+<ul>
+<li><a href="#31-%E5%B8%B8%E8%A7%81%E7%9A%84%E5%AF%BC%E5%90%91%E6%80%A7%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8">3.1 常见的导向性传输介质</a>
+<ul>
+<li><a href="#311-%E5%8F%8C%E7%BB%9E%E7%BA%BF">3.1.1 双绞线</a></li>
+<li><a href="#312-%E5%90%8C%E8%BD%B4%E7%94%B5%E7%BC%86coaxial-cable">3.1.2 同轴电缆（Coaxial Cable）</a></li>
+<li><a href="#313-%E5%85%89%E7%BA%A4optical-fiber">3.1.3 光纤（Optical fiber）</a></li>
+</ul>
+</li>
+<li><a href="#32-%E5%B8%B8%E8%A7%81%E7%9A%84%E9%9D%9E%E5%AF%BC%E5%90%91%E6%80%A7%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8">3.2 常见的非导向性传输介质</a></li>
+</ul>
+</li>
+<li><a href="#4-%E7%89%A9%E7%90%86%E5%B1%82%E8%AE%BE%E5%A4%87">4. 物理层设备</a>
+<ul>
+<li><a href="#41-%E4%B8%AD%E7%BB%A7%E5%99%A8rp-repeater">4.1 中继器（RP repeater）</a></li>
+<li><a href="#42-%E9%9B%86%E7%BA%BF%E5%99%A8hub">4.2 集线器（Hub）</a></li>
+</ul>
+</li>
+<li><a href="#5-%E6%9C%AC%E7%AB%A0%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE">5. 本章思维导图</a></li>
 </ul>
 
   </div>
@@ -505,8 +540,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/">
-      NodeJs从零单排(5)
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part2-wu-li-ceng-physical-layer/">
+      计算机网络笔记Part2 物理层（Physical Layer）
     </a>
   </h1>
   <div class="post-meta">
@@ -514,23 +549,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-24 11:16:57">2020-12-24</span>
+      <span class="publish-time" data-t="2020-12-30 20:55:48">2020-12-30</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
+      <span>5<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>389<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1234<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/nodejs-cong-ling-dan-pai-5/" data-flag-title="NodeJs从零单排(5)" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/ji-suan-ji-wang-luo-bi-ji-part2-wu-li-ceng-physical-layer/" data-flag-title="计算机网络笔记Part2 物理层（Physical Layer）" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -539,60 +574,157 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="一-es6-常见语法的使用">一、 Es6 常见语法的使用</h1>
-<ol>
-<li>let const</li>
-<li>箭头函数</li>
-<li>对象、属性的简写</li>
-<li>模板字符串</li>
-<li>Promise</li>
-</ol>
-<h1 id="二-async-await-和-promise-的使用">二、 Async、Await 和 Promise 的使用</h1>
-<p><strong>async</strong> 是“异步”的简写，而 await 可以认为是 async wait 的简写。所以应该很好理解 async 用于申明一个异步的 function ，而 await 用于等待一个异步方法执行完成。</p>
-<p><strong>简单理解：</strong><br>
-<strong>async</strong> 是让方法变成异步。<br>
-<strong>await</strong> 是等待异步方法执行完成。</p>
-<p><strong>详细说明：</strong><br>
-<strong>async 是让方法变成异步</strong>，在终端里用 node 执行这段代码，你会发现输出了 Promise {‘Hello async’ }，这时候会发现它返回的是 Promise。</p>
-<pre><code>async function testAsync(){ 
-    return 'Hello async'; 
-}
+              <h1 id="1-基本概念">1. 基本概念</h1>
+<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1609332989754.png" alt="" loading="lazy"></figure>
+<h1 id="2-数据通信基本知识">2. 数据通信基本知识</h1>
+<h2 id="21-一个数据通信例子">2.1 一个数据通信例子</h2>
+<figure data-type="image" tabindex="2"><img src="https://Tyloo-code.github.io/post-images/1609333260138.png" alt="" loading="lazy"></figure>
+<h2 id="22-相关术语">2.2 相关术语</h2>
+<figure data-type="image" tabindex="3"><img src="https://Tyloo-code.github.io/post-images/1609333847379.png" alt="" loading="lazy"></figure>
+<h2 id="23-三种通讯方式">2.3 三种通讯方式</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:center">英文</th>
+<th style="text-align:center">定义</th>
+<th style="text-align:center">需要信道条数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单工通信</td>
+<td style="text-align:center">Simplex</td>
+<td style="text-align:center">只能一个发一个收</td>
+<td style="text-align:center">一条</td>
+</tr>
+<tr>
+<td>半双工通信</td>
+<td style="text-align:center">half-duplex</td>
+<td style="text-align:center">都可以发或者收，但是同一时间只能进行一个</td>
+<td style="text-align:center">两条</td>
+</tr>
+<tr>
+<td>全双工通信</td>
+<td style="text-align:center">duplex</td>
+<td style="text-align:center">都可以同时收发数据</td>
+<td style="text-align:center">两条</td>
+</tr>
+</tbody>
+</table>
+<h2 id="24-两种数据传输方式">2.4 两种数据传输方式</h2>
+<table>
+<thead>
+<tr>
+<th>传输方式</th>
+<th style="text-align:center">特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>串行传输</td>
+<td style="text-align:center">速度慢，省钱，适合远距离</td>
+</tr>
+<tr>
+<td>并行传输</td>
+<td style="text-align:center">速度快，耗钱，适合近距离</td>
+</tr>
+</tbody>
+</table>
+<figure data-type="image" tabindex="4"><img src="https://Tyloo-code.github.io/post-images/1609379006539.png" alt="" loading="lazy"></figure>
+<h2 id="25-码元symbol">2.5 码元（Symbol）</h2>
+<p>定义：码元是指用一个固定时长的信号波形（数字脉冲），代表离散数值的基本波形。当有多个离散状态时，成为M进制码元。一个码元可以携带多个比特的信息<br>
+个人理解：码元就是在网线上传输的一个个信号段。码元的不同进制就是用来表示不同的数值的</p>
+<h2 id="26-波特baud">2.6 波特（Baud）</h2>
+<p>用来指一秒可以传输多少个码元</p>
+<h2 id="27-速率">2.7 速率</h2>
+<p>分为<strong>码元传输速率</strong>和<strong>信息传输速率</strong><br>
+信息传输速率就是b/s，就是我们平常说的<strong>网速</strong><br>
+码元可以理解为几个比特的<strong>集合</strong>，所以信息传输速率（网速）=码元传输速率x码元所带信息量（多少比特）<br>
+码元所带信息量（比特数）=log2（码元进制数）</p>
+<h2 id="28-带宽band-width">2.8 带宽（Band Width）</h2>
+<p>用来表示最高数据速率</p>
+<h2 id="29-奈式准则nyquist">2.9 奈式准则（Nyquist）</h2>
+<p>是在<strong>理想状态下</strong>得出的结论<br>
+<img src="https://Tyloo-code.github.io/post-images/1609379171027.png" alt="" loading="lazy"></p>
+<h2 id="210-香农公式shannon">2.10 香农公式（Shannon）</h2>
+<p>是在<strong>有噪声的信道中</strong>得出的结论<br>
+<img src="https://Tyloo-code.github.io/post-images/1609379224887.png" alt="" loading="lazy"><br>
+<img src="https://Tyloo-code.github.io/post-images/1609379228696.png" alt="" loading="lazy"></p>
+<h2 id="211-基带信号和宽带带通信号base-bandpass-band">2.11 基带信号和宽带/带通信号（Base band，pass band）</h2>
+<p>计算机网络中用的基带信号是<strong>数字信号</strong><br>
+<img src="https://Tyloo-code.github.io/post-images/1609379264723.png" alt="" loading="lazy"></p>
+<h2 id="212-编码">2.12 编码</h2>
+<p>将数据转化为<strong>数字信号</strong><br>
+数字数据(digtal data)通过 数字发送器(digit emitter) 转化为 数字信号(digtal signal)<br>
+<img src="https://Tyloo-code.github.io/post-images/1609379325314.png" alt="" loading="lazy"><br>
+模拟数据(analog data)通过 PCM编码器(PCM coder) 转化为 数字信号 (digtal signal)<br>
+<img src="https://Tyloo-code.github.io/post-images/1609379338474.png" alt="" loading="lazy"></p>
+<pre><code>单极性不归零编码：只使用一个电压值，高电平表示1，低电平表示0。
 </code></pre>
-<pre><code>const result = testAsync(); 
-console.log(result);
+<pre><code>双极性不归零编码：用幅值相等的正负电平表示二进制数1和0。
 </code></pre>
-<pre><code>PS E:\code\BXShop&gt; node async.js 
-Promise { 'Hello async' }
+<pre><code>单极性归零编码：发送码1时高电平在整个码元期间只持续一段时间，其余时间返回零电平。
 </code></pre>
-<p><strong>await 在等待 async 方法执行完毕</strong>，其实 await 等待的只是一个表达式，这个表达式在官方 文档里说的是 Promise 对象，但是它也可以接受普通值。 <span style="color:red">注意：</span>await 必须在 async 方法中 才可以使用因为 await 访问本身就会造成程序停止堵塞，所以必须在异步方法中才可以使用。</p>
-<pre><code>function getData(){ 
-    return 'zhangsan'; 
-}
-async function testAsync(){ 
-    return 'Hello async'; 
-}
+<pre><code>双极性归零编码：正负零三个电平，信号本身携带同步信息。
 </code></pre>
-<pre><code>async function test(){ 
-    const v1=await getData(); 
-    const v2=await testAsync(); 
-    console.log(v1,v2);
-}
-test();
-</code></pre>
-<p><strong>async/await 同时使用</strong><br>
-async 会将其后的函数（函数表达式或 Lambda）的返回值封装成一个 Promise 对象，而 await 会等待这个 Promise 完成，并将其 resolve 的结果返回出来。</p>
-<pre><code>function findData() { 
-    return new Promise(resolve =&gt; { 
-        setTimeout(() =&gt; resolve(&quot;long_time_value&quot;), 1000); 
-    });
-}
-</code></pre>
-<pre><code>async function test() { 
-    const v = await findData(); 
-    console.log(v);
-}
-test();
-</code></pre>
+<figure data-type="image" tabindex="5"><img src="https://Tyloo-code.github.io/post-images/1609379405647.png" alt="" loading="lazy"></figure>
+<p><code>曼彻斯特编码：</code>单极性编码的缺点是没有办法区分此时是没有信号，还是有信号，但是信号是0.<br>
+这种编码方式是bit中间有信号，低-高跳转表示0，高-低跳转表示1，一个时钟周期只可以表示一个bit，并且必须通过两次采样才能得到一个bit。它能携带时钟信号，而且能区分此时是没有信号还是信号为0.</p>
+<p><code>差分曼彻斯特编码：</code>抗干扰能力比曼彻斯特编码更强。bit与bit之间有信号跳变，表示下一个bit为0，bit与bit之间没有信号跳变，表示下一个bit为1。<br>
+<img src="https://Tyloo-code.github.io/post-images/1609379572032.png" alt="" loading="lazy"></p>
+<h2 id="213-调制数据转化为模拟信号了解">2.13 调制：数据转化为模拟信号（了解）</h2>
+<p>常用的调制方法：调频(AM)，调频(FM)，调相(PM)<br>
+<img src="https://Tyloo-code.github.io/post-images/1609379690610.png" alt="" loading="lazy"><br>
+模拟数据(analog data)通过 调制器(modulaotr) 转化为 模拟信号 (analog signal)<br>
+<img src="https://Tyloo-code.github.io/post-images/1609379708749.png" alt="" loading="lazy"><br>
+数字数据(digtal data)通过 调制器(modulaotr) 转化为 模拟信号 (analog signal)<br>
+<img src="https://Tyloo-code.github.io/post-images/1609379737643.png" alt="" loading="lazy"></p>
+<h1 id="3-物理层传输介质">3. 物理层传输介质</h1>
+<p>传输介质分为<strong>导向性</strong>传输介质和<strong>非导向性</strong>传输介质</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">导向性传输介质</th>
+<th style="text-align:center">电磁波沿着固体媒介（铜线or光纤）被导向传播</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">非导向性传输介质</td>
+<td style="text-align:center">自由空间，如空气，水等等</td>
+</tr>
+</tbody>
+</table>
+<h2 id="31-常见的导向性传输介质">3.1 常见的导向性传输介质</h2>
+<h3 id="311-双绞线">3.1.1 双绞线</h3>
+<p>根据有无屏蔽层分为<strong>屏蔽双绞线（STP）和无屏蔽双绞线（UTP）</strong><br>
+<img src="https://Tyloo-code.github.io/post-images/1609379878165.png" alt="" loading="lazy"></p>
+<h3 id="312-同轴电缆coaxial-cable">3.1.2 同轴电缆（Coaxial Cable）</h3>
+<figure data-type="image" tabindex="6"><img src="https://Tyloo-code.github.io/post-images/1609379892737.png" alt="" loading="lazy"></figure>
+<h3 id="313-光纤optical-fiber">3.1.3 光纤（Optical fiber）</h3>
+<p><img src="https://Tyloo-code.github.io/post-images/1609379932961.png" alt="" loading="lazy"><br>
+根据<strong>入射角</strong>不同，又分为单模光纤和多模光纤<br>
+<img src="https://Tyloo-code.github.io/post-images/1609379946815.png" alt="" loading="lazy"></p>
+<h2 id="32-常见的非导向性传输介质">3.2 常见的非导向性传输介质</h2>
+<p>包括<strong>无线电波</strong>，<strong>微波</strong>，<strong>红外线</strong>和<strong>激光</strong>等<br>
+<img src="https://Tyloo-code.github.io/post-images/1609379994768.png" alt="" loading="lazy"></p>
+<h1 id="4-物理层设备">4. 物理层设备</h1>
+<h2 id="41-中继器rp-repeater">4.1 中继器（RP repeater）</h2>
+<p>注释：5-4-3规则是为了限制中继器使用次数的，理由可见图<br>
+5是指不能超过5个网段<br>
+4是指在这些网段中的物理层网络设备（中继器，集线器）最多不超过4个<br>
+3是指这些网段中最多只有三个网段挂有计算机<br>
+<img src="https://Tyloo-code.github.io/post-images/1609380050132.png" alt="" loading="lazy"></p>
+<h2 id="42-集线器hub">4.2 集线器（Hub）</h2>
+<p>集线器是个大的冲突域，同时<strong>只能有两个设备进行通讯</strong>，只会传输信号，没有智能。<br>
+<img src="https://Tyloo-code.github.io/post-images/1609380082969.png" alt="" loading="lazy"></p>
+<h1 id="5-本章思维导图">5. 本章思维导图</h1>
+<p><img src="https://Tyloo-code.github.io/post-images/1609380107652.png" alt="" loading="lazy"><br>
+<br><br>
+<br><br>
+参考资料<br>
+<a href="https://www.bilibili.com/video/BV19E411D78Q">2019 王道考研 计算机网络</a></p>
 
             </div>
             
@@ -609,7 +741,7 @@ test();
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/" title="NodeJs从零单排(5)">https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/</a>
+      <a href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part2-wu-li-ceng-physical-layer/" title="计算机网络笔记Part2 物理层（Physical Layer）">https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part2-wu-li-ceng-physical-layer/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -622,15 +754,11 @@ test();
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="NodeJs从零单排(6)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-6/">NodeJs从零单排(6)</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="NodeJs从零单排(6)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-6/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="NodeJs从零单排(4)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/">NodeJs从零单排(4)</a>
-        <a class="nav-mobile-next" title="NodeJs从零单排(4)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/">下一篇</a>
+        <a class="nav-pc-next" title="计算机网络笔记Part1 概述" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part11/">计算机网络笔记Part1 概述</a>
+        <a class="nav-mobile-next" title="计算机网络笔记Part1 概述" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part11/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
