@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>NodeJs从零单排(3) | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1609380153623">
+<link rel="shortcut icon" href="/favicon.ico?v=1609390228448">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">21</span>
+        <span class="site-item-stat-count">22</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1177,6 +1177,23 @@ devDependencie 配置当前程序所依赖的其他包，比如一些工具之�
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part3-shu-ju-lian-lu-ceng-data-link-layer/"" data-c="
+          &lt;h1 id=&#34;1-基本概念&#34;&gt;1. 基本概念&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609390124988.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;2-封装成帧与透明传输&#34;&gt;2. 封装成帧与透明传输&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;封装成帧&lt;/strong&gt;就是加将数据加头加尾，相当于将数据打包&lt;br&gt;
+&lt;strong&gt;透明传输&lt;/strong&gt;就是为了防止&lt;strong&gt;特殊的数据无法正常传输&lt;/strong&gt;的情况的发生，比如说在封装成帧的过程中出现数据中的某些标记符与开始/结束标记符恰巧重复等等情况&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609390179336.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609390192674.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;21-透明传输的应用&#34;&gt;2.1 透明传输的应用&lt;/h2&gt;
+&lt;h3 id=&#34;211-字符计数法&#34;&gt;2.1.1 字符计数法&lt;/h3&gt;
+&lt;p&gt;就是在帧的首部做&lt;strong&gt;计数&lt;/strong&gt;，看看数据是否错误&lt;br&gt;
+缺点：如果在某一个帧内，标记位后面的某个字节的数据丢失，那么会影响后面的帧&lt;br&gt;
+比如3 1 1 和 4 2 2 2，如果前面的帧丢失变成 3 1，那么后面的4就会被补到前面变成 3 1 4导致错误&lt;/p&gt;
+">计算机网络笔记Part3 数据链路层（Data Link Layer）</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part2-wu-li-ceng-physical-layer/"" data-c="
