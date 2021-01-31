@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>餐厅练习-Css选择器 | Tyloo</title>
+<title>TCP报文——三次握手&amp;四次挥手 | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1612073531702">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="餐厅练习-Css选择器" />
+  <meta name="description" content="TCP报文——三次握手&四次挥手" />
   <meta name="keywords" content="" />
 </head>
 
@@ -190,7 +190,8 @@
       <div class="sidebar-body pisces" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -231,6 +232,191 @@
   </div>
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#1tcp%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F">1.TCP报文格式</a></li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -318,8 +504,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/">
-      餐厅练习-Css选择器
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/tcp-bao-wen-san-ci-wo-shou-andsi-ci-hui-shou/">
+      TCP报文——三次握手&amp;四次挥手
     </a>
   </h1>
   <div class="post-meta">
@@ -327,23 +513,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-01 10:33:21">2020-12-01</span>
+      <span class="publish-time" data-t="2021-01-25 15:22:05">2021-01-25</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>466<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>6<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/can-ting-lian-xi-css-xuan-ze-qi/" data-flag-title="餐厅练习-Css选择器" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/tcp-bao-wen-san-ci-wo-shou-andsi-ci-hui-shou/" data-flag-title="TCP报文——三次握手&amp;四次挥手" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -352,85 +538,8 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p><a href="https://github.com/Tyloo-code/Restaurant">点此下载</a><br>
-第一关<br>
-plate<br>
-plate元素</p>
-<p>第二关<br>
-bento<br>
-bento元素</p>
-<p>第三关<br>
-#fancy<br>
-id为fancy的元素</p>
-<p>第四关<br>
-plate apple<br>
-plate祖先元素下的apple后代元素</p>
-<p>第五关<br>
-#fancy pickle<br>
-id为#fancy的祖先元素下的pickle后代元素</p>
-<p>第六关<br>
-.small<br>
-组为small的元素</p>
-<p>第七关<br>
-orange.small<br>
-组为small的orange元素</p>
-<p>第八关<br>
-bento&gt;orange.small<br>
-bento父元素下的组为small的orange子元素</p>
-<p>第九关<br>
-plate,bento,div<br>
-plate,bento兄弟元素在div元素中</p>
-<p>第十关<br>
-*<br>
-*代表所有元素</p>
-<p>第十一关<br>
-plate&gt;*<br>
-plate父元素的所有子元素</p>
-<p>第十二关<br>
-plate + apple<br>
-兄弟元素选择器，plate元素的后一个元素</p>
-<p>第十三关<br>
-bento~pickle<br>
-兄弟元素选择器,bento元素后的多个pickle元素</p>
-<p>第十四关<br>
-plate&gt;apple<br>
-plate父元素下的apple子元素</p>
-<p>第十五关<br>
-plate orange:first-child<br>
-子元素选择器，plate元素下的第一个orange元素</p>
-<p>第十六关<br>
-plate :only-child<br>
-所有plate元素下的元素</p>
-<p>第十七关<br>
-.small:last-child<br>
-id为fancy的元素的最后一个和pickle元素的最后一个</p>
-<p>第十八关<br>
-plate:nth-child(3)<br>
-div元素中的第三个plate元素</p>
-<p>第十九关<br>
-bento:nth-of-type(1)<br>
-第N个最后一个孩子选择器</p>
-<p>第二十关<br>
-apple:first-of-type<br>
-第一个apple元素</p>
-<p>第二十一关<br>
-plate:nth-of-type(even)<br>
-所有偶数个的plate元素</p>
-<p>第二十二关<br>
-plate:nth-of-type(2n+3)<br>
-同类型的，每2个选择一个plate，从第3 个开始，包括第3个</p>
-<p>第二十三关<br>
-plate apple.small:only-of-type<br>
-plate元素下满足apple.small元素的唯一一个元素</p>
-<p>第二十四关<br>
-orange.small:last-of-type,apple.small:last-of-type<br>
-是orange.samll和apple.small元素的最后一个元素</p>
-<p>第二十五关<br>
-bento:empty<br>
-bento元素里没有包括额外元素</p>
-<p>第二十六关<br>
-apple:not(.small)<br>
-apple里没有组是.small的元素</p>
+              <h1 id="1tcp报文格式">1.TCP报文格式</h1>
+<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1611559421318.png" alt="" loading="lazy"></figure>
 
             </div>
             
@@ -447,7 +556,7 @@ apple里没有组是.small的元素</p>
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/" title="餐厅练习-Css选择器">https://Tyloo-code.github.io/post/can-ting-lian-xi-css-xuan-ze-qi/</a>
+      <a href="https://Tyloo-code.github.io/post/tcp-bao-wen-san-ci-wo-shou-andsi-ci-hui-shou/" title="TCP报文——三次握手&amp;四次挥手">https://Tyloo-code.github.io/post/tcp-bao-wen-san-ci-wo-shou-andsi-ci-hui-shou/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -460,15 +569,11 @@ apple里没有组是.small的元素</p>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Element UI 实战教程" href="https://Tyloo-code.github.io/post/ce-shi/">Element UI 实战教程</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Element UI 实战教程" href="https://Tyloo-code.github.io/post/ce-shi/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Vue从入门到未完待续" href="https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/">Vue从入门到未完待续</a>
-        <a class="nav-mobile-next" title="Vue从入门到未完待续" href="https://Tyloo-code.github.io/post/vue-cong-ru-men-dao-wei-wan-dai-xu/">下一篇</a>
+        <a class="nav-pc-next" title="计算机网络笔记Part3 数据链路层（Data Link Layer）" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part3-shu-ju-lian-lu-ceng-data-link-layer/">计算机网络笔记Part3 数据链路层（Data Link Layer）</a>
+        <a class="nav-mobile-next" title="计算机网络笔记Part3 数据链路层（Data Link Layer）" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part3-shu-ju-lian-lu-ceng-data-link-layer/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
