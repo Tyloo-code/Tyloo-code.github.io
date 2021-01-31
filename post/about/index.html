@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>关于 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1612084741842">
+<link rel="shortcut icon" href="/favicon.ico?v=1612097431365">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">23</span>
+        <span class="site-item-stat-count">24</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1052,7 +1052,7 @@
     <div class="result" id="result">
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/tcp-bao-wen-san-ci-wo-shou-andsi-ci-hui-shou/"" data-c="
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/22/"" data-c="
           &lt;h1 id=&#34;1tcp报文格式&#34;&gt;1.TCP报文格式&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1611559421318.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 &lt;strong&gt;1、端口号&lt;/strong&gt;：用来标识同一台计算机的不同的应用进程。&lt;br&gt;
@@ -1081,6 +1081,144 @@ TCP/IP 协议是传输层的一个面向连接的安全可靠的一个传输协�
 &lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612076620053.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 四次握手机制也是由客户端去发起，客户端会发送一个报文，在报文里面FIN位标志位置一，当服务端收到这个报文之后，我就知道了客户端想要和我断开连接，但是此时服务端不一定能做好准备，因为当客户端发起断开连接的这个消息的时候，对于服务端而言，他和还有可能有未发送完的消息，他还要继续发送，所以呢，此时对于服务端而言，我只能进行一个消息确认，就是我先告诉服务端，我知道你要给我断开连接了，但是我这里边还可能没有做好准备，你需要等我一下，等会儿我会告诉你，于是呢，发完这个消息确认包之后，可能稍过片刻它就会继续发送一个断开连接的一个报文啊，也是一个FIN位置1的报文也是由服务端发给客户端的啊，这个报文表示服务端已经做好了断开连接的准备，那么当这个报文发给客户端的时候，客户端同样要给服务端继续发送一个消息确认的报文一共有四次，那么，通过这四次的相互沟通和连接，我就知道了，不管是服务端还是客户端都已经做好了断开连接的准备，于是连接就可以被断开啊，这是我对三次握手和四次挥手的一个理解。&lt;/p&gt;
 ">TCP报文——三次握手&四次挥手</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part4-wang-luo-ceng-network-layer/"" data-c="
+          &lt;h1 id=&#34;1-概述&#34;&gt;1. 概述&lt;/h1&gt;
+&lt;p&gt;注释：&lt;br&gt;
+数据报和分组的关系：分组是一段比较长的数据，将它进行切割成一段段之后就得到数据报&lt;br&gt;
+功能一就是让数据在路由器之间走最佳的路径&lt;br&gt;
+功能二就是让不同的设备（手机，电脑，平板等）都能正常连接&lt;br&gt;
+功能三见图中解释&lt;br&gt;
+开环控制就是在拥塞之前就提前设计解决&lt;br&gt;
+闭环控制就是在拥塞时自动调整解决问题&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612095965455.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;OSI参考模型&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;各层次的传输单元&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;应用层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;报文&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;传输层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;报文段&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;网络层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;IP数据报，分组（如果IP数据报太大就切割成分组&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据链路层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;帧&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;物理层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;比特流&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;2-数据交换方式&#34;&gt;2. 数据交换方式&lt;/h1&gt;
+&lt;p&gt;为什么要进行数据交换？因为每个节点之间都拉网线太麻烦了也不实际，所以通过大量交换设备互联进行数据交换&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096463674.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;21-电路交换&#34;&gt;2.1 电路交换&lt;/h2&gt;
+&lt;p&gt;常见的例子：打电话&lt;br&gt;
+注释：&lt;br&gt;
+链路支持多路复用（可参考数据链路层的TDM等）&lt;br&gt;
+特点是独占资源，因为两者建立了连接&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096503276.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;22-报文交换&#34;&gt;2.2 报文交换&lt;/h2&gt;
+&lt;p&gt;注释：报文发送的过程&lt;br&gt;
+1.源先根据报文加上ip地址，物理地址等，通过物理层发送&lt;br&gt;
+2.交换机收到报文之后，先进行存储，等待链路空闲之后进行转发，但是转发的路径不是固定的，是比较随机的&lt;br&gt;
+3.最后通过许多交换机最终到达目的地&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096535503.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;23-分组交换&#34;&gt;2.3 分组交换&lt;/h2&gt;
+&lt;p&gt;分组交换和报文交换基本相同，就是将报文切割之后再进行发送&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096614492.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;24-分组交换和报文交换的具体计算对比&#34;&gt;2.4 分组交换和报文交换的具体计算对比&lt;/h2&gt;
+&lt;p&gt;注释：是怎么计算的？&lt;br&gt;
+报文交换：一共三段，每段都需要10000bit/1000bps=10s，三段就是3x10=30s&lt;br&gt;
+分组交换：可以分为两段，一个是第一个数据开始发到最后一个数据从源发出，一段是最后一个数据到达目的地。第一段总时间是10000bit/1000bps=10s，第二段总时间是（10/1000）*2=0.02s，所以总时间是10.02s。&lt;br&gt;
+理解一下，这里就是报文交换的时候，由于报文没有分割，所以即使先到的数据也不能先发走，只能等到最后一段报文全部到了之后才能一起走，相对于分组交换明显拖慢了前面数据的速度，所以导致报文交换明显慢于分组交换。&lt;br&gt;
+可以看到分组交换明显快于报文交换，所以我们通常使用分组交换&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096647245.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;241-分组传输的两种传输方式-数据报与虚电路&#34;&gt;2.4.1 分组传输的两种传输方式-数据报与虚电路&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;综述&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096711651.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096715380.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据报&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096731409.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;虚电路&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096762230.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3-路由算法和路由协议概述&#34;&gt;3. 路由算法和路由协议概述&lt;/h1&gt;
+&lt;p&gt;路由算法就是让路由知道收到报文之后下一步怎么走&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096787286.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+AS就是多个路由器之间构成的单独的小圈子，圈子内使用自己的协议，圈子和圈子之间用的是BGP协议&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096806087.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;31-rip协议和距离向量算法&#34;&gt;3.1 RIP协议和距离向量算法&lt;/h2&gt;
+&lt;h3 id=&#34;311-rip协议概述&#34;&gt;3.1.1 RIP协议概述&lt;/h3&gt;
+&lt;p&gt;通过交换信息构建路由表&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096856709.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;312-如何建立路由表&#34;&gt;3.1.2 如何建立路由表&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096869111.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;313-rip协议报文格式&#34;&gt;3.1.3 RIP协议报文格式&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096886347.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;314-rip协议特点&#34;&gt;3.1.4 RIP协议特点&lt;/h3&gt;
+&lt;p&gt;就是来回更新路由表，错误信息被覆盖，导致直至达到距离上限强制错误时才可以得知出错&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096940327.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096944098.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096947518.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612096950613.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;315-距离向量算法&#34;&gt;3.1.5 距离向量算法&lt;/h3&gt;
+&lt;p&gt;注释：&lt;br&gt;
+为什么改地址？因为图中是从x得到的信息&lt;br&gt;
+为什么距离固定+1？因为路由器只从相邻路由器之间获取RIP报文，举例只会是1&lt;br&gt;
+为什么下一跳是x就要替换？因为网络环境不断变化，可能这次某个节点挂掉，所以保持最新的&lt;br&gt;
+为什么下一跳不是x时有更新和不处理两种手段？因为这样可以提高效率，比原来快就换，比原来慢就保留原来的，也可以理解&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097004430.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097008383.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097012997.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;32-ospf协议和链路状态算法&#34;&gt;3.2 OSPF协议和链路状态算法&lt;/h2&gt;
+&lt;h3 id=&#34;321-ospf协议概述&#34;&gt;3.2.1 OSPF协议概述&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097042017.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;322-ospf的其他特点&#34;&gt;3.2.2 OSPF的其他特点&lt;/h3&gt;
+&lt;p&gt;为什么OSPF收敛速度快？因为它只是刷新一下链路状态，得知其是否连通，不需要和RIP一样进行对照，而是直接通过Dijilstra算法来自己算出路径&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097062831.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;323-链路状态路由算法&#34;&gt;3.2.3 链路状态路由算法&lt;/h3&gt;
+&lt;p&gt;了解即可&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097087324.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;324-ospf区域&#34;&gt;3.2.4 OSPF区域&lt;/h3&gt;
+&lt;p&gt;了解即可&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097205918.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;325-ospf分组&#34;&gt;3.2.5 OSPF分组&lt;/h3&gt;
+&lt;p&gt;了解即可&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097230145.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;33-bgp协议&#34;&gt;3.3 BGP协议&lt;/h2&gt;
+&lt;h3 id=&#34;331-bgp协议简介&#34;&gt;3.3.1 BGP协议简介&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097260741.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;332-bgp协议交换信息的过程&#34;&gt;3.3.2 BGP协议交换信息的过程&lt;/h3&gt;
+&lt;p&gt;了解即可，只需要知道BGP交换协议里面交换的是一组路径向量&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097302736.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097305652.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097309001.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;333-bgp协议报文格式&#34;&gt;3.3.3 BGP协议报文格式&lt;/h3&gt;
+&lt;p&gt;BGP是应用层协议&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097339499.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;334-bgp协议特点&#34;&gt;3.3.4 BGP协议特点&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097372931.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;335-bgp的四种报文&#34;&gt;3.3.5 BGP的四种报文&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097376737.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;34-三种路由协议的比较&#34;&gt;3.4 三种路由协议的比较&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097403721.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612097407772.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+">计算机网络笔记Part4 网络层（Network Layer）</a>
       </div>
       
       <div class="item">
