@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>NodeJs从零单排(9) | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1612073531702">
+<link rel="shortcut icon" href="/favicon.ico?v=1612084741842">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -39,7 +39,7 @@
 
 
   <meta name="description" content="NodeJs从零单排(9)" />
-  <meta name="keywords" content="" />
+  <meta name="keywords" content="Node" />
 </head>
 
 <body>
@@ -208,13 +208,13 @@
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-count">4</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-count">4</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -523,6 +523,19 @@
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://Tyloo-code.github.io/tag/Z6ts5lib5/">
+        <span>Node</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
       <span>3<span class="language" data-lan="minute">分钟</span></span>
     </span>
@@ -682,6 +695,8 @@ const client = new MongoClient(url,{ useUnifiedTopology: true }); client.connect
     </li>
   </ul>
   <div class="tags">
+    
+      <a href="https://Tyloo-code.github.io/tag/Z6ts5lib5/"># Node</a>
     
   </div>
   <div class="nav">
@@ -1193,7 +1208,32 @@ const client = new MongoClient(url,{ useUnifiedTopology: true }); client.connect
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/tcp-bao-wen-san-ci-wo-shou-andsi-ci-hui-shou/"" data-c="
           &lt;h1 id=&#34;1tcp报文格式&#34;&gt;1.TCP报文格式&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1611559421318.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1611559421318.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;1、端口号&lt;/strong&gt;：用来标识同一台计算机的不同的应用进程。&lt;br&gt;
+&lt;strong&gt;1）源端口&lt;/strong&gt;：源端口和IP地址的作用是标识报文的返回地址。&lt;br&gt;
+&lt;strong&gt;2）目的端口&lt;/strong&gt;：端口指明接收方计算机上的应用程序接口。&lt;br&gt;
+&lt;code&gt;TCP报头中的源端口号和目的端口号同IP数据报中的源IP与目的IP唯一确定一条TCP连接。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2、序号和确认号&lt;/strong&gt;：是TCP可靠传输的关键部分。&lt;strong&gt;序号&lt;/strong&gt;是本报文段发送的数据组的第一个字节的序号。在TCP传送的流中，每一个字节一个序号。e.g.一个报文段的序号为300，此报文段数据部分共有100字节，则下一个报文段的序号为400。所以序号确保了TCP传输的有序性。&lt;strong&gt;确认号&lt;/strong&gt;，即ACK，指明下一个期待收到的字节序号，表明该序号之前的所有数据已经正确无误的收到。确认号只有当ACK标志为1时才有效。比如建立连接时，SYN报文的ACK标志位为0。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3、数据偏移／首部长度&lt;/strong&gt;：4bits。由于首部可能含有可选项内容，因此TCP报头的长度是不确定的，报头不包含任何任选字段则长度为20字节，4位首部长度字段所能表示的最大值为1111，转化为10进制为15，15*32/8 = 60，&lt;code&gt;故报头最大长度为60字节&lt;/code&gt;。首部长度也叫数据偏移，是因为首部长度实际上指示了数据区在报文段中的起始偏移值。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4、保留&lt;/strong&gt;：为将来定义新的用途保留，现在一般置0。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5、控制位&lt;/strong&gt;：URG  ACK  PSH  RST  SYN  FIN，共6个，每一个标志位表示一个控制功能。&lt;br&gt;
+&lt;strong&gt;1）URG&lt;/strong&gt;：紧急指针标志，为1时表示紧急指针有效，为0则忽略紧急指针。&lt;br&gt;
+&lt;strong&gt;2）ACK&lt;/strong&gt;：确认序号标志，为1时表示确认号有效，为0表示报文中不含确认信息，忽略确认号字段。&lt;br&gt;
+&lt;strong&gt;3）PSH&lt;/strong&gt;：push标志，为1表示是带有push标志的数据，指示接收方在接收到该报文段以后，应尽快将这个报文段交给应用程序，而不是在缓冲区排队。&lt;br&gt;
+&lt;strong&gt;4）RST&lt;/strong&gt;：重置连接标志，用于重置由于主机崩溃或其他原因而出现错误的连接。或者用于拒绝非法的报文段和拒绝连接请求。&lt;br&gt;
+&lt;strong&gt;5）SYN&lt;/strong&gt;：同步序号，用于建立连接过程，在连接请求中，SYN=1和ACK=0表示该数据段没有使用捎带的确认域，而连接应答捎带一个确认，即SYN=1和ACK=1。&lt;br&gt;
+&lt;strong&gt;6）FIN&lt;/strong&gt;：finish标志，用于释放连接，为1时表示发送方已经没有数据发送了，即关闭本方数据流。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6、窗口&lt;/strong&gt;：滑动窗口大小，用来告知发送端接受端的缓存大小，以此控制发送端发送数据的速率，从而达到流量控制。窗口大小时一个16bit字段，因而窗口大小最大为65535。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7、校验和&lt;/strong&gt;：奇偶校验，此校验和是对整个的 TCP 报文段，包括 TCP 头部和 TCP 数据，以 16 位字进行计算所得。由发送端计算和存储，并由接收端进行验证。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;8、紧急指针&lt;/strong&gt;：只有当 URG 标志置 1 时紧急指针才有效。紧急指针是一个正的偏移量，和顺序号字段中的值相加表示紧急数据最后一个字节的序号。 TCP 的紧急方式是发送端向另一端发送紧急数据的一种方式。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;9、选项和填充&lt;/strong&gt;：最常见的可选字段是最长报文大小，又称为MSS（Maximum Segment Size），每个连接方通常都在通信的第一个报文段（为建立连接而设置SYN标志为1的那个段）中指明这个选项，它表示本端所能接受的最大报文段的长度。选项长度不一定是32位的整数倍，所以要加填充位，即在这个字段中加入额外的零，以保证TCP头是32的整数倍。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;10、数据部分&lt;/strong&gt;： TCP 报文段中的数据部分是可选的。在一个连接建立和一个连接终止时，双方交换的报文段仅有 TCP 首部。如果一方没有数据要发送，也使用没有任何数据的首部来确认收到的数据。在处理超时的许多情况中，也会发送不带任何数据的报文段。&lt;/p&gt;
+&lt;h1 id=&#34;2三次握手&#34;&gt;2.三次握手&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612076354558.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+TCP/IP 协议是传输层的一个面向连接的安全可靠的一个传输协议，三次握手的机制是为了保证能建立一个安全可靠的连接，那么第一次握手是由客户端发起，客户端会向服务端发送一个报文，在报文里面：SYN标志位置为1，表示发起新的连接。当服务端收到这个报文之后就知道客户端要和我建立一个新的连接，于是服务端就向客户端发送一个确认消息包，在这个消息包里面：ack标志位置为1，表示确认客户端发起的第一次连接请求。以上两次握手之后，对于客户端而言：已经明确了我既能给服务端成功发消息，也能成功收到服务端的响应。但是对于服务端而言：两次握手是不够的，因为到目前为止，服务端只知道一件事，客户端发给我的消息我能收到，但是我响应给客户端的消息，客户端能不能收到我是不知道的。所以，还需要进行第三次握手，第三次握手就是当客户端收到服务端发送的确认响应报文之后，还要继续去给服务端进行回应，也是一个ack标志位置1的确认消息。通过以上三次连接，不管是客户端还是服务端，都知道我既能给对方发送消息，也能收到对方的响应。那么，这个连接就被安全的建了。&lt;/p&gt;
+&lt;h1 id=&#34;3四次挥手&#34;&gt;3.四次挥手&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612076620053.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+四次握手机制也是由客户端去发起，客户端会发送一个报文，在报文里面FIN位标志位置一，当服务端收到这个报文之后，我就知道了客户端想要和我断开连接，但是此时服务端不一定能做好准备，因为当客户端发起断开连接的这个消息的时候，对于服务端而言，他和还有可能有未发送完的消息，他还要继续发送，所以呢，此时对于服务端而言，我只能进行一个消息确认，就是我先告诉服务端，我知道你要给我断开连接了，但是我这里边还可能没有做好准备，你需要等我一下，等会儿我会告诉你，于是呢，发完这个消息确认包之后，可能稍过片刻它就会继续发送一个断开连接的一个报文啊，也是一个FIN位置1的报文也是由服务端发给客户端的啊，这个报文表示服务端已经做好了断开连接的准备，那么当这个报文发给客户端的时候，客户端同样要给服务端继续发送一个消息确认的报文一共有四次，那么，通过这四次的相互沟通和连接，我就知道了，不管是服务端还是客户端都已经做好了断开连接的准备，于是连接就可以被断开啊，这是我对三次握手和四次挥手的一个理解。&lt;/p&gt;
 ">TCP报文——三次握手&四次挥手</a>
       </div>
       

@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>NodeJs从零单排(2) | Tyloo</title>
+<title>Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1612084741842">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,6 @@
 
 
 
-  <meta name="description" content="NodeJs从零单排(2)" />
-  <meta name="keywords" content="Node" />
 </head>
 
 <body>
@@ -172,26 +170,10 @@
   <div class="main-continer">
     
     <div
-      class="section-layout pisces ">
+      class="section-layout  pisces">
       <div class="section-layout-wrapper">
-        
-
-<div class="sidebar">
-  
-    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
-      
-        <div class="post-list-sidebar">
-          <div class="sidebar-title">
-            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
-            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
-          </div>
-        </div>
-      
-      <div class="sidebar-body pisces" id="sidebar_body">
-        
-          
-            <div class="post-side-meta" id="post_side_meta">
-              
+        <div id="sidebarMeta" class="sidebar">
+    
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -232,444 +214,218 @@
   </div>
 
 </div>
-            </div>
-            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
-              <div class="toc-box right-motion">
-  <div class="toc-wrapper auto-number auto"
-    id="toc_wrapper">
-    <ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-%E4%BB%80%E4%B9%88%E6%98%AF-commonjs">一、什么是 CommonJs？</a></li>
-<li><a href="#%E4%BA%8C-nodejs-%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96">二、Nodejs 中的模块化</a>
-<ul>
-<li><a href="#21-%E5%9C%A8-node-%E4%B8%AD%E6%A8%A1%E5%9D%97%E5%88%86%E4%B8%BA%E4%B8%A4%E7%B1%BB">2.1 在 Node 中，模块分为两类:</a></li>
-<li><a href="#22-commonjsnodejs%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9D%97%E7%9A%84%E8%A7%84%E5%AE%9A">2.2 CommonJS（Nodejs）中自定义模块的规定：</a></li>
-<li><a href="#23-%E5%AE%9A%E4%B9%89%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%9D%97">2.3 定义使用模块：</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-npm-init-%E7%94%9F%E6%88%90-packagejson">三、npm init 生成 package.json</a></li>
-</ul>
-
-  </div>
 </div>
-
 <script>
-
-  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
-  let active = 'active-show', activeClass = 'active-current';
-  let tocWrapper = document.querySelector('#toc_wrapper');
-  let tocContent = tocWrapper.children[0];
-  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
-
-  function addTocNumber(elem, deep) {
-    if (!elem) {
-      return;
-    }
-    let prop = elem.__proto__;
-
-    if (prop === HTMLUListElement.prototype) {
-      for (let i = 0; i < elem.children.length; i++) {
-        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+  let sidebarMeta = document.querySelector('#sidebarMeta');
+  let scheme = 'pisces';
+  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
+    document.addEventListener('scroll', function(e) {
+      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
+        sidebarWrapper.classList.add('home-sidebar-fixed')
+      } else {
+        sidebarWrapper.classList.remove('home-sidebar-fixed')
       }
-    } else if (prop === HTMLLIElement.prototype) {
-      // 保存li元素
-      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
-        lList.push(elem);
-      }
-      for (let i = 0; i < elem.children.length; i++) {
-        let cur = elem.children[i];
-        if (cur.__proto__ === HTMLAnchorElement.prototype) {
-          if (autoNumber) {
-            cur.text = deep + ' ' + cur.text;
-          }
-        } else if (cur.__proto__ === HTMLUListElement.prototype) {
-          addTocNumber(cur, deep);
-        }
-      }
-    }
-  }
-
-  function removeParentActiveClass() {
-    let parents = tocContent.querySelectorAll('.' + active)
-    parents.forEach(function (elem) {
-      elem.classList.remove(active);
     });
   }
-
-  function addActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.add(activeClass);
-    }
-  }
-
-  function removeActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.remove(activeClass);
-    }
-  }
-
-  function addActiveLiElemment(elem, parent) {
-    if (!elem || elem === parent) {
-      return;
-    } else {
-      if (elem.__proto__ === HTMLLIElement.prototype) {
-        elem.classList.add(active);
-      }
-      addActiveLiElemment(elem.parentElement, parent);
-    }
-  }
-
-  function showToc() {
-    if (tocWrapper) {
-      postBody = document.querySelector('#post_body');
-      for (let i = 0; i < postBody.children.length; i++) {
-        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
-          hList.push(postBody.children[i]);
-        }
-      }
-      if (tocWrapper.classList.contains('compress')) {
-        tocContent.classList.add('closed');
-      } else if (tocWrapper.classList.contains('no_compress')) {
-        tocContent.classList.add('expanded');
-      } else {
-        if (hList.length > 10) {
-          active = 'active-hidden'
-          tocContent.classList.add('closed');
-        } else {
-          tocContent.classList.add('expanded');
-        }
-      }
-    }
-  }
-
-  (function () {
-    // 处理不是从#一级标题开始目录
-    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
-      let con = tocContent.children[0].children[0];
-      tocContent.innerHTML = con.innerHTML;
-    }
-    let markdownItTOC = document.querySelector('.markdownIt-TOC');
-    let innerHeight = window.innerHeight;
-    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
-    addTocNumber(tocContent, '');
-  })();
-
-  document.addEventListener('scroll', function (e) {
-    if (lList.length <= 0) {
-      return;
-    }
-    let scrollTop = document.scrollingElement.scrollTop + 10;
-    let dir;
-
-    if (lastTop - scrollTop > 0) {
-      dir = 'up';
-    } else {
-      dir = 'down';
-    }
-
-    lastTop = scrollTop;
-    if (scrollTop <= 0) {
-      if (lastIndex >= 0 && lastIndex < hList.length) {
-        lList[lastIndex].classList.remove(activeClass);
-      }
-      return;
-    }
-
-    let current = 0, hasFind = false;
-    for (let i = 0; i < hList.length; i++) {
-      if (hList[i].offsetTop > scrollTop) {
-        current = i;
-        hasFind = true;
-        break;
-      }
-    }
-    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
-      current = hList.length - 1;
-    } else {
-      current--;
-    }
-    if (dir === 'down') {
-      if (current > lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex)
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    } else {
-      if (current < lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex);
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    }
-  });
-
-
-  window.addEventListener('load', function () {
-    showToc();
-    document.querySelector('#sidebar').style = 'display: block;';
-    tocWrapper.classList.add('toc-active');
-    setTimeout(function () {
-      if ("createEvent" in document) {
-        let evt = document.createEvent("HTMLEvents");
-        evt.initEvent("scroll", false, true);
-        document.dispatchEvent(evt);
-      }
-      else {
-        document.fireEvent("scroll");
-      }
-    }, 500)
-  })
-
-</script>
-            </div>
-          
-        
+  </script>
+        <div class="section-box tag-line box-shadow-wrapper">
+          <section class="section tags-section posts-expand bg-color">
+            <div class="padding-wrapper">
+  <div class="tag-timeline-box">
+    <div class="tag-timeline-wrapper">
+      <div class="tag-timeline-title">
+        <h2>
+          Node
+          <small class="language" data-lan="tag">标签</small>
+        </h2>
       </div>
-    </div>
-  
-</div>
-<script>
-  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
-  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
-  const SLIDE_UP_IN = 'slide-up-in';
-
-  let sidebar = document.querySelector('#sidebar'),
-  tocSideBar = document.querySelector('#tocSideBar'),
-  metaSideBar = document.querySelector('#metaSideBar'),
-  postToc = document.querySelector('#post_toc'),
-  postSiteMeta = document.querySelector('#post_side_meta'),
-  sidebarTitle = document.querySelector('.sidebar-title'),
-  sidebarBody = document.querySelector('#sidebar_body');
-
-  tocSideBar && tocSideBar.addEventListener('click', (e) => {
-    toggleSidebar(e);
-  });
-
-  metaSideBar && metaSideBar.addEventListener('click', (e) => {
-    toggleSidebar(e);
-  });
-
-  function toggleSidebar(e) {
-    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
-    if (currentTitle == e.srcElement) {
-      return ;
-    }
-    let current, showElement, hideElement;
-    if (e.srcElement == metaSideBar) {
-      showElement = postSiteMeta;
-      hideElement = postToc;
-    } else if (e.srcElement == tocSideBar){
-      showElement = postToc;
-      hideElement = postSiteMeta;
-    }
-    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
-    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
-
-    window.Velocity(hideElement, 'stop');
-    window.Velocity(hideElement, 'transition.slideUpOut', {
-      display: 'none',
-      duration: 200,
-      complete: function () {
-        window.Velocity(showElement, 'transition.slideDownIn', {
-          duration: 200
-        });
-      }
-    })
-    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
-    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
-  }
-
-  postToc && postToc.addEventListener('transitionend', function() {
-    this.classList.remove(SLIDE_UP_IN);
-  });
-
-  if (sidebarBody) {
-    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
-      let hasFix = false;
-      let scrollEl = document.querySelector('.main-continer');
-      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
-      window.addEventListener('scroll', function(e) {
-        if (document.scrollingElement.scrollTop >= limitTop) {
-          if (!hasFix) {
-            sidebar.classList.add('sidebar-fixed');
-            hasFix = true;
-          }
-        } else {
-          if (hasFix) {
-            sidebar.classList.remove('sidebar-fixed');
-            hasFix = false;
-          }
-        }
-      });
-    }
-  }
-  
-</script>
-        <div class="section-box box-shadow-wrapper">
-          <div class="section bg-color post post-page">
-            <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-2/">
-      NodeJs从零单排(2)
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-24 09:33:45">2020-12-24</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://Tyloo-code.github.io/tag/Z6ts5lib5/">
-        <span>Node</span>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-9/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              12-24
+              <small>NodeJs从零单排(9)</small>
+            </h1>
+          </div>
+        </div>
       </a>
       
       
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>744<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-    
-    
-    <span id="/post/nodejs-cong-ling-dan-pai-2/" data-flag-title="NodeJs从零单排(2)" class="meta-item pc-show leancloud_visitors">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-eye"></i>
-      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
-    </span>
-    
-  </div>
-</section>
-            <div class="post-body next-md-body" id="post_body">
-              <h1 id="一-什么是-commonjs">一、什么是 CommonJs？</h1>
-<p>JavaScript 是一个强大面向对象语言，它有很多快速高效的解释器。然而， JavaScript 标准定义的 API 是为了构建基于浏览器的应用程序。并没有制定一个用于更广泛的应用程序 的标准库。<code>CommonJS 规范的提出,主要是为了弥补当前 JavaScript 没有标准库的缺陷。它的 终极目标就是：提供一个类似 Python，Ruby 和 Java 语言的标准库</code>，而不只是让 JavaScript 停 留在小脚本程序的阶段。用 CommonJS API 编写出的应用，不仅可以利用 JavaScript 开发客户端应用，<strong>而且还可以编写以下应用。</strong><br>
-     •服务器端 JavaScript 应用程序。（nodejs）<br>
-     •命令行工具。<br>
-     •桌面图形界面应用程序。</p>
-<p><code>CommonJS 就是模块化的标准，nodejs 就是 CommonJS（模块化）的实现。</code></p>
-<h1 id="二-nodejs-中的模块化">二、Nodejs 中的模块化</h1>
-<p>Node 应用由模块组成，采用 CommonJS 模块规范。</p>
-<h2 id="21-在-node-中模块分为两类">2.1 在 Node 中，模块分为两类:</h2>
-<p>一类是 Node 提供的模块,称为<strong>核心模块</strong>；另一类是用户编写的模块，称为<strong>文件模块</strong>。</p>
-<p>    • 核心模块部分在 Node 源代码的编译过程中，编译进了二进制执行文件。在 Node 进 程启动时，部分核心模块就被直接加载进内存中，所以这部分核心模块引入时，文件定位和 编译执行这两个步骤可以省略掉，并且在路径分析中优先判断，所以它的加载速度是最快的。 <strong>如：HTTP 模块 、URL 模块、Fs 模块都是 nodejs 内置的核心模块，可以直接引入使用。</strong></p>
-<p>    • 文件模块则是在运行时动态加载，需要完整的路径分析、文件定位、编译执行过程、 速度相比核心模块稍微慢一些，但是用的非常多。<strong>这些模块需要我们自己定义。接下来我 们看一下 nodejs 中的自定义模块。</strong><br>
-<br></p>
-<h2 id="22-commonjsnodejs中自定义模块的规定">2.2 CommonJS（Nodejs）中自定义模块的规定：</h2>
-<p>1.我们可以把公共的功能<strong>抽离成为一个单独的 js 文件作为</strong>一个模块，默认情况下面这 个模块里面的方法或者属性，外面是没法访问的。如果要让外部可以访问模块里面的方法或 者属性，就必须在模块里面通过 exports 或者 module.exports 暴露属性或者方法。</p>
-<p>2.在需要使用这些模块的文件中，通过 require 的方式引入这个模块。这个时候就可 以使用模块里面暴露的属性和方法。<br>
-<img src="https://Tyloo-code.github.io/post-images/1608774648876.png" alt="" loading="lazy"></p>
-<h2 id="23-定义使用模块">2.3 定义使用模块：</h2>
-<pre><code>// 定义一个 tools.js 的模块 
-//模块定义
-var tools = {
-     sayHello: function() {
-        return 'hello NodeJS';
-        },
-        add: function(x, y) {
-            return x + y; 
-            } 
- };// 模块接口的暴露 
-// module.exports = tools; 
-    exports.sayHello = tools.sayHello; 
-    exports.add = tools.add;
-</code></pre>
-<pre><code>var http = require('http'); 
-// 引入自定义的 tools.js 模块
-var tools= require('./tools'); 
-tools.sayHello(); //使用模块
-</code></pre>
-<h1 id="三-npm-init-生成-packagejson">三、npm init 生成 package.json</h1>
-<pre><code>npm init --yes
-</code></pre>
-
-            </div>
-            
-              <div class="reward-btn">
-                <div class="reward-btn-text">赞赏</div>
-              </div>
-            
-            
-              <div class="post-footer">
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-      <strong class="language" data-lan="author">本文作者：</strong>
-      来碗鸡丁炒饭
-    </li>
-    <li class="post-copyright-link">
-      <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-2/" title="NodeJs从零单排(2)">https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-2/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong class="language" data-lan="copyright">版权声明： </strong>
-      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-  <div class="tags">
-    
-      <a href="https://Tyloo-code.github.io/tag/Z6ts5lib5/"># Node</a>
-    
-  </div>
-  <div class="nav">
-    <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="NodeJs从零单排(3)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-3/">NodeJs从零单排(3)</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="NodeJs从零单排(3)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-3/">上一篇</a>
       
-    </div>
-    <div class="nav-next">
       
-        <a class="nav-pc-next" title="NodeJs从零单排(1)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai/">NodeJs从零单排(1)</a>
-        <a class="nav-mobile-next" title="NodeJs从零单排(1)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai/">下一篇</a>
-        <i class="fa fa-chevron-right"></i>
+      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-8/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              12-24
+              <small>NodeJs从零单排(8)</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-7/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              12-24
+              <small>NodeJs从零单排(7)</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-6/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              12-24
+              <small>NodeJs从零单排(6)</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              12-24
+              <small>NodeJs从零单排(5)</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              12-24
+              <small>NodeJs从零单排(4)</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-3/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              12-24
+              <small>NodeJs从零单排(3)</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-2/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              12-24
+              <small>NodeJs从零单排(2)</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              12-23
+              <small>NodeJs从零单排(1)</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
     </div>
   </div>
 </div>
-            
-            
-  
-    
-      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-<div id="gitalk-container"></div>
-
-<script>
-  var gitalk = new Gitalk({
-    clientID: '1d7311971e46d3cb2b7f',
-    clientSecret: '825202727778b1d14410ce66b7952398e1213211',
-    repo: 'tyloo-code.github.io',
-    owner: 'tyloo-code',
-    admin: ['tyloo-code'],
-    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
-  gitalk.render('gitalk-container')
-</script>
-    
-    
-  
-
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -856,265 +612,6 @@ tools.sayHello(); //使用模块
   }
 
 </script>
-    <div class="light-box" id="light_box"></div>
-<script>
-  let imgs = document.querySelectorAll('.post-body img');
-  let lightBox = document.querySelector('#light_box');
-  lightBox.addEventListener('mousedown', (e) => {
-    e.preventDefault()
-  })
-  lightBox.addEventListener('mousewheel', (e) => {
-    e.preventDefault()
-  })
-  let width = window.innerWidth * 0.8;
-  lightBox.onclick = () => {
-    let img = lightBox.querySelector('img');
-    lightBox.style = '';
-    img && img.remove();
-  }
-  imgs.forEach(item => {
-    item.onclick = function (e) {
-      let lightImg = document.createElement('img');
-      lightImg.src = this.src;
-      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
-      lightImg.style = `width: ${width}px;border-radius: 2px;`;
-      lightImg.onclick = function () {
-        lightBox.style = '';
-        this.remove();
-      }
-      lightBox.append(lightImg);
-    }
-  })
-</script>
-    <div class="reward-mask" style="display: none;">
-  <div class="reward-relative">
-    <span class="close" aria-hidden="true">x</span>
-    <div class="reward-body">
-      <h2>感谢您的支持，我会继续努力的!</h2>
-      <div class="reward-img-box">
-        <div style="position: relative; width: 140px; height: 140px;">
-          
-          
-            <img id="zfb" class="reward-img" src="\media\images\custom-zfbImg.png" alt="赞赏码">
-          
-          
-            <img id="wx" class="reward-img" src="\media\images\custom-wxImg.png" alt="赞赏码">
-          
-        </div>
-      </div>
-      <p class="reward-word">扫码打赏，你说多少就多少</p>
-      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
-    </div>
-    <div class="bottom">
-      
-      <div id="zfbBtn" class="pay-text">
-        支付宝
-      </div>
-      
-      
-      <div id="wxBtn" class="pay-text">
-        微信支付
-      </div>
-      
-    </div>
-  </div>
-</div>
-<style>
-  .reward-mask {
-    position: fixed;
-    z-index: 99999;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #00000054;
-  }
-
-  .reward-relative {
-    position: relative;
-    width: 480px;
-    text-align: center;
-    margin: 0 auto;
-    border-radius: 5px;
-    background-color: #fff;
-    top: 50%;
-    margin-top: -205px;
-  }
-
-  .reward-relative .close {
-    position: absolute;
-    right: 10px;
-    font-weight: normal;
-    font-size: 16px;
-    color: #929292;
-  }
-
-  .reward-body {
-    padding: 40px 20px 20px;
-  }
-
-  .bottom {
-    display: flex;
-  }
-
-  .reward-btn {
-    text-align: center;
-  }
-
-  .reward-btn-text {
-    display: inline-block;
-    cursor: pointer;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    border-radius: 50%;
-    background-color: #ff9734;
-    color: #FFF;
-    margin-top: 20px;
-  }
-
-  .pay-text {
-    margin-top: 10px;
-    padding: 10px;
-    flex: 1;
-    transition: all .2s linear;
-  }
-
-  .pay-text:hover {
-    background-color: #a5a5a536;
-  }
-
-  .reward-body h2 {
-    padding-top: 10px;
-    text-align: center;
-    color: #a3a3a3;
-    font-size: 16px;
-    font-weight: normal;
-    margin: 0 0 20px;
-  }
-
-  .reward-body h2:after,
-  .reward-body h2:before {
-    font-family: Arial, Helvetica, sans-serif;
-    background: 0 0;
-    width: 0;
-    height: 0;
-    font-style: normal;
-    color: #eee;
-    font-size: 80px;
-    position: absolute;
-    top: 20px;
-  }
-
-  .reward-body h2:before {
-    content: '\201c';
-    left: 50px;
-  }
-
-  .reward-body h2:after {
-    content: '\201d';
-    right: 80px;
-  }
-
-  .reward-img-box {
-    display: inline-block;
-    padding: 10px;
-    border: 6px solid #ea5f00;
-    margin: 0 auto;
-    border-radius: 3px;
-    position: relative;
-  }
-
-  .reward-img {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-  }
-
-  @media (max-width: 767px) {
-    .reward-relative {
-      height: 100%;
-      top: 0px;
-      margin-top: 0;
-      width: auto;
-    }
-
-    .reward-relative .bottom {
-      flex-direction: column;
-    }
-
-    .reward-relative .pay-text {
-      width: 80%;
-      margin: 5px auto;
-      border: 1px solid silver;
-      padding: 6px;
-      border-radius: 4px;
-    }
-
-    .reward-body h2:after {
-      right: 40px;
-    }
-
-    .reward-body h2:after,
-    .reward-body h2:before {
-      font-size: 60px;
-    }
-
-    .reward-body h2:before {
-      left: 20px;
-    }
-  }
-</style>
-<script>
-  !function () {
-    var mask = document.querySelector('.reward-mask');
-    let close = document.querySelector('.reward-relative .close');
-    let rewardBtn = document.querySelector('.reward-btn');
-
-    let zfb = document.querySelector('#zfb'),
-      wx = document.querySelector('#wx'),
-      zfbBtn = document.querySelector('#zfbBtn'),
-      wxBtn = document.querySelector('#wxBtn');
-
-    if (zfbBtn && wxBtn) {
-      zfbBtn.addEventListener('click', () => {
-        window.Velocity(zfb, 'transition.slideLeftIn', {
-          duration: 400
-        });
-        window.Velocity(wx, 'transition.slideRightOut', {
-          display: 'none',
-          duration: 400
-        });
-      });
-
-      wxBtn.addEventListener('click', () => {
-        window.Velocity(wx, 'transition.slideRightIn', {
-          duration: 400
-        });
-        window.Velocity(zfb, 'transition.slideLeftOut', {
-          display: 'none',
-          duration: 400
-        });
-      });
-    }
-
-    rewardBtn.addEventListener('click', (e) => {
-      window.Velocity(mask, 'transition.slideDownIn', {
-        duration: 400
-      })
-    });
-
-    close.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.Velocity(mask, 'transition.slideUpOut', {
-        duration: 400
-      })
-    })
-  }()
-</script>
-
   </div>
 </body>
 
@@ -5950,6 +5447,7 @@ cond(no)-&amp;gt;op
     speed: 200
   });
 </script>
+
 
 
 
