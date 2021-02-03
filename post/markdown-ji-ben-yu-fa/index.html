@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Markdown基本语法 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1612274432719">
+<link rel="shortcut icon" href="/favicon.ico?v=1612359714217">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">26</span>
+        <span class="site-item-stat-count">28</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1316,6 +1316,438 @@ cond(no)-&gt;op
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dui-lie-jie-gou-queue/"" data-c="
+          &lt;h1 id=&#34;1队列简介&#34;&gt;1.队列简介&lt;/h1&gt;
+&lt;p&gt;队列是是一种受限的线性表，特点为&lt;strong&gt;先进先出&lt;/strong&gt;（&lt;strong&gt;FIFO&lt;/strong&gt;：first in first out）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;受限之处在于它只允许在表的&lt;strong&gt;前端&lt;/strong&gt;（front）进行删除操作；&lt;/li&gt;
+&lt;li&gt;在表的&lt;strong&gt;后端&lt;/strong&gt;（rear）进行插入操作；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612359092282.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+相当于排队买票，先来的先买票，后来的后买票。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612359106480.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;队列的应用&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;打印队列：计算机打印多个文件的时候，需要排队打印；&lt;/li&gt;
+&lt;li&gt;线程队列：当开启多线程时，当新开启的线程所需的资源不足时就先放入线程队列，等待CPU处理；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;队列类的实现&lt;/strong&gt;：&lt;br&gt;
+队列的实现和栈一样，有两种方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于数组实现；&lt;/li&gt;
+&lt;li&gt;基于链表实现；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;队列的常见操作：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;enqueue（element）：向队列尾部添加一个（或多个）新的项；&lt;/li&gt;
+&lt;li&gt;dequeue（）：移除队列的第一（即排在队列最前面的）项，并返回被移除的元素；&lt;/li&gt;
+&lt;li&gt;front（）：返回队列中的第一个元素——最先被添加，也将是最先被移除的元素。队列不做任何变动（不移除元素，只返回元素信息与Stack类的peek方法非常类似）；&lt;/li&gt;
+&lt;li&gt;isEmpty（）：如果队列中不包含任何元素，返回true，否则返回false；&lt;/li&gt;
+&lt;li&gt;size（）：返回队列包含的元素个数，与数组的length属性类似；&lt;/li&gt;
+&lt;li&gt;toString（）：将队列中的内容，转成字符串形式；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;2封装队列类&#34;&gt;2.封装队列类&lt;/h1&gt;
+&lt;h2 id=&#34;21代码实现&#34;&gt;2.1.代码实现&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-JS&#34;&gt;    // 基于数组封装队列类
+    function Queue() {
+    // 属性
+      this.items = []
+      
+    // 方法
+    // 1.enqueue():将元素加入到队列中
+    Queue.prototype.enqueue = element =&amp;gt; {
+      this.items.push(element)
+    }
+
+    // 2.dequeue():从队列中删除前端元素
+    Queue.prototype.dequeue = () =&amp;gt; {
+      return this.items.shift()
+    }
+
+    // 3.front():查看前端的元素
+    Queue.prototype.front = () =&amp;gt; {
+      return this.items[0]
+    }
+
+    // 4.isEmpty:查看队列是否为空
+    Queue.prototype.isEmpty = () =&amp;gt; {
+      return this.items.length == 0;
+    }
+
+    // 5.size():查看队列中元素的个数
+    Queue.prototype.size = () =&amp;gt; {
+      return this.items.length
+    }
+
+    // 6.toString():将队列中元素以字符串形式输出
+    Queue.prototype.toString = () =&amp;gt; {
+      let resultString = &#39;&#39;
+        for (let i of this.items){
+          resultString += i + &#39; &#39;
+        }
+        return resultString
+      }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-JS&#34;&gt;    // 创建队列
+    let queue = new  Queue()
+
+    // 将元素加入到队列中
+    queue.enqueue(&#39;a&#39;)
+    queue.enqueue(&#39;b&#39;)
+    queue.enqueue(&#39;c&#39;)
+    queue.enqueue(&#39;d&#39;)
+    console.log(queue);												
+
+    // 从队列中删除元素
+    queue.dequeue()
+    console.log(queue);											
+    queue.dequeue()
+    console.log(queue);											
+
+    //front
+    console.log(queue.front());								 		
+    
+    // 验证其他方法
+    console.log(queue.isEmpty());								 	
+    console.log(queue.size());								 	
+    console.log(queue.toString());								 	
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612359291030.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&#34;22队列的应用&#34;&gt;2.2.队列的应用&lt;/h2&gt;
+&lt;p&gt;使用队列实现小游戏：击鼓传花，传入一组数据和设定的数字num，循环遍历数组内元素，遍历到的元素为指定数字num时将该元素删除，直至数组剩下一个元素。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-JS&#34;&gt;    // 队列应用：面试题：击鼓传花
+    let passGame = (nameList, num) =&amp;gt; {
+      //1.创建队列结构
+      let queue = new Queue()
+
+      //2.将所有人依次加入队列
+      // 这是ES6的for循环写法，i相当于nameList[i]
+      for(let i of nameList){
+        queue.enqueue(i)
+      }
+      
+
+      // 3.开始数数
+     while(queue.size() &amp;gt; 1){//队列中只剩1个人就停止数数
+      // 不是num的时候，重新加入队列末尾
+      // 是num的时候，将其从队列中删除
+      // 3.1.num数字之前的人重新放入队列的末尾(把队列前面删除的加到队列最后)
+      for(let i = 0; i&amp;lt; num-1; i++ ){
+        queue.enqueue(queue.dequeue())
+      }
+      // 3.2.num对应这个人，直接从队列中删除
+      /*
+        思路是这样的，由于队列没有像数组一样的下标值不能直接取到某一元素，所以采用，把num前面的num-1个元素先删除后添加到队列末尾，这样第num个元素就排到了队列的最前面，可以直接使用dequeue方法进行删除
+      */
+      queue.dequeue()
+     }
+
+      //4.获取剩下的那个人
+      console.log(queue.size());									
+      let endName = queue.front()
+      console.log(&#39;最终剩下的人：&#39; + endName);						   	
+      
+      return nameList.indexOf(endName);
+    }
+
+    //5.测试击鼓传花
+    let names = [&#39;lily&#39;, &#39;lucy&#39;, &#39;Tom&#39;, &#39;Lilei&#39;, &#39;Tony&#39;]
+    console.log(passGame(names, 3));		
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612359343343.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3优先队列&#34;&gt;3.优先队列&lt;/h1&gt;
+&lt;p&gt;优先级队列主要考虑的问题为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个元素不再只是一个数据，还包含数据的优先级；&lt;/li&gt;
+&lt;li&gt;在添加数据过程中，根据优先级放入到正确位置；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;31优先级队列的实现&#34;&gt;3.1.优先级队列的实现&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-JS&#34;&gt;    // 封装优先级队列
+    function PriorityQueue() {
+
+      //内部类：在类里面再封装一个类;表示带优先级的数据
+      function QueueElement(element, priority) {
+        this.element = element;
+        this.priority = priority;
+      } 
+
+      // 封装属性
+      this.items = []
+
+      // 1.实现按照优先级插入方法
+      PriorityQueue.prototype.enqueue = (element, priority) =&amp;gt; {
+        // 1.1.创建QueueElement对象
+        let queueElement = new QueueElement(element, priority)
+
+        // 1.2.判断队列是否为空
+        if(this.items.length == 0){
+          this.items.push(queueElement)
+        }else{
+          // 定义一个变量记录是否成功添加了新元素
+          let added = false
+          for(let i of this.items){
+            // 让新插入的元素与原有元素进行优先级比较(priority越小，优先级越大)
+            if(queueElement.priority &amp;lt; i.priority){
+              this.items.splice(i, 0, queueElement)
+              added = true
+              // 新元素已经找到插入位置了可以使用break停止循环
+              break
+            }
+          }
+          // 新元素没有成功插入，就把它放在队列的最前面
+          if(!added){
+            this.items.push(queueElement)
+          }
+        }
+      }
+
+      // 2.dequeue():从队列中删除前端元素
+      PriorityQueue.prototype.dequeue = () =&amp;gt; {
+        return this.items.shift()
+      }
+
+      // 3.front():查看前端的元素
+      PriorityQueue.prototype.front = () =&amp;gt; {
+        return this.items[0]
+      }
+
+      // 4.isEmpty():查看队列是否为空
+      PriorityQueue.prototype.isEmpty = () =&amp;gt; {
+        return this.items.length == 0;
+      }
+
+      // 5.size():查看队列中元素的个数
+      PriorityQueue.prototype.size = () =&amp;gt; {
+        return this.items.length
+      }
+
+      // 6.toString():以字符串形式输出队列中的元素
+      PriorityQueue.prototype.toString = () =&amp;gt; {
+        let resultString = &#39;&#39;
+          for (let i of this.items){
+            resultString += i.element + &#39;-&#39; + i.priority + &#39; &#39;
+          }
+          return resultString
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-JS&#34;&gt;  // 测试代码
+    let pq = new PriorityQueue();
+    pq.enqueue(&#39;Tom&#39;,111);
+    pq.enqueue(&#39;Hellen&#39;,200);
+    pq.enqueue(&#39;Mary&#39;,30);
+    pq.enqueue(&#39;Gogo&#39;,27);
+    // 打印修改过后的优先队列对象
+    console.log(pq);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612359507202.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;32注意点&#34;&gt;3.2.注意点&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;关于数组方法splice用法：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;splice（1，0，&#39;Tom&#39;）：表示在索引为1的元素前面插入元素’Tom‘（也可以理解为从索引为1的元素开始删除，删除0个元素，再在索引为1的元素前面添加元素&#39;Tom&#39;）；&lt;/li&gt;
+&lt;li&gt;splice（1，1，&#39;Tom&#39;）：表示从索引为1的元素开始删除（包括索引为1的元素），共删除1个元素，并添加元素&#39;Tom&#39;。即把索引为1的元素替换为元素&#39;Tom&#39;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;数组的push方法在数组、栈和队列中的形式：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数组&lt;/strong&gt;：在数组[0，1，2]中，pop(3)，结果为[0，1，2，3]；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;栈&lt;/strong&gt;：执行pop(0)，pop(1)，pop(2)，pop(3)，从栈底到栈顶的元素分别为：0，1，2，3；如果看成数组，可写为[0，1，2，3]，但是索引为3的元素3其实是栈顶元素；所以说栈的push方法是向栈顶添加元素（但在数组的视角下为向数组尾部添加元素）；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;队列&lt;/strong&gt;：enqueue方法可以由数组的push方法实现，与数组相同，相当于在数组尾部添加元素。&lt;br&gt;
+可以这样想：栈结构是头朝下（索引值由下往上增大）的数组结构。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612359579513.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;amp;seid=3912456004602554239&#34;&gt;参考资料:JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
+">JavaScript实现队列结构（Queue）</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shu-ju-jie-gou-yu-suan-fa-shi-xian-zhan-jie-gou-stack/"" data-c="
+          &lt;h1 id=&#34;1前言&#34;&gt;1.前言&lt;/h1&gt;
+&lt;h2 id=&#34;11-什么是数据结构&#34;&gt;1.1 什么是数据结构？&lt;/h2&gt;
+&lt;p&gt;数据结构就是在计算机中，存储和组织数据的方式。&lt;br&gt;
+例如：图书管理，怎样摆放图书才能既能放很多书，也方便取？&lt;/p&gt;
+&lt;p&gt;主要需要考虑两个问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;操作一：新书怎么插入？&lt;/li&gt;
+&lt;li&gt;操作二：怎么找到某本指定的书？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;常见的数据结构：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数组（Aarray）&lt;/li&gt;
+&lt;li&gt;栈（Stack）&lt;/li&gt;
+&lt;li&gt;链表（Linked List）&lt;/li&gt;
+&lt;li&gt;图（Graph）&lt;/li&gt;
+&lt;li&gt;散列表（Hash）&lt;/li&gt;
+&lt;li&gt;队列（Queue）&lt;/li&gt;
+&lt;li&gt;树（Tree）&lt;/li&gt;
+&lt;li&gt;堆（Heap）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：数据结构与算法与语言无关，常见的编程语言都有&lt;strong&gt;直接或间接&lt;/strong&gt;的使用上述常见的数据结构。&lt;/p&gt;
+&lt;h2 id=&#34;12什么是算法&#34;&gt;1.2.什么是算法？&lt;/h2&gt;
+&lt;p&gt;算法（Algorithm）的定义&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个有限指令集，每条指令的描述不依赖于语言；&lt;/li&gt;
+&lt;li&gt;接收一些输入（有些情况下不需要输入）；&lt;/li&gt;
+&lt;li&gt;产生输入；&lt;/li&gt;
+&lt;li&gt;一定在有限步骤之后终止；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;算法通俗理解：解决问题的办法/步骤逻辑。数据结构的实现，离不开算法。&lt;/p&gt;
+&lt;h1 id=&#34;2栈结构stack&#34;&gt;2.栈结构（Stack）&lt;/h1&gt;
+&lt;h2 id=&#34;21简介&#34;&gt;2.1简介&lt;/h2&gt;
+&lt;p&gt;数组是一个线性结构，并且可以在数组的&lt;strong&gt;任意位置&lt;/strong&gt;插入和删除元素。而&lt;strong&gt;栈和队列&lt;/strong&gt;就是比较常见的&lt;strong&gt;受限的线性结构&lt;/strong&gt;。如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612336192859.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+栈的特点为&lt;strong&gt;先进后出，后进先出&lt;/strong&gt;（LIFO：last in first out）。&lt;/p&gt;
+&lt;p&gt;程序中的栈结构：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;函数调用栈&lt;/strong&gt;：A（B（C（D（））））：即A函数中调用B，B调用C，C调用D；在A执行的过程中会将A压入栈，随后B执行时B也被压入栈，函数C和D执行时也会被压入栈。所以当前栈的顺序为：A-&amp;gt;B-&amp;gt;C-&amp;gt;D（栈顶）；函数D执行完之后，会弹出栈被释放，弹出栈的顺序为D-&amp;gt;C-&amp;gt;B-&amp;gt;A;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;递归&lt;/strong&gt;：为什么没有停止条件的递归会造成栈溢出？比如函数A为递归函数，不断地调用自己（因为函数还没有执行完，不会把函数弹出栈），不停地把相同的函数A压入栈，最后造成&lt;strong&gt;栈溢出&lt;/strong&gt;（Stack Overfloat）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3.练习：题目：有6个元素6，5，4，3，2，1按顺序进栈，问下列哪一个不是合法的出栈顺序？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A：5	4	3	6	1	2	（√）&lt;/li&gt;
+&lt;li&gt;B：4 5 3 2 1 6 （√）&lt;/li&gt;
+&lt;li&gt;C：3 4 6 5 2 1 （×）&lt;/li&gt;
+&lt;li&gt;D：2 3 4 1 5 6 （√）&lt;br&gt;
+题目所说的按顺序进栈指的不是一次性全部进栈，而是有进有出，进栈顺序为6 -&amp;gt; 5 -&amp;gt; 4 -&amp;gt; 3 -&amp;gt; 2 -&amp;gt; 1。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;解析：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A答案：65进栈，5出栈，4进栈出栈，3进栈出栈，6出栈，21进栈，1出栈，2出栈（整体入栈顺序符合654321）;&lt;/li&gt;
+&lt;li&gt;B答案：654进栈，4出栈，5出栈，3进栈出栈，2进栈出栈，1进栈出栈，6出栈（整体的入栈顺序符合654321）;&lt;/li&gt;
+&lt;li&gt;C答案：6543进栈，3出栈，4出栈，之后应该5出栈而不是6，所以错误；&lt;/li&gt;
+&lt;li&gt;D答案：65432进栈，2出栈，3出栈，4出栈，1进栈出栈，5出栈，6出栈。符合入栈顺序；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;栈常见的操作：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;push（element）：添加一个新元素到栈顶位置；&lt;/li&gt;
+&lt;li&gt;pop（）：移除栈顶的元素，同时返回被移除的元素；&lt;/li&gt;
+&lt;li&gt;peek（）：返回栈顶的元素，不对栈做任何修改（该方法不会移除栈顶的元素，仅仅返回它）；&lt;/li&gt;
+&lt;li&gt;isEmpty（）：如果栈里没有任何元素就返回true，否则返回false；&lt;/li&gt;
+&lt;li&gt;size（）：返回栈里的元素个数。这个方法和数组的length属性类似；&lt;/li&gt;
+&lt;li&gt;toString（）：将栈结构的内容以字符串的形式返回。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;22封装栈类&#34;&gt;2.2封装栈类&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    // 封装栈类
+    function Stack(){
+      // 栈中的属性
+      this.items =[]
+
+      // 栈的相关操作
+      // 1.push():将元素压入栈
+      //方式一(不推荐)：给对象添加方法，其他对象不能复用
+      // this.push = () =&amp;gt; {
+      // }
+      
+      //方式二(推荐)：给Stack类添加方法，能够多对象复用
+      Stack.prototype.push = function(element) {
+      // 利用数组item的push方法实现Stack类的pop方法
+        this.items.push(element)
+      }
+
+      // 2.pop():从栈中取出元素
+      Stack.prototype.pop = () =&amp;gt; {
+      // 利用数组item的pop方法实现Stack类的pop方法
+        return this.items.pop()
+      }
+
+      // 3.peek():查看一下栈顶元素
+      Stack.prototype.peek = () =&amp;gt; {
+        return this.items[this.items.length - 1]
+      }
+
+      // 4.isEmpty():判断栈是否为空
+      Stack.prototype.isEmpty = () =&amp;gt; {
+      // 两个小时的教训啊不是this.length(不是Stack对象的length，Stack类没有length属性啊)，而是			Stack类中定义的数组items才有length属性呀
+        return this.items.length == 0 
+      }
+
+      // 5.size():获取栈中元素的个数
+      Stack.prototype.size = () =&amp;gt; {
+        return this.items.length
+      }
+
+      // 6.toString():以字符串形式输出栈内数据
+      Stack.prototype.toString = () =&amp;gt; {
+        //希望输出的形式：20 10 12 8 7
+        let resultString = &#39;&#39;
+        for (let i of this.items){
+          resultString += i + &#39; &#39;
+        }
+        return resultString
+      }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    // 栈的使用
+    let  s = new Stack()
+    s.push(20)
+    s.push(10)
+    s.push(100)
+    s.push(77)
+    console.log(s)													//65
+
+    console.log(s.pop());											//68
+    console.log(s.pop());											//69
+    
+    console.log(s.peek());											//71
+	console.log(s.isEmpty());										//72
+   
+    console.log(s.size());											//74
+    console.log(s.toString());			
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612336478157.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;栈结构的简单应用：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;利用栈结构的特点封装十进至转换为二进至的函数：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;     //简单应用：
+    //封装函数：将十进制转成二进制(十转二的运算最后倒叙取余的特点符合栈&#39;先进后出&#39;)
+    let dec2bin = decNumber =&amp;gt; {
+      //1.定义一个栈对象，保存余数
+      var  stack = new Stack()
+
+      // 2.循环操作
+      while(decNumber &amp;gt; 0){
+        // 2.1.获取余数并放入栈中
+        stack.push(decNumber % 2)
+        // 2.2.获取整除后的结果作为下一次运算的数字(floor:向下取整)
+        decNumber = Math.floor(decNumber / 2)
+      }
+
+      // 3.从栈中取出0和1
+      let  binaryString = &#39;&#39;;
+      let a = stack.items.length
+     while(stack.items.length != 0){
+        binaryString += stack.pop();
+      }
+      return binaryString;
+    }
+    
+    //测试代码
+    console.log(dec2bin(10));										
+    console.log(dec2bin(100));										
+    console.log(dec2bin(1000));				
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612336555837.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;amp;seid=3912456004602554239&#34;&gt;参考资料：JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
+">JavaScript数据结构与算法—实现栈结构（Stack）</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part6-ying-yong-ceng-application-layer/"" data-c="
