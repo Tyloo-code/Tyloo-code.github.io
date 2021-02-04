@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>计算机网络笔记Part1 概述 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1612425506771">
+<link rel="shortcut icon" href="/favicon.ico?v=1612445210894">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">28</span>
+        <span class="site-item-stat-count">29</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1251,6 +1251,664 @@ RTT=传播时延x2+处理时间(有时可能直接忽略)</p>
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dan-xiang-lian-biao/"" data-c="
+          &lt;h1 id=&#34;1单向链表简介&#34;&gt;1.单向链表简介&lt;/h1&gt;
+&lt;p&gt;链表和数组一样，可以用于&lt;strong&gt;存储一系列的元素&lt;/strong&gt;，但是链表和数组的&lt;strong&gt;实现机制完全不同&lt;/strong&gt;。链表的每个元素由一个存储&lt;strong&gt;元素本身的节点&lt;/strong&gt;和一个&lt;strong&gt;指向下一个元素的引用&lt;/strong&gt;（有的语言称为指针或连接）组成。类似于火车头，一节车厢载着乘客（数据），通过节点连接另一节车厢。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612443894132.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612443897959.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612443901003.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;head属性指向链表的第一个节点；&lt;/li&gt;
+&lt;li&gt;链表中的最后一个节点指向null；&lt;/li&gt;
+&lt;li&gt;当链表中一个节点也没有的时候，head直接指向null；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;数组存在的缺点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数组的创建通常需要申请一段&lt;strong&gt;连续的内存空间&lt;/strong&gt;（一整块内存），并且大小是固定的。所以当原数组&lt;strong&gt;不能满足容量需求&lt;/strong&gt;时，需要&lt;strong&gt;扩容&lt;/strong&gt;（一般情况下是申请一个更大的数组，比如2倍，然后将原数组中的元素复制过去）。&lt;/li&gt;
+&lt;li&gt;在数组的开头或中间位置插入数据的成本很高，需要进行大量元素的位移。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;链表的优势：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;链表中的元素在内存中&lt;strong&gt;不必是连续的空间&lt;/strong&gt;，可以充分利用计算机的内存，实现灵活的&lt;strong&gt;内存动态管理&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;链表不必在创建时就&lt;strong&gt;确定大小&lt;/strong&gt;，并且大小可以&lt;strong&gt;无限地延伸&lt;/strong&gt;下去。&lt;/li&gt;
+&lt;li&gt;链表在&lt;strong&gt;插入和删除&lt;/strong&gt;数据时，&lt;strong&gt;时间复杂度&lt;/strong&gt;可以达到O(1)，相对数组效率高很多。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;链表的缺点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;链表访问任何一个位置的元素时，都需要&lt;strong&gt;从头开始访问&lt;/strong&gt;（无法跳过第一个元素访问任何一个元素）。&lt;/li&gt;
+&lt;li&gt;无法通过下标值直接访问元素，需要从头开始一个个访问，直到找到对应的元素。&lt;/li&gt;
+&lt;li&gt;虽然可以轻松地到达&lt;strong&gt;下一个节点&lt;/strong&gt;，但是回到&lt;strong&gt;前一个节点&lt;/strong&gt;是很难的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;链表中的常见操作：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;append（element）：向链表尾部添加一个新的项；&lt;/li&gt;
+&lt;li&gt;insert（position，element）：向链表的特定位置插入一个新的项；&lt;/li&gt;
+&lt;li&gt;get（position）：获取对应位置的元素；&lt;/li&gt;
+&lt;li&gt;indexOf（element）：返回元素在链表中的索引。如果链表中没有该元素就返回-1；&lt;/li&gt;
+&lt;li&gt;update（position，element）：修改某个位置的元素；&lt;/li&gt;
+&lt;li&gt;removeAt（position）：从链表的特定位置移除一项；&lt;/li&gt;
+&lt;li&gt;remove（element）：从链表中移除一项；&lt;/li&gt;
+&lt;li&gt;isEmpty（）：如果链表中不包含任何元素，返回trun，如果链表长度大于0则返回false；&lt;/li&gt;
+&lt;li&gt;size（）：返回链表包含的元素个数，与数组的length属性类似；&lt;/li&gt;
+&lt;li&gt;toString（）：由于链表项使用了Node类，就需要重写继承自JavaScript对象默认的toString方法，让其只输出元素的值；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;首先需要弄清楚：下文中的position指的是两个节点之间，并且与index的关系如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444098945.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;position的值一般表示position所指位置的下一个节点。当position的值与index的值相等时，比如position = index = 1，那么它们都表示Node2。&lt;/p&gt;
+&lt;h1 id=&#34;2封装单向链表类&#34;&gt;2.封装单向链表类&lt;/h1&gt;
+&lt;h2 id=&#34;21创建单向链表类&#34;&gt;2.1.创建单向链表类&lt;/h2&gt;
+&lt;p&gt;先创建单向链表类Linklist，并添加基本属性，再实现单向链表的常用方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    // 封装单向链表类
+    function LinkList(){
+      // 封装一个内部类：节点类
+      function Node(data){
+        this.data = data;
+        this.next = null;
+      }
+
+      // 属性
+      // 属性head指向链表的第一个节点
+      this.head = null;
+      this.length = 0;
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;22appendelement&#34;&gt;2.2.append(element)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;     // 一.实现append方法
+      LinkList.prototype.append = data =&amp;gt; {
+        //1.创建新节点
+        let newNode = new Node(data)
+
+        //2.添加新节点
+        //情况1：只有一个节点时候
+        if(this.length == 0){
+          this.head = newNode
+        //情况2：节点数大于1，在链表的最后添加新节点  
+        }else {              
+          //让变量current指向第一个节点
+          let current = this.head
+          //当current.next(下一个节点不为空)不为空时，一直循环，直到current指向最后一个节点
+          while (current.next){
+            current = current.next
+          }
+          // 最后节点的next指向新的节点
+          current.next = newNode
+        }
+        //3.添加完新结点之后length+1
+        this.length += 1
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先让current指向第一个节点：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444270200.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;通过while循环使current指向最后一个节点，最后通过current.next = newNode，让最后一个节点指向新节点newNode：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444281470.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建LinkList
+    let list = new LinkList()
+    
+    //2.测试append方法
+    list.append(&#39;aaa&#39;)
+    list.append(&#39;bbb&#39;)
+    list.append(&#39;ccc&#39;)
+    console.log(list);  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444320368.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;23tostring&#34;&gt;2.3.toString()&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;     // 实现toString方法
+      LinkList.prototype.toString = () =&amp;gt; {
+        // 1.定义变量
+        let current = this.head
+        let listString = &amp;quot;&amp;quot;
+
+        // 2.循环获取一个个的节点
+        while(current){ 
+          listString += current.data + &amp;quot; &amp;quot;
+          current = current.next//千万不要忘了拼接完一个节点数据之后，让current指向下一个节点
+        }
+        return  listString
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建LinkList
+    let list = new LinkList()
+    
+    //2.插入数据
+    list.append(&#39;aaa&#39;)
+    list.append(&#39;bbb&#39;)
+    list.append(&#39;ccc&#39;)
+    
+    //3.测试toString方法
+    console.log(list.toString());
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444411617.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;24insertpositionelement&#34;&gt;2.4.insert(position,element)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    // 实现insert方法
+      LinkList.prototype.insert = (position, data) =&amp;gt; {
+      //理解positon的含义：position=0表示新界点插入后要成为第1个节点，position=2表示新界点插入后要成为第3个节点
+        //1.对position进行越界判断:要求传入的position不能是负数且不能超过LinkList的length
+        if(position &amp;lt; 0 || position &amp;gt; this.length){
+          return false
+        }
+        //2.根据data创建newNode
+        let newNode = new Node(data)
+
+        //3.插入新节点
+        //情况1：插入位置position=0
+        if(position == 0){
+          // 让新节点指向第一个节点
+          newNode.next = this.head
+          // 让head指向新节点
+          this.head = newNode
+        //情况2：插入位置position&amp;gt;0(该情况包含position=length)
+        } else{
+          let index = 0
+          let previous = null
+          let current = this.head
+          //步骤1：通过while循环使变量current指向position位置的后一个节点(注意while循环的写法)
+          while(index++ &amp;lt; position){
+          //步骤2：在current指向下一个节点之前，让previous指向current当前指向的节点
+            previous = current
+            current = current.next
+          }
+          // 步骤3：通过变量current(此时current已经指向position位置的后一个节点)，使newNode指向position位置的后一个节点
+          newNode.next = current
+          //步骤4：通过变量previous，使position位置的前一个节点指向newNode
+          previous.next = newNode
+          /*
+            启示：
+            1.我们无法直接操作链表中的节点，但是可以通过变量指向这些节点，以此间接地操作节点(替身使者)；
+            比如current指向节点3，想要节点3指向节点4只需要：current.next = 4即可。
+            2.两个节点间是双向的，想要节点2的前一个节点为节点1，可以通过：1.next=2，来实现；
+          */
+        }
+        //4.新节点插入后要length+1
+        this.length += 1;
+
+        return true
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;br&gt;
+inset方法实现的过程：根据插入节点位置的不同可分为多种情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;情况1：position = 0：&lt;br&gt;
+通过： newNode.next = this.head，建立连接1；&lt;br&gt;
+通过： this.head = newNode，建立连接2；（不能先建立连接2，否则this.head不再指向Node1）&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444479910.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;情况2：position &amp;gt; 0：&lt;br&gt;
+首先定义两个变量previous和curent分别指向需要插入位置pos = X的前一个节点和后一个节点；&lt;br&gt;
+然后，通过：newNode.next = current，改变指向3；&lt;br&gt;
+最后，通过：previous.next = newNode，改变指向4；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444504059.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;情况2的特殊情形：position = length：&lt;br&gt;
+情况2也包含了pos = length的情况，该情况下current和newNode.next都指向null；建立连接3和连接4的方式与情况2相同。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444521406.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;     //测试代码
+    //1.创建LinkList
+    let list = new LinkList()
+    
+    //2.插入数据
+    list.append(&#39;aaa&#39;)
+    list.append(&#39;bbb&#39;)
+    list.append(&#39;ccc&#39;)
+    
+    //3.测试insert方法
+    list.insert(0, &#39;在链表最前面插入节点&#39;);
+    list.insert(2, &#39;在链表中第二个节点后插入节点&#39;);
+    list.insert(5, &#39;在链表最后插入节点&#39;);
+    alert(list);
+    console.log(list);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444552747.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444561625.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;25getposition&#34;&gt;2.5.get(position)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;      //实现get方法
+      LinkList.prototype.get = (position) =&amp;gt; {
+        //1.越界判断
+        // 当position = length时，取到的是null所以0 =&amp;lt; position &amp;lt; length
+        if(position &amp;lt; 0 || position &amp;gt;= this.length){
+          return null
+        }
+        //2.获取指定的positon位置的后一个节点的data
+        //同样使用一个变量间接操作节点
+        let current = this.head
+        let index = 0
+        while(index++ &amp;lt; position){
+          current = current.next
+        }
+        return current.data
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;br&gt;
+get方法的实现过程：以获取position = 2为例，如下图所示：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先使current指向第一个节点，此时index=0；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444624072.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;通过while循环使current循环指向下一个节点，注意循环终止的条件index++ &amp;lt; position，即当index=position时停止循环，此时循环了1次，current指向第二个节点(Node2)，最后通过current.data返回Node2节点的数据；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444638164.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建LinkList
+    let list = new LinkList()
+    
+    //2.插入数据
+    list.append(&#39;aaa&#39;)
+    list.append(&#39;bbb&#39;)
+    list.append(&#39;ccc&#39;)	
+
+	//3.测试get方法
+    console.log(list.get(0));
+    console.log(list.get(1));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444676610.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;26indexofelement&#34;&gt;2.6.indexOf(element)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;//实现indexOf方法
+      LinkList.prototype.indexOf = data =&amp;gt; {
+        //1.定义变量
+        let current = this.head
+        let index = 0
+
+        //2.开始查找:只要current不指向null就一直循环
+        while(current){
+          if(current.data == data){
+            return index
+          }
+          current = current.next
+          index += 1
+        } 
+
+        //3.遍历完链表没有找到，返回-1
+        return -1
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;br&gt;
+indexOf方法的实现过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用变量current记录当前指向的节点，使用变量index记录当前节点的索引值（注意index = node数-1）：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444722712.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建LinkList
+    let list = new LinkList()
+    
+    //2.插入数据
+    list.append(&#39;aaa&#39;)
+    list.append(&#39;bbb&#39;)
+    list.append(&#39;ccc&#39;)	
+    
+    //3.测试indexOf方法
+    console.log(list.indexOf(&#39;aaa&#39;));
+    console.log(list.indexOf(&#39;ccc&#39;));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444758126.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;27updatepositionelement&#34;&gt;2.7.update(position,element)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;     //实现update方法
+      LinkList.prototype.update = (position, newData) =&amp;gt; {
+        //1.越界判断
+        //因为被修改的节点不能为null，所以position不能等于length
+        if(position &amp;lt; 0 || position &amp;gt;= this.length){
+          return false
+        }
+        //2.查找正确的节点
+        let current = this.head
+        let index = 0
+        while(index++ &amp;lt; position){
+          current = current.next
+        }
+        //3.将position位置的后一个节点的data修改成newData
+        current.data = newData
+        //返回true表示修改成功
+        return true
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建LinkList
+    let list = new LinkList()
+    
+    //2.插入数据
+    list.append(&#39;aaa&#39;)
+    list.append(&#39;bbb&#39;)
+    list.append(&#39;ccc&#39;)	
+    
+    //3.测试update方法
+    list.update(0, &#39;修改第一个节点&#39;)
+    list.update(1, &#39;修改第二个节点&#39;)
+    console.log(list);
+    console.log(list.update(3, &#39;能修改么&#39;));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444815485.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;28removeatposition&#34;&gt;2.8.removeAt(position)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;      //实现removeAt方法
+      LinkList.prototype.removeAt = position =&amp;gt; {
+        //1.越界判断
+        if (position &amp;lt; 0 || position &amp;gt;= this.length) {//position不能为length
+          return null
+        }
+        //2.删除元素
+        //情况1：position = 0时(删除第一个节点)
+        let current = this.head
+        if (position ==0 ) {
+        //情况2：position &amp;gt; 0时
+          this.head = this.head.next
+        }else{
+          let index = 0
+          let previous = null
+          while (index++ &amp;lt; position) {
+            previous = current
+            current = current.next
+          }
+          //循环结束后，current指向position后一个节点，previous指向current前一个节点
+          //再使前一个节点的next指向current的next即可
+          previous.next = current.next
+        }
+        //3，length-1
+        this.length -= 1
+
+        //返回被删除节点的data，为此current定义在最上面
+        return current.data
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;br&gt;
+removeAt方法的实现过程：删除节点时存在多种情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;情况1：position = 0，即移除第一个节点（Node1）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过：this.head = this.head.next，改变指向1即可；&lt;br&gt;
+虽然Node1的next仍指向Node2，但是没有引用指向Node1，则Node1会被垃圾回收器自动回收，所以不用处理Node1指向Node2的引用next。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612444914446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;情况2：positon &amp;gt; 0，比如pos = 2即移除第三个节点（Node3）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：position = length时position后一个节点为null不能删除，因此position != length；&lt;br&gt;
+首先，定义两个变量previous和curent分别指向需要删除位置pos = x的前一个节点和后一个节点；&lt;br&gt;
+然后，通过：previous.next = current.next，改变指向1即可；&lt;br&gt;
+随后，没有引用指向Node3，Node3就会被自动回收，至此成功删除Node3 。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612445034409.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建LinkList
+    let list = new LinkList()
+    
+    //2.插入数据
+    list.append(&#39;aaa&#39;)
+    list.append(&#39;bbb&#39;)
+    list.append(&#39;ccc&#39;)
+  
+  //3.测试removeAt方法
+    console.log(list.removeAt(0));
+    console.log(list.removeAt(0));
+    console.log(list);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612445073288.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;29其他方法&#34;&gt;2.9.其他方法&lt;/h2&gt;
+&lt;p&gt;其他方法包括：&lt;strong&gt;remove(element)、isEmpty()、size()&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;/*-------------其他方法的实现--------------*/
+      //一.实现remove方法
+      LinkList.prototype.remove = (data) =&amp;gt; {
+        //1.获取data在列表中的位置
+        let position = this.indexOf(data)
+        //2.根据位置信息，删除结点
+        return this.removeAt(position)
+      }
+
+      //二.实现isEmpty方法
+      LinkList.prototype.isEmpty = () =&amp;gt; {
+        return this.length == 0
+      }
+
+      //三.实现size方法
+      LinkList.prototype.size = () =&amp;gt; {
+        return this.length
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;  //测试代码
+    //1.创建LinkList
+    let list = new LinkList()
+    
+    //2.插入数据
+    list.append(&#39;aaa&#39;)
+    list.append(&#39;bbb&#39;)
+    list.append(&#39;ccc&#39;)
+
+/*---------------其他方法测试----------------*/
+  	//remove方法
+  	console.log(list.remove(&#39;aaa&#39;));
+  	console.log(list);
+  	//isEmpty方法
+  	console.log(list.isEmpty());
+  	//size方法
+  	console.log(list.size());
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612445152104.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;210完整实现&#34;&gt;2.10.完整实现&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt; // 封装链表类
+    function LinkList(){
+      // 封装一个内部类：节点类
+      function Node(data){
+        this.data = data;
+        this.next = null;
+      }
+
+      // 属性
+      // 属性head指向链表的第一个节点
+      this.head = null;
+      this.length = 0;
+
+      // 一.实现append方法
+      LinkList.prototype.append = data =&amp;gt; {
+        //1.创建新节点
+        let newNode = new Node(data)
+
+        //2.添加新节点
+        //情况1：只有一个节点时候
+        if(this.length == 0){
+          this.head = newNode
+        //情况2：节点数大于1，在链表的最后添加新节点  
+        }else {              
+          //让变量current指向第一个节点
+          let current = this.head
+          //当current.next(下一个节点不为空)不为空时，一直循环，直到current指向最后一个节点
+          while (current.next){
+            current = current.next
+          }
+          // 最后节点的next指向新的节点
+          current.next = newNode
+        }
+        //3.添加完新结点之后length+1
+        this.length += 1
+      }
+
+      // 二.实现toString方法
+      LinkList.prototype.toString = () =&amp;gt; {
+        // 1.定义变量
+        let current = this.head
+        let listString = &amp;quot;&amp;quot;
+
+        // 2.循环获取一个个的节点
+        while(current){ 
+          listString += current.data + &amp;quot; &amp;quot;
+          current = current.next//千万不要忘了拼接完一个节点数据之后，让current指向下一个节点
+        }
+        return  listString
+      }
+
+      // 三.实现insert方法
+      LinkList.prototype.insert = (position, data) =&amp;gt; {
+      //理解positon的含义：position=0表示新界点插入后要成为第1个节点，position=2表示新界点插入后要成为第3个节点
+        //1.对position进行越界判断:要求传入的position不能是负数且不能超过LinkList的length
+        if(position &amp;lt; 0 || position &amp;gt; this.length){
+          return false
+        }
+        //2.根据data创建newNode
+        let newNode = new Node(data)
+
+        //3.插入新节点
+        //情况1：插入位置position=0
+        if(position == 0){
+          // 让新节点指向第一个节点
+          newNode.next = this.head
+          // 让head指向新节点
+          this.head = newNode
+        //情况2：插入位置position&amp;gt;0(该情况包含position=length)
+        } else{
+          let index = 0
+          let previous = null
+          let current = this.head
+          //步骤1：通过while循环使变量current指向position位置的后一个节点(注意while循环的写法)
+          while(index++ &amp;lt; position){
+          //步骤2：在current指向下一个节点之前，让previous指向current当前指向的节点
+            previous = current
+            current = current.next
+          }
+          // 步骤3：通过变量current(此时current已经指向position位置的后一个节点)，使newNode指向position位置的后一个节点
+          newNode.next = current
+          //步骤4：通过变量previous，使position位置的前一个节点指向newNode
+          previous.next = newNode
+          
+		//我们无法直接操作链表中的节点，但是可以通过变量指向这些节点，以此间接地操作节点；
+        }
+        //4.新节点插入后要length+1
+        this.length += 1;
+
+        return true
+      }
+
+      //四.实现get方法
+      LinkList.prototype.get = (position) =&amp;gt; {
+        //1.越界判断
+        // 当position = length时，取到的是null所以0 =&amp;lt; position &amp;lt; length
+        if(position &amp;lt; 0 || position &amp;gt;= this.length){
+          return null
+        }
+        //2.获取指定的positon位置的后一个节点的data
+        //同样使用一个变量间接操作节点
+        let current = this.head
+        let index = 0
+        while(index++ &amp;lt; position){
+          current = current.next
+        }
+        return current.data
+      }
+
+      //五.实现indexOf方法
+      LinkList.prototype.indexOf = data =&amp;gt; {
+        //1.定义变量
+        let current = this.head
+        let index = 0
+
+        //2.开始查找:只要current不指向null就一直循环
+        while(current){
+          if(current.data == data){
+            return index
+          }
+          current = current.next
+          index += 1
+        } 
+
+        //3.遍历完链表没有找到，返回-1
+        return -1
+      }
+
+      //六.实现update方法
+      LinkList.prototype.update = (position, newData) =&amp;gt; {
+        //1.越界判断
+        //因为被修改的节点不能为null，所以position不能等于length
+        if(position &amp;lt; 0 || position &amp;gt;= this.length){
+          return false
+        }
+        //2.查找正确的节点
+        let current = this.head
+        let index = 0
+        while(index++ &amp;lt; position){
+          current = current.next
+        }
+        //3.将position位置的后一个节点的data修改成newData
+        current.data = newData
+        //返回true表示修改成功
+        return true
+      }
+
+      //七.实现removeAt方法
+      LinkList.prototype.removeAt = position =&amp;gt; {
+        //1.越界判断
+        if (position &amp;lt; 0 || position &amp;gt;= this.length) {
+          return null
+        }
+        //2.删除元素
+        //情况1：position = 0时(删除第一个节点)
+        let current = this.head
+        if (position ==0 ) {
+        //情况2：position &amp;gt; 0时
+          this.head = this.head.next
+        }else{
+          let index = 0
+          let previous = null
+          while (index++ &amp;lt; position) {
+            previous = current
+            current = current.next
+          }
+          //循环结束后，current指向position后一个节点，previous指向current前一个节点
+          //再使前一个节点的next指向current的next即可
+          previous.next = current.next
+        }
+        //3，length-1
+        this.length -= 1
+
+        //返回被删除节点的data，为此current定义在最上面
+        return current.data
+      }
+
+/*-------------其他方法的实现--------------*/
+      //八.实现remove方法
+      LinkList.prototype.remove = (data) =&amp;gt; {
+        //1.获取data在列表中的位置
+        let position = this.indexOf(data)
+        //2.根据位置信息，删除结点
+        return this.removeAt(position)
+      }
+
+      //九.实现isEmpty方法
+      LinkList.prototype.isEmpty = () =&amp;gt; {
+        return this.length == 0
+      }
+
+      //十.实现size方法
+      LinkList.prototype.size = () =&amp;gt; {
+        return this.length
+      }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;amp;seid=3912456004602554239&#34;&gt;参考资料:JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
+">JavaScript实现单向链表</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dui-lie-jie-gou-queue/"" data-c="
