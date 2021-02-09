@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>HelloWorld | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1612445210894">
+<link rel="shortcut icon" href="/favicon.ico?v=1612854093383">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -201,7 +201,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">29</span>
+        <span class="site-item-stat-count">30</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -883,6 +883,844 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-shuang-xiang-lian-biao/"" data-c="
+          &lt;h1 id=&#34;1双向链表简介&#34;&gt;1.双向链表简介&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;双向链表&lt;/strong&gt;：既可以&lt;strong&gt;从头遍历到尾&lt;/strong&gt;，又可以&lt;strong&gt;从尾遍历到头&lt;/strong&gt;。也就是说链表连接的过程是&lt;strong&gt;双向&lt;/strong&gt;的，它的实现原理是：一个节点既有&lt;strong&gt;向前连接的引用&lt;/strong&gt;，也有一个&lt;strong&gt;向后连接的引用&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;双向链表的缺点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每次在插入或删除某个节点时，都需要处理四个引用，而不是两个，实现起来会困难些；&lt;/li&gt;
+&lt;li&gt;相对于单向链表，所占内存空间更大一些；&lt;/li&gt;
+&lt;li&gt;但是，相对于双向链表的便利性而言，这些缺点微不足道。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;双向链表的结构：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612851991692.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;双向链表不仅有&lt;strong&gt;head&lt;/strong&gt;指针指向第一个节点，而且有&lt;strong&gt;tail&lt;/strong&gt;指针指向最后一个节点；&lt;/li&gt;
+&lt;li&gt;每一个节点由三部分组成：&lt;strong&gt;item&lt;/strong&gt;储存数据、&lt;strong&gt;prev&lt;/strong&gt;指向前一个节点、&lt;strong&gt;next&lt;/strong&gt;指向后一个节点；&lt;/li&gt;
+&lt;li&gt;双向链表的第一个节点的&lt;strong&gt;prev&lt;/strong&gt;指向&lt;strong&gt;null&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;双向链表的最后一个节点的&lt;strong&gt;next&lt;/strong&gt;指向&lt;strong&gt;null&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;双向链表常见的操作（方法）：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;append（element）：向链表尾部添加一个新的项；&lt;br&gt;
+*inset（position，element）：向链表的特定位置插入一个新的项；&lt;/li&gt;
+&lt;li&gt;get（element）：获取对应位置的元素；&lt;/li&gt;
+&lt;li&gt;indexOf（element）：返回元素在链表中的索引，如果链表中没有元素就返回-1；&lt;/li&gt;
+&lt;li&gt;update（position，element）：修改某个位置的元素；&lt;/li&gt;
+&lt;li&gt;removeAt（position）：从链表的特定位置移除一项；&lt;/li&gt;
+&lt;li&gt;isEmpty（）：如果链表中不包含任何元素，返回trun，如果链表长度大于0则返回false；&lt;/li&gt;
+&lt;li&gt;size（）：返回链表包含的元素个数，与数组的length属性类似；&lt;/li&gt;
+&lt;li&gt;toString（）：由于链表项使用了Node类，就需要重写继承自JavaScript对象默认的toString方法，让其只输出元素的值；&lt;/li&gt;
+&lt;li&gt;forwardString（）：返回正向遍历节点字符串形式；&lt;/li&gt;
+&lt;li&gt;backwordString（）：返回反向遍历的节点的字符串形式；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;2封装双向链表类&#34;&gt;2.封装双向链表类&lt;/h1&gt;
+&lt;h2 id=&#34;21创建双向链表类&#34;&gt;2.1.创建双向链表类&lt;/h2&gt;
+&lt;p&gt;先创建双向链表类DoubleLinklist，并添加基本属性，再实现双向链表的常用方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //封装双向链表类
+    function DoubleLinklist(){
+      //封装内部类：节点类
+      function Node(data){
+        this.data = data
+        this.prev = null
+        this.next = null
+      }
+
+      //属性
+      this.head = null
+      this.tail ==null
+      this.length = 0
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;22appendelement&#34;&gt;2.2.append(element)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //append方法
+      DoubleLinklist.prototype.append = data =&amp;gt; {
+        //1.根据data创建新节点
+        let newNode = new Node(data)
+
+        //2.添加节点
+        //情况1：添加的是第一个节点
+        if (this.length == 0) {
+          this.tail = newNode
+          this.head = newNode 
+        //情况2：添加的不是第一个节点
+        }else {
+          newNode.prev = this.tail
+          this.tail.next = newNode
+          this.tail = newNode
+        }
+
+        //3.length+1
+        this.length += 1
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;br&gt;
+添加节点时分为多种情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;情况1：添加的是第一个节点：只需要让head和tail都指向新节点即可；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852175479.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;情况2：添加的不是第一个节点，如下图所示：只需要改变相关引用的指向即可。&lt;br&gt;
+通过：newNode.prev = this.tail：建立指向1；&lt;br&gt;
+通过：this.tail.next = newNode：建立指向2；&lt;br&gt;
+通过：this.tail = newNode：建立指向3&lt;br&gt;
+要注意改变变量指向的顺序，最后修改tail指向，这样未修改前tail始终指向原链表的最后一个节点。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852234410.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852237080.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+   //1.创建双向链表
+   let list = new DoubleLinklist()
+
+    //2.测试append方法
+    list.append(&#39;aaa&#39;)
+    list.append(&#39;bbb&#39;)
+    list.append(&#39;ccc&#39;)
+    console.log(list);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;next方向：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852391457.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;prev方向：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852402201.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;23tostring汇总&#34;&gt;2.3.toString()汇总&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //将链表转变为字符串形式
+      //一.toString方法
+      DoubleLinklist.prototype.toString = () =&amp;gt; {
+        return this.backwardString()
+      }
+
+      //二.forwardString方法
+      DoubleLinklist.prototype.forwardString = () =&amp;gt; {
+        //1.定义变量
+        let current =this.tail
+        let resultString = &amp;quot;&amp;quot;
+        //2.依次向前遍历，获取每一个节点
+        while (current) {
+          resultString += current.data + &amp;quot;--&amp;quot;
+          current = current.prev 
+        }
+        return resultString
+      }
+
+      //三.backwardString方法
+      DoubleLinklist.prototype.backwardString = () =&amp;gt; {
+        //1.定义变量
+        let current = this.head
+        let resultString = &amp;quot;&amp;quot;
+
+        //2.依次向后遍历，获取每一个节点
+        while (current) {
+          resultString += current.data + &amp;quot;--&amp;quot;
+          current = current.next
+        }
+        return resultString
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;br&gt;
+三种获取字符串的方法：toString（）、forwardString（）、backwardString（）实现原理相似，仅以backWardString方法为例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定义current变量记录当前指向的节点。首先让current指向第一个节点，然后通过 current = current.next 依次向后遍历。在while循环中以(current)作为条件遍历链表，只要current ！= null就一直遍历，由此可获取链表所有节点的数据。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852477706.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()
+    
+    //2.测试字符串方法   
+    list.append(&#39;aaa&#39;)
+    list.append(&#39;bbb&#39;)
+    list.append(&#39;ccc&#39;)
+    console.log(list.toString());
+    console.log(list.forwardString());
+    console.log(list.backwardString());
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852509395.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;24insertpositionelement&#34;&gt;2.4.insert(position,element)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;      //insert方法
+      DoubleLinklist.prototype.insert = (position, data) =&amp;gt; {
+        //1.越界判断
+        if (position &amp;lt; 0 || position &amp;gt; this.length) return false
+
+        //2.根据data创建新的节点
+        let newNode = new Node(data)
+
+        //3.插入新节点
+        //原链表为空
+          //情况1：插入的newNode是第一个节点
+        if (this.length == 0) {
+          this.head = newNode
+          this.tail = newNode
+        //原链表不为空
+        }else {
+          //情况2：position == 0
+          if (position == 0) {
+            this.head.prev = newNode
+            newNode.next = this.head
+            this.head = newNode
+          //情况3：position == this.length 
+          } else if(position == this.length){
+            this.tail.next = newNode
+            newNode.prev = this.tail
+            this.tail = newNode
+            //情况4：0 &amp;lt; position &amp;lt; this.length
+          }else{
+            let current = this.head
+            let index = 0
+            while(index++ &amp;lt; position){
+              current = current.next
+            }
+            //修改pos位置前后节点变量的指向
+            newNode.next = current
+            newNode.prev = current.prev
+            current.prev.next = newNode
+            current.prev = newNode
+          }
+        }
+        //4.length+1
+        this.length += 1
+        return true//返回true表示插入成功
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;br&gt;
+插入节点可分为多种情况：&lt;br&gt;
+&lt;strong&gt;当原链表为空时：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;情况1：插入的新节点是链表的第一个节点；只需要让head和tail都指向newNode即可。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852572211.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;当原链表不为空时：&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;情况2：当position == 0，即在链表的首部添加节点：如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852606766.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+首先，通过：this.head.prev = newNode，改变指向1；&lt;br&gt;
+然后，通过：newNode.next = this.head，改变指向2；&lt;br&gt;
+最后，通过：this.head = newNode，改变指向3；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852623273.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;情况3：position == this.length，即在链表的尾部添加节点，如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852636699.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;首先&lt;/strong&gt;，通过：this.tail.next = newNode，改变指向1；（注意这里使用this.tail指向原链表最后一个节点，而不是this.head。因为当length&amp;gt;1时，this.head != this.tail。）&lt;br&gt;
+&lt;strong&gt;然后&lt;/strong&gt;，通过：newNode.prev = this.tail，改变指向2；&lt;br&gt;
+&lt;strong&gt;最后&lt;/strong&gt;，通过：this.tail = newNode，改变指向3；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852702385.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;情况4：0 &amp;lt; position &amp;lt; this.length，即在链表的中间插入新节点，假设在position = 1的位置插入，如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852718023.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+首先，需要定义变量current按照之前的思路，通过while循环找到position位置的后一个节点，循环结束后index = position&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852732864.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如下图所示：当position = 1时，current就指向了Node2。这样操作current就等同于间接地操作Node2，还可以通过current.prev间接获取Node1。得到了newNode的前一个节点和后一个节点就可以通过改变它们的prev和next变量的指向来插入newNode了。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852753700.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;通过&lt;/strong&gt;：newNode.next = current，改变指向1；&lt;br&gt;
+&lt;strong&gt;通过&lt;/strong&gt;：newNode.prev = current.prev，改变指向2；&lt;br&gt;
+&lt;strong&gt;通过&lt;/strong&gt;：current.prev.next = newNode，改变指向3；&lt;br&gt;
+&lt;code&gt;注意必须最后才修改current.prev的指向，不然就无法通过current.prev获取需要操作的Node1了。&lt;/code&gt;&lt;br&gt;
+&lt;strong&gt;通过&lt;/strong&gt;：current.prev = current，改变指向4；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852934567.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()
+
+	//2.测试insert方法
+    list.insert(0, &#39;插入链表的第一个元素&#39;)
+    list.insert(0, &#39;在链表首部插入元素&#39;)
+    list.insert(1, &#39;在链表中间插入元素&#39;)
+    list.insert(3, &#39;在链表尾部插入元素&#39;)
+    console.log(list);
+    alert(list)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852974146.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612852977704.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;25getposition&#34;&gt;2.5.get(position)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;      //get方法
+      DoubleLinklist.prototype.get = position =&amp;gt; {
+        //1.越界判断
+        if (position &amp;lt; 0 || position &amp;gt;= this.length) {//获取元素时position不能等于length
+          return null
+        }
+
+        //2.获取元素
+        let current = null
+        let index = 0
+        //this.length / 2 &amp;gt; position:从头开始遍历
+        if ((this.length / 2) &amp;gt; position) {
+          current = this.head
+          while(index++ &amp;lt; position){
+          current = current.next
+        }
+        //this.length / 2 =&amp;lt; position:从尾开始遍历
+        }else{
+          current = this.tail
+          index = this.length - 1
+          while(index-- &amp;gt; position){
+          current = current.prev
+        }
+        }
+        return current.data
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;br&gt;
+定义两个变量current和index，按照之前的思路通过while循环遍历分别获取当前节点和对应的索引值index，直到找到需要获取的position位置后的一个节点，此时index = pos =x，然后return current.data即可。&lt;/p&gt;
+&lt;p&gt;如果链表的节点数量很多时，这种查找方式效率不高，改进方法为：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一定要通过this.length来获取链表的节点数否则就会报错。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;当this.length / 2 &amp;gt; position：从头（head）开始遍历；&lt;/li&gt;
+&lt;li&gt;当this.length / 2 &amp;lt; position：从尾（tail）开始遍历；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853079217.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()
+    
+  	//2.测试get方法
+    list.append(&#39;a&#39;)
+    list.append(&#39;b&#39;)
+    list.append(&#39;b1&#39;)
+    list.append(&#39;b2&#39;)
+    list.append(&#39;b3&#39;)
+    list.append(&#39;b4&#39;)
+    list.append(&#39;b5&#39;)
+    list.append(&#39;b6&#39;)
+    list.append(&#39;b7&#39;)
+    console.log(list.get(0));
+    console.log(list.get(7));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853118806.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;26indexofelement&#34;&gt;2.6.indexOf(element)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;      //indexOf方法
+      DoubleLinklist.prototype.indexOf = data =&amp;gt; {
+        //1.定义变量
+        let current = this.head
+        let index = 0
+
+        //2.遍历链表，查找与data相同的节点
+        while(current){
+          if (current.data == data) {
+            return index
+          }
+          current = current.next
+          index += 1
+        }
+        return -1
+      } 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;br&gt;
+以（current）作为条件，通过while循环遍历链表中的所有节点（停止条件为current = null）。在遍历每个节点时将current指向的当前节点的data和传入的data进行比较即可。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853385534.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()
+    
+    //2.测试indexOf方法
+    list.append(&#39;a&#39;)
+    list.append(&#39;b&#39;)
+    list.append(&#39;c&#39;)
+    console.log(list.indexOf(&#39;a&#39;));
+    console.log(list.indexOf(&#39;c&#39;));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853417022.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;28updatepositionelement&#34;&gt;2.8.update(position,element)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;        //update方法
+      DoubleLinklist.prototype.update = (position, newData) =&amp;gt; {
+        //1.越界判断
+        if (position &amp;lt; 0 || position &amp;gt;= this.length) {
+          return false
+        }
+
+        //2.寻找正确的节点
+        let current = this.head
+        let index = 0
+        //this.length / 2 &amp;gt; position:从头开始遍历
+        if (this.length / 2 &amp;gt; position) {
+          while(index++ &amp;lt; position){
+          current = current.next
+        }
+        //this.length / 2 =&amp;lt; position:从尾开始遍历
+        }else{
+          current = this.tail
+          index = this.length - 1
+          while (index -- &amp;gt; position) {
+            current = current.prev
+          }
+        }
+
+        //3.修改找到节点的data
+        current.data = newData
+        return true//表示成功修改
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;br&gt;
+以（index++ &amp;lt; position）为条件，通过while循环遍历链表中的节点（停止条件为index = position）。循环结束后，current指向需要修改的节点。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853464522.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()
+    
+    //2.测试update方法
+    list.append(&#39;a&#39;)
+    list.append(&#39;b&#39;)
+    console.log(list.update(1, &#39;c&#39;));
+    console.log(list);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853512616.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;29removeatposition&#34;&gt;2.9.removeAt(position)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;      //removeAt方法
+      DoubleLinklist.prototype.removeAt = position =&amp;gt; {
+        //1.越界判断
+        if (position &amp;lt; 0 || position &amp;gt;= this.length) {
+          return null
+        }
+        
+        //2.删除节点
+        //当链表中length == 1
+        //情况1：链表只有一个节点
+        let current = this.head//定义在最上面方便以下各种情况返回current.data
+        if (this.length == 1) {
+          this.head = null
+          this.tail = null
+        //当链表中length &amp;gt; 1
+        } else{
+          //情况2：删除第一个节点
+          if (position == 0) {
+            this.head.next.prev = null
+            this.head = this.head.next
+          //情况3：删除最后一个节点
+          }else if(position == this.length - 1){
+            current = this.tail//该情况下返回被删除的最后一个节点
+            this.tail.prev.next = null
+            this.tail = this.tail.prev
+          }else{
+          //情况4：删除链表中间的节点
+            let index = 0
+            while(index++ &amp;lt; position){
+              current = current.next
+            }
+            current.next.prev = current.prev
+            current.prev.next = current.next
+          }
+        }
+
+        //3.length -= 1
+        this.length -= 1
+        return current.data//返回被删除节点的数据
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;br&gt;
+删除节点时有多种情况：&lt;br&gt;
+&lt;strong&gt;当链表的length = 1时：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;情况1：删除链表中的所有节点：只需要让链表的head和tail指向null即可。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853571732.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;当链表的length &amp;gt; 1时：&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;情况2：删除链表中的第一个节点：&lt;br&gt;
+通过：this.head.next.prev = null，改变指向1；&lt;br&gt;
+通过：this.head = this.head.next，改变指向2；&lt;br&gt;
+虽然Node1有引用指向其它节点，但是没有引用指向Node1，那么Node1会被自动回收。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853599140.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;情况3：删除链表中的最后一个节点：&lt;br&gt;
+通过：this.tail.prev.next = null，修改指向1；&lt;br&gt;
+通过：this.tail = this.tail.prev，修改指向2；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853618439.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;情况4：删除链表中间的节点：&lt;br&gt;
+通过while循环找到需要删除的节点，比如position = x，那么需要删除的节点就是Node(x+1)，如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853635573.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+通过：current.next.prev = current.prev，修改指向1；&lt;br&gt;
+通过：current.prev.next = current.next，修改指向2；&lt;br&gt;
+这样就没有引用指向Node(x+1)了（current虽指向Node(x+1)，但current时临时变量，该方法执行完就会被销毁），随后Node(x+1)就会被自动删除。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853650608.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()	
+	
+	//2.测试removeAt方法
+    list.append(&#39;a&#39;)
+    list.append(&#39;b&#39;)
+    list.append(&#39;c&#39;)
+    console.log(list.removeAt(1));
+    console.log(list);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853684660.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;210其他方法&#34;&gt;2.10.其他方法&lt;/h2&gt;
+&lt;p&gt;其他方法包括：&lt;strong&gt;remove(element)、isEmpty()、size()、getHead()、getTail()&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;  //八.remove方法
+  DoubleLinklist.prototype.remove = data =&amp;gt; {
+    //1.根据data获取下标值
+    let index = this.indexOf(data)
+    
+    //2.根据index删除对应位置的节点
+    return this.removeAt(index)
+  }
+
+  //九.isEmpty方法
+  DoubleLinklist.prototype.isEmpty = () =&amp;gt; {
+    return this.length == 0
+  }
+
+  //十.size方法
+  DoubleLinklist.prototype.size = () =&amp;gt; {
+    return this.length
+  }
+
+  //十一.getHead方法：获取链表的第一个元素
+  DoubleLinklist.prototype.getHead = () =&amp;gt; {
+    return this.head.data
+  }
+
+  //十二.getTail方法：获取链表的最后一个元素
+  DoubleLinklist.prototype.getTail = () =&amp;gt; {
+    return this.tail.data
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;//测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()	
+
+/*------------其他方法的测试--------------*/
+    list.append(&#39;a&#39;)
+    list.append(&#39;b&#39;)
+    list.append(&#39;c&#39;)
+    list.append(&#39;d&#39;)
+    //remove方法
+    console.log(list.remove(&#39;a&#39;));
+    console.log(list);
+    //isEmpty方法
+    console.log(list.isEmpty());
+    //size方法
+    console.log(list.size());
+    //getHead方法
+    console.log(list.getHead());
+    //getTead方法
+    console.log(list.getTail());
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853763963.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;211完整实现&#34;&gt;2.11.完整实现&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;//封装双向链表
+function DoubleLinklist(){
+  //封装内部类：节点类
+  function Node(data){
+    this.data = data
+    this.prev = null
+    this.next = null
+  }
+
+  //属性
+  this.head = null
+  this.tail ==null
+  this.length = 0
+
+  //常见的操作：方法
+  //一.append方法
+  DoubleLinklist.prototype.append = data =&amp;gt; {
+    //1.根据data创建新节点
+    let newNode = new Node(data)
+
+    //2.添加节点
+    //情况1：添加的是第一个节点
+    if (this.length == 0) {
+      this.tail = newNode
+      this.head = newNode 
+    //情况2：添加的不是第一个节点
+    }else {
+      newNode.prev = this.tail
+      this.tail.next = newNode
+      this.tail = newNode
+    }
+
+    //3.length+1
+    this.length += 1
+  }
+
+  //二.将链表转变为字符串形式
+  //2.1.toString方法
+  DoubleLinklist.prototype.toString = () =&amp;gt; {
+    return this.backwardString()
+  }
+
+  //2.2.forwardString方法
+  DoubleLinklist.prototype.forwardString = () =&amp;gt; {
+    //1.定义变量
+    let current =this.tail
+    let resultString = &amp;quot;&amp;quot;
+
+    //2.依次向前遍历，获取每一个节点
+    while (current) {
+      resultString += current.data + &amp;quot;--&amp;quot;
+      current = current.prev 
+    }
+    return resultString
+  }
+
+  //2.3.backwardString方法
+  DoubleLinklist.prototype.backwardString = () =&amp;gt; {
+    //1.定义变量
+    let current = this.head
+    let resultString = &amp;quot;&amp;quot;
+
+    //2.依次向后遍历，获取每一个节点
+    while (current) {
+      resultString += current.data + &amp;quot;--&amp;quot;
+      current = current.next
+    }
+    return resultString
+  }
+
+  //三.insert方法
+  DoubleLinklist.prototype.insert = (position, data) =&amp;gt; {
+    //1.越界判断
+    if (position &amp;lt; 0 || position &amp;gt; this.length) return false
+
+    //2.根据data创建新的节点
+    let newNode = new Node(data)
+
+    //3.插入新节点
+    //原链表为空
+      //情况1：插入的newNode是第一个节点
+    if (this.length == 0) {
+      this.head = newNode
+      this.tail = newNode
+    //原链表不为空
+    }else {
+      //情况2：position == 0
+      if (position == 0) {
+        this.head.prev = newNode
+        newNode.next = this.head
+        this.head = newNode
+      //情况3：position == this.length 
+      } else if(position == this.length){
+        this.tail.next = newNode
+        newNode.prev = this.tail
+        this.tail = newNode
+        //情况4：0 &amp;lt; position &amp;lt; this.length
+      }else{
+        let current = this.head
+        let index = 0
+        while(index++ &amp;lt; position){
+          current = current.next
+        }
+        //修改pos位置前后节点变量的指向
+        newNode.next = current
+        newNode.prev = current.prev
+        current.prev.next = newNode
+        current.prev = newNode
+      }
+    }
+    //4.length+1
+    this.length += 1
+    return true//返回true表示插入成功
+  }
+
+  //四.get方法
+  DoubleLinklist.prototype.get = position =&amp;gt; {
+    //1.越界判断
+    if (position &amp;lt; 0 || position &amp;gt;= this.length) {//获取元素时position不能等于length
+      return null
+    }
+
+    //2.获取元素
+    let current = null
+    let index = 0
+    //this.length / 2 &amp;gt; position:从头开始遍历
+    if ((this.length / 2) &amp;gt; position) {
+      current = this.head
+      while(index++ &amp;lt; position){
+      current = current.next
+    }
+    //this.length / 2 =&amp;lt; position:从尾开始遍历
+    }else{
+      current = this.tail
+      index = this.length - 1
+      while(index-- &amp;gt; position){
+      current = current.prev
+    }
+    }
+    return current.data
+  }
+
+  //五.indexOf方法
+  DoubleLinklist.prototype.indexOf = data =&amp;gt; {
+    //1.定义变量
+    let current = this.head
+    let index = 0
+
+    //2.遍历链表，查找与data相同的节点
+    while(current){
+      if (current.data == data) {
+        return index
+      }
+      current = current.next
+      index += 1
+    }
+    return -1
+  } 
+
+  //六.update方法
+  DoubleLinklist.prototype.update = (position, newData) =&amp;gt; {
+    //1.越界判断
+    if (position &amp;lt; 0 || position &amp;gt;= this.length) {
+      return false
+    }
+
+    //2.寻找正确的节点
+    let current = this.head
+    let index = 0
+    //this.length / 2 &amp;gt; position:从头开始遍历
+    if (this.length / 2 &amp;gt; position) {
+      while(index++ &amp;lt; position){
+      current = current.next
+    }
+    //this.length / 2 =&amp;lt; position:从尾开始遍历
+    }else{
+      current = this.tail
+      index = this.length - 1
+      while (index -- &amp;gt; position) {
+        current = current.prev
+      }
+    }
+
+    //3.修改找到节点的data
+    current.data = newData
+    return true//表示成功修改
+  }
+
+  //七.removeAt方法
+  DoubleLinklist.prototype.removeAt = position =&amp;gt; {
+    //1.越界判断
+    if (position &amp;lt; 0 || position &amp;gt;= this.length) {
+      return null
+    }
+    
+    //2.删除节点
+    //当链表中length == 1
+    //情况1：链表只有一个节点
+    let current = this.head//定义在最上面方便以下各种情况返回current.data
+    if (this.length == 1) {
+      this.head = null
+      this.tail = null
+    //当链表中length &amp;gt; 1
+    } else{
+      //情况2：删除第一个节点
+      if (position == 0) {
+        this.head.next.prev = null
+        this.head = this.head.next
+      //情况3：删除最后一个节点
+      }else if(position == this.length - 1){
+        current = this.tail//该情况下返回被删除的最后一个节点
+        this.tail.prev.next = null
+        this.tail = this.tail.prev
+      }else{
+      //情况4：删除链表中间的节点
+        let index = 0
+        while(index++ &amp;lt; position){
+          current = current.next
+        }
+        current.next.prev = current.prev
+        current.prev.next = current.next
+      }
+    }
+
+    //3.length -= 1
+    this.length -= 1
+    return current.data//返回被删除节点的数据
+  }
+  /*--------------------其他方法-------------------*/
+  //八.remove方法
+  DoubleLinklist.prototype.remove = data =&amp;gt; {
+    //1.根据data获取下标值
+    let index = this.indexOf(data)
+    
+    //2.根据index删除对应位置的节点
+    return this.removeAt(index)
+  }
+
+  //九.isEmpty方法
+  DoubleLinklist.prototype.isEmpty = () =&amp;gt; {
+    return this.length == 0
+  }
+
+  //十.size方法
+  DoubleLinklist.prototype.size = () =&amp;gt; {
+    return this.length
+  }
+
+  //十一.getHead方法：获取链表的第一个元素
+  DoubleLinklist.prototype.getHead = () =&amp;gt; {
+    return this.head.data
+  }
+
+  //十二.getTail方法：获取链表的最后一个元素
+  DoubleLinklist.prototype.getTail = () =&amp;gt; {
+    return this.tail.data
+  }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;3链表结构总结&#34;&gt;3.链表结构总结&lt;/h1&gt;
+&lt;p&gt;单向链表有head和next两个属性，双向链表有head、tail、next、prev四个属性。处理好它们的指向，相当于将它们正确地连接在一起，这样就组成了一条链，这就是简单链表的实现。&lt;/p&gt;
+&lt;p&gt;在实际开发中链表使用得非常多，比如Java中的&lt;strong&gt;LinkList&lt;/strong&gt;就是双向链表。&lt;/p&gt;
+&lt;h2 id=&#34;31注意点&#34;&gt;3.1.注意点&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;在链表中current = current.next 可以从左往右看，看成是current --&amp;gt; current.next，即current指向current的下一个节点。&lt;/li&gt;
+&lt;li&gt;删除节点的原理：只要没有引用指向该对象，无论该对象是否有引用指向其他对象，该对象都会被回收（删除）。&lt;/li&gt;
+&lt;li&gt;参数中凡是有position的都要进行越界判断。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;32链表的增删改查&#34;&gt;3.2.链表的增删改查&lt;/h2&gt;
+&lt;p&gt;以双向链表为例：&lt;strong&gt;链表的增删改查无非就是获取链表中相应的节点改变其中的prev和next两个变量的指向。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;情况一：只需要&lt;strong&gt;head&lt;/strong&gt;和&lt;strong&gt;tail&lt;/strong&gt;两个变量就可以获取需要操作的变量（这里指的是能够轻松获取，当然你想通过head.next.next...或tail.prev.prev...来获取想要的节点也可以），在这种情况下链表的长度length：&lt;strong&gt;0 &amp;lt;= length &amp;lt;=2&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;情况二：不能靠tail和head来获取到需要操作的变量时，可采用while循环遍历的方式，找到需要操作的节点：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853909360.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+在这种情况下，如果我们想要在链表的position = x的位置插入新节点，那么可以通过current获取position的后一个节点Node(x+1)，通过current.prev获取position位置的前一个节点Node(x)；之后修改Node(x+1)和Node(x)中的prev和next两个变量的指向即可在pos=x 的位置插入新节点。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853922088.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;33修改链表引用指向&#34;&gt;3.3.修改链表引用指向&lt;/h2&gt;
+&lt;p&gt;应先修改newNode引用的指向，再修改其他引用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;情况1：通过head和tail引用就能获取需要操作的节点时，最后更改head或tail变量的指向（因为它们分别指向链表的第一个和最后一个节点，获取其他节点时可能需要用到它们）。&lt;/li&gt;
+&lt;li&gt;情况2：使用current获取到需要操作的节点时，最后更改curren.next或current.prev的指向。因为current.next和current.prev表示的是Node(x+2)和Node(x)这两个节点，如下图所示，一旦变更它们的指向就无法获取Node(x)或Node(x+2)了，&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853947258.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;34遍历链表&#34;&gt;3.4.遍历链表&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;积累两种遍历思路&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;获取指定的position = x 位置的后一个节点和索引值：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853980453.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612853983952.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+循环结束后index = position = x，变量current就指向了Node(x+1)，变量index的值为Node(x+1)的索引值x。&lt;/li&gt;
+&lt;li&gt;遍历链表中的所有节点：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612854002125.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612854005730.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+当current.next = null时停止循环，此时current指向链表的最后一个节点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/av86801505?from=search&amp;amp;seid=4967761411915016256&#34;&gt;参考资料：JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
+">JavaScript实现双向链表</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dan-xiang-lian-biao/"" data-c="

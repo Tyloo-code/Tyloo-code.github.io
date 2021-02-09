@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Tyloo-code.github.io</id>
     <title>Tyloo</title>
-    <updated>2021-02-04T14:20:05.356Z</updated>
+    <updated>2021-02-09T07:01:39.940Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Tyloo-code.github.io"/>
     <link rel="self" href="https://Tyloo-code.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://Tyloo-code.github.io/images/avatar.png</logo>
     <icon>https://Tyloo-code.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Tyloo</rights>
+    <entry>
+        <title type="html"><![CDATA[JavaScript实现双向链表]]></title>
+        <id>https://Tyloo-code.github.io/post/javascript-shi-xian-shuang-xiang-lian-biao/</id>
+        <link href="https://Tyloo-code.github.io/post/javascript-shi-xian-shuang-xiang-lian-biao/">
+        </link>
+        <updated>2021-02-09T06:24:50.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JavaScript实现单向链表]]></title>
         <id>https://Tyloo-code.github.io/post/javascript-shi-xian-dan-xiang-lian-biao/</id>
@@ -72,12 +79,5 @@
         <link href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part2-wu-li-ceng-physical-layer/">
         </link>
         <updated>2020-12-30T12:55:48.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[计算机网络笔记Part1 概述]]></title>
-        <id>https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part11/</id>
-        <link href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part11/">
-        </link>
-        <updated>2020-12-29T07:32:41.000Z</updated>
     </entry>
 </feed>
