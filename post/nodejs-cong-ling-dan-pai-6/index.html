@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>NodeJs从零单排(6) | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1613740193149">
+<link rel="shortcut icon" href="/favicon.ico?v=1613742982937">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">31</span>
+        <span class="site-item-stat-count">32</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1107,6 +1107,68 @@ http.createServer((req,res)=&gt;{
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/fan-wai-cong-a-li-yun-ban-jia-dao-teng-xun-yun-de-tian-keng-zhi-lu/"" data-c="
+          &lt;p&gt;原因：穷，续费超过花呗上限🙁&lt;br&gt;
+目的：域名(备案)从阿里云转移到腾讯云&lt;br&gt;
+题记：作为一个“敬业”的博主(其实是怕以后忘了)，随手记录并分享出来。&lt;/p&gt;
+&lt;h1 id=&#34;一-域名转移&#34;&gt;一、域名转移&lt;/h1&gt;
+&lt;h2 id=&#34;11-阿里云索取域名转移密码&#34;&gt;1.1 阿里云索取域名转移密码&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.aliyun.com/minisite/goods?userCode=2rbhf9dd&#34;&gt;点我登陆&lt;/a&gt;阿里云控制台，进入域名控制台，在域名基本信息中点击【索取域名转移码】，这时阿里云会向域名管理邮箱发送一封带有转移密码的邮件，名头是“万网域名转出密码通知”。复制邮件中的转移密码。&lt;br&gt;
+提示:如果提示“已开启[禁止更新锁],该功能暂不可用”，这是阿里云的安全机制作用了，需要你去手动关闭，在【安全设置】中关闭系统自带的“两把锁”，按照提示操作，提供相应的手机验证码即可。然后就能正常索取密码了。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613741482839.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;12-腾讯云域名转入操作&#34;&gt;1.2 腾讯云域名转入操作&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/?fromSource=gwzcw.1293314.1293314.1293314&amp;amp;cps_key=5c28f3346f24fe86eb5b34852bad6c77&#34;&gt;点我打开&lt;/a&gt;腾讯云官网，进入控制台中的域名管理，先创建一份【域名信息模板】，按照页面要求填写完毕提交，等待审核完毕。正常审核时间为一个工作日，实际上1小时左右就能完成。&lt;br&gt;
+然后在下图的【域名转入】页面中，输入域名和转移码，要求中间有空格，不懂的看系统提示。&lt;br&gt;
+绑定域名信息模板后，提交。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613741580974.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;13-等待域名转移和后悔期&#34;&gt;1.3 等待域名转移和后悔期&lt;/h2&gt;
+&lt;p&gt;这时候阿里云再次发邮件给你，名头是“阿里云域名转出通知”，里面有转移到期的日期，意思是说如果你想转移域名，就可以忽略这封邮件。等待几天就会自动转移成功了。&lt;br&gt;
+提示:在这期间有5~7天的后悔期，就是说转移不是马上就完成了，在这些天中如果你不想转移了，可以点击阿里云域名控制台或者邮件中的【取消】，来停止这场转移，这样域名仍旧留在阿里云了。&lt;/p&gt;
+&lt;h2 id=&#34;14-域名转移到腾讯云&#34;&gt;1.4 域名转移到腾讯云&lt;/h2&gt;
+&lt;p&gt;超过了到期时间后域名就会自动转移到腾讯云了，域名邮箱也会同时收到转移成功的邮件。这时候域名会借助域名信息模板自动实名，接下来就是网站备案，域名解析，安装环境及部署网站等一系列操作了。&lt;/p&gt;
+&lt;h1 id=&#34;二-部署个人博客&#34;&gt;二、部署个人博客&lt;/h1&gt;
+&lt;h2 id=&#34;21-所需工具&#34;&gt;2.1 所需工具&lt;/h2&gt;
+&lt;p&gt;使用github托管个人博客静态网页，使用gridea作为静态网页生成器(操作简单)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;github账号&lt;a href=&#34;https://github.com/&#34;&gt;官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;gridea下载安装&lt;a href=&#34;https://gridea.dev/&#34;&gt;官网&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;22-创建仓库存储静态网页&#34;&gt;2.2 创建仓库存储静态网页&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742044871.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742050262.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;23-生成个人访问令牌&#34;&gt;2.3 生成个人访问令牌&lt;/h2&gt;
+&lt;p&gt;依次点击，右上角头像-&amp;gt;Developer settings-&amp;gt;Personal access tokens-&amp;gt;Generate new token&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742116246.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742119740.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;24-在gridea填写域名仓库名称等信息同步&#34;&gt;2.4 在gridea填写域名，仓库名称等信息，同步&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742207612.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742210710.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+刷新一下github仓库网页，会看到多了很多文件&lt;/p&gt;
+&lt;h1 id=&#34;三-github绑定自己的域名&#34;&gt;三、github绑定自己的域名&lt;/h1&gt;
+&lt;h2 id=&#34;31-在仓库里添加cname文件并在文件中填写绑定的域名&#34;&gt;3.1 在仓库里添加CNAME文件并在文件中填写绑定的域名&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742323733.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+文件里填写的内容：要绑定的域名（不要包含Http://和www）&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742361386.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+进入设置&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742397702.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+找到 Custom domain添加域名后保存即可。&lt;br&gt;
+（添加CNAME文件并在文件中填写绑定的域名后应该会自动保存，看看有没有自动保存）&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742412812.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;32-添加域名解析&#34;&gt;3.2 添加域名解析&lt;/h2&gt;
+&lt;p&gt;ping你的http://github.io域名，得到一个IP&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742460079.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+修改你的域名解析记录；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742567477.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+添加两个记录分别为A和CNAME，A绑定刚才得到的ip地址，CNAME绑定自己的域名&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613742731980.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;33-绑定成功&#34;&gt;3.3 绑定成功&lt;/h2&gt;
+&lt;h1 id=&#34;四-本地dns更新&#34;&gt;四、本地DNS更新&lt;/h1&gt;
+&lt;p&gt;域名指向新的服务器IP后不能访问的解决办法：&lt;br&gt;
+不能访问是因为本地DNS缓存，缓存清除方法：dos命令窗口输入ipconfig/flushdns ，回车即可。&lt;/p&gt;
+">【番外】从阿里云搬家到腾讯云的填坑之路</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-ji-he-yu-zi-dian/"" data-c="
