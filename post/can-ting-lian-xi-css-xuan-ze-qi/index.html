@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>餐厅练习-Css选择器 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1612854093383">
+<link rel="shortcut icon" href="/favicon.ico?v=1613738673164">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -201,7 +201,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">30</span>
+        <span class="site-item-stat-count">31</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -962,6 +962,292 @@ apple里没有组是.small的元素</p>
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-ji-he-yu-zi-dian/"" data-c="
+          &lt;h1 id=&#34;1集合结构&#34;&gt;1.集合结构&lt;/h1&gt;
+&lt;h2 id=&#34;11简介&#34;&gt;1.1.简介&lt;/h2&gt;
+&lt;p&gt;集合比较常见的实现方式是&lt;strong&gt;哈希表&lt;/strong&gt;，这里使用JavaScript的Object类进行封装。&lt;br&gt;
+集合通常是由一组&lt;strong&gt;无序的、不能重复&lt;/strong&gt;的元素构成。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数学中常指的集合中的元素是可以重复的，但是计算机中集合的元素不能重复。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;集合是特殊的数组：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;特殊之处在于里面的元素&lt;strong&gt;没有顺序，也不能重复&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;没有顺序意味着&lt;strong&gt;不能通过下标值进行访问&lt;/strong&gt;，不能重复意味着&lt;strong&gt;相同的对象&lt;/strong&gt;在集合中只会&lt;strong&gt;存在一份&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实现集合类：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在ES6中的&lt;strong&gt;Set&lt;/strong&gt;类就是一个集合类，这里我们重新封装一个Set类，了解集合的底层实现。&lt;/li&gt;
+&lt;li&gt;JavaScript中的&lt;strong&gt;Object&lt;/strong&gt;类中的&lt;strong&gt;key&lt;/strong&gt;就是一个集合，可以使用它来封装集合类Set。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;集合常见的操作：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;add（value）：向集合添加一个新的项；&lt;/li&gt;
+&lt;li&gt;remove（value）：从集合中移除一个值；&lt;/li&gt;
+&lt;li&gt;has（value）：如果值在集合中，返回true，否则返回false；&lt;/li&gt;
+&lt;li&gt;clear（）：移除集合中的所有项；&lt;/li&gt;
+&lt;li&gt;size（）：返回集合所包含元素的数量，与数组的length属性相似；&lt;/li&gt;
+&lt;li&gt;values（）：返回一个包含集合中所有值的数组；&lt;br&gt;
+还有其他的方法，用的不多这里不做封装；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;12代码实现&#34;&gt;1.2.代码实现&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;     //封装集合类
+    function Set() {
+      //属性
+      this.items = {}
+
+      //方法
+      //一.has方法
+      Set.prototype.has = value =&amp;gt; {
+        return this.items.hasOwnProperty(value)
+      }
+
+      //二.add方法
+      Set.prototype.add = value =&amp;gt; {
+        //判断集合中是否已经包含该元素
+        if (this.has(value)) {
+          return false
+        }
+        //将元素添加到集合中
+        this.items[value] = value//表示该属性键和值都为value
+        return true//表示添加成功
+      }
+
+      //三.remove方法
+      Set.prototype.remove = (value) =&amp;gt; {
+        //1.判断集合中是否包含该元素
+        if (!this.has(value)) {
+          return false
+        }
+
+        //2.将元素从属性中删除
+        delete this.items[value]
+        return true
+      }
+
+      //四.clear方法
+      Set.prototype.clear = () =&amp;gt; {
+        //原来的对象没有引用指向，会被自动回收
+        this.items = {}
+      }
+
+      //五.size方法
+      Set.prototype.size = () =&amp;gt; {
+        return Object.keys(this.items).length
+      }
+
+      //获取集合中所有的值
+      //六.values方法
+      Set.prototype.values = function() {
+        return Object.keys(this.items)
+      }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;    //测试集合类
+    //1.创建Set类对象
+    let set = new Set()
+
+    //添加元素
+    //2.测试add方法
+    console.log(set.add(&#39;a&#39;));									
+    console.log(set.add(&#39;a&#39;));										
+    console.log(set.add(&#39;b&#39;));									
+    console.log(set.add(&#39;c&#39;));										
+    console.log(set.add(&#39;d&#39;));										
+
+    //3.测试values方法
+    console.log(set.values());									
+
+    //删除元素
+    //4.测试remove方法
+    console.log(set.remove(&#39;a&#39;));								
+    console.log(set.remove(&#39;a&#39;));								
+    console.log(set.values());										
+
+    //5.测试has方法
+    console.log(set.has(&#39;b&#39;));										
+
+    //6.测试size方法和clear方法
+    console.log(set.size());										
+    set.clear()
+    // 由于clear方法的实现原理为指向另外一个空对象，所以不影响原来的对象
+    console.log(set.size());										
+    console.log(set.values());				
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613738370515.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;13集合间的操作&#34;&gt;1.3.集合间的操作&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;集合间操作：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;并集：对于给定的两个集合，返回一个包含两个集合中所有元素的新集合；&lt;/li&gt;
+&lt;li&gt;交集：对于给定的两个集合，返回一个包含两个集合中共有元素的新集合；&lt;/li&gt;
+&lt;li&gt;差集：对于给定的两个集合，返回一个包含所有存在于第一个集合且不存在于第二个集合的元素的新集合；&lt;/li&gt;
+&lt;li&gt;子集：验证一个给定集合是否是另一个集合的子集；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1613738411477.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;并集的实现：&lt;/strong&gt;&lt;br&gt;
+实现思路：创建集合C代表集合A和集合B的并集，先将集合A中的所有元素添加到集合C中，再遍历集合B，如果是集合C所没有的元素就把它添加到集合C中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Set.prototype.union = otherSet =&amp;gt; {
+      // this:集合对象A
+      // otherSet:集合对象B
+      //1.创建一个新的集合
+      let unionSet = new Set()
+
+      //2.将A集合中的所有元素添加到新集合中
+      let values = this.values()
+      // for(let i of values){
+      //   unionSet.add(i)
+      // }
+      for(let i = 0;i &amp;lt; values.length;i++){
+        unionSet.add(values[i])
+      }
+
+      //3.取出B集合中的元素,判断是否需要加到新集合中
+      values = otherSet.values()
+      // for(let i of values){
+      //   //由于集合的add方法已经对重复的元素进行了判断,所以这里可以直接添加
+      //   unionSet.add(i)
+      // }
+      for(let i = 0;i &amp;lt; values.length;i++){
+        unionSet.add(values[i])
+      }
+      return unionSet
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;交集的实现：&lt;/strong&gt;&lt;br&gt;
+实现思路：遍历集合A，当取得的元素也存在于集合B时，就把该元素添加到另一个集合C中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Set.prototype.intersection = otherSet =&amp;gt; {
+      // this:集合A
+      // otherSet:集合B
+      //1.创建新的集合
+      let intersectionSet = new Set()
+      
+      //2.从A中取出一个元素，判断是否同时存在于集合B中，是则放入新集合中
+      let values = this.values()
+      for(let i =0 ; i &amp;lt; values.length; i++){
+        let item = values[i]
+        if (otherSet.has(item)) {
+          intersectionSet.add(item)
+        }
+      }
+      return intersectionSet
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;差集的实现：&lt;/strong&gt;&lt;br&gt;
+实现思路：遍历集合A，当取得的元素不存在于集合B时，就把该元素添加到另一个集合C中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Set.prototype.diffrence = otherSet =&amp;gt; {
+        //this:集合A
+        //otherSet:集合B
+        //1.创建新的集合
+        var diffrenceSet = new Set()
+
+        //2.取出A集合中的每一个元素，判断是否同时存在于B中，不存在则添加到新集合中
+        var values = this.values()
+        for(var i = 0;i &amp;lt; values.length; i++){
+          var item = values[i]
+          if (!otherSet.has(item)) {
+            diffrenceSet.add(item)
+          }
+        }
+        return diffrenceSet
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;子集的实现：&lt;/strong&gt;&lt;br&gt;
+实现思路：遍历集合A，当取得的元素中有一个不存在于集合B时，就说明集合A不是集合B的子集，返回false。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Set.prototype.subset = otherSet =&amp;gt; {
+        //this:集合A
+        //otherSet：集合B
+        //遍历集合A中的所有元素，如果发现，集合A中的元素，在集合B中不存在，那么放回false，如果遍历完整个集合A没有返回false，就返回true
+        let values = this.values()
+        for(let i = 0; i &amp;lt; values.length; i++){
+          let item = values[i]
+          if(!otherSet.has(item)){
+            return false
+          }
+        }
+        return true
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;2字典结构&#34;&gt;2.字典结构&lt;/h1&gt;
+&lt;h2 id=&#34;21简介&#34;&gt;2.1.简介&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;字典的特点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;字典存储的是键值对，主要特点是一一对应；&lt;/li&gt;
+&lt;li&gt;比如保存一个人的信息：数组形式：[19，‘Tom’，1.65]，可通过下标值取出信息；字典形式：{&amp;quot;age&amp;quot;：19，&amp;quot;name&amp;quot;：&amp;quot;Tom&amp;quot;，&amp;quot;height&amp;quot;：165}，可以通过key取出value。&lt;/li&gt;
+&lt;li&gt;此外，在字典中&lt;strong&gt;key&lt;/strong&gt;是&lt;strong&gt;不能重复&lt;/strong&gt;且&lt;strong&gt;无序&lt;/strong&gt;的，而&lt;strong&gt;Value&lt;/strong&gt;可以&lt;strong&gt;重复&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;字典和映射的关系：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有些编程语言中称这种映射关系为字典，如Swift中的Dictonary，Python中的dict；&lt;/li&gt;
+&lt;li&gt;有些编程语言中称这种映射关系为Map，比如Java中的HashMap&amp;amp;TreeMap等；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;字典类常见的操作：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;set(key,value)：向字典中添加新元素。&lt;/li&gt;
+&lt;li&gt;remove(key)：通过使用键值来从字典中移除键值对应的数据值。&lt;/li&gt;
+&lt;li&gt;has(key)：如果某个键值存在于这个字典中，则返回true，反之则返回false。&lt;/li&gt;
+&lt;li&gt;get(key)：通过键值查找特定的数值并返回。&lt;/li&gt;
+&lt;li&gt;clear()：将这个字典中的所有元素全部删除。&lt;/li&gt;
+&lt;li&gt;size()：返回字典所包含元素的数量。与数组的length属性类似。&lt;/li&gt;
+&lt;li&gt;keys()：将字典所包含的所有键名以数组形式返回。&lt;/li&gt;
+&lt;li&gt;values()：将字典所包含的所有数值以数组形式返回。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;22封装字典&#34;&gt;2.2.封装字典&lt;/h2&gt;
+&lt;p&gt;字典类可以基于JavaScript中的对象结构来实现，比较简单，这里直接实现字典类中的常用方法。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//封装字典类
+function Dictionary(){
+  //字典属性
+  this.items = {}
+
+  //字典操作方法
+  //一.在字典中添加键值对
+  Dictionary.prototype.set = function(key, value){
+    this.items[key] = value
+  }
+
+  //二.判断字典中是否有某个key
+  Dictionary.prototype.has = function(key){
+    return this.items.hasOwnProperty(key)
+  }
+
+  //三.从字典中移除元素
+  Dictionary.prototype.remove = function(key){
+    //1.判断字典中是否有这个key
+    if(!this.has(key)) return false
+
+    //2.从字典中删除key
+    delete this.items[key]
+    return true
+  }
+
+  //四.根据key获取value
+  Dictionary.prototype.get = function(key){
+    return this.has(key) ? this.items[key] : undefined
+  }
+
+  //五.获取所有keys
+  Dictionary.prototype.keys = function(){
+    return Object.keys(this.items)
+  }
+
+  //六.size方法
+  Dictionary.prototype.keys = function(){
+    return this.keys().length
+  }
+
+  //七.clear方法
+  Dictionary.prototype.clear = function(){
+    this.items = {}
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;amp;seid=3912456004602554239&#34;&gt;参考资料:JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
+">JavaScript实现集合与字典</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-shuang-xiang-lian-biao/"" data-c="
