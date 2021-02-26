@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>餐厅练习-Css选择器 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1613742982937">
+<link rel="shortcut icon" href="/favicon.ico?v=1614353461487">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -201,7 +201,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">32</span>
+        <span class="site-item-stat-count">33</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -962,6 +962,835 @@ apple里没有组是.small的元素</p>
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-ha-xi-biao/"" data-c="
+          &lt;h1 id=&#34;1哈希表简介&#34;&gt;1.哈希表简介&lt;/h1&gt;
+&lt;h2 id=&#34;11认识哈希表&#34;&gt;1.1.认识哈希表&lt;/h2&gt;
+&lt;p&gt;哈希表通常是基于&lt;strong&gt;数组&lt;/strong&gt;实现的，但是相对于数组，它存在更多优势：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哈希表可以提供非常快速的&lt;strong&gt;插入-删除-查找操作&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;无论多少数据，插入和删除值都只需要非常短的时间，即O(1)的时间级。实际上，只需要&lt;strong&gt;几个机器指令&lt;/strong&gt;即可完成；&lt;/li&gt;
+&lt;li&gt;哈希表的速度比&lt;strong&gt;树还要快&lt;/strong&gt;，基本可以瞬间查找到想要的元素。但是相对于树来说编码要简单得多。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;哈希表同样存在不足之处：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哈希表中的数据是&lt;strong&gt;没有顺序&lt;/strong&gt;的，所以不能以一种固定的方式（比如从小到大 ）来遍历其中的元素。&lt;/li&gt;
+&lt;li&gt;通常情况下，哈希表中的key是&lt;strong&gt;不允许重复&lt;/strong&gt;的，不能放置相同的key，用于保存不同的元素。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;哈希表是什么？&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哈希表并不好理解，不像数组、链表和树等可通过图形的形式表示其结构和原理。&lt;/li&gt;
+&lt;li&gt;哈希表的结构就是&lt;strong&gt;数组&lt;/strong&gt;，但它神奇之处在于对&lt;strong&gt;下标值的一种变换&lt;/strong&gt;，这种变换我们可以称之为&lt;strong&gt;哈希函数&lt;/strong&gt;，通过哈希函数可以获取&lt;strong&gt;HashCode&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;通过以下案例了解哈希表：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;案例一：公司想要存储1000个人的信息，每一个工号对应一个员工的信息。若使用数组，增删数据时比较麻烦；使用链表，获取数据时比较麻烦。有没有一种数据结构，能把某一员工的姓名转换为它对应的工号，再根据工号查找该员工的完整信息呢？没错此时就可以使用哈希表的哈希函数来实现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例二：存储联系人和对应的电话号码：当要查找张三（比如）的号码时，若使用数组：由于不知道存储张三数据对象的下标值，所以查找起来十分麻烦，使用链表时也同样麻烦。而使用哈希表就能通过哈希函数把张三这个名称转换为它对应的下标值，再通过下标值查找效率就非常高了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是说：哈希表最后还是基于数据来实现的，只不过哈希表能够通过哈希函数把字符串转化为对应的&lt;strong&gt;下标值&lt;/strong&gt;，建立字符串和下标值的对应关系。&lt;/p&gt;
+&lt;h2 id=&#34;12哈希化的方式&#34;&gt;1.2.哈希化的方式&lt;/h2&gt;
+&lt;p&gt;为了把字符串转化为对应的下标值，需要有一套编码系统，为了方便理解我们创建这样一套编码系统：比如&lt;strong&gt;a为1，b为2，c为3，以此类推z为26，空格为27（不考虑大写情况）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;有了编码系统后，将字母转化为数字也有很多种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;方式一：数字相加。例如&lt;strong&gt;cats转化为数字&lt;/strong&gt;：3+1+20+19=43，那么就把43作为cats单词的下标值储存在数组中；&lt;br&gt;
+但是这种方式会存在这样的问题：很多的单词按照该方式转化为数字后都是43，比如was。而在数组中&lt;strong&gt;一个下标值&lt;/strong&gt;只能&lt;strong&gt;储存一个数据&lt;/strong&gt;，所以该方式不合理。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;方式二：幂的连乘。我们平时使用的&lt;strong&gt;大于10的数字&lt;/strong&gt;，就是用&lt;strong&gt;幂的连乘&lt;/strong&gt;来表示它的唯一性的。比如： 6543=6 * 103 + 5 * 102 + 4 * 10 + 3；这样单词也可以用该种方式来表示：cats = 3 * 273 + 1 * 272 + 20 * 27 + 17 =60337;&lt;br&gt;
+虽然该方式可以保证字符的唯一性，但是如果是较长的字符（如aaaaaaaaaa）所表示的数字就非常大，此时要求很大容量的数组，然而其中却有许多下标值指向的是无效的数据（比如不存在zxcvvv这样的单词），造成了数组空间的浪费。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;两种方案总结：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一种方案（让数字相加求和）产生的&lt;strong&gt;数组下标太少；&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;第二种方案（与27的幂相乘求和）产生的&lt;strong&gt;数组下标又太多；&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;现在需要一种&lt;strong&gt;压缩方法&lt;/strong&gt;，把幂的连乘方案系统中得到的&lt;strong&gt;巨大整数范围&lt;/strong&gt;压缩到&lt;strong&gt;可接受的数组范围&lt;/strong&gt;中。可以通过取余操作来实现。虽然取余操作得到的结构也有可能重复，但是可以通过其他方式解决。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;哈希表的一些概念：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;哈希化&lt;/strong&gt;：将&lt;strong&gt;大数字&lt;/strong&gt;转化成&lt;strong&gt;数组范围内下标&lt;/strong&gt;的过程，称之为&lt;strong&gt;哈希化&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;哈希函数&lt;/strong&gt;：我们通常会将&lt;strong&gt;单词&lt;/strong&gt;转化成&lt;strong&gt;大数字&lt;/strong&gt;，把&lt;strong&gt;大数字&lt;/strong&gt;进行&lt;strong&gt;哈希化&lt;/strong&gt;的代码实现放在一个函数中，该函数就称为&lt;strong&gt;哈希函数&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;哈希表&lt;/strong&gt;：对最终数据插入的&lt;strong&gt;数组&lt;/strong&gt;进行整个&lt;strong&gt;结构的封装&lt;/strong&gt;，得到的就是&lt;strong&gt;哈希表&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;仍然需要解决的问题：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哈希化过后的下标依然可能&lt;strong&gt;重复&lt;/strong&gt;，如何解决这个问题呢？这种情况称为&lt;strong&gt;冲突&lt;/strong&gt;，冲突是&lt;strong&gt;不可避免&lt;/strong&gt;的，我们只能&lt;strong&gt;解决冲突&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;13解决冲突的方法&#34;&gt;1.3.解决冲突的方法&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;解决冲突常见的两种方案：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;方案一：&lt;strong&gt;链地址法（拉链法）&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如下图所示，我们将每一个数字都对&lt;strong&gt;10&lt;/strong&gt;进行取余操作，则余数的范围&lt;strong&gt;0~9&lt;/strong&gt;作为数组的下标值。并且，数组每一个下标值对应的位置存储的不再是一个数字了，而是存储由经过取余操作后得到相同余数的数字组成的&lt;strong&gt;数组&lt;/strong&gt;或&lt;strong&gt;链表&lt;/strong&gt;。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614344975950.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这样可以根据下标值获取到整个数组或链表，之后继续在数组或链表中查找就可以了。而且，产生冲突的元素一般不会太多。&lt;br&gt;
+&lt;strong&gt;总结&lt;/strong&gt;：链地址法解决冲突的办法是&lt;strong&gt;每个数组单元&lt;/strong&gt;中存储的不再是&lt;strong&gt;单个数据&lt;/strong&gt;，而是一条&lt;strong&gt;链条&lt;/strong&gt;，这条链条常使用的数据结构为&lt;strong&gt;数组&lt;/strong&gt;或&lt;strong&gt;链表&lt;/strong&gt;，两种数据结构查找的效率相当（因为链条的元素一般不会太多）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;方案二：&lt;strong&gt;开放地址法&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;开放地址法的主要工作方式是&lt;strong&gt;寻找空白的单元格&lt;/strong&gt;来放置&lt;strong&gt;冲突&lt;/strong&gt;的数据项。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614345198909.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+根据探测空白单元格位置方式的不同，可分为三种方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;线性探测&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;二次探测&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;再哈希法&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;14寻找空白单元格的方式&#34;&gt;1.4.寻找空白单元格的方式&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;线性探测&lt;/code&gt;&lt;br&gt;
+&lt;strong&gt;当插入13时&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;经过哈希化（对10取余）之后得到的下标值index=3，但是该位置已经放置了数据33。而线性探测就是从&lt;strong&gt;index位置+1&lt;/strong&gt;开始向后一个一个来查找&lt;strong&gt;合适的位置&lt;/strong&gt;来放置13，所谓合适的位置指的是&lt;strong&gt;空的位置&lt;/strong&gt;，如上图中index=4的位置就是合适的位置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;当查询13时：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先13经过哈希化得到index=3，如果index=3的位置存放的数据与需要查询的数据13相同，就直接返回；&lt;/li&gt;
+&lt;li&gt;不相同时，则线性查找，从&lt;strong&gt;index+1&lt;/strong&gt;位置开始一个一个位置地查找数据13；&lt;/li&gt;
+&lt;li&gt;查询过程中不会遍历整个哈希表，只要查询到&lt;strong&gt;空位置，就停止&lt;/strong&gt;，因为插入13时不会跳过空位置去插入其他位置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;当删除13时&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;删除操作和上述两种情况类似，但需要注意的是，删除一个数据项时，&lt;strong&gt;不能&lt;/strong&gt;将该位置下标的&lt;strong&gt;内容设置为null&lt;/strong&gt;，否则会&lt;strong&gt;影响到之后其他的查询操作&lt;/strong&gt;，因为一遇到为null的位置就会停止查找。&lt;/li&gt;
+&lt;li&gt;通常&lt;strong&gt;删除一个位置的数据项&lt;/strong&gt;时，我们可以&lt;strong&gt;将它进行特殊处理&lt;/strong&gt;（比如设置为-1），这样在查找时遇到-1就知道要&lt;strong&gt;继续查找&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;线性探测存在的问题：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线性探测存在一个比较严重的问题，就是&lt;strong&gt;聚集&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;如哈希表中还没插入任何元素时，插入23、24、25、26、27，这就意味着下标值为3、4、5、6、7的位置都放置了数据，这种&lt;strong&gt;一连串填充单元&lt;/strong&gt;就称为&lt;strong&gt;聚集&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;聚集会影响哈希表的&lt;strong&gt;性能&lt;/strong&gt;，无论是插入/查询/删除都会影响；&lt;/li&gt;
+&lt;li&gt;比如插入13时就会发现，连续的单元3~7都不允许插入数据，并且在插入的过程中需要经历多次这种情况。二次探测法可以解决该问题。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614345460679.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;二次探测&lt;/code&gt;&lt;br&gt;
+上文所说的&lt;strong&gt;线性探测存在的问题&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如果之前的数据是&lt;strong&gt;连续插入&lt;/strong&gt;的，那么新插入的一个数据可能需要&lt;strong&gt;探测很长的距离&lt;/strong&gt;；&lt;/p&gt;
+&lt;p&gt;二次探测是在线性探测的基础上进行了&lt;strong&gt;优化&lt;/strong&gt;：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;线性探测&lt;/strong&gt;：我们可以看成是&lt;strong&gt;步长为1&lt;/strong&gt;的探测，比如从下表值x开始，那么线性探测就是按照下标值：x+1、x+2、x+3等依次探测；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;二次探测&lt;/strong&gt;：对步长进行了优化，比如从下标值x开始探测：x+12、x+22、x+33 。这样&lt;strong&gt;一次性探测比较长的距离&lt;/strong&gt;，避免了数据聚集带来的影响。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;二次探测存在的问题：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当插入数据分布性较大的一组数据时，比如：13-163-63-3-213，这种情况会造成&lt;strong&gt;步长不一的一种聚集&lt;/strong&gt;（虽然这种情况出现的概率较线性探测的聚集要小），同样会影响性能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;再哈希化&lt;/code&gt;&lt;br&gt;
+在开放地址法中寻找空白单元格的最好的解决方式为&lt;strong&gt;再哈希化&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;二次探测的步长是固定的：1，4，9，16依次类推；&lt;/li&gt;
+&lt;li&gt;现在需要一种方法：产生一种&lt;strong&gt;依赖关键字(数据)的探测序列&lt;/strong&gt;，而不是每个关键字探测步长都一样；&lt;/li&gt;
+&lt;li&gt;这样，&lt;strong&gt;不同的关键字&lt;/strong&gt;即使映射到&lt;strong&gt;相同的数组下标&lt;/strong&gt;，也可以使用&lt;strong&gt;不同的探测序列&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;再哈希法的做法为：把关键字用&lt;strong&gt;另一个&lt;/strong&gt;哈希函数，&lt;strong&gt;再做一次哈希化&lt;/strong&gt;，用这次哈希化的&lt;strong&gt;结果作为该关键字的步长&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;第二次哈希化需要满足以下两点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;和&lt;strong&gt;第一个哈希函数不同&lt;/strong&gt;，不然哈希化后的结果仍是原来位置；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不能输出为0&lt;/strong&gt;，否则每次探测都是原地踏步的死循环；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;优秀的哈希函数：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;stepSize = constant - （key % constant）&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;其中constant是&lt;strong&gt;质数&lt;/strong&gt;，且小于数组的容量；&lt;/li&gt;
+&lt;li&gt;例如：stepSize = 5 - （key % 5），满足需求，并且结果不可能为0；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;哈希化的效率&lt;/strong&gt;&lt;br&gt;
+哈希表中执行插入和搜索操作效率是非常高的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果没有&lt;strong&gt;发生冲突&lt;/strong&gt;，那么效率就会更高；&lt;/li&gt;
+&lt;li&gt;如果&lt;strong&gt;发生冲突&lt;/strong&gt;，存取时间就依赖后来的探测长度；&lt;/li&gt;
+&lt;li&gt;平均探测长度以及平均存取时间，取决于装填因子，随着&lt;strong&gt;装填因子&lt;/strong&gt;变大，探测长度会越来越长。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;理解概念&lt;strong&gt;装填因子&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;装填因子表示当前哈希表中已经&lt;strong&gt;包含的数据项&lt;/strong&gt;和&lt;strong&gt;整个哈希表长度&lt;/strong&gt;的&lt;strong&gt;比值&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;装填因子 = 总数据项 / 哈希表长度&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开放地址法的装填因子&lt;/strong&gt;最大为1，因为只有空白的单元才能放入元素；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;链地址法的装填因子&lt;/strong&gt;可以&lt;strong&gt;大于1&lt;/strong&gt;，因为只要愿意，拉链法可以无限延伸下去；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;15不同探测方式性能的比较&#34;&gt;1.5.不同探测方式性能的比较&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;线性探测&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以看到，随着装填因子的增大，平均探测长度呈指数形式增长，性能较差。实际情况中，最好的装填因子取决于存储效率和速度之间的平衡，随着装填因子变小，存储效率下降，而速度上升。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614347865771.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;二次探测和再哈希化的性能&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;二次探测和再哈希法性能相当，它们的性能比线性探测略好。由下图可知，随着装填因子的变大，平均探测长度呈指数形式增长，需要探测的次数也呈指数形式增长，性能不高。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614347917941.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;链地址法的性能&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以看到随着装填因子的增加，平均探测长度呈线性增长，较为平缓。在开发中使用链地址法较多，比如Java中的HashMap中使用的就是&lt;strong&gt;链地址法&lt;/strong&gt;。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614347946852.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;16优秀的哈希函数&#34;&gt;1.6.优秀的哈希函数&lt;/h2&gt;
+&lt;p&gt;哈希表的优势在于它的速度，所以哈希函数不能采用消耗性能较高的复杂算法。提高速度的一个方法是在哈希函数中&lt;strong&gt;尽量减少乘法和除法&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;性能高的哈希函数应具备以下两个优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;快速的计算&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;均匀的分布&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;快速计算&lt;/code&gt;&lt;br&gt;
+&lt;strong&gt;霍纳法则&lt;/strong&gt;：在中国霍纳法则也叫做&lt;strong&gt;秦久韶算法&lt;/strong&gt;，具体算法为：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614352364784.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+求多项式的值时，首先计算最内层括号内一次多项式的值，然后由内向外逐层计算一次多项式的值。这种算法把求n次多项式f(x)的值就转化为求n个一次多项式的值。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;变换之前：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;乘法次数：n（n+1）/2次；&lt;/li&gt;
+&lt;li&gt;加法次数：n次；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;变换之前：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;乘法次数：n次；&lt;/li&gt;
+&lt;li&gt;加法次数：n次；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果使用大O表示时间复杂度的话，直接从变换前的&lt;strong&gt;O(N2)&lt;strong&gt;降到了&lt;/strong&gt;O(N)&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;均匀分布&lt;/code&gt;&lt;br&gt;
+为了保证数据在哈希表中&lt;strong&gt;均匀分布&lt;/strong&gt;，当我们需要&lt;strong&gt;使用常量的地方&lt;/strong&gt;，尽量使用&lt;strong&gt;质数&lt;/strong&gt;；比如：哈希表的长度、N次幂的底数等。&lt;/p&gt;
+&lt;p&gt;Java中的HashMap采用的是链地址法，哈希化采用的是公式为：&lt;strong&gt;index = HashCode（key）&amp;amp;（Length-1）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;即将数据化为二进制进行&lt;strong&gt;与&lt;/strong&gt;运算，而不是取余运算。这样计算机直接运算二进制数据，效率更高。但是JavaScript在进行叫大数据的&lt;strong&gt;与&lt;/strong&gt;运算时会出现问题，所以以下使用JavaScript实现哈希化时还是采用取余运算。&lt;/p&gt;
+&lt;h1 id=&#34;2初步封装哈希表&#34;&gt;2.初步封装哈希表&lt;/h1&gt;
+&lt;p&gt;** 哈希表的常见操作为**：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;put（key，value）：插入或修改操作；&lt;/li&gt;
+&lt;li&gt;get（key）：获取哈希表中特定位置的元素；&lt;/li&gt;
+&lt;li&gt;remove（key）：删除哈希表中特定位置的元素；&lt;/li&gt;
+&lt;li&gt;isEmpty（）：如果哈希表中不包含任何元素，返回trun，如果哈希表长度大于0则返回false；&lt;/li&gt;
+&lt;li&gt;size（）：返回哈希表包含的元素个数；&lt;/li&gt;
+&lt;li&gt;resize（value）：对哈希表进行扩容操作；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;21哈希函数的简单实现&#34;&gt;2.1.哈希函数的简单实现&lt;/h2&gt;
+&lt;p&gt;首先使用霍纳法则计算hashCode的值，通过取余操作实现哈希化，此处先简单地指定数组的大小。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //设计哈希函数
+    //1.将字符串转成比较大的数字：hashCede
+    //2.将大的数字hasCode压缩到数组范围(大小)之内
+    function hashFunc(str, size){
+      //1.定义hashCode变量
+      let hashCode = 0
+
+      //2.霍纳法则，计算hashCode的值
+      //cats -&amp;gt; Unicode编码
+      for(let i = 0 ;i &amp;lt; str.length; i++){
+        // str.charCodeAt(i)//获取某个字符对应的unicode编码
+        hashCode = 37 * hashCode + str.charCodeAt(i)
+      }
+
+      //3.取余操作
+      let index = hashCode % size
+      return index
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;     //测试哈希函数
+    console.log(hashFunc(&#39;123&#39;, 7));
+    console.log(hashFunc(&#39;NBA&#39;, 7));
+    console.log(hashFunc(&#39;CBA&#39;, 7));
+    console.log(hashFunc(&#39;CMF&#39;, 7));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614352556116.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;22创建哈希表&#34;&gt;2.2.创建哈希表&lt;/h2&gt;
+&lt;p&gt;封装哈希表的数组结构模型：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614352568255.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+首先创建哈希表类HashTable，并添加必要的属性和上面实现的哈希函数，再进行其他方法的实现。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //封装哈希表类
+    function HashTable() {
+      //属性
+      this.storage = []
+      this.count = 0//计算已经存储的元素个数
+      //装填因子：loadFactor &amp;gt; 0.75时需要扩容；loadFactor &amp;lt; 0.25时需要减少容量
+      this.limit = 7//初始长度
+
+      //方法
+      //哈希函数
+      HashTable.prototype.hashFunc = function(str, size){
+      //1.定义hashCode变量
+      let hashCode = 0
+
+      //2.霍纳法则，计算hashCode的值
+      //cats -&amp;gt; Unicode编码
+      for(let i = 0 ;i &amp;lt; str.length; i++){
+        // str.charCodeAt(i)//获取某个字符对应的unicode编码
+        hashCode = 37 * hashCode + str.charCodeAt(i)
+      }
+
+      //3.取余操作
+      let index = hashCode % size
+      return index
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;23putkeyvalue&#34;&gt;2.3.put(key,value)&lt;/h2&gt;
+&lt;p&gt;哈希表的插入和修改操作是同一个函数：因为，当使用者传入一个&amp;lt;key，value&amp;gt;时，如果原来不存在该key，那么就是插入操作，如果原来已经存在该key，那么就是修改操作。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614352604336.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;实现思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先，根据key获取索引值index，目的为将数据插入到storage的对应位置；&lt;/li&gt;
+&lt;li&gt;然后，根据索引值取出bucket，如果bucket不存在，先创建bucket，随后放置在该索引值的位置；&lt;/li&gt;
+&lt;li&gt;接着，判断新增还是修改原来的值。如果已经有值了，就修改该值；如果没有，就执行后续操作。&lt;/li&gt;
+&lt;li&gt;最后，进行新增数据操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //插入&amp;amp;修改操作
+    HashTable.prototype.put = function (key, value){
+      //1.根据key获取对应的index
+      let index = this.hashFunc(key, this.limit)
+
+      //2.根据index取出对应的bucket
+      let bucket = this.storage[index]
+
+      //3.判断该bucket是否为null
+      if (bucket == null) {
+        bucket = []
+        this.storage[index] = bucket
+      }
+
+      //4.判断是否是修改数据
+      for (let i = 0; i &amp;lt; bucket.length; i++) {
+        let tuple = bucket[i];
+        if (tuple[0] == key) {
+          tuple[1] = value
+          return//不用返回值
+        }
+      }
+
+      //5.进行添加操作
+      bucket.push([key, value])
+      this.count += 1
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   //测试哈希表
+    //1.创建哈希表
+    let ht = new HashTable()
+
+    //2.插入数据
+    ht.put(&#39;class1&#39;,&#39;Tom&#39;)
+    ht.put(&#39;class2&#39;,&#39;Mary&#39;)
+    ht.put(&#39;class3&#39;,&#39;Gogo&#39;)
+    ht.put(&#39;class4&#39;,&#39;Tony&#39;)
+    ht.put(&#39;class4&#39;, &#39;Vibi&#39;)
+    console.log(ht);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614352672421.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;24getkey&#34;&gt;2.4.get(key)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;实现思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先，根据key通过哈希函数获取它在storage中对应的索引值index；&lt;/li&gt;
+&lt;li&gt;然后，根据索引值获取对应的bucket；&lt;/li&gt;
+&lt;li&gt;接着，判断获取到的bucket是否为null，如果为null，直接返回null；&lt;/li&gt;
+&lt;li&gt;随后，线性遍历bucket中每一个key是否等于传入的key。如果等于，直接返回对应的value；&lt;/li&gt;
+&lt;li&gt;最后，遍历完bucket后，仍然没有找到对应的key，直接return null即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;    //获取操作
+    HashTable.prototype.get = function(key){
+      //1.根据key获取对应的index
+      let index = this.hashFunc(key, this.limit)
+
+      //2.根据index获取对应的bucket
+      let bucket = this.storage[index]
+
+      //3.判断bucket是否等于null
+      if (bucket == null) {
+        return null
+      }
+
+      //4.有bucket，那么就进行线性查找
+      for (let i = 0; i &amp;lt; bucket.length; i++) {
+        let tuple = bucket[i];
+        if (tuple[0] == key) {//tuple[0]存储key，tuple[1]存储value
+          return tuple[1]
+        }
+      }
+
+      //5.依然没有找到，那么返回null
+      return null
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //测试哈希表
+    //1.创建哈希表
+    let ht = new HashTable()
+    
+	//2.插入数据
+    ht.put(&#39;class1&#39;,&#39;Tom&#39;)
+    ht.put(&#39;class2&#39;,&#39;Mary&#39;)
+    ht.put(&#39;class3&#39;,&#39;Gogo&#39;)
+    ht.put(&#39;class4&#39;,&#39;Tony&#39;)
+    
+    //3.获取数据
+    console.log(ht.get(&#39;class3&#39;));
+    console.log(ht.get(&#39;class2&#39;));
+    console.log(ht.get(&#39;class1&#39;));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614352753473.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;25removekey&#34;&gt;2.5.remove(key)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;实现思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先，根据key通过哈希函数获取它在storage中对应的索引值index；&lt;/li&gt;
+&lt;li&gt;然后，根据索引值获取对应的bucket；&lt;/li&gt;
+&lt;li&gt;接着，判断获取到的bucket是否为null，如果为null，直接返回null；&lt;/li&gt;
+&lt;li&gt;随后，线性查找bucket，寻找对应的数据，并且删除；&lt;/li&gt;
+&lt;li&gt;最后，依然没有找到，返回null；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //删除操作
+    HashTable.prototype.remove = function(key){
+      //1.根据key获取对应的index
+      let index = this.hashFunc(key, this.limit)
+
+      //2.根据index获取对应的bucket
+      let bucket = this.storage[index]
+
+      //3.判断bucket是否为null
+      if (bucket == null) {
+        return null
+      }
+
+      //4.有bucket,那么就进行线性查找并删除
+      for (let i = 0; i &amp;lt; bucket.length; i++) {
+        let tuple = bucket[i]
+        if (tuple[0] == key) {
+          bucket.splice(i,1)
+          this.count -= 1 
+          return tuple[1]
+        }
+    }
+
+      //5.依然没有找到，返回null
+      return null
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   //测试哈希表
+   //1.创建哈希表
+   let ht = new HashTable()
+   
+   //2.插入数据
+   ht.put(&#39;class1&#39;,&#39;Tom&#39;)
+   ht.put(&#39;class2&#39;,&#39;Mary&#39;)
+   ht.put(&#39;class3&#39;,&#39;Gogo&#39;)
+   ht.put(&#39;class4&#39;,&#39;Tony&#39;)
+   
+   //3.删除数据
+   console.log( ht.remove(&#39;class2&#39;));
+   console.log(ht.get(&#39;class2&#39;));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614352863082.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;26其他方法的实现&#34;&gt;2.6.其他方法的实现&lt;/h2&gt;
+&lt;p&gt;其他方法包括：&lt;strong&gt;isEmpty()、size()&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  //判断哈希表是否为null
+  HashTable.prototype.isEmpty = function(){
+    return this.count == 0
+  }
+
+  //获取哈希表中元素的个数
+  HashTable.prototype.size = function(){
+    return this.count
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  //测试哈希表
+  //1.创建哈希表
+  let ht = new HashTable()
+
+  //2.插入数据
+  ht.put(&#39;class1&#39;,&#39;Tom&#39;)
+  ht.put(&#39;class2&#39;,&#39;Mary&#39;)
+  ht.put(&#39;class3&#39;,&#39;Gogo&#39;)
+  ht.put(&#39;class4&#39;,&#39;Tony&#39;)
+  
+  //3.测试isEmpty()
+  console.log(ht.isEmpty());
+  //4.测试isEmpty()
+  console.log(ht.size());
+  console.log(ht);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614352923431.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3哈希表的扩容&#34;&gt;3.哈希表的扩容&lt;/h1&gt;
+&lt;h2 id=&#34;31扩容与压缩&#34;&gt;3.1.扩容与压缩&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;为什么需要扩容？&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;前面我们在哈希表中使用的是&lt;strong&gt;长度为7的数组&lt;/strong&gt;，由于使用的是&lt;strong&gt;链地址法&lt;/strong&gt;，**装填因子(loadFactor)**可以大于1，所以这个哈希表可以无限制地插入新数据。&lt;/li&gt;
+&lt;li&gt;但是，随着&lt;strong&gt;数据量的增多&lt;/strong&gt;，storage中每一个index对应的bucket数组（链表）就会越来越长，这就会造成哈希表&lt;strong&gt;效率的降低&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;什么情况下需要扩容？&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;常见的情况是&lt;strong&gt;loadFactor &amp;gt; 0.75&lt;/strong&gt;的时候进行扩容；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;如何进行扩容？&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;简单的扩容可以直接扩大&lt;strong&gt;两倍&lt;/strong&gt;（关于质数，之后讨论）；&lt;/li&gt;
+&lt;li&gt;扩容之后&lt;strong&gt;所有的&lt;/strong&gt;数据项都要进行&lt;strong&gt;同步修改&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实现思路:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先，定义一个变量，比如oldStorage指向原来的storage；&lt;/li&gt;
+&lt;li&gt;然后，创建一个新的容量更大的数组，让this.storage指向它；&lt;/li&gt;
+&lt;li&gt;最后，将oldStorage中的每一个bucket中的每一个数据取出来依次添加到this.storage指向的新数组中；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614353051852.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //哈希表扩容
+  HashTable.prototype.resize = function(newLimit){
+    //1.保存旧的storage数组内容
+    let oldStorage = this.storage
+
+    //2.重置所有的属性
+    this.storage = []
+    this.count = 0
+    this.limit = newLimit
+
+    //3.遍历oldStorage中所有的bucket
+    for (let i = 0; i &amp;lt; oldStorage.length; i++) {
+      //3.1.取出对应的bucket
+      const bucket = oldStorage[i];
+
+      //3.2.判断bucket是否为null
+      if (bucket == null) {
+        continue
+      }      
+
+      //3.3.bucket中有数据，就取出数据重新插入
+      for (let j = 0; j &amp;lt; bucket.length; j++) {
+        const tuple = bucket[j];
+        this.put(tuple[0], tuple[1])//插入数据的key和value
+      }
+    }
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上述定义的哈希表的resize方法，既可以实现哈希表的&lt;strong&gt;扩容&lt;/strong&gt;，也可以实现哈希表容量的&lt;strong&gt;压缩&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;装填因子 = 哈希表中数据 / 哈希表长度，即 loadFactor = count / HashTable.length。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;通常情况下当&lt;strong&gt;装填因子laodFactor &amp;gt; 0.75&lt;/strong&gt;时，对哈希表进行扩容。在哈希表中的添加方法（push方法）中添加如下代码，判断是否需要调用扩容函数进行扩容：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;     //判断是否需要扩容操作
+      if(this.count &amp;gt; this.limit * 0.75){
+        this.resize(this.limit * 2)
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;当装填因子&lt;strong&gt;laodFactor &amp;lt; 0.25&lt;/strong&gt;时，对哈希表容量进行压缩。在哈希表中的删除方法（remove方法）中添加如下代码，判断是否需要调用扩容函数进行压缩：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;    //缩小容量
+    if (this.limit &amp;gt; 7 &amp;amp;&amp;amp; this.count &amp;lt; this.limit * 0.25) {
+      this.resize(Math.floor(this.limit / 2))
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;32选择质数作为容量&#34;&gt;3.2.选择质数作为容量&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;质数的判断&lt;/strong&gt;&lt;br&gt;
+首先我们来复习一下，判断质数的方法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意1不是质数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;方法一：针对质数的特点：只能被1和num整除，不能被2 ~ (num-1)整除。遍历2 ~ (num-1) 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;function isPrime(num){
+      if(num &amp;lt;= 1 ){
+        return false
+      } 
+      for(let i = 2; i &amp;lt;= num - 1; i++){
+        if(num % i ==0){
+          return false
+        }
+      }
+        return true
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这种方法虽然能实现质数的判断，但是效率不高。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;方法二：只需要遍历2 ~ num的平方根即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;    function isPrime(num){
+      if (num &amp;lt;= 1) {
+        return false
+      }
+      //1.获取num的平方根:Math.sqrt(num)
+      //2.循环判断
+      for(var i = 2; i&amp;lt;= Math.sqrt(num); i++ ){
+        if(num % i == 0){
+          return false;
+        }
+      }
+        return true;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;实现扩容后的哈希表容量为质数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现思路：&lt;/strong&gt;&lt;br&gt;
+2倍扩容之后，通过循环调用isPrime判断得到的容量是否为质数，不是则+1，直到是为止。比如原长度：7，2倍扩容后长度为14，14不是质数，14 + 1 = 15不是质数，15 + 1 = 16不是质数，16 + 1 = 17是质数，停止循环，由此得到质数17。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一步：首先需要为HashTable类添加判断质数的isPrime方法和获取质数的getPrime方法：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;  //判断传入的num是否质数
+  HashTable.prototype.isPrime = function(num){
+      if (num &amp;lt;= 1) {
+        return false
+      }
+      //1.获取num的平方根:Math.sqrt(num)
+      //2.循环判断
+      for(var i = 2; i&amp;lt;= Math.sqrt(num); i++ ){
+        if(num % i == 0){
+          return false;
+        }
+      }
+        return true;
+    }
+
+    //获取质数的方法
+    HashTable.prototype.getPrime = function(num){
+       //7*2=14,+1=15,+1=16,+1=17(质数)
+      while (!this.isPrime(num)) {
+        num++
+      }
+      return num
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;第二步：修改添加元素的put方法和删除元素的remove方法中关于数组扩容的相关操作：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在put方法中添加如下代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //判断是否需要扩容操作
+      if(this.count &amp;gt; this.limit * 0.75){
+        let newSize = this.limit * 2
+        let newPrime = this.getPrime(newSize)
+        this.resize(newPrime)
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在remove方法中添加如下代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;     //缩小容量
+          if (this.limit &amp;gt; 7 &amp;amp;&amp;amp; this.count &amp;lt; this.limit * 0.25) {
+            let newSize = Math.floor(this.limit / 2)
+            let newPrime = this.getPrime(newSize)
+            this.resize(newPrime)
+          }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  let ht = new HashTable()
+
+    ht.put(&#39;class1&#39;,&#39;Tom&#39;)
+    ht.put(&#39;class2&#39;,&#39;Mary&#39;)
+    ht.put(&#39;class3&#39;,&#39;Gogo&#39;)
+    ht.put(&#39;class4&#39;,&#39;Tony&#39;)
+    ht.put(&#39;class5&#39;,&#39;5&#39;)
+    ht.put(&#39;class6&#39;,&#39;6&#39;)
+    ht.put(&#39;class7&#39;,&#39;7&#39;)
+    ht.put(&#39;class8&#39;,&#39;8&#39;)
+    ht.put(&#39;class9&#39;,&#39;9&#39;)
+    ht.put(&#39;class10&#39;,&#39;10&#39;)
+    console.log(ht.size());//10
+    console.log(ht.limit);//17
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614353404211.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;4哈希表的完整实现&#34;&gt;4.哈希表的完整实现&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;    //封装哈希表类
+    function HashTable() {
+      //属性
+      this.storage = []
+      this.count = 0//计算已经存储的元素个数
+      //装填因子：loadFactor &amp;gt; 0.75时需要扩容；loadFactor &amp;lt; 0.25时需要减少容量
+      this.limit = 7//初始长度
+
+      //方法
+      //哈希函数
+      HashTable.prototype.hashFunc = function(str, size){
+      //1.定义hashCode变量
+      let hashCode = 0
+
+      //2.霍纳法则，计算hashCode的值
+      //cats -&amp;gt; Unicode编码
+      for(let i = 0 ;i &amp;lt; str.length; i++){
+        // str.charCodeAt(i)//获取某个字符对应的unicode编码
+        hashCode = 37 * hashCode + str.charCodeAt(i)
+      }
+
+      //3.取余操作
+      let index = hashCode % size
+      return index
+    }
+
+    //一.插入&amp;amp;修改操作
+    HashTable.prototype.put = function (key, value){
+      //1.根据key获取对应的index
+      let index = this.hashFunc(key, this.limit)
+
+      //2.根据index取出对应的bucket
+      let bucket = this.storage[index]
+
+      //3.判断该bucket是否为null
+      if (bucket == null) {
+        bucket = []
+        this.storage[index] = bucket
+      }
+
+      //4.判断是否是修改数据
+      for (let i = 0; i &amp;lt; bucket.length; i++) {
+        let tuple = bucket[i];
+        if (tuple[0] == key) {
+          tuple[1] = value
+          return//不用返回值
+        }
+      }
+
+      //5.进行添加操作
+      bucket.push([key, value])
+      this.count += 1
+
+      //6.判断是否需要扩容操作
+      if(this.count &amp;gt; this.limit * 0.75){
+        let newSize = this.limit * 2
+        let newPrime = this.getPrime(newSize)
+        this.resize(newPrime)
+      }
+    }
+
+    //二.获取操作
+    HashTable.prototype.get = function(key){
+      //1.根据key获取对应的index
+      let index = this.hashFunc(key, this.limit)
+
+      //2.根据index获取对应的bucket
+      let bucket = this.storage[index]
+
+      //3.判断bucket是否等于null
+      if (bucket == null) {
+        return null
+      }
+
+      //4.有bucket，那么就进行线性查找
+      for (let i = 0; i &amp;lt; bucket.length; i++) {
+        let tuple = bucket[i];
+        if (tuple[0] == key) {//tuple[0]存储key，tuple[1]存储value
+          return tuple[1]
+        }
+      }
+
+      //5.依然没有找到，那么返回null
+      return null
+    }
+
+    //三.删除操作
+    HashTable.prototype.remove = function(key){
+      //1.根据key获取对应的index
+      let index = this.hashFunc(key, this.limit)
+
+      //2.根据index获取对应的bucket
+      let bucket = this.storage[index]
+
+      //3.判断bucket是否为null
+      if (bucket == null) {
+        return null
+      }
+
+      //4.有bucket,那么就进行线性查找并删除
+      for (let i = 0; i &amp;lt; bucket.length; i++) {
+        let tuple = bucket[i]
+        if (tuple[0] == key) {
+          bucket.splice(i,1)
+          this.count -= 1 
+          return tuple[1]
+
+          //6.缩小容量
+          if (this.limit &amp;gt; 7 &amp;amp;&amp;amp; this.count &amp;lt; this.limit * 0.25) {
+            let newSize = Math.floor(this.limit / 2)
+            let newPrime = this.getPrime(newSize)
+            this.resize(newPrime)
+          }
+        }
+    }
+
+      //5.依然没有找到，返回null
+      return null
+    }
+
+  /*------------------其他方法--------------------*/
+  //判断哈希表是否为null
+  HashTable.prototype.isEmpty = function(){
+    return this.count == 0
+  }
+
+  //获取哈希表中元素的个数
+  HashTable.prototype.size = function(){
+    return this.count
+  }
+
+
+  //哈希表扩容
+  HashTable.prototype.resize = function(newLimit){
+    //1.保存旧的storage数组内容
+    let oldStorage = this.storage
+
+    //2.重置所有的属性
+    this.storage = []
+    this.count = 0
+    this.limit = newLimit
+
+    //3.遍历oldStorage中所有的bucket
+    for (let i = 0; i &amp;lt; oldStorage.length; i++) {
+      //3.1.取出对应的bucket
+      const bucket = oldStorage[i];
+
+      //3.2.判断bucket是否为null
+      if (bucket == null) {
+        continue
+      }      
+
+      //3.3.bucket中有数据，就取出数据重新插入
+      for (let j = 0; j &amp;lt; bucket.length; j++) {
+        const tuple = bucket[j];
+        this.put(tuple[0], tuple[1])//插入数据的key和value
+      }
+    }
+  }
+
+  //判断传入的num是否质数
+  HashTable.prototype.isPrime = function(num){
+      if (num &amp;lt;= 1) {
+        return false
+      }
+      //1.获取num的平方根:Math.sqrt(num)
+      //2.循环判断
+      for(var i = 2; i&amp;lt;= Math.sqrt(num); i++ ){
+        if(num % i == 0){
+          return false;
+        }
+      }
+        return true;
+    }
+
+    //获取质数的方法
+    HashTable.prototype.getPrime = function(num){
+       //7*2=14,+1=15,+1=16,+1=17(质数)
+      while (!this.isPrime(num)) {
+        num++
+      }
+      return num
+    }
+ }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;amp;seid=3912456004602554239&#34;&gt;参考资料:JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
+">JavaScript实现哈希表</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/fan-wai-cong-a-li-yun-ban-jia-dao-teng-xun-yun-de-tian-keng-zhi-lu/"" data-c="
