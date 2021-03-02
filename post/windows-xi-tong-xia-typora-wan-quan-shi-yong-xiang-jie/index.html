@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Windows系统下Typora 完全使用详解 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614647962285">
+<link rel="shortcut icon" href="/favicon.ico?v=1614687268736">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1327,6 +1327,533 @@ CR 表示回车 \r ，即回到一行的开头，而 LF 表示换行 \n ，即�
 &lt;li&gt;邻接表可以简单地得出&lt;strong&gt;出度&lt;/strong&gt;，即某一顶点指向其他顶点的个数；&lt;/li&gt;
 &lt;li&gt;但是，邻接表计算&lt;strong&gt;入度&lt;/strong&gt;（指向某一顶点的其他顶点的个数称为该顶点的入度）十分困难。此时需要构造&lt;strong&gt;逆邻接表&lt;/strong&gt;才能有效计算入度；&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h1 id=&#34;2封装图结构&#34;&gt;2.封装图结构&lt;/h1&gt;
+&lt;p&gt;在实现过程中采用&lt;strong&gt;邻接表&lt;/strong&gt;的方式来表示边，使用&lt;strong&gt;字典类&lt;/strong&gt;来存储邻接表。&lt;/p&gt;
+&lt;h2 id=&#34;21添加字典类和队列类&#34;&gt;2.1.添加字典类和队列类&lt;/h2&gt;
+&lt;p&gt;首先需要引入之前实现的，之后会用到的字典类和队列类：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//封装字典类
+function Dictionary(){
+  //字典属性
+  this.items = {}
+
+  //字典操作方法
+  //一.在字典中添加键值对
+  Dictionary.prototype.set = function(key, value){
+    this.items[key] = value
+  }
+
+  //二.判断字典中是否有某个key
+  Dictionary.prototype.has = function(key){
+    return this.items.hasOwnProperty(key)
+  }
+
+  //三.从字典中移除元素
+  Dictionary.prototype.remove = function(key){
+    //1.判断字典中是否有这个key
+    if(!this.has(key)) return false
+
+    //2.从字典中删除key
+    delete this.items[key]
+    return true
+  }
+
+  //四.根据key获取value
+  Dictionary.prototype.get = function(key){
+    return this.has(key) ? this.items[key] : undefined
+  }
+
+  //五.获取所有keys
+  Dictionary.prototype.keys = function(){
+    return Object.keys(this.items)
+  }
+
+  //六.size方法
+  Dictionary.prototype.keys = function(){
+    return this.keys().length
+  }
+
+  //七.clear方法
+  Dictionary.prototype.clear = function(){
+    this.items = {}
+  }
+}
+
+   // 基于数组封装队列类
+    function Queue() {
+    // 属性
+      this.items = []
+    // 方法
+    // 1.将元素加入到队列中
+    Queue.prototype.enqueue = element =&amp;gt; {
+      this.items.push(element)
+    }
+
+    // 2.从队列中删除前端元素
+    Queue.prototype.dequeue = () =&amp;gt; {
+      return this.items.shift()
+    }
+
+    // 3.查看前端的元素
+    Queue.prototype.front = () =&amp;gt; {
+      return this.items[0]
+    }
+
+    // 4.查看队列是否为空
+    Queue.prototype.isEmpty = () =&amp;gt; {
+      return this.items.length == 0;
+    }
+
+    // 5.查看队列中元素的个数
+    Queue.prototype.size = () =&amp;gt; {
+      return this.items.length
+    }
+
+    // 6.toString方法
+    Queue.prototype.toString = () =&amp;gt; {
+      let resultString = &#39;&#39;
+        for (let i of this.items){
+          resultString += i + &#39; &#39;
+        }
+        return resultString
+      }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;22创建图类&#34;&gt;2.2.创建图类&lt;/h2&gt;
+&lt;p&gt;先创建图类Graph，并添加基本属性，再实现图类的常用方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //封装图类
+    function Graph (){
+      //属性：顶点(数组)/边(字典)
+      this.vertexes = []  //顶点
+      this.edges = new Dictionary() //边
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;23添加顶点与边&#34;&gt;2.3.添加顶点与边&lt;/h2&gt;
+&lt;p&gt;如图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614685887261.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;创建一个数组对象vertexes存储图的顶点；创建一个字典对象edges存储图的边，其中key为顶点，value为存储key顶点相邻顶点的数组。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;     //添加方法
+      //一.添加顶点
+      Graph.prototype.addVertex = function(v){
+        this.vertexes.push(v)
+        this.edges.set(v, []) //将边添加到字典中，新增的顶点作为键，对应的值为一个存储边的空数组
+      }
+      //二.添加边
+      Graph.prototype.addEdge = function(v1, v2){//传入两个顶点为它们添加边
+        this.edges.get(v1).push(v2)//取出字典对象edges中存储边的数组，并添加关联顶点
+        this.edges.get(v2).push(v1)//表示的是无向表，故要添加互相指向的两条边
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;24转换为字符串输出&#34;&gt;2.4.转换为字符串输出&lt;/h2&gt;
+&lt;p&gt;为图类Graph添加toString方法，实现以邻接表的形式输出图中各顶点。&lt;br&gt;
+&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; //三.实现toString方法:转换为邻接表形式
+      Graph.prototype.toString = function (){
+        //1.定义字符串，保存最终结果
+        let resultString = &amp;quot;&amp;quot;
+
+        //2.遍历所有的顶点以及顶点对应的边
+        for (let i = 0; i &amp;lt; this.vertexes.length; i++) {//遍历所有顶点
+          resultString += this.vertexes[i] + &#39;--&amp;gt;&#39;
+          let vEdges = this.edges.get(this.vertexes[i])
+          for (let j = 0; j &amp;lt; vEdges.length; j++) {//遍历字典中每个顶点对应的数组
+            resultString += vEdges[j] + &#39;  &#39;;
+          }
+          resultString += &#39;\n&#39;
+        }
+        return resultString
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //测试代码
+    //1.创建图结构
+    let graph = new Graph()
+
+    //2.添加顶点
+    let myVertexes = [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;]
+    for (let i = 0; i &amp;lt; myVertexes.length; i++) {
+      graph.addVertex(myVertexes[i])
+    }
+
+    //3.添加边
+    graph.addEdge(&#39;A&#39;, &#39;B&#39;)
+    graph.addEdge(&#39;A&#39;, &#39;C&#39;)
+    graph.addEdge(&#39;A&#39;, &#39;D&#39;)
+    graph.addEdge(&#39;C&#39;, &#39;D&#39;)
+    graph.addEdge(&#39;C&#39;, &#39;G&#39;)
+    graph.addEdge(&#39;D&#39;, &#39;G&#39;)
+    graph.addEdge(&#39;D&#39;, &#39;H&#39;)
+    graph.addEdge(&#39;B&#39;, &#39;E&#39;)
+    graph.addEdge(&#39;B&#39;, &#39;F&#39;)
+    graph.addEdge(&#39;E&#39;, &#39;I&#39;)
+
+    //4.输出结果
+    console.log(graph.toString());
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614686639566.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;25图的遍历&#34;&gt;2.5.图的遍历&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;图的遍历思想：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;图的遍历思想与树的遍历思想一样，意味着需要将图中&lt;strong&gt;所有的顶点&lt;/strong&gt;都访问一遍，并且不能有&lt;strong&gt;重复的访问&lt;/strong&gt;（上面的toString方法会重复访问）；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;遍历图的两种算法：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;广度优先搜索（Breadth - First Search，简称&lt;strong&gt;BFS&lt;/strong&gt;）;&lt;/li&gt;
+&lt;li&gt;深度优先搜索（Depth - First Search，简称&lt;strong&gt;DFS&lt;/strong&gt;）;&lt;/li&gt;
+&lt;li&gt;两种遍历算法都需要指定&lt;strong&gt;第一个被访问的顶点&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为了记录顶点是否被访问过，使用&lt;strong&gt;三种颜色&lt;/strong&gt;来表示它们的状态&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;白色&lt;/strong&gt;：表示该顶点还没有被访问过；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;灰色&lt;/strong&gt;：表示该顶点被访问过，但其相邻顶点并未完全被访问过；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;黑色&lt;/strong&gt;：表示该顶点被访问过，且其所有相邻顶点都被访问过；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;首先封装initializeColor方法将图中的所有顶点初始化为白色，代码实现如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //四.初始化状态颜色
+      Graph.prototype.initializeColor = function(){
+        let colors = []
+        for (let i = 0; i &amp;lt; this.vertexes.length; i++) {
+           colors[this.vertexes[i]] = &#39;white&#39;;
+        }
+        return colors
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;广度优先搜索&lt;/code&gt;&lt;br&gt;
+广度优先搜索算法的思路：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;广度优先搜索算法会从指定的第一个顶点开始遍历图，先访问其所有的相邻顶点，就像一次访问图的一层；&lt;/li&gt;
+&lt;li&gt;也可以说是&lt;strong&gt;先宽后深&lt;/strong&gt;地遍历图中的各个顶点；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614686757512.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实现思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;基于&lt;strong&gt;队列&lt;/strong&gt;可以简单地实现广度优先搜索算法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先创建一个队列Q（尾部进，首部出）；&lt;/li&gt;
+&lt;li&gt;调用封装的initializeColor方法将所有顶点初始化为白色；&lt;/li&gt;
+&lt;li&gt;指定第一个顶点A，将A标注为灰色（被访问过的节点），并将A放入队列Q中；&lt;/li&gt;
+&lt;li&gt;循环遍历队列中的元素，只要队列Q非空，就执行以下操作：&lt;br&gt;
+1. 先将灰色的A从Q的首部取出；&lt;br&gt;
+2. 取出A后，将A的所有未被访问过（白色）的相邻顶点依次从队列Q的尾部加入队列，并变为灰色。以此保证，灰色的相邻顶点不重复加入队列；&lt;br&gt;
+3. A的全部相邻节点加入Q后，A变为黑色，在下一次循环中被移除Q外；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       //五.实现广度搜索(BFS)
+      //传入指定的第一个顶点和处理结果的函数
+      Graph.prototype.bfs = function(initV, handler){
+        //1.初始化颜色
+        let colors = this.initializeColor()
+
+        //2.创建队列
+        let que = new Queue()
+
+        //3.将顶点加入到队列中
+        que.enqueue(initV)
+
+        //4.循环从队列中取出元素，队列为空才停止
+        while(!que.isEmpty()){
+          //4.1.从队列首部取出一个顶点
+          let v = que.dequeue()
+
+          //4.2.从字典对象edges中获取和该顶点相邻的其他顶点组成的数组
+          let vNeighbours = this.edges.get(v)
+
+          //4.3.将v的颜色变为灰色
+          colors[v] = &#39;gray&#39;
+
+          //4.4.遍历v所有相邻的顶点vNeighbours,并且加入队列中
+          for (let i = 0; i &amp;lt; vNeighbours.length; i++) {
+            const a = vNeighbours[i];
+            //判断相邻顶点是否被探测过，被探测过则不加入队列中；并且加入队列后变为灰色，表示被探测过
+            if (colors[a] == &#39;white&#39;) {
+              colors[a] = &#39;gray&#39;
+              que.enqueue(a)
+            }
+          }
+
+          //4.5.处理顶点v
+          handler(v)
+
+          //4.6.顶点v所有白色的相邻顶点都加入队列后，将顶点v设置为黑色。此时黑色顶点v位于队列最前面，进入下一次while循环时会被取出
+          colors[v] = &#39;black&#39;
+        }
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;下为指定的第一个顶点为A时的遍历过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如 a 图所示，将在字典edges中取出的与A相邻的且未被访问过的白色顶点B、C、D放入队列que中并变为灰色，随后将A变为黑色并移出队列；&lt;/li&gt;
+&lt;li&gt;接着，如图 b 所示，将在字典edges中取出的与B相邻的且未被访问过的白色顶点E、F放入队列que中并变为灰色，随后将B变为黑色并移出队列；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614686915234.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;如 c 图所示，将在字典edges中取出的与C相邻的且未被访问过的白色顶点G（A，D也相邻不过已变为灰色，所以不加入队列）放入队列que中并变为灰色，随后将C变为黑色并移出队列；&lt;/li&gt;
+&lt;li&gt;接着，如图 d 所示，将在字典edges中取出的与D相邻的且未被访问过的白色顶点H放入队列que中并变为灰色，随后将D变为黑色并移出队列。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614686933411.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如此循环直到队列中元素为0，即所有顶点都变黑并移出队列后才停止，此时图中顶点已被全部遍历。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   //测试代码
+    //1.创建图结构
+    let graph = new Graph()
+
+    //2.添加顶点
+    let myVertexes = [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;]
+    for (let i = 0; i &amp;lt; myVertexes.length; i++) {
+      graph.addVertex(myVertexes[i])
+    }
+
+    //3.添加边
+    graph.addEdge(&#39;A&#39;, &#39;B&#39;)
+    graph.addEdge(&#39;A&#39;, &#39;C&#39;)
+    graph.addEdge(&#39;A&#39;, &#39;D&#39;)
+    graph.addEdge(&#39;C&#39;, &#39;D&#39;)
+    graph.addEdge(&#39;C&#39;, &#39;G&#39;)
+    graph.addEdge(&#39;D&#39;, &#39;G&#39;)
+    graph.addEdge(&#39;D&#39;, &#39;H&#39;)
+    graph.addEdge(&#39;B&#39;, &#39;E&#39;)
+    graph.addEdge(&#39;B&#39;, &#39;F&#39;)
+    graph.addEdge(&#39;E&#39;, &#39;I&#39;)
+    
+    //4.测试bfs遍历方法
+    let result = &amp;quot;&amp;quot;
+    graph.bfs(graph.vertexes[0], function(v){
+      result += v + &amp;quot;-&amp;quot;
+    })
+    console.log(result);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614686966585.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+可见，安装了广度优先搜索的顺序&lt;strong&gt;不重复&lt;/strong&gt;地遍历了&lt;strong&gt;所有&lt;/strong&gt;顶点。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;深度优先搜索&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;广度优先算法的思路：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;深度优先搜索算法将会从指定的第一个顶点开始遍历图，沿着一条路径遍历直到该路径的最后一个顶点都被访问过为止；&lt;/li&gt;
+&lt;li&gt;接着沿原来路径回退并探索下一条路径，即&lt;strong&gt;先深后宽&lt;/strong&gt;地遍历图中的各个顶点；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614687004548.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实现思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以使用&lt;strong&gt;栈&lt;/strong&gt;结构来实现深度优先搜索算法；&lt;/li&gt;
+&lt;li&gt;深度优先搜索算法的遍历顺序与二叉搜索树中的先序遍历较为相似，同样可以使用&lt;strong&gt;递归&lt;/strong&gt;来实现（递归的本质就是&lt;strong&gt;函数栈&lt;/strong&gt;的调用）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基于递归实现深度优先搜索算法：定义dfs方法用于调用递归方法dfsVisit，定义dfsVisit方法用于递归访问图中的各个顶点。&lt;/p&gt;
+&lt;p&gt;在dfs方法中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先，调用initializeColor方法将所有顶点初始化为白色；&lt;/li&gt;
+&lt;li&gt;然后，调用dfsVisit方法遍历图的顶点；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在dfsVisit方法中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先，将传入的指定节点v标注为&lt;strong&gt;灰色&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;接着，处理顶点V；&lt;/li&gt;
+&lt;li&gt;然后，访问V的相邻顶点；&lt;/li&gt;
+&lt;li&gt;最后，将顶点v标注为黑色；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;     //六.实现深度搜索(DFS)
+      Graph.prototype.dfs = function(initV, handler){
+        //1.初始化顶点颜色
+        let colors = this.initializeColor()
+
+        //2.从某个顶点开始依次递归访问
+        this.dfsVisit(initV, colors, handler)
+      }
+
+      //为了方便递归调用，封装访问顶点的函数，传入三个参数分别表示：指定的第一个顶点、颜色、处理函数
+      Graph.prototype.dfsVisit = function(v, colors, handler){
+        //1.将颜色设置为灰色
+        colors[v] = &#39;gray&#39;
+
+        //2.处理v顶点
+        handler(v)
+
+        //3.访问V的相邻顶点
+        let vNeighbours = this.edges.get(v)
+        for (let i = 0; i &amp;lt; vNeighbours.length; i++) {
+          let a = vNeighbours[i];
+          //判断相邻顶点是否为白色，若为白色，递归调用函数继续访问
+          if (colors[a] == &#39;white&#39;) {
+            this.dfsVisit(a, colors, handler)
+          }
+          
+        }
+
+        //4.将v设置为黑色
+        colors[v] = &#39;black&#39;
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;过程详解：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这里主要解释一下代码中的第3步操作：访问指定顶点的相邻顶点。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;以指定顶点A为例，先从储存顶点及其对应相邻顶点的字典对象edges中取出由顶点A的相邻顶点组成的数组：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614687096873.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;第一步&lt;/strong&gt;：A顶点变为灰色，随后进入第一个for循环，遍历A白色的相邻顶点：B、C、D；在该for循环的第1次循环中（执行B），B顶点满足：colors == &amp;quot;white&amp;quot;，触发递归，重新调用该方法；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;第二步&lt;/strong&gt;：B顶点变为灰色，随后进入第二个for循环，遍历B白色的相邻顶点：E、F；在该for循环的第1次循环中（执行E），E顶点满足：colors == &amp;quot;white&amp;quot;，触发递归，重新调用该方法；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;第三步&lt;/strong&gt;：E顶点变为灰色，随后进入第三个for循环，遍历E白色的相邻顶点：I；在该for循环的第1次循环中（执行I），I顶点满足：colors == &amp;quot;white&amp;quot;，触发递归，重新调用该方法；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;第四步&lt;/strong&gt;：I顶点变为灰色，随后进入第四个for循环，由于顶点I的相邻顶点E不满足：colors == &amp;quot;white&amp;quot;，停止递归调用。过程如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614687132186.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;第五步&lt;/strong&gt;：递归结束后一路向上返回，首先回到第三个for循环中继续执行其中的第2、3...次循环，每次循环的执行过程与上面的同理，直到递归再次结束后，再返回到第二个for循环中继续执行其中的第2、3...次循环....以此类推直到将图的所有顶点访问完为止。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下图为遍历图中各顶点的完整过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;发现&lt;/strong&gt;表示访问了该顶点，状态变为&lt;strong&gt;灰色&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;探索&lt;/strong&gt;表示既访问了该顶点，也访问了该顶点的全部相邻顶点，状态变为&lt;strong&gt;黑色&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;由于在顶点变为灰色后就调用了处理函数handler，所以handler方法的输出顺序为发现顶点的顺序即：A、B、E、I、F、C、D、G、H 。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614687185004.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   //测试代码
+    //1.创建图结构
+    let graph = new Graph()
+
+    //2.添加顶点
+    let myVertexes = [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;]
+    for (let i = 0; i &amp;lt; myVertexes.length; i++) {
+      graph.addVertex(myVertexes[i])
+    }
+
+    //3.添加边
+    graph.addEdge(&#39;A&#39;, &#39;B&#39;)
+    graph.addEdge(&#39;A&#39;, &#39;C&#39;)
+    graph.addEdge(&#39;A&#39;, &#39;D&#39;)
+    graph.addEdge(&#39;C&#39;, &#39;D&#39;)
+    graph.addEdge(&#39;C&#39;, &#39;G&#39;)
+    graph.addEdge(&#39;D&#39;, &#39;G&#39;)
+    graph.addEdge(&#39;D&#39;, &#39;H&#39;)
+    graph.addEdge(&#39;B&#39;, &#39;E&#39;)
+    graph.addEdge(&#39;B&#39;, &#39;F&#39;)
+    graph.addEdge(&#39;E&#39;, &#39;I&#39;)
+    
+    //4.测试dfs遍历顶点
+    let result = &amp;quot;&amp;quot;
+    graph.dfs(graph.vertexes[0], function(v){
+      result += v + &amp;quot;-&amp;quot;
+    })
+    console.log(result);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614687223502.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;26完整实现&#34;&gt;2.6.完整实现&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;    //封装图结构
+    function Graph (){
+      //属性：顶点(数组)/边(字典)
+      this.vertexes = []  //顶点
+      this.edges = new Dictionary() //边
+
+      //方法
+      //添加方法
+      //一.添加顶点
+      Graph.prototype.addVertex = function(v){
+        this.vertexes.push(v)
+        this.edges.set(v, []) //将边添加到字典中，新增的顶点作为键，对应的值为一个存储边的空数组
+      }
+      //二.添加边
+      Graph.prototype.addEdge = function(v1, v2){//传入两个顶点为它们添加边
+        this.edges.get(v1).push(v2)//取出字典对象edges中存储边的数组，并添加关联顶点
+        this.edges.get(v2).push(v1)//表示的是无向表，故要添加互相指向的两条边
+      }
+
+      //三.实现toString方法:转换为邻接表形式
+      Graph.prototype.toString = function (){
+        //1.定义字符串，保存最终结果
+        let resultString = &amp;quot;&amp;quot;
+
+        //2.遍历所有的顶点以及顶点对应的边
+        for (let i = 0; i &amp;lt; this.vertexes.length; i++) {//遍历所有顶点
+          resultString += this.vertexes[i] + &#39;--&amp;gt;&#39;
+          let vEdges = this.edges.get(this.vertexes[i])
+          for (let j = 0; j &amp;lt; vEdges.length; j++) {//遍历字典中每个顶点对应的数组
+            resultString += vEdges[j] + &#39;  &#39;;
+          }
+          resultString += &#39;\n&#39;
+        }
+        return resultString
+      }
+
+      //四.初始化状态颜色
+      Graph.prototype.initializeColor = function(){
+        let colors = []
+        for (let i = 0; i &amp;lt; this.vertexes.length; i++) {
+           colors[this.vertexes[i]] = &#39;white&#39;;
+        }
+        return colors
+      }
+
+      //五.实现广度搜索(BFS)
+      //传入指定的第一个顶点和处理结果的函数
+      Graph.prototype.bfs = function(initV, handler){
+        //1.初始化颜色
+        let colors = this.initializeColor()
+
+        //2.创建队列
+        let que = new Queue()
+
+        //3.将顶点加入到队列中
+        que.enqueue(initV)
+
+        //4.循环从队列中取出元素
+        while(!que.isEmpty()){
+          //4.1.从队列中取出一个顶点
+          let v = que.dequeue()
+
+          //4.2.获取和顶点相相邻的其他顶点
+          let vNeighbours = this.edges.get(v)
+
+          //4.3.将v的颜色变为灰色
+          colors[v] = &#39;gray&#39;
+
+          //4.4.遍历v所有相邻的顶点vNeighbours,并且加入队列中
+          for (let i = 0; i &amp;lt; vNeighbours.length; i++) {
+            const a = vNeighbours[i];
+            //判断相邻顶点是否被探测过，被探测过则不加入队列中；并且加入队列后变为灰色，表示被探测过
+            if (colors[a] == &#39;white&#39;) {
+              colors[a] = &#39;gray&#39;
+              que.enqueue(a)
+            }
+          }
+
+          //4.5.处理顶点v
+          handler(v)
+
+          //4.6.顶点v所有白色的相邻顶点都加入队列后，将顶点v设置为黑色。此时黑色顶点v位于队列最前面，进入下一次while循环时会被取出
+          colors[v] = &#39;black&#39;
+        }
+      }
+
+      //六.实现深度搜索(DFS)
+      Graph.prototype.dfs = function(initV, handler){
+        //1.初始化顶点颜色
+        let colors = this.initializeColor()
+
+        //2.从某个顶点开始依次递归访问
+        this.dfsVisit(initV, colors, handler)
+      }
+
+      //为了方便递归调用，封装访问顶点的函数，传入三个参数分别表示：指定的第一个顶点、颜色、处理函数
+      Graph.prototype.dfsVisit = function(v, colors, handler){
+        //1.将颜色设置为灰色
+        colors[v] = &#39;gray&#39;
+
+        //2.处理v顶点
+        handler(v)
+
+        //3.访问v相连的其他顶点
+        let vNeighbours = this.edges.get(v)
+        for (let i = 0; i &amp;lt; vNeighbours.length; i++) {
+          let a = vNeighbours[i];
+          //判断相邻顶点是否为白色，若为白色，递归调用函数继续访问
+          if (colors[a] == &#39;white&#39;) {
+            this.dfsVisit(a, colors, handler)
+          }
+          
+        }
+
+        //4.将v设置为黑色
+        colors[v] = &#39;black&#39;
+      }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;amp;seid=3912456004602554239&#34;&gt;参考资料:JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
 ">JavaScript实现图结构</a>
       </div>
       
