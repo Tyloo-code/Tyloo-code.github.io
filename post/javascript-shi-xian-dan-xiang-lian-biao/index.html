@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>JavaScript实现单向链表 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614690775038">
+<link rel="shortcut icon" href="/favicon.ico?v=1614693993376">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1740,6 +1740,492 @@ removeAt方法的实现过程：删除节点时存在多种情况：</p>
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-pai-xu-suan-fa/"" data-c="
           &lt;h1 id=&#34;1大o表示法&#34;&gt;1.大O表示法&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;大O表示法：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在计算机中采用&lt;strong&gt;粗略的度量&lt;/strong&gt;来描述计算机算法的&lt;strong&gt;效率&lt;/strong&gt;，这种方法被称为**“大O”表示法**&lt;/li&gt;
+&lt;li&gt;在&lt;strong&gt;数据项个数&lt;/strong&gt;发生改变时，&lt;strong&gt;算法的效率&lt;/strong&gt;也会跟着改变。所以说算法A比算法B快两倍，这样的比较是&lt;strong&gt;没有意义&lt;/strong&gt;的。&lt;/li&gt;
+&lt;li&gt;因此我们通常使用&lt;strong&gt;算法的速度&lt;/strong&gt;随着&lt;strong&gt;数据量的变化&lt;/strong&gt;会如何变化的方式来表示算法的效率，大O表示法就是方式之一。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;常见的大O表示形式&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;符号&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;名称&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;O(1)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;常数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;O(log(n))&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;对数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;O(n)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;线性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;O(nlog(n))&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;线性和对数乘积&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;O(n²)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;平方&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;O(2n)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;指数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;不同大O形式的时间复杂度：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614691100516.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;可以看到效率从大到小分别是：O(1)&amp;gt;O(logn)&amp;gt; O(n)&amp;gt; O(nlog(n))&amp;gt;O(n²)&amp;gt;O(2^n)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推导大O表示法的三条规则：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;规则一&lt;/strong&gt;：用常量1取代运行时间中所有的加法常量。如7 + 8 = 15，用1表示运算结果15，大O表示法表示为O（1）；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;规则二&lt;/strong&gt;：运算中只保留最高阶项。如N^3 + 3n +1，大O表示法表示为：O（N^3）;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;规则三&lt;/strong&gt;：若最高阶项的常数不为1，可将其省略。如4N&lt;sup&gt;2，大O表示法表示为：O（N&lt;/sup&gt;2）;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;2排序算法&#34;&gt;2.排序算法&lt;/h1&gt;
+&lt;p&gt;这里主要介绍几种简单排序和高级排序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;简单排序&lt;/strong&gt;：冒泡排序、选择排序、插入排序；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高级排序&lt;/strong&gt;：希尔排序、快速排序；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;此处创建一个列表类ArrayList并添加一些属性和方法，用于存放这些排序方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //创建列表类
+    function ArrayList() {
+      //属性
+      this.array = []
+
+      //方法
+      //封装将数据插入到数组中方法
+      ArrayList.prototype.insert = function(item){
+        this.array.push(item)
+      }
+
+      //toString方法
+      ArrayList.prototype.toString = function(){
+        return this.array.join(&#39;-&#39;)
+      }
+
+      //交换两个位置的数据
+      ArrayList.prototype.swap = function(m, n){
+        let temp  = this.array[m]
+        this.array[m] = this.array[n]
+        this.array[n] = temp
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;21冒泡排序&#34;&gt;2.1.冒泡排序&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;冒泡排序的思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对未排序的各元素&lt;strong&gt;从头到尾&lt;/strong&gt;依次比较&lt;strong&gt;相邻的两个元素&lt;/strong&gt;大小关系；&lt;/li&gt;
+&lt;li&gt;如果&lt;strong&gt;左边的人员高&lt;/strong&gt;，则将两人&lt;strong&gt;交换位置&lt;/strong&gt;。比如1比2矮，不交换位置；&lt;/li&gt;
+&lt;li&gt;向&lt;strong&gt;右移动一位&lt;/strong&gt;，继续比较2和3，最后比较 length - 1 和 length - 2这两个数据；&lt;/li&gt;
+&lt;li&gt;当到达&lt;strong&gt;最右端&lt;/strong&gt;时，&lt;strong&gt;最高的人&lt;/strong&gt;一定被放在了&lt;strong&gt;最右边&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;按照这个思路，从最左端重新开始时，只需要走到&lt;strong&gt;倒数第二个位置&lt;/strong&gt;即可；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614691535117.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实现思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;两层循环：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;外层循环控制冒泡趟数：&lt;br&gt;
+- 第一次：j = length - 1，比较到倒数第一个位置 ；&lt;br&gt;
+- 第二次：j = length - 2，比较到倒数第二个位置 ；&lt;/li&gt;
+&lt;li&gt;内层循环控制每趟比较的次数：&lt;br&gt;
+- 第一次比较： i = 0，比较 0 和 1 位置的两个数据；&lt;br&gt;
+- 最后一次比较：i = length - 2,比较length - 2和 length - 1两个数据；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;详细过程如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614691654684.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+动态过程：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614691678173.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; //冒泡排序
+      ArrayList.prototype.bubblesor = function(){
+        //1.获取数组的长度
+        let length = this.array.length
+
+        //外层循环控制冒泡趟数
+        for(let j = length - 1; j &amp;gt;= 0; j--){
+          //内层循环控制每趟比较的次数
+          for(let i = 0; i &amp;lt; j; i++){
+          if (this.array[i] &amp;gt; this.array[i+1]) {
+            //交换两个数据
+            let temp  = this.array[i]
+        	this.array[i] = this.array[i+1]
+        	this.array[i+1] = temp
+          }
+        }
+        }
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; //测试类
+    let list = new ArrayList()
+
+    //插入元素
+    list.insert(66)
+    list.insert(88)
+    list.insert(12)
+    list.insert(87)
+    list.insert(100)
+    list.insert(5)
+    list.insert(566)
+    list.insert(23)
+    
+    //验证冒泡排序
+    list.bubblesor()
+    console.log(list);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614691724569.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;冒泡排序的效率：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;上面所讲的对于7个数据项，比较次数为：6 + 5 + 4 + 3 + 2 + 1;&lt;/li&gt;
+&lt;li&gt;对于N个数据项，&lt;strong&gt;比较次数&lt;/strong&gt;为：(N - 1) + (N - 2) + (N - 3) + ... + 1 = N * (N - 1) / 2；如果两次比较交换一次，那么&lt;strong&gt;交换次数&lt;/strong&gt;为：N * (N - 1) / 4；&lt;/li&gt;
+&lt;li&gt;使用大O表示法表示比较次数和交换次数分别为：O（ N * (N - 1) / 2）和O（ N * (N - 1) / 4），根据大O表示法的三条规则都化简为：&lt;strong&gt;O（N^2）&lt;/strong&gt;;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;22选择排序&#34;&gt;2.2.选择排序&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;选择排序改进了冒泡排序：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将&lt;strong&gt;交换次数&lt;/strong&gt;由&lt;strong&gt;O（N^2）&lt;strong&gt;减小到&lt;/strong&gt;O（N）&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;但是&lt;strong&gt;比较次数&lt;/strong&gt;依然是&lt;strong&gt;O（N^2）&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;选择排序的思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;选定&lt;strong&gt;第一个索引的位置&lt;/strong&gt;比如1，然后依次和后面的元素&lt;strong&gt;依次进行比较&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;如果后面的元素，&lt;strong&gt;小于&lt;/strong&gt;索引1位置的元素，则&lt;strong&gt;交换位置&lt;/strong&gt;到索引1处；&lt;/li&gt;
+&lt;li&gt;经过一轮的比较之后，可以确定一开始指定的索引1位置的元素是&lt;strong&gt;最小的&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;随后使用同样的方法除索引1以外&lt;strong&gt;逐个比较剩下的元素&lt;/strong&gt;即可；&lt;/li&gt;
+&lt;li&gt;可以看出选择排序，&lt;strong&gt;第一轮&lt;/strong&gt;会选出&lt;strong&gt;最小值&lt;/strong&gt;，&lt;strong&gt;第二轮&lt;/strong&gt;会选出&lt;strong&gt;第二小的值&lt;/strong&gt;，直到完成排序。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614691924469.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实现思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;两层循环：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;外层循环控制指定的索引：&lt;br&gt;
+- 第一次：j = 0，指定第一个元素 ；&lt;br&gt;
+- 最后一次：j = length - 1，指定最后一个元素 ；&lt;/li&gt;
+&lt;li&gt;内层循环负责将指定索引（i）的元素与剩下（i - 1）的元素进行比较；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;动态过程：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614691958714.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; //选择排序
+      ArrayList.prototype.selectionSort = function(){
+        //1.获取数组的长度
+        let length = this.array.length
+
+        //2.外层循环：从0开始获取元素
+        for(let j = 0; j &amp;lt; length - 1; j++){
+          let min = j
+          //内层循环：从i+1位置开始，和后面的元素进行比较
+        for(let i = min + 1; i &amp;lt; length; i++){
+          if (this.array[min] &amp;gt; this.array[i]) {
+            min = i
+          }
+        }
+        this.swap(min, j)
+        }
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  //测试类
+    let list = new ArrayList()
+
+    //插入元素
+    list.insert(66)
+    list.insert(88)
+    list.insert(12)
+    list.insert(87)
+    list.insert(100)
+    list.insert(5)
+    list.insert(566)
+    list.insert(23)
+    
+    //验证选择排序
+    list.selectionSort()
+    console.log(list);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614691999487.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;选择排序的效率：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;选择排序的&lt;strong&gt;比较次数&lt;/strong&gt;为：N * (N - 1) / 2，用大O表示法表示为：&lt;strong&gt;O（N^2）&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;选择排序的&lt;strong&gt;交换次数&lt;/strong&gt;为：(N - 1) / 2，用大O表示法表示为：&lt;strong&gt;O（N）&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;所以选择排序的效率高于冒泡排序；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;23插入排序&#34;&gt;2.3.插入排序&lt;/h2&gt;
+&lt;p&gt;插入排序是简单排序中效率最高的一种排序。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;插入排序的思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;插入排序思想的核心是&lt;strong&gt;局部有序&lt;/strong&gt;。如图所示，X左边的人称为&lt;strong&gt;局部有序&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;首先指定一数据X（从第一个数据开始），并将数据X的左边变成局部有序状态；&lt;/li&gt;
+&lt;li&gt;随后将X右移一位，再次达到局部有序之后，继续右移一位，重复前面的操作直至X移至最后一个元素。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692091547.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+插入排序的详细过程：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692103001.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+动态过程：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692113197.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;   //插入排序
+      ArrayList.prototype.insertionSort = function(){
+        //1.获取数组的长度
+        let length = this.array.length
+
+        //2.外层循环:从第二个数据开始，向左边的已经局部有序数据进行插入
+        for(let i = 1; i &amp;lt; length; i++){
+          //3.内层循环：获取i位置的元素，使用while循环(重点)与左边的局部有序数据依次进行比较
+          let temp = this.array[i]
+          let j = i
+          while(this.array[j - 1] &amp;gt; temp &amp;amp;&amp;amp; j &amp;gt; 0){
+            this.array[j] = this.array[j - 1]//大的数据右移
+            j--
+          }
+          //4.while循环结束后，index = j左边的数据变为局部有序且array[j]最大。此时将array[j]重置为排序前的数据array[i]，方便下一次for循环
+          this.array[j] = temp
+        }
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //测试类
+    let list = new ArrayList()
+
+    //插入元素
+    list.insert(66)
+    list.insert(88)
+    list.insert(12)
+    list.insert(87)
+    list.insert(100)
+    list.insert(5)
+    list.insert(566)
+    list.insert(23)
+    // console.log(list);
+
+    //验证插入排序
+    list.insertionSort()
+    console.log(list);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692171244.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;插入排序的效率：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;比较次数&lt;/strong&gt;：第一趟时，需要的最大次数为1；第二次最大为2；以此类推，最后一趟最大为N-1；所以，插入排序的总比较次数为N * (N - 1) / 2；但是，实际上每趟发现插入点之前，平均只有全体数据项的一半需要进行比较，所以比较次数为：&lt;strong&gt;N * (N - 1) / 4&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交换次数&lt;/strong&gt;：指定第一个数据为X时交换0次，指定第二个数据为X最多需要交换1次，以此类推，指定第N个数据为X时最多需要交换N - 1次，所以一共需要交换N * (N - 1) / 2次，平均次数为&lt;strong&gt;N * (N - 1) / 2&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;虽然用大O表示法表示插入排序的效率也是&lt;strong&gt;O（N^2）&lt;/strong&gt;，但是插入排序整体操作次数更少，因此，在简单排序中，插入排序&lt;strong&gt;效率最高&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;24希尔排序&#34;&gt;2.4.希尔排序&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;希尔排序&lt;/strong&gt;是&lt;strong&gt;插入排序&lt;/strong&gt;的一种高效的&lt;strong&gt;改进版&lt;/strong&gt;，效率比插入排序要高。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;希尔排序的历史背景：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;希尔排序按其设计者希尔（Donald Shell）的名字命名，该算法由&lt;strong&gt;1959年公布&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;希尔算法首次突破了计算机界一直认为的**算法的时间复杂度都是O（N^2）**的大关，为了纪念该算法里程碑式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;意义，用&lt;strong&gt;Shell&lt;/strong&gt;来命名该算法；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;插入排序的问题：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;假设一个&lt;strong&gt;很小的数据项&lt;/strong&gt;在&lt;strong&gt;很靠近右端的位置&lt;/strong&gt;上，这里本应该是&lt;strong&gt;较大的数据项的位置&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;将这个&lt;strong&gt;小数据项移动到左边&lt;/strong&gt;的正确位置，所有的&lt;strong&gt;中间数据项都必须向右移动一位&lt;/strong&gt;，这样效率非常低；&lt;/li&gt;
+&lt;li&gt;如果通过&lt;strong&gt;某种方式&lt;/strong&gt;，不需要&lt;strong&gt;一个个移动所有中间的数据项&lt;/strong&gt;，就能把较小的数据项移到左边，那么这个算法的执行速度就会有很大的改进。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;希尔排序的实现思路&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;希尔排序主要通过对数据进行&lt;strong&gt;分组&lt;/strong&gt;实现快速排序；&lt;/li&gt;
+&lt;li&gt;根据设定的增量（gap）将数据分为gap个组（&lt;strong&gt;组数等于gap&lt;/strong&gt;），再在每个分组中进行局部排序；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;假如有数组有10个数据，第1个数据为黑色，增量为5。那么第二个为黑色的数据index=5，第3个数据为黑色的数据index = 10（不存在）。所以黑色的数据每组只有2个，10 / 2 = 5一共可分5组，即&lt;strong&gt;组数等于增量gap&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;排序之后，减小增量，继续分组，再次进行局部排序，直到增量gap=1为止。随后只需进行微调就可完成数组的排序；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;具体过程如下：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;排序之前的，储存10个数据的原始数组为：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692424549.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;设初始增量gap = length / 2 = 5，即数组被分为了5组，如图所示分别为：[8, 3]、[9, 5]、[1, 4]、[7, 6]、[2, 0]：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692441093.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;随后分别在每组中对数据进行局部排序，5组的顺序如图所示，变为：[3, 8]、[5, 9]、[1, 4]、[6, 7]、[0, 2]：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692472580.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;然后缩小增量gap = 5 / 2 = 2，即数组被分为了2组，如图所示分别为：[3，1，0，9，7]、[5，6，8，4，2]：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692484750.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;随后分别在每组中对数据进行局部排序，两组的顺序如图所示，变为：[0，1，3，7，9]、[2，4，5，6，8]：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692502384.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;然后然后缩小增量gap = 2 / 1 = 1，即数组被分为了1组，如图所示为：[0，2，1，4，3，5，7，6，9，8]：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692651803.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;最后只需要对该组数据进行插入排序即可完成整个数组的排序：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692674191.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+动态过程：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692702587.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+图中d表示增量gap。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;增量的选择：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;原稿&lt;/strong&gt;中希尔建议的初始间距为&lt;strong&gt;N / 2&lt;/strong&gt;，比如对于N = 100的数组，增量序列为：50，25，12，6，3，1，可以发现不能整除时向下取整。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hibbard增量序列&lt;/strong&gt;：增量序列算法为：2^k - 1，即1，3，5，7... ...等；这种情况的最坏复杂度为O（N&lt;sup&gt;3/2）**,平均复杂度为**O（N&lt;/sup&gt;5/4）但未被证明；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sedgewcik增量序列&lt;/strong&gt;：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692851848.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以下代码实现中采用希尔排序原稿中建议的增量即&lt;strong&gt;N / 2&lt;/strong&gt; 。&lt;br&gt;
+&lt;strong&gt;代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   //希尔排序
+      ArrayList.prototype.shellSort = function(){
+        //1.获取数组的长度
+        let length = this.array.length
+
+        //2.初始化增量
+        let gap = Math.floor(length / 2)
+
+        //3.第一层循环：while循环(使gap不断减小)
+        while(gap &amp;gt;= 1 ){
+          //4.第二层循环：以gap为增量，进行分组，对分组进行插入排序
+          //重点为：将index = gap作为选中的第一个数据
+          for(let i = gap; i &amp;lt; length; i++){
+            let temp = this.array[i]
+            let j = i
+            //5.第三层循环:寻找正确的插入位置
+            while(this.array[j - gap] &amp;gt; temp &amp;amp;&amp;amp; j &amp;gt; gap - 1){
+              this.array[j] = this.array[j - gap]
+              j -= gap
+            }
+          //6.将j位置的元素设置为temp
+          this.array[j] = temp
+          }
+
+          gap = Math.floor(gap / 2)
+        }
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里解释一下上述代码中的三层循环：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;第一层循环&lt;/strong&gt;：while循环，控制gap递减到1；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;第二层循环&lt;/strong&gt;：分别取出根据g增量gap分成的gap组数据：将index = gap的数据作为选中的第一个数据，如下图所示，gap=5，则index = gap的数据为3，index = gap - 1的数据为8，两个数据为一组。随后gap不断加1右移，直到gap &amp;lt; length，此时实现了将数组分为5组。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692920473.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;第三层循环&lt;/strong&gt;：对每一组数据进行插入排序；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; //测试类
+    let list = new ArrayList()
+
+    //插入元素
+    list.insert(66)
+    list.insert(88)
+    list.insert(12)
+    list.insert(87)
+    list.insert(100)
+    list.insert(5)
+    list.insert(566)
+    list.insert(23)
+    // console.log(list);
+
+    //验证希尔排序
+    list.shellSort()
+    console.log(list);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614692964709.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;希尔排序的效率：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;希尔排序的效率和增量有直接关系，即使使用原稿中的增量效率都高于简单排序。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;25快速排序&#34;&gt;2.5.快速排序&lt;/h2&gt;
+&lt;p&gt;快速排序的介绍：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;快速排序&lt;/strong&gt;可以说是&lt;strong&gt;目前所有排序算法&lt;/strong&gt;中，&lt;strong&gt;最快&lt;/strong&gt;的一种排序算法。当然，没有任何一种算法是在任意情况下都是最优的。但是，大多数情况下快速排序是比较好的选择。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;快速排序&lt;/strong&gt;其实是&lt;strong&gt;冒泡排序&lt;/strong&gt;的升级版；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;快速排序的核心思想是&lt;strong&gt;分而治之&lt;/strong&gt;，先选出一个数据（比如65），将比其小的数据都放在它的左边，将比它大的数据都放在它的右边。这个数据称为&lt;strong&gt;枢纽&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;和冒泡排序的不同：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我们选择的65可以一次性将它放在最正确的位置，之后就不需要做任何移动；&lt;/li&gt;
+&lt;li&gt;而冒泡排序即使已经找到最大值，也需要继续移动最大值，直到将它移动到最右边；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614693046918.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;快速排序的枢纽：&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;第一种方案&lt;/strong&gt;：直接选择第一个元素作为枢纽。但是，当第一个元素就是最小值的情况下，效率不高；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;第二种方案&lt;/strong&gt;：使用随机数。随机数本身十分消耗性能，不推荐；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优秀的解决方法&lt;/strong&gt;：取index为头、中、位的三个数据排序后的中位数；如下图所示，按下标值取出的三个数据为：92，31，0，经排序后变为：0，31，92，取其中的中位数31作为&lt;strong&gt;枢纽&lt;/strong&gt;（当（length-1）/2不整除时可向下或向上取整）：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614693609653.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实现枢纽选择：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//交换两个位置的数据
+let swap = function(arr, m, n){
+    let temp  = arr[m]
+    arr[m] = arr[n]
+    arr[n] = temp
+}
+
+//快速排序
+//1.选择枢纽
+let median = function(arr){
+  //1.取出中间的位置
+  let center = Math.floor(arr.length / 2)
+  let right = arr.length - 1 
+  let left = 0
+
+  //2.判断大小并进行交换
+  if (arr[left] &amp;gt; arr[center]) {
+    swap(arr, left, center)
+  }
+  if (arr[center] &amp;gt; arr[right]){
+    swap(arr, center, right)
+  }
+  if (arr[left] &amp;gt; arr[right]) {
+    swap(arr, left, right)
+  }
+  //3.返回枢纽
+  return center
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;数组经过获取枢纽函数操作之后，选出的3个下标值对应的数据位置变为：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614693640946.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;动态过程：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614693653899.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;快速排序代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//2.快速排序
+let QuickSort = function(arr){
+  if (arr.length == 0) {
+    return []
+  }
+  let center = median(arr)
+  let c = arr.splice(center, 1)
+  let l = []
+  let r = []
+
+  for (let i = 0; i &amp;lt; arr.length; i++) {
+      if (arr[i] &amp;lt; c) {
+        l.push(arr[i])
+      }else{
+        r.push(arr[i])
+      }        
+  }
+  return QuickSort(l).concat(c, QuickSort(r))
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;算法的巧妙之处在于通过:&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;QuickSort(l).concat(c, QuickSort(r))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;递归调用&lt;code&gt;QuickSort&lt;/code&gt;函数实现了枢纽&lt;code&gt;Center&lt;/code&gt;左边数据&lt;code&gt;l&lt;/code&gt;和右边数据&lt;code&gt;r&lt;/code&gt;的排序；&lt;br&gt;
+&lt;strong&gt;测试代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [0, 13, 81, 43, 31, 27, 56, 92]
+console.log(QuickSort(arr));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;测试结果&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614693906304.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;快速排序的效率：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;快速排序最坏情况下的效率：每次选择的枢纽都是最左边或最右边的数据，此时效率等同于冒泡排序，时间复杂度为&lt;strong&gt;O(n^2)&lt;/strong&gt;。可根据不同的枢纽选择避免这一情况；&lt;/li&gt;
+&lt;li&gt;快速排序的平均效率：为&lt;strong&gt;O(N*logN)&lt;/strong&gt;，虽然其他算法效率也可达到O(N*logN)，但是其中快速排序是&lt;strong&gt;最好的&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/av86801505?from=search&amp;amp;seid=4967761411915016256&#34;&gt;参考资料：JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
 ">JavaScript实现排序算法</a>
       </div>
       
