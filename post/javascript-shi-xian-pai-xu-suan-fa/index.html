@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>NodeJs从零单排(5) | Tyloo</title>
+<title>JavaScript实现排序算法 | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1614690775038">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="NodeJs从零单排(5)" />
-  <meta name="keywords" content="Node" />
+  <meta name="description" content="JavaScript实现排序算法" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -238,8 +238,7 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-es6-%E5%B8%B8%E8%A7%81%E8%AF%AD%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8">一、 Es6 常见语法的使用</a></li>
-<li><a href="#%E4%BA%8C-async-await-%E5%92%8C-promise-%E7%9A%84%E4%BD%BF%E7%94%A8">二、 Async、Await 和 Promise 的使用</a></li>
+<li><a href="#1%E5%A4%A7o%E8%A1%A8%E7%A4%BA%E6%B3%95">1.大O表示法</a></li>
 </ul>
 
   </div>
@@ -505,8 +504,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/">
-      NodeJs从零单排(5)
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/javascript-shi-xian-pai-xu-suan-fa/">
+      JavaScript实现排序算法
     </a>
   </h1>
   <div class="post-meta">
@@ -514,36 +513,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-24 11:16:57">2020-12-24</span>
+      <span class="publish-time" data-t="2021-03-02 21:12:33">2021-03-02</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://Tyloo-code.github.io/tag/Z6ts5lib5/">
-        <span>Node</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>389<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>6<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/nodejs-cong-ling-dan-pai-5/" data-flag-title="NodeJs从零单排(5)" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/javascript-shi-xian-pai-xu-suan-fa/" data-flag-title="JavaScript实现排序算法" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -552,60 +538,7 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="一-es6-常见语法的使用">一、 Es6 常见语法的使用</h1>
-<ol>
-<li>let const</li>
-<li>箭头函数</li>
-<li>对象、属性的简写</li>
-<li>模板字符串</li>
-<li>Promise</li>
-</ol>
-<h1 id="二-async-await-和-promise-的使用">二、 Async、Await 和 Promise 的使用</h1>
-<p><strong>async</strong> 是“异步”的简写，而 await 可以认为是 async wait 的简写。所以应该很好理解 async 用于申明一个异步的 function ，而 await 用于等待一个异步方法执行完成。</p>
-<p><strong>简单理解：</strong><br>
-<strong>async</strong> 是让方法变成异步。<br>
-<strong>await</strong> 是等待异步方法执行完成。</p>
-<p><strong>详细说明：</strong><br>
-<strong>async 是让方法变成异步</strong>，在终端里用 node 执行这段代码，你会发现输出了 Promise {‘Hello async’ }，这时候会发现它返回的是 Promise。</p>
-<pre><code>async function testAsync(){ 
-    return 'Hello async'; 
-}
-</code></pre>
-<pre><code>const result = testAsync(); 
-console.log(result);
-</code></pre>
-<pre><code>PS E:\code\BXShop&gt; node async.js 
-Promise { 'Hello async' }
-</code></pre>
-<p><strong>await 在等待 async 方法执行完毕</strong>，其实 await 等待的只是一个表达式，这个表达式在官方 文档里说的是 Promise 对象，但是它也可以接受普通值。 <span style="color:red">注意：</span>await 必须在 async 方法中 才可以使用因为 await 访问本身就会造成程序停止堵塞，所以必须在异步方法中才可以使用。</p>
-<pre><code>function getData(){ 
-    return 'zhangsan'; 
-}
-async function testAsync(){ 
-    return 'Hello async'; 
-}
-</code></pre>
-<pre><code>async function test(){ 
-    const v1=await getData(); 
-    const v2=await testAsync(); 
-    console.log(v1,v2);
-}
-test();
-</code></pre>
-<p><strong>async/await 同时使用</strong><br>
-async 会将其后的函数（函数表达式或 Lambda）的返回值封装成一个 Promise 对象，而 await 会等待这个 Promise 完成，并将其 resolve 的结果返回出来。</p>
-<pre><code>function findData() { 
-    return new Promise(resolve =&gt; { 
-        setTimeout(() =&gt; resolve(&quot;long_time_value&quot;), 1000); 
-    });
-}
-</code></pre>
-<pre><code>async function test() { 
-    const v = await findData(); 
-    console.log(v);
-}
-test();
-</code></pre>
+              <h1 id="1大o表示法">1.大O表示法</h1>
 
             </div>
             
@@ -622,7 +555,7 @@ test();
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/" title="NodeJs从零单排(5)">https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/</a>
+      <a href="https://Tyloo-code.github.io/post/javascript-shi-xian-pai-xu-suan-fa/" title="JavaScript实现排序算法">https://Tyloo-code.github.io/post/javascript-shi-xian-pai-xu-suan-fa/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -631,21 +564,15 @@ test();
   </ul>
   <div class="tags">
     
-      <a href="https://Tyloo-code.github.io/tag/Z6ts5lib5/"># Node</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="NodeJs从零单排(6)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-6/">NodeJs从零单排(6)</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="NodeJs从零单排(6)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-6/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="NodeJs从零单排(4)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/">NodeJs从零单排(4)</a>
-        <a class="nav-mobile-next" title="NodeJs从零单排(4)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/">下一篇</a>
+        <a class="nav-pc-next" title="JavaScript实现图结构" href="https://Tyloo-code.github.io/post/javascript-shi-xian-tu-jie-gou/">JavaScript实现图结构</a>
+        <a class="nav-mobile-next" title="JavaScript实现图结构" href="https://Tyloo-code.github.io/post/javascript-shi-xian-tu-jie-gou/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
