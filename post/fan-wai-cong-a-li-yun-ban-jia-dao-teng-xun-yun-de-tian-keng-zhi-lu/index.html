@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【番外】从阿里云搬家到腾讯云的填坑之路 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614737385300">
+<link rel="shortcut icon" href="/favicon.ico?v=1614743805272">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">38</span>
+        <span class="site-item-stat-count">39</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1149,6 +1149,129 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css/"" data-c="
+          &lt;h1 id=&#34;1盒模型box-model&#34;&gt;1.盒模型（box model）&lt;/h1&gt;
+&lt;h2 id=&#34;1基本概念&#34;&gt;1.基本概念&lt;/h2&gt;
+&lt;p&gt;盒子模型，个人的理解，就是一个来装html标签的矩形容器，由四部分组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内容区（content）&lt;/li&gt;
+&lt;li&gt;内边距（padding）&lt;/li&gt;
+&lt;li&gt;外框（border）&lt;/li&gt;
+&lt;li&gt;外边距（margin）&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614738716059.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2标准模型与ie模型的区别&#34;&gt;2.标准模型与IE模型的区别&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;标准模型&lt;/strong&gt;与** IE 模型**的区别在于宽高的计算方式不同。&lt;br&gt;
+标准模型计算元素的宽高只算 content 的宽高，IE模型是 content + padding + border 的总尺寸。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614739310471.jfif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+从上图可以看到标准 &lt;code&gt;W3C 盒子模型的范围包括 margin、border、padding、content，并且 content 部分不包含其他部分。&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614739313417.jfif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+从上图可以看到&lt;code&gt;IE 盒子模型的范围也包括 margin、border、padding、content，和标准 W3C 盒子模型不同的是：IE 盒子模型的 content 部分包含了 border 和 pading。&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-如何设置这两种模型&#34;&gt;3、如何设置这两种模型&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;//设置标准模型
+box-sizing: content-box;
+//设置IE模型
+box-sizing: border-box;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;2flex布局&#34;&gt;2.flex布局&lt;/h1&gt;
+&lt;p&gt;flex，即弹性布局。一个由css3引入，为我们的盒子属性带来灵活性的一种布局方式。一旦父级采用了flex布局，里边的子控件将收flex布局限制，部分原本的样式（如float:left）也会失效。&lt;/p&gt;
+&lt;p&gt;特别注意： flex:0 0 30%的意义： 等于flex-grow=0（默认不放大）+flex-shrink=0（不缩小）+flex-basis=30%（ 项目占据主轴的空间）&lt;/p&gt;
+&lt;h2 id=&#34;1flex布局使用&#34;&gt;1.flex布局使用&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;任何一个容器都可以指定为 Flex 布局。&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.box{
+  display: flex;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;行内元素也可以使用 Flex 布局。&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.box{
+  display: inline-flex;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意，设为 Flex 布局以后，子元素的&lt;code&gt;float&lt;/code&gt;、&lt;code&gt;clear&lt;/code&gt;和&lt;code&gt;vertical-align&lt;/code&gt;属性将失效。&lt;/p&gt;
+&lt;h2 id=&#34;2基本概念&#34;&gt;2.基本概念&lt;/h2&gt;
+&lt;p&gt;采用 Flex 布局的元素，称为 Flex 容器（flex container），简称&amp;quot;容器&amp;quot;。它的所有&lt;strong&gt;子元素&lt;/strong&gt;自动成为容器成员，称为 Flex 项目（flex item），简称&amp;quot;项目&amp;quot;。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614742656456.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做&lt;code&gt;main start&lt;/code&gt;，结束位置叫做&lt;code&gt;main end&lt;/code&gt;；交叉轴的开始位置叫做&lt;code&gt;cross start&lt;/code&gt;，结束位置叫做&lt;code&gt;cross end&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;项目默认沿主轴排列。单个项目占据的主轴空间叫做&lt;code&gt;main size&lt;/code&gt;，占据的交叉轴空间叫做&lt;code&gt;cross size&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;3容器的属性&#34;&gt;3.容器的属性&lt;/h2&gt;
+&lt;h3 id=&#34;31-主轴的方向flex-direction&#34;&gt;3.1 &lt;strong&gt;主轴的方向(flex-direction)&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;flex-direction&lt;/code&gt;: row | row-reverse | column | column-reverse;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;row（默认值）：主轴为水平方向，起点在左端。&lt;/li&gt;
+&lt;li&gt;row-reverse：主轴为水平方向，起点在右端。&lt;/li&gt;
+&lt;li&gt;column：主轴为垂直方向，起点在上沿。&lt;/li&gt;
+&lt;li&gt;column-reverse：主轴为垂直方向，起点在下沿。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614742821013.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;32-换行属性flex-wrap&#34;&gt;3.2 &lt;strong&gt;换行属性(flex-wrap)&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;flex-wrap&lt;/code&gt;: nowrap | wrap | wrap-reverse;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;nowrap（默认）：不换行。&lt;/li&gt;
+&lt;li&gt;wrap：换行，第一行在上方。&lt;/li&gt;
+&lt;li&gt;wrap-reverse：换行，第一行在下方。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;简写&lt;/code&gt;：&lt;strong&gt;方向 + 换行&lt;/strong&gt;&lt;br&gt;
+flex-flow: &lt;code&gt;&amp;lt;flex-direction&amp;gt;&lt;/code&gt; || &lt;code&gt;&amp;lt;flex-wrap&amp;gt;&lt;/code&gt;;&lt;/p&gt;
+&lt;h3 id=&#34;33-主轴对齐方式justify-content&#34;&gt;3.3 &lt;strong&gt;主轴对齐方式(justify-content)&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;justify-content&lt;/code&gt;: flex-start | flex-end | center | space-between | space-around;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;flex-start（默认值）：左对齐&lt;/li&gt;
+&lt;li&gt;flex-end：右对齐&lt;/li&gt;
+&lt;li&gt;center： 居中&lt;/li&gt;
+&lt;li&gt;space-between：两端对齐，项目之间的间隔都相等。&lt;/li&gt;
+&lt;li&gt;space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614743145091.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;34-交叉轴对齐方式align-items&#34;&gt;3.4 &lt;strong&gt;交叉轴对齐方式(align-items)&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;align-items&lt;/code&gt;: flex-start | flex-end | center | baseline | stretch;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;flex-start：交叉轴的起点对齐。&lt;/li&gt;
+&lt;li&gt;flex-end：交叉轴的终点对齐。&lt;/li&gt;
+&lt;li&gt;center：交叉轴的中点对齐。&lt;/li&gt;
+&lt;li&gt;baseline: 项目的第一行文字的基线对齐。&lt;/li&gt;
+&lt;li&gt;stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614743221850.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;35-多根轴线对齐方式align-content&#34;&gt;3.5 &lt;strong&gt;多根轴线对齐方式(align-content)&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;align-content&lt;/code&gt;: flex-start | flex-end | center | space-between | space-around | stretch;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;flex-start：与交叉轴的起点对齐。&lt;/li&gt;
+&lt;li&gt;flex-end：与交叉轴的终点对齐。&lt;/li&gt;
+&lt;li&gt;center：与交叉轴的中点对齐。&lt;/li&gt;
+&lt;li&gt;space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。&lt;/li&gt;
+&lt;li&gt;space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。&lt;/li&gt;
+&lt;li&gt;stretch（默认值）：轴线占满整个交叉轴。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614743313971.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4项目的属性&#34;&gt;4.项目的属性&lt;/h2&gt;
+&lt;p&gt;排列顺序，数值越小，排列越靠前，默认为0。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;order: &amp;lt;integer&amp;gt;;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;项目的放大比例,默认为0，即如果存在剩余空间，也不放大。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;flex-grow: &amp;lt;number&amp;gt;;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;项目的缩小比例,默认为1，即如果空间不足，该项目将缩小。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;flex-shrink: &amp;lt;number&amp;gt;;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;项目占据的空间,默认值为auto，即项目的本来大小&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;flex-basis: &amp;lt;length&amp;gt; | auto;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;简写flex:&lt;/code&gt;：&lt;strong&gt;flex-grow, flex-shrink 和 flex-basis&lt;/strong&gt;&lt;br&gt;
+&lt;code&gt;flex&lt;/code&gt;属性是&lt;code&gt;flex-grow&lt;/code&gt;, &lt;code&gt;flex-shrink&lt;/code&gt; 和&lt;code&gt;flex-basis&lt;/code&gt;的简写，默认值为&lt;code&gt;0 1 auto&lt;/code&gt;。后两个属性可选。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;独立的对齐方式&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;align-self: auto | flex-start | flex-end | center | baseline | stretch;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614743733611.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;3css单位&#34;&gt;3.CSS单位&lt;/h1&gt;
+">【面】前端知识点梳理（CSS）</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-pai-xu-suan-fa/"" data-c="
