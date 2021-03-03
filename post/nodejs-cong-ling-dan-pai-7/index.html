@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>NodeJs从零单排(7) | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614757028286">
+<link rel="shortcut icon" href="/favicon.ico?v=1614778416117">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1429,6 +1429,479 @@ flex-flow: &lt;code&gt;&amp;lt;flex-direction&amp;gt;&lt;/code&gt; || &lt;code&g
       color: red;
  }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;5bfc-清除浮动&#34;&gt;5.bfc 清除浮动&lt;/h1&gt;
+&lt;p&gt;BFC(Block Formatting Context) 块级格式化环境&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;BFC是一个CSS中的一个隐含的属性，可以为一个元素开启BFC&lt;br&gt;
+开启BFC该元素会变成一个独立的布局区域&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元素开启BFC后的特点：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;开启BFC的元素不会被浮动元素所覆盖&lt;/li&gt;
+&lt;li&gt;开启BFC的元素子元素和父元素外边距不会重叠&lt;/li&gt;
+&lt;li&gt;开启BFC的元素可以包含浮动的子元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;可以通过一些特殊方式来开启元素的BFC：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;设置元素的浮动（不推荐）&lt;/li&gt;
+&lt;li&gt;将元素设置为行内块元素（不推荐）&lt;/li&gt;
+&lt;li&gt;将元素的overflow设置为一个非visible的值&lt;br&gt;
+&lt;code&gt;常用的方式 为元素设置 overflow:hidden 开启其BFC&lt;/code&gt; 以使其可以包含浮动元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;此外，除了BFC，还有IFC、GFC、FFC的概念。我们简单了解一下。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GFC：可简单理解为grid布局&lt;/li&gt;
+&lt;li&gt;FFC：可简单理解为flex布局。&lt;/li&gt;
+&lt;li&gt;IFC:内联格式化上下文，简单理解为：inline-block。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;水平方向上的 margin，border 和 padding在框之间得到保留。框在垂直方向上可以以不同的方式对齐：它们的顶部或底部对齐，或根据其中文字的基线对齐。包含那些框的长方形区域，会形成一行，叫做行框。 inline-block的元素的内部是一个BFC，但是它本身可以和其它inline元素一起形成IFC。&lt;/p&gt;
+&lt;h1 id=&#34;6层叠上下文&#34;&gt;6.层叠上下文&lt;/h1&gt;
+&lt;h2 id=&#34;1层叠上下文stacking-context&#34;&gt;1.层叠上下文(Stacking Context)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614762081794.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+层叠上下文1 (Stacking Context 1)是由文档根元素形成的， 层叠上下文2和3 (Stacking Context 2, 3) 都是层叠上下文1 (Stacking Context 1) 上的层叠层。 他们各自也都形成了新的层叠上下文，其中包含着新的层叠层。&lt;/p&gt;
+&lt;p&gt;在层叠上下文中，其子元素按照上面解释的规则进行层叠。形成层叠上下文的方法有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;根元素 &amp;lt;html&amp;gt;&amp;lt;/html&amp;gt;&lt;/li&gt;
+&lt;li&gt;position值为 absolute|relative，且 z-index值不为 auto&lt;/li&gt;
+&lt;li&gt;position 值为 fixed|sticky&lt;/li&gt;
+&lt;li&gt;z-index 值不为 auto 的flex元素，即：父元素 display:flex|inline-flex&lt;/li&gt;
+&lt;li&gt;opacity 属性值小于 1 的元素&lt;/li&gt;
+&lt;li&gt;transform 属性值不为 none的元素&lt;/li&gt;
+&lt;li&gt;mix-blend-mode 属性值不为 normal 的元素&lt;/li&gt;
+&lt;li&gt;filter、 perspective、 clip-path、 mask、 mask-image、 mask-border、 motion-path 值不为none 的元素&lt;/li&gt;
+&lt;li&gt;perspective 值不为 none 的元素&lt;/li&gt;
+&lt;li&gt;isolation 属性被设置为 isolate 的元素&lt;/li&gt;
+&lt;li&gt;will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值&lt;/li&gt;
+&lt;li&gt;-webkit-overflow-scrolling 属性被设置 touch的元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;总结:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;层叠上下文可以包含在其他层叠上下文中，并且一起组建了一个有层级的层叠上下文&lt;/li&gt;
+&lt;li&gt;每个层叠上下文完全独立于它的兄弟元素，当处理层叠时只考虑子元素，这里类似于BFC&lt;/li&gt;
+&lt;li&gt;每个层叠上下文是自包含的：当元素的内容发生层叠后，整个该元素将会&lt;strong&gt;在父级叠上下文&lt;/strong&gt;中按顺序进行层叠&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-层叠等级-stacking-level&#34;&gt;2. 层叠等级 (Stacking Level)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;层叠等级&lt;/strong&gt; (层叠水平, Stacking Level) 决定了同一个层叠上下文中元素在z轴上的显示顺序的&lt;strong&gt;概念&lt;/strong&gt;；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;普通元素的层叠等级优先由其所在的层叠上下文决定&lt;/li&gt;
+&lt;li&gt;层叠等级的比较只有在同一个层叠上下文元素中才有意义&lt;/li&gt;
+&lt;li&gt;在同一个层叠上下文中，层叠等级描述定义的是该层叠上下文中的元素在Z轴上的上下顺序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;注意&lt;/code&gt;，层叠等级并不一定由 z-index 决定，只有定位元素的层叠等级才由 z-index 决定，其他类型元素的层叠等级由层叠顺序、他们在HTML中出现的顺序、他们的父级以上元素的层叠等级一同决定，详细的规则见下面层叠顺序的介绍。&lt;/p&gt;
+&lt;h2 id=&#34;3-z-index&#34;&gt;3. z-index&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在 CSS 2.1 中, 所有的盒模型元素都处于三维坐标系中。 除了我们常用的横坐标和纵坐标， 盒模型元素还可以沿着&amp;quot;z 轴&amp;quot;层叠摆放， 当他们相互覆盖时， z 轴顺序就变得十分重要。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;z-index 只适用于定位的元素，对非定位元素无效，它可以被设置为正整数、负整数、0、auto，如果一个定位元素没有设置 z-index，那么默认为auto；&lt;/p&gt;
+&lt;p&gt;元素的 z-index 值只在同一个层叠上下文中有意义。如果父级层叠上下文的层叠等级低于另一个层叠上下文的，那么它 z-index 设的再高也没用。所以如果你遇到 z-index 值设了很大，但是不起作用的话，就去看看它的父级层叠上下文是否被其他层叠上下文盖住了。&lt;/p&gt;
+&lt;h2 id=&#34;4-层叠顺序-stacking-order&#34;&gt;4. 层叠顺序 (Stacking Order)&lt;/h2&gt;
+&lt;p&gt;这里其实是涉及了所谓的层叠水平（stacking level)，有一张图可以很好的诠释：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614774762413.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;形成堆叠上下文环境的元素的背景与边框&lt;/li&gt;
+&lt;li&gt;拥有负 z-index 的子堆叠上下文元素 （负的越高越堆叠层级越低）&lt;/li&gt;
+&lt;li&gt;正常流式布局，非 inline-block，无 position 定位（static除外）的子元素&lt;/li&gt;
+&lt;li&gt;无 position 定位（static除外）的 float 浮动元素&lt;/li&gt;
+&lt;li&gt;正常流式布局， inline-block元素，无 position 定位（static除外）的子元素（包括 display:table 和 display:inline ）&lt;/li&gt;
+&lt;li&gt;拥有 z-index:0 的子堆叠上下文元素&lt;/li&gt;
+&lt;li&gt;拥有正 z-index: 的子堆叠上下文元素（正的越低越堆叠层级越低）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;7常见页面布局&#34;&gt;7.常见页面布局&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;三栏布局&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;题目：假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为 300px，中间自适应。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;解答：可以有很多种布局方式，这里列出五种：float布局，absolute布局，flex布局，table布局，grid布局，代码如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+	&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+	&amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;IE=edge&amp;quot;&amp;gt;
+	&amp;lt;title&amp;gt;三栏布局&amp;lt;/title&amp;gt;
+	&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;&amp;quot;&amp;gt;
+	&amp;lt;style type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot;&amp;gt;
+		html *{
+			margin: 0;
+			padding: 0;
+		}
+	&amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+	&amp;lt;section class=&amp;quot;layout float&amp;quot;&amp;gt;
+		&amp;lt;style type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot;&amp;gt;
+			.layout.float .wrapper&amp;gt;div{
+				min-height: 100px;
+			}
+			.layout.float .left{
+				float: left;
+				width: 300px;
+				background: red;
+			}
+			.layout.float .center{
+				background: yellow;
+			}
+			.layout.float .right{
+				float: right;
+				width: 300px;
+				background: blue;
+			}
+			
+		&amp;lt;/style&amp;gt;
+		&amp;lt;article class=&amp;quot;wrapper&amp;quot;&amp;gt;
+			&amp;lt;div class=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+			&amp;lt;div class=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+			&amp;lt;div class=&amp;quot;center&amp;quot;&amp;gt;
+				&amp;lt;h1&amp;gt;float布局&amp;lt;/h1&amp;gt;
+				1.我是float布局的中间部分
+				2.我是float布局的中间部分
+			&amp;lt;/div&amp;gt;
+		&amp;lt;/article&amp;gt;
+	&amp;lt;/section&amp;gt;
+
+
+	&amp;lt;section class=&amp;quot;layout absolute&amp;quot;&amp;gt;
+		&amp;lt;style type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot;&amp;gt;
+			.layout.absolute .wrapper{
+				width: 100%;
+				margin-top: 20px;
+			}
+			.layout.absolute .wrapper&amp;gt;div{
+				min-height: 100px;
+			}
+			.layout.absolute .left{
+				position: absolute;
+				left: 0;
+				width: 300px;
+				background: red;
+			}
+			.layout.absolute .center{
+				position: absolute;
+				left: 300px;
+				right: 300px;
+				background: yellow;
+			}
+			.layout.absolute .right{
+				position: absolute;
+				right: 0;
+				width: 300px;
+				background: blue;
+			}
+		&amp;lt;/style&amp;gt;
+		&amp;lt;article class=&amp;quot;wrapper&amp;quot;&amp;gt;
+			&amp;lt;div class=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+			&amp;lt;div class=&amp;quot;center&amp;quot;&amp;gt;
+				&amp;lt;h1&amp;gt;absolute布局&amp;lt;/h1&amp;gt;
+				1.我是absolute布局的中间部分
+				2.我是absolute布局的中间部分
+			&amp;lt;/div&amp;gt;
+			&amp;lt;div class=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+		&amp;lt;/article&amp;gt;
+	&amp;lt;/section&amp;gt;
+
+
+	&amp;lt;section class=&amp;quot;layout flex&amp;quot;&amp;gt;
+		&amp;lt;style type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot;&amp;gt;
+			.layout.flex .wrapper{
+				width: 100%;
+				min-height: 100px;
+				display: flex;
+				margin-top: 140px;
+			}
+			.layout.flex .left{
+				width: 300px;
+				background: red;
+			}
+			.layout.flex .center{
+				flex: 1;
+				background: yellow;
+			}
+			.layout.flex .right{
+				width: 300px;
+				background: blue;
+			}
+		&amp;lt;/style&amp;gt;
+		&amp;lt;article class=&amp;quot;wrapper&amp;quot;&amp;gt;
+			&amp;lt;div class=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+			&amp;lt;div class=&amp;quot;center&amp;quot;&amp;gt;
+				&amp;lt;h1&amp;gt;flex布局&amp;lt;/h1&amp;gt;
+				1.我是flex布局的中间部分
+				2.我是flex布局的中间部分
+			&amp;lt;/div&amp;gt;
+			&amp;lt;div class=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+		&amp;lt;/article&amp;gt;
+	&amp;lt;/section&amp;gt;
+
+
+	&amp;lt;section class=&amp;quot;layout table&amp;quot;&amp;gt;
+		&amp;lt;style type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot;&amp;gt;
+			.layout.table .wrapper{
+				display: table;
+				width: 100%;
+				min-height: 100px;
+				margin-top: 20px;
+			}
+			.layout.table .left{
+				display: table-cell;
+				width: 300px;
+				background: red;
+			}
+			.layout.table .center{
+				display: table-cell;
+				background: yellow;
+			}
+			.layout.table .right{
+				display: table-cell;
+				width: 300px;
+				background: blue;
+			}
+			
+		&amp;lt;/style&amp;gt;
+		&amp;lt;article class=&amp;quot;wrapper&amp;quot;&amp;gt;
+			&amp;lt;div class=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+			&amp;lt;div class=&amp;quot;center&amp;quot;&amp;gt;
+				&amp;lt;h1&amp;gt;table布局&amp;lt;/h1&amp;gt;
+				1.我是table布局的中间部分
+				2.我是table布局的中间部分
+			&amp;lt;/div&amp;gt;
+			&amp;lt;div class=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+		&amp;lt;/article&amp;gt;
+	&amp;lt;/section&amp;gt;
+
+
+	&amp;lt;section class=&amp;quot;layout grid&amp;quot;&amp;gt;
+		&amp;lt;style type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot;&amp;gt;
+			.layout.grid .wrapper{
+				display: grid;
+				grid-template-columns: 300px auto 300px;
+				grid-template-rows: 100px;
+				width: 100%;
+				margin-top: 20px;
+			}
+			.layout.grid .left{
+				background: red;
+			}
+			.layout.grid .center{
+				background: yellow;
+			}
+			.layout.grid .right{
+				background: blue;
+			}
+			
+		&amp;lt;/style&amp;gt;
+		&amp;lt;article class=&amp;quot;wrapper&amp;quot;&amp;gt;
+			&amp;lt;div class=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+			&amp;lt;div class=&amp;quot;center&amp;quot;&amp;gt;
+				&amp;lt;h1&amp;gt;grid布局&amp;lt;/h1&amp;gt;
+				1.我是grid布局的中间部分
+				2.我是grid布局的中间部分
+			&amp;lt;/div&amp;gt;
+			&amp;lt;div class=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+		&amp;lt;/article&amp;gt;
+	&amp;lt;/section&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;71-每种布局的优缺点&#34;&gt;7.1 每种布局的优缺点&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;float 布局&lt;/code&gt;&lt;br&gt;
+优点： 比较简单，兼容性也比较好。只要清除浮动做的好，是没有什么问题的&lt;br&gt;
+缺点：浮动元素是脱离文档流，要做清除浮动，这个处理不好的话，会带来很多问题，比如高度塌陷等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;绝对布局&lt;/code&gt;&lt;br&gt;
+优点：很快捷，设置很方便，而且也不容易出问题&lt;br&gt;
+缺点：绝对定位是脱离文档流的，意味着下面的所有子元素也会脱离文档流，这就导致了这种方法的有效性和可使用性是比较差的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;flex 布局&lt;/code&gt;&lt;br&gt;
+优点：简单快捷&lt;br&gt;
+缺点：不支持 IE8 及以下&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;table布局&lt;/code&gt;&lt;br&gt;
+优点：实现简单，代码少&lt;br&gt;
+缺点：当其中一个单元格高度超出的时候，两侧的单元格也是会跟着一起变高的，而有时候这种效果不是我们想要的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;grid布局&lt;/code&gt;&lt;br&gt;
+跟 flex 相似。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;72-水平垂直居中&#34;&gt;7.2 水平垂直居中&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;absolute + 负margin&lt;/strong&gt;&lt;br&gt;
+这种方式比较好理解，兼容性也很好，缺点是需要知道子元素的宽高&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;out&amp;quot;&amp;gt;
+  &amp;lt;div class=&amp;quot;inner&amp;quot;&amp;gt;12345&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+
+&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+  .out{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: red;
+  }
+
+  .inner{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+  }
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;absolute + auto margin&lt;/strong&gt;&lt;br&gt;
+这种方法兼容性也很好，缺点是需要知道子元素的宽高&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+  .out{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: red;
+  }
+
+  .inner{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;strong&gt;absolute + calc&lt;/strong&gt;&lt;br&gt;
+这种方法的兼容性依赖于 calc，且也需要知道宽高&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+  .out{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: red;
+  }
+
+  .inner{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+  }
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;absolute + transform&lt;/strong&gt;&lt;br&gt;
+兼容性依赖 translate，不需要知道子元素宽高&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+  .out{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: red;
+  }
+
+  .inner{
+    position: absolute;
+    background: yellow;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;strong&gt;table&lt;/strong&gt;&lt;br&gt;
+css新增的table属性，可以让我们把普通元素，变为table元素的显示效果，通过这个特性也可以实现水平垂直居中。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这种方法兼容性也不错。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+  .out{
+    display: table-cell;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    vertical-align: middle;
+    background: red;
+  }
+
+  .inner{
+    display: inline-block;
+    background: yellow;
+    width: 100px;
+    height: 100px;
+  }
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;&lt;strong&gt;flex&lt;/strong&gt;&lt;br&gt;
+flex 实现起来比较简单，三行代码即可搞定。可通过父元素指定子元素的对齐方式，也可通过 子元素自己指定自己的对齐方式来实现。第二种方式见 grid 布局。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+  .out{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    background: red;
+  }
+
+  .inner{
+    background: yellow;
+    width: 100px;
+    height: 100px;
+  }
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;&lt;strong&gt;grid&lt;/strong&gt;&lt;br&gt;
+grid 布局也很强大，大体上属性跟 flex 差不多。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+  .out{
+    display: grid;
+    width: 300px;
+    height: 300px;
+    background: red;
+  }
+
+  .inner{
+    background: yellow;
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    justify-self: center;
+  }
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;页面布局小结：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;语义化掌握到位&lt;/li&gt;
+&lt;li&gt;页面布局理解深刻&lt;/li&gt;
+&lt;li&gt;CSS基础知识扎实&lt;/li&gt;
+&lt;li&gt;思维灵活且积极上进&lt;/li&gt;
+&lt;li&gt;代码书写规范&lt;/li&gt;
+&lt;/ul&gt;
 ">【面】前端知识点梳理（CSS）</a>
       </div>
       
