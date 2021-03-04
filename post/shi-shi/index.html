@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>JavaScript实现队列结构（Queue） | Tyloo</title>
+<title>【面】前端知识点梳理（CSS下） | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1614861437659">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="JavaScript实现队列结构（Queue）" />
+  <meta name="description" content="【面】前端知识点梳理（CSS下）" />
   <meta name="keywords" content="" />
 </head>
 
@@ -238,17 +238,44 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#1%E9%98%9F%E5%88%97%E7%AE%80%E4%BB%8B">1.队列简介</a></li>
-<li><a href="#2%E5%B0%81%E8%A3%85%E9%98%9F%E5%88%97%E7%B1%BB">2.封装队列类</a>
+<li><a href="#11display%E5%93%AA%E4%BA%9B%E5%8F%96%E5%80%BC">11.display哪些取值</a>
 <ul>
-<li><a href="#21%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">2.1.代码实现</a></li>
-<li><a href="#22%E9%98%9F%E5%88%97%E7%9A%84%E5%BA%94%E7%94%A8">2.2.队列的应用</a></li>
+<li><a href="#111-none-%E6%AD%A4%E5%85%83%E7%B4%A0%E4%B8%8D%E4%BC%9A%E8%A2%AB%E6%98%BE%E7%A4%BA">11.1 none ：此元素不会被显示</a></li>
+<li><a href="#112-block%E6%AD%A4%E5%85%83%E7%B4%A0%E5%B0%86%E6%98%BE%E7%A4%BA%E4%B8%BA%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E6%AD%A4%E5%85%83%E7%B4%A0%E5%89%8D%E5%90%8E%E4%BC%9A%E5%B8%A6%E6%9C%89%E6%8D%A2%E8%A1%8C%E7%AC%A6">11.2 block：此元素将显示为块级元素，此元素前后会带有换行符。</a></li>
+<li><a href="#113-inline-%E9%BB%98%E8%AE%A4%E6%AD%A4%E5%85%83%E7%B4%A0%E4%BC%9A%E8%A2%AB%E6%98%BE%E7%A4%BA%E4%B8%BA%E5%86%85%E8%81%94%E5%85%83%E7%B4%A0%E5%85%83%E7%B4%A0%E5%89%8D%E5%90%8E%E6%B2%A1%E6%9C%89%E6%8D%A2%E8%A1%8C%E7%AC%A6">11.3 inline 默认此元素会被显示为内联元素，元素前后没有换行符。</a></li>
+<li><a href="#114-inline-block-%E8%A1%8C%E5%86%85%E5%9D%97%E5%85%83%E7%B4%A0css21-%E6%96%B0%E5%A2%9E%E7%9A%84%E5%80%BC">11.4 inline-block 行内块元素（CSS2.1 新增的值）</a></li>
+<li><a href="#115-list-item-%E6%AD%A4%E5%85%83%E7%B4%A0%E4%BC%9A%E4%BD%9C%E4%B8%BA%E5%88%97%E8%A1%A8%E6%98%BE%E7%A4%BA">11.5 list-item 此元素会作为列表显示。</a></li>
+<li><a href="#116-run-in-%E6%AD%A4%E5%85%83%E7%B4%A0%E4%BC%9A%E6%A0%B9%E6%8D%AE%E4%B8%8A%E4%B8%8B%E6%96%87%E4%BD%9C%E4%B8%BA%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E6%88%96%E5%86%85%E8%81%94%E5%85%83%E7%B4%A0%E6%98%BE%E7%A4%BA">11.6 run-in 此元素会根据上下文作为块级元素或内联元素显示。</a></li>
+<li><a href="#117-table-%E6%AD%A4%E5%85%83%E7%B4%A0%E4%BC%9A%E4%BD%9C%E4%B8%BA%E5%9D%97%E7%BA%A7%E8%A1%A8%E6%A0%BC%E6%9D%A5%E6%98%BE%E7%A4%BA%E8%A1%A8%E6%A0%BC%E5%89%8D%E5%90%8E%E5%B8%A6%E6%9C%89%E6%8D%A2%E8%A1%8C%E7%AC%A6">11.7 table 此元素会作为块级表格来显示，表格前后带有换行符。</a></li>
 </ul>
 </li>
-<li><a href="#3%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">3.优先队列</a>
+<li><a href="#12-%E7%9B%B8%E9%82%BB%E7%9A%84%E4%B8%A4%E4%B8%AAinline-block%E8%8A%82%E7%82%B9%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0%E9%97%B4%E9%9A%94%E8%AF%A5%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3">12. 相邻的两个inline-block节点为什么会出现间隔，该如何解决</a>
 <ul>
-<li><a href="#31%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0">3.1.优先级队列的实现</a></li>
-<li><a href="#32%E6%B3%A8%E6%84%8F%E7%82%B9">3.2.注意点</a></li>
+<li><a href="#121-%E5%8E%9F%E5%9B%A0">12.1 原因</a></li>
+<li><a href="#122-%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95">12.2 解决办法</a></li>
+</ul>
+</li>
+<li><a href="#13-meta-viewport-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D">13. meta viewport 移动端适配</a>
+<ul>
+<li><a href="#131-%E4%BB%80%E4%B9%88%E6%98%AFviewport">13.1 什么是Viewport?</a></li>
+<li><a href="#132-meta-viewport-%E7%9A%846%E4%B8%AA%E5%B1%9E%E6%80%A7">13.2 meta viewport 的6个属性：</a></li>
+<li><a href="#133-3%E4%B8%AAviewport">13.3 3个viewport：</a></li>
+<li><a href="#134-%E7%BB%88%E6%9E%81%E6%96%B9%E6%A1%88">13.4  终极方案：</a></li>
+</ul>
+</li>
+<li><a href="#14-css%E5%AE%9E%E7%8E%B0%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94100%E5%AE%BD%E9%AB%98169%E7%9A%84%E6%AF%94%E4%BE%8B%E7%9A%84%E7%9F%A9%E5%BD%A2">14 CSS实现宽度自适应100%，宽高16:9的比例的矩形</a></li>
+<li><a href="#15-rem%E5%B8%83%E5%B1%80%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9">15 rem布局的优缺点</a>
+<ul>
+<li><a href="#151-rem%E5%B8%83%E5%B1%80%E5%8E%9F%E7%90%86">15.1 Rem布局原理</a></li>
+<li><a href="#152-rem%E5%B8%83%E5%B1%80%E4%BC%98%E7%82%B9">15.2 Rem布局优点</a></li>
+<li><a href="#153-rem%E5%B8%83%E5%B1%80%E7%BC%BA%E7%82%B9">15.3 Rem布局缺点</a></li>
+</ul>
+</li>
+<li><a href="#16-css%E7%94%BB%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2">16. CSS画一个三角形</a></li>
+<li><a href="#17-1%E5%83%8F%E7%B4%A0%E8%BE%B9%E6%A1%86%E9%97%AE%E9%A2%98">17. 1像素边框问题</a>
+<ul>
+<li><a href="#171-%E4%B8%BA%E4%BB%80%E4%B9%881px%E5%8F%98%E7%B2%97%E4%BA%86">17.1 为什么1px变粗了？</a></li>
+<li><a href="#172-%E4%BF%AE%E6%94%B9%E6%96%B9%E6%A1%88">17.2 修改方案</a></li>
 </ul>
 </li>
 </ul>
@@ -516,8 +543,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dui-lie-jie-gou-queue/">
-      JavaScript实现队列结构（Queue）
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/shi-shi/">
+      【面】前端知识点梳理（CSS下）
     </a>
   </h1>
   <div class="post-meta">
@@ -525,23 +552,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-02-03 21:30:00">2021-02-03</span>
+      <span class="publish-time" data-t="2021-03-04 14:47:52">2021-03-04</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>8<span class="language" data-lan="minute">分钟</span></span>
+      <span>13<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1740<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>2944<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/javascript-shi-xian-dui-lie-jie-gou-queue/" data-flag-title="JavaScript实现队列结构（Queue）" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/shi-shi/" data-flag-title="【面】前端知识点梳理（CSS下）" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -550,255 +577,231 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="1队列简介">1.队列简介</h1>
-<p>队列是是一种受限的线性表，特点为<strong>先进先出</strong>（<strong>FIFO</strong>：first in first out）。</p>
+              <h1 id="11display哪些取值">11.display哪些取值</h1>
+<h2 id="111-none-此元素不会被显示">11.1 none ：此元素不会被显示</h2>
+<p>（1） none此单词的意思是没有一个、毫无的意思；所以当display的属性值设置为none的时候，表示的是没有框类型，没有框类型的元素，是无法在浏览器中显示的，就实现隐藏元素的作用了；<br>
+（2）有很多标签，display的属性值默认是none，比如 <code>head</code> <code>meta</code> <code>style</code> <code>link</code>等等；<br>
+（3）项目应用中，做二级导航效果或者鼠标悬停效果动态时，会经常用到这个属性值，下次我们写一个好玩的二级效果再来展示这个属性值的作用；<br>
+<img src="https://Tyloo-code.github.io/post-images/1614838389050.jpg" alt="" loading="lazy"></p>
+<h2 id="112-block此元素将显示为块级元素此元素前后会带有换行符">11.2 block：此元素将显示为块级元素，此元素前后会带有换行符。</h2>
+<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1614838392829.jpg" alt="" loading="lazy"></figure>
+<h2 id="113-inline-默认此元素会被显示为内联元素元素前后没有换行符">11.3 inline 默认此元素会被显示为内联元素，元素前后没有换行符。</h2>
+<figure data-type="image" tabindex="2"><img src="https://Tyloo-code.github.io/post-images/1614838421481.jpg" alt="" loading="lazy"></figure>
+<h2 id="114-inline-block-行内块元素css21-新增的值">11.4 inline-block 行内块元素（CSS2.1 新增的值）</h2>
+<p>说明：行内块元素既具备行内元素的特性也具备块状元素的特性，具备行内元素前后没有换行符可以在一行内并列显示的特性，具备块状元素可以正确解释盒模型属性的特性。<br>
+<img src="https://Tyloo-code.github.io/post-images/1614838503882.jpg" alt="" loading="lazy"></p>
+<h2 id="115-list-item-此元素会作为列表显示">11.5 list-item 此元素会作为列表显示。</h2>
+<p>(1) 此属性值表示将元素显示为列表项标签，li标签默认的display的属性值是list-item，display的属性值为list-item的标签也属于块状元素；<br>
+<img src="https://Tyloo-code.github.io/post-images/1614838546316.jpg" alt="" loading="lazy"><br>
+(2) li标签作为列表项标签，前面会有列表项标记，下面给div标签设置为list-item，div也会有列表项标记<br>
+<img src="https://Tyloo-code.github.io/post-images/1614838588128.jpg" alt="" loading="lazy"></p>
+<h2 id="116-run-in-此元素会根据上下文作为块级元素或内联元素显示">11.6 run-in 此元素会根据上下文作为块级元素或内联元素显示。</h2>
+<h2 id="117-table-此元素会作为块级表格来显示表格前后带有换行符">11.7 table 此元素会作为块级表格来显示，表格前后带有换行符。</h2>
+<p>（1）table标签默认的元素类型是table，显示为块级表格，可以设置大小并且单独占据一行；<br>
+（2）当table标签的元素类型是table时，并且设置宽度和高度之后，后代td标签的宽度和高度，默认是由table根据内容的多少去分配的；<br>
+(3) table属于块状元素，但是对比别的块状元素，有自己的特点， table会单独占据一行，但是在没有设置width的情况下，不会与父元素同宽，而是根据内容而定；<br>
+(4) 其他标签设置display的属性值为table，也不会具有表格的特性；</p>
+<p><code>总结</code></p>
+<p>通过以上的测试，可以总结出：<br>
+display的属性值为<strong>block，table</strong>的标签都为<code>块状元素</code>；<br>
+display的属性值为<strong>inline，inline-table，inline-block</strong>的标签为<code>行内级元素</code>；</p>
+<h1 id="12-相邻的两个inline-block节点为什么会出现间隔该如何解决">12. 相邻的两个inline-block节点为什么会出现间隔，该如何解决</h1>
+<figure data-type="image" tabindex="3"><img src="https://Tyloo-code.github.io/post-images/1614841169302.png" alt="" loading="lazy"></figure>
+<h2 id="121-原因">12.1 原因</h2>
+<p>其实，html的原因。我们回顾一下这段代码：</p>
+<pre><code>&lt;div class=&quot;box&quot;&gt;看这里➡️&lt;/div&gt;
+&lt;div class=&quot;box&quot;&gt;⬅️看这里➡️&lt;/div&gt;
+&lt;div class=&quot;box&quot;&gt;⬅️看这里&lt;/div&gt;
+</code></pre>
+<p>我们不仅看到元素节点，属性节点还有文本节点，问题就是处在文本节点的渲染导致3px(chrome)的间隔。那如何解决它？</p>
+<h2 id="122-解决办法">12.2 解决办法</h2>
+<p><strong>方法一、删除空白节点</strong></p>
+<pre><code>&lt;div class=&quot;box&quot;&gt;看这里➡️&lt;/div
+&gt;&lt;div class=&quot;box&quot;&gt;⬅️看这里➡️&lt;/div
+&gt;&lt;div class=&quot;box&quot;&gt;⬅️看这里&lt;/div&gt;
+</code></pre>
+<p>以上的这些方法，无一列外破坏了代码的可读性。</p>
+<p><strong>方法二、负的marigin值</strong></p>
+<pre><code>.box {
+    margin: -3px; /*左右缩小3px*/
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background-color: #ddd;
+    text-align: center;
+    line-height: 50px;
+}
+</code></pre>
+<p>这样的方式，可以解决chrome下面的问题。但是不建议使用。因为在某些游览器上面，这个文本节点可能设置成4px的间隔。因为解决问题，引入了新的问题，那就尴尬！</p>
+<p><strong>方法三、font-size: 0</strong><br>
+既然是文本节点导致的，那我们就把文本节点设置成0不就ok?顺着这个思路，我们这些写： 我们先给div加一个父级节点</p>
+<pre><code>&lt;div class=&quot;wrapper&quot;&gt;
+    &lt;div class=&quot;box&quot;&gt;看这里➡️&lt;/div&gt;
+    &lt;div class=&quot;box&quot;&gt;⬅️看这里➡️&lt;/div&gt;
+    &lt;div class=&quot;box&quot;&gt;⬅️看这里&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code>.wrapper{
+    font-size: 0;
+}
+.box {
+    font-size: 14px;
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background-color: #ddd;
+    text-align: center;
+    line-height: 50px;
+}
+</code></pre>
+<p>主要： 因为font-size是默认继承的属性。所以父级给了0，子级要重新设置font-size： 14px。</p>
+<h1 id="13-meta-viewport-移动端适配">13. meta viewport 移动端适配</h1>
+<h2 id="131-什么是viewport">13.1 什么是Viewport?</h2>
+<p>手机浏览器会把页面放入到一个虚拟的“视口”（viewpoint）中，但viewport又不局限于浏览器可视区域的大小，它可能比浏览器的可视区域大，也可能比浏览器的可视区域小。通常这个虚拟的“视口”（viewport）比屏幕宽，会把网页挤到一个很小的窗口。<br>
+如果不显示地设置viewport，那么浏览器就会把width默认设置为980。但后果是浏览器出现横向滚动条，因为浏览器可视区域的宽度比默认的viewport的宽度小。<br>
+然后浏览器引进了 viewport 这个 meta tag，让网页开发者来控制 viewport 的大小和缩放。</p>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+</code></pre>
+<h2 id="132-meta-viewport-的6个属性">13.2 meta viewport 的6个属性：</h2>
 <ul>
-<li>受限之处在于它只允许在表的<strong>前端</strong>（front）进行删除操作；</li>
-<li>在表的<strong>后端</strong>（rear）进行插入操作；<br>
-<img src="https://Tyloo-code.github.io/post-images/1612359092282.png" alt="" loading="lazy"><br>
-相当于排队买票，先来的先买票，后来的后买票。<br>
-<img src="https://Tyloo-code.github.io/post-images/1612359106480.png" alt="" loading="lazy"></li>
+<li>width ： 设置viewport 的宽度</li>
+<li>height： 设置viewport 的高度</li>
+<li>initial-scale ： 设置页面的初始缩放值</li>
+<li>minimum-scale ：允许用户的最小缩放值</li>
+<li>maximum-scale：允许用户的最大缩放值</li>
+<li>user-scalable： 是否允许用户进行缩放，值为&quot;no&quot;或&quot;yes&quot;, no 代表不允许，yes代表允许</li>
 </ul>
-<p><strong>队列的应用</strong>：</p>
+<h2 id="133-3个viewport">13.3 3个viewport：</h2>
+<p>（1）<strong>布局视口 layout viewport</strong><br>
+如果把移动设备上浏览器的可视区域设为viewport的话，某些网站会因为viewport太窄而显示错乱，所以这些浏览器就默认会把viewport设为一个较宽的值，比如980px，使得即使是那些为PC浏览器设计的网站也能在移动设备浏览器上正常显示。这个浏览器默认的viewport叫做 layout viewport。layout viewport的宽度可以通过 document.documentElement.clientWidth来获取。</p>
+<p>（2）<strong>视觉视口 visual viewport</strong><br>
+layout viewport的宽度是大于浏览器可视区域的宽度的，所以还需要一个viewport来代表浏览器可视区域的大小，这个viewport叫做 visual viewport。visual viewport的宽度可以通过 document.documentElement.innerWidth来获取。</p>
+<p>（3）<strong>理想视口 ideal viewport</strong><br>
+ideal viewport是一个能完美适配移动设备的viewport。首先，不需要缩放和横向滚动条就能正常查看网站的所有内容；其次，显示的文字、图片大小合适，如14px的文字不会因为在一个高密度像素的屏幕里显示得太小而无法看清，无论是在何种密度屏幕，何种分辨率下，显示出来的大小都差不多。这个viewport叫做 ideal viewport。</p>
+<p>ideal viewport并没有一个固定的尺寸，不同的设备有不同的ideal viewport。例如，所有的iphone的ideal viewport宽度都是320px，无论它的屏幕宽度是320还是640。<br>
+ideal viewport 的意义在于，无论在何种分辨率的屏幕下，针对ideal viewport 而设计的网站，不需要缩放和横向滚动条都可以完美地呈现给用户。</p>
+<h2 id="134-终极方案">13.4  终极方案：</h2>
+<p>将<code>meta:vp</code>标签的属性值设置为<code>width=device-width, initial-scale=1</code>就不仅能够将页面的布局视口自动设置为各个移动设备的理想视口，还能够同时兼容iphone、ipad的Safari以及WP7 IE浏览器的横屏问题。</p>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+</code></pre>
+<h1 id="14-css实现宽度自适应100宽高169的比例的矩形">14 CSS实现宽度自适应100%，宽高16:9的比例的矩形</h1>
+<p>第一步先计算高度，假设宽100%，那么高为h=9/16=56.25%</p>
+<p>第二步利用之前所说设置padding-bottom方法实现矩形</p>
+<pre><code>  &lt;div class=&quot;box&quot;&gt;
+      &lt;div class=&quot;scale&quot;&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+<pre><code>&lt;style type=&quot;text/css&quot;&gt;
+   .box {
+        width: 20%;
+    }
+    .scale {
+        width: 100%;
+        height: 0px;
+        /* scale 用来实现宽高等比例 1:1 padding-bottom:100%; 4:3 padding-bottom:75%; 16:9 padding-bottom:56.25%; */
+        padding-bottom: 56.25%;
+        position: relative;
+        background-color: pink;
+    }
+  &lt;/style&gt;
+</code></pre>
+<h1 id="15-rem布局的优缺点">15 rem布局的优缺点</h1>
+<h2 id="151-rem布局原理">15.1 Rem布局原理</h2>
+<p>rem布局的本质是什么？这是我问过很多人的一个问题，但得到的回答都差强人意。</p>
+<p><strong>其实rem布局的本质是等比缩放，一般是基于宽度</strong></p>
+<h2 id="152-rem布局优点">15.2 Rem布局优点</h2>
+<p><code>rem的优点就是可以通过修改html里的文字大小来改变页面中元素的大小，可以整体进行控制。</code></p>
+<h2 id="153-rem布局缺点">15.3 Rem布局缺点</h2>
 <ul>
-<li>打印队列：计算机打印多个文件的时候，需要排队打印；</li>
-<li>线程队列：当开启多线程时，当新开启的线程所需的资源不足时就先放入线程队列，等待CPU处理；</li>
+<li>目前ie不支持 对pc页面来讲使用次数不多；</li>
+<li>数据量大：所有的图片，盒子都需要我们去给一个准确的值；才能保证不同机型的适配；</li>
+<li>字体的问题：字体的大小和字体宽度，并不成线性关系，所以字体大小不能使用rem</li>
 </ul>
-<p><strong>队列类的实现</strong>：<br>
-队列的实现和栈一样，有两种方案：</p>
-<ul>
-<li>基于数组实现；</li>
-<li>基于链表实现；</li>
-</ul>
-<p><strong>队列的常见操作：</strong></p>
-<ul>
-<li>enqueue（element）：向队列尾部添加一个（或多个）新的项；</li>
-<li>dequeue（）：移除队列的第一（即排在队列最前面的）项，并返回被移除的元素；</li>
-<li>front（）：返回队列中的第一个元素——最先被添加，也将是最先被移除的元素。队列不做任何变动（不移除元素，只返回元素信息与Stack类的peek方法非常类似）；</li>
-<li>isEmpty（）：如果队列中不包含任何元素，返回true，否则返回false；</li>
-<li>size（）：返回队列包含的元素个数，与数组的length属性类似；</li>
-<li>toString（）：将队列中的内容，转成字符串形式；</li>
-</ul>
-<h1 id="2封装队列类">2.封装队列类</h1>
-<h2 id="21代码实现">2.1.代码实现</h2>
-<pre><code class="language-JS">    // 基于数组封装队列类
-    function Queue() {
-    // 属性
-      this.items = []
-      
-    // 方法
-    // 1.enqueue():将元素加入到队列中
-    Queue.prototype.enqueue = element =&gt; {
-      this.items.push(element)
-    }
-
-    // 2.dequeue():从队列中删除前端元素
-    Queue.prototype.dequeue = () =&gt; {
-      return this.items.shift()
-    }
-
-    // 3.front():查看前端的元素
-    Queue.prototype.front = () =&gt; {
-      return this.items[0]
-    }
-
-    // 4.isEmpty:查看队列是否为空
-    Queue.prototype.isEmpty = () =&gt; {
-      return this.items.length == 0;
-    }
-
-    // 5.size():查看队列中元素的个数
-    Queue.prototype.size = () =&gt; {
-      return this.items.length
-    }
-
-    // 6.toString():将队列中元素以字符串形式输出
-    Queue.prototype.toString = () =&gt; {
-      let resultString = ''
-        for (let i of this.items){
-          resultString += i + ' '
+<h1 id="16-css画一个三角形">16. CSS画一个三角形</h1>
+<p><strong>CSS</strong></p>
+<pre><code>&lt;style type=&quot;text/css&quot;&gt;
+        /* css3绘制三角形 */
+        .triangle{
+            width: 0px;                           /*设置宽高为0，所以div的内容为空，从才能形成三角形尖角*/
+            height: 0px;
+            border-bottom: 200px solid #00a3af;
+            border-left: 200px solid transparent;    /*transparent 表示透明*/
+            border-right: 200px solid transparent;
         }
-        return resultString
-      }
-    }
+    &lt;/style&gt;
 </code></pre>
-<p><strong>测试代码：</strong></p>
-<pre><code class="language-JS">    // 创建队列
-    let queue = new  Queue()
-
-    // 将元素加入到队列中
-    queue.enqueue('a')
-    queue.enqueue('b')
-    queue.enqueue('c')
-    queue.enqueue('d')
-    console.log(queue);												
-
-    // 从队列中删除元素
-    queue.dequeue()
-    console.log(queue);											
-    queue.dequeue()
-    console.log(queue);											
-
-    //front
-    console.log(queue.front());								 		
-    
-    // 验证其他方法
-    console.log(queue.isEmpty());								 	
-    console.log(queue.size());								 	
-    console.log(queue.toString());								 	
+<p><strong>Html</strong></p>
+<pre><code> &lt;div class=&quot;triangle&quot;&gt;&lt;/div&gt;
 </code></pre>
-<p><strong>测试结果：</strong><br>
-<img src="https://Tyloo-code.github.io/post-images/1612359291030.png" alt="" loading="lazy"><br>
-<br></p>
-<h2 id="22队列的应用">2.2.队列的应用</h2>
-<p>使用队列实现小游戏：击鼓传花，传入一组数据和设定的数字num，循环遍历数组内元素，遍历到的元素为指定数字num时将该元素删除，直至数组剩下一个元素。</p>
-<p><strong>代码实现：</strong></p>
-<pre><code class="language-JS">    // 队列应用：面试题：击鼓传花
-    let passGame = (nameList, num) =&gt; {
-      //1.创建队列结构
-      let queue = new Queue()
-
-      //2.将所有人依次加入队列
-      // 这是ES6的for循环写法，i相当于nameList[i]
-      for(let i of nameList){
-        queue.enqueue(i)
-      }
-      
-
-      // 3.开始数数
-     while(queue.size() &gt; 1){//队列中只剩1个人就停止数数
-      // 不是num的时候，重新加入队列末尾
-      // 是num的时候，将其从队列中删除
-      // 3.1.num数字之前的人重新放入队列的末尾(把队列前面删除的加到队列最后)
-      for(let i = 0; i&lt; num-1; i++ ){
-        queue.enqueue(queue.dequeue())
-      }
-      // 3.2.num对应这个人，直接从队列中删除
-      /*
-        思路是这样的，由于队列没有像数组一样的下标值不能直接取到某一元素，所以采用，把num前面的num-1个元素先删除后添加到队列末尾，这样第num个元素就排到了队列的最前面，可以直接使用dequeue方法进行删除
-      */
-      queue.dequeue()
-     }
-
-      //4.获取剩下的那个人
-      console.log(queue.size());									
-      let endName = queue.front()
-      console.log('最终剩下的人：' + endName);						   	
-      
-      return nameList.indexOf(endName);
-    }
-
-    //5.测试击鼓传花
-    let names = ['lily', 'lucy', 'Tom', 'Lilei', 'Tony']
-    console.log(passGame(names, 3));		
+<figure data-type="image" tabindex="4"><img src="https://Tyloo-code.github.io/post-images/1614860077842.png" alt="" loading="lazy"></figure>
+<h1 id="17-1像素边框问题">17. 1像素边框问题</h1>
+<h2 id="171-为什么1px变粗了">17.1 为什么1px变粗了？</h2>
+<p>UI设计师要求的1px是指设备的物理像素1px，而CSS里记录的像素是逻辑像素，它们之间存在一个比例关系，可以用javascript中的window.devicePixelRatio来获取</p>
+<p>移动端开发常需要在html的header里添加如下一句：</p>
+<pre><code> &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;&gt;
 </code></pre>
-<p><strong>测试结果：</strong><br>
-<img src="https://Tyloo-code.github.io/post-images/1612359343343.png" alt="" loading="lazy"></p>
-<h1 id="3优先队列">3.优先队列</h1>
-<p>优先级队列主要考虑的问题为：</p>
-<ul>
-<li>每个元素不再只是一个数据，还包含数据的优先级；</li>
-<li>在添加数据过程中，根据优先级放入到正确位置；</li>
-</ul>
-<h2 id="31优先级队列的实现">3.1.优先级队列的实现</h2>
-<p><strong>代码实现：</strong></p>
-<pre><code class="language-JS">    // 封装优先级队列
-    function PriorityQueue() {
-
-      //内部类：在类里面再封装一个类;表示带优先级的数据
-      function QueueElement(element, priority) {
-        this.element = element;
-        this.priority = priority;
-      } 
-
-      // 封装属性
-      this.items = []
-
-      // 1.实现按照优先级插入方法
-      PriorityQueue.prototype.enqueue = (element, priority) =&gt; {
-        // 1.1.创建QueueElement对象
-        let queueElement = new QueueElement(element, priority)
-
-        // 1.2.判断队列是否为空
-        if(this.items.length == 0){
-          this.items.push(queueElement)
-        }else{
-          // 定义一个变量记录是否成功添加了新元素
-          let added = false
-          for(let i of this.items){
-            // 让新插入的元素与原有元素进行优先级比较(priority越小，优先级越大)
-            if(queueElement.priority &lt; i.priority){
-              this.items.splice(i, 0, queueElement)
-              added = true
-              // 新元素已经找到插入位置了可以使用break停止循环
-              break
-            }
-          }
-          // 新元素没有成功插入，就把它放在队列的最前面
-          if(!added){
-            this.items.push(queueElement)
-          }
-        }
-      }
-
-      // 2.dequeue():从队列中删除前端元素
-      PriorityQueue.prototype.dequeue = () =&gt; {
-        return this.items.shift()
-      }
-
-      // 3.front():查看前端的元素
-      PriorityQueue.prototype.front = () =&gt; {
-        return this.items[0]
-      }
-
-      // 4.isEmpty():查看队列是否为空
-      PriorityQueue.prototype.isEmpty = () =&gt; {
-        return this.items.length == 0;
-      }
-
-      // 5.size():查看队列中元素的个数
-      PriorityQueue.prototype.size = () =&gt; {
-        return this.items.length
-      }
-
-      // 6.toString():以字符串形式输出队列中的元素
-      PriorityQueue.prototype.toString = () =&gt; {
-        let resultString = ''
-          for (let i of this.items){
-            resultString += i.element + '-' + i.priority + ' '
-          }
-          return resultString
-        }
-    }
+<p>这句话定义了本页面的viewport的宽度为设备宽度，初始缩放值和最大缩放值都为1，并禁止了用户缩放。</p>
+<h2 id="172-修改方案">17.2 修改方案</h2>
+<p><code>viewport + rem 方案</code></p>
+<p>该方案是对上述方案的优化，整体思路就是利用viewport + rem + js 动态的修改页面的缩放比例，实现小于1像素的显示。在页面初始化时，在头部引入原始默认状态如下：</p>
+<pre><code>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=UTF-8&quot;&gt;  
+&lt;meta name=&quot;viewport&quot; id=&quot;WebViewport&quot; content=&quot;initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&quot;&gt; 
 </code></pre>
-<p><strong>测试代码：</strong></p>
-<pre><code class="language-JS">  // 测试代码
-    let pq = new PriorityQueue();
-    pq.enqueue('Tom',111);
-    pq.enqueue('Hellen',200);
-    pq.enqueue('Mary',30);
-    pq.enqueue('Gogo',27);
-    // 打印修改过后的优先队列对象
-    console.log(pq);
+<p>接下来的任务就是js的动态修改缩放比 以及 实现rem根元素字体大小的设置。</p>
+<pre><code>var viewport = document.querySelector(&quot;meta[name=viewport]&quot;)
+if (window.devicePixelRatio == 1) {
+    viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
+} 
+if (window.devicePixelRatio == 2) {
+    viewport.setAttribute('content', 'width=device-width, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no')
+} 
+if (window.devicePixelRatio == 3) {
+    viewport.setAttribute('content', 'width=device-width, initial-scale=0.333333333, maximum-scale=0.333333333, minimum-scale=0.333333333, user-scalable=no')
+} 
+
+var docEl = document.documentElement;
+var fontsize = 10 * (docEl.clientWidth / 320) + 'px';
+docEl.style.fontSize = fontsize;
 </code></pre>
-<p><strong>测试结果：</strong><br>
-<img src="https://Tyloo-code.github.io/post-images/1612359507202.png" alt="" loading="lazy"></p>
-<h2 id="32注意点">3.2.注意点</h2>
-<p><strong>关于数组方法splice用法：</strong></p>
-<ul>
-<li>splice（1，0，'Tom'）：表示在索引为1的元素前面插入元素’Tom‘（也可以理解为从索引为1的元素开始删除，删除0个元素，再在索引为1的元素前面添加元素'Tom'）；</li>
-<li>splice（1，1，'Tom'）：表示从索引为1的元素开始删除（包括索引为1的元素），共删除1个元素，并添加元素'Tom'。即把索引为1的元素替换为元素'Tom'。</li>
-</ul>
-<p><strong>数组的push方法在数组、栈和队列中的形式：</strong></p>
-<ul>
-<li><strong>数组</strong>：在数组[0，1，2]中，pop(3)，结果为[0，1，2，3]；</li>
-<li><strong>栈</strong>：执行pop(0)，pop(1)，pop(2)，pop(3)，从栈底到栈顶的元素分别为：0，1，2，3；如果看成数组，可写为[0，1，2，3]，但是索引为3的元素3其实是栈顶元素；所以说栈的push方法是向栈顶添加元素（但在数组的视角下为向数组尾部添加元素）；</li>
-<li><strong>队列</strong>：enqueue方法可以由数组的push方法实现，与数组相同，相当于在数组尾部添加元素。<br>
-可以这样想：栈结构是头朝下（索引值由下往上增大）的数组结构。<br>
-<img src="https://Tyloo-code.github.io/post-images/1612359579513.png" alt="" loading="lazy"></li>
-</ul>
-<br>
-<p><a href="https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;seid=3912456004602554239">参考资料:JavaScript数据结构与算法</a></p>
+<p><code>transform: scale(0.5) 方案 - 推荐: 很灵活</code></p>
+<ol>
+<li>设置height: 1px，根据媒体查询结合<code>transform</code>缩放为相应尺寸。</li>
+</ol>
+<pre><code>div {
+    height:1px;
+    background:#000;
+    -webkit-transform: scaleY(0.5);
+    -webkit-transform-origin:0 0;
+    overflow: hidden;
+}
+</code></pre>
+<ol start="2">
+<li>用<code>::after</code>和<code>::befor</code>,设置<code>border-bottom：1px solid #000</code>,然后在缩放<code>-webkit-transform: scaleY(0.5)</code>;可以实现两根边线的需求</li>
+</ol>
+<pre><code>div::after{
+    content:'';width:100%;
+    border-bottom:1px solid #000;
+    transform: scaleY(0.5);
+}
+</code></pre>
+<ol start="3">
+<li>用<code>::after</code>设置<code>border：1px solid #000; width:200%; height:200%</code>,然后再缩放<code>scaleY(0.5)</code>; 优点可以实现圆角，京东就是这么实现的，缺点是按钮添加active比较麻烦。</li>
+</ol>
+<pre><code>.div::after {
+    content: '';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #bfbfbf;
+    border-radius: 4px;
+    -webkit-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    -webkit-transform-origin: top left;
+}
+</code></pre>
 
             </div>
             
@@ -815,7 +818,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/javascript-shi-xian-dui-lie-jie-gou-queue/" title="JavaScript实现队列结构（Queue）">https://Tyloo-code.github.io/post/javascript-shi-xian-dui-lie-jie-gou-queue/</a>
+      <a href="https://Tyloo-code.github.io/post/shi-shi/" title="【面】前端知识点梳理（CSS下）">https://Tyloo-code.github.io/post/shi-shi/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -829,14 +832,14 @@
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="JavaScript实现单向链表" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dan-xiang-lian-biao/">JavaScript实现单向链表</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="JavaScript实现单向链表" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dan-xiang-lian-biao/">上一篇</a>
+        <a class="nav-pc-next" title="【面】前端知识点梳理（Html）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-html/">【面】前端知识点梳理（Html）</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="【面】前端知识点梳理（Html）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-html/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="JavaScript数据结构与算法—实现栈结构（Stack）" href="https://Tyloo-code.github.io/post/javascript-shu-ju-jie-gou-yu-suan-fa-shi-xian-zhan-jie-gou-stack/">JavaScript数据结构与算法—实现栈结构（Stack）</a>
-        <a class="nav-mobile-next" title="JavaScript数据结构与算法—实现栈结构（Stack）" href="https://Tyloo-code.github.io/post/javascript-shu-ju-jie-gou-yu-suan-fa-shi-xian-zhan-jie-gou-stack/">下一篇</a>
+        <a class="nav-pc-next" title="【面】前端知识点梳理（CSS上）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css-xia/">【面】前端知识点梳理（CSS上）</a>
+        <a class="nav-mobile-next" title="【面】前端知识点梳理（CSS上）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css-xia/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

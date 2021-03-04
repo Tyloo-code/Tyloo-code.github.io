@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Markdown基本语法 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614839390442">
+<link rel="shortcut icon" href="/favicon.ico?v=1614861437659">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">40</span>
+        <span class="site-item-stat-count">41</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1318,13 +1318,243 @@ cond(no)-&gt;op
     <div class="result" id="result">
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css-xia/"" data-c="
-          &lt;h1 id=&#34;12-相邻的两个inline-block节点为什么会出现间隔该如何解决&#34;&gt;12. 相邻的两个inline-block节点为什么会出现间隔，该如何解决&lt;/h1&gt;
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-html/"" data-c="
+          &lt;h1 id=&#34;1-语义化&#34;&gt;1. 语义化&lt;/h1&gt;
+">【面】前端知识点梳理（Html）</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/shi-shi/"" data-c="
+          &lt;h1 id=&#34;11display哪些取值&#34;&gt;11.display哪些取值&lt;/h1&gt;
+&lt;h2 id=&#34;111-none-此元素不会被显示&#34;&gt;11.1 none ：此元素不会被显示&lt;/h2&gt;
+&lt;p&gt;（1） none此单词的意思是没有一个、毫无的意思；所以当display的属性值设置为none的时候，表示的是没有框类型，没有框类型的元素，是无法在浏览器中显示的，就实现隐藏元素的作用了；&lt;br&gt;
+（2）有很多标签，display的属性值默认是none，比如 &lt;code&gt;head&lt;/code&gt; &lt;code&gt;meta&lt;/code&gt; &lt;code&gt;style&lt;/code&gt; &lt;code&gt;link&lt;/code&gt;等等；&lt;br&gt;
+（3）项目应用中，做二级导航效果或者鼠标悬停效果动态时，会经常用到这个属性值，下次我们写一个好玩的二级效果再来展示这个属性值的作用；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838389050.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;112-block此元素将显示为块级元素此元素前后会带有换行符&#34;&gt;11.2 block：此元素将显示为块级元素，此元素前后会带有换行符。&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838392829.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;113-inline-默认此元素会被显示为内联元素元素前后没有换行符&#34;&gt;11.3 inline 默认此元素会被显示为内联元素，元素前后没有换行符。&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838421481.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;114-inline-block-行内块元素css21-新增的值&#34;&gt;11.4 inline-block 行内块元素（CSS2.1 新增的值）&lt;/h2&gt;
+&lt;p&gt;说明：行内块元素既具备行内元素的特性也具备块状元素的特性，具备行内元素前后没有换行符可以在一行内并列显示的特性，具备块状元素可以正确解释盒模型属性的特性。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838503882.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;115-list-item-此元素会作为列表显示&#34;&gt;11.5 list-item 此元素会作为列表显示。&lt;/h2&gt;
+&lt;p&gt;(1) 此属性值表示将元素显示为列表项标签，li标签默认的display的属性值是list-item，display的属性值为list-item的标签也属于块状元素；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838546316.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+(2) li标签作为列表项标签，前面会有列表项标记，下面给div标签设置为list-item，div也会有列表项标记&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838588128.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;116-run-in-此元素会根据上下文作为块级元素或内联元素显示&#34;&gt;11.6 run-in 此元素会根据上下文作为块级元素或内联元素显示。&lt;/h2&gt;
+&lt;h2 id=&#34;117-table-此元素会作为块级表格来显示表格前后带有换行符&#34;&gt;11.7 table 此元素会作为块级表格来显示，表格前后带有换行符。&lt;/h2&gt;
+&lt;p&gt;（1）table标签默认的元素类型是table，显示为块级表格，可以设置大小并且单独占据一行；&lt;br&gt;
+（2）当table标签的元素类型是table时，并且设置宽度和高度之后，后代td标签的宽度和高度，默认是由table根据内容的多少去分配的；&lt;br&gt;
+(3) table属于块状元素，但是对比别的块状元素，有自己的特点， table会单独占据一行，但是在没有设置width的情况下，不会与父元素同宽，而是根据内容而定；&lt;br&gt;
+(4) 其他标签设置display的属性值为table，也不会具有表格的特性；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;总结&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;通过以上的测试，可以总结出：&lt;br&gt;
+display的属性值为&lt;strong&gt;block，table&lt;/strong&gt;的标签都为&lt;code&gt;块状元素&lt;/code&gt;；&lt;br&gt;
+display的属性值为&lt;strong&gt;inline，inline-table，inline-block&lt;/strong&gt;的标签为&lt;code&gt;行内级元素&lt;/code&gt;；&lt;/p&gt;
+&lt;h1 id=&#34;12-相邻的两个inline-block节点为什么会出现间隔该如何解决&#34;&gt;12. 相邻的两个inline-block节点为什么会出现间隔，该如何解决&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614841169302.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;121-原因&#34;&gt;12.1 原因&lt;/h2&gt;
+&lt;p&gt;其实，html的原因。我们回顾一下这段代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;看这里➡️&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里➡️&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们不仅看到元素节点，属性节点还有文本节点，问题就是处在文本节点的渲染导致3px(chrome)的间隔。那如何解决它？&lt;/p&gt;
+&lt;h2 id=&#34;122-解决办法&#34;&gt;12.2 解决办法&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;方法一、删除空白节点&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;看这里➡️&amp;lt;/div
+&amp;gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里➡️&amp;lt;/div
+&amp;gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上的这些方法，无一列外破坏了代码的可读性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方法二、负的marigin值&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.box {
+    margin: -3px; /*左右缩小3px*/
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background-color: #ddd;
+    text-align: center;
+    line-height: 50px;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样的方式，可以解决chrome下面的问题。但是不建议使用。因为在某些游览器上面，这个文本节点可能设置成4px的间隔。因为解决问题，引入了新的问题，那就尴尬！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方法三、font-size: 0&lt;/strong&gt;&lt;br&gt;
+既然是文本节点导致的，那我们就把文本节点设置成0不就ok?顺着这个思路，我们这些写： 我们先给div加一个父级节点&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;wrapper&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;看这里➡️&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里➡️&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;.wrapper{
+    font-size: 0;
+}
+.box {
+    font-size: 14px;
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background-color: #ddd;
+    text-align: center;
+    line-height: 50px;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;主要： 因为font-size是默认继承的属性。所以父级给了0，子级要重新设置font-size： 14px。&lt;/p&gt;
+&lt;h1 id=&#34;13-meta-viewport-移动端适配&#34;&gt;13. meta viewport 移动端适配&lt;/h1&gt;
+&lt;h2 id=&#34;131-什么是viewport&#34;&gt;13.1 什么是Viewport?&lt;/h2&gt;
+&lt;p&gt;手机浏览器会把页面放入到一个虚拟的“视口”（viewpoint）中，但viewport又不局限于浏览器可视区域的大小，它可能比浏览器的可视区域大，也可能比浏览器的可视区域小。通常这个虚拟的“视口”（viewport）比屏幕宽，会把网页挤到一个很小的窗口。&lt;br&gt;
+如果不显示地设置viewport，那么浏览器就会把width默认设置为980。但后果是浏览器出现横向滚动条，因为浏览器可视区域的宽度比默认的viewport的宽度小。&lt;br&gt;
+然后浏览器引进了 viewport 这个 meta tag，让网页开发者来控制 viewport 的大小和缩放。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;132-meta-viewport-的6个属性&#34;&gt;13.2 meta viewport 的6个属性：&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;width ： 设置viewport 的宽度&lt;/li&gt;
+&lt;li&gt;height： 设置viewport 的高度&lt;/li&gt;
+&lt;li&gt;initial-scale ： 设置页面的初始缩放值&lt;/li&gt;
+&lt;li&gt;minimum-scale ：允许用户的最小缩放值&lt;/li&gt;
+&lt;li&gt;maximum-scale：允许用户的最大缩放值&lt;/li&gt;
+&lt;li&gt;user-scalable： 是否允许用户进行缩放，值为&amp;quot;no&amp;quot;或&amp;quot;yes&amp;quot;, no 代表不允许，yes代表允许&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;133-3个viewport&#34;&gt;13.3 3个viewport：&lt;/h2&gt;
+&lt;p&gt;（1）&lt;strong&gt;布局视口 layout viewport&lt;/strong&gt;&lt;br&gt;
+如果把移动设备上浏览器的可视区域设为viewport的话，某些网站会因为viewport太窄而显示错乱，所以这些浏览器就默认会把viewport设为一个较宽的值，比如980px，使得即使是那些为PC浏览器设计的网站也能在移动设备浏览器上正常显示。这个浏览器默认的viewport叫做 layout viewport。layout viewport的宽度可以通过 document.documentElement.clientWidth来获取。&lt;/p&gt;
+&lt;p&gt;（2）&lt;strong&gt;视觉视口 visual viewport&lt;/strong&gt;&lt;br&gt;
+layout viewport的宽度是大于浏览器可视区域的宽度的，所以还需要一个viewport来代表浏览器可视区域的大小，这个viewport叫做 visual viewport。visual viewport的宽度可以通过 document.documentElement.innerWidth来获取。&lt;/p&gt;
+&lt;p&gt;（3）&lt;strong&gt;理想视口 ideal viewport&lt;/strong&gt;&lt;br&gt;
+ideal viewport是一个能完美适配移动设备的viewport。首先，不需要缩放和横向滚动条就能正常查看网站的所有内容；其次，显示的文字、图片大小合适，如14px的文字不会因为在一个高密度像素的屏幕里显示得太小而无法看清，无论是在何种密度屏幕，何种分辨率下，显示出来的大小都差不多。这个viewport叫做 ideal viewport。&lt;/p&gt;
+&lt;p&gt;ideal viewport并没有一个固定的尺寸，不同的设备有不同的ideal viewport。例如，所有的iphone的ideal viewport宽度都是320px，无论它的屏幕宽度是320还是640。&lt;br&gt;
+ideal viewport 的意义在于，无论在何种分辨率的屏幕下，针对ideal viewport 而设计的网站，不需要缩放和横向滚动条都可以完美地呈现给用户。&lt;/p&gt;
+&lt;h2 id=&#34;134-终极方案&#34;&gt;13.4  终极方案：&lt;/h2&gt;
+&lt;p&gt;将&lt;code&gt;meta:vp&lt;/code&gt;标签的属性值设置为&lt;code&gt;width=device-width, initial-scale=1&lt;/code&gt;就不仅能够将页面的布局视口自动设置为各个移动设备的理想视口，还能够同时兼容iphone、ipad的Safari以及WP7 IE浏览器的横屏问题。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;14-css实现宽度自适应100宽高169的比例的矩形&#34;&gt;14 CSS实现宽度自适应100%，宽高16:9的比例的矩形&lt;/h1&gt;
+&lt;p&gt;第一步先计算高度，假设宽100%，那么高为h=9/16=56.25%&lt;/p&gt;
+&lt;p&gt;第二步利用之前所说设置padding-bottom方法实现矩形&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
+      &amp;lt;div class=&amp;quot;scale&amp;quot;&amp;gt;
+      &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+   .box {
+        width: 20%;
+    }
+    .scale {
+        width: 100%;
+        height: 0px;
+        /* scale 用来实现宽高等比例 1:1 padding-bottom:100%; 4:3 padding-bottom:75%; 16:9 padding-bottom:56.25%; */
+        padding-bottom: 56.25%;
+        position: relative;
+        background-color: pink;
+    }
+  &amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;15-rem布局的优缺点&#34;&gt;15 rem布局的优缺点&lt;/h1&gt;
+&lt;h2 id=&#34;151-rem布局原理&#34;&gt;15.1 Rem布局原理&lt;/h2&gt;
+&lt;p&gt;rem布局的本质是什么？这是我问过很多人的一个问题，但得到的回答都差强人意。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;其实rem布局的本质是等比缩放，一般是基于宽度&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;152-rem布局优点&#34;&gt;15.2 Rem布局优点&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;rem的优点就是可以通过修改html里的文字大小来改变页面中元素的大小，可以整体进行控制。&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;153-rem布局缺点&#34;&gt;15.3 Rem布局缺点&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;目前ie不支持 对pc页面来讲使用次数不多；&lt;/li&gt;
+&lt;li&gt;数据量大：所有的图片，盒子都需要我们去给一个准确的值；才能保证不同机型的适配；&lt;/li&gt;
+&lt;li&gt;字体的问题：字体的大小和字体宽度，并不成线性关系，所以字体大小不能使用rem&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;16-css画一个三角形&#34;&gt;16. CSS画一个三角形&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;CSS&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+        /* css3绘制三角形 */
+        .triangle{
+            width: 0px;                           /*设置宽高为0，所以div的内容为空，从才能形成三角形尖角*/
+            height: 0px;
+            border-bottom: 200px solid #00a3af;
+            border-left: 200px solid transparent;    /*transparent 表示透明*/
+            border-right: 200px solid transparent;
+        }
+    &amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Html&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;div class=&amp;quot;triangle&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614860077842.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;17-1像素边框问题&#34;&gt;17. 1像素边框问题&lt;/h1&gt;
+&lt;h2 id=&#34;171-为什么1px变粗了&#34;&gt;17.1 为什么1px变粗了？&lt;/h2&gt;
+&lt;p&gt;UI设计师要求的1px是指设备的物理像素1px，而CSS里记录的像素是逻辑像素，它们之间存在一个比例关系，可以用javascript中的window.devicePixelRatio来获取&lt;/p&gt;
+&lt;p&gt;移动端开发常需要在html的header里添加如下一句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这句话定义了本页面的viewport的宽度为设备宽度，初始缩放值和最大缩放值都为1，并禁止了用户缩放。&lt;/p&gt;
+&lt;h2 id=&#34;172-修改方案&#34;&gt;17.2 修改方案&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;viewport + rem 方案&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;该方案是对上述方案的优化，整体思路就是利用viewport + rem + js 动态的修改页面的缩放比例，实现小于1像素的显示。在页面初始化时，在头部引入原始默认状态如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html;charset=UTF-8&amp;quot;&amp;gt;  
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; id=&amp;quot;WebViewport&amp;quot; content=&amp;quot;initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&amp;quot;&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接下来的任务就是js的动态修改缩放比 以及 实现rem根元素字体大小的设置。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var viewport = document.querySelector(&amp;quot;meta[name=viewport]&amp;quot;)
+if (window.devicePixelRatio == 1) {
+    viewport.setAttribute(&#39;content&#39;, &#39;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&#39;)
+} 
+if (window.devicePixelRatio == 2) {
+    viewport.setAttribute(&#39;content&#39;, &#39;width=device-width, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no&#39;)
+} 
+if (window.devicePixelRatio == 3) {
+    viewport.setAttribute(&#39;content&#39;, &#39;width=device-width, initial-scale=0.333333333, maximum-scale=0.333333333, minimum-scale=0.333333333, user-scalable=no&#39;)
+} 
+
+var docEl = document.documentElement;
+var fontsize = 10 * (docEl.clientWidth / 320) + &#39;px&#39;;
+docEl.style.fontSize = fontsize;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;transform: scale(0.5) 方案 - 推荐: 很灵活&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;设置height: 1px，根据媒体查询结合&lt;code&gt;transform&lt;/code&gt;缩放为相应尺寸。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;div {
+    height:1px;
+    background:#000;
+    -webkit-transform: scaleY(0.5);
+    -webkit-transform-origin:0 0;
+    overflow: hidden;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;用&lt;code&gt;::after&lt;/code&gt;和&lt;code&gt;::befor&lt;/code&gt;,设置&lt;code&gt;border-bottom：1px solid #000&lt;/code&gt;,然后在缩放&lt;code&gt;-webkit-transform: scaleY(0.5)&lt;/code&gt;;可以实现两根边线的需求&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;div::after{
+    content:&#39;&#39;;width:100%;
+    border-bottom:1px solid #000;
+    transform: scaleY(0.5);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;用&lt;code&gt;::after&lt;/code&gt;设置&lt;code&gt;border：1px solid #000; width:200%; height:200%&lt;/code&gt;,然后再缩放&lt;code&gt;scaleY(0.5)&lt;/code&gt;; 优点可以实现圆角，京东就是这么实现的，缺点是按钮添加active比较麻烦。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;.div::after {
+    content: &#39;&#39;;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #bfbfbf;
+    border-radius: 4px;
+    -webkit-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    -webkit-transform-origin: top left;
+}
+&lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（CSS下）</a>
       </div>
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css/"" data-c="
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css-xia/"" data-c="
           &lt;h1 id=&#34;1盒模型box-model&#34;&gt;1.盒模型（box model）&lt;/h1&gt;
 &lt;h2 id=&#34;1基本概念&#34;&gt;1.基本概念&lt;/h2&gt;
 &lt;p&gt;盒子模型，个人的理解，就是一个来装html标签的矩形容器，由四部分组成：&lt;/p&gt;
@@ -2206,35 +2436,6 @@ CSS Animation就是为了解决这些问题而提出的。&lt;/p&gt;
 CSS3的animation制作动画效果主要包括两部分：1. 用关键帧声明一个动画，2.在animation调用关键帧声明的的动画。&lt;/p&gt;
 &lt;h2 id=&#34;3区别&#34;&gt;3.区别&lt;/h2&gt;
 &lt;p&gt;animation属性类似于transition，他们都是随着时间改变元素的属性值，其主要区别在于：transition需要触发一个事件才会随着时间改变其CSS属性；animation在不需要触发任何事件的情况下，也可以显式的随时间变化来改变元素CSS属性，达到一种动画的效果。&lt;/p&gt;
-&lt;h1 id=&#34;11display哪些取值&#34;&gt;11.display哪些取值&lt;/h1&gt;
-&lt;h2 id=&#34;111-none-此元素不会被显示&#34;&gt;11.1 none ：此元素不会被显示&lt;/h2&gt;
-&lt;p&gt;（1） none此单词的意思是没有一个、毫无的意思；所以当display的属性值设置为none的时候，表示的是没有框类型，没有框类型的元素，是无法在浏览器中显示的，就实现隐藏元素的作用了；&lt;br&gt;
-（2）有很多标签，display的属性值默认是none，比如 &lt;code&gt;head&lt;/code&gt; &lt;code&gt;meta&lt;/code&gt; &lt;code&gt;style&lt;/code&gt; &lt;code&gt;link&lt;/code&gt;等等；&lt;br&gt;
-（3）项目应用中，做二级导航效果或者鼠标悬停效果动态时，会经常用到这个属性值，下次我们写一个好玩的二级效果再来展示这个属性值的作用；&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838389050.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;112-block此元素将显示为块级元素此元素前后会带有换行符&#34;&gt;11.2 block：此元素将显示为块级元素，此元素前后会带有换行符。&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838392829.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;113-inline-默认-此元素会被显示为内联元素元素前后没有换行符&#34;&gt;11.3 inline 默认。此元素会被显示为内联元素，元素前后没有换行符。&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838421481.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;114-inline-block-行内块元素css21-新增的值&#34;&gt;11.4 inline-block 行内块元素（CSS2.1 新增的值）&lt;/h2&gt;
-&lt;p&gt;说明：行内块元素既具备行内元素的特性也具备块状元素的特性，具备行内元素前后没有换行符可以在一行内并列显示的特性，具备块状元素可以正确解释盒模型属性的特性。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838503882.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;115-list-item-此元素会作为列表显示&#34;&gt;11.5 list-item 此元素会作为列表显示。&lt;/h2&gt;
-&lt;p&gt;(1) 此属性值表示将元素显示为列表项标签，li标签默认的display的属性值是list-item，display的属性值为list-item的标签也属于块状元素；&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838546316.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-(2) li标签作为列表项标签，前面会有列表项标记，下面给div标签设置为list-item，div也会有列表项标记&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838588128.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;116-run-in-此元素会根据上下文作为块级元素或内联元素显示&#34;&gt;11.6 run-in 此元素会根据上下文作为块级元素或内联元素显示。&lt;/h2&gt;
-&lt;p&gt;(1) 目前很少有浏览器支持run-in这个属性值，并且在开发过程中用不到这个属性值，不予过多的研究；&lt;/p&gt;
-&lt;h2 id=&#34;117-table-此元素会作为块级表格来显示类似-table表格前后带有换行符&#34;&gt;11.7 table 此元素会作为块级表格来显示（类似 &lt;table&gt;），表格前后带有换行符。&lt;/h2&gt;
-&lt;p&gt;（1）table标签默认的元素类型是table，显示为块级表格，可以设置大小并且单独占据一行；&lt;br&gt;
-（2）当table标签的元素类型是table时，并且设置宽度和高度之后，后代td标签的宽度和高度，默认是由table根据内容的多少去分配的；&lt;br&gt;
-(3) table属于块状元素，但是对比别的块状元素，有自己的特点， table会单独占据一行，但是在没有设置width的情况下，不会与父元素同宽，而是根据内容而定；&lt;br&gt;
-(4) 其他标签设置display的属性值为table，也不会具有表格的特性；&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;总结&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;通过以上的测试，可以总结出：&lt;br&gt;
-display的属性值为&lt;strong&gt;block，table&lt;/strong&gt;的标签都为&lt;code&gt;块状元素&lt;/code&gt;；&lt;br&gt;
-display的属性值为&lt;strong&gt;inline，inline-table，inline-block&lt;/strong&gt;的标签为&lt;code&gt;行内级元素&lt;/code&gt;；&lt;/p&gt;
 ">【面】前端知识点梳理（CSS上）</a>
       </div>
       

@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>JavaScript实现队列结构（Queue） | Tyloo</title>
+<title>【面】前端知识点梳理（Html） | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1614861437659">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="JavaScript实现队列结构（Queue）" />
+  <meta name="description" content="【面】前端知识点梳理（Html）" />
   <meta name="keywords" content="" />
 </head>
 
@@ -238,19 +238,7 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#1%E9%98%9F%E5%88%97%E7%AE%80%E4%BB%8B">1.队列简介</a></li>
-<li><a href="#2%E5%B0%81%E8%A3%85%E9%98%9F%E5%88%97%E7%B1%BB">2.封装队列类</a>
-<ul>
-<li><a href="#21%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">2.1.代码实现</a></li>
-<li><a href="#22%E9%98%9F%E5%88%97%E7%9A%84%E5%BA%94%E7%94%A8">2.2.队列的应用</a></li>
-</ul>
-</li>
-<li><a href="#3%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">3.优先队列</a>
-<ul>
-<li><a href="#31%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0">3.1.优先级队列的实现</a></li>
-<li><a href="#32%E6%B3%A8%E6%84%8F%E7%82%B9">3.2.注意点</a></li>
-</ul>
-</li>
+<li><a href="#1-%E8%AF%AD%E4%B9%89%E5%8C%96">1. 语义化</a></li>
 </ul>
 
   </div>
@@ -516,8 +504,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dui-lie-jie-gou-queue/">
-      JavaScript实现队列结构（Queue）
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-html/">
+      【面】前端知识点梳理（Html）
     </a>
   </h1>
   <div class="post-meta">
@@ -525,23 +513,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-02-03 21:30:00">2021-02-03</span>
+      <span class="publish-time" data-t="2021-03-04 20:36:43">2021-03-04</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>8<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1740<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>4<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/javascript-shi-xian-dui-lie-jie-gou-queue/" data-flag-title="JavaScript实现队列结构（Queue）" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/mian-qian-duan-zhi-shi-dian-shu-li-html/" data-flag-title="【面】前端知识点梳理（Html）" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -550,255 +538,7 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="1队列简介">1.队列简介</h1>
-<p>队列是是一种受限的线性表，特点为<strong>先进先出</strong>（<strong>FIFO</strong>：first in first out）。</p>
-<ul>
-<li>受限之处在于它只允许在表的<strong>前端</strong>（front）进行删除操作；</li>
-<li>在表的<strong>后端</strong>（rear）进行插入操作；<br>
-<img src="https://Tyloo-code.github.io/post-images/1612359092282.png" alt="" loading="lazy"><br>
-相当于排队买票，先来的先买票，后来的后买票。<br>
-<img src="https://Tyloo-code.github.io/post-images/1612359106480.png" alt="" loading="lazy"></li>
-</ul>
-<p><strong>队列的应用</strong>：</p>
-<ul>
-<li>打印队列：计算机打印多个文件的时候，需要排队打印；</li>
-<li>线程队列：当开启多线程时，当新开启的线程所需的资源不足时就先放入线程队列，等待CPU处理；</li>
-</ul>
-<p><strong>队列类的实现</strong>：<br>
-队列的实现和栈一样，有两种方案：</p>
-<ul>
-<li>基于数组实现；</li>
-<li>基于链表实现；</li>
-</ul>
-<p><strong>队列的常见操作：</strong></p>
-<ul>
-<li>enqueue（element）：向队列尾部添加一个（或多个）新的项；</li>
-<li>dequeue（）：移除队列的第一（即排在队列最前面的）项，并返回被移除的元素；</li>
-<li>front（）：返回队列中的第一个元素——最先被添加，也将是最先被移除的元素。队列不做任何变动（不移除元素，只返回元素信息与Stack类的peek方法非常类似）；</li>
-<li>isEmpty（）：如果队列中不包含任何元素，返回true，否则返回false；</li>
-<li>size（）：返回队列包含的元素个数，与数组的length属性类似；</li>
-<li>toString（）：将队列中的内容，转成字符串形式；</li>
-</ul>
-<h1 id="2封装队列类">2.封装队列类</h1>
-<h2 id="21代码实现">2.1.代码实现</h2>
-<pre><code class="language-JS">    // 基于数组封装队列类
-    function Queue() {
-    // 属性
-      this.items = []
-      
-    // 方法
-    // 1.enqueue():将元素加入到队列中
-    Queue.prototype.enqueue = element =&gt; {
-      this.items.push(element)
-    }
-
-    // 2.dequeue():从队列中删除前端元素
-    Queue.prototype.dequeue = () =&gt; {
-      return this.items.shift()
-    }
-
-    // 3.front():查看前端的元素
-    Queue.prototype.front = () =&gt; {
-      return this.items[0]
-    }
-
-    // 4.isEmpty:查看队列是否为空
-    Queue.prototype.isEmpty = () =&gt; {
-      return this.items.length == 0;
-    }
-
-    // 5.size():查看队列中元素的个数
-    Queue.prototype.size = () =&gt; {
-      return this.items.length
-    }
-
-    // 6.toString():将队列中元素以字符串形式输出
-    Queue.prototype.toString = () =&gt; {
-      let resultString = ''
-        for (let i of this.items){
-          resultString += i + ' '
-        }
-        return resultString
-      }
-    }
-</code></pre>
-<p><strong>测试代码：</strong></p>
-<pre><code class="language-JS">    // 创建队列
-    let queue = new  Queue()
-
-    // 将元素加入到队列中
-    queue.enqueue('a')
-    queue.enqueue('b')
-    queue.enqueue('c')
-    queue.enqueue('d')
-    console.log(queue);												
-
-    // 从队列中删除元素
-    queue.dequeue()
-    console.log(queue);											
-    queue.dequeue()
-    console.log(queue);											
-
-    //front
-    console.log(queue.front());								 		
-    
-    // 验证其他方法
-    console.log(queue.isEmpty());								 	
-    console.log(queue.size());								 	
-    console.log(queue.toString());								 	
-</code></pre>
-<p><strong>测试结果：</strong><br>
-<img src="https://Tyloo-code.github.io/post-images/1612359291030.png" alt="" loading="lazy"><br>
-<br></p>
-<h2 id="22队列的应用">2.2.队列的应用</h2>
-<p>使用队列实现小游戏：击鼓传花，传入一组数据和设定的数字num，循环遍历数组内元素，遍历到的元素为指定数字num时将该元素删除，直至数组剩下一个元素。</p>
-<p><strong>代码实现：</strong></p>
-<pre><code class="language-JS">    // 队列应用：面试题：击鼓传花
-    let passGame = (nameList, num) =&gt; {
-      //1.创建队列结构
-      let queue = new Queue()
-
-      //2.将所有人依次加入队列
-      // 这是ES6的for循环写法，i相当于nameList[i]
-      for(let i of nameList){
-        queue.enqueue(i)
-      }
-      
-
-      // 3.开始数数
-     while(queue.size() &gt; 1){//队列中只剩1个人就停止数数
-      // 不是num的时候，重新加入队列末尾
-      // 是num的时候，将其从队列中删除
-      // 3.1.num数字之前的人重新放入队列的末尾(把队列前面删除的加到队列最后)
-      for(let i = 0; i&lt; num-1; i++ ){
-        queue.enqueue(queue.dequeue())
-      }
-      // 3.2.num对应这个人，直接从队列中删除
-      /*
-        思路是这样的，由于队列没有像数组一样的下标值不能直接取到某一元素，所以采用，把num前面的num-1个元素先删除后添加到队列末尾，这样第num个元素就排到了队列的最前面，可以直接使用dequeue方法进行删除
-      */
-      queue.dequeue()
-     }
-
-      //4.获取剩下的那个人
-      console.log(queue.size());									
-      let endName = queue.front()
-      console.log('最终剩下的人：' + endName);						   	
-      
-      return nameList.indexOf(endName);
-    }
-
-    //5.测试击鼓传花
-    let names = ['lily', 'lucy', 'Tom', 'Lilei', 'Tony']
-    console.log(passGame(names, 3));		
-</code></pre>
-<p><strong>测试结果：</strong><br>
-<img src="https://Tyloo-code.github.io/post-images/1612359343343.png" alt="" loading="lazy"></p>
-<h1 id="3优先队列">3.优先队列</h1>
-<p>优先级队列主要考虑的问题为：</p>
-<ul>
-<li>每个元素不再只是一个数据，还包含数据的优先级；</li>
-<li>在添加数据过程中，根据优先级放入到正确位置；</li>
-</ul>
-<h2 id="31优先级队列的实现">3.1.优先级队列的实现</h2>
-<p><strong>代码实现：</strong></p>
-<pre><code class="language-JS">    // 封装优先级队列
-    function PriorityQueue() {
-
-      //内部类：在类里面再封装一个类;表示带优先级的数据
-      function QueueElement(element, priority) {
-        this.element = element;
-        this.priority = priority;
-      } 
-
-      // 封装属性
-      this.items = []
-
-      // 1.实现按照优先级插入方法
-      PriorityQueue.prototype.enqueue = (element, priority) =&gt; {
-        // 1.1.创建QueueElement对象
-        let queueElement = new QueueElement(element, priority)
-
-        // 1.2.判断队列是否为空
-        if(this.items.length == 0){
-          this.items.push(queueElement)
-        }else{
-          // 定义一个变量记录是否成功添加了新元素
-          let added = false
-          for(let i of this.items){
-            // 让新插入的元素与原有元素进行优先级比较(priority越小，优先级越大)
-            if(queueElement.priority &lt; i.priority){
-              this.items.splice(i, 0, queueElement)
-              added = true
-              // 新元素已经找到插入位置了可以使用break停止循环
-              break
-            }
-          }
-          // 新元素没有成功插入，就把它放在队列的最前面
-          if(!added){
-            this.items.push(queueElement)
-          }
-        }
-      }
-
-      // 2.dequeue():从队列中删除前端元素
-      PriorityQueue.prototype.dequeue = () =&gt; {
-        return this.items.shift()
-      }
-
-      // 3.front():查看前端的元素
-      PriorityQueue.prototype.front = () =&gt; {
-        return this.items[0]
-      }
-
-      // 4.isEmpty():查看队列是否为空
-      PriorityQueue.prototype.isEmpty = () =&gt; {
-        return this.items.length == 0;
-      }
-
-      // 5.size():查看队列中元素的个数
-      PriorityQueue.prototype.size = () =&gt; {
-        return this.items.length
-      }
-
-      // 6.toString():以字符串形式输出队列中的元素
-      PriorityQueue.prototype.toString = () =&gt; {
-        let resultString = ''
-          for (let i of this.items){
-            resultString += i.element + '-' + i.priority + ' '
-          }
-          return resultString
-        }
-    }
-</code></pre>
-<p><strong>测试代码：</strong></p>
-<pre><code class="language-JS">  // 测试代码
-    let pq = new PriorityQueue();
-    pq.enqueue('Tom',111);
-    pq.enqueue('Hellen',200);
-    pq.enqueue('Mary',30);
-    pq.enqueue('Gogo',27);
-    // 打印修改过后的优先队列对象
-    console.log(pq);
-</code></pre>
-<p><strong>测试结果：</strong><br>
-<img src="https://Tyloo-code.github.io/post-images/1612359507202.png" alt="" loading="lazy"></p>
-<h2 id="32注意点">3.2.注意点</h2>
-<p><strong>关于数组方法splice用法：</strong></p>
-<ul>
-<li>splice（1，0，'Tom'）：表示在索引为1的元素前面插入元素’Tom‘（也可以理解为从索引为1的元素开始删除，删除0个元素，再在索引为1的元素前面添加元素'Tom'）；</li>
-<li>splice（1，1，'Tom'）：表示从索引为1的元素开始删除（包括索引为1的元素），共删除1个元素，并添加元素'Tom'。即把索引为1的元素替换为元素'Tom'。</li>
-</ul>
-<p><strong>数组的push方法在数组、栈和队列中的形式：</strong></p>
-<ul>
-<li><strong>数组</strong>：在数组[0，1，2]中，pop(3)，结果为[0，1，2，3]；</li>
-<li><strong>栈</strong>：执行pop(0)，pop(1)，pop(2)，pop(3)，从栈底到栈顶的元素分别为：0，1，2，3；如果看成数组，可写为[0，1，2，3]，但是索引为3的元素3其实是栈顶元素；所以说栈的push方法是向栈顶添加元素（但在数组的视角下为向数组尾部添加元素）；</li>
-<li><strong>队列</strong>：enqueue方法可以由数组的push方法实现，与数组相同，相当于在数组尾部添加元素。<br>
-可以这样想：栈结构是头朝下（索引值由下往上增大）的数组结构。<br>
-<img src="https://Tyloo-code.github.io/post-images/1612359579513.png" alt="" loading="lazy"></li>
-</ul>
-<br>
-<p><a href="https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;seid=3912456004602554239">参考资料:JavaScript数据结构与算法</a></p>
+              <h1 id="1-语义化">1. 语义化</h1>
 
             </div>
             
@@ -815,7 +555,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/javascript-shi-xian-dui-lie-jie-gou-queue/" title="JavaScript实现队列结构（Queue）">https://Tyloo-code.github.io/post/javascript-shi-xian-dui-lie-jie-gou-queue/</a>
+      <a href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-html/" title="【面】前端知识点梳理（Html）">https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-html/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -828,15 +568,11 @@
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="JavaScript实现单向链表" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dan-xiang-lian-biao/">JavaScript实现单向链表</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="JavaScript实现单向链表" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dan-xiang-lian-biao/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="JavaScript数据结构与算法—实现栈结构（Stack）" href="https://Tyloo-code.github.io/post/javascript-shu-ju-jie-gou-yu-suan-fa-shi-xian-zhan-jie-gou-stack/">JavaScript数据结构与算法—实现栈结构（Stack）</a>
-        <a class="nav-mobile-next" title="JavaScript数据结构与算法—实现栈结构（Stack）" href="https://Tyloo-code.github.io/post/javascript-shu-ju-jie-gou-yu-suan-fa-shi-xian-zhan-jie-gou-stack/">下一篇</a>
+        <a class="nav-pc-next" title="【面】前端知识点梳理（CSS下）" href="https://Tyloo-code.github.io/post/shi-shi/">【面】前端知识点梳理（CSS下）</a>
+        <a class="nav-mobile-next" title="【面】前端知识点梳理（CSS下）" href="https://Tyloo-code.github.io/post/shi-shi/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
