@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>JavaScript实现单向链表 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614823072912">
+<link rel="shortcut icon" href="/favicon.ico?v=1614824305429">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -2540,6 +2540,30 @@ grid 布局也很强大，大体上属性跟 flex 差不多。&lt;/li&gt;
 &lt;li&gt;结合flex，grid，BFC，栅格系统等已经成型的方案&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;9-css预处理后处理&#34;&gt;9. css预处理，后处理&lt;/h1&gt;
+&lt;h2 id=&#34;91-css-预处理器&#34;&gt;9.1 CSS 预处理器&lt;/h2&gt;
+&lt;p&gt;CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的 CSS 文件，以供项目使用。&lt;strong&gt;CSS 预处理器为 CSS 增加一些编程的特性，无需考虑浏览器的兼容性问题。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CSS语法不够强大，比如无法嵌套书写导致模块化开发中需要书写很多重复的选择器；&lt;/li&gt;
+&lt;li&gt;没有变量和合理的样式复用机制，使得逻辑上相关的属性值必须以字面量的形式重复输出，导致难以维护等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;Sass、LESS、Stylus 是目前最主流的 CSS 预处理器。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现原理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;取到 &lt;strong&gt;DSL&lt;/strong&gt; 源代码 的 &lt;strong&gt;分析树&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;将含有 &lt;strong&gt;动态生成&lt;/strong&gt; 相关节点的 &lt;strong&gt;分析树&lt;/strong&gt; 转换为 &lt;strong&gt;静态分析树&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;将 &lt;strong&gt;静态分析树&lt;/strong&gt; 转换为 CSS 的 &lt;strong&gt;静态分析树&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;将 CSS 的** 静态分析树** 转换为 &lt;strong&gt;CSS 代码&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;现实中的 &lt;strong&gt;CSS 预处理器&lt;/strong&gt; 更复杂一点儿，因为大多功能要同时支持 &lt;strong&gt;特有 DSL 与 原生 CSS&lt;/strong&gt;，一件事情要同时考虑两种情况下的处理。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优缺点&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：语言级逻辑处理，动态特性，改善项目结构&lt;/li&gt;
+&lt;li&gt;缺点：采用特殊语法，框架耦合度高，复杂度高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;92-css-后处理器&#34;&gt;9.2 CSS 后处理器&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;CSS 后处理器&lt;/strong&gt; 是对 CSS 进行处理，并最终生成 CSS 的 &lt;code&gt;预处理器&lt;/code&gt;，它属于广义上的 &lt;strong&gt;CSS 预处理器&lt;/strong&gt;。 我们很久以前就在用 &lt;strong&gt;CSS 后处理器&lt;/strong&gt; 了，最典型的例子是 &lt;strong&gt;CSS 压缩工具&lt;/strong&gt;（如 &lt;code&gt;clean-css&lt;/code&gt;），只不过以前没单独拿出来说过。 还有最近比较火的 &lt;code&gt;Autoprefixer&lt;/code&gt;，以 Can I Use 上的 &lt;strong&gt;浏览器支持数据&lt;/strong&gt;为基础，自动处理兼容性问题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现原理&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优缺点&lt;/strong&gt;&lt;/p&gt;
 ">【面】前端知识点梳理（CSS）</a>
       </div>
       
