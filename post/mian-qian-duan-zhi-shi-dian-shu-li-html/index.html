@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（Html） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614861437659">
+<link rel="shortcut icon" href="/favicon.ico?v=1614862750863">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -238,7 +238,22 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#1-%E8%AF%AD%E4%B9%89%E5%8C%96">1. 语义化</a></li>
+<li><a href="#1-%E8%AF%AD%E4%B9%89%E5%8C%96">1. 语义化</a>
+<ul>
+<li><a href="#11-%E8%AF%AD%E4%B9%89%E5%8C%96%E4%BD%9C%E7%94%A8">1.1 语义化作用</a></li>
+<li><a href="#12-%E5%B8%B8%E8%A7%81%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE">1.2 常见语义化标签</a></li>
+<li><a href="#13-html%E5%AF%B9seo%E7%9A%84%E4%BC%98%E5%8C%96">1.3 html对SEO的优化</a></li>
+</ul>
+</li>
+<li><a href="#2-html%E6%96%B0%E7%89%B9%E6%80%A7%E6%96%B0%E6%A0%87%E7%AD%BE">2. Html新特性新标签</a>
+<ul>
+<li><a href="#21-%E6%96%B0%E7%89%B9%E6%80%A7">2.1 新特性</a></li>
+<li><a href="#22-%E6%96%B0%E6%A0%87%E7%AD%BE">2.2 新标签</a></li>
+</ul>
+</li>
+<li><a href="#3-input%E5%92%8Ctextarea%E7%9A%84%E5%8C%BA%E5%88%AB">3. input和textarea的区别</a></li>
+<li><a href="#4-%E7%94%A8div%E6%A8%A1%E6%8B%9Ftextarea">4. 用div模拟textarea</a></li>
+<li><a href="#5-%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E5%BF%BD%E7%95%A5%E5%B0%86%E9%A1%B5%E9%9D%A2%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB%E4%B8%BA%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E6%96%B9%E6%B3%95">5. 移动设备忽略将页面中的数字识别为电话号码的方法</a></li>
 </ul>
 
   </div>
@@ -519,12 +534,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>6<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>4<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1319<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -539,6 +554,100 @@
 </section>
             <div class="post-body next-md-body" id="post_body">
               <h1 id="1-语义化">1. 语义化</h1>
+<h2 id="11-语义化作用">1.1 语义化作用</h2>
+<p>见标签知其意，让代码结构清晰，方便阅读，有利于其他设备解析。</p>
+<p>循W3规范以语义化标签渲染网页更利于搜索引擎的优化（SEO），网络不佳时（无样式），网页也更具可读性。</p>
+<h2 id="12-常见语义化标签">1.2 常见语义化标签</h2>
+<p>&lt;title&gt;：页面主体内容。</p>
+<p>&lt;hn&gt;：h1~h6，分级标题，&lt;h1&gt; 与 &lt;title&gt; 协调有利于搜索引擎优化。</p>
+<p>&lt;ul&gt;：无序列表。</p>
+<p>&lt;ol&gt;：有序列表。</p>
+<p>&lt;header&gt;：页眉通常包括网站标志、主导航、全站链接以及搜索框。</p>
+<p>&lt;nav&gt;：标记导航，仅对文档中重要的链接群使用。</p>
+<p>&lt;main&gt;：页面主要内容，一个页面只能使用一次。如果是web应用，则包围其主要功能。</p>
+<p>&lt;article&gt;：定义外部的内容，其中的内容独立于文档的其余部分。</p>
+<p>&lt;section&gt;：定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。</p>
+<h2 id="13-html对seo的优化">1.3 html对SEO的优化</h2>
+<ol>
+<li>meta标签，这个是重中之重</li>
+<li>img标签，img标签增加alt属性</li>
+<li>页面结构清晰，使用语义化标签比如header、footer、content、section，js、css使用外部文件</li>
+<li>增加外部链接</li>
+</ol>
+<h1 id="2-html新特性新标签">2. Html新特性新标签</h1>
+<h2 id="21-新特性">2.1 新特性</h2>
+<p>1）语义化<br>
+2）本地存储<br>
+3）设备兼容<br>
+4）连接特性，能够帮助我们将数据推送到客户端<br>
+5）网页多媒体特性<br>
+6）三维、图形及特效特性<br>
+7）性能与集成特性<br>
+8）css3特性</p>
+<h2 id="22-新标签">2.2 新标签</h2>
+<p>1）结构标签<br>
+&lt;head&gt;定义页面或者区域头部<br>
+&lt;main&gt;规定文档主要内容<br>
+&lt;footer&gt;定义页面或者区域底部<br>
+&lt;article&gt;定义一篇文章<br>
+&lt;nav&gt;定义导航链接<br>
+&lt;scetion&gt;定义一个区域<br>
+&lt;aside&gt;定义页面内容部分侧边栏<br>
+&lt;hgroup&gt;用于对网页或者区域段的标题组合<br>
+&lt;figure&gt;定义一组媒体内容以及标题<br>
+&lt;figcaption&gt;定义figure元素标题<br>
+&lt;address&gt;定义文章拥有者的联系信息<br>
+2）行标记<br>
+&lt;time&gt;定义时间、日期<br>
+&lt;mark&gt;高亮显示文字<br>
+3）多媒体交互标签<br>
+&lt;video&gt;定义一个视频<br>
+&lt;audio&gt;定义一个音频<br>
+&lt;source&gt;定义媒体资源标签<br>
+&lt;canvas&gt;定义图形<br>
+&lt;embed&gt;定义可交互的内容或者插件<br>
+4）web应用标签<br>
+&lt;progress&gt;状态标签、进度条<br>
+&lt;mark&gt;定义有标记的文本（默认是黄色选中内容）<br>
+&lt;output&gt;定义一些输出内容，计算表单结果配合oninput事件<br>
+&lt;datalist&gt;为input标记定义一个下拉option</p>
+<h1 id="3-input和textarea的区别">3. input和textarea的区别</h1>
+<p>&lt;input&gt;是<code>单行文本框</code>，不会换行。通过size属性指定显示字符的长度，注意：当使用css限定了宽高，那么size属性就不再起作用。<br>
+value属性指定初始值，Maxlength属性指定文本框可以输入的最长长度。可以通过width和height设置宽高，但是也不会增加行数。</p>
+<p>&lt;textarea&gt;是<code>多行文本输入框</code>，文本区中可容纳无限数量的文本，无value属性，其中的文本的默认字体是等宽字体（通常是Courier） ，可以通 过 cols 和 rows 属性来规定 textarea 的尺寸，不过更好的办法是使用 CSS 的 height 和 width 属性。</p>
+<pre><code>&lt;div&gt;
+	input:&lt;input value=&quot;啦啦啦啦啦&quot; style=&quot;height:200px;width: 500px;&quot;&gt;
+&lt;/div&gt;
+&lt;div style=&quot;margin-top: 20px;&quot;&gt;
+	textarea:&lt;/textarea&gt;&lt;textarea  value=&quot;嘻嘻嘻&quot; style=&quot;height:200px;width: 500px;&quot;&gt; 
+   &lt;/textarea&gt;
+&lt;/div&gt;
+</code></pre>
+<p>可以看到：textarea中设置的value并没有显示，同时input文本依然只有一行，并且居中显示。</p>
+<h1 id="4-用div模拟textarea">4. 用div模拟textarea</h1>
+<p>作为多行文本域功能来讲，textarea满足了我们大部分的需求。然而，textarea有一个不足就是不能像普通div标签一样高度可以跟随内容自适应。textarea总是很自信地显摆它的滚动条，高度固执地岿然不动。</p>
+<p>要解决这个问题很简单，一个普通的block元素上加个<code>contenteditable=&quot;true&quot;</code>就ok了。</p>
+<pre><code>&lt;div contenteditable=&quot;true&quot;&gt;&lt;/div&gt; 
+</code></pre>
+<p><img src="https://Tyloo-code.github.io/post-images/1614862550654.png" alt="" loading="lazy"><br>
+给div设置了一个最小高度，当超过最小高度但不超过最大高度时，div的高度根据文本自适应，当超过最大高度时，出现滚动条。</p>
+<h1 id="5-移动设备忽略将页面中的数字识别为电话号码的方法">5. 移动设备忽略将页面中的数字识别为电话号码的方法</h1>
+<ol>
+<li>
+<p>标准的电话号码格式是这样的:&lt;a  href=&quot;tel:1-408-555-5555&quot;&gt;1-408-555-5555&lt;/a&gt;，点击后会自动打开电话功能；</p>
+</li>
+<li>
+<p>但有时候不是电话号码的数字也会被浏览器自动解析为电话号码, 并把数字的颜色和样式都改了；</p>
+</li>
+<li>
+<p>如果忽略页面中的数字识别为电话号码, 只要把这个默认行为关闭就行，只要一行代码:</p>
+</li>
+</ol>
+<pre><code>&lt;meta name = &quot;format-detection&quot; content = &quot;telephone=no&quot;&gt;
+</code></pre>
+<ol start="4">
+<li>这个关闭不会影响真正电话号码的识别；</li>
+</ol>
 
             </div>
             
@@ -1070,6 +1179,100 @@
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-html/"" data-c="
           &lt;h1 id=&#34;1-语义化&#34;&gt;1. 语义化&lt;/h1&gt;
+&lt;h2 id=&#34;11-语义化作用&#34;&gt;1.1 语义化作用&lt;/h2&gt;
+&lt;p&gt;见标签知其意，让代码结构清晰，方便阅读，有利于其他设备解析。&lt;/p&gt;
+&lt;p&gt;循W3规范以语义化标签渲染网页更利于搜索引擎的优化（SEO），网络不佳时（无样式），网页也更具可读性。&lt;/p&gt;
+&lt;h2 id=&#34;12-常见语义化标签&#34;&gt;1.2 常见语义化标签&lt;/h2&gt;
+&lt;p&gt;&amp;lt;title&amp;gt;：页面主体内容。&lt;/p&gt;
+&lt;p&gt;&amp;lt;hn&amp;gt;：h1~h6，分级标题，&amp;lt;h1&amp;gt; 与 &amp;lt;title&amp;gt; 协调有利于搜索引擎优化。&lt;/p&gt;
+&lt;p&gt;&amp;lt;ul&amp;gt;：无序列表。&lt;/p&gt;
+&lt;p&gt;&amp;lt;ol&amp;gt;：有序列表。&lt;/p&gt;
+&lt;p&gt;&amp;lt;header&amp;gt;：页眉通常包括网站标志、主导航、全站链接以及搜索框。&lt;/p&gt;
+&lt;p&gt;&amp;lt;nav&amp;gt;：标记导航，仅对文档中重要的链接群使用。&lt;/p&gt;
+&lt;p&gt;&amp;lt;main&amp;gt;：页面主要内容，一个页面只能使用一次。如果是web应用，则包围其主要功能。&lt;/p&gt;
+&lt;p&gt;&amp;lt;article&amp;gt;：定义外部的内容，其中的内容独立于文档的其余部分。&lt;/p&gt;
+&lt;p&gt;&amp;lt;section&amp;gt;：定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。&lt;/p&gt;
+&lt;h2 id=&#34;13-html对seo的优化&#34;&gt;1.3 html对SEO的优化&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;meta标签，这个是重中之重&lt;/li&gt;
+&lt;li&gt;img标签，img标签增加alt属性&lt;/li&gt;
+&lt;li&gt;页面结构清晰，使用语义化标签比如header、footer、content、section，js、css使用外部文件&lt;/li&gt;
+&lt;li&gt;增加外部链接&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;2-html新特性新标签&#34;&gt;2. Html新特性新标签&lt;/h1&gt;
+&lt;h2 id=&#34;21-新特性&#34;&gt;2.1 新特性&lt;/h2&gt;
+&lt;p&gt;1）语义化&lt;br&gt;
+2）本地存储&lt;br&gt;
+3）设备兼容&lt;br&gt;
+4）连接特性，能够帮助我们将数据推送到客户端&lt;br&gt;
+5）网页多媒体特性&lt;br&gt;
+6）三维、图形及特效特性&lt;br&gt;
+7）性能与集成特性&lt;br&gt;
+8）css3特性&lt;/p&gt;
+&lt;h2 id=&#34;22-新标签&#34;&gt;2.2 新标签&lt;/h2&gt;
+&lt;p&gt;1）结构标签&lt;br&gt;
+&amp;lt;head&amp;gt;定义页面或者区域头部&lt;br&gt;
+&amp;lt;main&amp;gt;规定文档主要内容&lt;br&gt;
+&amp;lt;footer&amp;gt;定义页面或者区域底部&lt;br&gt;
+&amp;lt;article&amp;gt;定义一篇文章&lt;br&gt;
+&amp;lt;nav&amp;gt;定义导航链接&lt;br&gt;
+&amp;lt;scetion&amp;gt;定义一个区域&lt;br&gt;
+&amp;lt;aside&amp;gt;定义页面内容部分侧边栏&lt;br&gt;
+&amp;lt;hgroup&amp;gt;用于对网页或者区域段的标题组合&lt;br&gt;
+&amp;lt;figure&amp;gt;定义一组媒体内容以及标题&lt;br&gt;
+&amp;lt;figcaption&amp;gt;定义figure元素标题&lt;br&gt;
+&amp;lt;address&amp;gt;定义文章拥有者的联系信息&lt;br&gt;
+2）行标记&lt;br&gt;
+&amp;lt;time&amp;gt;定义时间、日期&lt;br&gt;
+&amp;lt;mark&amp;gt;高亮显示文字&lt;br&gt;
+3）多媒体交互标签&lt;br&gt;
+&amp;lt;video&amp;gt;定义一个视频&lt;br&gt;
+&amp;lt;audio&amp;gt;定义一个音频&lt;br&gt;
+&amp;lt;source&amp;gt;定义媒体资源标签&lt;br&gt;
+&amp;lt;canvas&amp;gt;定义图形&lt;br&gt;
+&amp;lt;embed&amp;gt;定义可交互的内容或者插件&lt;br&gt;
+4）web应用标签&lt;br&gt;
+&amp;lt;progress&amp;gt;状态标签、进度条&lt;br&gt;
+&amp;lt;mark&amp;gt;定义有标记的文本（默认是黄色选中内容）&lt;br&gt;
+&amp;lt;output&amp;gt;定义一些输出内容，计算表单结果配合oninput事件&lt;br&gt;
+&amp;lt;datalist&amp;gt;为input标记定义一个下拉option&lt;/p&gt;
+&lt;h1 id=&#34;3-input和textarea的区别&#34;&gt;3. input和textarea的区别&lt;/h1&gt;
+&lt;p&gt;&amp;lt;input&amp;gt;是&lt;code&gt;单行文本框&lt;/code&gt;，不会换行。通过size属性指定显示字符的长度，注意：当使用css限定了宽高，那么size属性就不再起作用。&lt;br&gt;
+value属性指定初始值，Maxlength属性指定文本框可以输入的最长长度。可以通过width和height设置宽高，但是也不会增加行数。&lt;/p&gt;
+&lt;p&gt;&amp;lt;textarea&amp;gt;是&lt;code&gt;多行文本输入框&lt;/code&gt;，文本区中可容纳无限数量的文本，无value属性，其中的文本的默认字体是等宽字体（通常是Courier） ，可以通 过 cols 和 rows 属性来规定 textarea 的尺寸，不过更好的办法是使用 CSS 的 height 和 width 属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div&amp;gt;
+	input:&amp;lt;input value=&amp;quot;啦啦啦啦啦&amp;quot; style=&amp;quot;height:200px;width: 500px;&amp;quot;&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div style=&amp;quot;margin-top: 20px;&amp;quot;&amp;gt;
+	textarea:&amp;lt;/textarea&amp;gt;&amp;lt;textarea  value=&amp;quot;嘻嘻嘻&amp;quot; style=&amp;quot;height:200px;width: 500px;&amp;quot;&amp;gt; 
+   &amp;lt;/textarea&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到：textarea中设置的value并没有显示，同时input文本依然只有一行，并且居中显示。&lt;/p&gt;
+&lt;h1 id=&#34;4-用div模拟textarea&#34;&gt;4. 用div模拟textarea&lt;/h1&gt;
+&lt;p&gt;作为多行文本域功能来讲，textarea满足了我们大部分的需求。然而，textarea有一个不足就是不能像普通div标签一样高度可以跟随内容自适应。textarea总是很自信地显摆它的滚动条，高度固执地岿然不动。&lt;/p&gt;
+&lt;p&gt;要解决这个问题很简单，一个普通的block元素上加个&lt;code&gt;contenteditable=&amp;quot;true&amp;quot;&lt;/code&gt;就ok了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div contenteditable=&amp;quot;true&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614862550654.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+给div设置了一个最小高度，当超过最小高度但不超过最大高度时，div的高度根据文本自适应，当超过最大高度时，出现滚动条。&lt;/p&gt;
+&lt;h1 id=&#34;5-移动设备忽略将页面中的数字识别为电话号码的方法&#34;&gt;5. 移动设备忽略将页面中的数字识别为电话号码的方法&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;标准的电话号码格式是这样的:&amp;lt;a  href=&amp;quot;tel:1-408-555-5555&amp;quot;&amp;gt;1-408-555-5555&amp;lt;/a&amp;gt;，点击后会自动打开电话功能；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;但有时候不是电话号码的数字也会被浏览器自动解析为电话号码, 并把数字的颜色和样式都改了；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果忽略页面中的数字识别为电话号码, 只要把这个默认行为关闭就行，只要一行代码:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name = &amp;quot;format-detection&amp;quot; content = &amp;quot;telephone=no&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;这个关闭不会影响真正电话号码的识别；&lt;/li&gt;
+&lt;/ol&gt;
 ">【面】前端知识点梳理（Html）</a>
       </div>
       
