@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>NodeJs从零单排(5) | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614824913144">
+<link rel="shortcut icon" href="/favicon.ico?v=1614839390442">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">39</span>
+        <span class="site-item-stat-count">40</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1141,6 +1141,12 @@ test();
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css-xia/"" data-c="
+          &lt;h1 id=&#34;12-相邻的两个inline-block节点为什么会出现间隔该如何解决&#34;&gt;12. 相邻的两个inline-block节点为什么会出现间隔，该如何解决&lt;/h1&gt;
+">【面】前端知识点梳理（CSS下）</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css/"" data-c="
           &lt;h1 id=&#34;1盒模型box-model&#34;&gt;1.盒模型（box model）&lt;/h1&gt;
 &lt;h2 id=&#34;1基本概念&#34;&gt;1.基本概念&lt;/h2&gt;
@@ -1966,8 +1972,93 @@ grid 布局也很强大，大体上属性跟 flex 差不多。&lt;/li&gt;
 &lt;h2 id=&#34;92-css-后处理器&#34;&gt;9.2 CSS 后处理器&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;CSS 后处理器&lt;/strong&gt; 是对 CSS 进行处理，并最终生成 CSS 的 &lt;code&gt;预处理器&lt;/code&gt;，它属于广义上的 &lt;strong&gt;CSS 预处理器&lt;/strong&gt;。 我们很久以前就在用 &lt;strong&gt;CSS 后处理器&lt;/strong&gt; 了，最典型的例子是 &lt;strong&gt;CSS 压缩工具&lt;/strong&gt;（如 &lt;code&gt;clean-css&lt;/code&gt;），只不过以前没单独拿出来说过。 还有最近比较火的 &lt;code&gt;Autoprefixer&lt;/code&gt;，以 Can I Use 上的 &lt;strong&gt;浏览器支持数据&lt;/strong&gt;为基础，自动处理兼容性问题。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;实现原理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将 &lt;strong&gt;源代码&lt;/strong&gt; 做为 &lt;strong&gt;CSS&lt;/strong&gt; 解析，获得 &lt;strong&gt;分析树&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;对 &lt;strong&gt;CSS&lt;/strong&gt; 的 &lt;strong&gt;分析树&lt;/strong&gt; 进行 &lt;strong&gt;后处理&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;将 &lt;strong&gt;CSS&lt;/strong&gt; 的 &lt;strong&gt;分析树&lt;/strong&gt; 转换为 &lt;strong&gt;CSS 代码&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;优缺点&lt;/strong&gt;&lt;/p&gt;
-">【面】前端知识点梳理（CSS）</a>
+&lt;ul&gt;
+&lt;li&gt;优点：使用 CSS 语法，容易进行模块化，贴近 CSS 的未来标准&lt;/li&gt;
+&lt;li&gt;缺点：逻辑处理能力有限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;10-css3新特性&#34;&gt;10. css3新特性&lt;/h1&gt;
+&lt;h2 id=&#34;1-transition的属性&#34;&gt;1. transition的属性&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CSS3的过渡功能就像是一种黄油，可以让CSS的一些变化变得平滑。因为原生的CSS过渡在客户端需要处理的资源要比用JavaScript和Flash少的多，所以才会更平滑。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614826493004.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;transition-property&lt;br&gt;
+不是所有属性都能过渡，只有属性具有一个中间点值才具备过渡效果。&lt;/li&gt;
+&lt;li&gt;transition-duration&lt;br&gt;
+指定从一个属性到另一个属性过渡所要花费的时间。默认值为0，为0时，表示变化是瞬时的，看不到过渡效果。&lt;/li&gt;
+&lt;li&gt;transiton-timing-function&lt;br&gt;
+过渡函数，有如下几种：&lt;br&gt;
+liner ：匀速&lt;br&gt;
+ease-in：减速&lt;br&gt;
+ease-out：加速&lt;br&gt;
+ease-in-out：先加速再减速&lt;br&gt;
+cubic-bezier：三次贝塞尔曲线&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;触发过渡&lt;/code&gt;&lt;br&gt;
+单纯的代码不会触发任何过渡操作，需要通过用户的行为（如点击，悬浮等）触发，可触发的方式有：&lt;br&gt;
+&lt;strong&gt;:hoever :focus :checked 媒体查询触发 JavaScript触发&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;局限性&lt;/code&gt;&lt;br&gt;
+transition的优点在于简单易用，但是它有几个很大的局限。 &lt;br&gt;
+（1）transition需要事件触发，所以没法在网页加载时自动发生。 &lt;br&gt;
+（2）transition是一次性的，不能重复发生，除非一再触发。 &lt;br&gt;
+（3）transition只能定义开始状态和结束状态，不能定义中间状态，也就是说只有两个状态。 &lt;br&gt;
+（4）一条transition规则，只能定义一个属性的变化，不能涉及多个属性。 &lt;br&gt;
+CSS Animation就是为了解决这些问题而提出的。&lt;/p&gt;
+&lt;h2 id=&#34;2-animation的属性&#34;&gt;2. animation的属性&lt;/h2&gt;
+&lt;p&gt;CSS3的animation属性可以像Flash制作动画一样，通过控制关键帧来控制动画的每一步，实现更为复杂的动画效果。ainimation实现动画效果主要由两部分组成：&lt;br&gt;
+1）通过类似Flash动画中的帧来声明一个动画；&lt;br&gt;
+2）在animation属性中调用关键帧声明的动画。&lt;br&gt;
+&lt;code&gt;动画属性&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614826993212.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+（1）animation-name：none为默认值，将没有任何动画效果，其可以用来覆盖任何动画 &lt;br&gt;
+（2）animation-duration：默认值为0，意味着动画周期为0，也就是没有任何动画效果 &lt;br&gt;
+（3）animation-timing-function：与transition-timing-function一样 &lt;br&gt;
+（4）animation-delay：在开始执行动画时需要等待的时间 &lt;br&gt;
+（5）animation-iteration-count：定义动画的播放次数，默认为1，如果为infinite，则无限次循环播放 &lt;br&gt;
+（6）animation-direction：默认为nomal，每次循环都是向前播放，（0-100），另一个值为alternate，动画播放为偶数次则向前播放，如果为基数词就反方向播放 &lt;br&gt;
+（7）animation-state：默认为running，播放，paused，暂停 &lt;br&gt;
+（8）animation-fill-mode：定义动画开始之前和结束之后发生的操作，默认值为none，动画结束时回到动画没开始时的状态；forwards，动画结束后继续应用最后关键帧的位置，即保存在结束状态；backwards，让动画回到第一帧的状态；both：轮流应用forwards和backwards规则。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;@keyframes&lt;/code&gt;&lt;br&gt;
+CSS3的animation制作动画效果主要包括两部分：1. 用关键帧声明一个动画，2.在animation调用关键帧声明的的动画。&lt;/p&gt;
+&lt;h2 id=&#34;3区别&#34;&gt;3.区别&lt;/h2&gt;
+&lt;p&gt;animation属性类似于transition，他们都是随着时间改变元素的属性值，其主要区别在于：transition需要触发一个事件才会随着时间改变其CSS属性；animation在不需要触发任何事件的情况下，也可以显式的随时间变化来改变元素CSS属性，达到一种动画的效果。&lt;/p&gt;
+&lt;h1 id=&#34;11display哪些取值&#34;&gt;11.display哪些取值&lt;/h1&gt;
+&lt;h2 id=&#34;111-none-此元素不会被显示&#34;&gt;11.1 none ：此元素不会被显示&lt;/h2&gt;
+&lt;p&gt;（1） none此单词的意思是没有一个、毫无的意思；所以当display的属性值设置为none的时候，表示的是没有框类型，没有框类型的元素，是无法在浏览器中显示的，就实现隐藏元素的作用了；&lt;br&gt;
+（2）有很多标签，display的属性值默认是none，比如 &lt;code&gt;head&lt;/code&gt; &lt;code&gt;meta&lt;/code&gt; &lt;code&gt;style&lt;/code&gt; &lt;code&gt;link&lt;/code&gt;等等；&lt;br&gt;
+（3）项目应用中，做二级导航效果或者鼠标悬停效果动态时，会经常用到这个属性值，下次我们写一个好玩的二级效果再来展示这个属性值的作用；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838389050.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;112-block此元素将显示为块级元素此元素前后会带有换行符&#34;&gt;11.2 block：此元素将显示为块级元素，此元素前后会带有换行符。&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838392829.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;113-inline-默认-此元素会被显示为内联元素元素前后没有换行符&#34;&gt;11.3 inline 默认。此元素会被显示为内联元素，元素前后没有换行符。&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838421481.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;114-inline-block-行内块元素css21-新增的值&#34;&gt;11.4 inline-block 行内块元素（CSS2.1 新增的值）&lt;/h2&gt;
+&lt;p&gt;说明：行内块元素既具备行内元素的特性也具备块状元素的特性，具备行内元素前后没有换行符可以在一行内并列显示的特性，具备块状元素可以正确解释盒模型属性的特性。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838503882.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;115-list-item-此元素会作为列表显示&#34;&gt;11.5 list-item 此元素会作为列表显示。&lt;/h2&gt;
+&lt;p&gt;(1) 此属性值表示将元素显示为列表项标签，li标签默认的display的属性值是list-item，display的属性值为list-item的标签也属于块状元素；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838546316.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+(2) li标签作为列表项标签，前面会有列表项标记，下面给div标签设置为list-item，div也会有列表项标记&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838588128.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;116-run-in-此元素会根据上下文作为块级元素或内联元素显示&#34;&gt;11.6 run-in 此元素会根据上下文作为块级元素或内联元素显示。&lt;/h2&gt;
+&lt;p&gt;(1) 目前很少有浏览器支持run-in这个属性值，并且在开发过程中用不到这个属性值，不予过多的研究；&lt;/p&gt;
+&lt;h2 id=&#34;117-table-此元素会作为块级表格来显示类似-table表格前后带有换行符&#34;&gt;11.7 table 此元素会作为块级表格来显示（类似 &lt;table&gt;），表格前后带有换行符。&lt;/h2&gt;
+&lt;p&gt;（1）table标签默认的元素类型是table，显示为块级表格，可以设置大小并且单独占据一行；&lt;br&gt;
+（2）当table标签的元素类型是table时，并且设置宽度和高度之后，后代td标签的宽度和高度，默认是由table根据内容的多少去分配的；&lt;br&gt;
+(3) table属于块状元素，但是对比别的块状元素，有自己的特点， table会单独占据一行，但是在没有设置width的情况下，不会与父元素同宽，而是根据内容而定；&lt;br&gt;
+(4) 其他标签设置display的属性值为table，也不会具有表格的特性；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;总结&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;通过以上的测试，可以总结出：&lt;br&gt;
+display的属性值为&lt;strong&gt;block，table&lt;/strong&gt;的标签都为&lt;code&gt;块状元素&lt;/code&gt;；&lt;br&gt;
+display的属性值为&lt;strong&gt;inline，inline-table，inline-block&lt;/strong&gt;的标签为&lt;code&gt;行内级元素&lt;/code&gt;；&lt;/p&gt;
+">【面】前端知识点梳理（CSS上）</a>
       </div>
       
       <div class="item">

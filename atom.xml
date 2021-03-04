@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Tyloo-code.github.io</id>
     <title>Tyloo</title>
-    <updated>2021-03-04T02:28:38.693Z</updated>
+    <updated>2021-03-04T06:30:02.606Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Tyloo-code.github.io"/>
     <link rel="self" href="https://Tyloo-code.github.io/atom.xml"/>
@@ -11,7 +11,14 @@
     <icon>https://Tyloo-code.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Tyloo</rights>
     <entry>
-        <title type="html"><![CDATA[【面】前端知识点梳理（CSS）]]></title>
+        <title type="html"><![CDATA[【面】前端知识点梳理（CSS下）]]></title>
+        <id>https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css-xia/</id>
+        <link href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css-xia/">
+        </link>
+        <updated>2021-03-04T06:29:24.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[【面】前端知识点梳理（CSS上）]]></title>
         <id>https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css/</id>
         <link href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css/">
         </link>
@@ -72,12 +79,5 @@
         <link href="https://Tyloo-code.github.io/post/javascript-shi-xian-ji-he-yu-zi-dian/">
         </link>
         <updated>2021-02-19T12:32:25.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[JavaScript实现双向链表]]></title>
-        <id>https://Tyloo-code.github.io/post/javascript-shi-xian-shuang-xiang-lian-biao/</id>
-        <link href="https://Tyloo-code.github.io/post/javascript-shi-xian-shuang-xiang-lian-biao/">
-        </link>
-        <updated>2021-02-09T06:24:50.000Z</updated>
     </entry>
 </feed>
