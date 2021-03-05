@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>NodeJs从零单排(1) | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614929160018">
+<link rel="shortcut icon" href="/favicon.ico?v=1614953365988">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1348,6 +1348,254 @@ Object.prototype.toString.call(document) ; // [object HTMLDocument]
 Object.prototype.toString.call(window) ; //[object global] window是全局对象global的引用
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;6-作用域-作用域链和闭包的理解&#34;&gt;6. 作用域、作用域链和闭包的理解&lt;/h1&gt;
+&lt;h2 id=&#34;61-作用域&#34;&gt;6.1 作用域&lt;/h2&gt;
+&lt;p&gt;变量的作用域无非就是两种：&lt;strong&gt;全局变量&lt;/strong&gt;和&lt;strong&gt;局部变量&lt;/strong&gt;。&lt;br&gt;
+&lt;code&gt;全局作用域&lt;/code&gt;：&lt;br&gt;
+最外层函数定义的变量拥有全局作用域，即对任何内部函数来说，都是可以访问的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script&amp;gt;
+      var outerVar = &amp;quot;outer&amp;quot;;
+      function fn(){
+         console.log(outerVar);
+      }
+      fn();//result:outer
+   &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;局部作用域&lt;/code&gt;：&lt;br&gt;
+和全局作用域相反，局部作用域一般只在固定的代码片段内可访问到，而对于函数外部是无法访问的，最常见的例如函数内部&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script&amp;gt;
+      function fn(){
+         var innerVar = &amp;quot;inner&amp;quot;;
+      }
+      fn();
+      console.log(innerVar);// ReferenceError: innerVar is not defined
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;只要函数内定义了一个局部变量，函数在解析的时候都会将这个变量“提前声明”：&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script&amp;gt;
+      var scope = &amp;quot;global&amp;quot;;
+      function fn(){
+         var scope;//提前声明了局部变量
+         console.log(scope);//result:undefined
+         scope = &amp;quot;local&amp;quot;;
+         console.log(scope);//result:local;
+      }
+      fn();
+   &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;62-作用域链scope-chain&#34;&gt;6.2 作用域链（Scope Chain）&lt;/h2&gt;
+&lt;p&gt;作用域链，是由当前环境与上层环境的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。&lt;/p&gt;
+&lt;h3 id=&#34;621-执行环境execution-context&#34;&gt;6.2.1 执行环境（execution context）&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;js为每一个执行环境关联了一个变量对象。环境中定义的所有变量和函数都保存在这个对象中。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;全局执行环境是最外围的执行环境，全局执行环境被认为是window对象，因此所有的全局变量和函数都作为window对象的属性和方法创建的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;script&amp;gt;
+      var scope = &amp;quot;global&amp;quot;; 
+      function fn1(){
+         return scope; 
+      }
+      function fn2(){
+         return scope;
+      }
+      fn1();
+      fn2();
+   &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上面代码执行情况演示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614938134873.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;622-作用域链&#34;&gt;6.2.2 作用域链&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;
+name=&amp;quot;lwy&amp;quot;;
+function t(){
+    var name=&amp;quot;tlwy&amp;quot;;
+    function s(){
+        var name=&amp;quot;slwy&amp;quot;;
+        console.log(name);
+    }
+    function ss(){
+        console.log(name);
+    }
+    s();
+    ss();
+}
+t();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当执行s时，将创建函数s的执行环境(调用对象),并将该对象置于链表开头，然后将函数t的调用对象链接在之后，最后是全局对象。然后从链表开头寻找变量name,很明显name是&amp;quot;slwy&amp;quot;。&lt;/p&gt;
+&lt;p&gt;但执行ss()时，作用域链是： ss()-&amp;gt;t()-&amp;gt;window,所以name是”tlwy&amp;quot;&lt;/p&gt;
+&lt;h2 id=&#34;63-闭包&#34;&gt;6.3 闭包&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614941970240.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+闭包有两个作用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一个就是可以读取自身函数外部的变量（沿着作用域链寻找）&lt;/li&gt;
+&lt;li&gt;第二个就是让这些外部变量始终保存在内存中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script&amp;gt;
+      function outer(){
+         var result = new Array();
+         for(var i = 0; i &amp;lt; 2; i++){//注：i是outer()的局部变量
+            result[i] = function(){
+               return i;
+            }
+         }
+         return result;//返回一个函数对象数组
+         //这个时候会初始化result.length个关于内部函数的作用域链
+      }
+      var fn = outer();
+      console.log(fn[0]());//result：2
+      console.log(fn[1]());//result：2
+   &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;js函数内的变量值不是在编译的时候就确定的，而是等在运行时期再去寻找的。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;定义&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;一个函数对其周围状态(变量)的&lt;strong&gt;引用&lt;/strong&gt;并&lt;strong&gt;保存&lt;/strong&gt;周围变量，乃至函数执行完成后仍然可以访问的现象称之为闭包。&lt;/p&gt;
+&lt;p&gt;闭包让外部访问函数内部的变量成为可能（私有属性），因为被引用的数据常驻内存，可能会造成内存泄露（一块内存长期被变量占据而不进行释放），闭包可以让你在一个内层函数中访问到其外层函数的作用域的状态并保存，在js中每当创建一个函数，闭包环境就在函数创建时产生，闭包环境相互独立，如果闭包环境引用外部函数作用域的一个变量a，即使当外部函数作用域的变量被销毁释放内存，但变量a不会被删除。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; function outer(){
+         var result = new Array();
+         for(var i = 0; i &amp;lt; 2; i++){
+            //定义一个带参函数
+            result[i] = function(num){
+               function innerarg(){
+                  return num;
+               }
+               return innerarg;
+            }(i);//预先执行函数写法
+            //把i当成参数传进去
+         }
+         return result;
+      }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;7-ajax的原生写法&#34;&gt;7. Ajax的原生写法&lt;/h1&gt;
+&lt;h2 id=&#34;71-ajax-是什么&#34;&gt;7.1 Ajax 是什么？&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;全称Asynchronous JavaScript and XML；&lt;/li&gt;
+&lt;li&gt;异步的 JavaScript 和 XML；&lt;/li&gt;
+&lt;li&gt;可以在不重新加载整个页面的情况下，与服务器交换数据并更新部分网页内容；&lt;/li&gt;
+&lt;li&gt;能够实现局部刷新，大大降低了资源的浪费；&lt;/li&gt;
+&lt;li&gt;不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;72-ajax的使用&#34;&gt;7.2 Ajax的使用&lt;/h2&gt;
+&lt;p&gt;Ajax的使用分为四部分：&lt;br&gt;
+1.） 创建一个XMLHttpRequest对象；&lt;/p&gt;
+&lt;p&gt;2.） 配置请求信息；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;请求的方式；&lt;/li&gt;
+&lt;li&gt;请求文件的路径；&lt;/li&gt;
+&lt;li&gt;是否异步，默认为true；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3.）发送请求；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;get与post的区别；&lt;/li&gt;
+&lt;li&gt;get与post的使用场景；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4.） 监听状态变化，执行相应回调函数；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;http状态码都有哪些？&lt;/li&gt;
+&lt;li&gt;不同状态码代表的含义？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;721-创建xmlhttprequest对象&#34;&gt;7.2.1 创建XMLHttpRequest对象&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;var xhr = new XMLHttpRequest()&lt;/code&gt;;&lt;/p&gt;
+&lt;h3 id=&#34;722-连接服务器&#34;&gt;7.2.2 连接服务器&lt;/h3&gt;
+&lt;p&gt;使用 XMLHttpRequest 对象的open() 方法：&lt;/p&gt;
+&lt;h3 id=&#34;723-向服务器发送请求&#34;&gt;7.2.3 向服务器发送请求&lt;/h3&gt;
+&lt;p&gt;使用 XMLHttpRequest 对象的send() 方法：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614951772130.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;724-监听事件变化&#34;&gt;7.2.4 监听事件变化&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;如果是同步请求的话，不需要写监听事件变化函数；&lt;/li&gt;
+&lt;li&gt;一般默认都是异步请求，才写监听函数；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;0: 请求未初始化&lt;/li&gt;
+&lt;li&gt;1: 服务器连接已建立&lt;/li&gt;
+&lt;li&gt;2: 请求已接收&lt;/li&gt;
+&lt;li&gt;3: 请求处理中&lt;/li&gt;
+&lt;li&gt;4: 请求已完成，且响应已就绪&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;73-ajax原生写法&#34;&gt;7.3 Ajax原生写法&lt;/h2&gt;
+&lt;h3 id=&#34;731-get请求&#34;&gt;7.3.1 Get请求&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;const xhr = new XMLHttpRequest()
+        xhr.open(&amp;quot;GET&amp;quot;, &amp;quot;http://localhost:3000/users?id=1&amp;quot;)
+        xhr.send(null)
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                console.log(this.responseText);
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;732-post请求&#34;&gt;7.3.2 Post请求&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;const xhr = new XMLHttpRequest()
+        xhr.open(&amp;quot;POST&amp;quot;, &amp;quot;http://localhost:3000/users&amp;quot;)
+        xhr.setRequestHeader(&amp;quot;Content-Type&amp;quot;, &amp;quot;application/json&amp;quot;)
+        // 转换为json传递
+        xhr.send(JSON.stringify({
+            &amp;quot;name&amp;quot;: &amp;quot;luke&amp;quot;,
+            &amp;quot;age&amp;quot; : 19,
+            &amp;quot;class&amp;quot;: 2
+        }))
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                console.log(this.responseText);
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;8-对象深拷贝-浅拷贝&#34;&gt;8. 对象深拷贝、浅拷贝&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;let a = {
+    age: 1
+}
+let b = a
+a.age = 2
+console.log(b.age) // 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从上述例子中我们可以发现，如果给一个变量赋值一个对象，那么两者的值会是同一个引用，其中一方改变，另一方也会相应改变。&lt;/p&gt;
+&lt;h2 id=&#34;81-浅拷贝&#34;&gt;8.1 浅拷贝&lt;/h2&gt;
+&lt;p&gt;首先可以通过 &lt;code&gt;Object.assign&lt;/code&gt; 来解决这个问题。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let a = {
+    age: 1
+}
+let b = Object.assign({}, a)
+a.age = 2
+console.log(b.age) // 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当然我们也可以通过展开运算符&lt;code&gt;（…）&lt;/code&gt;来解决&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let a = {
+    age: 1
+}
+let b = {...a}
+a.age = 2
+console.log(b.age) // 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通常浅拷贝就能解决大部分问题了，但是当我们遇到如下情况就需要使用到深拷贝了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let a = {
+    age: 1,
+    jobs: {
+        first: &#39;FE&#39;
+    }
+}
+let b = {...a}
+a.jobs.first = &#39;native&#39;
+console.log(b.jobs.first) // native
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;浅拷贝只解决了第一层的问题，如果接下去的值中还有对象的话，那么就又回到刚开始的话题了，两者享有相同的引用。要解决这个问题，我们需要引入深拷贝。&lt;/p&gt;
+&lt;h2 id=&#34;82-深拷贝&#34;&gt;8.2 深拷贝&lt;/h2&gt;
+&lt;p&gt;这个问题通常可以通过 &lt;code&gt;JSON.parse(JSON.stringify(object))&lt;/code&gt; 来解决。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let a = {
+    age: 1,
+    jobs: {
+        first: &#39;FE&#39;
+    }
+}
+let b = JSON.parse(JSON.stringify(a))
+a.jobs.first = &#39;native&#39;
+console.log(b.jobs.first) // FE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是该方法也是有局限性的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;会忽略 undefined&lt;/li&gt;
+&lt;li&gt;会忽略 symbol&lt;/li&gt;
+&lt;li&gt;不能序列化函数&lt;/li&gt;
+&lt;li&gt;不能解决循环引用的对象&lt;/li&gt;
+&lt;/ul&gt;
 ">【面】前端知识点梳理（JS上）</a>
       </div>
       
