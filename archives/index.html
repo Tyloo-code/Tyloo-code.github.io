@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614915594715">
+<link rel="shortcut icon" href="/favicon.ico?v=1614929160018">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1037,7 +1037,177 @@
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-shang/"" data-c="
-          &lt;h1 id=&#34;1&#34;&gt;1.&lt;/h1&gt;
+          &lt;h1 id=&#34;1-原型原型链构造函数实例继承&#34;&gt;1. 原型/原型链/构造函数/实例/继承&lt;/h1&gt;
+&lt;h2 id=&#34;11-创建对象的几种方法&#34;&gt;1.1 创建对象的几种方法&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+		//创建对象的几种方式
+		//1.字面量
+		var obj1 = {name: &#39;solo obj1&#39;};
+		//2.new Object
+		var obj2 = new Object({name: &#39;solo obj2&#39;})
+		//3.构造函数创建
+		var M = function(name){
+			this.name = name;
+		}
+		var obj3 = new M(&#39;solo obj3&#39;);
+		//4.Object.create
+		var p = {name: &#39;p&#39;};
+		var obj4 = Object.create(p);
+	&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;12-原型-构造函数-实例-原型链&#34;&gt;1.2 原型、构造函数、实例、原型链&lt;/h2&gt;
+&lt;p&gt;构造函数、原型对象、实例的关系可以参照下图：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614923904668.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;构造函数.prototype.constructor === 构造函数&lt;br&gt;
+M.prototype.constructor === M 的结果为 true&lt;/p&gt;
+&lt;p&gt;构造函数.prototype === 实例对象. proto&lt;br&gt;
+M.prototype === obj3._ proto _ 的结果为 true&lt;/p&gt;
+&lt;h2 id=&#34;13-instanceof-的原理&#34;&gt;1.3 instanceof 的原理&lt;/h2&gt;
+&lt;p&gt;instanceof 的原理是判断&lt;strong&gt;实例对象的&lt;/strong&gt; &lt;strong&gt;proto&lt;/strong&gt; 是否与&lt;strong&gt;构造函数的prototype&lt;/strong&gt;指向同一个引用。&lt;/p&gt;
+&lt;h2 id=&#34;14-instanceof-和-typeof-的区别&#34;&gt;1.4 instanceof 和 typeof 的区别&lt;/h2&gt;
+&lt;p&gt;typeof 对于基本数据类型（&lt;code&gt;null, undefined, string, number, boolean, symbol&lt;/code&gt;），除了 null 都会返回正确的类型。null 会返回 object。&lt;/p&gt;
+&lt;p&gt;typeof 对于对象类型，除了函数会返回 function，其他的都返回 object。&lt;/p&gt;
+&lt;h2 id=&#34;15-原型链&#34;&gt;1.5 原型链&lt;/h2&gt;
+&lt;p&gt;当访问 p 中的一个非自有属性的时候，就会通过 &lt;strong&gt;proto&lt;/strong&gt; 作为桥梁连接起来的一系列原型、原型的原型、原型的原型的原型直到 Object 构造函数为止。&lt;/p&gt;
+&lt;p&gt;这个搜索的过程形成的链状关系就是原型链&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614924650255.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;例子&#34;&gt;例子&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;function F(){} var f = new F(); // 构造器 
+F.prototype.constructor === F; // true 
+F.__proto__ === Function.prototype; // true 
+Function.prototype.__proto__ === Object.prototype; // true Object.prototype.__proto__ === null; // true // 实例
+f.__proto__ === F.prototype; // true 
+F.prototype.__proto__ === Object.prototype; // true Object.prototype.__proto__ === null;// true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614925004509.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;2-有几种方式可以实现继承&#34;&gt;2. 有几种方式可以实现继承&lt;/h1&gt;
+&lt;p&gt;ES5实现继承有6种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;原型链继承&lt;/li&gt;
+&lt;li&gt;借用构造函数继承&lt;/li&gt;
+&lt;li&gt;组合继承&lt;/li&gt;
+&lt;li&gt;原型式继承&lt;/li&gt;
+&lt;li&gt;寄生式继承&lt;/li&gt;
+&lt;li&gt;寄生组合式继承&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;寄生组合式&lt;/strong&gt;继承是大家公认的最好的实现引用类型继承的方法。&lt;/p&gt;
+&lt;p&gt;ES6新增class和extends语法，用来定义类和实现继承，底层也是采用了寄生组合式继承。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614925710279.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614925713288.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3-用原型实现继承有什么缺点怎么解决&#34;&gt;3. 用原型实现继承有什么缺点，怎么解决&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;原型继承&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Human(){
+this.name=&amp;quot;teacher&amp;quot;;
+this,age=39;
+}
+function Man(){
+}
+Man.prototype=new Human();
+var m=new Man();
+/*此时Man.name=teacher;Man.age=39；*/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;优点：&lt;/strong&gt;&lt;br&gt;
+可以继承构造函数属性，也可继承原型属性&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点：&lt;/strong&gt;&lt;br&gt;
+1，在创建子类实例化时，不能向超类型的构造函数中传参&lt;br&gt;
+2，子类型继承了父类型原型中的所有属性和方法，但对于引用类型属性值所有实例共享，故不能在不改变其他实例情况下改变。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方式&lt;/strong&gt;&lt;br&gt;
+使用混合继承。&lt;/p&gt;
+&lt;h1 id=&#34;4-arguments&#34;&gt;4. arguments&lt;/h1&gt;
+&lt;p&gt;arguments 是一个&lt;strong&gt;类似数组&lt;/strong&gt;的对象, 对应于传递给函数的&lt;strong&gt;参数&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;arguments对象是所有函数中可用的局部变量。你可以使用arguments对象在函数中引用函数的参数。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;arguments[0]
+arguments[1]
+arguments[2]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;arguments对象不是一个 Array 。它类似于数组，但除了 长度之外没有任何数组属性。&lt;/p&gt;
+&lt;p&gt;可以使用 Array.from()方法或 spread 运算符将 arguments 转换为真正的数组：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let args = Array.from(arguments);
+let args = [...arguments];
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果你调用一个函数，当这个函数的参数数量比它显式声明的参数数量更多的时候，你就可以使用 arguments 对象。你可以用 arguments.length 来得到参数的数量，然后可以用 arguments object 来对每个参数进行处理。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;arguments.callee：指向当前执行的函数。&lt;/li&gt;
+&lt;li&gt;arguments.caller **：指向调用当前函数的函数。&lt;/li&gt;
+&lt;li&gt;arguments.length：指向传递给当前函数的参数数量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;模拟函数重载&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function add(num1, num2, num3) {
+if (arguments.length === 2) {
+    console.log(&amp;quot;Result is &amp;quot; + (num1 + num2));
+     }
+else if (arguments.length === 3) {
+    console.log(&amp;quot;Result is &amp;quot; + (num1 + num2 + num3));
+     }
+｝
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;add(1, 2);&lt;br&gt;
+add(1, 2, 3)&lt;/p&gt;
+&lt;p&gt;执行结果如下：&lt;br&gt;
+Result is 3&lt;br&gt;
+Result is 6&lt;/p&gt;
+&lt;h1 id=&#34;5-数据类型判断&#34;&gt;5. 数据类型判断&lt;/h1&gt;
+&lt;h2 id=&#34;51-javascript-数据类型&#34;&gt;5.1 JavaScript 数据类型&lt;/h2&gt;
+&lt;p&gt;JavaScript 数据类型有两种，分别是基本数据类型和引用数据类型。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基本数据类型&lt;br&gt;
+Number&lt;br&gt;
+String&lt;br&gt;
+Boolean&lt;br&gt;
+Undefined&lt;br&gt;
+Null&lt;br&gt;
+Symbol (ES6 新增，表示独一无二的值)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;引用数据类型&lt;br&gt;
+Object&lt;br&gt;
+Function&lt;br&gt;
+Array&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;52-检验数据类型&#34;&gt;5.2 检验数据类型&lt;/h2&gt;
+&lt;h3 id=&#34;521-typeof&#34;&gt;5.2.1 typeof&lt;/h3&gt;
+&lt;p&gt;它返回一个表示数据类型的字符串，返回结果包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;number&lt;/li&gt;
+&lt;li&gt;boolean&lt;/li&gt;
+&lt;li&gt;string&lt;/li&gt;
+&lt;li&gt;symbol&lt;/li&gt;
+&lt;li&gt;object&lt;/li&gt;
+&lt;li&gt;undefined&lt;/li&gt;
+&lt;li&gt;function&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：&lt;br&gt;
+除 function 以外的对象都会被识别成 object ，这样显然是不合理的，这时就需要 instanceof 来进行判断。&lt;/p&gt;
+&lt;h3 id=&#34;522-instanceof&#34;&gt;5.2.2 instanceof&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上&lt;/strong&gt;&lt;br&gt;
+简单来说就是 instanceof 是用来判断 A 是否为 B 的实例，表达式为&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;A  (object)  instanceof  B  (constructor)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果A是B的实例，则返回true,否则返回 false。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;&lt;br&gt;
+1.&lt;strong&gt;是否处于原型链上的判断方法不严谨&lt;/strong&gt;&lt;br&gt;
+instanceof 方法判断的是是否处于原型链上，而不是是不是处于原型链最后一位&lt;/p&gt;
+&lt;p&gt;2.&lt;strong&gt;无法判断字面量方式创建的基本数据类型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;3.&lt;strong&gt;无法检测 null 和 undefined&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;523-objectprototypetostringcall&#34;&gt;5.2.3 Object.prototype.toString.call()&lt;/h3&gt;
+&lt;p&gt;在 Number、String，Boolean，Array，RegExp、Date、Function 等对象上 toString() 方法都是被重写过了的，会按照一定的规则返回字符串。但是在 object 对象上，这个方式是返回当前方法执行的主体（方法中的this）所属类的详细信息即&amp;quot;[object Object]&amp;quot;,其中第一个object代表当前实例是对象数据类型的(这个是固定的 onject)，第二个Object代表的是this所属的类型。&lt;/p&gt;
+&lt;p&gt;为了每个对象都能通过 Object.prototype.toString() 来检测，需要以 Function.prototype.call() 或者 Function.prototype.apply() 的形式来调用，传递要检查的对象作为第一个参数，称为 thisArg。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Object.prototype.toString.call(&#39;&#39;) ;   // [object String]
+Object.prototype.toString.call(1) ;    // [object Number]
+Object.prototype.toString.call(true) ; // [object Boolean]
+Object.prototype.toString.call(undefined) ; // [object Undefined]
+Object.prototype.toString.call(null) ; // [object Null]
+Object.prototype.toString.call(new Function()) ; // [object Function]
+Object.prototype.toString.call(new Date()) ; // [object Date]
+Object.prototype.toString.call([]) ; // [object Array]
+Object.prototype.toString.call(new RegExp()) ; // [object RegExp]
+Object.prototype.toString.call(new Error()) ; // [object Error]
+Object.prototype.toString.call(document) ; // [object HTMLDocument]
+Object.prototype.toString.call(window) ; //[object global] window是全局对象global的引用
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;6-作用域-作用域链和闭包的理解&#34;&gt;6. 作用域、作用域链和闭包的理解&lt;/h1&gt;
 ">【面】前端知识点梳理（JS上）</a>
       </div>
       
