@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>NodeJs从零单排(5) | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614999925334">
+<link rel="shortcut icon" href="/favicon.ico?v=1615023868549">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1561,6 +1561,287 @@ console.log(b.jobs.first) // FE
 &lt;li&gt;不能序列化函数&lt;/li&gt;
 &lt;li&gt;不能解决循环引用的对象&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h1 id=&#34;9-图片懒加载-预加载&#34;&gt;9. 图片懒加载、预加载&lt;/h1&gt;
+&lt;h2 id=&#34;91-懒加载&#34;&gt;9.1 懒加载&lt;/h2&gt;
+&lt;h3 id=&#34;911-什么是懒加载&#34;&gt;9.1.1 什么是懒加载&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;懒加载又称延迟加载&lt;/strong&gt;。当访问一个页面的时候，需要先把img元素或者其他元素的背景图先用一张默认的图片代替（占位图），这样浏览器渲染页面的时候就只需请求一次。当图片出现在浏览器可视区域的时候，才设置图片的真实路径，把图片显示出来。&lt;/p&gt;
+&lt;h3 id=&#34;912-为什么要使用图片懒加载&#34;&gt;9.1.2 为什么要使用图片懒加载？&lt;/h3&gt;
+&lt;p&gt;当页面中图片的数量多到一定数量的时候，并且图片大小比较大，比如各种商场网站，图片素材网等等。如果在页面一加载的时候就加载全部图片，显然会影响网站加载速度和加大服务器负担，而且用户体验也必然不好，那么这时候可以采用懒加载。&lt;/p&gt;
+&lt;h3 id=&#34;913-懒加载具体实现原理&#34;&gt;9.1.3 懒加载具体实现原理&lt;/h3&gt;
+&lt;p&gt;页面中的img元素之所以会发送http请求的原因是设置了src属性，否则浏览器就不会发送请求去下载这个图片。&lt;br&gt;
+首先在页面中把所有的图片用一张占位图进行占位，并且在元素下设置data-src自定义属性，存放图片的真实路径，当需要用到的时候取出该真实路径动态添加给src。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;懒加载具体实现方式&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;1.第一种是纯粹的延迟加载，使用setTimeOut或setInterval进行加载延迟.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;2.第二种是条件加载，符合某些条件，或触发了某些事件才开始异步下载。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;3.第三种是可视区加载，即仅加载用户可以看到的区域，这个主要由监控滚动条来实现，一般会在距用户看到某图片前一定距离便开始加载，这样能保证用户拉下时正好能看到图片。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;92-预加载&#34;&gt;9.2 预加载&lt;/h2&gt;
+&lt;h3 id=&#34;921-什么是预加载&#34;&gt;9.2.1 什么是预加载&lt;/h3&gt;
+&lt;p&gt;预加载就是提前加载图片，当用户需要查看时可直接从本地缓存中渲染。&lt;/p&gt;
+&lt;h3 id=&#34;922-为什么要使用图片预加载&#34;&gt;9.2.2 为什么要使用图片预加载？&lt;/h3&gt;
+&lt;p&gt;当页面中图片比较大的时候，页面加载的时候会出现该区域空白的效果或者看到图片正在慢慢地加载出来，为了提高用户体验，需要把这些图片提前加载到缓存中，当用户一打开页面的时候，这些图片就会快速的呈现出来，获得更好的用户体验效果。&lt;/p&gt;
+&lt;h3 id=&#34;923-实现方式有哪些&#34;&gt;9.2.3 实现方式有哪些？&lt;/h3&gt;
+&lt;p&gt;方法1：使用css和JavaScript实现预加载&lt;br&gt;
+方法2：只使用JavaScript实现预加载&lt;br&gt;
+方法3：使用ajax实现预加载&lt;/p&gt;
+&lt;p&gt;常用的是&lt;code&gt;new Image()&lt;/code&gt;;设置其src来实现预载，再使用onload方法回调预载完成事件。只要浏览器把图片下载到本地，同样的src就会使用缓存，这是最基本也是最实用的预载方法。当Image下载完图片头后，会得到宽和高，因此可以在预载前得到图片的大小(方法是用记时器轮循宽高变化。)&lt;/p&gt;
+&lt;h1 id=&#34;10-实现页面加载进度条&#34;&gt;10. 实现页面加载进度条&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615011309891.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;101-html结构&#34;&gt;10.1 html结构：&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;div id=&amp;quot;progressBox&amp;quot;&amp;gt;
+        &amp;lt;div id=&amp;quot;progressBar&amp;quot;&amp;gt;0%&amp;lt;/div&amp;gt;
+        &amp;lt;!-- 设定第二个层以便当进度超过文字的时候，修改文字的颜色 --&amp;gt;
+        &amp;lt;div id=&amp;quot;progressText&amp;quot;&amp;gt;0%&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;102-css结构&#34;&gt;10.2 CSS结构：&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+        #progressBox {
+            width: 300px;
+            height: 40px;
+            border: 1px solid #C8C8C8;
+            background: white;
+            position: relative;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+ 
+        #progressBar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            height: 40px;
+            width: 100%;
+            line-height: 40px;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Georgia;
+            clip: rect(0px, 0, 40px, 0px);
+            background: #00A1F5;
+        }
+ 
+        #progressText {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            color: black;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Georgia;
+        }
+    &amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;103-javascript-部分&#34;&gt;10.3 JavaScript 部分&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script&amp;gt;
+        window.onload = function () {
+            // 设定当前起始状态值,
+            // 真实情况中用html5的onprogress和onload来完成
+            // 还可以跟后台配合，通过ajax实时的返回数据
+            var iNow = 0;
+            // 设定定时器
+            var timer = setInterval(function () {
+                // 如果当前的值为100
+                if (iNow == 100) {
+                    // 清除定时器
+                    clearInterval(timer);
+                }else {
+                    // 将当前状态值累加1
+                    iNow += 1;
+                    // 调用执行状态的函数,传入状态值
+                    progressFn(iNow);
+                }
+ 
+            }, 30);
+ 
+ 
+            function progressFn(cent) {
+                // 获取最外层的div
+                var oDiv1 = document.getElementById(&#39;progressBox&#39;);
+                // 获取内层进度条的div
+                var oDiv2 = document.getElementById(&#39;progressBar&#39;);
+                // 获取内层文字发生变化时的div
+                var oDiv3 = document.getElementById(&#39;progressText&#39;);
+ 
+                // 获取总进度条的宽度
+                var allWidth = parseInt(getStyle(oDiv1, &#39;width&#39;));
+ 
+                // 设定内层两个div的文字内容一样
+                oDiv2.innerHTML = cent + &#39;%&#39;;
+                oDiv3.innerHTML = cent + &#39;%&#39;;
+ 
+                // 修改clip的的宽度值
+                oDiv2.style.clip = &#39;rect(0px, &#39; + cent / 100 * allWidth + &#39;px, 40px, 0px)&#39;;
+ 
+                // 获取当前元素的属性值
+                function getStyle(obj, attr) {
+                    // 兼容IE
+                    if (obj.currentStyle) {
+                        return obj.currentStyle[attr];
+                    }else {
+                        // 第二个参数为false是通用的写法，目的是为了兼容老版本
+                        return getComputedStyle(obj, false)[attr];
+                    }
+                }
+            }
+        };
+    &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;11-this关键字&#34;&gt;11. this关键字&lt;/h1&gt;
+&lt;p&gt;首先我们需要得出一个非常重要一定要牢记于心的结论，&lt;code&gt;this的指向，是在函数被调用的时候确定的&lt;/code&gt;。也就是执行上下文被创建时确定的。因此，一个函数中的this指向，可以是非常灵活的。比如下面的例子中，同一个函数由于调用方式的不同，this指向了不一样的对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var a = 10;
+var obj = {
+    a: 20
+}
+function fn () {
+    console.log(this.a);
+}
+fn(); // 10
+fn.call(obj); // 20
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;除此之外，&lt;code&gt;在函数执行过程中，this一旦被确定，就不可更改了。&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;111-全局对象中的this&#34;&gt;11.1 全局对象中的this&lt;/h2&gt;
+&lt;p&gt;关于全局对象的this，我之前在总结变量对象的时候提到过，它是一个比较特殊的存在。全局环境中的this，指向它本身。&lt;/p&gt;
+&lt;h2 id=&#34;112-函数中的this&#34;&gt;11.2 函数中的this&lt;/h2&gt;
+&lt;p&gt;在一个函数上下文中，this由调用者提供，由调用函数的方式来决定。&lt;strong&gt;如果调用者函数，被某一个对象所拥有，那么该函数在调用时，内部的this指向该对象。如果函数独立调用，那么该函数内部的this，则指向undefined&lt;/strong&gt;。但是在非严格模式中，当this指向undefined时，它会被自动指向全局对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var a = 20;
+var foo = {
+    a: 10,
+    getA: function () {
+        return this.a;
+    }
+}
+console.log(foo.getA()); // 10
+
+var test = foo.getA;
+console.log(test());  // 20
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;foo.getA()&lt;/code&gt;中，getA是调用者，他不是独立调用，被对象foo所拥有，因此它的this指向了foo。而&lt;code&gt;test()&lt;/code&gt;作为调用者，尽管他与foo.getA的引用相同，但是它是独立调用的，因此this指向undefined，在非严格模式，自动转向全局window。&lt;/p&gt;
+&lt;h2 id=&#34;113-使用callapply显示指定this&#34;&gt;11.3 使用call，apply显示指定this&lt;/h2&gt;
+&lt;p&gt;JavaScript内部提供了一种机制，让我们可以自行手动设置this的指向。它们就是call与apply。所有的函数都具有着两个方法。它们除了参数略有不同，其功能完全一样。它们的第一个参数都为this将要指向的对象。&lt;/p&gt;
+&lt;p&gt;而call与applay后面的参数，都是向将要执行的函数传递参数。其中call以一个一个的形式传递，apply以数组的形式传递。这是他们唯一的不同。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function fn(num1, num2) {
+    console.log(this.a + num1 + num2);
+}
+var obj = {
+    a: 20
+}
+
+fn.call(obj, 100, 10); // 130
+fn.apply(obj, [20, 10]); // 50
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;114-构造函数与原型方法上的this&#34;&gt;11.4 构造函数与原型方法上的this&lt;/h2&gt;
+&lt;p&gt;通过new操作符调用构造函数，会经历以下4个阶段。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建一个新的对象；&lt;/li&gt;
+&lt;li&gt;将构造函数的this指向这个新对象；&lt;/li&gt;
+&lt;li&gt;指向构造函数的代码，为这个对象添加属性，方法等；&lt;/li&gt;
+&lt;li&gt;返回新对象。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;function Person(name, age) {
+
+    // 这里的this指向了谁?
+    this.name = name;
+    this.age = age;   
+}
+
+Person.prototype.getName = function() {
+
+    // 这里的this又指向了谁？
+    return this.name;
+}
+
+// 上面的2个this，是同一个吗，他们是否指向了原型对象？
+
+var p1 = new Person(&#39;Nick&#39;, 20);
+p1.getName();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;因此，当new操作符调用构造函数时，this其实指向的是这个新创建的对象，最后又将新的对象返回出来，被实例对象p1接收。因此，我们可以说，这个时候，构造函数的this，指向了新的实例对象，p1。&lt;/p&gt;
+&lt;h1 id=&#34;12-函数式编程&#34;&gt;12. 函数式编程&lt;/h1&gt;
+&lt;p&gt;函数式编程是一种编程范式，是一种构建计算机程序结构和元素的风格，它把计算看作是对数学函数的评估，&lt;strong&gt;避免了状态的变化和数据的可变&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;纯函数&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果给定相同的参数，则返回相同的结果(也称为确定性)。&lt;/li&gt;
+&lt;li&gt;它不会引起任何副作用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;特点&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;函数是一等公民&lt;/li&gt;
+&lt;li&gt;只用表达式不用语句&lt;/li&gt;
+&lt;li&gt;没有副作用(side effect)&lt;/li&gt;
+&lt;li&gt;不修改状态&lt;/li&gt;
+&lt;li&gt;引用透明&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;优势&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;代码简洁，开发快速&lt;/li&gt;
+&lt;li&gt;接近自然语言，易于理解&lt;/li&gt;
+&lt;li&gt;更方便的代码管理&lt;/li&gt;
+&lt;li&gt;易于&amp;quot;并发编程&amp;quot;&lt;/li&gt;
+&lt;li&gt;代码的热升级&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;13-手动实现parseint&#34;&gt;13. 手动实现parseInt&lt;/h1&gt;
+&lt;p&gt;主要用到的ES5中的&lt;code&gt;map&lt;/code&gt;函数和&lt;code&gt;reduce&lt;/code&gt;函数，还有利用了javascript是弱类型转换的特点&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function str2num(str) {
+  var strArr = str.split(&#39;&#39;)
+  var strArrNum = strArr.map(function (str) {
+    return +str
+  })
+  var num = strArrNum.reduce(function (x, y) {
+    return x * 10 + y
+  })
+  return num
+}
+str2num(&#39;123&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;14-为什么会有同源策略&#34;&gt;14. 为什么会有同源策略&lt;/h1&gt;
+&lt;h2 id=&#34;141-什么是同源策略&#34;&gt;14.1 什么是同源策略&lt;/h2&gt;
+&lt;p&gt;两个页面地址中的协议，域名，端口号一致，则表示同源&lt;/p&gt;
+&lt;h2 id=&#34;142-为什么浏览器要使用同源策略&#34;&gt;14.2 为什么浏览器要使用同源策略&lt;/h2&gt;
+&lt;p&gt;设置同源策略的主要目的是为了安全，如果没有同源限制，在浏览器中的cookie等其他数据可以任意读取，不同域下的DOM任意操作，ajax任意请求其他网站的数据，包括隐私数据。&lt;/p&gt;
+&lt;h1 id=&#34;15-怎么判断两个对象是否相等&#34;&gt;15. 怎么判断两个对象是否相等&lt;/h1&gt;
+&lt;p&gt;方法一：通过&lt;code&gt;JSON.stringify(obj)&lt;/code&gt;来判断两个对象转后的字符串是否相等&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：用法简单，对于顺序相同的两个对象可以快速进行比较得到结果&lt;/li&gt;
+&lt;li&gt;缺点：这种方法有限制就是当两个对比的对象中key的顺序不是完全相同时会比较出错&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;方法二：&lt;code&gt;getOwnPropertyNames&lt;/code&gt;该方法可以将Object对象的第一层key获取到并返回一个由第一层key组成的数组。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：相对方法一进行了优化，可以应对不同顺序的Object进行比较，不用担心顺序不同而对比出错&lt;/li&gt;
+&lt;li&gt;缺点：从方法中可以看到只能获取到第一层的key组成的数组，当对象是复合对象时无法进行多层对象的比较&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;// 对Object扩展一个方法chargeObjectEqual
+Object.prototype.chargeObjectEqual = function(obj){
+    // 当前Object对象
+    var propsCurr = Object.getOwnPropertyNames(this);
+    // 要比较的另外一个Object对象
+    var propsCompare = Object.getOwnPropertyNames(obj);
+    if (propsCurr.length != propsCompare.length) {
+        return false;
+    }
+    for (var i = 0,max = propsCurr.length; i &amp;lt; max; i++) {
+        var propName = propsCurr[i];
+        if (this[propName] !== obj[propName]) {
+            return false;
+        }
+    }
+    return true;
+}
+&lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（JS上）</a>
       </div>
       
