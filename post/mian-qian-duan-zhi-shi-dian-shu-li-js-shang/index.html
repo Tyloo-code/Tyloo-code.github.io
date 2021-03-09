@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（JS上） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615023868549">
+<link rel="shortcut icon" href="/favicon.ico?v=1615253807975">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">43</span>
+        <span class="site-item-stat-count">44</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -342,6 +342,20 @@
 </ul>
 </li>
 <li><a href="#15-%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89">15. 怎么判断两个对象是否相等</a></li>
+<li><a href="#16-%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B">16. 事件模型</a>
+<ul>
+<li><a href="#161-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98-%E4%BB%A3%E7%90%86">16.1 事件委托、代理</a>
+<ul>
+<li><a href="#1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">1.基本概念</a></li>
+<li><a href="#2-%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1">2. 事件冒泡</a></li>
+<li><a href="#3-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E7%9A%84%E4%BC%98%E7%82%B9">3. 事件委托的优点</a></li>
+<li><a href="#3-%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0">3. 基本实现</a></li>
+<li><a href="#4-%E4%BD%BF%E7%94%A8%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">4. 使用事件委托注意事项</a></li>
+</ul>
+</li>
+<li><a href="#162-%E5%A6%82%E4%BD%95%E8%AE%A9%E4%BA%8B%E4%BB%B6%E5%85%88%E5%86%92%E6%B3%A1%E5%90%8E%E6%8D%95%E8%8E%B7">16.2 如何让事件先冒泡后捕获</a></li>
+</ul>
+</li>
 </ul>
 
   </div>
@@ -622,12 +636,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>25<span class="language" data-lan="minute">分钟</span></span>
+      <span>30<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>6100<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>7386<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -1341,6 +1355,112 @@ Object.prototype.chargeObjectEqual = function(obj){
     return true;
 }
 </code></pre>
+<h1 id="16-事件模型">16. 事件模型</h1>
+<h2 id="161-事件委托-代理">16.1 事件委托、代理</h2>
+<h3 id="1基本概念">1.基本概念</h3>
+<p><strong>事件代理</strong>（Event Delegation），又称之为事件委托。是JavaScript中常用绑定事件的常用技巧。顾名思义，“事件代理”即是把原本需要绑定在子元素的响应事件（click、keydown......）委托给父元素，让父元素担当事件监听的职务。事件代理的原理是DOM元素的事件冒泡。</p>
+<h3 id="2-事件冒泡">2. 事件冒泡</h3>
+<p>一个事件触发后，会在子元素和父元素之间<strong>传播</strong>（propagation）。这种传播分成三个阶段<br>
+<img src="https://Tyloo-code.github.io/post-images/1615169023216.jpg" alt="" loading="lazy"><br>
+如上图所示，事件传播分成三个阶段：</p>
+<ul>
+<li>捕获阶段：从window对象传导到目标节点（上层传到底层）称为“捕获阶段”（capture phase），捕获阶段不会响应任何事件；</li>
+<li>目标阶段：在目标节点上触发，称为“目标阶段”</li>
+<li>冒泡阶段：从目标节点传导回window对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。<strong>事件代理即是利用事件冒泡的机制把里层所需要响应的事件绑定到外层</strong>；</li>
+</ul>
+<h3 id="3-事件委托的优点">3. 事件委托的优点</h3>
+<p>【1】<strong>可以大量节省内存占用，减少事件注册，比如在ul上代理所有li的click事件就非常棒</strong></p>
+<pre><code>&lt;ul id=&quot;list&quot;&gt;
+  &lt;li&gt;item 1&lt;/li&gt;
+  &lt;li&gt;item 2&lt;/li&gt;
+  &lt;li&gt;item 3&lt;/li&gt;
+  ......
+  &lt;li&gt;item n&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>如上面代码所示，如果给每个li列表项都绑定一个函数，那对内存的消耗是非常大的，因此较好的解决办法就是将li元素的点击事件绑定到它的父元素ul身上，执行事件的时候再去匹配判断目标元素。</p>
+<p><strong>【2】可以实现当新增子对象时无需再次对其绑定（动态绑定事件）</strong><br>
+假设上述的例子中列表项li就几个，我们给每个列表项都绑定了事件；</p>
+<p>在很多时候，我们需要通过 AJAX 或者用户操作动态的增加或者删除列表项li元素，那么在每一次改变的时候都需要重新给新增的元素绑定事件，给即将删去的元素解绑事件；</p>
+<p>如果用了事件委托就没有这种麻烦了，因为事件是绑定在父层的，和目标元素的增减是没有关系的，执行到目标元素是在真正响应执行事件函数的过程中去匹配的；所以使用事件在动态绑定事件的情况下是可以减少很多重复工作的。</p>
+<h3 id="3-基本实现">3. 基本实现</h3>
+<p>【1】JavaScript原生实现事件委托</p>
+<p>比如我们有这样的一个 HTML 片段：</p>
+<pre><code>&lt;ul id=&quot;myLinks&quot;&gt;
+  &lt;li id=&quot;goSomewhere&quot;&gt;Go somewhere&lt;/li&gt;
+  &lt;li id=&quot;doSomething&quot;&gt;Do something&lt;/li&gt;
+  &lt;li id=&quot;sayHi&quot;&gt;Say hi&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>使用事件委托，只需在 DOM 树中尽量最高的层次上添加一个事件处理程序，如下面的例子所示</p>
+<pre><code>    var item1 = document.getElementById(&quot;goSomewhere&quot;);
+    var item2 = document.getElementById(&quot;doSomething&quot;);
+    var item3 = document.getElementById(&quot;sayHi&quot;);
+ 
+    document.addEventListener(&quot;click&quot;, function (event) {
+      var target = event.target;
+      switch (target.id) {
+        case &quot;doSomething&quot;:
+          document.title = &quot;事件委托&quot;;
+          break;
+        case &quot;goSomewhere&quot;:
+          location.href = &quot;http://www.baidu.com&quot;;
+          break;
+        case &quot;sayHi&quot;: alert(&quot;hi&quot;);
+          break;
+      }
+    })
+</code></pre>
+<p>【2】jQuery事件delegate()实现事件委托</p>
+<p>delegate() 方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。</p>
+<p><strong>格式：$(selector).delegate(childSelector, event, data, function)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">childSelector</td>
+<td style="text-align:center">必需，规定要附加事件处理程序的一个或多个子元素。</td>
+</tr>
+<tr>
+<td style="text-align:center">event</td>
+<td style="text-align:center">必需，规定附加到元素的一个或多个事件。由空格分隔多个事件值。必须是有效的事件。</td>
+</tr>
+<tr>
+<td style="text-align:center">data</td>
+<td style="text-align:center">可选，规定传递到函数的额外数据。</td>
+</tr>
+<tr>
+<td style="text-align:center">function</td>
+<td style="text-align:center">必需，规定当事件发生时运行的函数。</td>
+</tr>
+</tbody>
+</table>
+<pre><code>&lt;body&gt;
+  &lt;ul id=&quot;myLinks&quot;&gt;
+    &lt;li id=&quot;goSomewhere&quot;&gt;Go somewhere&lt;/li&gt;
+    &lt;li id=&quot;doSomething&quot;&gt;Do something&lt;/li&gt;
+    &lt;li id=&quot;sayHi&quot;&gt;Say hi&lt;/li&gt;
+  &lt;/ul&gt;
+ 
+  &lt;script&gt;
+    $(document).ready(function () {
+      $(&quot;#myLinks&quot;).delegate(&quot;#goSomewhere&quot;, &quot;click&quot;, function () {
+        location.href = &quot;http://www.baidu.com&quot;;
+      });
+    });
+  &lt;/script&gt;
+ 
+&lt;/body&gt;
+</code></pre>
+<h3 id="4-使用事件委托注意事项">4. 使用事件委托注意事项</h3>
+<p>使用“事件委托”时，并不是说把事件委托给的元素越靠近顶层就越好。事件冒泡的过程也需要耗时，越靠近顶层，事件的”事件传播链”越长，也就越耗时。如果DOM嵌套结构很深，事件冒泡通过大量祖先元素会导致性能损失。</p>
+<h2 id="162-如何让事件先冒泡后捕获">16.2 如何让事件先冒泡后捕获</h2>
+<p>若要实现先冒泡后捕获，给一个元素绑定两个addEventListener，其中一个第三个参数设置为false（即冒泡），另一个第三个参数设置为true（即捕获），调整它们的代码顺序，将设置为false的监听事件放在设置为true的监听事件前面即可。</p>
 
             </div>
             
@@ -1369,6 +1489,10 @@ Object.prototype.chargeObjectEqual = function(obj){
   </div>
   <div class="nav">
     <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="【面】前端知识点梳理（JS下）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-xia/">【面】前端知识点梳理（JS下）</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="【面】前端知识点梳理（JS下）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-xia/">上一篇</a>
       
     </div>
     <div class="nav-next">
@@ -1868,6 +1992,12 @@ Object.prototype.chargeObjectEqual = function(obj){
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-xia/"" data-c="
+          &lt;h1 id=&#34;17-window的onload事件和domcontentloaded&#34;&gt;17. window的onload事件和domcontentloaded&lt;/h1&gt;
+">【面】前端知识点梳理（JS下）</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-shang/"" data-c="
@@ -2571,6 +2701,112 @@ Object.prototype.chargeObjectEqual = function(obj){
     return true;
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;16-事件模型&#34;&gt;16. 事件模型&lt;/h1&gt;
+&lt;h2 id=&#34;161-事件委托-代理&#34;&gt;16.1 事件委托、代理&lt;/h2&gt;
+&lt;h3 id=&#34;1基本概念&#34;&gt;1.基本概念&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;事件代理&lt;/strong&gt;（Event Delegation），又称之为事件委托。是JavaScript中常用绑定事件的常用技巧。顾名思义，“事件代理”即是把原本需要绑定在子元素的响应事件（click、keydown......）委托给父元素，让父元素担当事件监听的职务。事件代理的原理是DOM元素的事件冒泡。&lt;/p&gt;
+&lt;h3 id=&#34;2-事件冒泡&#34;&gt;2. 事件冒泡&lt;/h3&gt;
+&lt;p&gt;一个事件触发后，会在子元素和父元素之间&lt;strong&gt;传播&lt;/strong&gt;（propagation）。这种传播分成三个阶段&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615169023216.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如上图所示，事件传播分成三个阶段：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;捕获阶段：从window对象传导到目标节点（上层传到底层）称为“捕获阶段”（capture phase），捕获阶段不会响应任何事件；&lt;/li&gt;
+&lt;li&gt;目标阶段：在目标节点上触发，称为“目标阶段”&lt;/li&gt;
+&lt;li&gt;冒泡阶段：从目标节点传导回window对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。&lt;strong&gt;事件代理即是利用事件冒泡的机制把里层所需要响应的事件绑定到外层&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-事件委托的优点&#34;&gt;3. 事件委托的优点&lt;/h3&gt;
+&lt;p&gt;【1】&lt;strong&gt;可以大量节省内存占用，减少事件注册，比如在ul上代理所有li的click事件就非常棒&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul id=&amp;quot;list&amp;quot;&amp;gt;
+  &amp;lt;li&amp;gt;item 1&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;item 2&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;item 3&amp;lt;/li&amp;gt;
+  ......
+  &amp;lt;li&amp;gt;item n&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如上面代码所示，如果给每个li列表项都绑定一个函数，那对内存的消耗是非常大的，因此较好的解决办法就是将li元素的点击事件绑定到它的父元素ul身上，执行事件的时候再去匹配判断目标元素。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;【2】可以实现当新增子对象时无需再次对其绑定（动态绑定事件）&lt;/strong&gt;&lt;br&gt;
+假设上述的例子中列表项li就几个，我们给每个列表项都绑定了事件；&lt;/p&gt;
+&lt;p&gt;在很多时候，我们需要通过 AJAX 或者用户操作动态的增加或者删除列表项li元素，那么在每一次改变的时候都需要重新给新增的元素绑定事件，给即将删去的元素解绑事件；&lt;/p&gt;
+&lt;p&gt;如果用了事件委托就没有这种麻烦了，因为事件是绑定在父层的，和目标元素的增减是没有关系的，执行到目标元素是在真正响应执行事件函数的过程中去匹配的；所以使用事件在动态绑定事件的情况下是可以减少很多重复工作的。&lt;/p&gt;
+&lt;h3 id=&#34;3-基本实现&#34;&gt;3. 基本实现&lt;/h3&gt;
+&lt;p&gt;【1】JavaScript原生实现事件委托&lt;/p&gt;
+&lt;p&gt;比如我们有这样的一个 HTML 片段：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul id=&amp;quot;myLinks&amp;quot;&amp;gt;
+  &amp;lt;li id=&amp;quot;goSomewhere&amp;quot;&amp;gt;Go somewhere&amp;lt;/li&amp;gt;
+  &amp;lt;li id=&amp;quot;doSomething&amp;quot;&amp;gt;Do something&amp;lt;/li&amp;gt;
+  &amp;lt;li id=&amp;quot;sayHi&amp;quot;&amp;gt;Say hi&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用事件委托，只需在 DOM 树中尽量最高的层次上添加一个事件处理程序，如下面的例子所示&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    var item1 = document.getElementById(&amp;quot;goSomewhere&amp;quot;);
+    var item2 = document.getElementById(&amp;quot;doSomething&amp;quot;);
+    var item3 = document.getElementById(&amp;quot;sayHi&amp;quot;);
+ 
+    document.addEventListener(&amp;quot;click&amp;quot;, function (event) {
+      var target = event.target;
+      switch (target.id) {
+        case &amp;quot;doSomething&amp;quot;:
+          document.title = &amp;quot;事件委托&amp;quot;;
+          break;
+        case &amp;quot;goSomewhere&amp;quot;:
+          location.href = &amp;quot;http://www.baidu.com&amp;quot;;
+          break;
+        case &amp;quot;sayHi&amp;quot;: alert(&amp;quot;hi&amp;quot;);
+          break;
+      }
+    })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;【2】jQuery事件delegate()实现事件委托&lt;/p&gt;
+&lt;p&gt;delegate() 方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;格式：$(selector).delegate(childSelector, event, data, function)&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;参数&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;childSelector&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;必需，规定要附加事件处理程序的一个或多个子元素。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;event&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;必需，规定附加到元素的一个或多个事件。由空格分隔多个事件值。必须是有效的事件。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;data&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;可选，规定传递到函数的额外数据。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;function&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;必需，规定当事件发生时运行的函数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;body&amp;gt;
+  &amp;lt;ul id=&amp;quot;myLinks&amp;quot;&amp;gt;
+    &amp;lt;li id=&amp;quot;goSomewhere&amp;quot;&amp;gt;Go somewhere&amp;lt;/li&amp;gt;
+    &amp;lt;li id=&amp;quot;doSomething&amp;quot;&amp;gt;Do something&amp;lt;/li&amp;gt;
+    &amp;lt;li id=&amp;quot;sayHi&amp;quot;&amp;gt;Say hi&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+ 
+  &amp;lt;script&amp;gt;
+    $(document).ready(function () {
+      $(&amp;quot;#myLinks&amp;quot;).delegate(&amp;quot;#goSomewhere&amp;quot;, &amp;quot;click&amp;quot;, function () {
+        location.href = &amp;quot;http://www.baidu.com&amp;quot;;
+      });
+    });
+  &amp;lt;/script&amp;gt;
+ 
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;4-使用事件委托注意事项&#34;&gt;4. 使用事件委托注意事项&lt;/h3&gt;
+&lt;p&gt;使用“事件委托”时，并不是说把事件委托给的元素越靠近顶层就越好。事件冒泡的过程也需要耗时，越靠近顶层，事件的”事件传播链”越长，也就越耗时。如果DOM嵌套结构很深，事件冒泡通过大量祖先元素会导致性能损失。&lt;/p&gt;
+&lt;h2 id=&#34;162-如何让事件先冒泡后捕获&#34;&gt;16.2 如何让事件先冒泡后捕获&lt;/h2&gt;
+&lt;p&gt;若要实现先冒泡后捕获，给一个元素绑定两个addEventListener，其中一个第三个参数设置为false（即冒泡），另一个第三个参数设置为true（即捕获），调整它们的代码顺序，将设置为false的监听事件放在设置为true的监听事件前面即可。&lt;/p&gt;
 ">【面】前端知识点梳理（JS上）</a>
       </div>
       
