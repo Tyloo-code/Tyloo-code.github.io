@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>NodeJs从零单排(5) | Tyloo</title>
+<title>js中==和===区别 | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1615295153588">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="NodeJs从零单排(5)" />
-  <meta name="keywords" content="Node" />
+  <meta name="description" content="js中==和===区别" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -190,8 +190,7 @@
       <div class="sidebar-body pisces" id="sidebar_body">
         
           
-            <div class="post-side-meta" id="post_side_meta">
-              
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -232,192 +231,6 @@
   </div>
 
 </div>
-            </div>
-            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
-              <div class="toc-box right-motion">
-  <div class="toc-wrapper auto-number auto"
-    id="toc_wrapper">
-    <ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-es6-%E5%B8%B8%E8%A7%81%E8%AF%AD%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8">一、 Es6 常见语法的使用</a></li>
-<li><a href="#%E4%BA%8C-async-await-%E5%92%8C-promise-%E7%9A%84%E4%BD%BF%E7%94%A8">二、 Async、Await 和 Promise 的使用</a></li>
-</ul>
-
-  </div>
-</div>
-
-<script>
-
-  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
-  let active = 'active-show', activeClass = 'active-current';
-  let tocWrapper = document.querySelector('#toc_wrapper');
-  let tocContent = tocWrapper.children[0];
-  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
-
-  function addTocNumber(elem, deep) {
-    if (!elem) {
-      return;
-    }
-    let prop = elem.__proto__;
-
-    if (prop === HTMLUListElement.prototype) {
-      for (let i = 0; i < elem.children.length; i++) {
-        addTocNumber(elem.children[i], deep + (i + 1) + '.');
-      }
-    } else if (prop === HTMLLIElement.prototype) {
-      // 保存li元素
-      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
-        lList.push(elem);
-      }
-      for (let i = 0; i < elem.children.length; i++) {
-        let cur = elem.children[i];
-        if (cur.__proto__ === HTMLAnchorElement.prototype) {
-          if (autoNumber) {
-            cur.text = deep + ' ' + cur.text;
-          }
-        } else if (cur.__proto__ === HTMLUListElement.prototype) {
-          addTocNumber(cur, deep);
-        }
-      }
-    }
-  }
-
-  function removeParentActiveClass() {
-    let parents = tocContent.querySelectorAll('.' + active)
-    parents.forEach(function (elem) {
-      elem.classList.remove(active);
-    });
-  }
-
-  function addActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.add(activeClass);
-    }
-  }
-
-  function removeActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.remove(activeClass);
-    }
-  }
-
-  function addActiveLiElemment(elem, parent) {
-    if (!elem || elem === parent) {
-      return;
-    } else {
-      if (elem.__proto__ === HTMLLIElement.prototype) {
-        elem.classList.add(active);
-      }
-      addActiveLiElemment(elem.parentElement, parent);
-    }
-  }
-
-  function showToc() {
-    if (tocWrapper) {
-      postBody = document.querySelector('#post_body');
-      for (let i = 0; i < postBody.children.length; i++) {
-        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
-          hList.push(postBody.children[i]);
-        }
-      }
-      if (tocWrapper.classList.contains('compress')) {
-        tocContent.classList.add('closed');
-      } else if (tocWrapper.classList.contains('no_compress')) {
-        tocContent.classList.add('expanded');
-      } else {
-        if (hList.length > 10) {
-          active = 'active-hidden'
-          tocContent.classList.add('closed');
-        } else {
-          tocContent.classList.add('expanded');
-        }
-      }
-    }
-  }
-
-  (function () {
-    // 处理不是从#一级标题开始目录
-    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
-      let con = tocContent.children[0].children[0];
-      tocContent.innerHTML = con.innerHTML;
-    }
-    let markdownItTOC = document.querySelector('.markdownIt-TOC');
-    let innerHeight = window.innerHeight;
-    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
-    addTocNumber(tocContent, '');
-  })();
-
-  document.addEventListener('scroll', function (e) {
-    if (lList.length <= 0) {
-      return;
-    }
-    let scrollTop = document.scrollingElement.scrollTop + 10;
-    let dir;
-
-    if (lastTop - scrollTop > 0) {
-      dir = 'up';
-    } else {
-      dir = 'down';
-    }
-
-    lastTop = scrollTop;
-    if (scrollTop <= 0) {
-      if (lastIndex >= 0 && lastIndex < hList.length) {
-        lList[lastIndex].classList.remove(activeClass);
-      }
-      return;
-    }
-
-    let current = 0, hasFind = false;
-    for (let i = 0; i < hList.length; i++) {
-      if (hList[i].offsetTop > scrollTop) {
-        current = i;
-        hasFind = true;
-        break;
-      }
-    }
-    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
-      current = hList.length - 1;
-    } else {
-      current--;
-    }
-    if (dir === 'down') {
-      if (current > lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex)
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    } else {
-      if (current < lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex);
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    }
-  });
-
-
-  window.addEventListener('load', function () {
-    showToc();
-    document.querySelector('#sidebar').style = 'display: block;';
-    tocWrapper.classList.add('toc-active');
-    setTimeout(function () {
-      if ("createEvent" in document) {
-        let evt = document.createEvent("HTMLEvents");
-        evt.initEvent("scroll", false, true);
-        document.dispatchEvent(evt);
-      }
-      else {
-        document.fireEvent("scroll");
-      }
-    }, 500)
-  })
-
-</script>
-            </div>
           
         
       </div>
@@ -505,8 +318,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/">
-      NodeJs从零单排(5)
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/js-zhong-he-qu-bie/">
+      js中==和===区别
     </a>
   </h1>
   <div class="post-meta">
@@ -514,22 +327,9 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-24 11:16:57">2020-12-24</span>
+      <span class="publish-time" data-t="2021-03-09 18:06:38">2021-03-09</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://Tyloo-code.github.io/tag/Z6ts5lib5/">
-        <span>Node</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
@@ -538,12 +338,12 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>389<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>376<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/nodejs-cong-ling-dan-pai-5/" data-flag-title="NodeJs从零单排(5)" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/js-zhong-he-qu-bie/" data-flag-title="js中==和===区别" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -552,60 +352,23 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="一-es6-常见语法的使用">一、 Es6 常见语法的使用</h1>
-<ol>
-<li>let const</li>
-<li>箭头函数</li>
-<li>对象、属性的简写</li>
-<li>模板字符串</li>
-<li>Promise</li>
-</ol>
-<h1 id="二-async-await-和-promise-的使用">二、 Async、Await 和 Promise 的使用</h1>
-<p><strong>async</strong> 是“异步”的简写，而 await 可以认为是 async wait 的简写。所以应该很好理解 async 用于申明一个异步的 function ，而 await 用于等待一个异步方法执行完成。</p>
-<p><strong>简单理解：</strong><br>
-<strong>async</strong> 是让方法变成异步。<br>
-<strong>await</strong> 是等待异步方法执行完成。</p>
-<p><strong>详细说明：</strong><br>
-<strong>async 是让方法变成异步</strong>，在终端里用 node 执行这段代码，你会发现输出了 Promise {‘Hello async’ }，这时候会发现它返回的是 Promise。</p>
-<pre><code>async function testAsync(){ 
-    return 'Hello async'; 
-}
-</code></pre>
-<pre><code>const result = testAsync(); 
-console.log(result);
-</code></pre>
-<pre><code>PS E:\code\BXShop&gt; node async.js 
-Promise { 'Hello async' }
-</code></pre>
-<p><strong>await 在等待 async 方法执行完毕</strong>，其实 await 等待的只是一个表达式，这个表达式在官方 文档里说的是 Promise 对象，但是它也可以接受普通值。 <span style="color:red">注意：</span>await 必须在 async 方法中 才可以使用因为 await 访问本身就会造成程序停止堵塞，所以必须在异步方法中才可以使用。</p>
-<pre><code>function getData(){ 
-    return 'zhangsan'; 
-}
-async function testAsync(){ 
-    return 'Hello async'; 
-}
-</code></pre>
-<pre><code>async function test(){ 
-    const v1=await getData(); 
-    const v2=await testAsync(); 
-    console.log(v1,v2);
-}
-test();
-</code></pre>
-<p><strong>async/await 同时使用</strong><br>
-async 会将其后的函数（函数表达式或 Lambda）的返回值封装成一个 Promise 对象，而 await 会等待这个 Promise 完成，并将其 resolve 的结果返回出来。</p>
-<pre><code>function findData() { 
-    return new Promise(resolve =&gt; { 
-        setTimeout(() =&gt; resolve(&quot;long_time_value&quot;), 1000); 
-    });
-}
-</code></pre>
-<pre><code>async function test() { 
-    const v = await findData(); 
-    console.log(v);
-}
-test();
-</code></pre>
+              <p>简单来说： == 代表相同， ===代表严格相同, 为啥这么说呢，</p>
+<p>这么理解： 当进行双等号比较时候： 先检查两个操作数数据类型，如果相同， 则进行===比较， 如果不同， 则愿意为你进行一次类型转换， 转换成相同类型后再进行比较， 而===比较时， 如果类型不同，直接就是false.</p>
+<p>操作数1 == 操作数2，  操作数1 === 操作数2</p>
+<p>比较过程：</p>
+<p><strong>双等号</strong><code>==</code>：</p>
+<p>（1）如果两个值类型相同，再进行三个等号(===)的比较</p>
+<p>（2）如果两个值类型不同，也有可能相等，需根据以下规则进行类型转换在比较：</p>
+<p>1）如果一个是null，一个是undefined，那么相等</p>
+<p>2）如果一个是字符串，一个是数值，把字符串转换成数值之后再进行比较</p>
+<p></p>
+<p><strong>三等号</strong><code>===</code>:</p>
+<p>（1）如果类型不同，就一定不相等</p>
+<p>（2）如果两个都是数值，并且是同一个值，那么相等；如果其中至少一个是NaN，那么不相等。（判断一个值是否是NaN，只能使用isNaN( ) 来判断）</p>
+<p>（3）如果两个都是字符串，每个位置的字符都一样，那么相等，否则不相等。</p>
+<p>（4）如果两个值都是true，或是false，那么相等</p>
+<p>（5）如果两个值都引用同一个对象或是函数，那么相等，否则不相等</p>
+<p>（6）如果两个值都是null，或是undefined，那么相等</p>
 
             </div>
             
@@ -622,7 +385,7 @@ test();
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/" title="NodeJs从零单排(5)">https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/</a>
+      <a href="https://Tyloo-code.github.io/post/js-zhong-he-qu-bie/" title="js中==和===区别">https://Tyloo-code.github.io/post/js-zhong-he-qu-bie/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -631,21 +394,15 @@ test();
   </ul>
   <div class="tags">
     
-      <a href="https://Tyloo-code.github.io/tag/Z6ts5lib5/"># Node</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="NodeJs从零单排(6)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-6/">NodeJs从零单排(6)</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="NodeJs从零单排(6)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-6/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="NodeJs从零单排(4)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/">NodeJs从零单排(4)</a>
-        <a class="nav-mobile-next" title="NodeJs从零单排(4)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/">下一篇</a>
+        <a class="nav-pc-next" title="【面】前端知识点梳理（JS下）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-xia/">【面】前端知识点梳理（JS下）</a>
+        <a class="nav-mobile-next" title="【面】前端知识点梳理（JS下）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-xia/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

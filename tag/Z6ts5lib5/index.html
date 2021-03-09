@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615256793223">
+<link rel="shortcut icon" href="/favicon.ico?v=1615295153588">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -184,7 +184,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">44</span>
+        <span class="site-item-stat-count">45</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -240,6 +240,8 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
       
       
       
@@ -673,6 +675,28 @@
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/js-zhong-he-qu-bie/"" data-c="
+          &lt;p&gt;简单来说： == 代表相同， ===代表严格相同, 为啥这么说呢，&lt;/p&gt;
+&lt;p&gt;这么理解： 当进行双等号比较时候： 先检查两个操作数数据类型，如果相同， 则进行===比较， 如果不同， 则愿意为你进行一次类型转换， 转换成相同类型后再进行比较， 而===比较时， 如果类型不同，直接就是false.&lt;/p&gt;
+&lt;p&gt;操作数1 == 操作数2，  操作数1 === 操作数2&lt;/p&gt;
+&lt;p&gt;比较过程：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;双等号&lt;/strong&gt;&lt;code&gt;==&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;（1）如果两个值类型相同，再进行三个等号(===)的比较&lt;/p&gt;
+&lt;p&gt;（2）如果两个值类型不同，也有可能相等，需根据以下规则进行类型转换在比较：&lt;/p&gt;
+&lt;p&gt;1）如果一个是null，一个是undefined，那么相等&lt;/p&gt;
+&lt;p&gt;2）如果一个是字符串，一个是数值，把字符串转换成数值之后再进行比较&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三等号&lt;/strong&gt;&lt;code&gt;===&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;（1）如果类型不同，就一定不相等&lt;/p&gt;
+&lt;p&gt;（2）如果两个都是数值，并且是同一个值，那么相等；如果其中至少一个是NaN，那么不相等。（判断一个值是否是NaN，只能使用isNaN( ) 来判断）&lt;/p&gt;
+&lt;p&gt;（3）如果两个都是字符串，每个位置的字符都一样，那么相等，否则不相等。&lt;/p&gt;
+&lt;p&gt;（4）如果两个值都是true，或是false，那么相等&lt;/p&gt;
+&lt;p&gt;（5）如果两个值都引用同一个对象或是函数，那么相等，否则不相等&lt;/p&gt;
+&lt;p&gt;（6）如果两个值都是null，或是undefined，那么相等&lt;/p&gt;
+">js中==和===区别</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-xia/"" data-c="
           &lt;h1 id=&#34;17-window的onload事件和domcontentloaded&#34;&gt;17. window的onload事件和domcontentloaded&lt;/h1&gt;
 &lt;ul&gt;
@@ -809,6 +833,832 @@ console.log( arr1 );
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;20-call-与-apply区别原生实现bind&#34;&gt;20.  call 与 apply区别，原生实现bind&lt;/h1&gt;
 &lt;h2 id=&#34;1-call-和-apply-的共同点&#34;&gt;1. call 和 apply 的共同点&lt;/h2&gt;
+&lt;p&gt;它们的共同点是，都能够&lt;strong&gt;改变函数执行时的上下文&lt;/strong&gt;，将一个对象的方法交给另一个对象来执行，并且是立即执行的。&lt;/p&gt;
+&lt;p&gt;为何要改变执行上下文？举一个生活中的小例子：平时没时间做饭的我，周末想给孩子炖个腌笃鲜尝尝。但是没有适合的锅，而我又不想出去买。所以就问邻居借了一个锅来用，这样既达到了目的，又节省了开支，一举两得。&lt;/p&gt;
+&lt;p&gt;改变执行上下文也是一样的，A 对象有一个方法，而 B 对象因为某种原因，也需要用到同样的方法，那么这时候我们是单独为 B 对象扩展一个方法呢，还是借用一下 A 对象的方法呢？当然是借用 A 对象的啦，既完成了需求，又减少了内存的占用。&lt;/p&gt;
+&lt;p&gt;另外，它们的写法也很类似，&lt;strong&gt;调用 call 和 apply 的对象，必须是一个函数 Function&lt;/strong&gt;。接下来，就会说到具体的写法，那也是它们区别的主要体现。&lt;/p&gt;
+&lt;h2 id=&#34;2-call-和-apply-的区别&#34;&gt;2. call 和 apply 的区别&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;call 的写法&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Function.call(obj,[param1[,param2[,…[,paramN]]]])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;调用 call 的对象，必须是个函数 Function。&lt;/li&gt;
+&lt;li&gt;call 的第一个参数，是一个对象。 Function 的调用者，将会指向这个对象。如果不传，则默认为全局对象 window。&lt;/li&gt;
+&lt;li&gt;第二个参数开始，可以接收任意个参数。每个参数会映射到相应位置的 Function 的参数上。但是如果将所有的参数作为数组传入，它们会作为一个整体映射到 Function 对应的第一个参数上，之后参数都为空。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;function func (a,b,c) {}
+
+func.call(obj, 1,2,3)
+// func 接收到的参数实际上是 1,2,3
+
+func.call(obj, [1,2,3])
+// func 接收到的参数实际上是 [1,2,3],undefined,undefined
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;apply 的写法&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Function.apply(obj[,argArray])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;它的调用者必须是函数 Function，并且只接收两个参数，第一个参数的规则与 call 一致。&lt;/li&gt;
+&lt;li&gt;第二个参数，必须是数组或者类数组，它们会被转换成类数组，传入 Function 中，并且会被映射到 Function 对应的参数上。这也是 call 和 apply 之间，很重要的一个区别。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;func.apply(obj, [1,2,3])
+// func 接收到的参数实际上是 1,2,3
+
+func.apply(obj, {
+    0: 1,
+    1: 2,
+    2: 3,
+    length: 3
+})
+// func 接收到的参数实际上是 1,2,3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;类数组无法使用 forEach、splice、push 等数组原型链上的方法&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-call-和-apply-的用途&#34;&gt;3 call 和 apply 的用途&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;call 的使用场景&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;对象的继承&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;function superClass () {
+    this.a = 1;
+    this.print = function () {
+        console.log(this.a);
+    }
+}
+
+function subClass () {
+    superClass.call(this);
+    this.print();
+}
+
+subClass();
+// 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;subClass 通过 call 方法，继承了 superClass 的 print 方法和 a 变量。此外，subClass 还可以扩展自己的其他方法。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;借用方法&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;let domNodes = Array.prototype.slice.call(document.getElementsByTagName(&amp;quot;*&amp;quot;));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;apply 的一些妙用&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Math.max&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;let max = Math.max.apply(null, array);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同理，要获取数组中最小的一项，可以这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let min = Math.min.apply(null, array);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;实现两个数组合并&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+
+Array.prototype.push.apply(arr1, arr2);
+console.log(arr1); // [1, 2, 3, 4, 5, 6]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-bind-的使用&#34;&gt;4. bind 的使用&lt;/h2&gt;
+&lt;p&gt;bind() 方法创建一个新的函数，在调用时设置 this 关键字为提供的值。并在调用新函数时，将给定参数列表作为原函数的参数序列的前若干项。&lt;/p&gt;
+&lt;p&gt;它的语法如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Function.bind(thisArg[, arg1[, arg2[, ...]]])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;bind 方法 与 apply 和 call 比较类似，也能改变函数体内的 this 指向。不同的是，&lt;code&gt;bind 方法的返回值是函数，并且需要稍后调用，才会执行&lt;/code&gt;。而 apply 和 call 则是&lt;code&gt;立即调用&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;来看下面这个例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function add (a, b) {
+    return a + b;
+}
+
+function sub (a, b) {
+    return a - b;
+}
+
+add.bind(sub, 5, 3); // 这时，并不会返回 8
+add.bind(sub, 5, 3)(); // 调用后，返回 8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果 bind 的第一个参数是 null 或者 undefined，this 就指向全局对象 window。&lt;/p&gt;
+&lt;h2 id=&#34;5-总结&#34;&gt;5. 总结&lt;/h2&gt;
+&lt;p&gt;call 和 apply 的主要作用，是改变对象的执行上下文，并且是立即执行的。它们在参数上的写法略有区别。&lt;/p&gt;
+&lt;p&gt;bind 也能改变对象的执行上下文，它与 call 和 apply 不同的是，返回值是一个函数，并且需要稍后再调用一下，才会执行。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;原生实现bind函数&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 原生js实现bind函数
+// 所有的函数都要有bind方法，所以要定义在Function的原型对象上
+Function.prototype.myBind = function(objThis,...params){
+    // objThis是要绑定的this对象，...params是因为参数数量不确定才用解构语法
+    const thisFn = this;//当前调用的函数，例如fn.myBind()就把fn保存到thisFn
+    let funcForBind = function(...secondParams){ // 要返回的函数
+        // 判断函数是否是用new function生成的
+        const isNew = this instanceof funcForBind
+        const thisArg = isNew?this:objThis //this的指向
+        // 绑定好this和参数返回到外层，暂时用call绑定，call也可以原生实现
+        return thisFn.call(thisArg,...params,...secondParams)
+    }
+    // 绑定原型
+    funcForBind.prototype = Object.create(thisFn)
+    return funcForBind //返回绑定好的函数
+} 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;21-async-和-await&#34;&gt;21. async 和 await&lt;/h1&gt;
+&lt;h2 id=&#34;1-作用&#34;&gt;1. 作用&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;async&lt;/code&gt;和&lt;code&gt;await&lt;/code&gt;是用来处理异步的。即你需要异步像同步一样执行，需要异步返回结果之后，再往下依据结果继续执行。&lt;br&gt;
+&lt;code&gt;async&lt;/code&gt; 是“异步”的简写，而 &lt;code&gt;await&lt;/code&gt; 可以认为是 &lt;code&gt;async wait&lt;/code&gt; 的简写。&lt;br&gt;
+&lt;code&gt;async&lt;/code&gt; 用于申明一个 &lt;code&gt;function&lt;/code&gt; 是异步的，而 &lt;code&gt;await&lt;/code&gt; 用于等待一个异步方法执行完成。&lt;/p&gt;
+&lt;h2 id=&#34;2-async&#34;&gt;2. async&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;async function testAsync() {
+    return &amp;quot;hello async&amp;quot;;
+}
+
+const result = testAsync();
+console.log(result);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;打印输出的是一个&lt;code&gt;Promise&lt;/code&gt; 对象，&lt;code&gt;async&lt;/code&gt; 函数会返回一个 &lt;code&gt;Promise&lt;/code&gt; 对象。&lt;br&gt;
+在最外层不能用 &lt;code&gt;await&lt;/code&gt; 获取其返回值的情况下，使用 &lt;code&gt;then()&lt;/code&gt; 链来处理这个 &lt;code&gt;Promise&lt;/code&gt; 对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;testAsync().then(v =&amp;gt; {
+    console.log(v);    // 输出 hello async
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当 &lt;code&gt;async&lt;/code&gt; 函数没有返回值时，返回 &lt;code&gt;Promise.resolve(undefined)&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-awit&#34;&gt;3. awit&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;await&lt;/code&gt;只能放在&lt;code&gt;async&lt;/code&gt;函数内部使用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;await&lt;/code&gt; 用于一个异步操作之前，表示要“等待”这个异步操作的返回值。&lt;br&gt;
+&lt;code&gt;await&lt;/code&gt; 也可以用于一个同步的值。&lt;/p&gt;
+&lt;p&gt;如果它等到的不是一个 &lt;code&gt;Promise&lt;/code&gt; 对象，那 &lt;code&gt;await&lt;/code&gt; 表达式的运算结果就是它等到的东西。&lt;br&gt;
+如果它等到的是一个 &lt;code&gt;Promise&lt;/code&gt; 对象，&lt;code&gt;await&lt;/code&gt; 就会阻塞后面的代码，等着 &lt;code&gt;Promise&lt;/code&gt; 对象 &lt;code&gt;resolve&lt;/code&gt;，然后得到 &lt;code&gt;resolve&lt;/code&gt; 的值，作为 &lt;code&gt;await&lt;/code&gt; 表达式的运算结果。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;异步代码&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 2s 之后返回双倍的值
+function doubleAfter2seconds(num) {
+    return new Promise((resolve, reject) =&amp;gt; {
+        setTimeout(() =&amp;gt; {
+            resolve(2 * num)
+        }, 2000);
+    })
+}
+
+async function testResult () {
+    let result = await doubleAfter2seconds(30);
+    console.log(result);
+}
+
+testResult();
+// 2s 之后，输出了60. 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-执行顺序&#34;&gt;4. 执行顺序&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 2s 之后返回双倍的值
+function doubleAfter2seconds(num) {
+    return new Promise((resolve, reject) =&amp;gt; {
+        setTimeout(() =&amp;gt; {
+            resolve(2 * num)
+        }, 2000);
+    })
+}
+
+async function testResult () {
+    console.log(&#39;内部调用前&#39;) // 2
+    let result = await doubleAfter2seconds(30);
+    console.log(result); // 4
+    console.log(&#39;内部调用后&#39;) // 5
+}
+
+console.log(&#39;外部调用前&#39;) // 1
+testResult();
+console.log(&#39;外部调用后&#39;) // 3
+// --- 依次输出
+// 外部调用前
+// 内部调用前
+// 外部调用后
+// --- 2s 之后输出
+// 60
+// 内部调用后
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;分析一下上面的执行顺序：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先打印输出&lt;code&gt;外部调用前&lt;/code&gt;，同步代码，顺序执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;然后调用方法&lt;code&gt;testResult()&lt;/code&gt;，打印输出&lt;code&gt;内部调用前&lt;/code&gt;，同步代码，顺序执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;再执行异步方法&lt;code&gt;doubleAfter2seconds&lt;/code&gt;，&lt;br&gt;
+　1&amp;gt;如果没用&lt;code&gt;await&lt;/code&gt;关键字，此后的执行顺序应该是&lt;br&gt;
+　　&lt;code&gt;内部调用后，外部调用后，2s 之后输出60&lt;/code&gt;&lt;br&gt;
+　　因为异步方法不阻塞其他代码的执行，最后再输出&lt;code&gt;60&lt;/code&gt;&lt;br&gt;
+　2&amp;gt;这里使用了&lt;code&gt;await&lt;/code&gt;关键字，所以到这里后会等待异步返回结果，再往下执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当&lt;code&gt;testResult&lt;/code&gt;函数内部&lt;code&gt;await&lt;/code&gt;阻塞执行后，不会影响到&lt;code&gt;testResult&lt;/code&gt;函数外面&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;async&lt;/code&gt; &lt;strong&gt;函数调用不会造成阻塞，它内部所有的阻塞都被封装在一个 Promise 对象中异步执行。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所以，在调用&lt;code&gt;testResult&lt;/code&gt;函数后，会继续向下执行，打印输出外部调用后&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当2s之后，异步函数&lt;code&gt;doubleAfter2seconds&lt;/code&gt;执行完成，返回结果，&lt;br&gt;
+打印输出&lt;code&gt;60&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;因为&lt;code&gt;await&lt;/code&gt;将异步变成同步，所以在输出&lt;code&gt;60&lt;/code&gt;后，同步执行，再输出&lt;code&gt;内部调用后&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-错误处理&#34;&gt;5. 错误处理&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 2s 之后返回双倍的值
+function doubleAfter2seconds(num) {
+    return new Promise((resolve, reject) =&amp;gt; {
+        setTimeout(() =&amp;gt; {
+            resolve(2 * num)
+        }, 2000);
+    })
+}
+
+async function testResult () {
+    let first = await doubleAfter2seconds(10);
+    let second = await doubleAfter2seconds(20);    
+    let res = first + second;
+    return res;
+}
+
+testResult().then(res =&amp;gt; {
+    console.log(res);      
+}).catch(error =&amp;gt; {
+    console.log(error);     
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6在接口中使用axios&#34;&gt;6.在接口中使用(axios)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;created () {
+    this.init()
+},
+methods: {
+    async init () {
+      try {
+          let first = await this.getOne();
+          let second = await this.getTwo();    
+          let res = first + second;
+          console.log(res);
+      } catch (error) {
+          console.log(error);
+      }        
+    },
+    getOne () {
+        const params = {name: &#39;one&#39;}
+        return new Promise((resolve, reject) =&amp;gt; {
+            axios.get(&#39;/one&#39;, { params}).then((res) =&amp;gt; {
+                if (res.status === 200) {
+                    resolve(res)
+                }
+            }).catch((err) =&amp;gt; {
+                reject(err)
+            })
+        })
+    },
+    getTwo () {
+        const params = {name: &#39;two&#39;}
+        return new Promise((resolve, reject) =&amp;gt; {
+            axios.get(&#39;/two&#39;, { params}).then((res) =&amp;gt; {
+                if (res.status === 200) {
+                    resolve(res)
+                }
+            }).catch((err) =&amp;gt; {
+                reject(err)
+            })
+        })
+    },
+},
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;22-立即执行函数和使用场景与闭包结合&#34;&gt;22. 立即执行函数和使用场景（与闭包结合）&lt;/h1&gt;
+&lt;h2 id=&#34;1-什么是立即执行函数&#34;&gt;1. 什么是立即执行函数？&lt;/h2&gt;
+&lt;p&gt;声明一个函数，并马上调用这个匿名函数就叫做立即执行函数；也可以说立即执行函数是一种语法，让你的函数在定义以后立即执行；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615271995138.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-立即执行函数的写法&#34;&gt;2. 立即执行函数的写法：&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;(function(){
+//code
+}())
+
+(function (){
+//code
+})()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上边的两种写法，都是以圆括号开头，引擎会意味后面跟的是表达式，而不是一个函数定义语句，所以就避免了错误，这就叫做&amp;quot;立即调用的函数表达式&amp;quot;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(function () {alert(&amp;quot;我是匿名函数&amp;quot;)}())   //用括号把整个表达式包起来
+(function () {alert(&amp;quot;我是匿名函数&amp;quot;)})()  //用括号把函数包起来
+!function () {alert(&amp;quot;我是匿名函数&amp;quot;)}()  //求反，我们不在意值是多少，只想通过语法检查
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-立即执行函数的作用&#34;&gt;3. 立即执行函数的作用：&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;不必为函数命名，避免了污染全局变量&lt;/li&gt;
+&lt;li&gt;立即执行函数内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量&lt;/li&gt;
+&lt;li&gt;封装变量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总而言之：&lt;strong&gt;立即执行函数会形成一个单独的作用域，我们可以封装一些临时变量或者局部变量，避免污染全局变量&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-使用场景&#34;&gt;4. 使用场景&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;怎样使以下alert的结果为0,1,2：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;ul id=&amp;quot;list&amp;quot;&amp;gt;
+        &amp;lt;li&amp;gt;公司简介&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;联系我们&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;营销网络&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+    &amp;lt;script&amp;gt;
+       var list = document.getElementById(&amp;quot;list&amp;quot;);
+      var li = list.children;
+      for(var i = 0 ;i&amp;lt;li.length;i++){
+       ( function(j){
+            li[j].onclick = function(){
+              alert(j);
+          })(i); //把实参i赋值给形参j
+        }
+      }
+     &amp;lt;/script&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结合闭包&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for (var i = 1; i &amp;lt;= 5; i++) {
+  (function(j) {
+    setTimeout(function timer() {
+      console.log(j);
+    }, j * 1000);
+  })(i);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;如何避免了污染全局变量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;某些代码只需要执行一次，比如只需要显示一个时间，但是这些代码也需要一些临时的变量，但是初始化过程结束之后，就再也不会被用到，如果将这些变量作为全局变量，不是一个好的主意，我们可以用立即执行函数——去将我们所有的代码包裹在它的局部作用域中，不会让任何变量泄露成全局变量，看如下代码：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273235393.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+比如上面的代码，如果没有被包裹在立即执行函数中，而是直接以非函数的形式直接写在&amp;lt;script&amp;gt;&lt;/script&gt;标签里面，虽然也会立即执行，但是临时变量todaydom,days,today,year,month,date,day,msg都将成为全局变量（初始化代码遗留的产物）。&lt;br&gt;
+而用立即执行函数之后，这些变量都不会在全局变量中存在，以后也不会其他地方使用，有效的避免了污染全局变量。&lt;/p&gt;
+&lt;h1 id=&#34;23-设计模式要求说出如何实现应用优缺点单例模式实现&#34;&gt;23. 设计模式(要求说出如何实现,应用,优缺点)/单例模式实现&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273736555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-创建型模式&#34;&gt;1. 创建型模式&lt;/h2&gt;
+&lt;h3 id=&#34;1-工厂模式&#34;&gt;1. 工厂模式&lt;/h3&gt;
+&lt;p&gt;工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象，用工厂方法代替new操作的一种模式。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Animal(opts){
+    var obj = new Object();
+    obj.color = opts.color;
+    obj.name= opts.name;
+    obj.getInfo = function(){
+        return &#39;名称：&#39;+ onj.name+&#39;， 颜色：&#39;+ obj.color;
+    }
+    return obj;
+}
+var cat = Animal({name: &#39;波斯猫&#39;, color: &#39;白色&#39;});
+cat.getInfo();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;小结:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;构造函数和创建者分离，对new操作进行封装&lt;/li&gt;
+&lt;li&gt;符合开放封闭原则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-单例模式&#34;&gt;2. 单例模式&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274155679.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+单例模式，是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中，应用该模式的一个类只有一个实例。即一个类只有一个对象实例。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var Single = (function(){
+    var instance;
+    function init() {
+        // 定义私有方法和属性
+        // 操作逻辑
+        return {
+           // 定义公共方法和属性
+        };
+    }
+    return {
+        // 获取实例
+        getInstance:function(){
+            if(!instance){
+                instance = init();
+            }
+            return instance;
+        }
+    }
+})();
+
+var obj1 = Single.getInstance();
+var obj2 = Single.getInstance();
+console.log(obj1 === obj2);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;小结:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;单例模式的主要思想就是，实例如果已经创建，则直接返回&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;function creatSingleton() {
+    var obj = null
+    // 实例如已经创建过，直接返回
+    if (!obj) {
+        obj = xxx
+    }
+    return obj
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;符合开放封闭原则&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;3-原型模式&#34;&gt;3. 原型模式&lt;/h3&gt;
+&lt;p&gt;用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。&lt;/p&gt;
+&lt;p&gt;在JavaScript中，实现原型模式是在ECMAScript5中，提出的Object.create方法，使用现有的对象来提供新创建的对象的__proto__。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var prototype = {
+    name: &#39;Jack&#39;,
+    getName: function() {
+        return this.name
+    }
+}
+
+var obj = Object.create(prototype, {
+    job: {
+        value: &#39;IT&#39;
+    }
+})
+
+console.log(obj.getName())  // Jack
+console.log(obj.job)  // IT
+console.log(obj.__proto__ === prototype)  //true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-结构型模式&#34;&gt;2. 结构型模式&lt;/h2&gt;
+&lt;h3 id=&#34;1-适配器模式&#34;&gt;1. 适配器模式&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274391311.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt;class GooleMap {
+    show() {
+        console.log(&#39;渲染谷歌地图&#39;)
+    }
+}
+
+class BaiduMap {
+    display() {
+        console.log(&#39;渲染百度地图&#39;)
+    }
+}
+
+
+// 定义适配器类, 对BaiduMap类进行封装
+class BaiduMapAdapter {
+    show() {
+        var baiduMap = new BaiduMap()
+        return baiduMap.display() 
+    }
+}
+
+function render(map) {
+    if (map.show instanceof Function) {
+        map.show()
+    }
+}
+
+render(new GooleMap())         // 渲染谷歌地图
+render(new BaiduMapAdapter())  // 渲染百度地图
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;小结:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;适配器模式主要解决两个接口之间不匹配的问题，不会改变原有的接口，而是由一个对象对另一个对象的包装。&lt;/li&gt;
+&lt;li&gt;适配器模式符合开放封闭原则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-行为型模式&#34;&gt;3. 行为型模式&lt;/h2&gt;
+&lt;h3 id=&#34;1-观察者模式订阅-发布模式&#34;&gt;1. 观察者模式(订阅-发布模式)&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274507790.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;发布者发出通知 =&amp;gt;主题对象收到通知并推送给订阅者 =&amp;gt; 订阅者执行相应的操作。&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; // 一个发布者 publisher，功能就是负责发布消息 - publish
+        var pub = {
+            publish: function () {
+                dep.notify();
+            }
+        }
+        // 多个订阅者 subscribers， 在发布者发布消息之后执行函数
+        var sub1 = { 
+            update: function () {
+                console.log(1);
+            }
+        }
+        var sub2 = { 
+            update: function () {
+                console.log(2);
+            }
+        }
+        var sub3 = { 
+            update: function () {
+                console.log(3);
+            }
+        }
+        // 一个主题对象
+        function Dep() {
+            this.subs = [sub1, sub2, sub3];
+        }
+        Dep.prototype.notify = function () {
+            this.subs.forEach(function (sub) {
+                sub.update();
+            });
+        }
+
+        // 发布者发布消息， 主题对象执行notify方法，进而触发订阅者执行Update方法
+        var dep = new Dep();
+        pub.publish();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;24-iframe的缺点有哪些&#34;&gt;24. iframe的缺点有哪些&lt;/h1&gt;
+&lt;h1 id=&#34;1-iframe的优点&#34;&gt;1. iframe的优点：&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;iframe能够原封不动的把嵌入的网页展现出来。&lt;/li&gt;
+&lt;li&gt;如果有多个网页引用iframe，那么你只需要修改iframe的内容，就可以实现调用的每一个页面内容的更改，方便快捷。&lt;/li&gt;
+&lt;li&gt;网页如果为了统一风格，头部和版本都是一样的，就可以写成一个页面，用iframe来嵌套，可以增加代码的可重用。&lt;/li&gt;
+&lt;li&gt;如果遇到加载缓慢的第三方内容如图标和广告，这些问题可以由iframe来解决。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;2-iframe的缺点&#34;&gt;2. iframe的缺点：&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;会产生很多页面，&lt;code&gt;不容易管理&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;iframe框架结构有时会让人感到迷惑，如果框架个数多的话，可能会出现上下、左右滚动条，会分散访问者的注意力，&lt;code&gt;用户体验度差&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;代码复杂，无法被一些搜索引擎索引到，这一点很关键，现在的搜索引擎爬虫还不能很好的处理iframe中的内容，所以使用iframe会&lt;code&gt;不利于搜索引擎优化&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;很多的移动设备（PDA手机）无法完全显示框架，&lt;code&gt;设备兼容性差&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;iframe框架页面会&lt;code&gt;增加服务器的http请求&lt;/code&gt;，对于大型网站是不可取的。&lt;br&gt;
+分析了这么多，现在基本上都是用&lt;code&gt;Ajax来代替iframe&lt;/code&gt;，所以iframe已经渐渐的退出了前端开发。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;25-数组问题&#34;&gt;25. 数组问题&lt;/h1&gt;
+&lt;h2 id=&#34;1-数组去重&#34;&gt;1. 数组去重&lt;/h2&gt;
+&lt;h3 id=&#34;1-利用es6-set去重es6中最常用&#34;&gt;1. 利用ES6 Set去重（ES6中最常用）&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique (arr) {
+  return Array.from(new Set(arr))
+}
+var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+console.log(unique(arr))
+ //[1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {}, {}]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不考虑兼容性，这种去重的方法代码最少。这种方法还无法去掉“{}”空对象，后面的高阶方法会添加去掉重复“{}”的方法。&lt;/p&gt;
+&lt;h3 id=&#34;2-利用for嵌套for然后splice去重es5中最常用&#34;&gt;2. 利用for嵌套for，然后splice去重（ES5中最常用）&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique(arr){            
+  for(var i=0; i&amp;lt;arr.length; i++){
+      for(var j=i+1; j&amp;lt;arr.length; j++){
+          if(arr[i]===arr[j]){         //第一个等同于第二个，splice方法删除第二个
+              arr.splice(j,1);
+              j--;
+          }
+      }
+  }
+return arr;
+}
+var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+console.log(unique(arr))
+//  [1, &#39;true&#39;,true, 15,false,undefined,null, NaN,NaN, &#39;NaN&#39;,0, &#39;a&#39;,{}, {}]  //NaN和{}没有去重
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;双层循环，外层循环元素，内层循环时比较值。值相同时，则删去这个值。&lt;/p&gt;
+&lt;h3 id=&#34;3-利用indexof去重&#34;&gt;3. 利用indexOf去重&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique(arr) {
+  if (!Array.isArray(arr)) {
+      console.log(&#39;type error!&#39;)
+      return
+  }
+  var array = [];
+  for (var i = 0; i &amp;lt; arr.length; i++) {
+      if (array .indexOf(arr[i]) === -1) {
+          array .push(arr[i])
+      }
+  }
+  return array;
+}
+var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+console.log(unique(arr))
+ // [1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, NaN, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, {…}]  //NaN、{}没有去重
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;新建一个空的结果数组，for 循环原数组，判断结果数组是否存在当前元素，如果有相同的值则跳过，不相同则push进数组。&lt;/p&gt;
+&lt;h3 id=&#34;4-利用sort&#34;&gt;4. 利用sort()&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique(arr) {
+  if (!Array.isArray(arr)) {
+      console.log(&#39;type error!&#39;)
+      return;
+  }
+  arr = arr.sort()
+  var arrry= [arr[0]];
+  for (var i = 1; i &amp;lt; arr.length; i++) {
+      if (arr[i] !== arr[i-1]) {
+          arrry.push(arr[i]);
+      }
+  }
+  return arrry;
+}
+   var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+      console.log(unique(arr))
+// [0, 1, 15, &amp;quot;NaN&amp;quot;, NaN, NaN, {…}, {…}, &amp;quot;a&amp;quot;, false, null, true, &amp;quot;true&amp;quot;, undefined]      //NaN、{}没有去重
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;利用sort()排序方法，然后根据排序后的结果进行遍历及相邻元素比对。&lt;/p&gt;
+&lt;h3 id=&#34;5-利用includes&#34;&gt;5. 利用includes&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique(arr) {
+    if (!Array.isArray(arr)) {
+        console.log(&#39;type error!&#39;)
+        return
+    }
+    var array =[];
+    for(var i = 0; i &amp;lt; arr.length; i++) {
+            if( !array.includes( arr[i]) ) {//includes 检测数组是否有某个值
+                    array.push(arr[i]);
+              }
+    }
+    return array
+}
+var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+    console.log(unique(arr))
+    //[1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, {…}]     //{}没有去重
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;6-利用filter&#34;&gt;6. 利用filter&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique(arr) {
+  return arr.filter(function(item, index, arr) {
+    //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
+    return arr.indexOf(item, 0) === index;
+  });
+}
+    var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+        console.log(unique(arr))
+//[1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, {…}]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;7-利用map数据结构去重&#34;&gt;7. 利用Map数据结构去重&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function arrayNonRepeatfy(arr) {
+  let map = new Map();
+  let array = new Array();  // 数组用于返回结果
+  for (let i = 0; i &amp;lt; arr.length; i++) {
+    if(map.has(arr[i])) {  // 如果有该key值
+      map.set(arr[i], true); 
+    } else { 
+      map.set(arr[i], false);   // 如果没有该key值
+      array.push(arr[i]);
+    }
+  } 
+  return array ;
+}
+ var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+    console.log(arrayNonRepeatfy(arr))
+//[1, &amp;quot;a&amp;quot;, &amp;quot;true&amp;quot;, true, 15, false, 1, {…}, null, NaN, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, undefined]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-数组常用方法&#34;&gt;2. 数组常用方法&lt;/h2&gt;
+&lt;h3 id=&#34;1-arraymap&#34;&gt;1. Array.map()&lt;/h3&gt;
+&lt;p&gt;此方法是将数组中的每个元素调用一个提供的函数，结果作为一个新的数组返回，并&lt;code&gt;没有改变原来的数组&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    let newArr = arr.map(x =&amp;gt; x*2)
+    //arr= [1, 2, 3, 4, 5]   原数组保持不变
+    //newArr = [2, 4, 6, 8, 10] 返回新数组
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-arrayforeach&#34;&gt;2. Array.forEach()&lt;/h3&gt;
+&lt;p&gt;此方法是将数组中的每个元素执行传进提供的函数，没有返回值，&lt;code&gt;改变原数组&lt;/code&gt;，注意和map方法区分&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+   num.forEach(x =&amp;gt; x*2)
+   // arr = [1, 2, 3, 4, 5]  数组改变,注意和map区分
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-arrayfilter&#34;&gt;3. Array.filter()&lt;/h3&gt;
+&lt;p&gt;此方法是将所有元素进行判断，将满足条件的元素作为一个新的数组返回&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    const isBigEnough = value =&amp;gt; value &amp;gt;= 3
+    let newArr = arr.filter(isBigEnough )
+    //newNum = [3, 4, 5] 满足条件的元素返回为一个新的数组
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;4-arrayevery&#34;&gt;4. Array.every()&lt;/h3&gt;
+&lt;p&gt;此方法是将所有元素进行判断返回一个布尔值，如果&lt;code&gt;所有元素&lt;/code&gt;都满足判断条件，则返回true，否则为false：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    const isLessThan4 = value =&amp;gt; value &amp;lt; 4
+    const isLessThan6 =&amp;gt; value =&amp;gt; value &amp;lt; 6
+    arr.every(isLessThan4 ) //false
+    arr.every(isLessThan6 ) //true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;5-arraysome&#34;&gt;5. Array.some()&lt;/h3&gt;
+&lt;p&gt;此方法是将所有元素进行判断返回一个布尔值，如果&lt;code&gt;存在&lt;/code&gt;元素都满足判断条件，则返回true，若所有元素都不满足判断条件，则返回false：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr= [1, 2, 3, 4, 5]
+    const isLessThan4 = value =&amp;gt; value &amp;lt; 4
+    const isLessThan6 = value =&amp;gt; value &amp;gt; 6
+    arr.some(isLessThan4 ) //true
+    arr.some(isLessThan6 ) //false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;6-arrayreduce&#34;&gt;6. Array.reduce()&lt;/h3&gt;
+&lt;p&gt;此方法是所有元素调用返回函数，返回值为最后结果,传入的值必须是函数类型：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+   const add = (a, b) =&amp;gt; a + b
+   let sum = arr.reduce(add)
+   //sum = 15  相当于累加的效果
+   与之相对应的还有一个 Array.reduceRight() 方法，区别是这个是从右向左操作的
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;7-arraypush&#34;&gt;7. Array.push()&lt;/h3&gt;
+&lt;p&gt;此方法是在数组的后面添加新加元素，此方法改变了数组的长度：&lt;/p&gt;
+&lt;h3 id=&#34;8-arraypop&#34;&gt;8. Array.pop()&lt;/h3&gt;
+&lt;p&gt;此方法在数组后面删除&lt;code&gt;最后一个元素&lt;/code&gt;，并返回数组，此方法改变了数组的长度：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    arr.pop()
+    console.log(arr) //[1, 2, 3, 4]
+    console.log(arr.length) //4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;9-arrayshift&#34;&gt;9. Array.shift()&lt;/h3&gt;
+&lt;p&gt;此方法在数组后面删除&lt;code&gt;第一个元素&lt;/code&gt;，并返回数组，此方法改变了数组的长度：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    arr.shift()
+    console.log(arr) //[2, 3, 4, 5]
+    console.log(arr.length) //4 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;10-arrayunshift&#34;&gt;10. Array.unshift()&lt;/h3&gt;
+&lt;p&gt;此方法是将一个或多个元素添加到数组的开头，并返回新数组的长度：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    arr.unshift(6, 7)
+    console.log(arr) //[6, 7, 1, 2, 3, 4, 5]
+    console.log(arr.length) //7 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;11-arrayisarray&#34;&gt;11. Array.isArray()&lt;/h3&gt;
+&lt;p&gt;判断一个对象是不是数组，返回的是布尔值&lt;/p&gt;
+&lt;h3 id=&#34;12-arrayconcat&#34;&gt;12. Array.concat()&lt;/h3&gt;
+&lt;p&gt;此方法是一个可以将多个数组拼接成一个数组：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr1 = [1, 2, 3]
+      arr2 = [4, 5]
+  let arr = arr1.concat(arr2)
+  console.log(arr)//[1, 2, 3, 4, 5]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;13-arraytostring&#34;&gt;13. Array.toString()&lt;/h3&gt;
+&lt;p&gt;此方法将数组转化为字符串：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5];
+   let str = arr.toString()
+   console.log(str)// 1,2,3,4,5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;14-arrayjoin&#34;&gt;14. Array.join()&lt;/h3&gt;
+&lt;p&gt;此方法也是将数组转化为字符串：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5];
+  let str1 = arr.join()
+  let str2 = arr.join(&#39;,&#39;)
+  let str3 = arr.join(&#39;##&#39;)
+  console.log(str1)// 1,2,3,4,5
+  console.log(str2)// 1,2,3,4,5
+  console.log(str3)// 1##2##3##4##5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;可以设置元素之间的间隔&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;15-arraysplice开始位置-删除的个数元素&#34;&gt;15. Array.splice(开始位置， 删除的个数，元素)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;万能方法，可以实现增删改：&lt;/strong&gt;&lt;code&gt;0增，3删，1改&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5];
+     let arr1 = arr.splice(2, 0 &#39;haha&#39;)
+     let arr2 = arr.splice(2, 3)
+     let arr1 = arr.splice(2, 1 &#39;haha&#39;)
+     console.log(arr1) //[1, 2, &#39;haha&#39;, 3, 4, 5]新增一个元素
+     console.log(arr2) //[1, 2] 删除三个元素
+     console.log(arr3) //[1, 2, &#39;haha&#39;, 4, 5] 替换一个元素
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-查找数组重复项&#34;&gt;3. 查找数组重复项&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;let arr= [1,2,3,4,5,1,2];
+let rep = [];
+arr.forEach((item,index)=&amp;gt;{
+	if(arr.indexOf(item)!=index){ // 匹配数组元素第一个item位置和当前循环的index
+        let obj = {};
+        obj.key = (arr.indexOf(item) + 1) + &#39;|&#39; + (index + 1); // 用&#39;|&#39;分隔两个重复项的下标   
+		obj.value = item;
+        rep.push(obj);
+	}
+});
+console.log(rep)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-扁平化数组flatten&#34;&gt;4. 扁平化数组（flatten）&lt;/h2&gt;
+&lt;p&gt;扁平化就是将嵌套的数组变成一维数组的过程。&lt;/p&gt;
+&lt;p&gt;通常有几种方法可以实现扁平化：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;迭代递归法&lt;/li&gt;
+&lt;li&gt;曲线救国法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-迭代递归&#34;&gt;1. 迭代递归&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;var array = [[1,2,3],4,5,6,[[7]],[]]
+var result = flatten(array)
+
+console.log(result)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;for...of 实现&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function flatten(arr, result = []) {
+    for (let item of arr) {
+        if (Array.isArray(item))
+            flatten(item, result)
+        else
+            result.push(item)
+    }
+    return result
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们使用 result 变量存储结果，然后迭代当前数组，如果值也是数组则继续扁平化，否则将值放入 result 里。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;生成器实现&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;迭代器的升级版就是生成器（Generator），其实这种扁平化最适合用生成器来做了，因为我们的目的就是生成一个个的值，然后把它们组织成一维数组：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function* flat(arr) {
+    for (let item of arr) {
+        if (Array.isArray(item))
+            yield* flat(item)
+        else
+            yield item
+    }
+}
+
+function flatten(arr) {
+    let result = []
+    for (let val of flat(arr)) {
+        result.push(val)
+    }
+    return result
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里有两点需要注意：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;嵌套 yield 需要再加一个星号，这被称为生成器委托。&lt;/li&gt;
+&lt;li&gt;不能使用 forEach 代替 for...of 但可以用 for 循环，因为 for 循环和for...of 可以中断迭代去执行 yield，forEach 不行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;reduce 三句实现法&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function flatten(arr) {
+  return arr.reduce((flat, toFlatten) =&amp;gt; {
+    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+  }, []);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-曲线救国法&#34;&gt;2. 曲线救国法&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;降维打击法&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function flatten(arr){
+    let str = arr.toString()
+    return str.split(&#39;,&#39;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;转成字符串，之后再复原成数组，不过这个方法有个缺点，就是原来的空数组转的空字符串也会被放入新生成的数组里去。&lt;/p&gt;
+&lt;h1 id=&#34;26-bom属性对象方法&#34;&gt;26. BOM属性对象方法&lt;/h1&gt;
 ">【面】前端知识点梳理（JS下）</a>
       </div>
       
