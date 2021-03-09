@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>计算机网络笔记Part0 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615253807975">
+<link rel="shortcut icon" href="/favicon.ico?v=1615256793223">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1114,6 +1114,140 @@
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-xia/"" data-c="
           &lt;h1 id=&#34;17-window的onload事件和domcontentloaded&#34;&gt;17. window的onload事件和domcontentloaded&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;DOMContentLoaded方法是当DOM加载完成，不包括样式表，图片，flash触发的事件&lt;/li&gt;
+&lt;li&gt;onload事件触发时，页面上所有的DOM，样式表，脚本，图片，flash都已经加载完成了，用于检测一个加载完全的页面&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;开发中我们经常需要给一些元素的事件绑定处理函数。但问题是，如果那个元素还没有加载到页面上，但是绑定事件已经执行完了，是没有效果的。这两个事件大致就是用来避免这样一种情况，将绑定的函数放在这两个事件的回调中，保证能在页面的某些元素加载完毕之后再绑定事件的函数。&lt;/p&gt;
+&lt;p&gt;当然DOMContentLoaded机制更加合理，因为我们可以容忍图片，flash延迟加载，却不可以容忍看见内容后页面不可交互。&lt;/p&gt;
+&lt;h1 id=&#34;18-forin迭代和forof有什么区别&#34;&gt;18. for...in迭代和for...of有什么区别&lt;/h1&gt;
+&lt;h2 id=&#34;1-forin&#34;&gt;1. for…in&lt;/h2&gt;
+&lt;p&gt;for…in 循环返回的值是数据的结构的&lt;strong&gt;key&lt;/strong&gt;(类比键值名)&lt;br&gt;
+&lt;code&gt;遍历对象&lt;/code&gt;返回的对象&lt;code&gt;key&lt;/code&gt;值，&lt;code&gt;遍历数组&lt;/code&gt;返回的数组的&lt;code&gt;下标&lt;/code&gt;（key）&lt;br&gt;
+for…in 不仅可以遍历数字 键名，还会遍历原型上的值和手动添加其他的键&lt;br&gt;
+for…in 循环出的是（key）&lt;br&gt;
+总结：&lt;br&gt;
+for…in 循环特别适合遍历对象&lt;/p&gt;
+&lt;h2 id=&#34;2-forof&#34;&gt;2. for…of&lt;/h2&gt;
+&lt;p&gt;for…of 是ES6新引入的特性。修复了ES5引入的for…in的不足支持set().map()&lt;br&gt;
+for…of不能循环普通的对象，需要通过和OBject.Keys()搭配使用&lt;br&gt;
+for…of不同与forEach&lt;br&gt;
+它可以与break.continue和return 配合使用&lt;br&gt;
+for…of 循环可以随时推出循环&lt;br&gt;
+for…of 循环出的是（&lt;strong&gt;value&lt;/strong&gt;）&lt;br&gt;
+总结：&lt;br&gt;
+for…of 循环特别适合&lt;code&gt;遍历数组&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;19-函数柯里化-和-高阶函数&#34;&gt;19. 函数柯里化 和 高阶函数&lt;/h1&gt;
+&lt;h2 id=&#34;1-函数柯里化&#34;&gt;1. 函数柯里化&lt;/h2&gt;
+&lt;p&gt;柯里化，是函数式编程的一个重要概念。它既能减少代码冗余，也能增加可读性。&lt;br&gt;
+&lt;strong&gt;定义&lt;/strong&gt;：在数学和计算机科学中，柯里化是一种将使用&lt;strong&gt;多个参数&lt;/strong&gt;的一个函数转换成一系列使用&lt;strong&gt;一个参数&lt;/strong&gt;的函数的技术。&lt;br&gt;
+&lt;code&gt;简单版：&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function add(a) {
+  function sum(b) { // 使用闭包
+      a = a + b; // 累加
+      return sum;
+   }
+   sum.toString = function() { // 重写toString()方法
+      return a;
+  }
+   return sum; // 返回一个函数
+}
+
+add(1); // 1
+add(1)(2);  // 3
+add(1)(2)(3) // 6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;完整版：&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function add() {
+  // 第一次执行时，定义一个数组专门用来存储所有的参数
+  var _args = [].slice.call(arguments);
+
+  // 在内部声明一个函数，利用闭包的特性保存_args并收集所有的参数值
+  var adder = function () {
+      var _adder = function() {
+          _args.push(...arguments);
+          return _adder;
+      };
+
+      // 利用隐式转换的特性，当最后执行时隐式转换，并计算最终的值返回
+      _adder.toString = function () {
+          return _args.reduce(function (a, b) {
+              return a + b;
+          });
+      }
+
+      return _adder;
+  }
+  return adder(..._args);
+}
+
+var a = add(1)(2)(3)(4);   // f 10
+var b = add(1, 2, 3, 4);   // f 10
+var c = add(1, 2)(3, 4);   // f 10
+var d = add(1, 2, 3)(4);   // f 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;函数的柯里化，是 Javascript 中函数式编程的一个重要概念。&lt;code&gt;它返回的，是一个函数的函数&lt;/code&gt;。其实现方式，需要依赖&lt;code&gt;参数以及递归&lt;/code&gt;，通过&lt;code&gt;拆分参数&lt;/code&gt;的方式，来调用一个多参数的函数方法，以达到减少代码冗余，增加可读性的目的。&lt;/p&gt;
+&lt;h2 id=&#34;2-高阶函数&#34;&gt;2. 高阶函数&lt;/h2&gt;
+&lt;h3 id=&#34;1-arrayprototypemap&#34;&gt;1. Array.prototype.map&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;map()&lt;/code&gt;(映射)方法最后生成一个新数组，不改变原始数组的值。其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;array.map(callback,[ thisObject]);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;callback(回调函数)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[].map(function(currentValue, index, array) {
+    // ...
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;传递给&lt;code&gt;map&lt;/code&gt;的回调函数（&lt;code&gt;callback&lt;/code&gt;）接受三个参数，分别是&lt;code&gt;currentValue&lt;/code&gt;——正在遍历的元素；&lt;code&gt;index&lt;/code&gt;（可选）——元素索引；&lt;code&gt;array&lt;/code&gt;（可选）——原数组本身，除了 callback 之外还可以接受 this 值（可选），用于执行 callback 函数时使用的this 值。&lt;/p&gt;
+&lt;p&gt;来个简单的例子方便理解，现在有一个数组[1,2,3,4]，我们想要生成一个新数组，其每个元素皆是之前数组的两倍&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const arr1 = [1, 2, 3, 4];
+const arr2 = arr1.map(item =&amp;gt; item * 2);
+
+console.log( arr2 );
+// [2, 4, 6, 8]
+console.log( arr1 );
+// [1, 2, 3, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;map高阶函数注意点&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;callback需要有return值，否则会出现所有项映射为undefind；&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[&amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;].map(parseInt);
+//输出结果为  [1,NaN,NaN]
+
+[&amp;quot;1&amp;quot;,&amp;quot;2&amp;quot;,&amp;quot;3&amp;quot;].map(x=&amp;gt;parseInt(x));
+//输出结果为  [1,2,3]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-arrayprototypereduce&#34;&gt;2. Array.prototype.reduce&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;reduce()&lt;/code&gt;方法对数组中的每个元素执行一个提供的 reducer 函数(升序执行)，将其结果汇总为单个返回值。传递给 reduce 的回调函数（callback）接受四个参数，分别是累加器 &lt;code&gt;accumulator&lt;/code&gt;；&lt;code&gt;currentValue&lt;/code&gt;——正在操作的元素；&lt;code&gt;currentIndex&lt;/code&gt;（可选）——元素索引，但是它的开始会有特殊说明；&lt;code&gt;array&lt;/code&gt;（可选）——原始数组本身，除了 callback 之外还可以接受初始值 initialValue 值（可选）。&lt;/p&gt;
+&lt;p&gt;例子，现在有一个数组 [0, 1, 2, 3, 4]，需要计算数组元素的和，需求比较简单，来看下代码实现。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const arr = [0, 1, 2, 3, 4];
+let sum = arr.reduce((accumulator, currentValue, currentIndex, array) =&amp;gt; {
+  return accumulator + currentValue;
+});
+
+console.log( sum );
+// 10
+console.log( arr );
+// [0, 1, 2, 3, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615256323803.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;3-arrayprototypefilter&#34;&gt;3. Array.prototype.filter&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;filter&lt;/code&gt;(过滤，筛选) 方法创建一个新数组,原始数组不发生改变。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;array.filter(callback,[ thisObject]);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接收的参数和 map 是一样的，filter的&lt;code&gt;callback&lt;/code&gt;函数需要返回布尔值true或false. 如果为true则表示通过啦！如果为false则失败，其返回值是一个新数组，由通过测试为true的所有元素组成，如果没有任何数组元素通过测试，则返回空数组。&lt;/p&gt;
+&lt;p&gt;来个例子介绍下，现在有一个数组 [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4]，我们想要生成一个新数组，这个数组要求没有重复的内容，即为去重。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const arr1 = [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4];
+const arr2 = arr1.filter( (element, index, self) =&amp;gt; {
+    return self.indexOf( element ) === index;
+});
+
+console.log( arr2 );
+// [1, 2, 3, 5, 4]
+console.log( arr1 );
+// [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;20-call-与-apply区别原生实现bind&#34;&gt;20.  call 与 apply区别，原生实现bind&lt;/h1&gt;
+&lt;h2 id=&#34;1-call-和-apply-的共同点&#34;&gt;1. call 和 apply 的共同点&lt;/h2&gt;
 ">【面】前端知识点梳理（JS下）</a>
       </div>
       
