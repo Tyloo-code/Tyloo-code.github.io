@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>NodeJs从零单排(7) | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615380056777">
+<link rel="shortcut icon" href="/favicon.ico?v=1615388062988">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1223,6 +1223,393 @@ const { 0: a, 1: b, 2: c, 3: d, 4: e } = &amp;quot;hello&amp;quot;    //a=h b=e 
 &lt;li&gt;遍历 Map 结构&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id=&#34;3-声明类与继承class-extend&#34;&gt;3. 声明类与继承：class、extend&lt;/h1&gt;
+&lt;h2 id=&#34;1-类class&#34;&gt;1. 类（Class）&lt;/h2&gt;
+&lt;p&gt;基本上，ES6的class可以看作只是一个语法糖，它的绝大部分功能，ES5都可以做到，新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//定义类
+class Point {
+  constructor(x, y) {  //constructor 构造方法
+    this.x = x;
+    this.y = y;
+  }
+  toString() {
+    return &#39;(&#39; + this.x + &#39;, &#39; + this.y + &#39;)&#39;;
+  }
+}
+var p = new Point(1, 2);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;构造函数的prototype属性，在ES6的“类”上面继续存在。事实上，类的所有方法都还是定义在类的prototype属性上面。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;constructor方法&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;constructor方法是类的默认方法，通过new命令生成对象实例时，自动调用该方法。一个类必须有constructor方法，如果没有显式定义，一个空的constructor方法会被默认添加。&lt;/p&gt;
+&lt;h2 id=&#34;2-继承extends&#34;&gt;2. 继承（Extends）&lt;/h2&gt;
+&lt;p&gt;Class之间可以通过extends关键字实现继承，这比ES5的通过修改原型链实现继承，要清晰和方便很多。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class ColorPoint extends Point {
+  constructor(x, y, color) {
+    super(x, y); // 调用父类的constructor(x, y)
+    this.color = color;
+  }
+  toString() {
+    return this.color + &#39; &#39; + super.toString(); // 调用父类的toString()
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上面代码中，constructor方法和toString方法之中，都出现了super关键字，它在这里表示父类的构造函数，用来新建父类的this对象。&lt;/p&gt;
+&lt;p&gt;子类必须在constructor方法中调用super方法，否则新建实例时会报错。这是因为子类没有自己的this对象，而是继承父类的this对象，然后对其进行加工。如果不调用super方法，子类就得不到this对象。&lt;/p&gt;
+&lt;h2 id=&#34;3-原生构造函数继承&#34;&gt;3. 原生构造函数继承&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Boolean()&lt;/li&gt;
+&lt;li&gt;Number()&lt;/li&gt;
+&lt;li&gt;String()&lt;/li&gt;
+&lt;li&gt;Array()&lt;/li&gt;
+&lt;li&gt;Date()&lt;/li&gt;
+&lt;li&gt;Function()&lt;/li&gt;
+&lt;li&gt;RegExp()&lt;/li&gt;
+&lt;li&gt;Error()&lt;/li&gt;
+&lt;li&gt;Object()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这意味着，ES6可以自定义原生数据结构（比如Array、String等）的子类，这是ES5无法做到的。&lt;/p&gt;
+&lt;h2 id=&#34;4-class的generator方法&#34;&gt;4. Class的Generator方法&lt;/h2&gt;
+&lt;p&gt;如果某个方法之前加上星号（*），就表示该方法是一个Generator函数。&lt;/p&gt;
+&lt;h2 id=&#34;5-class的静态方法&#34;&gt;5. Class的静态方法&lt;/h2&gt;
+&lt;p&gt;类相当于实例的原型，所有在类中定义的方法，都会被实例继承。如果在一个方法前，加上static关键字，就表示该方法不会被实例继承，而是直接通过类来调用，这就称为“静态方法”。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Foo {
+  static classMethod() {
+    return &#39;hello&#39;;
+  }
+}
+Foo.classMethod() // &#39;hello&#39;
+var foo = new Foo();
+foo.classMethod()
+// TypeError: foo.classMethod is not a function
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果在实例上调用静态方法，会抛出一个错误，表示不存在该方法。&lt;/p&gt;
+&lt;h1 id=&#34;4-promise的使用与实现&#34;&gt;4. Promise的使用与实现&lt;/h1&gt;
+&lt;p&gt;Promise 是 ES6 新增的语法，解决了回调地狱的问题。&lt;/p&gt;
+&lt;p&gt;可以把 Promise 看成一个状态机。初始是 &lt;code&gt;pending&lt;/code&gt; 状态，可以通过函数 &lt;code&gt;resolve&lt;/code&gt; 和 &lt;code&gt;reject&lt;/code&gt; ，将状态转变为 &lt;code&gt;resolved&lt;/code&gt;或者&lt;code&gt;rejected&lt;/code&gt; 状态，状态一旦改变就不能再次变化。&lt;/p&gt;
+&lt;h2 id=&#34;1-promise的使用及原理&#34;&gt;1. Promise的使用及原理&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;基本形式&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;newPromise(resolve=&amp;gt;{
+    ajax(&amp;quot;/pay/post&amp;quot;, data=&amp;gt;resolve() );
+}).then(resolve=&amp;gt;{
+    ajax(&amp;quot;/order/fix&amp;quot;, data=&amp;gt;{
+        //处理数据   
+    })
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;链式调用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一旦A执行完，B开始后，这次承诺也就兑现了，Promise对象也就失效了&lt;br&gt;
+那如果还有C呢？ 我们就必须在函数B中，&lt;br&gt;
+重新创建新的Promise对象，来完成下一个承诺，具体的写法就像这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;new Promise(函数1(resolve){
+    ajaxA(&amp;quot;xxxx&amp;quot;, function(){
+        resolve();//通知Promise该任务结束
+    })    
+}).then(函数2(){
+    //在函数2开始运行后，第一次创建的Promise对象完成使命，已经不能再继续工作。
+    //此时，我们创建并返回了新的Promise对象
+    return new Promise(function(resolve){
+        ajaxB(&amp;quot;xxxx&amp;quot;, function(){
+            resolve();//通知新的Promise对象该任务结束
+        })    
+    })
+}).then(函数3(){ //尽管这里使用了链式调用，但负责执行函数3的，已经是新的Promise对象了
+    // 如果，我们还有ajaxD需要顺序调用
+    // 那就必须在这里重新new Promise()对象了
+    ajaxC(&amp;quot;xxx&amp;quot;, function(){     })
+})   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果我有 A,B,C 三个异步任务，ABC同时开始执行&lt;br&gt;
+当&lt;code&gt;A,B,C三个任务全部都结束&lt;/code&gt;时，执任务D，&lt;br&gt;
+传统方法实现起来就比较复杂，Promise就非常简单，就像这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Promise.all([new Promise(A), new Promise(B), new Promise(C)])
+.then(function(){
+    D();
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那如果我希望A,B,C 其中&lt;code&gt;任意一个&lt;/code&gt;任务完成，&lt;br&gt;
+就马上开始任务D，该怎么做？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Promise.race([new Promise(A), new Promise(B), new Promise(C)])
+.then(function(){
+   D();
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-promisea-方案&#34;&gt;2. Promise/A+ 方案&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;promise 有三个状态 pending、fulfilled、rejected，只能由 pending 向 fulfilled 、rejected 两种状态发生改变。&lt;/li&gt;
+&lt;li&gt;promise 需要提供一个 then 方法，then 方法接收 (onFulfilled,onRejected) 两个函数作为参数。&lt;/li&gt;
+&lt;li&gt;onFulfilled、onRejected 须在 promise 完成后后（状态扭转）后调用，且只能调用一次。&lt;/li&gt;
+&lt;li&gt;onFulfilled、onRejected 仅仅作为函数进行调用，不能够将 this 指向调用它的 promise。&lt;/li&gt;
+&lt;li&gt;onFulfilled、onRejected 必须在&lt;strong&gt;执行上下文栈&lt;/strong&gt;只包含&lt;strong&gt;平台代码&lt;/strong&gt;后才能执行。平台代码指 引擎，环境，Promise 实现代码。（PS:这处规范要求 onFulfilled、onRejected 函数的执行必须在 then 被调用的那个事件循环之后的事件循环。但是规范并没有要求是把它们作为一个微任务或是宏任务去执行，只是各平台的实现均把 Promise 的 onFulfilled、onRejected 放到微任务队列中去执行了)&lt;/li&gt;
+&lt;li&gt;onFulfilled、onRejected 必须是个函数，否则忽略。&lt;/li&gt;
+&lt;li&gt;then 方法可以被一个 promise 多次调用。&lt;/li&gt;
+&lt;li&gt;then 方法需要返回一个 promise。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;5-generator异步编程-yield-next-await-async&#34;&gt;5. Generator（异步编程、yield、next()、await 、async）&lt;/h1&gt;
+&lt;h2 id=&#34;1-generator&#34;&gt;1. Generator&lt;/h2&gt;
+&lt;p&gt;Generator是一个函数，可以在函数内部通过&lt;code&gt;yield&lt;/code&gt;返回一个值（此时，Generator函数的执行会暂定，直到下次触发&lt;code&gt;.next()&lt;/code&gt;）&lt;br&gt;
+创建一个&lt;code&gt;Generator函数&lt;/code&gt;的方法是在&lt;code&gt;function&lt;/code&gt;关键字后添加&lt;code&gt;*&lt;/code&gt;标识。&lt;/p&gt;
+&lt;p&gt;在调用一个Generator函数后，并不会立即执行其中的代码，函数会返回一个&lt;code&gt;Generator&lt;/code&gt;对象，通过调用对象的&lt;code&gt;next&lt;/code&gt;函数，可以获得&lt;code&gt;yield/return&lt;/code&gt;的返回值。&lt;br&gt;
+无论是触发了&lt;code&gt;yield&lt;/code&gt;还是&lt;code&gt;return&lt;/code&gt;，&lt;code&gt;next()&lt;/code&gt;函数总会返回一个带有&lt;code&gt;value&lt;/code&gt;和&lt;code&gt;done&lt;/code&gt;属性的对象。&lt;br&gt;
+&lt;code&gt;value&lt;/code&gt;为返回值，&lt;code&gt;done&lt;/code&gt;则是一个Boolean对象，用来标识Generator是否还能继续提供返回值。&lt;br&gt;
+P.S. Generator函数的执行时惰性的，yield后的代码只在&lt;code&gt;触发next&lt;/code&gt;时才会执行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function * oddGenerator () {
+  yield 1
+  yield 3
+
+  return 5
+}
+
+let iterator = oddGenerator()
+
+let first = iterator.next()  // { value: 1, done: false }
+let second = iterator.next() // { value: 3, done: false }
+let third = iterator.next()  // { value: 5, done: true  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-next的参数传递&#34;&gt;2. next的参数传递&lt;/h2&gt;
+&lt;p&gt;我们可以在调用&lt;code&gt;next()&lt;/code&gt;的时候传递一个参数，可以在上次&lt;code&gt;yield&lt;/code&gt;前接收到这个参数：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function * outputGenerator () {
+  let ret1 = yield 1
+  console.log(`got ret1: ${ret1}`)
+  let ret2 = yield 2
+  console.log(`got ret2: ${ret2}`)
+}
+
+let iterator = outputGenerator()
+
+iterator.next(1)
+iterator.next(2) // got ret1: 2
+iterator.next(3) // got ret2: 3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;第一眼看上去可能会有些诡异，为什么第一条&lt;code&gt;log&lt;/code&gt;是在第二次调用&lt;code&gt;next&lt;/code&gt;时才进行输出的&lt;br&gt;
+这就又要说到上边的&lt;code&gt;Generator&lt;/code&gt;的实现了，上边说到了，&lt;code&gt;yield&lt;/code&gt;与&lt;code&gt;return&lt;/code&gt;都是用来返回值的语法。 函数在执行时遇到这两个关键字后就会暂停执行，等待下次激活。&lt;br&gt;
+然后&lt;code&gt;let ret1 = yield 1&lt;/code&gt;，这是一个赋值表达式，也就是说会先执行&lt;code&gt;=右边&lt;/code&gt;的部分，在=右边执行的过程中遇到了yield关键字，函数也就在此处&lt;code&gt;暂停&lt;/code&gt;了，在下次触发&lt;code&gt;next()&lt;/code&gt;时才被激活，此时，我们继续进行上次未完成的赋值语句&lt;code&gt;let ret1 = XXX&lt;/code&gt;，并在再次遇到yield时&lt;code&gt;暂停&lt;/code&gt;。&lt;br&gt;
+这也就解释了为什么&lt;strong&gt;第二次调用next()的参数会被第一次yield赋值的变量接收到&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-用作迭代器使用for-of&#34;&gt;3. 用作迭代器使用(for of)&lt;/h2&gt;
+&lt;p&gt;但是要注意的是，用作迭代器中的使用，则只会作用于yield&lt;br&gt;
+return的返回值不计入迭代&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function * oddGenerator () {
+  yield 1
+  yield 3
+  yield 5
+
+  return &#39;won\&#39;t be iterate&#39;
+}
+
+for (let value of oddGenerator()) {
+  console.log(value)
+}
+//  1
+//  3
+//  5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-generator函数内部的generator&#34;&gt;4. Generator函数内部的Generator&lt;/h2&gt;
+&lt;p&gt;除了&lt;code&gt;yield&lt;/code&gt;语法以外，其实还有一个&lt;code&gt;yield*&lt;/code&gt;语法，可以粗略的理解为是&lt;code&gt;Generator&lt;/code&gt;函数版的&lt;code&gt;[...]&lt;/code&gt;&lt;br&gt;
+用来展开Generator迭代器的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function * gen1 () {
+  yield 1
+  yield* gen2()
+  yield 5
+}
+
+function * gen2 () {
+  yield 2
+  yield 3
+  yield 4
+  return &#39;won\&#39;t be iterate&#39;
+}
+
+for (let value of gen1()) {
+  console.log(value)
+}
+//  1
+//  2
+//  3
+//  4
+//  5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5-async和await&#34;&gt;5. async和await&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;async函数是Generator函数的语法糖，将Generator的&lt;code&gt;星号&lt;/code&gt;换成&lt;code&gt;async&lt;/code&gt;将&lt;code&gt;yield&lt;/code&gt;换成&lt;code&gt;await&lt;/code&gt;，async函数比Generator函数更好用。&lt;code&gt;async&lt;/code&gt; 表示函数里有异步操作，&lt;code&gt;await&lt;/code&gt; 表示紧跟在后面的表达式需要等待结果。&lt;/li&gt;
+&lt;li&gt;await 只能出现在 async 函数中&lt;/li&gt;
+&lt;li&gt;async 函数返回的是一个 Promise 对象&lt;/li&gt;
+&lt;li&gt;如果它等到的不是一个 Promise 对象，那 await 表达式的运算结果就是它等到的东西。&lt;br&gt;
+如果它等到的是一个 Promise 对象，await 就会阻塞后面的代码，等着 Promise 对象 resolve或者reject方法，然后得到 resolve的值，作为 await 表达式的运算结果。&lt;/li&gt;
+&lt;li&gt;一般await都会用try/catch包起来&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;6-箭头函数this指向问题-拓展运算符&#34;&gt;6. 箭头函数this指向问题、拓展运算符&lt;/h1&gt;
+&lt;h2 id=&#34;1-箭头函数this指向&#34;&gt;1. 箭头函数this指向&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;箭头函数中的this指向的是定义时的this，而不是执行时的this。&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//定义一个对象
+    var obj = {
+        x:100,//属性x
+        show(){
+            //延迟500毫秒，输出x的值
+            setTimeout(
+               //不同处：箭头函数
+               () =&amp;gt; { console.log(this.x)},
+               500
+            );
+        }
+    };
+    obj.show();//打印结果：100
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当定义obj的show( )方法的时候，我们在箭头函数编写this.x，此时的this是指的obj，所以this.x指的是obj.x。而在show()被调用的时候，this依然指向的是被定义时候所指向的对象，也就是obj对象，故打印出：100。&lt;/p&gt;
+&lt;h2 id=&#34;2-拓展运算符&#34;&gt;2. 拓展运算符&lt;/h2&gt;
+&lt;p&gt;拓展运算符允许一个可迭代的对象（数组、类数组对象、字符串、ES6中的Set、Map等拥有默认迭代器Symbol(Symbol.iterator)属性，可以被for...of遍历的对象）去拓展函数调用的参数、数组的元素，同时也允许以Object键值对的形式去拓展另一个对象&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;化参数为数组&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;var showLambdaArgs = (...foo)=&amp;gt;{
+  return foo
+}
+showLambdaArgs(1,2,3,4,5,6)//[1,2,3,4,5,6]
+
+//在普通函数中也能使用，注意与arguments的区别
+function showArgs(...foo){
+    console.log(arguments instanceof Array)// false
+    console.log(foo instanceof Array)// true;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;code&gt;化数组为参数&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;function introduce(){
+   console.log(arguments)//对象
+   console.log(arguments.length)//参数个数
+}
+introduce(1,2,3,...[8,9,0])// arguments对象 和 6
+introduce(4,5,...&amp;quot;abcde&amp;quot;)// arguments对象 和 7
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;code&gt;化可迭代对象为数组&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;//解构赋值也可以这么用
+var [a,b,c] = [...&#39;123&#39;]//a = 1;b = 2;c = 3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;//一行去重数组ver2:
+[...new Set([1,1,2,3,3,4,4,4])] //1 , 2 , 3 ,4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;//倒序参数
+function reverseArgs(){
+  return [...arguments].reverse()//现在可以调用数组方法了
+}
+reverseArgs(1,2,3,4,5)//[5, 4, 3, 2, 1]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;code&gt;扩展对象&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对象的拷贝方法五花八门，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有JSON.parse(JSON.stringify(obj))的&lt;/li&gt;
+&lt;li&gt;有for(var i in obj){}赋值的&lt;/li&gt;
+&lt;li&gt;使用ES6的Object.assign()可能是大多数使用ES6开发者的选择：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;var o = {a:1,b:2}
+var p = Object.assign({},o)
+console.log(o === p) //false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;7map和set数组去重map数据结构有什么优点&#34;&gt;7.map和set数组去重，map数据结构有什么优点？&lt;/h1&gt;
+&lt;h2 id=&#34;1-set数组去重&#34;&gt;1. set数组去重&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;et arr = [1, 2, 2, 3, 4]
+function unique (arr) {
+    return [...new Set(arr)]
+}
+console.log(unique(arr)) // [1, 2, 3, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-map数组去重&#34;&gt;2. map数组去重&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;function unique(arr) {
+    const res = new Map()
+    return arr.filter( item =&amp;gt; !res.has(JSON.stringify(item)) &amp;amp;&amp;amp; res.set(JSON.stringify(item), 1))
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3map数据结构优点&#34;&gt;3.map数据结构优点&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Map数据结构。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。也就是说，Object结构提供了“字符串—值”的对应，Map 结构提供了“值—值”的对应，是一种更完善的 Hash 结构实现。&lt;/li&gt;
+&lt;li&gt;任何具有 Iterator接口、且每个成员都是一个双元素的数组的数据结构都可以当作Map构造函数的参数。&lt;/li&gt;
+&lt;li&gt;Map 的键实际上是跟内存地址绑定的，只要内存地址不一样，就视为两个键。这就解决了同名属性碰撞（clash）的问题&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;8-es6怎么编译成es5css-loader原理-过程&#34;&gt;8. ES6怎么编译成ES5？css-loader原理、过程&lt;/h1&gt;
+&lt;h2 id=&#34;1-es6怎么编译成es5&#34;&gt;1. ES6怎么编译成ES5&lt;/h2&gt;
+&lt;p&gt;Babel是一个广泛使用的转码器，babel可以将ES6代码完美地转换为ES5代码&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化项目&lt;/li&gt;
+&lt;li&gt;全局安装babel工具&lt;/li&gt;
+&lt;li&gt;新建.babelrc&lt;br&gt;
+在项目根目录新建(.babelrc)文件输入如图所示代码：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;presets&amp;quot;:[
+        &amp;quot;es2015&amp;quot;
+    ],
+    &amp;quot;plugins&amp;quot;:[]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-css-loader&#34;&gt;2. css-loader&lt;/h2&gt;
+&lt;p&gt;webpack的一个loader，用于解释@import 和 url()，并通过import后进行解析，通常和style-loader结合使用&lt;/p&gt;
+&lt;h1 id=&#34;9-使用es5模拟实现es6的class&#34;&gt;9. 使用ES5模拟实现ES6的class&lt;/h1&gt;
+&lt;h2 id=&#34;1new操作符检查函数&#34;&gt;1.new操作符检查函数&lt;/h2&gt;
+&lt;p&gt;解决问题：&lt;br&gt;
+类必须使用new调用，否则会报错。ES的构造函数是可以当成普通函数使用的&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function _checkType (obj, constructor) {
+    if (!(obj instanceof constructor)) {
+        throw new TypeError(&#39;Cannot call a class as a function&#39;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2内部方法不可枚举&#34;&gt;2.内部方法不可枚举&lt;/h2&gt;
+&lt;p&gt;解决问题：&lt;br&gt;
+类的内部所有定义的方法，都是不可枚举的。（包括内部定义的静态方法）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 修改构造函数描述符
+function defineProperties (target, descriptors) {
+    for (let descriptor of descriptors) {
+        descriptor.enumerable = descriptor.enumerable || false
+
+        descriptor.configurable = true
+        if (&#39;value&#39; in descriptor) {
+            descriptor.writable = true
+        }
+
+        Object.defineProperty(target, descriptor.key, descriptor)
+    }
+}
+
+// 构造class
+// constructor 表示类对应的constructor对象
+// protoDesc 表示class内部定义的方法
+// staticDesc 表示class内部定义的静态方法
+function _createClass (constructor, protoDesc, staticDesc) {
+    protoDesc &amp;amp;&amp;amp; defineProperties(constructor.prototype, protoDesc)
+    staticDesc &amp;amp;&amp;amp; defineProperties(constructor, staticDesc)
+    return constructor
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-真正的创建class&#34;&gt;3. 真正的创建class&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const Foo = function () {
+    function Foo(name) {
+        _checkType(this, Foo) // 先检查是不是new调用的
+
+        this.name = name
+    }
+
+    _createClass (Foo, [ // 表示在class内部定义的方法
+        {
+            key: &#39;say&#39;,
+            value: function () {
+                console.log(this.name)
+            }
+        }
+    ], [ // 表示在class内部定义的静态方法
+        {
+            key: &#39;say&#39;,
+            value: function () {
+                console.log(&#39;static say&#39;)
+                console.log(this.name)
+            }
+        }
+    ])
+
+    return Foo
+}()
+&lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（ES6）</a>
       </div>
       
