@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（CSS下） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615374329013">
+<link rel="shortcut icon" href="/favicon.ico?v=1615380056777">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1337,6 +1337,84 @@ docEl.style.fontSize = fontsize;
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-es6/"" data-c="
           &lt;h1 id=&#34;1-声明-let-const&#34;&gt;1. 声明 let、const&lt;/h1&gt;
+&lt;h2 id=&#34;1-let声明变量的特点&#34;&gt;1. let声明变量的特点:&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;变量不能重复声明&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;每个循环每执行一次都有一个大括号{}，{}内的代码属于一个代码块，let声明的变量属于块级作用域，所以看上去能重复声明。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for (let i = 0; i &amp;lt; 10; i++) {
+        let s = &amp;quot;a&amp;quot;;
+        console.log(s);    //这里会输出10个a
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;定义的变量可以被修改&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let c = 1;
+c++;
+console.log(c); //2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;定义的变量是块级作用域的变量&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;必须先声明后使用&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-const-声明常量的特点&#34;&gt;2. const 声明常量的特点：&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;常量不能重复声明，同let&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;常量不能被修改&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const p  = 1;
+p=2;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;上面的代码浏览器会报错&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;必须先声明后使用&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;2-解构赋值&#34;&gt;2. 解构赋值&lt;/h1&gt;
+&lt;h2 id=&#34;1-解构赋值的定义&#34;&gt;1. 解构赋值的定义&lt;/h2&gt;
+&lt;p&gt;ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构，本质是一种模式匹配。&lt;/p&gt;
+&lt;h2 id=&#34;2-数组的解构赋值&#34;&gt;2. 数组的解构赋值&lt;/h2&gt;
+&lt;p&gt;按照对应位置，对变量赋值，如果解构不成功，变量的值就等于undefined。&lt;br&gt;
+同时解构赋值允许指定默认值。只有当一个数组成员严格等于undefined，默认值才会生效。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let [a, b, c] = [1, 2, 3];   //a=1,b=2,c=3
+let [x, , y] = [1, 2, 3];    //x=1,y=3
+let [foo] = [];              //foo=undefined
+let [foo = 1] = [];      //foo=1
+let [foo = 1] = [null];  //foo=null
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-对象的解构赋值&#34;&gt;3. 对象的解构赋值&lt;/h2&gt;
+&lt;p&gt;对象的解构是按照属性来进行解构赋值的。如果解构不成功，变量的值就等于undefined。&lt;br&gt;
+对象的解构也可以指定默认值。默认值生效的条件是，对象的属性值严格等于undefined。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let { a: foo, b: bar } = { a: &amp;quot;123&amp;quot;, b: &amp;quot;456&amp;quot; }    //foo=123  bar =456
+let { a: a, b: b } = { a: &amp;quot;123&amp;quot;, b: &amp;quot;456&amp;quot; }       //a=123 b=456
+let { a, b } = { a: &amp;quot;123&amp;quot;, b: &amp;quot;456&amp;quot; }      //a=123 b=456   
+//第三种写法等于第二种，因为es6中可以在对象中直接写入变量
+let { a, c } = { a: &amp;quot;123&amp;quot;, b: &amp;quot;456&amp;quot; }     //a=123  c=undefined
+let { a, c = 3 } = { a: &amp;quot;123&amp;quot;, b: &amp;quot;456&amp;quot; }    //a=123  c=3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-其他的解构赋值&#34;&gt;4. 其他的解构赋值&lt;/h2&gt;
+&lt;p&gt;解构赋值的规则是，只要等号右边的值不是对象或数组，就先将其转为对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let  { toString: s } = 123      //s是对象的toString方法
+let  { toString: s } = true;     //s是对象的toString方法
+let { prop: x } = undefined;   //报错
+let { prop: y } = null;      //  报错
+const [a, b, c, d, e] = &amp;quot;hello&amp;quot;   // a=h b=e ...
+const { 0: a, 1: b, 2: c, 3: d, 4: e } = &amp;quot;hello&amp;quot;    //a=h b=e ...
+//字符串被转为类数组对象，故可以使用数组和对象解构赋值
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5-解构赋值的用途&#34;&gt;5. 解构赋值的用途&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;交换变量的值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt; let x = 1
+ let y = 2
+ [x, y] = [y, x]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;方便取值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;let obj = {
+  a:1,
+  b:2,
+  c: function(){return 1}
+}
+ let {a,b} = obj  //代替以前  let a= obj.a, b=obj.b 的写法
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;输入模块的指定方法&lt;/li&gt;
+&lt;li&gt;遍历 Map 结构&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;3-声明类与继承class-extend&#34;&gt;3. 声明类与继承：class、extend&lt;/h1&gt;
 ">【面】前端知识点梳理（ES6）</a>
       </div>
       
