@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>JavaScript实现集合与字典 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615352496456">
+<link rel="shortcut icon" href="/favicon.ico?v=1615374329013">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">45</span>
+        <span class="site-item-stat-count">47</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1364,6 +1364,40 @@ function Dictionary(){
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-es6/"" data-c="
+          &lt;h1 id=&#34;1-声明-let-const&#34;&gt;1. 声明 let、const&lt;/h1&gt;
+">【面】前端知识点梳理（ES6）</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/ip-di-zhi-yu-zheng-shu-de-xiang-hu-zhuan-huan/"" data-c="
+          &lt;pre&gt;&lt;code&gt;//IP转成整型
+function _ip2int(ip) 
+{
+    var num = 0;
+    ip = ip.split(&amp;quot;.&amp;quot;);
+    num = Number(ip[0]) * 256 * 256 * 256 + Number(ip[1]) * 256 * 256 + Number(ip[2]) * 256 + Number(ip[3]);
+    num = num &amp;gt;&amp;gt;&amp;gt; 0;
+    return num;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;//整型解析为IP地址
+function _int2iP(num) 
+{
+    var str;
+    var tt = new Array();
+    tt[0] = (num &amp;gt;&amp;gt;&amp;gt; 24) &amp;gt;&amp;gt;&amp;gt; 0;
+    tt[1] = ((num &amp;lt;&amp;lt; 8) &amp;gt;&amp;gt;&amp;gt; 24) &amp;gt;&amp;gt;&amp;gt; 0;
+    tt[2] = (num &amp;lt;&amp;lt; 16) &amp;gt;&amp;gt;&amp;gt; 24;
+    tt[3] = (num &amp;lt;&amp;lt; 24) &amp;gt;&amp;gt;&amp;gt; 24;
+    str = String(tt[0]) + &amp;quot;.&amp;quot; + String(tt[1]) + &amp;quot;.&amp;quot; + String(tt[2]) + &amp;quot;.&amp;quot; + String(tt[3]);
+    return str;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">ip地址与整数的相互转换</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/js-zhong-he-qu-bie/"" data-c="
           &lt;p&gt;简单来说： == 代表相同， ===代表严格相同, 为啥这么说呢，&lt;/p&gt;
 &lt;p&gt;这么理解： 当进行双等号比较时候： 先检查两个操作数数据类型，如果相同， 则进行===比较， 如果不同， 则愿意为你进行一次类型转换， 转换成相同类型后再进行比较， 而===比较时， 如果类型不同，直接就是false.&lt;/p&gt;
@@ -2347,7 +2381,452 @@ function flatten(arr) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;转成字符串，之后再复原成数组，不过这个方法有个缺点，就是原来的空数组转的空字符串也会被放入新生成的数组里去。&lt;/p&gt;
-&lt;h1 id=&#34;26-bom属性对象方法&#34;&gt;26. BOM属性对象方法&lt;/h1&gt;
+&lt;h1 id=&#34;26-dom和bom相关&#34;&gt;26. DOM和BOM相关&lt;/h1&gt;
+&lt;h2 id=&#34;1dom&#34;&gt;1.DOM&lt;/h2&gt;
+&lt;h3 id=&#34;1-dom是什么&#34;&gt;1. DOM是什么：&lt;/h3&gt;
+&lt;p&gt;DOM（Document Object Model）&lt;code&gt;文档对象模型&lt;/code&gt;，是&lt;strong&gt;处理可扩展标志语言&lt;/strong&gt;的标准编程接口。&lt;/p&gt;
+&lt;p&gt;DOM 是 &lt;strong&gt;W3C&lt;/strong&gt; 的标准&lt;/p&gt;
+&lt;h3 id=&#34;2-dom0级和dom2级有什么区别&#34;&gt;2. DOM0级和DOM2级有什么区别：&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;DOM0&lt;/code&gt;级中为某个dom元素绑定多个事件时，只有最后一个事件有效。&lt;code&gt;onclick&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;DOM2&lt;/code&gt;级中可以为单个元素绑定多个事件，每个事件都可以被触发。&lt;code&gt;addEventListener&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-textcontent-innertext-innnerhtml-value的区别&#34;&gt;3. textContent、innerText、innnerHTML、value的区别：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;textContent用来获取和设置文本内容，与innerText的差别是:&lt;code&gt;textContent&lt;/code&gt;获取到的内容包括了元素中的&lt;code&gt;style标签&lt;/code&gt;和&lt;code&gt;script标签&lt;/code&gt;的内容。&lt;/li&gt;
+&lt;li&gt;innerText只能获取和设置&lt;code&gt;文本&lt;/code&gt;内容，不能获取和设置html代码&lt;/li&gt;
+&lt;li&gt;innerHTML可以获取和设置&lt;code&gt;html&lt;/code&gt;代码&lt;/li&gt;
+&lt;li&gt;value获取的是&lt;code&gt;表单元素&lt;/code&gt;的值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-关于dom的api有什么&#34;&gt;4. 关于dom的api有什么：&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;节点创建型api：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;document.createElement()&lt;/li&gt;
+&lt;li&gt;document.createTextNode()&lt;/li&gt;
+&lt;li&gt;parent.cloneNode(true)&lt;/li&gt;
+&lt;li&gt;document.createDocumentFragment() &lt;code&gt;创建文档片段,解决大量添加节点造成的回流问题&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;页面修改型API：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;parent.appendChild(child)&lt;/li&gt;
+&lt;li&gt;parent.insertBefore(newNode,referenceNode) &lt;code&gt;将新元素添加到父元素中指定的子元素前面&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;parent.removeChild(child)&lt;/li&gt;
+&lt;li&gt;parent.replcaeChild(newChild,oldChild)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;节点查询型API：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;document.getElementById()&lt;/li&gt;
+&lt;li&gt;document.getElementsByTagName() 返回的是一个即时的HTMLCollection类型&lt;/li&gt;
+&lt;li&gt;document.getElementsByName() 根据指定的name属性获取元素,返回的是一个即时的NodeList&lt;/li&gt;
+&lt;li&gt;document.getElementsByClassName() 返回的是一个即时的HTMLCollection&lt;/li&gt;
+&lt;li&gt;document.querySelector() 获取匹配到的第一个元素，采用的是深度优先搜索。&lt;/li&gt;
+&lt;li&gt;docuemnt.querySelectorAll()&lt;br&gt;
+返回的是一个非即时的NodeList，也就是说结果不会随着文档树的变化而变化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;节点关系型api：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;父关系型：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;node.parentNode()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;兄弟关系型&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;node.previouSibling() 返回节点的前一个节点（包括元素节点，文本节点，注释节点）&lt;/li&gt;
+&lt;li&gt;node.previousElementSibling() 返回前一个元素节点&lt;/li&gt;
+&lt;li&gt;node.nextSibling() 返回下一个节点&lt;/li&gt;
+&lt;li&gt;node.nextElementSibling() 返回下一个元素节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;子关系型&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;parent.childNodes() 返回一个即时的NodeList，包括了文本节点和注释节点&lt;/li&gt;
+&lt;li&gt;parent.children() 一个即时的HTMLCollection，子节点都是Element&lt;/li&gt;
+&lt;li&gt;parent.firsrtNode()&lt;/li&gt;
+&lt;li&gt;parent.lastNode()&lt;/li&gt;
+&lt;li&gt;hasChildNodes()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;元素属性型api：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;element.setAttribute(“name”,“value”) 为元素添加属性&lt;/li&gt;
+&lt;li&gt;element.getAtrribute(“name”) 获取元素的属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;元素样式型api：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;window.getComputedStyle(element) 返回一个CSSStyleDeclaration,可以从中访问元素的任意样式属性。&lt;/li&gt;
+&lt;li&gt;element.getBoundingClientRect() 返回一个DOMRect对象，里面&lt;strong&gt;包括了元素相对于可视区的位置top,left&lt;/strong&gt;,以及元素的大小,单位为纯数字。可用于判断某元素是否出现在了可视区域。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5什么是事件监听&#34;&gt;5.什么是事件监听:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;addEventListener()方法&lt;/code&gt;，用于向指定元素添加事件句柄，它可以更简单的控制事件，语法为&lt;/p&gt;
+&lt;p&gt;element.addEventListener(event, function, useCapture);&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一个参数是事件的类型(如 “click” 或 “mousedown”).&lt;/li&gt;
+&lt;li&gt;第二个参数是事件触发后调用的函数。&lt;/li&gt;
+&lt;li&gt;第三个参数是个布尔值用于描述事件是冒泡还是捕获。该参数是可选的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;事件传递有两种方式，&lt;code&gt;冒泡&lt;/code&gt;和&lt;code&gt;捕获&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;事件传递定义了元素事件触发的顺序，如果你将P元素插入到div元素中，用户点击P元素，&lt;/p&gt;
+&lt;p&gt;在冒泡中，内部元素先被触发，然后再触发外部元素，&lt;br&gt;
+捕获中，外部元素先被触发，在触发内部元素，&lt;/p&gt;
+&lt;h3 id=&#34;6-说说前端中的事件流&#34;&gt;6. 说说前端中的事件流&lt;/h3&gt;
+&lt;p&gt;事件发生时会在元素节点之间按照特定的顺序传播，整个过程分为&lt;code&gt;捕获阶段，目标阶段和冒泡阶段&lt;/code&gt;，这个&lt;code&gt;传播过程&lt;/code&gt;叫做Dom事件流。&lt;/p&gt;
+&lt;p&gt;事件冒泡：从事件源逐级向上传播到DOM最顶层节点的过程。&lt;/p&gt;
+&lt;p&gt;事件捕获：从DOM最顶层节点逐级向下传播到事件源的过程。&lt;/p&gt;
+&lt;p&gt;addEventListener用于指定事件处理程序，共接收三个参数。分别是触发事件，事件处理程序函数以及一个布尔值。第三个参数默认为false，表示在该事件的处理函数会在冒泡阶段被调用。若改为true，则表示事件处理函数会在捕获阶段被调用。&lt;/p&gt;
+&lt;h3 id=&#34;7-如何让事件先冒泡后捕获&#34;&gt;7. 如何让事件先冒泡后捕获&lt;/h3&gt;
+&lt;p&gt;对于&lt;code&gt;目标元素&lt;/code&gt;来说，如果DOM节点通过addEventListener同时绑定了两个事件监听函数，一个用于捕获，一个用于冒泡，那么两个事件的执行顺序是按照代码添加的顺序执行的。所以，先绑定冒泡的函数，再绑定捕获的函数，即可实现。&lt;/p&gt;
+&lt;p&gt;对于&lt;code&gt;非目标元素&lt;/code&gt;来说，可以给捕获事件的处理程序添加一个定时器，将处理程序推入下一个宏任务执行。&lt;/p&gt;
+&lt;h3 id=&#34;8-说一下事件代理&#34;&gt;8. 说一下事件代理：&lt;/h3&gt;
+&lt;p&gt;事件委托是指 不在子节点单独设置事件监听器，而将事件&lt;code&gt;监听器设置在父节点上&lt;/code&gt;，再利用&lt;code&gt;冒泡原理&lt;/code&gt;使每一个子节点都能触发该事件。&lt;/p&gt;
+&lt;p&gt;事件委托的优点：只操作一次Dom，提高了程序的性能。&lt;/p&gt;
+&lt;p&gt;常用于&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ul和li标签的事件监听，一般采用事件委托机制将事件监听器绑定在ul上。&lt;/li&gt;
+&lt;li&gt;还适合动态元素的绑定，新添加的子元素不需单独添加事件处理程序。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;（1）了解事件代理吗，这样做有什么好处&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;事件代理就是说我们将事件添加到本来要添加的事件的父节点，将事件委托给父节点来触发处理函数，这通常会使用在大量的同级元素需要添加同一类事件的时候，比如一个动态的非常多的列表，需要为每个列表项都添加点击事件，这时就可以使用事件代理，通过判断e.target.nodeName来判断发生的具体元素，这样做的好处是减少事件绑定，同事动态的DOM结构任然可以监听，事件代理发生在冒泡阶段&lt;/p&gt;
+&lt;p&gt;** （2）事件代理在捕获阶段的实际应用：**&lt;/p&gt;
+&lt;p&gt;可以在父元素层面阻止事件向子元素传播，也可代替子元素执行某些操作。&lt;/p&gt;
+&lt;h3 id=&#34;9-事件类型相关&#34;&gt;9. 事件类型相关：&lt;/h3&gt;
+&lt;p&gt;（1）&lt;code&gt;mouseover和mouseenter的区别&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mouseover：当鼠标移入元素或其子元素都会触发事件，所以有一个重复触发，冒泡的过程。对应的移出事件是mouseout。&lt;/li&gt;
+&lt;li&gt;mouseenter：鼠标移入子元素时不会再次触发mouseenter事件，对应的移出事件是mouseleave。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（2）&lt;code&gt;三种键盘事件的区别：&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;keyup: 松开键盘触发&lt;/li&gt;
+&lt;li&gt;keydown:按下键盘触发&lt;/li&gt;
+&lt;li&gt;keypress:不能识别功能键，比如ctrl,alt,shift,左右箭头。可以区分大小写。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在输入框中按下一个键的全过程：触发keydown/keypress事件-&amp;gt;文字键入输入框中-&amp;gt;触发keyup事件&lt;/p&gt;
+&lt;p&gt;按下按键后&lt;code&gt;自动对焦&lt;/code&gt;输入框，应该使用&lt;code&gt;keyup&lt;/code&gt;，不应该使用keydown/keypress,因为后者会使按键落入输入框中,对于回车键的话还不能使用keypress。&lt;/p&gt;
+&lt;h3 id=&#34;10-静态绑定事件与动态绑定事件的区别&#34;&gt;10. 静态绑定事件与动态绑定事件的区别：&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;静态绑定&lt;/strong&gt;事件是指直接在Html标签上通过οnclick=&amp;quot;hide()&amp;quot;来绑定事件。&lt;/p&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;html和js文件存在耦合，不符合结构和行为分离的原则。&lt;/li&gt;
+&lt;li&gt;可能存在引发错误，如果js代码还没加载就触发该事件则会抛出错误&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;动态绑定&lt;/strong&gt;事件是指通过js动态绑定事件，element.onclick() element.addEventListener()。&lt;/p&gt;
+&lt;h3 id=&#34;11-元素的位置和大小&#34;&gt;11. 元素的位置和大小&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;① offset系列：&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;offsetTop（获取元素位置）: 相对于带有‘定位’的父元素的偏移量&lt;/strong&gt;&lt;br&gt;
+&lt;code&gt;offsetHeight: content+padding+border&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;② cilent系列：&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;clientHeight(获取元素宽高): content+padding,不包含border&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;③ scroll系列：&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;scrollTop（获取滚动的距离）&lt;/strong&gt;: 向下滚动后，上面被卷去的距离，即隐藏的高度。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;④ document.clientWidth与document.style.width的区别：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;区别1：前者可以获取任意样式表中的width样式值，包括行内样式的，内嵌样式的，外部样式的；后者只能获取行内的样式。&lt;/li&gt;
+&lt;li&gt;区别2：clientWidth获取的是数字型的，style获取的带有px后缀&lt;/li&gt;
+&lt;li&gt;区别3：clientWidth包含了padding,而style.width只包含content。&lt;/li&gt;
+&lt;li&gt;区别4：clientWidth是只读属性，所以一般用于获取元素的大小；而style.width是可读可写的，可用于获取，也可用于修改。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;⑤ 判断一个元素是否已经出现在了可视区域：(此问题可应用在懒加载中)&lt;/strong&gt;&lt;br&gt;
+&lt;code&gt;使用element.getBoundingClientRect().top获取在可视区的位置。&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;window.addEventListener(&amp;quot;scroll&amp;quot;, function () {
+    let viewPortHeight = window.pageYOffset;
+    let offset = box2.getBoundingClientRect().top;
+    if (offset &amp;lt; viewPortHeight) {
+        if (offset + box2.offsetHeight &amp;lt; 0) {
+            console.log(&amp;quot;他走了&amp;quot;);
+        } else {
+            console.log(&amp;quot;他来啦他来啦&amp;quot;);
+        }
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;12-js拖动及拖拽功能的实现&#34;&gt;12. js拖动及拖拽功能的实现&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;（1）拖动功能的实现：&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;前置条件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;拖动事件的三个过程：鼠标按下mousedown,鼠标移动mousemove,鼠标松开mouseup&lt;br&gt;
+鼠标按下后执行mousemove事件。&lt;/li&gt;
+&lt;li&gt;盒子采用绝对定位，通过left和top属性来修改位置。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法一：（直接根据鼠标移动的距离确定元素移动的距离）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;鼠标的坐标通过clientX,clientY获取：&lt;/li&gt;
+&lt;li&gt;盒子的定位信息：鼠标移动时候的坐标-鼠标按下去时候的坐标+元素初始情况下的offetLeft.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;（2）拖拽功能的实现：&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;使用html5提供的拖拽API（Drag 和 drop）&lt;/p&gt;
+&lt;h2 id=&#34;2-bom浏览器对象模型&#34;&gt;2. (BOM)浏览器对象模型：&lt;/h2&gt;
+&lt;h3 id=&#34;1-实用的bom属性对象方法&#34;&gt;1. 实用的BOM属性对象方法：&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;location对象&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;location.href– 返回或设置当前文档的URL&lt;/li&gt;
+&lt;li&gt;location.search – 返回URL中的查询字符串部分。例如 http://www.dreamdu.com/dreamdu.php?id=5&amp;amp;name=dreamdu 返回包括(?)后面的内容?id=5&amp;amp;name=dreamdu&lt;/li&gt;
+&lt;li&gt;location.hash – 返回URL#后面的内容，如果没有#，返回空&lt;/li&gt;
+&lt;li&gt;location. – 返回URL中的域名部分，例如www.dreamdu.com&lt;/li&gt;
+&lt;li&gt;location.hostname – 返回URL中的主域名部分，例如dreamdu.com&lt;/li&gt;
+&lt;li&gt;location.pathname – 返回URL的域名后的部分。例如 http://www.dreamdu.com/xhtml/ 返回/xhtml/&lt;/li&gt;
+&lt;li&gt;location.port – 返回URL中的端口部分。例如 http://www.dreamdu.com:8080/xhtml/ 返回8080&lt;/li&gt;
+&lt;li&gt;location.protocol – 返回URL中的协议部分。例如 http://www.dreamdu.com:8080/xhtml/ 返回(//)前面的内容http:&lt;/li&gt;
+&lt;li&gt;location.assign() – 重定向页面，与location.href一样，会记录历史，能后退页面&lt;/li&gt;
+&lt;li&gt;location.replace() – 设置当前文档的URL，不记录历史，不能后退页面&lt;/li&gt;
+&lt;li&gt;location.reload() – 重载当前页面,相当于F5。添加参数true则表示强制刷新，直接从服务器获取数据，不从浏览器缓存中取数据，相当于Ctrl+F5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;history对象&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;history.go(n) – 前进或后退指定的页面数;&lt;/li&gt;
+&lt;li&gt;history.back() – 后退一页&lt;/li&gt;
+&lt;li&gt;history.forward() – 前进一页&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;navigator对象&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;navigator包含了用户浏览器的信息&lt;/li&gt;
+&lt;li&gt;navigator.userAgent – 返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串)&lt;/li&gt;
+&lt;li&gt;navigator.cookieEnabled – 返回浏览器是否支持(启用)cookie&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-settimeoutfn100100毫秒是如何权衡的&#34;&gt;2. setTimeout(fn,100);100毫秒是如何权衡的：&lt;/h3&gt;
+&lt;p&gt;100ms指的是将回调函数加入到任务队列所花的时间。至于具体什么时候执行，需要看主线程的执行栈中是否还有任务在执行。&lt;/p&gt;
+&lt;h3 id=&#34;3-requestanimationframe&#34;&gt;3. requestAnimationFrame&lt;/h3&gt;
+&lt;p&gt;特点：requestAnimationFrame采用系统时间间隔，保证了最佳的绘制效率。&lt;/p&gt;
+&lt;p&gt;使用方法：requestAnimationFrame接收一个回调函数，这个回调函数会在下一次浏览器重绘之前调用。&lt;/p&gt;
+&lt;h3 id=&#34;4-分别用setintervalsettimeoutrequestanimationframe制作有个简单的进度条效果&#34;&gt;4. 分别用setInterval,setTimeout,requestAnimationFrame制作有个简单的进度条效果：&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;setInterval:&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div
+     style=&amp;quot;width: 0; height: 20px; background-color: orange&amp;quot;
+     id=&amp;quot;div&amp;quot;
+     &amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;script&amp;gt;
+    let timer = setInterval(() =&amp;gt; {
+        if (parseInt(div.style.width) &amp;gt;= 500) {
+            return clearInterval(timer);
+        }
+        console.log(div.style.width);
+        div.style.width = parseInt(div.style.width) + 5 + &amp;quot;px&amp;quot;;
+        div.innerHTML = parseInt(div.style.width) / 5 + &amp;quot;%&amp;quot;;
+    }, 16);
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;setTimeout:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div
+     style=&amp;quot;width: 0; height: 20px; background-color: orange&amp;quot;
+     id=&amp;quot;div&amp;quot;
+     &amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;script&amp;gt;
+    let timer = setTimeout(function fn() {
+        if (parseInt(div.style.width) &amp;lt; 500) {
+            div.style.width = parseInt(div.style.width) + 5 + &amp;quot;px&amp;quot;;
+            div.innerHTML = parseInt(div.style.width) / 5 + &amp;quot;%&amp;quot;;
+            timer = setTimeout(fn, 16);
+        } else {
+            clearTimeout(timer);
+        }
+    }, 16);
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;requestAnimationFrame:类似于setTimeout,需要一次次的调用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div
+     style=&amp;quot;width: 0; height: 20px; background-color: orange&amp;quot;
+     id=&amp;quot;div&amp;quot;
+     &amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;script&amp;gt;
+    let timer = requestAnimationFrame(function fn() {
+        if (parseInt(div.style.width) &amp;lt; 500) {
+            div.style.width = parseInt(div.style.width) + 5 + &amp;quot;px&amp;quot;;
+            div.innerHTML = parseInt(div.style.width) / 5 + &amp;quot;%&amp;quot;;
+            requestAnimationFrame(fn);
+        } else {
+            cancelAnimationFrame(timer);
+        }
+    });
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;5-js中的轮播实现原理假如一个页面上有两个轮播你会怎么实现&#34;&gt;5. js中的轮播实现原理？假如一个页面上有两个轮播，你会怎么实现？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;让图片存在一个数组中，然后将最后一张图片重复添加在数组的头部，将第一张图片重复添加在数组的最后。&lt;/li&gt;
+&lt;li&gt;然后准备一个只能显示一张图片的盒子，对盒子做溢出隐藏处理。&lt;/li&gt;
+&lt;li&gt;通过定时器增减索引，显示对应的图片，实现轮播功能。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果有两个轮播，可封装一个轮播组件，将需要轮播的图片作为参数传递。&lt;/p&gt;
+&lt;h1 id=&#34;27-服务端渲染server-side-render&#34;&gt;27. 服务端渲染（server side render）&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;服务端渲染(SSR)&lt;/code&gt;：页面上的内容是由服务器上的代码决定的。即，页面上的内容在服务器上已经生成好了，服务器把这个内容给到浏览器，浏览器拿到这个内容直接显示在页面上即可。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;客户端渲染(CSR)&lt;/code&gt; ：一个网页是由JS文件渲染出来的，而不是服务器直接返回回来的。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615364099956.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-ssr的优势&#34;&gt;1. SSR的优势&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;更利于SEO&lt;br&gt;
+服务端渲染返回给客户端的是已经获取了异步数据并执行JavaScript脚本的最终HTML，网络爬中就可以抓取到完整页面的信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更利于首屏渲染&lt;br&gt;
+首屏的渲染是node发送过来的html字符串，并不依赖于js文件了，这就会使用户更快的看到页面的内容。尤其是针对大型单页应用，打包后文件体积比较大，普通客户端渲染加载所有所需文件时间较长，首页就会有一个很长的白屏等待时间。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-ssr的劣势&#34;&gt;2. SSR的劣势&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;服务端压力较大&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开发条件受限&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;学习成本相对较高&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;28-js-垃圾回收机制&#34;&gt;28.  JS 垃圾回收机制&lt;/h1&gt;
+&lt;h2 id=&#34;1-垃圾回收&#34;&gt;1. 垃圾回收&lt;/h2&gt;
+&lt;p&gt;JavaScript 中的内存管理是自动执行的，而且是不可见的。我们创建基本类型、对象、函数……所有这些都需要内存。&lt;/p&gt;
+&lt;h2 id=&#34;2-可达性&#34;&gt;2. 可达性&lt;/h2&gt;
+&lt;p&gt;JavaScript 中内存管理的主要概念是可达性。&lt;/p&gt;
+&lt;p&gt;简单地说，“可达性” 值就是那些以某种方式&lt;code&gt;可访问&lt;/code&gt;或&lt;code&gt;可用&lt;/code&gt;的值，它们被保证存储在内存中。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;有一组基本的固有可达值，由于显而易见的原因无法删除。例如:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;本地函数的局部变量和参数&lt;/li&gt;
+&lt;li&gt;当前嵌套调用链上的其他函数的变量和参数&lt;/li&gt;
+&lt;li&gt;全局变量&lt;/li&gt;
+&lt;li&gt;还有一些其他的，内部的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;这些值称为根。&lt;/code&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;如果引用或引用链可以从根访问任何其他值，则认为该值是可访问的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;如果局部变量中有对象，并且该对象具有引用另一个对象的属性，则该对象被视为&lt;strong&gt;可达性&lt;/strong&gt;， 它引用的那些也是可以访问的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;下面是最简单的例子:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// user 具有对象的引用
+let user = {
+  name: &amp;quot;John&amp;quot;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366337580.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这里箭头表示一个对象引用。全局变量&lt;code&gt;“user”&lt;/code&gt;引用对象 &lt;code&gt;{name:“John”}&lt;/code&gt;(为了简洁起见，我们将其命名为John)。John 的 &lt;code&gt;“name”&lt;/code&gt;属性存储一个基本类型，因此它被绘制在对象中。&lt;/p&gt;
+&lt;p&gt;如果 &lt;code&gt;user&lt;/code&gt; 的值被覆盖，则引用丢失:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;user = null;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366388527.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在 John 变成不可达的状态，没有办法访问它，没有对它的引用。垃圾回收器将丢弃 John 数据并释放内存。&lt;/p&gt;
+&lt;h2 id=&#34;3两个引用&#34;&gt;3.两个引用&lt;/h2&gt;
+&lt;p&gt;现在让我们假设我们将引用从 &lt;code&gt;user&lt;/code&gt;复制到 &lt;code&gt;admin&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// user具有对象的引用
+let user = {
+  name: &amp;quot;John&amp;quot;
+};
+let admin = user;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366454334.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在如果我们做同样的事情:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;user = null;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;该对象仍然可以通过 &lt;code&gt;admin&lt;/code&gt; 全局变量访问，所以它在内存中。如果我们也覆盖&lt;code&gt;admin&lt;/code&gt;，那么它可以被释放。&lt;/p&gt;
+&lt;h2 id=&#34;4-相互关联的对象&#34;&gt;4. 相互关联的对象&lt;/h2&gt;
+&lt;p&gt;现在来看一个更复杂的例子， family 对象：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function marry (man, woman) {
+  woman.husban = man;
+  man.wife = woman;
+
+  return {
+    father: man,
+    mother: woman
+  }
+}
+
+let family = marry({
+  name: &amp;quot;John&amp;quot;
+}, {
+  name: &amp;quot;Ann&amp;quot;
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;产生的内存结构:&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366611256.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在让我们删除两个引用:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;delete family.father;
+delete family.mother.husband;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366634406.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+仅仅删除这两个引用中的一个是不够的，因为所有对象仍然是可访问的。&lt;/p&gt;
+&lt;p&gt;但是如果我们把这两个都删除，那么我们可以看到 John 不再有传入的引用:&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366651083.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+输出引用无关紧要。只有传入的对象才能使对象可访问，因此，John 现在是不可访问的，并将从内存中删除所有不可访问的数据。&lt;/p&gt;
+&lt;p&gt;垃圾回收之后：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366668995.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-内部算法&#34;&gt;5. 内部算法&lt;/h2&gt;
+&lt;p&gt;基本的垃圾回收算法称为“&lt;strong&gt;标记-清除&lt;/strong&gt;”，定期执行以下“垃圾回收”步骤:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;垃圾回收器获取根并“&lt;strong&gt;标记&lt;/strong&gt;”(记住)它们。&lt;/li&gt;
+&lt;li&gt;然后它访问并“标记”所有来自它们的引用。&lt;/li&gt;
+&lt;li&gt;然后它访问标记的对象并标记它们的引用。所有被访问的对象都被记住，以便以后不再访问同一个对象两次。&lt;/li&gt;
+&lt;li&gt;以此类推，直到有未访问的引用(可以从根访问)为止。&lt;/li&gt;
+&lt;li&gt;除标记的对象外，所有对象都被删除。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如，对象结构如下:&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366772644.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+我们可以清楚地看到右边有一个“不可到达的块”。现在让我们看看“&lt;strong&gt;标记并清除&lt;/strong&gt;”垃圾回收器如何处理它。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一步标记根&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367324843.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;然后标记他们的引用&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367344647.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;以及子孙代的引用:&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367365917.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在进程中不能访问的对象被认为是不可访问的，将被删除:&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367388777.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;code&gt;这就是垃圾收集的工作原理。JavaScript引擎应用了许多优化，使其运行得更快，并且不影响执行。&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;6面试怎么回答&#34;&gt;6.面试怎么回答&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1）问什么是垃圾&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一般来说没有被引用的对象就是垃圾，就是要被清除， 有个例外如果几个对象引用形成一个环，互相引用，但根访问不到它们，这几个对象也是垃圾，也要被清除。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2）如何检垃圾&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一种算法是标记 标记-清除 算法&lt;/p&gt;
+&lt;h1 id=&#34;29-eventloop&#34;&gt;29. eventloop&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Event Loop&lt;/code&gt;即事件循环，是指浏览器或Node的一种解决javaScript单线程运行时不会阻塞的一种机制，也就是我们经常使用&lt;strong&gt;异步&lt;/strong&gt;的原理。&lt;/p&gt;
+&lt;h2 id=&#34;1-进程和线程&#34;&gt;1. 进程和线程&lt;/h2&gt;
+&lt;p&gt;线程，是程序执行流的最小单位。线程可与同属一个进程的其他线程共享所拥有的全部资源，同一进程中的多个线程之间可以并发执行。线程有&lt;code&gt;就绪&lt;/code&gt;，&lt;code&gt;阻塞&lt;/code&gt;，&lt;code&gt;运行&lt;/code&gt;三种基本状态。&lt;/p&gt;
+&lt;p&gt;阮一峰大神针对进程和线程的类比，很是形象：&lt;code&gt;计算机的核心CPU&lt;/code&gt;，是个工厂，时刻运转着，工厂里有很多个车间（进程），一个车间开工其他车间不能开工，就是说：&lt;code&gt;单核CPU一次只能运行一个进程。任何时候，CPU总是运行一个进程&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;而一个车间里面有很多工人（线程），协同完成一个任务。所以：&lt;code&gt;一个进程可以包括多个线程&lt;/code&gt;。车间空间是工人共享的，&lt;code&gt;一个进程中的内存空间是所有线程共享的&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;但是房间大小不同个，容纳量不同，有些线程进去了，其他线程就不能再进去使用了。这就是：&lt;code&gt;一个线程使用某些共享内存时，其他线程得等它结束后才能使用共享内存&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;内存可以上锁，防止其他线程进来，【互斥锁】也就是防止多个线程读写同一块内存区域。&lt;/p&gt;
+&lt;p&gt;还有些共享内存比较大，可以容纳多个线程，但是也是有限的，只能容纳固定数目的线程使用。如何保证多个线程不冲突呢？内存门口有个钥匙架，如果发现钥匙架空了，那就不能再进去了【信号量】。&lt;/p&gt;
+&lt;h2 id=&#34;2事件循环event-loop&#34;&gt;2.事件循环（Event Loop）&lt;/h2&gt;
+&lt;p&gt;JavaScript是单线程的，单线程意味着需要一个任务队列来管理任务事件，任务分为两种：&lt;code&gt;同步任务&lt;/code&gt;和&lt;code&gt;异步任务&lt;/code&gt;。同步任务是在主线程上面排队执行的任务，只有前面任务完成，下一个任务才能执行。异步任务是不进入主线程，而是进入任务队列中，只有通知主线程某个异步任务可以执行了，该任务方可执行。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615368575238.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-任务队列&#34;&gt;3. 任务队列&lt;/h2&gt;
+&lt;p&gt;同步任务在主线程执行形成一个执行栈，主线程之外有个任务队列（鼠标点击事件，键盘点击事件，网络请求），只要异步任务触发，在任务队列中放置一个事件，等执行栈中同步任务完成后，系统才会读取任务队列执行异步任务。主线程会重复去任务队列中读取任务并执行——事件循环。&lt;/p&gt;
+&lt;p&gt;任务队列是“先进先出”的数据结构，先来的优先被主线程读取。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615368924655.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+主线程运行产生堆heap和栈stack，栈里面是各种同步方法，栈里面代码执行完毕主线程会读取任务队列，依次执行事件的回调函数。&lt;/p&gt;
+&lt;p&gt;所以，栈里面的同步任务总是在任务队列之前执行。&lt;/p&gt;
+&lt;h1 id=&#34;30-如何快速让字符串变成以千为精度的数字&#34;&gt;30. 如何快速让字符串变成以千为精度的数字&lt;/h1&gt;
+&lt;h2 id=&#34;1-字符串转换成数字的三种方法&#34;&gt;1. 字符串转换成数字的三种方法&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;转换函数、强制类型转换、利用js变量弱类型转换&lt;/code&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;转换函数：&lt;br&gt;
+js提供了parseInt()和parseFloat()两个转换函数。前者把值转换成整数，后者把值转换成浮点数。只有对String类型调用这些方法，这两个函数才能正确运行；对其他类型返回的都是NaN(Not a Number)。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;parseInt()方法还有基模式，可以把二进制、八进制、十六进制或其他任何进制的字符串转换成整数。基是由parseInt()方法的第二个参数指定的，示例如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;parseInt(&amp;quot;AF&amp;quot;,   16);   //returns   175
+parseInt(&amp;quot;10&amp;quot;,   2);   //returns   2
+parseInt(&amp;quot;10&amp;quot;,   8);   //returns   8
+parseInt(&amp;quot;10&amp;quot;,   10);   //returns   10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;强制类型转换&lt;br&gt;
+ECMAScript中可用的3种强制类型转换如下：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Boolean(value)——把给定的值转换成Boolean型；&lt;/li&gt;
+&lt;li&gt;Number(value)——把给定的值转换成数字（可以是整数或浮点数）；&lt;/li&gt;
+&lt;li&gt;String(value)——把给定的值转换成字符串。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;利用js变量弱类型转换&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-数字千位符格式化&#34;&gt;2. 数字千位符格式化&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;function toThousands(num) {
+    var result = &#39;&#39;, counter = 0;
+    num = (num || 0).toString();
+    for (var i = num.length - 1; i &amp;gt;= 0; i--) {
+        counter++;
+        result = num.charAt(i) + result;
+        if (!(counter % 3) &amp;amp;&amp;amp; i != 0) { result = &#39;,&#39; + result; }
+    }
+    return result;
+}
+&lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（JS下）</a>
       </div>
       
