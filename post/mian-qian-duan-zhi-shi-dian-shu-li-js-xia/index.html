@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（JS下） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615466566262">
+<link rel="shortcut icon" href="/favicon.ico?v=1615471214079">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -2647,6 +2647,76 @@ ECMAScript中可用的3种强制类型转换如下：</li>
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-vue/"" data-c="
           &lt;h1 id=&#34;1-vue解决了什么问题&#34;&gt;1. vue解决了什么问题&lt;/h1&gt;
+&lt;p&gt;要回答这个问题，要先理解核心知识点：组件化&lt;/p&gt;
+&lt;p&gt;组件化就是一种代码设计理念。最开始的面向过程编程使一个文件的代码特别多，难以维护，所以借鉴了后端的面向对象编程，使一个本需要几千行代码的文件可以被拆分成几个几百行的文件。&lt;/p&gt;
+&lt;p&gt;一个组件就是一个类 new 出来的一个对象，是一个页面的一个部分，一个组件要负责这一部分的 CSS 展示，DOM 节点的设计，以及 JS 的逻辑。合理拆解组件可以提升代码的可读性以及可维护性，将组件间共性抽离出一个通用组件，让子组件去继承这个通用组件，可以少写很多代码，最小的组件颗粒度是一个元素。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;组件化的演进 ：&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1）Angular 提出了通过面向数据编程，不用操作 DOM，但是刚出来时，性能上有瓶颈&lt;br&gt;
+2）React 引入了虚拟 DOM 机制，将 DOM 的比对换成了 JS 的比对，加了diff 算法，慢慢的性能的问题就解决了，前端开始大量使用 MVVM 和 MVC 这种框架了。&lt;br&gt;
+3）&lt;code&gt;vue 是一个轻量级的 MVVM 模式的框架&lt;/code&gt;，vue 引入虚拟 DOM 的目的跟 React 不同，后者是为了解决性能问题，前者是为了让&lt;code&gt;组件高度抽象化&lt;/code&gt;（虚拟 DOM 使渲染过程抽象化了）。其主要作用是使前端开发变得简单，它的设计模式让没有组件化思维的使用者也在用组件化作开发，所以写的代码不会太差。&lt;br&gt;
+PS：如果对前面两个框架不熟悉的话，最好不要在面试时提到它们，否则有被继续问的风险，只谈 vue 就好。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;另外 Vue 的一个优势是&lt;code&gt;速度快&lt;/code&gt;，当我们改变数据后，会引起页面重新渲染，引起的重排和重绘的代价是高昂的，有可能会破坏用户体验，让 UI 展示迟缓，重排会引起周围的 DOM 重新排列，这个范围可能是全局也可能是局部，重排的性能花销跟有多少 DOM 节点需要重新构建有关系，因此应该尽可能减少重排的次数，以及它波及的范围。&lt;br&gt;
+那么 Vue 将&lt;code&gt;数据更新引起的 watcher 回调放入到 nextTick&lt;/code&gt;中（是一个微任务，当执行栈为空时，就从微任务中一次性拿取所有任务），并且同一个 watcher 只会放入一次，也就是说在当前的事件循环中，无论一个响应式数据改变多少次，&lt;code&gt;最终都只会渲染一次&lt;/code&gt;，nextTick 在下面有讲解。&lt;br&gt;
+要了解这段知识点要具备这些基础知识：浏览器渲染过程、JS 运行机制、异步任务、Vue 的双向绑定。确实所有知识都是从基础知识而来的，所以学框架最终就是对基础知识有更深入的理解。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;2mvvm-的理解&#34;&gt;2.MVVM 的理解&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;回答思路：先聊下 MVC，再聊下 MVVM 的定义，最后进行对比。&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615468604645.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;View 传送指令到 Controller&lt;br&gt;
+Controller 完成业务逻辑后，要求 Model 改变状态&lt;br&gt;
+Model 将新的数据发送到 View，用户得到反馈&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所有通信都是单向的。MVC 接收用户指令，可以先通过 View 来接收，然后传递给 Controller，也可以直接通过 Controller 来接收指令。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615468656209.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ViewModel 和 View 之间是通过双向绑定来实现数据的变更&lt;br&gt;
+ViewModel 和 Model 之间是浏览器通过 ajax 跟服务器相互通信的过程&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这两个通信是双向的，且 View 和 Model 之间没有通信。&lt;/p&gt;
+&lt;p&gt;MVVM 模式的出现是因为很多后端的代码放到了前端（大前端的到来），前端的代码可维护性、可扩展性以及安全性出现了问题，随着前端框架的演变才有了 MVVM 模式，MVVM 模式和 MVC 模式主要区别在于让开发者的注意力从对 DOM 的操作上，转移到对数据的管理上，即数据是什么，视图就展示什么，使前后端分离更容易，并大大提升了开发效率和代码的可维护性。&lt;/p&gt;
+&lt;h1 id=&#34;3-双向绑定的原理数据劫持&#34;&gt;3. 双向绑定的原理？数据劫持？&lt;/h1&gt;
+&lt;p&gt;Vue.js是通过&lt;code&gt;数据劫持&lt;/code&gt;以及结合&lt;code&gt;发布者-订阅者&lt;/code&gt;来实现双向绑定的，数据劫持是利用ES5的Object.defineProperty(obj, key, val)来劫持各个属性的的setter以及getter，在数据变动时发布消息给订阅者，从而触发相应的回调来更新视图。&lt;/p&gt;
+&lt;p&gt;双向数据绑定，简单点来说分为三个部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1、Observer：观察者，这里的主要工作是递归地监听对象上的所有属性，在属性值改变的时候，触发相应的watcher。&lt;/li&gt;
+&lt;li&gt;2、Watcher：订阅者，当监听的数据值修改时，执行响应的回调函数（Vue里面的更新模板内容）。&lt;/li&gt;
+&lt;li&gt;3、Dep：订阅管理器，连接Observer和Watcher的桥梁，每一个Observer对应一个Dep，它内部维护一个数组，保存与该Observer相关的Watcher。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615469169345.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+反向是页面数据的变化映射到 data 中，通过 input 事件监听 input 框数据的改变，JS 得到通知再赋值给 data，只是 VM 框架使手动的过程自动化了。&lt;/p&gt;
+&lt;p&gt;正向是数据驱动页面，通过 Object.defineProperty() 这个核心 API，将所有数据变成响应式数据，当访问到一个响应式数据时，就会触发它的 getter 函数，收集依赖，当一个响应式数据变化时，就会触发 setter 函数，通知依赖使视图得到更新。&lt;/p&gt;
+&lt;h1 id=&#34;4-nexttick&#34;&gt;4. nextTick&lt;/h1&gt;
+&lt;p&gt;nextTick 把要执行的任务&lt;code&gt;推入&lt;/code&gt;到一个&lt;code&gt;队列&lt;/code&gt;中，在下一个 tick 同步执行队列的所有任务，它是异步任务中的微任务。（关于 JS 的运行机制，这是基础知识，篇幅有限）&lt;/p&gt;
+&lt;p&gt;在 Vue 中，不是每一次数据的改变都会触发所有 wather 的回调，而是将这些回调推入到一个队列中，相同的 id 的 watcher 的回调不会被重复添加，然后在下一个 tick 中再执行这些回调，因此重新渲染是异步的。这么做的好处是：比如我们写了一个将某个响应式数据不断加 1 直到 1000 的代码块，那么视图只会重新渲染一次，即从 0 到 1000，而不是重新渲染 1000 次，这是一种有效的优化手段。&lt;/p&gt;
+&lt;p&gt;如果我们在更新了一个响应式数据后，需要同步拿到这个渲染后的 DOM 结果，那么就使用 $nextTick 这个方法，异步拿到这个结果。&lt;/p&gt;
+&lt;p&gt;使用方式有两个：&lt;code&gt;回调方式和 Promise 方式&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.$nextTick(cb)
+this.$nextTick().then(cb)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;请注意第一种方式的使用，虽然它们都是异步执行的，但是如果你将第一种方式放在响应式数据更新的前面，那么你拿到的将是老的 DOM 结果。&lt;/p&gt;
+&lt;p&gt;因为 wather 的回调函数是在 nextTick 之后执行的，使用第一种方式 wather 的回调函数将和 this.$nextTick(cb) 中的 cb 同步执行，你将它放在响应式数据更新之前的话，会先执行这个 cb，所以拿到的是未被重新渲染的 DOM 结果，而如果是放在之后，你就能拿到被重新渲染的 DOM 结果。而第二种方式的 cb 跟 watcher 的回调函数是异步执行的，所以没有顺序问题。&lt;/p&gt;
+&lt;h1 id=&#34;5-生命周期&#34;&gt;5. 生命周期&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615470829040.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+回答技巧：有哪些生命周期以及在每个生命周期的时机中我们能做的事情。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;beforeCreate 钩子的执行时机是在&lt;code&gt;initState 函数之前&lt;/code&gt;，这个函数会初始化 props、data、methods、watch、computed 等属性，也就意味着，这个&lt;code&gt;钩子是不可以访问&lt;/code&gt;到以上这些属性中的数据的；&lt;/li&gt;
+&lt;li&gt;created 钩子的执行时机是在&lt;code&gt;iniState 函数之后&lt;/code&gt;，因此&lt;code&gt;可以访问&lt;/code&gt;到以上这些属性中的数据；&lt;/li&gt;
+&lt;li&gt;beforeMount 钩子的执行时机是在 DOM 挂载之前，执行顺序是先父后子；&lt;/li&gt;
+&lt;li&gt;mounted 钩子的执行时机是在 DOM 挂载之后，执行顺序是先子后父；&lt;/li&gt;
+&lt;li&gt;beforeUpdate 钩子的执行时机是在数据发生改变，还没有渲染之前；&lt;/li&gt;
+&lt;li&gt;updated 钩子的执行时机是数据发生改变，并且被渲染后；&lt;/li&gt;
+&lt;li&gt;beforeDestroy 钩子的执行时机是组件即将被销毁之前，也因此组件实例上属性的数据还可以被访问到；&lt;/li&gt;
+&lt;li&gt;destroyed 钩子的执行时机是组件被销毁之后。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;还有两个钩子跟 keep-alive 抽象组件相关的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;activated 钩子的执行时机是在 mounted 钩子之后执行；&lt;/li&gt;
+&lt;li&gt;deactivated 钩子的执行时机是在页面退出时，由于会缓存，所以不会销毁组件。&lt;/li&gt;
+&lt;/ul&gt;
 ">【面】前端知识点梳理（Vue）</a>
       </div>
       
