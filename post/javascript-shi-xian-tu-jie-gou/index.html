@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>JavaScript实现图结构 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615451910304">
+<link rel="shortcut icon" href="/favicon.ico?v=1615466566262">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">49</span>
+        <span class="site-item-stat-count">50</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1683,6 +1683,12 @@ function Dictionary(){
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-vue/"" data-c="
+          &lt;h1 id=&#34;1-vue解决了什么问题&#34;&gt;1. vue解决了什么问题&lt;/h1&gt;
+">【面】前端知识点梳理（Vue）</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-fu-wu-duan-yu-wang-luo/"" data-c="
           &lt;h1 id=&#34;1-常见状态码&#34;&gt;1. 常见状态码&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;2XX 成功&lt;/code&gt;&lt;/p&gt;
@@ -1940,6 +1946,259 @@ xhr.onreadystatechange = function () {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;10-跨域&#34;&gt;10. 跨域&lt;/h1&gt;
 &lt;p&gt;因为浏览器出于安全考虑，有同源策略。也就是说，如果协议、域名或者端口有一个不同就是跨域，Ajax 请求会失败。&lt;/p&gt;
+&lt;h2 id=&#34;1-同源策略限制下接口请求的正确打开方式&#34;&gt;1. 同源策略限制下接口请求的正确打开方式&lt;/h2&gt;
+&lt;h3 id=&#34;1-jsonp&#34;&gt;1. JSONP&lt;/h3&gt;
+&lt;p&gt;在HTML标签里，一些标签比如script、img这样的获取资源的标签是没有跨域限制的，通过&amp;lt;script&amp;gt;&lt;/script&gt; 标签指向一个需要访问的地址并提供一个回调函数来接收数据当需要通讯时。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script src=&amp;quot;http://domain/api?param1=a&amp;amp;param2=b&amp;amp;callback=jsonp&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;
+    function jsonp(data) {
+    	console.log(data)
+	}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;JSONP 使用简单且兼容性不错，但是只限于 &lt;code&gt;get&lt;/code&gt; 请求。&lt;/p&gt;
+&lt;h3 id=&#34;2-cors&#34;&gt;2. CORS&lt;/h3&gt;
+&lt;p&gt;CORS是一个W3C标准，全称是&amp;quot;跨域资源共享&amp;quot;（Cross-origin resource sharing）。看名字就知道这是处理跨域问题的标准做法。浏览器将CORS请求分成两类：简单请求（simple request）和非简单请求（not-so-simple request）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;只要同时满足以下两大条件，就属于简单请求。&lt;/strong&gt;&lt;br&gt;
+（1) 请求方法是以下三种方法之一：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HEAD&lt;/li&gt;
+&lt;li&gt;GET&lt;/li&gt;
+&lt;li&gt;POST&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（2）HTTP的头信息不超出以下几种字段：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Accept&lt;/li&gt;
+&lt;li&gt;Accept-Language&lt;/li&gt;
+&lt;li&gt;Content-Language&lt;/li&gt;
+&lt;li&gt;Last-Event-ID&lt;/li&gt;
+&lt;li&gt;Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;前端什么也不用干，就是正常发请求就可以&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fetch(`http://localhost:9871/api/cors?msg=helloCors`).then(res =&amp;gt; {
+  console.log(res)
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;非简单请求&lt;/strong&gt;&lt;br&gt;
+非简单请求会发出一次预检测请求，返回码是204，预检测通过才会真正发出请求，这才返回200。这里通过前端发请求的时候增加一个额外的headers来触发非简单请求。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615453729332.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+前端&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fetch(`http://localhost:9871/api/cors?msg=helloCors`, {
+  // 需要带上cookie
+  credentials: &#39;include&#39;,
+  // 这里添加额外的headers来触发非简单请求
+  headers: {
+    &#39;t&#39;: &#39;extra headers&#39;
+  }
+}).then(res =&amp;gt; {
+  console.log(res)
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-代理&#34;&gt;3. 代理&lt;/h3&gt;
+&lt;p&gt;想一下，如果我们请求的时候还是用前端的域名，然后有个东西帮我们把这个请求转发到真正的后端域名上，不就避免跨域了吗？这时候，Nginx出场了。&lt;/p&gt;
+&lt;p&gt;Nginx配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server{
+    # 监听9099端口
+    listen 9099;
+    # 域名是localhost
+    server_name localhost;
+    #凡是localhost:9099/api这个样子的，都转发到真正的服务端地址http://localhost:9871 
+    location ^~ /api {
+        proxy_pass http://localhost:9871;
+    }    
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;前端就不用干什么事情了，除了写接口，也没后端什么事情了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 请求的时候直接用回前端这边的域名http://localhost:9099，这就不会跨域，然后Nginx监听到凡是localhost:9099/api这个样子的，都转发到真正的服务端地址http://localhost:9871 
+fetch(&#39;http://localhost:9099/api/iframePost&#39;, {
+  method: &#39;POST&#39;,
+  headers: {
+    &#39;Accept&#39;: &#39;application/json&#39;,
+    &#39;Content-Type&#39;: &#39;application/json&#39;
+  },
+  body: JSON.stringify({
+    msg: &#39;helloIframePost&#39;
+  })
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-同源策略限制下dom查询的正确打开方式&#34;&gt;2. 同源策略限制下Dom查询的正确打开方式&lt;/h2&gt;
+&lt;h3 id=&#34;1postmessage&#34;&gt;1.postMessage&lt;/h3&gt;
+&lt;p&gt;window.postMessage() 是HTML5的一个接口，专注实现不同窗口不同页面的跨域通讯。&lt;/p&gt;
+&lt;h3 id=&#34;2documentdomain&#34;&gt;2.document.domain&lt;/h3&gt;
+&lt;p&gt;这种方式只适合主域名相同，但子域名不同的iframe跨域。&lt;br&gt;
+比如主域名是http://crossdomain.com:9099，子域名是http://child.crossdomain.com:9099，这种情况下给两个页面指定一下document.domain即document.domain = crossdomain.com就可以访问各自的window对象了。&lt;/p&gt;
+&lt;h3 id=&#34;3canvas操作图片的跨域问题&#34;&gt;3.canvas操作图片的跨域问题&lt;/h3&gt;
+&lt;p&gt;这个应该是一个比较冷门的跨域问题&lt;/p&gt;
+&lt;h1 id=&#34;11-前端安全xss-csrf&#34;&gt;11. 前端安全XSS、CSRF&lt;/h1&gt;
+&lt;h2 id=&#34;1-xss&#34;&gt;1. XSS&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;跨网站指令码（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程式的安全漏洞攻击，是代码注入的一种。它允许恶意使用者将程式码注入到网页上，其他使用者在观看网页时就会受到影响。这类攻击通常包含了 HTML 以及使用者端脚本语言。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;XSS 分为三种：&lt;strong&gt;反射型，存储型和 DOM-based&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;如何攻击&#34;&gt;如何攻击&lt;/h3&gt;
+&lt;p&gt;XSS 通过修改 HTML 节点或者执行 JS 代码来攻击网站。&lt;/p&gt;
+&lt;p&gt;例如通过 URL 获取某些参数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- http://www.domain.com?name=&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; --&amp;gt;
+&amp;lt;div&amp;gt;{{name}}&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上述 URL 输入可能会将 HTML 改为 &amp;lt;div&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&amp;lt;/div&amp;gt; ，这样页面中就凭空多了一段可执行脚本。这种攻击类型是反射型攻击，也可以说是 DOM-based 攻击。&lt;/p&gt;
+&lt;p&gt;也有另一种场景，比如写了一篇包含攻击代码 &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; 的文章，那么可能浏览文章的用户都会被攻击到。这种攻击类型是存储型攻击，也可以说是 DOM-based 攻击，并且这种攻击打击面更广。&lt;/p&gt;
+&lt;h3 id=&#34;如何防御&#34;&gt;如何防御&lt;/h3&gt;
+&lt;p&gt;最普遍的做法是转义输入输出的内容，对于引号，尖括号，斜杠进行转义&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function escape(str) {
+  str = str.replace(/&amp;amp;/g, &#39;&amp;amp;amp;&#39;)
+  str = str.replace(/&amp;lt;/g, &#39;&amp;amp;lt;&#39;)
+  str = str.replace(/&amp;gt;/g, &#39;&amp;amp;gt;&#39;)
+  str = str.replace(/&amp;quot;/g, &#39;&amp;amp;quto;&#39;)
+  str = str.replace(/&#39;/g, &#39;&amp;amp;#39;&#39;)
+  str = str.replace(/`/g, &#39;&amp;amp;#96;&#39;)
+  str = str.replace(/\//g, &#39;&amp;amp;#x2F;&#39;)
+  return str
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过转义可以将攻击代码 &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; 变成&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// -&amp;gt; &amp;amp;lt;script&amp;amp;gt;alert(1)&amp;amp;lt;&amp;amp;#x2F;script&amp;amp;gt;
+escape(&#39;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对于显示富文本来说，不能通过上面的办法来转义所有字符，因为这样会把需要的格式也过滤掉。这种情况通常采用白名单过滤的办法，当然也可以通过黑名单过滤，但是考虑到需要过滤的标签和标签属性实在太多，更加推荐使用白名单的方式。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var xss = require(&#39;xss&#39;)
+var html = xss(&#39;&amp;lt;h1 id=&amp;quot;title&amp;quot;&amp;gt;XSS Demo&amp;lt;/h1&amp;gt;&amp;lt;script&amp;gt;alert(&amp;quot;xss&amp;quot;);&amp;lt;/script&amp;gt;&#39;)
+// -&amp;gt; &amp;lt;h1&amp;gt;XSS Demo&amp;lt;/h1&amp;gt;&amp;amp;lt;script&amp;amp;gt;alert(&amp;quot;xss&amp;quot;);&amp;amp;lt;/script&amp;amp;gt;
+console.log(html)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上示例使用了 js-xss 来实现。可以看到在输出中保留了 h1 标签且过滤了 script 标签&lt;/p&gt;
+&lt;h2 id=&#34;2-csp&#34;&gt;2. CSP&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;内容安全策略 (CSP) 是一个额外的安全层，用于检测并削弱某些特定类型的攻击，包括跨站脚本 (XSS) 和数据注入攻击等。无论是数据盗取、网站内容污染还是散发恶意软件，这些攻击都是主要的手段。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我们可以通过 CSP 来尽量减少 XSS 攻击。CSP 本质上也是建立白名单，规定了浏览器只能够执行特定来源的代码。&lt;/p&gt;
+&lt;p&gt;通常可以通过 &lt;code&gt;HTTP Header&lt;/code&gt; 中的 &lt;code&gt;Content-Security-Policy&lt;/code&gt; 来开启 CSP&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;只允许加载本站资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;Content-Security-Policy: default-src ‘self’
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;只允许加载 HTTPS 协议图片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;Content-Security-Policy: img-src https://*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;允许加载任何来源框架&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;Content-Security-Policy: child-src &#39;none&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-csrf&#34;&gt;3. CSRF&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。[1] 跟跨網站指令碼（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;简单点说：攻击者盗用了你的身份，以你的名义发送恶意请求，容易造成个人隐私泄露以及财产安全。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615455801140.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;如何攻击-2&#34;&gt;如何攻击&lt;/h3&gt;
+&lt;p&gt;假设网站中有一个通过 Get 请求提交用户评论的接口，那么攻击者就可以在钓鱼网站中加入一个图片，图片的地址就是评论接口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;img src=&amp;quot;http://www.domain.com/xxx?comment=&#39;attack&#39;&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果接口是 Post 提交的，就相对麻烦点，需要用表单来提交接口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;form action=&amp;quot;http://www.domain.com/xxx&amp;quot; id=&amp;quot;CSRF&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;
+  &amp;lt;input name=&amp;quot;comment&amp;quot; value=&amp;quot;attack&amp;quot; type=&amp;quot;hidden&amp;quot; /&amp;gt;
+&amp;lt;/form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;如何防御-2&#34;&gt;如何防御&lt;/h3&gt;
+&lt;p&gt;防范 CSRF 可以遵循以下几种规则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Get 请求不对数据进行修改&lt;/li&gt;
+&lt;li&gt;不让第三方网站访问到用户 Cookie&lt;/li&gt;
+&lt;li&gt;阻止第三方网站请求接口&lt;/li&gt;
+&lt;li&gt;请求时附带验证信息，比如验证码或者 token&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;SameSite&lt;/strong&gt;&lt;br&gt;
+可以对 Cookie 设置 SameSite 属性。该属性设置 Cookie 不随着跨域请求发送，该属性可以很大程度减少 CSRF 的攻击，但是该属性目前并不是所有浏览器都兼容。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;验证 Referer&lt;/strong&gt;&lt;br&gt;
+对于需要防范 CSRF 的请求，我们可以通过验证 Referer 来判断该请求是否为第三方网站发起的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Token&lt;/strong&gt;&lt;br&gt;
+服务器下发一个随机 Token（算法不能复杂），每次发起请求时将 Token 携带上，服务器验证 Token 是否有效。&lt;/p&gt;
+&lt;h1 id=&#34;12-websocket&#34;&gt;12. websocket&lt;/h1&gt;
+&lt;p&gt;webSocket是一项可以让服务器将数据主动推送给客户端的技术。&lt;/p&gt;
+&lt;h2 id=&#34;1-什么是websocket&#34;&gt;1. 什么是WebSocket&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;WebSocket是一种通信协议，可在单个TCP连接上进行全双工通信。WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就可以建立持久性的连接，并进行双向数据传输。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;首先，要明白WebSocket是一种通信协议，区别于HTTP协议，HTTP协议只能实现客户端请求，服务端响应的这种单项通信。&lt;/p&gt;
+&lt;p&gt;而WebSocket可以实现客户端与服务端的双向通讯，说白了，最大也是最明显的区别就是可以做到服务端主动将消息推送给客户端。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;握手阶段采用 HTTP 协议。&lt;/li&gt;
+&lt;li&gt;数据格式轻量，性能开销小。客户端与服务端进行数据交换时，服务端到客户端的数据包头只有2到10字节，客户端到服务端需要加上另外4字节的掩码。HTTP每次都需要携带完整头部。&lt;/li&gt;
+&lt;li&gt;更好的二进制支持，可以发送文本，和二进制数据&lt;/li&gt;
+&lt;li&gt;没有同源限制，客户端可以与任意服务器通信&lt;/li&gt;
+&lt;li&gt;协议标识符是ws（如果加密，则是wss），请求的地址就是后端支持websocket的API。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;13-http请求中的keep-alive&#34;&gt;13. Http请求中的keep-alive&lt;/h1&gt;
+&lt;h2 id=&#34;1-keep-alive模式&#34;&gt;1. Keep-Alive模式&lt;/h2&gt;
+&lt;p&gt;我们都知道HTTP是基于TCP的，每一个HTTP请求都需要进行三步握手。如果一个页面对某一个域名有多个请求，就会进行频繁的建立连接和断开连接。所以HTTP 1.0中出现了&lt;code&gt;Connection: keep-alive&lt;/code&gt;，用于建立长连接，即我们所说的Keep-Alive模式。下图是普通模式和长连接模式的请求对比：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615457244881.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;HTTP/1.0中默认使用Connection: close。在HTTP/1.1中已经默认使用Connection: keep-alive。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;通过对比可以看出，Keep-Alive模式更加高效，因为避免了连接建立和释放的开销。但是，如果一个连接是不会断开的，那么多个请求之间如何进行区分呢？也就是说浏览器是如何知道当前请求已经完成了呢？为了解决这个问题，HTTP对header中又添加了一个Content-Length字段。&lt;/p&gt;
+&lt;h2 id=&#34;2-content-length解决静态&#34;&gt;2. Content-Length(解决静态)&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Content-Length&lt;/code&gt;表示实体内容的长度。浏览器通过这个字段来判断当前请求的数据是否已经全部接收。所以，当浏览器请求的是一个静态资源时，即服务器能明确知道返回内容的长度时，可以设置&lt;code&gt;Content-Length&lt;/code&gt;来控制请求的结束。但当服务器并不知道请求结果的长度时，如一个动态的页面或者数据，&lt;code&gt;Content-Length&lt;/code&gt;就无法解决上面的问题，这个时候就需要用到&lt;code&gt;Transfer-Encoding&lt;/code&gt;字段。&lt;/p&gt;
+&lt;h2 id=&#34;3-transfer-encoding解决动态&#34;&gt;3. Transfer-Encoding(解决动态)&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Transfer-Encoding&lt;/code&gt;是指传输编码，还有一个类似的字段叫做：&lt;code&gt;Content-Encoding&lt;/code&gt;。两者的区别是Content-Encoding用于对实体内容的&lt;code&gt;压缩编码&lt;/code&gt;，比如Content-Encoding: gzip；Transfer-Encoding则改变了&lt;code&gt;报文的格式&lt;/code&gt;，比如上面的问题中，当服务端无法知道实体内容的长度时，就可以通过指定&lt;code&gt;Transfer-Encoding: chunked&lt;/code&gt;来告知浏览器当前的编码是将数据分成一块一块传递的。当然, 还可以指定&lt;code&gt;Transfer-Encoding: gzip, chunked&lt;/code&gt;表明实体内容不仅是gzip压缩的，还是分块传递的。最后，当浏览器接收到一个长度为&lt;code&gt;0的chunked时&lt;/code&gt;， 知道当前请求内容已全部接收。&lt;/p&gt;
+&lt;h1 id=&#34;14-网络分层&#34;&gt;14. 网络分层&lt;/h1&gt;
+&lt;p&gt;有两套参考模型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OSI参考模型（Open Systems Interconnection Reference Model，七层）：模型过于理想化，未能在因特网上进行广泛推广。&lt;/li&gt;
+&lt;li&gt;TCP/IP参考模型(或TCP/IP协议，四层)：事实上的国际标准。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615458129735.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;网际层（internet layer）&lt;/strong&gt;&lt;br&gt;
+在OSI模型中，网际层使用了一个更一般的名字，称为网络层（network layer）。网络层协议定义了数据位和字节如何组织为更大的分组，称为包，还定义了寻址机制，不同的计算机要按照这个寻址机制查找对方。网际协议（IP）是世界上使用最广发的网络层协议，也是Java唯一理解的网络层协议。实际上，这是两个协议：IPv4 和 IPv6。在 IPv4 和 IPv6 中，数据按包在网际层上传输，这些包称为数据报（datagram）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;传输层&lt;/strong&gt;&lt;br&gt;
+传输层（transport layer）负责确保各包已发送的顺序接收，并保证没有数据对视或破坏。如果丢包，传输层会请求发送方重换这个包。为实现这个目标，IP网络会给每个数据报添加一个附加首部，其中包含有更多信息。这一层上主要有两个协议。第一个是传输控制协议（Transmission Control Protocol，TCP）,这是一个开销很高的协议，支持对丢失或破坏的数据进行重换，并按照发送时的顺序进行传送。第二个协议是用户数据报协议（User Datagram Protocol，UDP），它允许接收方检测被破坏的包，但不保证这些包以正确的顺序传送（或者包有可能根本未传送）。但是 UDP 通常比TCP 快。TCP称为可靠的（reliable）协议；UDP 是不可靠的（unreliable）协议。后面我们将看到，不可靠的协议要比听起来有用得多。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;应用层&lt;/strong&gt;&lt;br&gt;
+向用户传送数据的层称为应用层（application layer）。它下面的三层定义了数据如何从一台计算机传输到另一台计算机。应用层确定了数据传输后的操作。例如，应用层协议如 HTTP（用于国际互联网）可以确保 Web 浏览器将图像显示为图片，而不是一长串数据。你的程序中的有关网络的部分大多都是在应用层花费时间。除了用户 Web 的 HTTP ，还有用于电子邮件的 SMTP ，POP ，IMAP；用于文件传输的 FTP、FSP 和 TFTP；用于文件访问的 NFS；用于文件共享的 Gnutella 和 BitTorrent；用于语音通信的会话启动协议（Session Initiation Protocol, SIP）和 Skype 等。此外，你的程序可以在必要时自定义自己的应用层协议。&lt;/p&gt;
+&lt;h1 id=&#34;15-即时通信&#34;&gt;15. 即时通信&lt;/h1&gt;
+&lt;h2 id=&#34;sse&#34;&gt;SSE&lt;/h2&gt;
+&lt;p&gt;ajax和JSONP 都是 client-fetch的操作. 但是有时候, 我们更需要服务器主动给我们发信息. 比如，现在的APP应用，完全可以实现服务器发送, 然后Client再处理。而SSE就是帮助我们向webapp靠近&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SSE 全称就是 Server-Sent Events&lt;/strong&gt;，，中译为 &lt;code&gt;服务器推送&lt;/code&gt;&lt;br&gt;
+他的技术并不是很难，和websocket不同，他依赖原生的HTTP，所以对于开发者来说更好理解。&lt;br&gt;
+比如，在nodeJS， 只要我不执行res.end()，并且一定时间持续发送信息的话，那么该连接就会持续打开(keep-alive)&lt;br&gt;
+其实通俗来说，就是一个长连接。 所以，以前我们通常使用ajax，iframe长轮询来代替他。但是这样有个缺点就是，可操控性弱， 错误率高。&lt;br&gt;
+所以，正对于这点W3C, 觉得需要在客户端另外指定一个机制–能够保证服务器推送, 实现连接的keep-alive，操作简单… 在这样背景下SSE诞生了&lt;/p&gt;
+&lt;h1 id=&#34;16-模块化commonjses6cmdamd&#34;&gt;16. 模块化，commonJS，es6，cmd，amd&lt;/h1&gt;
+&lt;h2 id=&#34;1-es6-moudle&#34;&gt;1. ES6 Moudle&lt;/h2&gt;
+&lt;p&gt;这个是目前前端小伙伴接触的最多的，是浏览器和服务端通用的模块化解决方案，主要命令为：export和import&lt;br&gt;
+export用于导出本模块对外的接口，import用于导入某个模块的功能。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;如果单独导出一个变量或方法则是往将要导出{}对象里面添加属性。&lt;br&gt;
+2.如果导出的是{}，则和已生成的导出{}对象合并。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后说一下特例&lt;code&gt;export default&lt;/code&gt;，这个是在导出对象里面加一个&lt;code&gt;default&lt;/code&gt;属性，还有一点值得注意的是&lt;code&gt;export default&lt;/code&gt;后面不能跟变量表达式。&lt;/p&gt;
+&lt;h2 id=&#34;2-commonjs&#34;&gt;2. CommonJS&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;CommonJS&lt;/code&gt;最主要的代表就是&lt;code&gt;Node.js&lt;/code&gt;，主要命令：&lt;code&gt;module、exports、require&lt;/code&gt;。其中有个令人疑惑的点是exports和module.exports，其实理解起来也很简单，就是在模块里面加了一句： &lt;code&gt;exports = module.exports = {};&lt;/code&gt; exports和module.exports指向同一个内存区域，只要在exports加了属性，则module.exports会跟着变化，但是最终导出对外的接口是以module.exports为准，所以不推荐直接使用exports。&lt;/p&gt;
+&lt;p&gt;对于&lt;code&gt;CommonJS&lt;/code&gt;规范来说，很重要的一点是&lt;code&gt;CommonJS&lt;/code&gt;输出的是一个值拷贝，并且是运行时加载。&lt;/p&gt;
+&lt;h2 id=&#34;3-commonjs和es6-module的区别&#34;&gt;3. CommonJS和ES6 Module的区别&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;引用方式：CommonJS模块输出是值的拷贝，ES6 Module模块输出的值是引用&lt;/li&gt;
+&lt;li&gt;时机：CommonJS是运行时加载，ES6 Module是编译是输出&lt;/li&gt;
+&lt;li&gt;前者支持动态导入，也就是 require(${path}/xx.js)，后者目前不支持，但是已有提案&lt;/li&gt;
+&lt;li&gt;前者是同步导入，因为用于服务端，文件都在本地，同步导入即使卡住主线程影响也不大。而后者是异步导入，因为用于浏览器，需要下载文件，如果也采用同步导入会对渲染有很大影响&lt;/li&gt;
+&lt;li&gt;前者在导出时都是值拷贝，就算导出的值变了，导入的值也不会改变，所以如果想更新值，必须重新导入一次。但是后者采用实时绑定的方式，导入导出的值都指向同一个内存地址，所以导入值会跟随导出值变化&lt;/li&gt;
+&lt;li&gt;后者会编译成 require/exports 来执行的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-amd&#34;&gt;4. AMD&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;AMD&lt;/code&gt;规范是采用异步方式，依赖前置必须一开始就写好，所有的依赖加载完成后才会执行回调函数里的内容，模块的加载不影响它后面语句的运行。&lt;/p&gt;
+&lt;p&gt;这里异步指的是不堵塞浏览器其他任务（dom构建，css渲染等），而加载内部是同步的（加载完模块后立即执行回调）。&lt;/p&gt;
+&lt;p&gt;AMD也采用require命令加载模块，但是不同于CommonJS，它要求两个参数：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;require([module], callback);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;cmd&#34;&gt;CMD&lt;/h2&gt;
+&lt;p&gt;CMD推崇&lt;code&gt;依赖就近，延迟执行&lt;/code&gt;。可以把你的依赖写进代码的任意一行，如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;define(factory)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;factory为函数时，表示是模块的构造方法。执行该构造方法，可以得到模块向外提供的接口。factory 方法在执行时，默认会传入三个参数：require、exports 和 module.&lt;/p&gt;
 ">【面】前端知识点梳理（服务端与网络）</a>
       </div>
       
