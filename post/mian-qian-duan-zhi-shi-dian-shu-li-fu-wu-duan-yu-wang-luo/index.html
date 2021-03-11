@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>Tyloo</title>
+<title>【面】前端知识点梳理（服务端与网络） | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1615451910304">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,6 +38,8 @@
 
 
 
+  <meta name="description" content="【面】前端知识点梳理（服务端与网络）" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -73,7 +75,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/" target="_self">
@@ -172,8 +174,24 @@
     <div
       class="section-layout pisces ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -214,857 +232,684 @@
   </div>
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#1-%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81">1. 常见状态码</a></li>
+<li><a href="#2-%E7%BC%93%E5%AD%98">2. 缓存</a>
+<ul>
+<li><a href="#1-200-from-cache%E5%92%8C200-ok">1. 200 From cache和200 ok</a></li>
+<li><a href="#2-400401403%E7%8A%B6%E6%80%81%E7%A0%81%E5%88%86%E5%88%AB%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88">2. 400,401,403状态码分别代表什么</a></li>
+<li><a href="#3-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98">3. 浏览器缓存</a>
+<ul>
+<li><a href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98">1. 什么是浏览器缓存</a></li>
+<li><a href="#2-%E7%BC%93%E5%AD%98%E7%9A%84%E8%B5%84%E6%BA%90%E5%8E%BB%E5%93%AA%E9%87%8C%E4%BA%86">2. 缓存的资源去哪里了?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-cookie-session-token">3. cookie, session, token</a>
+<ul>
+<li><a href="#token">Token</a></li>
+<li><a href="#%E5%9F%BA%E4%BA%8Etoken%E7%9A%84%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E7%9A%84%E8%BF%87%E7%A8%8B%E5%A6%82%E4%B8%8B">基于Token的身份验证的过程如下:</a></li>
+</ul>
+</li>
+<li><a href="#4-dns%E8%A7%A3%E6%9E%90">4. DNS解析</a></li>
+<li><a href="#5-cdn%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91%E7%BB%9C">5. cdn（内容分发网络）</a>
+<ul>
+<li><a href="#1-cdn%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86">1. CDN工作原理</a></li>
+</ul>
+</li>
+<li><a href="#6-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E7%9B%B8%E5%85%B3%E5%8D%8F%E8%AE%AE">6. 计算机网络的相关协议</a>
+<ul>
+<li><a href="#1-%E5%85%B8%E5%9E%8B%E5%8D%8F%E8%AE%AE">1. 典型协议：</a></li>
+<li><a href="#2-tcp-%E5%92%8C-udp%E5%AF%B9%E5%BA%94%E7%9A%84%E5%8D%8F%E8%AE%AE">2. TCP 和 UDP对应的协议</a></li>
+</ul>
+</li>
+<li><a href="#7-httphttpshttp20">7. http/https/http2.0</a>
+<ul>
+<li><a href="#http%E7%9A%84%E7%89%88%E6%9C%AC">HTTP的版本</a></li>
+<li><a href="#https">HTTPS</a></li>
+<li><a href="#https%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98">HTTPS性能问题</a></li>
+<li><a href="#http2">HTTP2</a></li>
+</ul>
+</li>
+<li><a href="#8-get-post%E5%8C%BA%E5%88%AB">8. get post区别</a>
+<ul>
+<li><a href="#1-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84get%E5%92%8Cpost">1. 浏览器的GET和POST</a></li>
+<li><a href="#2-%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84get%E5%92%8Cpost">2. 接口中的GET和POST</a></li>
+</ul>
+</li>
+<li><a href="#9-ajax-axios%E5%BA%93">9. ajax、 axios库</a>
+<ul>
+<li><a href="#1ajax">1.ajax</a></li>
+<li><a href="#2-axios-api">2. Axios API</a></li>
+</ul>
+</li>
+<li><a href="#10-%E8%B7%A8%E5%9F%9F">10. 跨域</a></li>
+</ul>
+
+  </div>
 </div>
+
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'pisces';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
       }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
     });
   }
-  </script>
-        <div class="section-box pisces">
-          <section class="section bg-color posts-expand slide-down-in">
-            
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dan-xiang-lian-biao/">
-      JavaScript实现单向链表
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-02-04 21:02:11">2021-02-04</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>18<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>4180<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="1单向链表简介">1.单向链表简介</h1>
-<p>链表和数组一样，可以用于<strong>存储一系列的元素</strong>，但是链表和数组的<strong>实现机制完全不同</strong>。链表的每个元素由一个存储<strong>元素本身的节点</strong>和一个<strong>指向下一个元素的引用</strong>（有的语言称为指针或连接）组成。类似于火车头，一节车厢载着乘客（数据），通过节点连接另一节车厢。<br>
-<img src="https://Tyloo-code.github.io/post-images/1612443894132.png" alt="" loading="lazy"><br>
 
-                
-              <p>
-            
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dan-xiang-lian-biao/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
         
       </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
     </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dui-lie-jie-gou-queue/">
-      JavaScript实现队列结构（Queue）
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-02-03 21:30:00">2021-02-03</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>8<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1740<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="1队列简介">1.队列简介</h1>
-<p>队列是是一种受限的线性表，特点为<strong>先进先出</strong>（<strong>FIFO</strong>：first in first out）。</p>
-<ul>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dui-lie-jie-gou-queue/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/javascript-shu-ju-jie-gou-yu-suan-fa-shi-xian-zhan-jie-gou-stack/">
-      JavaScript数据结构与算法—实现栈结构（Stack）
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-02-03 14:22:11">2021-02-03</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>6<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1428<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="1前言">1.前言</h1>
-<h2 id="11-什么是数据结构">1.1 什么是数据结构？</h2>
-<p>数据结构就是在计算机中，存储和组织数据的方式。<br>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/javascript-shu-ju-jie-gou-yu-suan-fa-shi-xian-zhan-jie-gou-stack/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part6-ying-yong-ceng-application-layer/">
-      计算机网络笔记Part6 应用层（Application Layer）
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-02-02 21:35:47">2021-02-02</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>11<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>2833<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="1-概述">1. 概述</h1>
-<p>因为不同的网络应用之间需要有一个确定的通信规则<br>
-<img src="https://Tyloo-code.github.io/post-images/1612273015782.png" alt="" loading="lazy"></p>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part6-ying-yong-ceng-application-layer/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part5-chuan-shu-ceng-transport-layer/">
-      计算机网络笔记Part5 传输层（Transport Layer）
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-02-02 19:08:24">2021-02-02</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>11<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>2863<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="1-概述">1. 概述</h1>
-<h2 id="11-传输层的意义">1.1 传输层的意义</h2>
-<p>网络层可以把数据从一个主机传送到另一个主机，但是没有和进程建立联系。<br>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part5-chuan-shu-ceng-transport-layer/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/22/">
-      TCP报文——三次握手&amp;四次挥手
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-01-31 20:50:17">2021-01-31</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>7<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1991<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="1tcp报文格式">1.TCP报文格式</h1>
-<p><img src="https://Tyloo-code.github.io/post-images/1611559421318.png" alt="" loading="lazy"><br>
-<strong>1、端口号</strong>：用来标识同一台计算机的不同的应用进程。<br>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/22/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part4-wang-luo-ceng-network-layer/">
-      计算机网络笔记Part4 网络层（Network Layer）
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-01-31 20:25:13">2021-01-31</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>16<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>4056<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="1-概述">1. 概述</h1>
-<p>注释：<br>
-数据报和分组的关系：分组是一段比较长的数据，将它进行切割成一段段之后就得到数据报<br>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part4-wang-luo-ceng-network-layer/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part3-shu-ju-lian-lu-ceng-data-link-layer/">
-      计算机网络笔记Part3 数据链路层（Data Link Layer）
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-31 12:48:16">2020-12-31</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://Tyloo-code.github.io/tag/mAeCTaNr6/">
-        <span>Computer Network</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>15<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>3978<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="1-基本概念">1. 基本概念</h1>
-<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1609390124988.png" alt="" loading="lazy"></figure>
-<h1 id="2-封装成帧与透明传输">2. 封装成帧与透明传输</h1>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part3-shu-ju-lian-lu-ceng-data-link-layer/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part2-wu-li-ceng-physical-layer/">
-      计算机网络笔记Part2 物理层（Physical Layer）
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-30 20:55:48">2020-12-30</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://Tyloo-code.github.io/tag/mAeCTaNr6/">
-        <span>Computer Network</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>5<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1234<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="1-基本概念">1. 基本概念</h1>
-<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1609332989754.png" alt="" loading="lazy"></figure>
-<h1 id="2-数据通信基本知识">2. 数据通信基本知识</h1>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part2-wu-li-ceng-physical-layer/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part11/">
-      计算机网络笔记Part1 概述
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-29 15:32:41">2020-12-29</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://Tyloo-code.github.io/tag/mAeCTaNr6/">
-        <span>Computer Network</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>4<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1079<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h1 id="1-速率相关性能指标">1. 速率相关性能指标</h1>
-<h2 id="11-速率">1.1 速率</h2>
-<p>定义：连接在计算机网络上的主机在数字信道上传送数据位数的速率<br>
-
-                
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part11/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
-    </div>
-  </article>
   
-            
-            
-<div class="page bg-color">
-  <ul class="pagination-ul">
-    
-      <li class="pagination-dir">
-        <a href="https://Tyloo-code.github.io/page/2/">
-          <i class="fa fa-angle-left"></i>
-        </a>
-      </li>
-    
-    
-      
-        <li class="pagination-li ">
-            <a href="/page/../">
-              1
-            </a>
-        </li>
-      
-        <li class="pagination-li ">
-            <a href="/page/2">
-              2
-            </a>
-        </li>
-      
-        <li class="pagination-li pagination-active">
-            <a href="/page/3">
-              3
-            </a>
-        </li>
-      
-        <li class="pagination-li ">
-            <a href="/page/4">
-              4
-            </a>
-        </li>
-      
-        <li class="pagination-li ">
-            <a href="/page/5">
-              5
-            </a>
-        </li>
-      
-    
-    
-      <li class="pagination-dir">
-        <a href="/page/4">
-          <i class="fa fa-angle-right"></i>
-        </a>
-      </li>
-    
-  </ul>
 </div>
-          </section>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-fu-wu-duan-yu-wang-luo/">
+      【面】前端知识点梳理（服务端与网络）
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2021-03-11 13:56:39">2021-03-11</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>17<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>4352<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+    
+    
+    <span id="/post/mian-qian-duan-zhi-shi-dian-shu-li-fu-wu-duan-yu-wang-luo/" data-flag-title="【面】前端知识点梳理（服务端与网络）" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
+    </span>
+    
+  </div>
+</section>
+            <div class="post-body next-md-body" id="post_body">
+              <h1 id="1-常见状态码">1. 常见状态码</h1>
+<p><code>2XX 成功</code></p>
+<ul>
+<li>200 OK，表示从客户端发来的请求在服务器端被正确处理</li>
+<li>204 No content，表示请求成功，但响应报文不含实体的主体部分</li>
+<li>206 Partial Content，进行范围请求</li>
+</ul>
+<p><code>3XX 重定向</code></p>
+<ul>
+<li>301 moved permanently，永久性重定向，表示资源已被分配了新的 URL</li>
+<li>302 found，临时性重定向，表示资源临时被分配了新的 URL</li>
+<li>303 see other，表示资源存在着另一个 URL，应使用 GET 方法丁香获取资源</li>
+<li>304:该资源在上次请求之后没有任何修改(这通常用于浏览器的缓存机制，使用GET请求时尤其需要注意)。</li>
+</ul>
+<p><code>4XX 客户端错误</code></p>
+<ul>
+<li>400:无法找到请求的资源。</li>
+<li>401:访问资源的权限不够。</li>
+<li>403:没有权限访问资源。</li>
+<li>404:需要访问的资源不存在。</li>
+<li>405:需要访问的资源被禁止。</li>
+<li>407:访问的资源需要代理身份验证。</li>
+<li>414:请求的URL太长。</li>
+</ul>
+<p><code>5XX 服务器错误</code></p>
+<ul>
+<li>500:服务器内部错误。</li>
+<li>503:表明服务器暂时处于超负载或正在停机维护，无法处理请求</li>
+</ul>
+<h1 id="2-缓存">2. 缓存</h1>
+<h2 id="1-200-from-cache和200-ok">1. 200 From cache和200 ok</h2>
+<p>为什么有的缓存是 200 OK (from cache)，有的缓存是 304 Not Modified 呢？很简单，看运维是否移除了 Entity Tag。移除了，就总是 200 OK (from cache)。没有移除，就两者交替出现。</p>
+<p>其实， 200 OK (from cache)  是浏览器没有跟服务器确认，直接用了浏览器缓存；而 304 Not Modified 是浏览器和服务器多确认了一次缓存有效性，再用的缓存。</p>
+<p><strong>它们都是在设置了缓存的情况下触发的。</strong></p>
+<p>200 OK (from cache) 是直接点击链接访问，输入网址按回车访问也能触发；而 304 Not Modified 是刷新页面时触发，或是设置了长缓存、但 Entity Tags 没有移除时触发。</p>
+<h2 id="2-400401403状态码分别代表什么">2. 400,401,403状态码分别代表什么</h2>
+<ul>
+<li>400 bad request，请求报文存在语法错误</li>
+<li>401 unauthorized，表示发送的请求需要有通过 HTTP 认证的认证信息</li>
+<li>403 forbidden，表示对请求资源的访问被服务器拒绝</li>
+</ul>
+<h2 id="3-浏览器缓存">3. 浏览器缓存</h2>
+<figure data-type="image" tabindex="1"><img src="https://Tyloo-code.github.io/post-images/1615443053998.png" alt="" loading="lazy"></figure>
+<h3 id="1-什么是浏览器缓存">1. 什么是浏览器缓存</h3>
+<p><img src="https://Tyloo-code.github.io/post-images/1615444453979.png" alt="" loading="lazy"><br>
+简单来说，浏览器缓存其实就是浏览器保存通过HTTP获取的所有资源，是浏览器将网络资源存储在本地的一种行为。</p>
+<h3 id="2-缓存的资源去哪里了">2. 缓存的资源去哪里了?</h3>
+<p><strong>memory cache</strong><br>
+MemoryCache顾名思义，就是将资源缓存到内存中，等待下次访问时不需要重新下载资源，而直接从内存中获取。<br>
+<strong>disk cache</strong><br>
+DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问时不需要重新下载资源，而直接从磁盘中获取。<br>
+<img src="https://Tyloo-code.github.io/post-images/1615444570064.png" alt="" loading="lazy"></p>
+<p><strong>三级缓存原理 (访问缓存优先级)</strong></p>
+<ol>
+<li>先在内存中查找,如果有,直接加载。</li>
+<li>如果内存中不存在,则在硬盘中查找,如果有直接加载。</li>
+<li>如果硬盘中也没有,那么就进行网络请求。</li>
+<li>请求获取的资源缓存到硬盘和内存。</li>
+</ol>
+<p><strong>浏览器缓存的优点</strong></p>
+<ol>
+<li>减少了冗余的数据传输</li>
+<li>减少了服务器的负担，大大提升了网站的性能</li>
+<li>加快了客户端加载网页的速度</li>
+</ol>
+<h1 id="3-cookie-session-token">3. cookie, session, token</h1>
+<h2 id="token">Token</h2>
+<p>在Web领域基于Token的身份验证随处可见。在大多数使用Web API的互联网公司中，tokens 是多用户下处理认证的最佳方式。</p>
+<p>以下几点特性会让你在程序中使用基于Token的身份验证</p>
+<ol>
+<li>无状态、可扩展</li>
+<li>支持移动设备</li>
+<li>跨程序调用</li>
+<li>安全</li>
+</ol>
+<h2 id="基于token的身份验证的过程如下">基于Token的身份验证的过程如下:</h2>
+<ol>
+<li>用户通过用户名和密码发送请求。</li>
+<li>程序验证。</li>
+<li>程序返回一个签名的token 给客户端。</li>
+<li>客户端储存token,并且每次用于每次发送请求。</li>
+<li>服务端验证token并返回数据。</li>
+</ol>
+<figure data-type="image" tabindex="2"><img src="https://Tyloo-code.github.io/post-images/1615444886393.jpg" alt="" loading="lazy"></figure>
+<h1 id="4-dns解析">4. DNS解析</h1>
+<p>首先是域名解析(DNS解析)</p>
+<ul>
+<li>首先浏览器解析输入的域名，先查找<code>本地硬盘的host</code>文件,看有没有和这个域名对应的ip，如果有，就直接使用这个ip</li>
+<li>如果没有，浏览器会发出一个DNS请求到本地<code>DNS(域名分布系统)服务器</code>，本地DNS服务器一般都是你的网络接入服务器商提供，比如中国电信，中国移动</li>
+<li>请求到达DNS服务器后，DNS服务器首先会查询他的缓存记录，如果有对应的ip地址，则返回，如果没有，本地DNS服务器向<code>DNS根服务器</code>发送查询请求</li>
+<li>根服务器不会记录具体的域名和ip的对应关系，而是返回<code>域服务器</code>的地址，本地服务器会继续向域服务器发起请求</li>
+<li>域服务器并没有记录域名和ip的对应关系，而是返回你的<code>域名的解析服务器</code>的地址</li>
+<li>本地DNS服务器继续向域名解析服务器发出请求，这时会收到<code>域名对应的ip</code>，本地DNS服务器将ip返回给浏览器，并将ip存入缓存，方便下次访问，加快访问速度<br>
+<img src="https://Tyloo-code.github.io/post-images/1615435439972.jpg" alt="" loading="lazy"></li>
+</ul>
+<h1 id="5-cdn内容分发网络">5. cdn（内容分发网络）</h1>
+<h2 id="1-cdn工作原理">1. CDN工作原理</h2>
+<p>内容分发网络（Content Delivery Network，简称CDN）是建立并覆盖在承载网之上，由分布在不同区域的边缘节点服务器群组成的分布式网络。</p>
+<p>CDN应用广泛，支持多种行业、多种场景内容加速，例如：图片小文件、大文件下载、视音频点播、直播流媒体、全站加速、安全加速。<br>
+<img src="https://Tyloo-code.github.io/post-images/1615445467852.jpg" alt="" loading="lazy"></p>
+<p>假设通过CDN加速的域名为<code>www.a.com</code>，接入CDN网络，开始使用加速服务后，当终端用户（北京）发起HTTP请求时，处理流程如下：</p>
+<ol>
+<li>当终端用户（北京）向www.a.com下的指定资源发起请求时，首先向LDNS（本地DNS）发起域名解析请求。</li>
+<li>LDNS检查缓存中是否有www.a.com的IP地址记录。如果有，则直接返回给终端用户；如果没有，则向授权DNS查询。</li>
+<li>当授权DNS解析www.a.com时，返回域名CNAME www.a.tbcdn.com对应IP地址。</li>
+<li>域名解析请求发送至阿里云DNS调度系统，并为请求分配最佳节点IP地址。</li>
+<li>LDNS获取DNS返回的解析IP地址。</li>
+<li>用户获取解析IP地址。</li>
+<li>用户向获取的IP地址发起对该资源的访问请求。</li>
+</ol>
+<ul>
+<li>如果该IP地址对应的节点已缓存该资源，则会将数据直接返回给用户，例如，图中步骤7和8，请求结束。</li>
+<li>如果该IP地址对应的节点未缓存该资源，则节点向源站发起对该资源的请求。获取资源后，结合用户自定义配置的缓存策略，将资源缓存至节点，例如，图中的北京节点，并返回给用户，请求结束。</li>
+</ul>
+<p><strong>从这个例子可以了解到：</strong><br>
+（1）CDN的加速资源是跟域名绑定的。<br>
+（2）通过域名访问资源，首先是通过DNS分查找离用户最近的CDN节点（边缘服务器）的IP<br>
+（3）通过IP访问实际资源时，如果CDN上并没有缓存资源，则会到源站请求资源，并缓存到CDN节点上，这样，用户下一次访问时，该CDN节点就会有对应资源的缓存了。</p>
+<h1 id="6-计算机网络的相关协议">6. 计算机网络的相关协议</h1>
+<h2 id="1-典型协议">1. 典型协议：</h2>
+<p>传输层： 常见的协议有 TCP/UDP 协议<br>
+应用层： 常见的协议有 HTTP，FTP 协议<br>
+网络层： 常见的协议有 IP 协议，ICMP 协议，IGMP 协议<br>
+网络接口层： 常见的协议有 ARP 协议，RARP 协议</p>
+<ul>
+<li>TCP 传输控协议（TransmissionControl Protocol）是一种面向连接的，可靠的，基于字节流的传输层通信协议</li>
+<li>UDP 用户数据包协议（UserDatagram Protocol）是 OSI 参考模型中一种无连接的传输层协议，提供面向事物的简单不可靠信息传送服务</li>
+<li>HTTP 超文本传输系协议（HyperText Transfer Protocol）是互联网上应用最为广泛的一种协议</li>
+<li>FTP 文件传输协议（File Transfer Protocol）</li>
+<li>IP 协议是英特网互联协议（Internet Protocol）</li>
+<li>ICMP 协议是 Internet 控制报文协议（Internet Control Message Protocol），它是 TCP/IP 协议族的一个子协议，用于在 IP 主机、路由器之间传递控制消息</li>
+</ul>
+<h2 id="2-tcp-和-udp对应的协议">2. TCP 和 UDP对应的协议</h2>
+<p><strong>TCP 对应的协议：</strong><br>
+（1）FTP：定义了文件传输协议，使用 21 端口。<br>
+（2）Telnet：远程登录协议。使用 23 号端口，用户可以以自己的身份远程登录到计算机上，可提供基于DOS模式下的通信服务。<br>
+（3）SMTP：邮件传送协议，用于发送邮件。服务器开放的端口是 25 号端口。<br>
+（4）POP3 ：它和 SMTP 对应，POP3用于接收协议。所用的端口是 110。<br>
+（5）HTTP：是从 Web 服务器传送超文本到本地浏览器的传送协议。</p>
+<p><strong>UDP对应的协议：</strong><br>
+（1）DNS：用于域名解析服务，将域名地址转换为 IP 地址。DNS 用的是 53号端口。<br>
+（2）SNMP：简单网络管理协议，使用 161 号端口，是用来管理网络设备。<br>
+（3）TFTP：简单文件传输协议，在 69 号端口上使用 UDP 服务。</p>
+<h1 id="7-httphttpshttp20">7. http/https/http2.0</h1>
+<figure data-type="image" tabindex="3"><img src="https://Tyloo-code.github.io/post-images/1615448355999.jpg" alt="" loading="lazy"></figure>
+<ul>
+<li>HTTP是互联网上应用最为广泛的一种网络协议,设计最初的目的是为了提供一种发布和接收HTML页面的方法，万维网协会（World Wide Web Consortium，W3C）和互联网工程任务组（Internet Engineering Task Force，IETF）合作不断发展改进了HTTP,之后HTTP有了好几个版本。</li>
+<li>HTTP是基于TCP的，由HTTP客户端发起一个请求，会创建一个到服务器指定端口（默认80端口）的TCP连接，HTTP服务器会在那个端口监听客户端的请求。一旦收到请求，服务器会向客户端返回一个状态（如&quot;HTTP/1.1 200 OK&quot;）以及返回的内容（如请求的文件、错误消息、或者其它信息）。</li>
+</ul>
+<h2 id="http的版本">HTTP的版本</h2>
+<p>在不断的改进中，HTTP存在有以下几个版本：HTTP/0.9、HTTP/1.0、HTTP/1.1、HTTP/2。</p>
+<pre><code>0.9
+已过时。只接受GET一种请求方法，没有在通讯中指定版本号，且不支持请求头。由于该版本不支持POST方法，因此客户端无法向服务器传递太多信息。
+
+HTTP/1.0
+这是第一个在通讯中指定版本号的HTTP协议版本，至今仍被广泛采用，特别是在代理服务器中。
+
+HTTP/1.1
+持久连接被默认采用，并能很好地配合代理服务器工作。还支持以管道方式在同时发送多个请求，以便降低线路负载，提高传输速度。
+
+HTTP/1.1相较于HTTP/1.0协议的区别主要体现在：
+
+缓存处理
+带宽优化及网络连接的使用
+错误通知的管理
+消息在网络中的发送
+互联网地址的维护
+安全性及完整性
+
+HTTP/2
+当前版本，于2015年5月作为互联网标准正式发布。
+</code></pre>
+<p>HTTP/0.9是HTTP的第一个版本，现在已经过时，为了改进协议，之后相继有了HTTP/1.0、HTTP/1.1。1.0和1.1并存了很长时间，HTTP/1.1是目前主流版本。2015年发布了HTTP/2.0,这个也是这两年讨论比较多的技术了，因为它相对于HTTP/1.x来说有非常大的进步，优化了HTTP/1.x很多问题，不过作为下一代的HTTP协议，需要很长一段的时间才会普及。</p>
+<h2 id="https">HTTPS</h2>
+<p><strong>超文本传输安全协议</strong>（英语：Hyper Text Transfer Protocol over Secure Socket Layer，缩写HTTPS。也被称为HTTP over TLS，HTTP over SSL或HTTP Secure）。</p>
+<p>简单来说HTTPS就是安全增强版的HTTP,是HTTP协议与加密协议的结合，使HTTP的协议数据在传输过程中更加安全。</p>
+<p>上面说到的加密协议叫SSL，是英文Secure Sockets Layer的缩写，中文叫“安全套接层”，也是由网景公司设计的，所以上面说HTTPS也被称为HTTP over SSL。</p>
+<p>HTTPS将HTTP协议数据包放到SSL/TSL层加密后，在TCP/IP层组成IP数据报去传输，以此保证传输数据的安全；而对于接收端，在SSL/TSL将接收的数据包解密之后，将数据传给HTTP协议层，就是普通的HTTP数据。<br>
+<img src="https://Tyloo-code.github.io/post-images/1615449424117.jpg" alt="" loading="lazy"></p>
+<h2 id="https性能问题">HTTPS性能问题</h2>
+<ol>
+<li>HTTPS 降低用户访问速度。SSL握手，HTTPS 对速度会有一定程度的降低，但是只要经过合理优化和部署，HTTPS 对速度的影响完全可以接受。在很多场景下，HTTPS 速度完全不逊于 HTTP，如果使用 SPDY，HTTPS 的速度甚至还要比 HTTP 快。</li>
+<li>相对于HTTPS降低访问速度，其实更需要关心的是服务器端的CPU压力，HTTPS中大量的密钥算法计算，会消耗大量的CPU资源，只有足够的优化，HTTPS 的机器成本才不会明显增加。</li>
+</ol>
+<h2 id="http2">HTTP2</h2>
+<p>HTTP2.0可以说是SPDY的升级版（其实原本也是基于SPDY设计的），但是，HTTP2.0 跟 SPDY 仍有不同的地方，主要是以下两点：</p>
+<ul>
+<li>HTTP2.0 支持明文 HTTP 传输，而 SPDY 强制使用 HTTPS</li>
+<li>HTTP2.0 消息头的压缩算法采用 HPACK，而非 SPDY 采用的 DEFLATE</li>
+</ul>
+<h1 id="8-get-post区别">8. get post区别</h1>
+<h2 id="1-浏览器的get和post">1. 浏览器的GET和POST</h2>
+<p>浏览器用GET请求来获取一个html页面/图片/css/js等资源；用POST来提交一个<form>表单，并得到一个结果的网页。</p>
+<p><code>GET</code></p>
+<p>“读取“一个资源。比如Get到一个html文件。反复读取不应该对访问的数据有副作用。比如”GET一下，用户就下单了，返回订单已受理“，这是不可接受的。没有副作用被称为“幂等“（Idempotent)。因为GET因为是读取，就可以对GET请求的数据做缓存。这个缓存可以做到浏览器本身上（彻底避免浏览器发请求），也可以做到代理上（如nginx），或者做到server端（用Etag，至少可以减少带宽消耗）</p>
+<p><code>POST</code></p>
+<p>在页面里&lt;form&gt; 标签会定义一个表单。点击其中的submit元素会发出一个POST请求让服务器做一件事。这件事往往是有副作用的，不幂等的。<br>
+不幂等也就意味着不能随意多次执行。因此也就不能缓存。</p>
+<h2 id="2-接口中的get和post">2. 接口中的GET和POST</h2>
+<p>这里是指通过浏览器的Ajax api之类的工具发出来的GET和POST请求。</p>
+<ul>
+<li>GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以？分割URL和传输数据，参数之间以&amp;相连</li>
+<li>POST的安全性要比GET的安全性高。注意：这里所说的安全性和上面GET提到的“安全”不是同个概念。上面“安全”的含义仅仅是不作数据修改，而这里安全的含义是真正的Security的含义。比如：通过GET提交数据，用户名和密码将明文出现在URL上，因为：(1)登录页面有可能被浏览器缓存，(2)其他人查看浏览器的历史纪录，那么别人就可以拿到你的账号和密码了，除此之外，使用GET提交数据还可能会造成Cross-site request forgery攻击（CSRF,跨站请求伪造，也被称为：one click attack/session riding）。</li>
+</ul>
+<h1 id="9-ajax-axios库">9. ajax、 axios库</h1>
+<h2 id="1ajax">1.ajax</h2>
+<ul>
+<li>创建XMLHttpRequest类型的对象</li>
+<li>准备发送，打开与网址之间的连接</li>
+<li>执行发送动作</li>
+<li>指定xhr状态变化事件处理函数</li>
+</ul>
+<pre><code>// 1.创建一个 XMLHttpRequest 类型的对象  --- 相当于打开了一个浏览器
+var xhr = new XMLHttpRequest();
+// 2.打开一个与网址之间的连接  --- 相当于在地址栏输入网址
+xhr.open(&quot;GET&quot;,&quot;https://jsonplaceholder.typicode.com/users&quot;);
+// 3.通过连接发送一次请求 --- 相当于点击回车或者超链接
+xhr.send(null);
+// 4.指定 xhr 状态变化事件处理函数   --- 相当于处理网页呈现后的操作
+xhr.onreadystatechange = function () {
+  // 通过判断 xhr 的 readyState ，确定此次请求是否完成
+  if (this.readyState === 4) {
+    console.log(this.responseText)
+  }
+}
+</code></pre>
+<h2 id="2-axios-api">2. Axios API</h2>
+<ul>
+<li>可以通过向axios()传递相关配置来创建请求</li>
+<li>axios(config) config为对象格式的配置选项</li>
+<li>axios(url,config) config可选</li>
+</ul>
+<p><strong>常用配置选项</strong></p>
+<ul>
+<li>url 用于请求服务器的URL</li>
+<li>method 创建请求时使用的方法</li>
+<li>baseURL 传递相对URL前缀，将自动加在url前面</li>
+<li>headers 即将被发送的自定义请求头</li>
+<li>params 即将与请求一起发送的URL参数</li>
+<li>data 作为请求主体被发送的数据</li>
+<li>timeout 请求超时的毫秒数</li>
+<li>responseType 表示服务器响应的数据类型，默认json</li>
+</ul>
+<pre><code>axios({
+  url: &quot;/posts&quot;,
+  method: &quot;get&quot;,
+  baseURL: &quot;http://localhost:3000&quot;,
+  params: {
+    id: 1
+  }
+}).then(function(res){
+  console.log(res.data)
+})
+</code></pre>
+<h1 id="10-跨域">10. 跨域</h1>
+<p>因为浏览器出于安全考虑，有同源策略。也就是说，如果协议、域名或者端口有一个不同就是跨域，Ajax 请求会失败。</p>
+
+            </div>
+            
+              <div class="reward-btn">
+                <div class="reward-btn-text">赞赏</div>
+              </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      来碗鸡丁炒饭
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-fu-wu-duan-yu-wang-luo/" title="【面】前端知识点梳理（服务端与网络）">https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-fu-wu-duan-yu-wang-luo/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="【面】前端知识点梳理（浏览器）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-liu-lan-qi/">【面】前端知识点梳理（浏览器）</a>
+        <a class="nav-mobile-next" title="【面】前端知识点梳理（浏览器）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-liu-lan-qi/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '1d7311971e46d3cb2b7f',
+    clientSecret: '825202727778b1d14410ce66b7952398e1213211',
+    repo: 'tyloo-code.github.io',
+    owner: 'tyloo-code',
+    admin: ['tyloo-code'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+    
+    
+  
+
+          </div>
         </div>
       </div>
     </div>
@@ -1281,6 +1126,235 @@
     }
   })
 </script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+            <img id="zfb" class="reward-img" src="\media\images\custom-zfbImg.png" alt="赞赏码">
+          
+          
+            <img id="wx" class="reward-img" src="\media\images\custom-wxImg.png" alt="赞赏码">
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      <div id="zfbBtn" class="pay-text">
+        支付宝
+      </div>
+      
+      
+      <div id="wxBtn" class="pay-text">
+        微信支付
+      </div>
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        window.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        window.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        window.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        window.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      window.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
   </div>
 </body>
 
@@ -17081,7 +17155,6 @@ cond(no)-&amp;gt;op
     speed: 200
   });
 </script>
-
 
 
 

@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>JavaScript实现图结构 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615430249235">
+<link rel="shortcut icon" href="/favicon.ico?v=1615451910304">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">47</span>
+        <span class="site-item-stat-count">49</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1681,6 +1681,461 @@ function Dictionary(){
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-fu-wu-duan-yu-wang-luo/"" data-c="
+          &lt;h1 id=&#34;1-常见状态码&#34;&gt;1. 常见状态码&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;2XX 成功&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;200 OK，表示从客户端发来的请求在服务器端被正确处理&lt;/li&gt;
+&lt;li&gt;204 No content，表示请求成功，但响应报文不含实体的主体部分&lt;/li&gt;
+&lt;li&gt;206 Partial Content，进行范围请求&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;3XX 重定向&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;301 moved permanently，永久性重定向，表示资源已被分配了新的 URL&lt;/li&gt;
+&lt;li&gt;302 found，临时性重定向，表示资源临时被分配了新的 URL&lt;/li&gt;
+&lt;li&gt;303 see other，表示资源存在着另一个 URL，应使用 GET 方法丁香获取资源&lt;/li&gt;
+&lt;li&gt;304:该资源在上次请求之后没有任何修改(这通常用于浏览器的缓存机制，使用GET请求时尤其需要注意)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;4XX 客户端错误&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;400:无法找到请求的资源。&lt;/li&gt;
+&lt;li&gt;401:访问资源的权限不够。&lt;/li&gt;
+&lt;li&gt;403:没有权限访问资源。&lt;/li&gt;
+&lt;li&gt;404:需要访问的资源不存在。&lt;/li&gt;
+&lt;li&gt;405:需要访问的资源被禁止。&lt;/li&gt;
+&lt;li&gt;407:访问的资源需要代理身份验证。&lt;/li&gt;
+&lt;li&gt;414:请求的URL太长。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;5XX 服务器错误&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;500:服务器内部错误。&lt;/li&gt;
+&lt;li&gt;503:表明服务器暂时处于超负载或正在停机维护，无法处理请求&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;2-缓存&#34;&gt;2. 缓存&lt;/h1&gt;
+&lt;h2 id=&#34;1-200-from-cache和200-ok&#34;&gt;1. 200 From cache和200 ok&lt;/h2&gt;
+&lt;p&gt;为什么有的缓存是 200 OK (from cache)，有的缓存是 304 Not Modified 呢？很简单，看运维是否移除了 Entity Tag。移除了，就总是 200 OK (from cache)。没有移除，就两者交替出现。&lt;/p&gt;
+&lt;p&gt;其实， 200 OK (from cache)  是浏览器没有跟服务器确认，直接用了浏览器缓存；而 304 Not Modified 是浏览器和服务器多确认了一次缓存有效性，再用的缓存。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;它们都是在设置了缓存的情况下触发的。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;200 OK (from cache) 是直接点击链接访问，输入网址按回车访问也能触发；而 304 Not Modified 是刷新页面时触发，或是设置了长缓存、但 Entity Tags 没有移除时触发。&lt;/p&gt;
+&lt;h2 id=&#34;2-400401403状态码分别代表什么&#34;&gt;2. 400,401,403状态码分别代表什么&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;400 bad request，请求报文存在语法错误&lt;/li&gt;
+&lt;li&gt;401 unauthorized，表示发送的请求需要有通过 HTTP 认证的认证信息&lt;/li&gt;
+&lt;li&gt;403 forbidden，表示对请求资源的访问被服务器拒绝&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-浏览器缓存&#34;&gt;3. 浏览器缓存&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615443053998.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;1-什么是浏览器缓存&#34;&gt;1. 什么是浏览器缓存&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615444453979.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+简单来说，浏览器缓存其实就是浏览器保存通过HTTP获取的所有资源，是浏览器将网络资源存储在本地的一种行为。&lt;/p&gt;
+&lt;h3 id=&#34;2-缓存的资源去哪里了&#34;&gt;2. 缓存的资源去哪里了?&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;memory cache&lt;/strong&gt;&lt;br&gt;
+MemoryCache顾名思义，就是将资源缓存到内存中，等待下次访问时不需要重新下载资源，而直接从内存中获取。&lt;br&gt;
+&lt;strong&gt;disk cache&lt;/strong&gt;&lt;br&gt;
+DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问时不需要重新下载资源，而直接从磁盘中获取。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615444570064.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三级缓存原理 (访问缓存优先级)&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;先在内存中查找,如果有,直接加载。&lt;/li&gt;
+&lt;li&gt;如果内存中不存在,则在硬盘中查找,如果有直接加载。&lt;/li&gt;
+&lt;li&gt;如果硬盘中也没有,那么就进行网络请求。&lt;/li&gt;
+&lt;li&gt;请求获取的资源缓存到硬盘和内存。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;浏览器缓存的优点&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;减少了冗余的数据传输&lt;/li&gt;
+&lt;li&gt;减少了服务器的负担，大大提升了网站的性能&lt;/li&gt;
+&lt;li&gt;加快了客户端加载网页的速度&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;3-cookie-session-token&#34;&gt;3. cookie, session, token&lt;/h1&gt;
+&lt;h2 id=&#34;token&#34;&gt;Token&lt;/h2&gt;
+&lt;p&gt;在Web领域基于Token的身份验证随处可见。在大多数使用Web API的互联网公司中，tokens 是多用户下处理认证的最佳方式。&lt;/p&gt;
+&lt;p&gt;以下几点特性会让你在程序中使用基于Token的身份验证&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;无状态、可扩展&lt;/li&gt;
+&lt;li&gt;支持移动设备&lt;/li&gt;
+&lt;li&gt;跨程序调用&lt;/li&gt;
+&lt;li&gt;安全&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;基于token的身份验证的过程如下&#34;&gt;基于Token的身份验证的过程如下:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;用户通过用户名和密码发送请求。&lt;/li&gt;
+&lt;li&gt;程序验证。&lt;/li&gt;
+&lt;li&gt;程序返回一个签名的token 给客户端。&lt;/li&gt;
+&lt;li&gt;客户端储存token,并且每次用于每次发送请求。&lt;/li&gt;
+&lt;li&gt;服务端验证token并返回数据。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615444886393.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;4-dns解析&#34;&gt;4. DNS解析&lt;/h1&gt;
+&lt;p&gt;首先是域名解析(DNS解析)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先浏览器解析输入的域名，先查找&lt;code&gt;本地硬盘的host&lt;/code&gt;文件,看有没有和这个域名对应的ip，如果有，就直接使用这个ip&lt;/li&gt;
+&lt;li&gt;如果没有，浏览器会发出一个DNS请求到本地&lt;code&gt;DNS(域名分布系统)服务器&lt;/code&gt;，本地DNS服务器一般都是你的网络接入服务器商提供，比如中国电信，中国移动&lt;/li&gt;
+&lt;li&gt;请求到达DNS服务器后，DNS服务器首先会查询他的缓存记录，如果有对应的ip地址，则返回，如果没有，本地DNS服务器向&lt;code&gt;DNS根服务器&lt;/code&gt;发送查询请求&lt;/li&gt;
+&lt;li&gt;根服务器不会记录具体的域名和ip的对应关系，而是返回&lt;code&gt;域服务器&lt;/code&gt;的地址，本地服务器会继续向域服务器发起请求&lt;/li&gt;
+&lt;li&gt;域服务器并没有记录域名和ip的对应关系，而是返回你的&lt;code&gt;域名的解析服务器&lt;/code&gt;的地址&lt;/li&gt;
+&lt;li&gt;本地DNS服务器继续向域名解析服务器发出请求，这时会收到&lt;code&gt;域名对应的ip&lt;/code&gt;，本地DNS服务器将ip返回给浏览器，并将ip存入缓存，方便下次访问，加快访问速度&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615435439972.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;5-cdn内容分发网络&#34;&gt;5. cdn（内容分发网络）&lt;/h1&gt;
+&lt;h2 id=&#34;1-cdn工作原理&#34;&gt;1. CDN工作原理&lt;/h2&gt;
+&lt;p&gt;内容分发网络（Content Delivery Network，简称CDN）是建立并覆盖在承载网之上，由分布在不同区域的边缘节点服务器群组成的分布式网络。&lt;/p&gt;
+&lt;p&gt;CDN应用广泛，支持多种行业、多种场景内容加速，例如：图片小文件、大文件下载、视音频点播、直播流媒体、全站加速、安全加速。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615445467852.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;假设通过CDN加速的域名为&lt;code&gt;www.a.com&lt;/code&gt;，接入CDN网络，开始使用加速服务后，当终端用户（北京）发起HTTP请求时，处理流程如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当终端用户（北京）向www.a.com下的指定资源发起请求时，首先向LDNS（本地DNS）发起域名解析请求。&lt;/li&gt;
+&lt;li&gt;LDNS检查缓存中是否有www.a.com的IP地址记录。如果有，则直接返回给终端用户；如果没有，则向授权DNS查询。&lt;/li&gt;
+&lt;li&gt;当授权DNS解析www.a.com时，返回域名CNAME www.a.tbcdn.com对应IP地址。&lt;/li&gt;
+&lt;li&gt;域名解析请求发送至阿里云DNS调度系统，并为请求分配最佳节点IP地址。&lt;/li&gt;
+&lt;li&gt;LDNS获取DNS返回的解析IP地址。&lt;/li&gt;
+&lt;li&gt;用户获取解析IP地址。&lt;/li&gt;
+&lt;li&gt;用户向获取的IP地址发起对该资源的访问请求。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;如果该IP地址对应的节点已缓存该资源，则会将数据直接返回给用户，例如，图中步骤7和8，请求结束。&lt;/li&gt;
+&lt;li&gt;如果该IP地址对应的节点未缓存该资源，则节点向源站发起对该资源的请求。获取资源后，结合用户自定义配置的缓存策略，将资源缓存至节点，例如，图中的北京节点，并返回给用户，请求结束。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;从这个例子可以了解到：&lt;/strong&gt;&lt;br&gt;
+（1）CDN的加速资源是跟域名绑定的。&lt;br&gt;
+（2）通过域名访问资源，首先是通过DNS分查找离用户最近的CDN节点（边缘服务器）的IP&lt;br&gt;
+（3）通过IP访问实际资源时，如果CDN上并没有缓存资源，则会到源站请求资源，并缓存到CDN节点上，这样，用户下一次访问时，该CDN节点就会有对应资源的缓存了。&lt;/p&gt;
+&lt;h1 id=&#34;6-计算机网络的相关协议&#34;&gt;6. 计算机网络的相关协议&lt;/h1&gt;
+&lt;h2 id=&#34;1-典型协议&#34;&gt;1. 典型协议：&lt;/h2&gt;
+&lt;p&gt;传输层： 常见的协议有 TCP/UDP 协议&lt;br&gt;
+应用层： 常见的协议有 HTTP，FTP 协议&lt;br&gt;
+网络层： 常见的协议有 IP 协议，ICMP 协议，IGMP 协议&lt;br&gt;
+网络接口层： 常见的协议有 ARP 协议，RARP 协议&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TCP 传输控协议（TransmissionControl Protocol）是一种面向连接的，可靠的，基于字节流的传输层通信协议&lt;/li&gt;
+&lt;li&gt;UDP 用户数据包协议（UserDatagram Protocol）是 OSI 参考模型中一种无连接的传输层协议，提供面向事物的简单不可靠信息传送服务&lt;/li&gt;
+&lt;li&gt;HTTP 超文本传输系协议（HyperText Transfer Protocol）是互联网上应用最为广泛的一种协议&lt;/li&gt;
+&lt;li&gt;FTP 文件传输协议（File Transfer Protocol）&lt;/li&gt;
+&lt;li&gt;IP 协议是英特网互联协议（Internet Protocol）&lt;/li&gt;
+&lt;li&gt;ICMP 协议是 Internet 控制报文协议（Internet Control Message Protocol），它是 TCP/IP 协议族的一个子协议，用于在 IP 主机、路由器之间传递控制消息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-tcp-和-udp对应的协议&#34;&gt;2. TCP 和 UDP对应的协议&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;TCP 对应的协议：&lt;/strong&gt;&lt;br&gt;
+（1）FTP：定义了文件传输协议，使用 21 端口。&lt;br&gt;
+（2）Telnet：远程登录协议。使用 23 号端口，用户可以以自己的身份远程登录到计算机上，可提供基于DOS模式下的通信服务。&lt;br&gt;
+（3）SMTP：邮件传送协议，用于发送邮件。服务器开放的端口是 25 号端口。&lt;br&gt;
+（4）POP3 ：它和 SMTP 对应，POP3用于接收协议。所用的端口是 110。&lt;br&gt;
+（5）HTTP：是从 Web 服务器传送超文本到本地浏览器的传送协议。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;UDP对应的协议：&lt;/strong&gt;&lt;br&gt;
+（1）DNS：用于域名解析服务，将域名地址转换为 IP 地址。DNS 用的是 53号端口。&lt;br&gt;
+（2）SNMP：简单网络管理协议，使用 161 号端口，是用来管理网络设备。&lt;br&gt;
+（3）TFTP：简单文件传输协议，在 69 号端口上使用 UDP 服务。&lt;/p&gt;
+&lt;h1 id=&#34;7-httphttpshttp20&#34;&gt;7. http/https/http2.0&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615448355999.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;HTTP是互联网上应用最为广泛的一种网络协议,设计最初的目的是为了提供一种发布和接收HTML页面的方法，万维网协会（World Wide Web Consortium，W3C）和互联网工程任务组（Internet Engineering Task Force，IETF）合作不断发展改进了HTTP,之后HTTP有了好几个版本。&lt;/li&gt;
+&lt;li&gt;HTTP是基于TCP的，由HTTP客户端发起一个请求，会创建一个到服务器指定端口（默认80端口）的TCP连接，HTTP服务器会在那个端口监听客户端的请求。一旦收到请求，服务器会向客户端返回一个状态（如&amp;quot;HTTP/1.1 200 OK&amp;quot;）以及返回的内容（如请求的文件、错误消息、或者其它信息）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;http的版本&#34;&gt;HTTP的版本&lt;/h2&gt;
+&lt;p&gt;在不断的改进中，HTTP存在有以下几个版本：HTTP/0.9、HTTP/1.0、HTTP/1.1、HTTP/2。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;0.9
+已过时。只接受GET一种请求方法，没有在通讯中指定版本号，且不支持请求头。由于该版本不支持POST方法，因此客户端无法向服务器传递太多信息。
+
+HTTP/1.0
+这是第一个在通讯中指定版本号的HTTP协议版本，至今仍被广泛采用，特别是在代理服务器中。
+
+HTTP/1.1
+持久连接被默认采用，并能很好地配合代理服务器工作。还支持以管道方式在同时发送多个请求，以便降低线路负载，提高传输速度。
+
+HTTP/1.1相较于HTTP/1.0协议的区别主要体现在：
+
+缓存处理
+带宽优化及网络连接的使用
+错误通知的管理
+消息在网络中的发送
+互联网地址的维护
+安全性及完整性
+
+HTTP/2
+当前版本，于2015年5月作为互联网标准正式发布。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;HTTP/0.9是HTTP的第一个版本，现在已经过时，为了改进协议，之后相继有了HTTP/1.0、HTTP/1.1。1.0和1.1并存了很长时间，HTTP/1.1是目前主流版本。2015年发布了HTTP/2.0,这个也是这两年讨论比较多的技术了，因为它相对于HTTP/1.x来说有非常大的进步，优化了HTTP/1.x很多问题，不过作为下一代的HTTP协议，需要很长一段的时间才会普及。&lt;/p&gt;
+&lt;h2 id=&#34;https&#34;&gt;HTTPS&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;超文本传输安全协议&lt;/strong&gt;（英语：Hyper Text Transfer Protocol over Secure Socket Layer，缩写HTTPS。也被称为HTTP over TLS，HTTP over SSL或HTTP Secure）。&lt;/p&gt;
+&lt;p&gt;简单来说HTTPS就是安全增强版的HTTP,是HTTP协议与加密协议的结合，使HTTP的协议数据在传输过程中更加安全。&lt;/p&gt;
+&lt;p&gt;上面说到的加密协议叫SSL，是英文Secure Sockets Layer的缩写，中文叫“安全套接层”，也是由网景公司设计的，所以上面说HTTPS也被称为HTTP over SSL。&lt;/p&gt;
+&lt;p&gt;HTTPS将HTTP协议数据包放到SSL/TSL层加密后，在TCP/IP层组成IP数据报去传输，以此保证传输数据的安全；而对于接收端，在SSL/TSL将接收的数据包解密之后，将数据传给HTTP协议层，就是普通的HTTP数据。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615449424117.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;https性能问题&#34;&gt;HTTPS性能问题&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;HTTPS 降低用户访问速度。SSL握手，HTTPS 对速度会有一定程度的降低，但是只要经过合理优化和部署，HTTPS 对速度的影响完全可以接受。在很多场景下，HTTPS 速度完全不逊于 HTTP，如果使用 SPDY，HTTPS 的速度甚至还要比 HTTP 快。&lt;/li&gt;
+&lt;li&gt;相对于HTTPS降低访问速度，其实更需要关心的是服务器端的CPU压力，HTTPS中大量的密钥算法计算，会消耗大量的CPU资源，只有足够的优化，HTTPS 的机器成本才不会明显增加。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;http2&#34;&gt;HTTP2&lt;/h2&gt;
+&lt;p&gt;HTTP2.0可以说是SPDY的升级版（其实原本也是基于SPDY设计的），但是，HTTP2.0 跟 SPDY 仍有不同的地方，主要是以下两点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTTP2.0 支持明文 HTTP 传输，而 SPDY 强制使用 HTTPS&lt;/li&gt;
+&lt;li&gt;HTTP2.0 消息头的压缩算法采用 HPACK，而非 SPDY 采用的 DEFLATE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;8-get-post区别&#34;&gt;8. get post区别&lt;/h1&gt;
+&lt;h2 id=&#34;1-浏览器的get和post&#34;&gt;1. 浏览器的GET和POST&lt;/h2&gt;
+&lt;p&gt;浏览器用GET请求来获取一个html页面/图片/css/js等资源；用POST来提交一个&lt;form&gt;表单，并得到一个结果的网页。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;GET&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;“读取“一个资源。比如Get到一个html文件。反复读取不应该对访问的数据有副作用。比如”GET一下，用户就下单了，返回订单已受理“，这是不可接受的。没有副作用被称为“幂等“（Idempotent)。因为GET因为是读取，就可以对GET请求的数据做缓存。这个缓存可以做到浏览器本身上（彻底避免浏览器发请求），也可以做到代理上（如nginx），或者做到server端（用Etag，至少可以减少带宽消耗）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;POST&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在页面里&amp;lt;form&amp;gt; 标签会定义一个表单。点击其中的submit元素会发出一个POST请求让服务器做一件事。这件事往往是有副作用的，不幂等的。&lt;br&gt;
+不幂等也就意味着不能随意多次执行。因此也就不能缓存。&lt;/p&gt;
+&lt;h2 id=&#34;2-接口中的get和post&#34;&gt;2. 接口中的GET和POST&lt;/h2&gt;
+&lt;p&gt;这里是指通过浏览器的Ajax api之类的工具发出来的GET和POST请求。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以？分割URL和传输数据，参数之间以&amp;amp;相连&lt;/li&gt;
+&lt;li&gt;POST的安全性要比GET的安全性高。注意：这里所说的安全性和上面GET提到的“安全”不是同个概念。上面“安全”的含义仅仅是不作数据修改，而这里安全的含义是真正的Security的含义。比如：通过GET提交数据，用户名和密码将明文出现在URL上，因为：(1)登录页面有可能被浏览器缓存，(2)其他人查看浏览器的历史纪录，那么别人就可以拿到你的账号和密码了，除此之外，使用GET提交数据还可能会造成Cross-site request forgery攻击（CSRF,跨站请求伪造，也被称为：one click attack/session riding）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;9-ajax-axios库&#34;&gt;9. ajax、 axios库&lt;/h1&gt;
+&lt;h2 id=&#34;1ajax&#34;&gt;1.ajax&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;创建XMLHttpRequest类型的对象&lt;/li&gt;
+&lt;li&gt;准备发送，打开与网址之间的连接&lt;/li&gt;
+&lt;li&gt;执行发送动作&lt;/li&gt;
+&lt;li&gt;指定xhr状态变化事件处理函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;// 1.创建一个 XMLHttpRequest 类型的对象  --- 相当于打开了一个浏览器
+var xhr = new XMLHttpRequest();
+// 2.打开一个与网址之间的连接  --- 相当于在地址栏输入网址
+xhr.open(&amp;quot;GET&amp;quot;,&amp;quot;https://jsonplaceholder.typicode.com/users&amp;quot;);
+// 3.通过连接发送一次请求 --- 相当于点击回车或者超链接
+xhr.send(null);
+// 4.指定 xhr 状态变化事件处理函数   --- 相当于处理网页呈现后的操作
+xhr.onreadystatechange = function () {
+  // 通过判断 xhr 的 readyState ，确定此次请求是否完成
+  if (this.readyState === 4) {
+    console.log(this.responseText)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-axios-api&#34;&gt;2. Axios API&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;可以通过向axios()传递相关配置来创建请求&lt;/li&gt;
+&lt;li&gt;axios(config) config为对象格式的配置选项&lt;/li&gt;
+&lt;li&gt;axios(url,config) config可选&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;常用配置选项&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;url 用于请求服务器的URL&lt;/li&gt;
+&lt;li&gt;method 创建请求时使用的方法&lt;/li&gt;
+&lt;li&gt;baseURL 传递相对URL前缀，将自动加在url前面&lt;/li&gt;
+&lt;li&gt;headers 即将被发送的自定义请求头&lt;/li&gt;
+&lt;li&gt;params 即将与请求一起发送的URL参数&lt;/li&gt;
+&lt;li&gt;data 作为请求主体被发送的数据&lt;/li&gt;
+&lt;li&gt;timeout 请求超时的毫秒数&lt;/li&gt;
+&lt;li&gt;responseType 表示服务器响应的数据类型，默认json&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;axios({
+  url: &amp;quot;/posts&amp;quot;,
+  method: &amp;quot;get&amp;quot;,
+  baseURL: &amp;quot;http://localhost:3000&amp;quot;,
+  params: {
+    id: 1
+  }
+}).then(function(res){
+  console.log(res.data)
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;10-跨域&#34;&gt;10. 跨域&lt;/h1&gt;
+&lt;p&gt;因为浏览器出于安全考虑，有同源策略。也就是说，如果协议、域名或者端口有一个不同就是跨域，Ajax 请求会失败。&lt;/p&gt;
+">【面】前端知识点梳理（服务端与网络）</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-liu-lan-qi/"" data-c="
+          &lt;h1 id=&#34;1-输入url到展示页面过程发生了什么&#34;&gt;1. 输入url到展示页面过程发生了什么？&lt;/h1&gt;
+&lt;h2 id=&#34;1首先是域名解析dns解析&#34;&gt;1.首先是域名解析(DNS解析)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;首先浏览器解析输入的域名，先查找&lt;code&gt;本地硬盘的host&lt;/code&gt;文件,看有没有和这个域名对应的ip，如果有，就直接使用这个ip&lt;/li&gt;
+&lt;li&gt;如果没有，浏览器会发出一个DNS请求到本地&lt;code&gt;DNS(域名分布系统)服务器&lt;/code&gt;，本地DNS服务器一般都是你的网络接入服务器商提供，比如中国电信，中国移动&lt;/li&gt;
+&lt;li&gt;请求到达DNS服务器后，DNS服务器首先会查询他的缓存记录，如果有对应的ip地址，则返回，如果没有，本地DNS服务器向&lt;code&gt;DNS根服务器&lt;/code&gt;发送查询请求&lt;/li&gt;
+&lt;li&gt;根服务器不会记录具体的域名和ip的对应关系，而是返回&lt;code&gt;域服务器&lt;/code&gt;的地址，本地服务器会继续向域服务器发起请求&lt;/li&gt;
+&lt;li&gt;域服务器并没有记录域名和ip的对应关系，而是返回你的&lt;code&gt;域名的解析服务器&lt;/code&gt;的地址&lt;/li&gt;
+&lt;li&gt;本地DNS服务器继续向域名解析服务器发出请求，这时会收到&lt;code&gt;域名对应的ip&lt;/code&gt;，本地DNS服务器将ip返回给浏览器，并将ip存入缓存，方便下次访问，加快访问速度&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615435439972.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-建立tcp链接&#34;&gt;2. 建立TCP链接&lt;/h2&gt;
+&lt;p&gt;在拿到ip地址后，浏览器会向对应的web服务器(Nginx,Apache...)发起TCP连接请求，通过三次握手，建立TCP连接&lt;/p&gt;
+&lt;h2 id=&#34;3-建立http请求&#34;&gt;3. 建立Http请求&lt;/h2&gt;
+&lt;p&gt;建立TCP连接后，浏览器向web服务器发送Http请求&lt;/p&gt;
+&lt;h2 id=&#34;4-服务器处理http请求&#34;&gt;4. 服务器处理Http请求&lt;/h2&gt;
+&lt;p&gt;服务器在接收到请求后，解析用户请求，知道了要调度那些资源文件，再通过相应的资源文件，处理用户的请求和参数，并调用数据库信息，最后将结果通过web服务器返回给浏览器&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615435586035.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-关闭tcp连接&#34;&gt;5. 关闭TCP连接&lt;/h2&gt;
+&lt;p&gt;在这次数据传输完成后，为了避免服务器与客户端双方的资源占用和损耗，会经过四次挥手，关闭TCP连接&lt;/p&gt;
+&lt;h2 id=&#34;6-浏览器解析资源&#34;&gt;6. 浏览器解析资源&lt;/h2&gt;
+&lt;p&gt;在拿到html,css,js,图片等资源后，浏览器开始解析，通过解析HTML，生成DOM树，解析CSS，生成CSS规则树，然后通过DOM树和CSS规则树生成渲染树&lt;/p&gt;
+&lt;p&gt;在解析CSS的同时，可以继续加载解析HTML，但在解析执行JS脚本时，会停止解析后续HTML，这就会出现阻塞问题&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615435666741.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;7-浏览器渲染页面&#34;&gt;7. 浏览器渲染页面&lt;/h2&gt;
+&lt;p&gt;生成渲染树后，浏览器根据渲染树布局页面，同时计算css样式或js对Dom的动态样式改变，然后绘制出页面&lt;/p&gt;
+&lt;h1 id=&#34;2-重绘与回流&#34;&gt;2. 重绘与回流&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;重绘(repaint)&lt;/code&gt;: 当元素样式的改变不影响布局时，浏览器将使用重绘对元素进行&lt;strong&gt;更新&lt;/strong&gt;，此时由于只需要UI层面的重新像素绘制，因此 &lt;strong&gt;损耗较少&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;回流(reflow)&lt;/code&gt;: 当元素的尺寸、结构或触发某些属性时，浏览器会&lt;strong&gt;重新渲染&lt;/strong&gt;页面，称为回流。此时，浏览器需要重新经过计算，计算后还需要重新页面布局，因此是较重的操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;回流必定触发重绘，重绘不一定触发回流。重绘的开销较小，回流的代价较高。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;会触发回流的操作:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;页面初次渲染&lt;/li&gt;
+&lt;li&gt;浏览器窗口大小改变&lt;/li&gt;
+&lt;li&gt;元素尺寸、位置、内容发生改变&lt;/li&gt;
+&lt;li&gt;元素字体大小变化&lt;/li&gt;
+&lt;li&gt;添加或者删除可见的 dom 元素&lt;/li&gt;
+&lt;li&gt;激活 CSS 伪类（例如：:hover）&lt;/li&gt;
+&lt;li&gt;查询某些属性或调用某些方法&lt;/li&gt;
+&lt;li&gt;clientWidth、clientHeight、clientTop、clientLeft&lt;/li&gt;
+&lt;li&gt;offsetWidth、offsetHeight、offsetTop、offsetLeft&lt;/li&gt;
+&lt;li&gt;scrollWidth、scrollHeight、scrollTop、scrollLeft&lt;/li&gt;
+&lt;li&gt;getComputedStyle()&lt;/li&gt;
+&lt;li&gt;getBoundingClientRect()&lt;/li&gt;
+&lt;li&gt;scrollTo()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;3-防抖与节流&#34;&gt;3. 防抖与节流&lt;/h1&gt;
+&lt;h2 id=&#34;1-防抖debounce&#34;&gt;1. 防抖(debounce)&lt;/h2&gt;
+&lt;p&gt;基于上述场景，首先提出第一种思路：&lt;strong&gt;在第一次触发事件时，不立即执行函数，而是给出一个期限值&lt;/strong&gt;比如200ms，然后：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果在200ms内没有再次触发滚动事件，那么就执行函数&lt;/li&gt;
+&lt;li&gt;如果在200ms内再次触发滚动事件，那么当前的计时取消，重新开始计时&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;效果&lt;/strong&gt;：如果短时间内大量触发同一事件，只会执行一次函数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现&lt;/strong&gt;：既然前面都提到了计时，那实现的关键就在于&lt;code&gt;setTimeout&lt;/code&gt;这个函数，由于还需要一个变量来保存计时，考虑维护全局纯净，可以借助闭包来实现：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function debounce(fn,delay){
+    let timer = null //借助闭包
+    return function() {
+        if(timer){
+            clearTimeout(timer) 
+        }
+        timer = setTimeout(fn,delay) // 简化写法
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;对于短时间内连续触发的事件（上面的滚动事件），防抖的含义就是让某个时间期限（如上面的1000毫秒）内，事件处理函数只执行一次。&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-节流throttle&#34;&gt;2. 节流(throttle)&lt;/h2&gt;
+&lt;p&gt;类似&lt;strong&gt;控制阀门一样定期开放的函数，也就是让函数执行一次后，在某个时间段内暂时失效，过了这段时间后再重新激活&lt;/strong&gt;（类似于技能冷却时间）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;效果&lt;/strong&gt;：如果短时间内大量触发同一事件，&lt;strong&gt;那么在函数执行一次之后，该函数在指定的时间期限内不再工作&lt;/strong&gt;，直至过了这段时间才重新生效。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现&lt;/strong&gt; 这里借助&lt;code&gt;setTimeout&lt;/code&gt;来做一个简单的实现，加上一个状态位&lt;code&gt;valid&lt;/code&gt;来表示当前函数是否处于工作状态：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function throttle(fn,delay){
+    let valid = true
+    return function() {
+       if(!valid){
+           //休息时间 暂不接客
+           return false 
+       }
+       // 工作时间，执行函数并且在间隔期内把状态位设为无效
+        valid = false
+        setTimeout(() =&amp;gt; {
+            fn()
+            valid = true;
+        }, delay)
+    }
+}
+/* 请注意，节流函数并不止上面这种实现方案,
+   例如可以完全不借助setTimeout，可以把状态位换成时间戳，然后利用时间戳差值是否大于指定间隔时间来做判定。
+   也可以直接将setTimeout的返回的标记当做判断条件-判断当前定时器是否存在，如果存在表示还在冷却，并且在执行fn之后消除定时器表示激活，原理都一样
+    */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行以上代码的结果是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果一直拖着滚动条进行滚动，那么会以1s的时间间隔，持续输出当前位置和顶部的距离&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-其他场景&#34;&gt;3. 其他场景&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;搜索框input事件，例如要支持输入实时搜索可以使用节流方案（间隔一段时间就必须查询相关内容），或者实现输入间隔大于某个值（如500ms），就当做用户输入完成，然后开始搜索，具体使用哪种方案要看业务需求。&lt;/li&gt;
+&lt;li&gt;页面resize事件，常见于需要做页面适配的时候。需要根据最终呈现的页面情况进行dom渲染（这种情形一般是使用防抖，因为只需要判断最后一次的变化情况）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;4-前端持久化储存-cookies-session-sessionstorage-localstorage&#34;&gt;4. 前端持久化储存 cookies、session、sessionStorage、localStorage&lt;/h1&gt;
+&lt;h2 id=&#34;1-cookie&#34;&gt;1. cookie&lt;/h2&gt;
+&lt;p&gt;由于HTTP是一种&lt;strong&gt;无状态的协议&lt;/strong&gt;，服务器单从网络连接上是无法知道客户身份的。这时候服务器就需要给客户端颁发一个cookie，用来确认用户的身份。&lt;/p&gt;
+&lt;h3 id=&#34;cookie的构成&#34;&gt;cookie的构成&lt;/h3&gt;
+&lt;p&gt;服务器端向客户端发送Cookie是通过HTTP响应报文实现的，在Set-Cookie中设置需要向客户端发送的cookie，cookie格式如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Set-Cookie: &amp;quot;name=value;domain=.domain.com;path=/;expires=Sat, 11 Jun 2019 11:29:42 GMT;HttpOnly;secure&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中name=value是必选项，其它都是可选项。Cookie的主要构成如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;name:一个唯一确定的cookie&lt;code&gt;名称&lt;/code&gt;。通常来讲cookie的名称是不区分大小写的。&lt;/li&gt;
+&lt;li&gt;value:存储在cookie中的&lt;code&gt;字符串值&lt;/code&gt;。&lt;strong&gt;最好为cookie的name和value进行url编码&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;domain:cookie对于哪个&lt;code&gt;域&lt;/code&gt;是有效的。所有向该域发送的请求中都会包含这个cookie信息。这个值可以包含子域(如：http://e.baidu.com)，也可以不包含它(如：.http://baidu.com，则对于http://baidu.com的所有子域都有效)。&lt;/li&gt;
+&lt;li&gt;path: 表示这个cookie影响到的&lt;code&gt;路径&lt;/code&gt;，浏览器跟会根据这项配置，像指定域中匹配的路径发送cookie。&lt;/li&gt;
+&lt;li&gt;expires:&lt;code&gt;失效时间&lt;/code&gt;，表示cookie何时应该被删除的时间戳(也就是，何时应该停止向服务器发送这个cookie)。如果不设置这个时间戳，浏览器会在页面关闭时即将删除所有cookie；不过也可以自己设置删除时间。这个值是GMT时间格式。如果客户端和服务器端时间不一致，使用expires就会存在偏差。并且如果给cookie设置一个过去的时间，浏览器会立即删除该cookie&lt;/li&gt;
+&lt;li&gt;max-age: 与expires作用相同，用来告诉浏览器此cookie多久过期（单位是秒），而不是一个固定的时间点。正常情况下，max-age的&lt;code&gt;优先级高&lt;/code&gt;于expires。&lt;/li&gt;
+&lt;li&gt;HttpOnly: 告知浏览器不允许通过脚本document.cookie去更改这个值，同样这个值在document.cookie中也不可见。但在http请求仍然会携带这个cookie。注意这个值虽然在脚本中不可获取，但仍然在浏览器安装目录中以文件形式存在。这项设置通常在&lt;code&gt;服务器端设置&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;secure: 安全标志，指定后，只有在使用&lt;code&gt;SSL链接&lt;/code&gt;时候才能发送到服务器，如果是http链接则不会传递该信息。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cookie的不可跨域名性&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意：修改、删除Cookie时，新建的Cookie除value、maxAge之外的所有属性，例如name、path、domain等，都要与原Cookie完全一样。否则，浏览器将视为两个不同的Cookie不予覆盖，导致修改、删除失败。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-session&#34;&gt;2. Session&lt;/h2&gt;
+&lt;p&gt;Session是另一种记录客户状态的机制，不同的是Cookie保存在&lt;code&gt;客户端浏览器&lt;/code&gt;中，而Session保存在&lt;code&gt;服务器上&lt;/code&gt;。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。&lt;/p&gt;
+&lt;p&gt;Session 之所以可以识别不同的用户，依靠的就是Cookie，所以说&lt;strong&gt;session是基于cookie的&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;该Cookie是服务器自动颁发给浏览器的，不用我们手工创建的。该Cookie的&lt;code&gt;maxAge值默认是-1&lt;/code&gt;，也就是说仅当前浏览器使用，不将该Cookie存在硬盘中，并且各浏览器窗口间不共享，关闭浏览器就会失效。&lt;/p&gt;
+&lt;h3 id=&#34;工作步骤&#34;&gt;工作步骤：&lt;/h3&gt;
+&lt;p&gt;将客户端称为 client，服务端称为 server&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;产生 sessionID：session 是基于 cookie 的一种方案，所以，首先要产生 cookie。client 第一次访问 server，server 生成一个随机数，命名为 sessionID，并将其放在响应头里，以 cookie 的形式返回给 client，client 以处理其他 cookie 的方式处理这段 cookie。大概是这样：cookie：sessionID=135165432165&lt;/li&gt;
+&lt;li&gt;保存 sessionID： server 将要保存的数据保存在相对应的 sessionID 之下，再将 sessionID 保存到服务器端的特定的保存 session 的内存中（如 一个叫 session 的哈希表）&lt;/li&gt;
+&lt;li&gt;使用 session： client 再次访问 server，会带上首次访问时获得的 值为 sessionID 的cookie，server 读取 cookie 中的 sessionID，根据 sessionID 到保存 session 的内存寻找与 sessionID 匹配的数据，若寻找成功就将数据返回给 client。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;session有效期&#34;&gt;Session有效期&lt;/h3&gt;
+&lt;p&gt;Session生成后，只要用户继续访问，服务器就会更新Session的最后访问时间，并维护该Session。用户每访问服务器一次，无论是否读写Session，服务器都认为该用户的Session“活跃（active）”了一次。&lt;/p&gt;
+&lt;p&gt;由于会有越来越多的用户访问服务器，因此Session也会越来越多。为防止内存溢出，服务器会把长时间内没有活跃的Session从内存删除。这个时间就是Session的超时时间。如果超过了超时时间没访问过服务器，Session就自动失效了。&lt;/p&gt;
+&lt;h2 id=&#34;3-cookie与session的区别&#34;&gt;3. cookie与session的区别&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Cookie数据存放在客户端，Session数据放在服务器端&lt;/li&gt;
+&lt;li&gt;Cookie的安全性一般，他人可通过分析存放在本地的Cookie并进行Cookie欺骗。在安全性第一的前提下，选择Session更优。重要交互信息比如权限等就要放在Session中，一般的信息记录放Cookie中&lt;/li&gt;
+&lt;li&gt;单个Cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个Cookie，而Session原则上没有限制&lt;/li&gt;
+&lt;li&gt;Session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用Cookie。&lt;/li&gt;
+&lt;li&gt;Session 的运行依赖Session ID，而 Session ID 是存在 Cookie 中的，也就是说，如果浏览器禁用了 Cookie，Session 也会失效（但是可以通过其它方式实现，比如在 url 中传递 Session ID，也就是地址重写）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-localstorage&#34;&gt;4. localStorage&lt;/h2&gt;
+&lt;p&gt;localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。&lt;/p&gt;
+&lt;p&gt;并且不会因为刷新而释放，所以，&lt;strong&gt;可以使用 localStorage 来实现变量的持久化存储&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;localStorage的特点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;localStorage 与 HTTP 没有任何关系，所以在HTTP请求时不会带上 localStorage 的值&lt;/li&gt;
+&lt;li&gt;只有相同域名的页面才能互相读取 localStorage，同源策略与 cookie 一致&lt;/li&gt;
+&lt;li&gt;不同的浏览器，对每个域名 localStorage 的最大存储量的规定不一样，超出存储量会被拒绝。最大存5M 超过5M的数据就会丢失。而 Chrome 10MB 左右&lt;/li&gt;
+&lt;li&gt;常用来记录一些不敏感的信息&lt;/li&gt;
+&lt;li&gt;localStorage 理论上永久有效，除非用户清理缓存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;5-sessionstorage&#34;&gt;5. sessionStorage&lt;/h2&gt;
+&lt;p&gt;sessionStorage 的所有性质基本上与 localStorage 一致，唯一的不同区别在于：&lt;/p&gt;
+&lt;p&gt;sessionStorage 的有效期是页面会话持续，如果页面&lt;code&gt;会话（session）结束&lt;/code&gt;（关闭窗口或标签页），sessionStorage 就会&lt;code&gt;消失&lt;/code&gt;。而 localStorage 则会一直存在。&lt;/p&gt;
+&lt;h2 id=&#34;6-localstorage与sessionstorage的区别&#34;&gt;6. localStorage与sessionStorage的区别&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;localStorage生命周期是永久的，除非被清除，否则永久保存，而sessionStorage仅在当前会话下有效，关闭页面或浏览器后被清除&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;5-浏览器内核&#34;&gt;5. 浏览器内核&lt;/h1&gt;
+&lt;p&gt;浏览器内核可以分为两部分：&lt;code&gt;渲染引擎&lt;/code&gt;（Layout Engine或Rendering Engine）和&lt;code&gt;JS引擎&lt;/code&gt;。由于JS引擎越来越独立，内核就倾向于只指渲染引擎。&lt;/p&gt;
+&lt;h2 id=&#34;1-浏览器构成&#34;&gt;1. 浏览器构成&lt;/h2&gt;
+&lt;p&gt;浏览器一般由七个模块组成，User Interface（用户界面）、Browser engine（浏览器引擎）、Rendering engine（渲染引擎）、Networking（网络）、JavaScript Interpreter（js解释器）、UI Backend（UI 后端）、Date Persistence（数据持久化存储）&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615442013118.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户界面 －包括地址栏、后退/前进按钮、书签目录等，也就是你-所看到的除了页面显示窗口之外的其他部分&lt;/li&gt;
+&lt;li&gt;浏览器引擎 －可以在用户界面和渲染引擎之间传送指令或在客户端本地缓存中读写数据等，是浏览器中各个部分之间相互通信的核心&lt;/li&gt;
+&lt;li&gt;渲染引擎 －解析DOM文档和CSS规则并将内容排版到浏览器中显示有样式的界面，也有人称之为排版引擎，我们常说的浏览器内核主要指的就是渲染引擎&lt;/li&gt;
+&lt;li&gt;网络 －用来完成网络调用或资源下载的模块&lt;/li&gt;
+&lt;li&gt;UI 后端 －用来绘制基本的浏览器窗口内控件，如输入框、按钮、单选按钮等，根据浏览器不同绘制的视觉效果也不同，但功能都是一样的。&lt;/li&gt;
+&lt;li&gt;JS解释器 －用来解释执行JS脚本的模块，如 V8 引擎、JavaScriptCore&lt;/li&gt;
+&lt;li&gt;数据存储 －浏览器在硬盘中保存 cookie、localStorage等各种数据，可通过浏览器引擎提供的API进行调用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-主流浏览器的内核&#34;&gt;2. 主流浏览器的内核&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;IE内核(Trident)&lt;/strong&gt;&lt;br&gt;
+Trident内核代表产品Internet Explorer，又称其为IE内核。Trident（又称为MSHTML），是微软开发的一种排版引擎。国内很多的双核浏览器其中之一就是Trident，美名其曰“兼容模式”。&lt;br&gt;
+代表：IE、傲游、世界之窗浏览器、Avant、猎豹安全浏览器、360极速浏览器、百度浏览器等。&lt;br&gt;
+Window10发布后，IE将其内置浏览器命名为Edge（原名斯巴达），使用了新内核Edge引擎。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Firefox（Gecko）&lt;/strong&gt;&lt;br&gt;
+Gecko内核代表作品Mozilla FirefoxGecko是一套开放源代码的、以C++编写的网页排版引擎。Gecko是最流行的排版引擎之一，仅次于Trident。使用它的最著名浏览器有Firefox、Netscape6至9。可惜这几年已经没落了，比如打开速度慢、升级频繁、猪一样的队友flash、神一样的对手Chrome。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Safari（Webkit）&lt;/strong&gt;&lt;br&gt;
+苹果公司自己的内核，也是苹果的Safari浏览器使用的内核。&lt;br&gt;
+WebKit内核代表作品Safari、Chromewebkit 是一个开源项目，包含了来自KDE项目和苹果公司的一些组件，主要用于Mac OS系统，它的特点在于源码结构清晰、渲染速度极快。缺点是对网页代码的兼容性不高，导致一些编写不标准的网页无法正常显示。主要代表作品有Safari和Google的浏览器Chrome。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Chrome（Blink）&lt;/strong&gt;&lt;br&gt;
+有Google和Opera Software开发的浏览器排版引擎，2013年4月发布，现在Chrome内核是Blink。Blink其实是webkit的分支，大部分国产浏览器最新版都采用Blink内核。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Opera（Presto）&lt;/strong&gt;&lt;br&gt;
+Presto内核代表作品OperaPresto是由Opera Software开发的浏览器排版引擎，供Opera 7.0及以上使用。它取代了旧版Opera 4至6版本使用的Elektra排版引擎，包括加入动态功能，例如网页或其部分可随着DOM及Script语法的事件而重新排版。在13年之后，Opera宣布加入谷歌阵营，弃用了Presto。&lt;/p&gt;
+">【面】前端知识点梳理（浏览器）</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-es6/"" data-c="
