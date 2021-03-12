@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>TCP报文——三次握手&amp;四次挥手 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615515701688">
+<link rel="shortcut icon" href="/favicon.ico?v=1615523742890">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">50</span>
+        <span class="site-item-stat-count">52</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1100,6 +1100,98 @@ TCP/IP 协议是传输层的一个面向连接的安全可靠的一个传输协�
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/"" data-c="
+          &lt;h1 id=&#34;1-webpack打包原理&#34;&gt;1. webpack打包原理&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615517470320.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1几个关键词&#34;&gt;1.几个关键词&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，来找出直接或者间接依赖的文件。&lt;/li&gt;
+&lt;li&gt;Output： 出口，规定webpack输出的bundles的路径以及文件名，默认为 ./dist&lt;/li&gt;
+&lt;li&gt;Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。&lt;/li&gt;
+&lt;li&gt;Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。&lt;/li&gt;
+&lt;li&gt;Loader：模块转换器，用于把模块原内容按照需求转换成 webpack 能处理的有效模块&lt;/li&gt;
+&lt;li&gt;Plugin：扩展插件，在 webpack 构建流程中的特定时机会广播出对应的事件，插件可以监听这些事件的发生，在特定时机做对应的事情。插件的范围包括从打包优化和压缩，一直到重新定义环境中的变量，可扩展功能丰富。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-webpack-的构建流程&#34;&gt;2. Webpack 的构建流程：&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化：启动构建，读取与合并配置参数，加载 Plugin，实例化 Compiler。&lt;/li&gt;
+&lt;li&gt;编译：从 Entry 发出，针对每个 Module 串行调用对应的 Loader 去翻译文件内容，再找到该 Module 依赖的 Module，递归地进行编译处理。&lt;/li&gt;
+&lt;li&gt;输出：对编译后的 Module 组合成 Chunk，把 Chunk 转换成文件，输出到文件系统。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-loader&#34;&gt;3. loader&lt;/h2&gt;
+&lt;p&gt;loader是用来处理各种形式的资源，本质上是一个函数, 接受文件作为参数，返回转化后的结构&lt;/p&gt;
+&lt;p&gt;一个loader只做一种转换，比如解析less文件，less建立在css基础上，先解析less，再转为css，再插入到head&lt;/p&gt;
+&lt;p&gt;注意：&lt;code&gt;loader&lt;/code&gt; 的调用是&lt;code&gt;链式&lt;/code&gt;调用，&lt;code&gt;从后往前&lt;/code&gt;，所以先写 style-loader 再写 css-loader，less-loader 在最后，执行时先用less-loader将less文件转化为css，再由 css-loader 解析css文件转成对象，传递给 style-loader 插入到 head&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;module.exports={
+    entry:{...},
+    outpath:{path:...,filename:...},
+    mode:&#39;production&#39;,
+    module:{
+        rules:[
+            {
+                test:/\.less$/,
+                use:[
+                &#39;style-loader&#39;,
+                &#39;css-loader&#39;,
+                &#39;less-loader&#39;
+                ]
+            },
+        ]
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-常用插件&#34;&gt;4. 常用插件&lt;/h2&gt;
+&lt;p&gt;【常用插件】&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ExtractTextPlugin ：从bundle 中提取特定的text到一个文件中。&lt;/li&gt;
+&lt;li&gt;DefinePlugin :允许创建一个在编译时可以配置的全局变量，这使得一个应用可以打包编译出多个不同的应用。webpack 在打包编译时会对变量直接做文本替换，所以给定的字符串必须包含字符串本省的实际引号。JSON.string()。&lt;/li&gt;
+&lt;li&gt;ProvidePlugin 插件，自动加载对应的模块，而不需要到处 通过import 或者 require 引入。&lt;/li&gt;
+&lt;li&gt;CopyWebpackPlugin：将单个文件或者整个目录复制到构建目录&lt;/li&gt;
+&lt;li&gt;HtmlWebpackPlugin 简化了 HTML 文件的创建，为应用生成一个 index.html，并添加一个script 脚本标签来加载生成的 bundle.js&lt;/li&gt;
+&lt;li&gt;BudlieAnalyzerPlugin: 可视化的webpack 打包后文件的分析插件，作用：1.认识打包后的文件和大小；2.以便优化打包后的文件&lt;/li&gt;
+&lt;li&gt;CommonsChunkPlugin :从 bundle中分离出公共的模块，便于缓存使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;5-热更新&#34;&gt;5. 热更新&lt;/h2&gt;
+&lt;p&gt;现象就是你修改代码保存之后，浏览器不会刷新，只会修改你更改过的依赖代码。我们平时用webpack-dev-server如果没有配置，是直接刷新浏览器，并不是热更新。&lt;/p&gt;
+&lt;p&gt;大概流程是我们用webpack-dev-server启动一个服务之后，浏览器和服务端是通过websocket进行长连接，webpack内部实现的watch就会监听文件修改，只要有修改就webpack会重新打包编译到内存中，然后webpack-dev-server依赖中间件webpack-dev-middleware和webpack之间进行交互，每次热更新都会请求一个携带hash值的json文件和一个js，websocker传递的也是hash值，内部机制通过hash值检查进行热更新， 至于内部原理，因为水平限制，目前还看不懂。&lt;/p&gt;
+&lt;h2 id=&#34;6-优化构建速度&#34;&gt;6. 优化构建速度&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;优化Loader配置&lt;/strong&gt;&lt;br&gt;
+Loader处理文件的转换操作是很耗时的，所以需要让尽可能少的文件被Loader处理&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优化resolve.modules配置&lt;/strong&gt;&lt;br&gt;
+resolve.modules用于配置webpack去哪些目录下寻找第三方模块，默认是[&#39;node_modules&#39;]，但是，它会先去当前目录的./node_modules查找，没有的话再去../node_modules最后到根目录；&lt;code&gt;所以第三方库安到根目录下&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优化resolve.extensions配置&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;频率出现高的文件后缀优先放在前面；&lt;/li&gt;
+&lt;li&gt;列表尽可能的小；&lt;/li&gt;
+&lt;li&gt;书写导入语句时，尽量写上后缀名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;2-原生js实现轮播图&#34;&gt;2. 原生js实现轮播图&lt;/h1&gt;
+">【面】前端知识点梳理（工具与组件）</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju/"" data-c="
+          &lt;h1 id=&#34;1-webpack打包原理&#34;&gt;1. webpack打包原理&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615517470320.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1几个关键词&#34;&gt;1.几个关键词&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，来找出直接或者间接依赖的文件。&lt;/li&gt;
+&lt;li&gt;Output： 出口，规定webpack输出的bundles的路径以及文件名，默认为 ./dist&lt;/li&gt;
+&lt;li&gt;Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。&lt;/li&gt;
+&lt;li&gt;Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。&lt;/li&gt;
+&lt;li&gt;Loader：模块转换器，用于把模块原内容按照需求转换成 webpack 能处理的有效模块&lt;/li&gt;
+&lt;li&gt;Plugin：扩展插件，在 webpack 构建流程中的特定时机会广播出对应的事件，插件可以监听这些事件的发生，在特定时机做对应的事情。插件的范围包括从打包优化和压缩，一直到重新定义环境中的变量，可扩展功能丰富。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-webpack-的构建流程&#34;&gt;2. Webpack 的构建流程：&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化：启动构建，读取与合并配置参数，加载 Plugin，实例化 Compiler。&lt;/li&gt;
+&lt;li&gt;编译：从 Entry 发出，针对每个 Module 串行调用对应的 Loader 去翻译文件内容，再找到该 Module 依赖的 Module，递归地进行编译处理。&lt;/li&gt;
+&lt;li&gt;输出：对编译后的 Module 组合成 Chunk，把 Chunk 转换成文件，输出到文件系统。&lt;/li&gt;
+&lt;/ol&gt;
+">【面】前端知识点梳理（工具）</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-vue/"" data-c="
           &lt;h1 id=&#34;1-vue解决了什么问题&#34;&gt;1. vue解决了什么问题&lt;/h1&gt;
 &lt;p&gt;要回答这个问题，要先理解核心知识点：组件化&lt;/p&gt;
@@ -1312,6 +1404,15 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 &lt;p&gt;基于以上区别，因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。&lt;/p&gt;
 &lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
 &lt;p&gt;v-if判断是否加载，可以减轻服务器的压力，在需要时加载,但有更高的切换开销;v-show调整DOM元素的CSS的dispaly属性，可以使客户端操作更加流畅，但有更高的初始渲染开销。如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。&lt;/p&gt;
+&lt;h1 id=&#34;13-vue项目中实现token验证&#34;&gt;13. Vue项目中实现token验证&lt;/h1&gt;
+&lt;p&gt;在前后端完全分离的情况下，Vue项目中实现token验证大致思路如下：&lt;/p&gt;
+&lt;p&gt;1、第一次登录的时候，前端调后端的登陆接口，发送用户名和密码&lt;br&gt;
+2、后端收到请求，验证用户名和密码，验证成功，就给前端返回一个token&lt;br&gt;
+3、前端拿到token，将token存储到localStorage和vuex中，并跳转路由页面&lt;br&gt;
+4、前端每次跳转路由，就判断 localStroage 中有无 token ，没有就跳转到登录页面，有则跳转到对应路由页面&lt;br&gt;
+5、每次调后端接口，都要在请求头中加token&lt;br&gt;
+6、后端判断请求头中有无token，有token，就拿到token并验证token，验证成功就返回数据，验证失败（例如：token过期）就返回401，请求头中没有token也返回401&lt;br&gt;
+7、如果前端拿到状态码为401，就清除token信息并跳转到登录页面&lt;/p&gt;
 ">【面】前端知识点梳理（Vue）</a>
       </div>
       
