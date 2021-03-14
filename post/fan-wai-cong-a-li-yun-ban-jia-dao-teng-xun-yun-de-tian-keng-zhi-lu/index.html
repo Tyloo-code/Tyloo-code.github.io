@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【番外】从阿里云搬家到腾讯云的填坑之路 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615523742890">
+<link rel="shortcut icon" href="/favicon.ico?v=1615725776721">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">52</span>
+        <span class="site-item-stat-count">51</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1151,6 +1151,35 @@
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-shou-xie-ti/"" data-c="
+          &lt;h1 id=&#34;1-ip地址与整数的相互转换&#34;&gt;1 ip地址与整数的相互转换&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;//IP转成整型
+function _ip2int(ip) 
+{
+    var num = 0;
+    ip = ip.split(&amp;quot;.&amp;quot;);
+    num = Number(ip[0]) * 256 * 256 * 256 + Number(ip[1]) * 256 * 256 + Number(ip[2]) * 256 + Number(ip[3]);
+    num = num &amp;gt;&amp;gt;&amp;gt; 0;
+    return num;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;//整型解析为IP地址
+function _int2iP(num) 
+{
+    var str;
+    var tt = new Array();
+    tt[0] = (num &amp;gt;&amp;gt;&amp;gt; 24) &amp;gt;&amp;gt;&amp;gt; 0;
+    tt[1] = ((num &amp;lt;&amp;lt; 8) &amp;gt;&amp;gt;&amp;gt; 24) &amp;gt;&amp;gt;&amp;gt; 0;
+    tt[2] = (num &amp;lt;&amp;lt; 16) &amp;gt;&amp;gt;&amp;gt; 24;
+    tt[3] = (num &amp;lt;&amp;lt; 24) &amp;gt;&amp;gt;&amp;gt; 24;
+    str = String(tt[0]) + &amp;quot;.&amp;quot; + String(tt[1]) + &amp;quot;.&amp;quot; + String(tt[2]) + &amp;quot;.&amp;quot; + String(tt[3]);
+    return str;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">【面】前端知识点梳理（手写题）</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/"" data-c="
           &lt;h1 id=&#34;1-webpack打包原理&#34;&gt;1. webpack打包原理&lt;/h1&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615517470320.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
@@ -1221,28 +1250,6 @@ resolve.modules用于配置webpack去哪些目录下寻找第三方模块，默�
       </div>
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju/"" data-c="
-          &lt;h1 id=&#34;1-webpack打包原理&#34;&gt;1. webpack打包原理&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615517470320.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;1几个关键词&#34;&gt;1.几个关键词&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，来找出直接或者间接依赖的文件。&lt;/li&gt;
-&lt;li&gt;Output： 出口，规定webpack输出的bundles的路径以及文件名，默认为 ./dist&lt;/li&gt;
-&lt;li&gt;Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。&lt;/li&gt;
-&lt;li&gt;Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。&lt;/li&gt;
-&lt;li&gt;Loader：模块转换器，用于把模块原内容按照需求转换成 webpack 能处理的有效模块&lt;/li&gt;
-&lt;li&gt;Plugin：扩展插件，在 webpack 构建流程中的特定时机会广播出对应的事件，插件可以监听这些事件的发生，在特定时机做对应的事情。插件的范围包括从打包优化和压缩，一直到重新定义环境中的变量，可扩展功能丰富。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;2-webpack-的构建流程&#34;&gt;2. Webpack 的构建流程：&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;初始化：启动构建，读取与合并配置参数，加载 Plugin，实例化 Compiler。&lt;/li&gt;
-&lt;li&gt;编译：从 Entry 发出，针对每个 Module 串行调用对应的 Loader 去翻译文件内容，再找到该 Module 依赖的 Module，递归地进行编译处理。&lt;/li&gt;
-&lt;li&gt;输出：对编译后的 Module 组合成 Chunk，把 Chunk 转换成文件，输出到文件系统。&lt;/li&gt;
-&lt;/ol&gt;
-">【面】前端知识点梳理（工具）</a>
-      </div>
-      
-      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-vue/"" data-c="
           &lt;h1 id=&#34;1-vue解决了什么问题&#34;&gt;1. vue解决了什么问题&lt;/h1&gt;
 &lt;p&gt;要回答这个问题，要先理解核心知识点：组件化&lt;/p&gt;
@@ -1287,6 +1294,7 @@ ViewModel 和 Model 之间是浏览器通过 ajax 跟服务器相互通信的过
 &lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615469169345.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 反向是页面数据的变化映射到 data 中，通过 input 事件监听 input 框数据的改变，JS 得到通知再赋值给 data，只是 VM 框架使手动的过程自动化了。&lt;/p&gt;
 &lt;p&gt;正向是数据驱动页面，通过 Object.defineProperty() 这个核心 API，将所有数据变成响应式数据，当访问到一个响应式数据时，就会触发它的 getter 函数，收集依赖，当一个响应式数据变化时，就会触发 setter 函数，通知依赖使视图得到更新。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615711862629.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h1 id=&#34;4-nexttick&#34;&gt;4. nextTick&lt;/h1&gt;
 &lt;p&gt;nextTick 把要执行的任务&lt;code&gt;推入&lt;/code&gt;到一个&lt;code&gt;队列&lt;/code&gt;中，在下一个 tick 同步执行队列的所有任务，它是异步任务中的微任务。（关于 JS 的运行机制，这是基础知识，篇幅有限）&lt;/p&gt;
 &lt;p&gt;在 Vue 中，不是每一次数据的改变都会触发所有 wather 的回调，而是将这些回调推入到一个队列中，相同的 id 的 watcher 的回调不会被重复添加，然后在下一个 tick 中再执行这些回调，因此重新渲染是异步的。这么做的好处是：比如我们写了一个将某个响应式数据不断加 1 直到 1000 的代码块，那么视图只会重新渲染一次，即从 0 到 1000，而不是重新渲染 1000 次，这是一种有效的优化手段。&lt;/p&gt;
@@ -1298,12 +1306,13 @@ this.$nextTick().then(cb)
 &lt;p&gt;请注意第一种方式的使用，虽然它们都是异步执行的，但是如果你将第一种方式放在响应式数据更新的前面，那么你拿到的将是老的 DOM 结果。&lt;/p&gt;
 &lt;p&gt;因为 wather 的回调函数是在 nextTick 之后执行的，使用第一种方式 wather 的回调函数将和 this.$nextTick(cb) 中的 cb 同步执行，你将它放在响应式数据更新之前的话，会先执行这个 cb，所以拿到的是未被重新渲染的 DOM 结果，而如果是放在之后，你就能拿到被重新渲染的 DOM 结果。而第二种方式的 cb 跟 watcher 的回调函数是异步执行的，所以没有顺序问题。&lt;/p&gt;
 &lt;h1 id=&#34;5-生命周期&#34;&gt;5. 生命周期&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615470829040.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;p&gt;Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615470829040.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 回答技巧：有哪些生命周期以及在每个生命周期的时机中我们能做的事情。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;beforeCreate 钩子的执行时机是在&lt;code&gt;initState 函数之前&lt;/code&gt;，这个函数会初始化 props、data、methods、watch、computed 等属性，也就意味着，这个&lt;code&gt;钩子是不可以访问&lt;/code&gt;到以上这些属性中的数据的；&lt;/li&gt;
 &lt;li&gt;created 钩子的执行时机是在&lt;code&gt;iniState 函数之后&lt;/code&gt;，因此&lt;code&gt;可以访问&lt;/code&gt;到以上这些属性中的数据；&lt;/li&gt;
-&lt;li&gt;beforeMount 钩子的执行时机是在 DOM 挂载之前，执行顺序是先父后子；&lt;/li&gt;
+&lt;li&gt;beforeMount 钩子的执行时机是在 DOM 挂载之前，还是JavaScript中的虚拟DOM形式存在的。执行顺序是先父后子；&lt;/li&gt;
 &lt;li&gt;mounted 钩子的执行时机是在 DOM 挂载之后，执行顺序是先子后父；&lt;/li&gt;
 &lt;li&gt;beforeUpdate 钩子的执行时机是在数据发生改变，还没有渲染之前；&lt;/li&gt;
 &lt;li&gt;updated 钩子的执行时机是数据发生改变，并且被渲染后；&lt;/li&gt;
@@ -1316,11 +1325,27 @@ this.$nextTick().then(cb)
 &lt;li&gt;deactivated 钩子的执行时机是在页面退出时，由于会缓存，所以不会销毁组件。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;6-虚拟-dom-的原理&#34;&gt;6. 虚拟 DOM 的原理&lt;/h1&gt;
-&lt;p&gt;Virtual DOM 本质上是一个 JS 对象，这个对象是更轻量级对 DOM 的描述。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615510334452.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-通过 diff 算法来判断哪些 DOM 的数据发生了变化，然后局部刷新需要更新的 DOM，而真实 DOM 的属性特别多，一个空的 div 就有 231 个属性，且大部分属性是不需要进行比较的，所以出现了一个轻量级的对真实 DOM 描述的 JS 对象，称为虚拟 DOM，与真实 DOM 一一对应，将新旧虚拟 DOM 进行 diff，然后生成变更，将变更应用于真实 DOM，最终生成最新的真实 DOM。这是将大量的 DOM 层面操作，转换成 JS 层面的操作，是很划算的。&lt;/p&gt;
-&lt;p&gt;但是虚拟 DOM 的 diff 算法是有成本的，因为需要作整体的同级元素的 diff（没有变动的 DOM 也需要 diff），而手动优化 DOM 操作，可以精确地操作我们需要变更的部分，因此，从性能上来说，手动优化 DOM 确实是最好的，但问题是如果每个地方都需要手动优化 DOM 操作的话，效率极低且维护性差，使用虚拟 DOM 是通过牺牲一点性能来换取更高的可维护性、可扩展性以及开发效率。&lt;/p&gt;
-&lt;p&gt;这就是为什么 vue 即便有数据劫持的情况下依然采用了虚拟 DOM 的原因，可以将组件高度抽象化，使 vue 组件可以跨平台，在后端运行（因为虚拟 DOM 是一个 JS 对象）。&lt;/p&gt;
+&lt;h2 id=&#34;浏览器渲染引擎工作流程都差不多大致分为5步&#34;&gt;浏览器渲染引擎工作流程都差不多，大致分为5步&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;第一步，用HTML分析器，分析HTML元素，&lt;strong&gt;构建一颗DOM树&lt;/strong&gt;(标记化和树构建)。&lt;/li&gt;
+&lt;li&gt;第二步，用CSS分析器，分析CSS文件和元素上的inline样式，生成页面的样式表。&lt;/li&gt;
+&lt;li&gt;第三步，将DOM树和样式表，关联起来，构建一颗Render树(这一过程又称为Attachment)。&lt;/li&gt;
+&lt;li&gt;第四步，有了Render树，浏览器开始布局，为每个Render树上的节点确定一个在显示屏上出现的精确坐标。&lt;/li&gt;
+&lt;li&gt;第五步，Render树和节点显示坐标都有了，就调用每个节点paint方法，把它们绘制出来。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;用我们传统的开发模式，原生JS或JQ操作DOM时，浏览器会从构建DOM树开始从头到尾执行一遍流程&lt;/code&gt;。在一次操作中，我需要更新10个DOM节点，浏览器收到第一个DOM请求后并不知道还有9次更新操作，因此会马上执行流程，最终执行10次。&lt;/p&gt;
+&lt;h2 id=&#34;为什么需要虚拟dom它有什么好处&#34;&gt;为什么需要虚拟DOM，它有什么好处&lt;/h2&gt;
+&lt;p&gt;虚拟DOM就是为了&lt;code&gt;解决浏览器性能问题&lt;/code&gt;而被设计出来的。&lt;/p&gt;
+&lt;p&gt;出现了一个轻量级的对真实 DOM 描述的 JS 对象，称为虚拟 DOM，与真实 DOM 一一对应，将新旧虚拟 DOM 进行 diff，然后生成变更，将变更应用于真实 DOM，最终生成最新的真实 DOM。&lt;strong&gt;这是将大量的 DOM 层面操作，转换成 JS 层面的操作&lt;/strong&gt;，是很划算的。&lt;/p&gt;
+&lt;p&gt;如前，若一次操作中有10次更新DOM的动作，虚拟DOM不会立即操作DOM，而是将这10次更新的&lt;code&gt;diff&lt;/code&gt;内容保存到本地一个JS对象中，最终将这个JS对象一次性attch到DOM树上，再进行后续操作，避免大量无谓的计算量。所以，用JS对象模拟DOM节点的好处是，页面的更新可以先全部反映在JS对象(虚拟DOM)上，操作内存中的JS对象的速度显然要更快，等更新完成后，再将最终的JS对象映射成真实的DOM，交由浏览器去绘制。&lt;/p&gt;
+&lt;h2 id=&#34;diff操作&#34;&gt;Diff操作&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;diff算法的本质是找出两个对象之间的差异，目的是尽可能复用节点。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Vue的Diff算法与上面的思路大体相似，只比较同级的节点，若找不到与新节点类型相同的节点，则插入一个新节点，若有相同类型的节点则进行节点属性的更新，最后删除新节点列表中不包含的旧节点。&lt;/p&gt;
+&lt;p&gt;在实际代码中，会对新旧两棵树进行一个深度的遍历，每个节点都会有一个标记。每遍历到一个节点就把该节点和新的树进行对比，如果有差异就记录到一个对象中。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;比较只会在同层级进行, 不会跨层级比较。&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615712855481.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;7-如何实现一个自定义组件不同组件之间如何通信的&#34;&gt;7. 如何实现一个自定义组件，不同组件之间如何通信的？&lt;/h1&gt;
 &lt;p&gt;全局注册：Vue.component(tagName, options)&lt;/p&gt;
 &lt;p&gt;局部注册：在其他组件中的 components 属性中注册某个组件，就可以使用它了&lt;/p&gt;
@@ -1359,11 +1384,24 @@ export default {
 &lt;/blockquote&gt;
 &lt;p&gt;而 defineProperty 的兼容性更好，vue 3.0 版本将会用 Proxy 代替 definProperty。&lt;/p&gt;
 &lt;h1 id=&#34;10-computed-和-watch-区别&#34;&gt;10、computed 和 watch 区别&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;计算属性是依赖其他数据计算出一个&lt;code&gt;新的数据&lt;/code&gt;，其在初始化时就会执行我们定义在计算属性中的函数，或者对象中的 getter 函数，在首次执行这个函数过程中，依赖的数据就会收集这个计算属性的 watcher 依赖，从而在依赖的数据发生变换时，就会执行我们定义的函数了。&lt;br&gt;
-侦听器是&lt;code&gt;监听一些数据的变换&lt;/code&gt;，一旦变化就执行一些业务逻辑，在其初始化时不会执行我们定义在 watch 中的回调函数，如果想初始化执行的话，声明 immediate 为 true；当在数据变换后，会异步执行回调函数（nextTick 之后执行），如果想同步执行的话，声明 sync 为 true；注意侦听器不能对对象进行深度观测，如果需要深度观测，声明 deep 为 true。&lt;br&gt;
-它们的共同点是都可以&lt;code&gt;检测到数据的变换&lt;/code&gt;，且都有缓存机制。但是如果是处理&lt;code&gt;复杂&lt;/code&gt;的业务逻辑，应该使用&lt;code&gt;侦听器&lt;/code&gt;，如果是需要根据其他值&lt;code&gt;生成一个新值&lt;/code&gt;，就应该使用&lt;code&gt;计算&lt;/code&gt;属性。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&#34;计算属性computed&#34;&gt;计算属性computed :&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;支持缓存，只有依赖数据发生改变，才会重新进行计算&lt;/li&gt;
+&lt;li&gt;不支持异步，当computed内有异步操作时无效，无法监听数据的变化&lt;/li&gt;
+&lt;li&gt;computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data中声明过或者父组件传递的props中的数据通过计算得到的值&lt;/li&gt;
+&lt;li&gt;如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed&lt;/li&gt;
+&lt;li&gt;如果computed属性属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个get和一个set方法，当数据变化时，调用set方法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;侦听属性watch&#34;&gt;侦听属性watch：&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;不支持缓存，数据变，直接会触发相应的操作；&lt;/li&gt;
+&lt;li&gt;watch支持异步；&lt;/li&gt;
+&lt;li&gt;监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；&lt;/li&gt;
+&lt;li&gt;当一个属性发生变化时，需要执行对应的操作；一对多；&lt;/li&gt;
+&lt;li&gt;监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作，函数有两个参数，&lt;br&gt;
+　　immediate：组件加载立即触发回调函数执行，&lt;br&gt;
+　　deep: 深度监听，为了发现对象内部值的变化，复杂类型的数据时使用，例如数组中的对象内容的改变，注意监听数组的变动不需要这么做。注意：deep无法监听到数组的变动和对象的新增，参考vue数组变异，只有以响应式的方式触发才会被监听到。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;pre&gt;&lt;code&gt;computed: {
   fullName: {
     // getter
@@ -1451,6 +1489,8 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 &lt;li&gt;编译条件：v-if是&lt;code&gt;惰性&lt;/code&gt;的，如果初始条件为假，则什么也不做；只有在条件第一次变为真时才开始局部编译（编译被缓存？编译被缓存后，然后再切换的时候进行局部卸载); v-show是在任何条件下（首次条件是否为真）都被编译，然后被缓存，而且DOM元素保留；&lt;/li&gt;
 &lt;li&gt;性能消耗：v-if有更高的&lt;code&gt;切换消耗&lt;/code&gt;；v-show有更高的初始&lt;code&gt;渲染消耗&lt;/code&gt;；&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;换句话说，v-if 的表达式返回值，会直接触发到&lt;code&gt;当前组件 生命周期&lt;/code&gt;，并且事件监听器和子组件会被适当地被销毁和重建。 所以，可以理解为 v-if 是惰性的，他不会在页面初始化时，被无条件渲染，而是按需响应式地渲染。&lt;/p&gt;
+&lt;p&gt;而 v-show ，这是无论表达式返回值是否是 true 都会在&lt;code&gt;create 生命周期&lt;/code&gt;，无条件消耗资源生成对应的 Virtual DOM，并挂载到HTML页面中，只是再根据表达式返回值，切换 display 这个 CSS 属性。&lt;/p&gt;
 &lt;h2 id=&#34;使用场景&#34;&gt;使用场景&lt;/h2&gt;
 &lt;p&gt;基于以上区别，因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。&lt;/p&gt;
 &lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
@@ -1464,6 +1504,14 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 5、每次调后端接口，都要在请求头中加token&lt;br&gt;
 6、后端判断请求头中有无token，有token，就拿到token并验证token，验证成功就返回数据，验证失败（例如：token过期）就返回401，请求头中没有token也返回401&lt;br&gt;
 7、如果前端拿到状态码为401，就清除token信息并跳转到登录页面&lt;/p&gt;
+&lt;h1 id=&#34;14-vue插槽v-slot&#34;&gt;14. Vue插槽（v-slot）&lt;/h1&gt;
+&lt;h2 id=&#34;匿名插槽&#34;&gt;匿名插槽&lt;/h2&gt;
+&lt;p&gt;匿名插槽，我们也可以叫它单个插槽或者默认插槽。和具名插槽相对，它是不需要设置  name 属性的，它隐藏的name属性为default。&lt;/p&gt;
+&lt;p&gt;在使用的时候还有一个问题要注意的 如果是有2个以上的匿名插槽是会child标签里面的内容全部都替换到每个slot；&lt;/p&gt;
+&lt;h2 id=&#34;具名插槽&#34;&gt;具名插槽&lt;/h2&gt;
+&lt;p&gt;顾名思义就是slot 是带有name的 ，定义：&amp;lt;slot name=&amp;quot;header&amp;quot; /&amp;gt;  或者使用简单缩写的定义 #header&lt;br&gt;
+使用：要用一个 template标签包裹&lt;/p&gt;
+&lt;p&gt;这里说一下多个具名插槽的使用 &lt;code&gt;多个具名插槽，插槽的位置不是使用插槽的位置而定的，是在定义的时候的位置来替换的&lt;/code&gt;&lt;/p&gt;
 ">【面】前端知识点梳理（Vue）</a>
       </div>
       
@@ -1601,17 +1649,15 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;li&gt;IP 协议是英特网互联协议（Internet Protocol）&lt;/li&gt;
 &lt;li&gt;ICMP 协议是 Internet 控制报文协议（Internet Control Message Protocol），它是 TCP/IP 协议族的一个子协议，用于在 IP 主机、路由器之间传递控制消息&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;2-tcp-和-udp对应的协议&#34;&gt;2. TCP 和 UDP对应的协议&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;TCP 对应的协议：&lt;/strong&gt;&lt;br&gt;
-（1）FTP：定义了文件传输协议，使用 21 端口。&lt;br&gt;
-（2）Telnet：远程登录协议。使用 23 号端口，用户可以以自己的身份远程登录到计算机上，可提供基于DOS模式下的通信服务。&lt;br&gt;
-（3）SMTP：邮件传送协议，用于发送邮件。服务器开放的端口是 25 号端口。&lt;br&gt;
-（4）POP3 ：它和 SMTP 对应，POP3用于接收协议。所用的端口是 110。&lt;br&gt;
-（5）HTTP：是从 Web 服务器传送超文本到本地浏览器的传送协议。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;UDP对应的协议：&lt;/strong&gt;&lt;br&gt;
-（1）DNS：用于域名解析服务，将域名地址转换为 IP 地址。DNS 用的是 53号端口。&lt;br&gt;
-（2）SNMP：简单网络管理协议，使用 161 号端口，是用来管理网络设备。&lt;br&gt;
-（3）TFTP：简单文件传输协议，在 69 号端口上使用 UDP 服务。&lt;/p&gt;
+&lt;h2 id=&#34;2-tcp-和-udp区别&#34;&gt;2. TCP 和 UDP区别 ？&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;TCP协议是有连接的，有连接的意思是开始传输实际数据之前TCP的客户端和服务器端必须通过三次握手建立连接，会话结束之后也要结束连接。而UDP是无连接的&lt;/li&gt;
+&lt;li&gt;TCP协议保证数据按序发送，按序到达，提供超时重传来保证可靠性，但是UDP不保证按序到达，甚至不保证到达，只是努力交付，即便是按序发送的序列，也不保证按序送到。&lt;/li&gt;
+&lt;li&gt;TCP协议所需资源多，TCP首部需20个字节（不算可选项），UDP首部字段只需8个字节。&lt;/li&gt;
+&lt;li&gt;TCP有流量控制和拥塞控制，UDP没有，网络拥堵不会影响发送端的发送速率&lt;/li&gt;
+&lt;li&gt;TCP是&lt;code&gt;一对一&lt;/code&gt;的连接，而UDP则可以支持一对一，&lt;code&gt;多对多&lt;/code&gt;，一对多的通信。&lt;/li&gt;
+&lt;li&gt;TCP面向的是字节流的服务，UDP面向的是报文的服务。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;7-httphttpshttp20&#34;&gt;7. http/https/http2.0&lt;/h1&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615448355999.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ul&gt;
@@ -2172,7 +2218,39 @@ WebKit内核代表作品Safari、Chromewebkit 是一个开源项目，包含了�
 有Google和Opera Software开发的浏览器排版引擎，2013年4月发布，现在Chrome内核是Blink。Blink其实是webkit的分支，大部分国产浏览器最新版都采用Blink内核。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Opera（Presto）&lt;/strong&gt;&lt;br&gt;
 Presto内核代表作品OperaPresto是由Opera Software开发的浏览器排版引擎，供Opera 7.0及以上使用。它取代了旧版Opera 4至6版本使用的Elektra排版引擎，包括加入动态功能，例如网页或其部分可随着DOM及Script语法的事件而重新排版。在13年之后，Opera宣布加入谷歌阵营，弃用了Presto。&lt;/p&gt;
-">【面】前端知识点梳理（浏览器）</a>
+&lt;h1 id=&#34;6-算法的时间与空间复杂度&#34;&gt;6. 算法的时间与空间复杂度&lt;/h1&gt;
+&lt;p&gt;主要还是从算法所占用的「时间」和「空间」两个维度去考量。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。&lt;/li&gt;
+&lt;li&gt;空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1-时间复杂度&#34;&gt;1. 时间复杂度&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;「 大O符号表示法 」，即 T(n) = O(f(n))&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;常见的时间复杂度量级有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;常数阶O(1)：&lt;code&gt;没有循环&lt;/code&gt;等复杂结构&lt;/li&gt;
+&lt;li&gt;对数阶O(logN)：在&lt;code&gt;while&lt;/code&gt;循环里面，每次都&lt;code&gt;将 i 乘以 2&lt;/code&gt;，乘完之后，i 距离 n 就越来越近了。&lt;/li&gt;
+&lt;li&gt;线性阶O(n)：&lt;code&gt;for循环里面&lt;/code&gt;的代码会执行n遍&lt;/li&gt;
+&lt;li&gt;线性对数阶O(nlogN)：将时间复杂度为O(logn)的代码循环N遍&lt;/li&gt;
+&lt;li&gt;平方阶O(n²)：如果把 O(n) 的代码&lt;code&gt;再嵌套循环一遍&lt;/code&gt;，它的时间复杂度就是 O(n²)&lt;/li&gt;
+&lt;li&gt;立方阶O(n³)&lt;/li&gt;
+&lt;li&gt;K次方阶O(n^k)&lt;/li&gt;
+&lt;li&gt;指数阶(2^n)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-空间复杂度&#34;&gt;2. 空间复杂度&lt;/h2&gt;
+&lt;p&gt;空间复杂度是对一个算法在运行过程中临时占用存储空间大小的一个量度，同样反映的是一个趋势，我们用 S(n) 来定义。&lt;/p&gt;
+&lt;p&gt;空间复杂度比较常用的有：O(1)、O(n)、O(n²)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;空间复杂度 O(1)&lt;br&gt;
+如果算法执行所需要的临时空间不随着某个变量n的大小而变化，即此算法空间复杂度为一个常量，可表示为 O(1)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;空间复杂度 O(n)&lt;br&gt;
+第一行new了一个数组出来，这个数据占用的大小为n，这段代码的2-6行，虽然有循环，但没有再分配新的空间&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+">【面】前端知识点梳理（浏览器+复杂度）</a>
       </div>
       
       <div class="item">
@@ -2644,34 +2722,6 @@ function _createClass (constructor, protoDesc, staticDesc) {
 }()
 &lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（ES6）</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/ip-di-zhi-yu-zheng-shu-de-xiang-hu-zhuan-huan/"" data-c="
-          &lt;pre&gt;&lt;code&gt;//IP转成整型
-function _ip2int(ip) 
-{
-    var num = 0;
-    ip = ip.split(&amp;quot;.&amp;quot;);
-    num = Number(ip[0]) * 256 * 256 * 256 + Number(ip[1]) * 256 * 256 + Number(ip[2]) * 256 + Number(ip[3]);
-    num = num &amp;gt;&amp;gt;&amp;gt; 0;
-    return num;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;//整型解析为IP地址
-function _int2iP(num) 
-{
-    var str;
-    var tt = new Array();
-    tt[0] = (num &amp;gt;&amp;gt;&amp;gt; 24) &amp;gt;&amp;gt;&amp;gt; 0;
-    tt[1] = ((num &amp;lt;&amp;lt; 8) &amp;gt;&amp;gt;&amp;gt; 24) &amp;gt;&amp;gt;&amp;gt; 0;
-    tt[2] = (num &amp;lt;&amp;lt; 16) &amp;gt;&amp;gt;&amp;gt; 24;
-    tt[3] = (num &amp;lt;&amp;lt; 24) &amp;gt;&amp;gt;&amp;gt; 24;
-    str = String(tt[0]) + &amp;quot;.&amp;quot; + String(tt[1]) + &amp;quot;.&amp;quot; + String(tt[2]) + &amp;quot;.&amp;quot; + String(tt[3]);
-    return str;
-}
-&lt;/code&gt;&lt;/pre&gt;
-">ip地址与整数的相互转换</a>
       </div>
       
       <div class="item">
@@ -4061,6 +4111,13 @@ delete family.mother.husband;
 &lt;h2 id=&#34;2事件循环event-loop&#34;&gt;2.事件循环（Event Loop）&lt;/h2&gt;
 &lt;p&gt;JavaScript是单线程的，单线程意味着需要一个任务队列来管理任务事件，任务分为两种：&lt;code&gt;同步任务&lt;/code&gt;和&lt;code&gt;异步任务&lt;/code&gt;。同步任务是在主线程上面排队执行的任务，只有前面任务完成，下一个任务才能执行。异步任务是不进入主线程，而是进入任务队列中，只有通知主线程某个异步任务可以执行了，该任务方可执行。&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615368575238.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我们的同步任务在主线程上运行会形成一个执行栈&lt;/li&gt;
+&lt;li&gt;如果碰到异步任务，比如setTimeout、onClick等等的一些操作，我们会将他的执行结果放入队列，此期间主线程不阻塞&lt;/li&gt;
+&lt;li&gt;等到主线程中的所有同步任务执行完毕，就会通过event loop在队列里面从头开始取，在执行栈中执行&lt;/li&gt;
+&lt;li&gt;event loop永远不会断&lt;/li&gt;
+&lt;li&gt;以上的这一整个流程就是Event Loop（事件循环机制）&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;3-任务队列&#34;&gt;3. 任务队列&lt;/h2&gt;
 &lt;p&gt;同步任务在主线程执行形成一个执行栈，主线程之外有个任务队列（鼠标点击事件，键盘点击事件，网络请求），只要异步任务触发，在任务队列中放置一个事件，等执行栈中同步任务完成后，系统才会读取任务队列执行异步任务。主线程会重复去任务队列中读取任务并执行——事件循环。&lt;/p&gt;
 &lt;p&gt;任务队列是“先进先出”的数据结构，先来的优先被主线程读取。&lt;br&gt;

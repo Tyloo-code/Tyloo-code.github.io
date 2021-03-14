@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>Vue&amp;markdown编辑器--mavonEditor | Tyloo</title>
+<title>【面】前端知识点梳理（手写题） | Tyloo</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1615725776721">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="Vue&markdown编辑器--mavonEditor" />
+  <meta name="description" content="【面】前端知识点梳理（手写题）" />
   <meta name="keywords" content="" />
 </head>
 
@@ -238,15 +238,7 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-%E4%BB%8B%E7%BB%8D">一、介绍</a></li>
-<li><a href="#%E4%BA%8C-%E5%AE%89%E8%A3%85">二、安装</a></li>
-<li><a href="#%E4%B8%89-%E4%BD%BF%E7%94%A8">三、使用</a>
-<ul>
-<li><a href="#%E6%96%B9%E6%B3%95%E4%B8%80">方法一：</a></li>
-<li><a href="#%E6%96%B9%E6%B3%95%E4%BA%8C">方法二：</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9B%9B-%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0">四、图片上传</a></li>
+<li><a href="#1-ip%E5%9C%B0%E5%9D%80%E4%B8%8E%E6%95%B4%E6%95%B0%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2">1 ip地址与整数的相互转换</a></li>
 </ul>
 
   </div>
@@ -512,8 +504,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Tyloo-code.github.io/post/vueandmarkdown-bian-ji-qi-mavoneditor/">
-      Vue&amp;markdown编辑器--mavonEditor
+    <a class="post-title-link" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-shou-xie-ti/">
+      【面】前端知识点梳理（手写题）
     </a>
   </h1>
   <div class="post-meta">
@@ -521,23 +513,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-24 15:14:34">2020-12-24</span>
+      <span class="publish-time" data-t="2021-03-13 19:54:50">2021-03-13</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>464<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>138<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/vueandmarkdown-bian-ji-qi-mavoneditor/" data-flag-title="Vue&amp;markdown编辑器--mavonEditor" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/mian-qian-duan-zhi-shi-dian-shu-li-shou-xie-ti/" data-flag-title="【面】前端知识点梳理（手写题）" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -546,107 +538,30 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="一-介绍">一、介绍</h1>
-<p>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。mavonEditor是国人开源的一款比较好用的markdown编辑器，GitHub地址：<a href="https://github.com/hinesboy/mavonEditor">https://github.com/hinesboy/mavonEditor</a></p>
-<h1 id="二-安装">二、安装</h1>
-<pre><code>npm install mavon-editor --save
-</code></pre>
-<h1 id="三-使用">三、使用</h1>
-<h2 id="方法一">方法一：</h2>
-<p>main.js:</p>
-<pre><code> // 全局注册
-    // import with ES6
-    import Vue from 'vue'
-    import mavonEditor from 'mavon-editor'
-    import 'mavon-editor/dist/css/index.css'
-    // use
-    Vue.use(mavonEditor)
-    new Vue({
-        'el': '#main',
-        data() {
-            return { value: '' }
-        }
-    })
-</code></pre>
-<p>index.html</p>
-<pre><code>&lt;div id=&quot;main&quot;&gt;
-    &lt;mavon-editor v-model=&quot;value&quot;/&gt;
-&lt;/div&gt;
-</code></pre>
-<h2 id="方法二">方法二：</h2>
-<p>editor.vue:</p>
-<pre><code> &lt;template&gt;
-        &lt;div id=&quot;editor&quot;&gt;
-            &lt;mavon-editor style=&quot;height: 100%&quot;&gt;&lt;/mavon-editor&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-    &lt;script&gt;
-    // Local Registration
-    import { mavonEditor } from 'mavon-editor'
-    import 'mavon-editor/dist/css/index.css'
-    export default {
-        name: 'editor',
-        components: {
-            mavonEditor
-            // or 'mavon-editor': mavonEditor
-        }
-    }
-    &lt;/script&gt;
-    &lt;style&gt;
-    #editor {
-        margin: auto;
-        width: 80%;
-        height: 580px;
-    }
-    &lt;/style&gt;
-</code></pre>
-<p>index.js:</p>
-<pre><code>// 下同
-    import Vue from 'vue';
-    var editor = require('./editor.vue');
-    new Vue({
-        el: '#main',
-        render: h =&gt; h(editor)
-    });
-</code></pre>
-<p>index.html:</p>
-<pre><code>// 下同
-&lt;div id=&quot;main&quot;&gt;
-&lt;/div&gt;
-</code></pre>
-<h1 id="四-图片上传">四、图片上传</h1>
-<pre><code>&lt;template&gt;
-    &lt;mavon-editor ref=md @imgAdd=&quot;$imgAdd&quot; @imgDel=&quot;$imgDel&quot;&gt;&lt;/mavon-editor&gt;
-&lt;/template&gt;
-exports default {
-    methods: {
-        // 绑定@imgAdd event
-        $imgAdd(pos, $file){
-            // 第一步.将图片上传到服务器.
-           var formdata = new FormData();
-           formdata.append('image', $file);
-           axios({
-               url: 'server url',
-               method: 'post',
-               data: formdata,
-               headers: { 'Content-Type': 'multipart/form-data' },
-           }).then((url) =&gt; {
-               // 第二步.将返回的url替换到文本原位置![...](0) -&gt; ![...](url)
-               /**
-               * $vm 指为mavonEditor实例，可以通过如下两种方式获取
-               * 1. 通过引入对象获取: `import {mavonEditor} from ...` 等方式引入后，`$vm`为`mavonEditor`
-               * 2. 通过$refs获取: html声明ref : `&lt;mavon-editor ref=md &gt;&lt;/mavon-editor&gt;，`$vm`为 `this.$refs.md`
-               */
-               $vm.$img2Url(pos, url);
-           })
-        }
-    }
+              <h1 id="1-ip地址与整数的相互转换">1 ip地址与整数的相互转换</h1>
+<pre><code>//IP转成整型
+function _ip2int(ip) 
+{
+    var num = 0;
+    ip = ip.split(&quot;.&quot;);
+    num = Number(ip[0]) * 256 * 256 * 256 + Number(ip[1]) * 256 * 256 + Number(ip[2]) * 256 + Number(ip[3]);
+    num = num &gt;&gt;&gt; 0;
+    return num;
 }
 </code></pre>
-<p><strong>注:</strong><br>
-<strong>默认大小样式为 min-height: 300px , min-width: 300px 可自行覆盖</strong><br>
-<strong>基础z-index: 1500</strong><br>
-<strong>仅用作展示可以设置props: toolbarsFlag: false , subfield: false, defaultOpen: &quot;preview&quot;</strong></p>
+<pre><code>//整型解析为IP地址
+function _int2iP(num) 
+{
+    var str;
+    var tt = new Array();
+    tt[0] = (num &gt;&gt;&gt; 24) &gt;&gt;&gt; 0;
+    tt[1] = ((num &lt;&lt; 8) &gt;&gt;&gt; 24) &gt;&gt;&gt; 0;
+    tt[2] = (num &lt;&lt; 16) &gt;&gt;&gt; 24;
+    tt[3] = (num &lt;&lt; 24) &gt;&gt;&gt; 24;
+    str = String(tt[0]) + &quot;.&quot; + String(tt[1]) + &quot;.&quot; + String(tt[2]) + &quot;.&quot; + String(tt[3]);
+    return str;
+}
+</code></pre>
 
             </div>
             
@@ -663,7 +578,7 @@ exports default {
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/vueandmarkdown-bian-ji-qi-mavoneditor/" title="Vue&amp;markdown编辑器--mavonEditor">https://Tyloo-code.github.io/post/vueandmarkdown-bian-ji-qi-mavoneditor/</a>
+      <a href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-shou-xie-ti/" title="【面】前端知识点梳理（手写题）">https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-shou-xie-ti/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -676,15 +591,11 @@ exports default {
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Vue&amp;mock模拟数据" href="https://Tyloo-code.github.io/post/vueandmock-mo-ni-shu-ju/">Vue&amp;mock模拟数据</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Vue&amp;mock模拟数据" href="https://Tyloo-code.github.io/post/vueandmock-mo-ni-shu-ju/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="NodeJs从零单排(9)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-9/">NodeJs从零单排(9)</a>
-        <a class="nav-mobile-next" title="NodeJs从零单排(9)" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-9/">下一篇</a>
+        <a class="nav-pc-next" title="【面】前端知识点梳理（工具与组件）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/">【面】前端知识点梳理（工具与组件）</a>
+        <a class="nav-mobile-next" title="【面】前端知识点梳理（工具与组件）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
