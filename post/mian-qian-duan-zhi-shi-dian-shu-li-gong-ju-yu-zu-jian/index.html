@@ -8,8 +8,8 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
-<title>【面】前端知识点梳理（工具与组件） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615725776721">
+<title>【面】前端知识点梳理（工具与算法） | Tyloo</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1615802369919">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="【面】前端知识点梳理（工具与组件）" />
+  <meta name="description" content="【面】前端知识点梳理（工具与算法）" />
   <meta name="keywords" content="" />
 </head>
 
@@ -248,7 +248,27 @@
 <li><a href="#6-%E4%BC%98%E5%8C%96%E6%9E%84%E5%BB%BA%E9%80%9F%E5%BA%A6">6. 优化构建速度</a></li>
 </ul>
 </li>
-<li><a href="#2-%E5%8E%9F%E7%94%9Fjs%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD%E5%9B%BE">2. 原生js实现轮播图</a></li>
+<li><a href="#2-%E5%8E%9F%E7%94%9Fjs%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD%E5%9B%BE">2. 原生js实现轮播图</a>
+<ul>
+<li><a href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%E5%BB%BA%E7%AB%8Bhtml%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80">步骤一：建立html基本布局</a></li>
+<li><a href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C-css%E5%B8%83%E5%B1%80">步骤二： css布局</a></li>
+<li><a href="#%E6%AD%A5%E9%AA%A4%E4%B8%89%E6%B7%BB%E5%8A%A0js%E9%80%BB%E8%BE%91">步骤三：添加js逻辑</a></li>
+</ul>
+</li>
+<li><a href="#3-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95">3. 排序算法</a></li>
+<li><a href="#4-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%85%88%E5%BA%8F%E4%B8%AD%E5%BA%8F%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86">4. 二叉树的先序，中序，后序遍历</a></li>
+<li><a href="#5-%E5%8A%A0%E6%B2%B9%E7%AB%99%E9%97%AE%E9%A2%98%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95">5. 加油站问题(贪心算法)</a>
+<ul>
+<li><a href="#%E6%B1%BD%E8%BD%A6%E5%8A%A0%E6%B2%B9%E9%97%AE%E9%A2%98">汽车加油问题</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F">输入格式:</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F">输出格式:</a></li>
+<li><a href="#%E8%B4%AA%E5%BF%83%E6%80%A7%E8%B4%A8%E5%88%86%E6%9E%90">贪心性质分析：</a></li>
+</ul>
+</li>
+<li><a href="#6-%E4%BA%8C%E5%88%86%E6%B3%95%E6%95%B0%E7%BB%84%E6%9F%A5%E6%89%BE">6. 二分法数组查找</a></li>
+<li><a href="#7-%E5%8F%8D%E8%BD%AC%E5%8D%95%E9%93%BE%E8%A1%A8">7. 反转单链表</a></li>
+<li><a href="#8-%E5%8F%96%E5%87%BA1000%E5%86%85%E6%89%80%E6%9C%89%E8%B4%A8%E6%95%B0">8. 取出1000内所有质数</a></li>
+<li><a href="#9-%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E4%B8%AD%E5%92%8C%E4%B8%BA%E7%BB%99%E5%AE%9A%E5%80%BC%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%85%83%E7%B4%A0">9. 找出数组中和为给定值的两个元素</a></li>
 </ul>
 
   </div>
@@ -515,7 +535,7 @@
             <section class="post-header">
   <h1 class="post-title">
     <a class="post-title-link" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/">
-      【面】前端知识点梳理（工具与组件）
+      【面】前端知识点梳理（工具与算法）
     </a>
   </h1>
   <div class="post-meta">
@@ -529,17 +549,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>5<span class="language" data-lan="minute">分钟</span></span>
+      <span>18<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1129<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>4154<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/" data-flag-title="【面】前端知识点梳理（工具与组件）" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/" data-flag-title="【面】前端知识点梳理（工具与算法）" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -613,6 +633,456 @@ resolve.modules用于配置webpack去哪些目录下寻找第三方模块，默�
 <li>书写导入语句时，尽量写上后缀名</li>
 </ul>
 <h1 id="2-原生js实现轮播图">2. 原生js实现轮播图</h1>
+<h2 id="步骤一建立html基本布局">步骤一：建立html基本布局</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;轮播图&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;wrap&quot; style=&quot;left:-600px;&quot;&gt;
+            &lt;img src=&quot;./img/5.jpg&quot; alt=&quot;&quot;&gt;
+            &lt;img src=&quot;./img/1.jpg&quot; alt=&quot;&quot;&gt;
+            &lt;img src=&quot;./img/2.jpg&quot; alt=&quot;&quot;&gt;
+            &lt;img src=&quot;./img/3.jpg&quot; alt=&quot;&quot;&gt;
+            &lt;img src=&quot;./img/4.jpg&quot; alt=&quot;&quot;&gt;
+            &lt;img src=&quot;./img/5.jpg&quot; alt=&quot;&quot;&gt;
+            &lt;img src=&quot;./img/1.jpg&quot; alt=&quot;&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;buttons&quot;&gt;
+            &lt;span&gt;1&lt;/span&gt;
+            &lt;span&gt;2&lt;/span&gt;
+            &lt;span&gt;3&lt;/span&gt;
+            &lt;span&gt;4&lt;/span&gt;
+            &lt;span&gt;5&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;a href=&quot;javascript:;&quot; class=&quot;arrow arrow_left&quot;&gt;&amp;lt;&lt;/a&gt;
+        &lt;a href=&quot;javascript:;&quot; class=&quot;arrow arrow_right&quot;&gt;&amp;gt;&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>只有五张图片，却使用7张来轮播，这是为了实现无缝轮播</p>
+<h2 id="步骤二-css布局">步骤二： css布局</h2>
+<p>首先，resetcss，如下所示：</p>
+<pre><code>* {
+            margin:0;
+            padding:0;
+        }
+        a{
+            text-decoration: none;
+        }
+</code></pre>
+<p>接着，我们为了让图片只在container中，所以需要限定其宽度和高度并且使用overflow:hidden；将其余的图片隐藏起来，并且我们希望wrap相对于container左右移动，所以设置为relative，如下：</p>
+<pre><code>.container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin:100px auto 0 auto;
+            box-shadow: 0 0 5px green;
+            overflow: hidden;
+        }            
+</code></pre>
+<p>我们设置wrap是绝对定位的，所以,我们就可以通过控制Left和Right来控制图片的移动了。设置z-index:1;以对后面将要放置的buttons作为参考。 因为共有七张图片，所以width为4200px（每张图片我们设置为600X400）,我们只需让图片左浮动即可实现占满一排了。</p>
+<pre><code> .wrap {
+            position: absolute;
+            width: 4200px;
+            height: 400px;
+            z-index: 1;
+        }
+</code></pre>
+<p>然后我们把图片设置位左浮动，并限定其大小，如下所示：</p>
+<pre><code>    .container .wrap img {
+            float: left;
+            width: 600px;
+            height: 400px;
+        }
+</code></pre>
+<p>即这时已经显示出了第一张图片。并且充满了整个container(container是有box-shadow的);<br>
+<img src="https://Tyloo-code.github.io/post-images/1615789086547.png" alt="" loading="lazy"><br>
+然后我们把显示次序的buttons放在图片的右下角。并且设置z-index:2;以保证buttons是在图片的上面<br>
+的。</p>
+<pre><code> .container .buttons {
+            position: absolute;
+            right: 150px;
+            bottom:20px;
+            width: 100px;
+            height: 10px;
+            z-index: 2;
+        }
+</code></pre>
+<p>然后将buttons下面的span做一个简单的修饰，并且给和图片对应的span设置一个on类，如下：</p>
+<pre><code>.container .buttons span {
+            margin-left: 5px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: green;
+            text-align: center;
+            color:white;
+            cursor: pointer;
+        }
+        .container .buttons span.on{
+            background-color: red;
+        }
+</code></pre>
+<p>接下来，我们把左右切换的箭头加上，然后做简单的修饰，注意：因为这里使用实体来表示左右箭头，所以设置font-size才能改变其大小，</p>
+<pre><code> .container .arrow {
+            position: absolute;
+            top: 35%;
+            color: green;
+            padding:0px 14px;
+            border-radius: 50%;
+            font-size: 50px;
+            z-index: 2;
+            display: none;
+        }
+        .container .arrow_left {
+            left: 10px;
+        }
+        .container .arrow_right {
+            right: 10px;
+        }
+        .container:hover .arrow {
+            display: block;
+        }
+        .container .arrow:hover {
+            background-color: rgba(0,0,0,0.2);
+        }
+</code></pre>
+<h2 id="步骤三添加js逻辑">步骤三：添加js逻辑</h2>
+<p>我们首先获取到 wrap（因为要设置其left才能控制轮播图），然后获取到左右两个箭头，并实现手动轮播，如下：</p>
+<pre><code>var wrap = document.querySelector(&quot;.wrap&quot;);
+        var next = document.querySelector(&quot;.arrow_right&quot;);
+        var prev = document.querySelector(&quot;.arrow_left&quot;);
+        next.onclick = function () {
+            next_pic();
+        }
+        prev.onclick = function () {
+            prev_pic();
+        }
+        function next_pic () {
+            var newLeft = parseInt(wrap.style.left)-600;
+            wrap.style.left = newLeft + &quot;px&quot;;
+        }
+        function prev_pic () {
+            var newLeft = parseInt(wrap.style.left)+600;
+            wrap.style.left = newLeft + &quot;px&quot;;
+        }
+</code></pre>
+<p>值得注意的是，这里wrap.style.left是一个字符串，所以要转化为数字才能进行计算，而设定left时就要加上px成为一个字符串了。<br>
+<img src="https://Tyloo-code.github.io/post-images/1615789317683.gif" alt="" loading="lazy"><br>
+可以看到，在第一页时，left值为-600，所以我们可以点击一次上一张，但是当再点击一次时，就出现了空白。同样的，下一张点击，到-3600是最后一张，就不能再继续点击了。　　<br>
+<strong>也就是说，当我们点击下一张到-3600px（这是第一张图片）时，我们需要下次跳转到第二张，即-1200px；这样才能正常跳转；</strong><br>
+同理，当我们点击上一张到0px（这是第五张图片时），我们希望下次跳转到第四张，即-2400px；<br>
+按照这样的思路我们重新将next_pic和prev_pic函数修改如下</p>
+<pre><code>function next_pic () {
+            var newLeft;
+            if(wrap.style.left === &quot;-3600px&quot;){
+                newLeft = -1200;
+            }else{
+                newLeft = parseInt(wrap.style.left)-600;
+            }
+            wrap.style.left = newLeft + &quot;px&quot;;
+        }
+        function prev_pic () {
+            var newLeft;
+            if(wrap.style.left === &quot;0px&quot;){
+                newLeft = -2400;
+            }else{
+                newLeft = parseInt(wrap.style.left)+600;
+            }
+            wrap.style.left = newLeft + &quot;px&quot;;
+        }
+</code></pre>
+<p>但是，这时我们仅仅时手动循环播放的，我们如果希望自动播放，使用setInterval()即可，如下所示：</p>
+<pre><code> var timer = null;
+        function autoPlay () {
+            timer = setInterval(function () {
+                next_pic();
+            },1000);
+        }
+        autoPlay();
+</code></pre>
+<p>即先设定一个计时器，然后创建一个可以自动播放的函数，最后调用这个函数即可。 现在它就可以自动播放了，效果如下：<br>
+<img src="https://Tyloo-code.github.io/post-images/1615789447895.gif" alt="" loading="lazy"><br>
+但是如果我们想要仔细看其中一个图片的时候，我们希望轮播图停止播放，只要clearInterval()即可，如下：</p>
+<pre><code>
+        var container = document.querySelector(&quot;.container&quot;);
+        container.onmouseenter = function () {
+            clearInterval(timer);
+        }
+        container.onmouseleave = function () {
+            autoPlay();    
+        }
+</code></pre>
+<p>原理很简单，即设置buttons的index初始值为0，即第一个span的class为on，然后触发next_pic函数时，index加1，当触发prev_pic函数时，inex减1， 并设置当前index的小圆点的class为on， 这就要求index必须设置为全局变量，才能保证它在每一个函数的作用域中。</p>
+<p>添加showCurrentDot函数：</p>
+<pre><code> var index = 0;
+        var dots = document.getElementsByTagName(&quot;span&quot;);
+        function showCurrentDot () {
+            for(var i = 0, len = dots.length; i &lt; len; i++){
+                dots[i].className = &quot;&quot;;
+            }
+            dots[index].className = &quot;on&quot;;
+        }
+</code></pre>
+<p>在next_pic中添加代码：</p>
+<pre><code>            index++;
+            if(index &gt; 4){
+                index = 0;
+            }
+</code></pre>
+<p>在prev_pic中添加代码：</p>
+<pre><code>            index--;
+            if(index &lt; 0){
+                index = 4;
+            }
+            showCurrentDot();
+</code></pre>
+<p>这样，轮播图就可以自动切换，并且小圆点也在随着图片的变化而变化了。</p>
+<p>但是，这距离我们经常看到的轮播图还有一定距离 - - - 当点击小圆点时， 就可跳转到相应图片。 实现原理即：  点击小圆点，就使wrap的Left变成相应的值。代码如下：</p>
+<pre><code>
+  for (var i = 0, len = dots.length; i &lt; len; i++){
+            (function(i){
+                dots[i].onclick = function () {
+                    var dis = index - i;
+                    if(index == 4 &amp;&amp; parseInt(wrap.style.left)!==-3000){
+                        dis = dis - 5;     
+                    }
+                    //和使用prev和next相同，在最开始的照片5和最终的照片1在使用时会出现问题，导致符号和位数的出错，做相应地处理即可
+                    if(index == 0 &amp;&amp; parseInt(wrap.style.left)!== -600){
+                        dis = 5 + dis;
+                    }
+                    wrap.style.left = (parseInt(wrap.style.left) +  dis * 600)+&quot;px&quot;;
+                    index = i;
+                    showCurrentDot();
+                }
+            })(i);            
+        }
+</code></pre>
+<p>原理就是当点击到小圆点时，得到相应的i值，这个i值也就是span的index值，我们拿他和全局变量index作比较，然后重新设置wrap.style.left的值，然后把i值复制给全局变量index，最后显示当前的小原点即可。值得注意的是：这里涉及到了闭包的概念，如果直接使用for循环，则不能得到正确的结果。<br>
+<img src="https://Tyloo-code.github.io/post-images/1615789605021.gif" alt="" loading="lazy"></p>
+<h1 id="3-排序算法">3. 排序算法</h1>
+<p><strong>实现枢纽选择：</strong></p>
+<pre><code>//交换两个位置的数据
+let swap = function(arr, m, n){
+    let temp  = arr[m]
+    arr[m] = arr[n]
+    arr[n] = temp
+}
+
+//快速排序
+//1.选择枢纽
+let median = function(arr){
+  //1.取出中间的位置
+  let center = Math.floor(arr.length / 2)
+  let right = arr.length - 1 
+  let left = 0
+
+  //2.判断大小并进行交换
+  if (arr[left] &gt; arr[center]) {
+    swap(arr, left, center)
+  }
+  if (arr[center] &gt; arr[right]){
+    swap(arr, center, right)
+  }
+  if (arr[left] &gt; arr[right]) {
+    swap(arr, left, right)
+  }
+  //3.返回枢纽
+  return center
+}
+</code></pre>
+<p><strong>快速排序代码实现：</strong></p>
+<pre><code>//2.快速排序
+let QuickSort = function(arr){
+  if (arr.length == 0) {
+    return []
+  }
+  let center = median(arr)
+  let c = arr.splice(center, 1)
+  let l = []
+  let r = []
+
+  for (let i = 0; i &lt; arr.length; i++) {
+      if (arr[i] &lt; c) {
+        l.push(arr[i])
+      }else{
+        r.push(arr[i])
+      }        
+  }
+  return QuickSort(l).concat(c, QuickSort(r))
+}
+</code></pre>
+<h1 id="4-二叉树的先序中序后序遍历">4. 二叉树的先序，中序，后序遍历</h1>
+<pre><code>function TreeNode(x){
+    this.val=val;
+    this.left=null;
+    this.right=null;
+}
+// 递归方法
+function threeOrders(root){
+    let preArray=[],middleArray=[],lastArray=[];
+    //先序遍历：根、左、右
+    function preOrder(root){
+        if(root){
+            preArray.push(root.val);
+            preOrder(root.left);
+            preOrder(root.right);
+        }
+    }
+    //中序遍历 ： 左 根 右   
+    function inOrder(root){
+            if(root){
+                inOrder(root.left)
+                middleArray.push(root.val);
+                inOrder(root.right);
+            }
+    }
+    //后序遍历：左右根
+    function lastOrder(root){
+        if(root){
+            lastOrder(root.left);
+            lastOrder(root.right);
+            lastArray.push(root.val);
+        }
+    }
+    preOrder(root);
+    inOrder(root);
+    lastOrder(root);
+    return [preArray,middleArray,lastArray]
+}
+</code></pre>
+<h1 id="5-加油站问题贪心算法">5. 加油站问题(贪心算法)</h1>
+<p><strong>基本要素：</strong><br>
+<code>贪心选择</code>：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的局部最优解。<br>
+<code>最优子结构</code>：当一个问题的最优解包含其子问题的最优解时，称此问题具有最优子结构性质。</p>
+<h2 id="汽车加油问题">汽车加油问题</h2>
+<p>一辆汽车加满油后可行驶 n公里。旅途中有若干个加油站。设计一个有效算法，指出应 在哪些加油站停靠加油，使沿途加油次数最少。</p>
+<h2 id="输入格式">输入格式:</h2>
+<p>第一行有 2 个正整数n和 k（k&lt;=1000 )，表示汽车加满油后可行驶n公里，且旅途中有 k个加油站。 第二行有 k+1 个整数，表示第 k 个加油站与第k-1 个加油站之间的距离。 第 0 个加油站表示出发地，汽车已加满油。 第 k+1 个加油站表示目的地。</p>
+<h2 id="输出格式">输出格式:</h2>
+<p>输出最少加油次数。如果无法到达目的地，则输出“No Solution!”。</p>
+<h2 id="贪心性质分析">贪心性质分析：</h2>
+<p>找到汽车满油量时可以行驶的最大路程范围内的最后一个加油站，加油后则继续用此方法前进。需要检查每一小段路程是否超过汽车满油量时的最大支撑路程。</p>
+<pre><code>function greedy(n, k, arr){ // n:加满可以行驶的公里数; k:加油站数量; arr:每个加油站之间的距离数组
+  　　if (n == 0 || k == 0 || arr.length == 0 || arr[0] &gt; n) {
+  　　return &quot;No Solution!&quot;; // arr[0] &gt; n ：如果第一个加油站距离太远，也无法到达
+  　　};
+  
+  　　let res = 0, distance = 0; // res：加油次数;distance：已行驶距离
+  　　for(let i = 0; i &lt;= k; i++){
+  　　distance += arr[i];
+  　　if (distance &gt; n) { // 已行驶距离 &gt; 加满可以行驶的公里数
+   　 if(arr[i] &gt; n){ // 如果目前加油站和前一个加油站的距离 &gt; 加满可以行驶的公里数，则无法到达
+   　 return &quot;No Solution!&quot;;
+  　　};
+  
+  　　// 可以在上一个加油站加油，行驶到目前的加油站i：
+  　　distance = arr[i];
+  　　res++; // 加油次数+1
+  　　}
+  　}
+  　　return res;
+  }
+  
+  　　let arr = [1,2,3,4,5,1,6,6];
+  　　console.log(greedy(7,7,arr)) // 4
+</code></pre>
+<h1 id="6-二分法数组查找">6. 二分法数组查找</h1>
+<p><strong>二分法实现原理：二分查找可以解决已经排好序数组的查找问题：只要数组中包含target（即要查找的值），那么通过不断缩小包含target数组的范围，最终就可以找到它。</strong></p>
+<pre><code>function indexOf(arr,target,start,end){
+	 start = start || 0;
+	 end = end || arr.length - 1;
+	 if(start &gt; end){
+	 	return -1;
+	 }
+	let mid = Math.floor((start + end)/2);
+		if(arr[mid] &gt; target) {
+			end = mid-1;
+			return indexOf(arr,target,start,end);
+		}
+		else if(arr[mid] &lt; target){
+			start = mid + 1;
+			return indexOf(arr,target,start,end);
+		}
+		else {
+			return mid;
+		}
+}
+let a = [0,1,2,3,4,5,6,434,435];
+console.log(indexOf(a,12));     //打印结果为-1
+</code></pre>
+<h1 id="7-反转单链表">7. 反转单链表</h1>
+<pre><code>var reverseList = function (head) {
+    // 闭包
+    if (head === undefined || head === null) return null
+    var originalHead = head
+    var reverseHead
+    var reverse = function (head) {
+        if (head.next === null) {
+            reverseHead = head
+            return head
+        } else {
+            var node = reverse(head.next)
+            node.next = head
+            if (originalHead === head) {
+                head.next = null
+                return reverseHead
+            } else {
+                return head
+            }
+        }
+    }
+    return reverse(head)
+};
+</code></pre>
+<h1 id="8-取出1000内所有质数">8. 取出1000内所有质数</h1>
+<pre><code>let num = 1000;
+	let res_arr = []; 
+	for (var i = 1; i &lt; num; i++) {
+		let e = i;
+		let noDivision = !divisionItem(res_arr, e)
+		if (e != 1 &amp;&amp; noDivision) {
+			res_arr.push(e)
+		}
+	}
+
+	console.log(res_arr);
+
+	// 每一个数字 和已有的自然数进行对比是否可以整除
+	function divisionItem(arr, item) {
+		let res = false;
+		for (var i = 0; i &lt; arr.length; i++) {
+			let e = arr[i];
+			if (item % e === 0) {
+				res = true
+				break;
+			}
+		}
+		return res;
+	}
+</code></pre>
+<h1 id="9-找出数组中和为给定值的两个元素">9. 找出数组中和为给定值的两个元素</h1>
+<pre><code>function sameSum(arr, num){
+  for (var i =0 ;i&lt;arr.length;i++){
+      for (var j = i+1;j&lt;arr.length;j++){
+          if (arr[i]+arr[j]==num){
+              console.log('数组中两个元素和为'+num+'的两个数为：'+arr[i]+'和'+arr[j]);
+              break;
+          }
+          //break;
+          //如果只要输出一组这样的组合就只要在内层循环里break就可以
+      }
+  }
+}
+var arr =[1,2,3,4];
+sameSum(arr,5);
+</code></pre>
 
             </div>
             
@@ -629,7 +1099,7 @@ resolve.modules用于配置webpack去哪些目录下寻找第三方模块，默�
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/" title="【面】前端知识点梳理（工具与组件）">https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/</a>
+      <a href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/" title="【面】前端知识点梳理（工具与算法）">https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -1241,7 +1711,457 @@ resolve.modules用于配置webpack去哪些目录下寻找第三方模块，默�
 &lt;li&gt;书写导入语句时，尽量写上后缀名&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;2-原生js实现轮播图&#34;&gt;2. 原生js实现轮播图&lt;/h1&gt;
-">【面】前端知识点梳理（工具与组件）</a>
+&lt;h2 id=&#34;步骤一建立html基本布局&#34;&gt;步骤一：建立html基本布局&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;轮播图&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
+        &amp;lt;div class=&amp;quot;wrap&amp;quot; style=&amp;quot;left:-600px;&amp;quot;&amp;gt;
+            &amp;lt;img src=&amp;quot;./img/5.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
+            &amp;lt;img src=&amp;quot;./img/1.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
+            &amp;lt;img src=&amp;quot;./img/2.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
+            &amp;lt;img src=&amp;quot;./img/3.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
+            &amp;lt;img src=&amp;quot;./img/4.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
+            &amp;lt;img src=&amp;quot;./img/5.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
+            &amp;lt;img src=&amp;quot;./img/1.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
+        &amp;lt;/div&amp;gt;
+        &amp;lt;div class=&amp;quot;buttons&amp;quot;&amp;gt;
+            &amp;lt;span&amp;gt;1&amp;lt;/span&amp;gt;
+            &amp;lt;span&amp;gt;2&amp;lt;/span&amp;gt;
+            &amp;lt;span&amp;gt;3&amp;lt;/span&amp;gt;
+            &amp;lt;span&amp;gt;4&amp;lt;/span&amp;gt;
+            &amp;lt;span&amp;gt;5&amp;lt;/span&amp;gt;
+        &amp;lt;/div&amp;gt;
+        &amp;lt;a href=&amp;quot;javascript:;&amp;quot; class=&amp;quot;arrow arrow_left&amp;quot;&amp;gt;&amp;amp;lt;&amp;lt;/a&amp;gt;
+        &amp;lt;a href=&amp;quot;javascript:;&amp;quot; class=&amp;quot;arrow arrow_right&amp;quot;&amp;gt;&amp;amp;gt;&amp;lt;/a&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;只有五张图片，却使用7张来轮播，这是为了实现无缝轮播&lt;/p&gt;
+&lt;h2 id=&#34;步骤二-css布局&#34;&gt;步骤二： css布局&lt;/h2&gt;
+&lt;p&gt;首先，resetcss，如下所示：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;* {
+            margin:0;
+            padding:0;
+        }
+        a{
+            text-decoration: none;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接着，我们为了让图片只在container中，所以需要限定其宽度和高度并且使用overflow:hidden；将其余的图片隐藏起来，并且我们希望wrap相对于container左右移动，所以设置为relative，如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin:100px auto 0 auto;
+            box-shadow: 0 0 5px green;
+            overflow: hidden;
+        }            
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们设置wrap是绝对定位的，所以,我们就可以通过控制Left和Right来控制图片的移动了。设置z-index:1;以对后面将要放置的buttons作为参考。 因为共有七张图片，所以width为4200px（每张图片我们设置为600X400）,我们只需让图片左浮动即可实现占满一排了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; .wrap {
+            position: absolute;
+            width: 4200px;
+            height: 400px;
+            z-index: 1;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后我们把图片设置位左浮动，并限定其大小，如下所示：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    .container .wrap img {
+            float: left;
+            width: 600px;
+            height: 400px;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;即这时已经显示出了第一张图片。并且充满了整个container(container是有box-shadow的);&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615789086547.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+然后我们把显示次序的buttons放在图片的右下角。并且设置z-index:2;以保证buttons是在图片的上面&lt;br&gt;
+的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; .container .buttons {
+            position: absolute;
+            right: 150px;
+            bottom:20px;
+            width: 100px;
+            height: 10px;
+            z-index: 2;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后将buttons下面的span做一个简单的修饰，并且给和图片对应的span设置一个on类，如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.container .buttons span {
+            margin-left: 5px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: green;
+            text-align: center;
+            color:white;
+            cursor: pointer;
+        }
+        .container .buttons span.on{
+            background-color: red;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接下来，我们把左右切换的箭头加上，然后做简单的修饰，注意：因为这里使用实体来表示左右箭头，所以设置font-size才能改变其大小，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; .container .arrow {
+            position: absolute;
+            top: 35%;
+            color: green;
+            padding:0px 14px;
+            border-radius: 50%;
+            font-size: 50px;
+            z-index: 2;
+            display: none;
+        }
+        .container .arrow_left {
+            left: 10px;
+        }
+        .container .arrow_right {
+            right: 10px;
+        }
+        .container:hover .arrow {
+            display: block;
+        }
+        .container .arrow:hover {
+            background-color: rgba(0,0,0,0.2);
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;步骤三添加js逻辑&#34;&gt;步骤三：添加js逻辑&lt;/h2&gt;
+&lt;p&gt;我们首先获取到 wrap（因为要设置其left才能控制轮播图），然后获取到左右两个箭头，并实现手动轮播，如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var wrap = document.querySelector(&amp;quot;.wrap&amp;quot;);
+        var next = document.querySelector(&amp;quot;.arrow_right&amp;quot;);
+        var prev = document.querySelector(&amp;quot;.arrow_left&amp;quot;);
+        next.onclick = function () {
+            next_pic();
+        }
+        prev.onclick = function () {
+            prev_pic();
+        }
+        function next_pic () {
+            var newLeft = parseInt(wrap.style.left)-600;
+            wrap.style.left = newLeft + &amp;quot;px&amp;quot;;
+        }
+        function prev_pic () {
+            var newLeft = parseInt(wrap.style.left)+600;
+            wrap.style.left = newLeft + &amp;quot;px&amp;quot;;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;值得注意的是，这里wrap.style.left是一个字符串，所以要转化为数字才能进行计算，而设定left时就要加上px成为一个字符串了。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615789317683.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+可以看到，在第一页时，left值为-600，所以我们可以点击一次上一张，但是当再点击一次时，就出现了空白。同样的，下一张点击，到-3600是最后一张，就不能再继续点击了。　　&lt;br&gt;
+&lt;strong&gt;也就是说，当我们点击下一张到-3600px（这是第一张图片）时，我们需要下次跳转到第二张，即-1200px；这样才能正常跳转；&lt;/strong&gt;&lt;br&gt;
+同理，当我们点击上一张到0px（这是第五张图片时），我们希望下次跳转到第四张，即-2400px；&lt;br&gt;
+按照这样的思路我们重新将next_pic和prev_pic函数修改如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function next_pic () {
+            var newLeft;
+            if(wrap.style.left === &amp;quot;-3600px&amp;quot;){
+                newLeft = -1200;
+            }else{
+                newLeft = parseInt(wrap.style.left)-600;
+            }
+            wrap.style.left = newLeft + &amp;quot;px&amp;quot;;
+        }
+        function prev_pic () {
+            var newLeft;
+            if(wrap.style.left === &amp;quot;0px&amp;quot;){
+                newLeft = -2400;
+            }else{
+                newLeft = parseInt(wrap.style.left)+600;
+            }
+            wrap.style.left = newLeft + &amp;quot;px&amp;quot;;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是，这时我们仅仅时手动循环播放的，我们如果希望自动播放，使用setInterval()即可，如下所示：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; var timer = null;
+        function autoPlay () {
+            timer = setInterval(function () {
+                next_pic();
+            },1000);
+        }
+        autoPlay();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;即先设定一个计时器，然后创建一个可以自动播放的函数，最后调用这个函数即可。 现在它就可以自动播放了，效果如下：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615789447895.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+但是如果我们想要仔细看其中一个图片的时候，我们希望轮播图停止播放，只要clearInterval()即可，如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+        var container = document.querySelector(&amp;quot;.container&amp;quot;);
+        container.onmouseenter = function () {
+            clearInterval(timer);
+        }
+        container.onmouseleave = function () {
+            autoPlay();    
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原理很简单，即设置buttons的index初始值为0，即第一个span的class为on，然后触发next_pic函数时，index加1，当触发prev_pic函数时，inex减1， 并设置当前index的小圆点的class为on， 这就要求index必须设置为全局变量，才能保证它在每一个函数的作用域中。&lt;/p&gt;
+&lt;p&gt;添加showCurrentDot函数：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; var index = 0;
+        var dots = document.getElementsByTagName(&amp;quot;span&amp;quot;);
+        function showCurrentDot () {
+            for(var i = 0, len = dots.length; i &amp;lt; len; i++){
+                dots[i].className = &amp;quot;&amp;quot;;
+            }
+            dots[index].className = &amp;quot;on&amp;quot;;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在next_pic中添加代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;            index++;
+            if(index &amp;gt; 4){
+                index = 0;
+            }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在prev_pic中添加代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;            index--;
+            if(index &amp;lt; 0){
+                index = 4;
+            }
+            showCurrentDot();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样，轮播图就可以自动切换，并且小圆点也在随着图片的变化而变化了。&lt;/p&gt;
+&lt;p&gt;但是，这距离我们经常看到的轮播图还有一定距离 - - - 当点击小圆点时， 就可跳转到相应图片。 实现原理即：  点击小圆点，就使wrap的Left变成相应的值。代码如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+  for (var i = 0, len = dots.length; i &amp;lt; len; i++){
+            (function(i){
+                dots[i].onclick = function () {
+                    var dis = index - i;
+                    if(index == 4 &amp;amp;&amp;amp; parseInt(wrap.style.left)!==-3000){
+                        dis = dis - 5;     
+                    }
+                    //和使用prev和next相同，在最开始的照片5和最终的照片1在使用时会出现问题，导致符号和位数的出错，做相应地处理即可
+                    if(index == 0 &amp;amp;&amp;amp; parseInt(wrap.style.left)!== -600){
+                        dis = 5 + dis;
+                    }
+                    wrap.style.left = (parseInt(wrap.style.left) +  dis * 600)+&amp;quot;px&amp;quot;;
+                    index = i;
+                    showCurrentDot();
+                }
+            })(i);            
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原理就是当点击到小圆点时，得到相应的i值，这个i值也就是span的index值，我们拿他和全局变量index作比较，然后重新设置wrap.style.left的值，然后把i值复制给全局变量index，最后显示当前的小原点即可。值得注意的是：这里涉及到了闭包的概念，如果直接使用for循环，则不能得到正确的结果。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615789605021.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3-排序算法&#34;&gt;3. 排序算法&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;实现枢纽选择：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//交换两个位置的数据
+let swap = function(arr, m, n){
+    let temp  = arr[m]
+    arr[m] = arr[n]
+    arr[n] = temp
+}
+
+//快速排序
+//1.选择枢纽
+let median = function(arr){
+  //1.取出中间的位置
+  let center = Math.floor(arr.length / 2)
+  let right = arr.length - 1 
+  let left = 0
+
+  //2.判断大小并进行交换
+  if (arr[left] &amp;gt; arr[center]) {
+    swap(arr, left, center)
+  }
+  if (arr[center] &amp;gt; arr[right]){
+    swap(arr, center, right)
+  }
+  if (arr[left] &amp;gt; arr[right]) {
+    swap(arr, left, right)
+  }
+  //3.返回枢纽
+  return center
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;快速排序代码实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//2.快速排序
+let QuickSort = function(arr){
+  if (arr.length == 0) {
+    return []
+  }
+  let center = median(arr)
+  let c = arr.splice(center, 1)
+  let l = []
+  let r = []
+
+  for (let i = 0; i &amp;lt; arr.length; i++) {
+      if (arr[i] &amp;lt; c) {
+        l.push(arr[i])
+      }else{
+        r.push(arr[i])
+      }        
+  }
+  return QuickSort(l).concat(c, QuickSort(r))
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;4-二叉树的先序中序后序遍历&#34;&gt;4. 二叉树的先序，中序，后序遍历&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function TreeNode(x){
+    this.val=val;
+    this.left=null;
+    this.right=null;
+}
+// 递归方法
+function threeOrders(root){
+    let preArray=[],middleArray=[],lastArray=[];
+    //先序遍历：根、左、右
+    function preOrder(root){
+        if(root){
+            preArray.push(root.val);
+            preOrder(root.left);
+            preOrder(root.right);
+        }
+    }
+    //中序遍历 ： 左 根 右   
+    function inOrder(root){
+            if(root){
+                inOrder(root.left)
+                middleArray.push(root.val);
+                inOrder(root.right);
+            }
+    }
+    //后序遍历：左右根
+    function lastOrder(root){
+        if(root){
+            lastOrder(root.left);
+            lastOrder(root.right);
+            lastArray.push(root.val);
+        }
+    }
+    preOrder(root);
+    inOrder(root);
+    lastOrder(root);
+    return [preArray,middleArray,lastArray]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;5-加油站问题贪心算法&#34;&gt;5. 加油站问题(贪心算法)&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;基本要素：&lt;/strong&gt;&lt;br&gt;
+&lt;code&gt;贪心选择&lt;/code&gt;：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的局部最优解。&lt;br&gt;
+&lt;code&gt;最优子结构&lt;/code&gt;：当一个问题的最优解包含其子问题的最优解时，称此问题具有最优子结构性质。&lt;/p&gt;
+&lt;h2 id=&#34;汽车加油问题&#34;&gt;汽车加油问题&lt;/h2&gt;
+&lt;p&gt;一辆汽车加满油后可行驶 n公里。旅途中有若干个加油站。设计一个有效算法，指出应 在哪些加油站停靠加油，使沿途加油次数最少。&lt;/p&gt;
+&lt;h2 id=&#34;输入格式&#34;&gt;输入格式:&lt;/h2&gt;
+&lt;p&gt;第一行有 2 个正整数n和 k（k&amp;lt;=1000 )，表示汽车加满油后可行驶n公里，且旅途中有 k个加油站。 第二行有 k+1 个整数，表示第 k 个加油站与第k-1 个加油站之间的距离。 第 0 个加油站表示出发地，汽车已加满油。 第 k+1 个加油站表示目的地。&lt;/p&gt;
+&lt;h2 id=&#34;输出格式&#34;&gt;输出格式:&lt;/h2&gt;
+&lt;p&gt;输出最少加油次数。如果无法到达目的地，则输出“No Solution!”。&lt;/p&gt;
+&lt;h2 id=&#34;贪心性质分析&#34;&gt;贪心性质分析：&lt;/h2&gt;
+&lt;p&gt;找到汽车满油量时可以行驶的最大路程范围内的最后一个加油站，加油后则继续用此方法前进。需要检查每一小段路程是否超过汽车满油量时的最大支撑路程。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function greedy(n, k, arr){ // n:加满可以行驶的公里数; k:加油站数量; arr:每个加油站之间的距离数组
+  　　if (n == 0 || k == 0 || arr.length == 0 || arr[0] &amp;gt; n) {
+  　　return &amp;quot;No Solution!&amp;quot;; // arr[0] &amp;gt; n ：如果第一个加油站距离太远，也无法到达
+  　　};
+  
+  　　let res = 0, distance = 0; // res：加油次数;distance：已行驶距离
+  　　for(let i = 0; i &amp;lt;= k; i++){
+  　　distance += arr[i];
+  　　if (distance &amp;gt; n) { // 已行驶距离 &amp;gt; 加满可以行驶的公里数
+   　 if(arr[i] &amp;gt; n){ // 如果目前加油站和前一个加油站的距离 &amp;gt; 加满可以行驶的公里数，则无法到达
+   　 return &amp;quot;No Solution!&amp;quot;;
+  　　};
+  
+  　　// 可以在上一个加油站加油，行驶到目前的加油站i：
+  　　distance = arr[i];
+  　　res++; // 加油次数+1
+  　　}
+  　}
+  　　return res;
+  }
+  
+  　　let arr = [1,2,3,4,5,1,6,6];
+  　　console.log(greedy(7,7,arr)) // 4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;6-二分法数组查找&#34;&gt;6. 二分法数组查找&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;二分法实现原理：二分查找可以解决已经排好序数组的查找问题：只要数组中包含target（即要查找的值），那么通过不断缩小包含target数组的范围，最终就可以找到它。&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function indexOf(arr,target,start,end){
+	 start = start || 0;
+	 end = end || arr.length - 1;
+	 if(start &amp;gt; end){
+	 	return -1;
+	 }
+	let mid = Math.floor((start + end)/2);
+		if(arr[mid] &amp;gt; target) {
+			end = mid-1;
+			return indexOf(arr,target,start,end);
+		}
+		else if(arr[mid] &amp;lt; target){
+			start = mid + 1;
+			return indexOf(arr,target,start,end);
+		}
+		else {
+			return mid;
+		}
+}
+let a = [0,1,2,3,4,5,6,434,435];
+console.log(indexOf(a,12));     //打印结果为-1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;7-反转单链表&#34;&gt;7. 反转单链表&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;var reverseList = function (head) {
+    // 闭包
+    if (head === undefined || head === null) return null
+    var originalHead = head
+    var reverseHead
+    var reverse = function (head) {
+        if (head.next === null) {
+            reverseHead = head
+            return head
+        } else {
+            var node = reverse(head.next)
+            node.next = head
+            if (originalHead === head) {
+                head.next = null
+                return reverseHead
+            } else {
+                return head
+            }
+        }
+    }
+    return reverse(head)
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;8-取出1000内所有质数&#34;&gt;8. 取出1000内所有质数&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;let num = 1000;
+	let res_arr = []; 
+	for (var i = 1; i &amp;lt; num; i++) {
+		let e = i;
+		let noDivision = !divisionItem(res_arr, e)
+		if (e != 1 &amp;amp;&amp;amp; noDivision) {
+			res_arr.push(e)
+		}
+	}
+
+	console.log(res_arr);
+
+	// 每一个数字 和已有的自然数进行对比是否可以整除
+	function divisionItem(arr, item) {
+		let res = false;
+		for (var i = 0; i &amp;lt; arr.length; i++) {
+			let e = arr[i];
+			if (item % e === 0) {
+				res = true
+				break;
+			}
+		}
+		return res;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;9-找出数组中和为给定值的两个元素&#34;&gt;9. 找出数组中和为给定值的两个元素&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function sameSum(arr, num){
+  for (var i =0 ;i&amp;lt;arr.length;i++){
+      for (var j = i+1;j&amp;lt;arr.length;j++){
+          if (arr[i]+arr[j]==num){
+              console.log(&#39;数组中两个元素和为&#39;+num+&#39;的两个数为：&#39;+arr[i]+&#39;和&#39;+arr[j]);
+              break;
+          }
+          //break;
+          //如果只要输出一组这样的组合就只要在内层循环里break就可以
+      }
+  }
+}
+var arr =[1,2,3,4];
+sameSum(arr,5);
+&lt;/code&gt;&lt;/pre&gt;
+">【面】前端知识点梳理（工具与算法）</a>
       </div>
       
       <div class="item">
@@ -2716,6 +3636,26 @@ function _createClass (constructor, protoDesc, staticDesc) {
     return Foo
 }()
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;10-settimeout和setinterval的区别&#34;&gt;10. setTimeout和setInterval的区别&lt;/h1&gt;
+&lt;p&gt;1.setTimeout和setInterval都属于JS中的定时器，可以规定延迟时间再执行某个操作，不同的是setTimeout在规定时间后执行完某个操作就停止了，而setInterval则可以一直循环下去。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function fun(){
+  alert(&#39;hello&#39;);
+}
+  setTimeout(fun,1000);//参数是函数名
+  setTimeout(&#39;fun()&#39;,1000);//参数是字符串
+  setInterval(fun,1000);
+  setInterval(&#39;fun(),1000&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在上述代码中，无论是setTimeout还是setInterval，在使用函数名作为调用句柄时不能带参数，使用字符串调用时可以带参数。例如：setTimeout(‘fun(name)’,1000);&lt;/p&gt;
+&lt;p&gt;2.不再单独再定义一个函数，直接将函数调用放在一个函数里面，可以使用函数名作为调用调用句柄。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function fun(name){
+  alert(&#39;hello&#39;+&#39; &#39;+name);
+}
+setTimeout (function(){
+  fun(&#39;Tom&#39;);
+},1000);//参数是函数名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在上述代码中，setTimeout和setInterval的区别就是setTimeout延迟一秒弹出’hello’,之后便不再运行；而setInterval则会隔一秒弹出’hello’,直至用clear来清除定时器的语法。&lt;/p&gt;
 ">【面】前端知识点梳理（ES6）</a>
       </div>
       
@@ -4967,6 +5907,113 @@ Object.prototype.chargeObjectEqual = function(obj){
 &lt;p&gt;使用“事件委托”时，并不是说把事件委托给的元素越靠近顶层就越好。事件冒泡的过程也需要耗时，越靠近顶层，事件的”事件传播链”越长，也就越耗时。如果DOM嵌套结构很深，事件冒泡通过大量祖先元素会导致性能损失。&lt;/p&gt;
 &lt;h2 id=&#34;162-如何让事件先冒泡后捕获&#34;&gt;16.2 如何让事件先冒泡后捕获&lt;/h2&gt;
 &lt;p&gt;若要实现先冒泡后捕获，给一个元素绑定两个addEventListener，其中一个第三个参数设置为false（即冒泡），另一个第三个参数设置为true（即捕获），调整它们的代码顺序，将设置为false的监听事件放在设置为true的监听事件前面即可。&lt;/p&gt;
+&lt;h1 id=&#34;16补-js遍历dom树&#34;&gt;16补. js遍历dom树&lt;/h1&gt;
+&lt;h2 id=&#34;1-遍历dom树&#34;&gt;1. 遍历dom树&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+  &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+  &amp;lt;title&amp;gt;遍历DOM树&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+&amp;lt;h1&amp;gt;遍历 DOM 树&amp;lt;/h1&amp;gt;
+&amp;lt;p style=&amp;quot;color: green;&amp;quot;&amp;gt;Tip: 可以在遍历的回调函数中任意定制需求&amp;lt;/p&amp;gt;
+&amp;lt;div&amp;gt;
+  &amp;lt;ul&amp;gt;
+    &amp;lt;li&amp;gt;123&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;456&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;789&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;div&amp;gt;
+      &amp;lt;span&amp;gt;haha&amp;lt;/span&amp;gt;
+    &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div id=&amp;quot;demo_node&amp;quot;&amp;gt;
+  &amp;lt;ul&amp;gt;
+    &amp;lt;li&amp;gt;123&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;p&amp;gt;hello&amp;lt;/p&amp;gt;
+  &amp;lt;h2&amp;gt;world&amp;lt;/h2&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;p&amp;gt;dsa&amp;lt;/p&amp;gt;
+    &amp;lt;h3&amp;gt;
+      &amp;lt;span&amp;gt;dsads&amp;lt;/span&amp;gt;
+    &amp;lt;/h3&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;script&amp;gt;
+
+  //获取页面中的根节点--根标签
+  var root=document.documentElement;//html
+  //函数遍历DOM树
+  //根据根节点,调用fn的函数,显示的是根节点的名字
+  function forDOM(root1) {
+    //调用f1,显示的是节点的名字
+   // f1(root1);
+    //获取根节点中所有的子节点
+    var children=root1.children;
+    //调用遍历所有子节点的函数
+    forChildren(children);
+  }
+  //给我所有的子节点,我把这个子节点中的所有的子节点显示出来
+  function forChildren(children) {
+    //遍历所有的子节点
+    for(var i=0;i&amp;lt;children.length;i++){
+      //每个子节点
+      var child=children[i];
+      //显示每个子节点的名字
+      f1(child);
+      //判断child下面有没有子节点,如果还有子节点,那么就继续的遍历
+      child.children&amp;amp;&amp;amp;forDOM(child);
+    }
+  }
+  //函数调用,传入根节点
+  forDOM(root);
+  function f1(node) {
+    console.log(&amp;quot;节点的名字:&amp;quot;+node.nodeName);
+  }
+  //节点:nodeName,nodeType,nodeValue
+
+&amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-多叉-dom-树的遍历&#34;&gt;2. 多叉 DOM 树的遍历&lt;/h2&gt;
+&lt;h3 id=&#34;1-广度优先遍历&#34;&gt;1. 广度优先遍历&lt;/h3&gt;
+&lt;p&gt;首先遍历根节点，然后访问第一层节点，第二层节点，....,直到访问到最后一层。&lt;br&gt;
+借助于队列，用非递归的方式对多叉树进行遍历&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Tree.prototype.BFSearch =  function(node,callback){  
+    var queue=[];  
+    while(node!=null){          
+           callback(node);  
+       if(node.children.length!=0){  
+        for (var i=0;i&amp;lt;node.children.length;i++){  
+            queue.push(node.children[i]);//借助于队列,暂存当前节点的所有子节点  
+        }   
+        }  
+            node=queue.shift();//先入先出，借助于数据结构：队列  
+    }         
+};  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-深度优先遍历&#34;&gt;2. 深度优先遍历&lt;/h3&gt;
+&lt;p&gt;首先遍历根节点，然后沿着一条路径遍历到最深的一层，最后在逐层返回。&lt;br&gt;
+借助于栈,实现多叉 DOM树 的深度优先遍历。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Tree.prototype.DFSearch =  function(node,callback){  
+        var stack=[];         
+        while(node!=null){  
+        callback(node);  
+        if(node.children.length!=0){  
+        for (var i=node.children.length-1;i&amp;gt;=0;i--){//按照相反的子节点顺序压入栈  
+            stack.push(node.children[i]);//将该节点的所有子节点压入栈  
+        }  
+        }  
+            node = stack.pop();//弹出栈的子节点顺序就是原来的正确顺序(因为栈是先入后出的)        
+    }     
+};  
+&lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（JS上）</a>
       </div>
       
