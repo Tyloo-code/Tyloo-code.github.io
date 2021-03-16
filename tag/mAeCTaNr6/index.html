@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615802369919">
+<link rel="shortcut icon" href="/favicon.ico?v=1615857085891">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -656,6 +656,284 @@ function _int2iP(num)
     str = String(tt[0]) + &amp;quot;.&amp;quot; + String(tt[1]) + &amp;quot;.&amp;quot; + String(tt[2]) + &amp;quot;.&amp;quot; + String(tt[3]);
     return str;
 }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;2-手写原生ajax&#34;&gt;2. 手写原生Ajax&lt;/h1&gt;
+&lt;h2 id=&#34;get请求&#34;&gt;Get请求&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const xhr = new XMLHttpRequest()
+        xhr.open(&amp;quot;GET&amp;quot;, &amp;quot;http://localhost:3000/users?id=1&amp;quot;)
+        xhr.send(null)
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                console.log(this.responseText);
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;post请求&#34;&gt;Post请求&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const xhr = new XMLHttpRequest()
+        xhr.open(&amp;quot;POST&amp;quot;, &amp;quot;http://localhost:3000/users&amp;quot;)
+        xhr.setRequestHeader(&amp;quot;Content-Type&amp;quot;, &amp;quot;application/json&amp;quot;)
+        // 转换为json传递
+        xhr.send(JSON.stringify({
+            &amp;quot;name&amp;quot;: &amp;quot;luke&amp;quot;,
+            &amp;quot;age&amp;quot; : 19,
+            &amp;quot;class&amp;quot;: 2
+        }))
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                console.log(this.responseText);
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;3-手写实现-bind&#34;&gt;3. 手写实现 bind()&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;Function.prototype.MyBind = function (context, ...args) {
+  let self = this;
+  return function() {
+    return self.apply(context, args);
+  }
+}
+
+// test
+let a = {name: &#39;jack&#39;} 
+let test = function() {
+  console.log(this.name); // jack
+}
+let rs = test.MyBind(a);
+rs();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;4-手写实现-apply&#34;&gt;4. 手写实现 apply()&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;Function.prototype.myApply = function (context, args) {
+  context.fn = this;
+  let res;
+  if (!args){
+    res = context.fn();
+  } else  {
+    res = context.fn(...args)
+  }
+  return res;
+}
+
+// test
+let obj = {
+  name: &#39;jack&#39;
+}
+function test(arg1, arg2, arg3) {
+  console.log(this.name)   // jack
+  console.log(arg1, arg2, arg3);  // 1 2 3
+}
+test.myApply(obj, [1,2,3]);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;5-手写实现-call&#34;&gt;5. 手写实现 call()&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;Function.prototype.myCall = function (context, ...rest) {
+  context.fn = this;
+  var result = context.fn(...rest);
+  delete context.fn;
+  return result;
+}
+
+// test
+let obj = {
+  name: &#39;jack&#39;
+}
+function test(arg1, arg2, arg3) {
+  console.log(this.name)   // jack
+  console.log(arg1, arg2, arg3);  // 1 2 3
+}
+test.myCall(obj, 1,2,3);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;6-手写实现-instanceof&#34;&gt;6. 手写实现 instanceof&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function myInstanceOf(left, right) {
+  let prototype = right.prototype;
+  left = left.__proto__;
+  while(true) {
+    if (!left) return false;
+    if (left == prototype) return true;
+    left = left.__proto__;
+  }
+}
+
+console.log(myInstanceOf([], Array));  // true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;7-手写实现-new&#34;&gt;7. 手写实现 new&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function myNew (fun, ...args) {
+  let obj = {};
+  obj.__proto__ = fun.prototype;
+  let res = fun.apply(obj, args);
+  return res instanceof Object ? res : obj;
+}
+
+function Animal(name) {
+  this.name = name;
+}
+let animal = myNew(Animal, &#39;dog&#39;);
+console.log(animal.name)  // dog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;8-手写实现-jsonp&#34;&gt;8. 手写实现 jsonp&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;var newscript = document.createElement(&#39;script&#39;);
+newscript.src = &#39;https://www.adb.com?callback=fn&#39;
+document.body.appendChild(newscript);
+function fn(data) {
+  console.log(data);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;9-手写实现-promise&#34;&gt;9. 手写实现 Promise&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;const PENDING = Symbol();
+const REJECTED = Symbol();
+const FULLFILLED = Symbol();
+
+const MyPromise = function(fn) {
+  this.state = PENDING;
+  this.value = &#39;&#39;;
+
+  const resolve = (value) =&amp;gt; {
+    this.state = FULLFILLED;
+    this.value = value;
+  }
+
+  const reject = (error) =&amp;gt; {
+    this.state = REJECTED;
+    this.value = error;
+  }
+
+  this.then = (onFullFill, onReject) =&amp;gt; {
+    if (this.state == FULLFILLED) {
+      onFullFill(this.value);
+    } else {
+      onReject(this.value);
+    }
+  }
+
+  try {
+    fn(resolve, reject);
+  } catch(error) {
+    reject(error);
+  }
+}
+
+// test
+let p = new MyPromise((resolve, reject) =&amp;gt; {
+  resolve(&#39;hello&#39;);
+})
+p.then(res =&amp;gt; {
+  console.log(res);  // hello
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;10-手写实现promiseall&#34;&gt;10. 手写实现promise.all()&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function isPromise(obj) {
+  return !!obj &amp;amp;&amp;amp; (typeof obj === &#39;function&#39; || typeof obj === &#39;object&#39;) &amp;amp;&amp;amp; typeof obj.then == &#39;function&#39;;
+}
+
+function myPromiseAll(arr) {
+  let res = []
+  return new Promise((resolve, reject) =&amp;gt; {
+    for (let i = 0; i &amp;lt; arr.length; i++) {
+      if (isPromise(arr[i])) {
+        arr[i].then(data =&amp;gt; {
+          res[i] = data;
+          if (res.length === arr.length) {
+            resolve(res)
+          }
+        }).catch(error =&amp;gt; {
+          reject(error)
+        })
+      } else {
+        res[i] = arr[i];
+      }
+    }
+  })
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;11-手写实现promiserace&#34;&gt;11. 手写实现promise.race()&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function myPromiseRace(arr) {
+  return new Promise((resolve, reject) =&amp;gt; {
+    for (let i = 0; i &amp;lt; arr.length; i++) {
+      return arr[i].then(resolve, reject)
+    }
+  })
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;12-手写实现eventemitter-订阅监听模式&#34;&gt;12. 手写实现EventEmitter 订阅监听模式&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;class EventEmitter {
+  constructor() {
+    this.events = {};
+  }
+  on (eventName, callback) {
+    if(!this.events[eventName]) {
+      this.events[eventName] = [callback];
+    } else {
+      this.events[eventName].push(callback);
+    }
+  }
+
+  emit(eventName, ...args) {
+    this.events[eventName].forEach(fn =&amp;gt; fn.apply(this, args));
+  }
+
+  once(eventName, callback) {
+    const fn = () =&amp;gt; {
+      callback();
+      this.remove(eventName, fn);
+    }
+    this.on(eventName, fn)
+  }
+
+  remove(eventName, callback) {
+    this.events[eventName] = this.events[eventName].filter(fn =&amp;gt; fn != callback);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;13-手写settimout-实现-setinterval&#34;&gt;13. 手写setTimout 实现 setInterval&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function myInterval(fn, time) {
+  let context = this;
+  setTimeout(() =&amp;gt; {
+    fn.call(context);
+    myInterval(fn, time);
+  }, time);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;14-手写实现深拷贝&#34;&gt;14. 手写实现深拷贝&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function deepClone(obj) {
+  // 先判断是对象还是数组
+  let copy = obj instanceof Array ? [] : {};
+  for (let key in obj) {
+    // 判断是否是对象上的属性，而不是原型上的属性
+    if (obj.hasOwnProperty(key)) {
+      // obj[key] 是否是对象，如果是对象，递归遍历
+      copy[key] = typeof obj[key] === &#39;object&#39; ? deepClone(obj[key]) : obj[key];
+    }
+  }
+  return copy;
+}
+
+// test
+console.log(deepClone({name: &#39;jack&#39;, birth: {year: &#39;1997&#39;, month: &#39;10&#39;}})) // {name: &#39;jack&#39;, birth: {…}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;15-手写实现浅拷贝&#34;&gt;15. 手写实现浅拷贝(...)&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;let obj = {
+   a: 100,
+   b: [100, 200, 300],
+   c: {
+      x: 10
+   },
+   d: /^\d+$/
+}
+let obj2 = {...obj};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;16-手写实现数组拍平&#34;&gt;16. 手写实现数组拍平&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;var flatten = function(arr) {
+  let res = [];
+  for (let i = 0; i &amp;lt; arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      res = res.concat(flatten(arr[i]))
+    } else {
+      res.push(arr[i])
+    }
+  }
+  return res;
+}
+
+console.log(flatten([1,[1,2,[2,4]],3,5]));  // [1, 1, 2, 2, 4, 3, 5]
 &lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（手写题）</a>
       </div>
