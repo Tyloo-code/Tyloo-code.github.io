@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615866950650">
+<link rel="shortcut icon" href="/favicon.ico?v=1615897024835">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -4929,6 +4929,17 @@ fn(); // 10
 fn.call(obj); // 20
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;除此之外，&lt;code&gt;在函数执行过程中，this一旦被确定，就不可更改了。&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;情况1：如果一个函数中有this，但是它没有被上一级的对象所调用，那么this指向的就是window，这里需要说明的是在js的严格版中this指向的不是window，但是我们这里不探讨严格版的问题，你想了解可以自行上网查找。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;情况2：如果一个函数中有this，这个函数有被上一级的对象所调用，那么this指向的就是上一级的对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;情况3：如果一个函数中有this，这个函数中包含多个对象，尽管这个函数是被最外层的对象所调用，this指向的也只是它上一级的对象，&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;111-全局对象中的this&#34;&gt;11.1 全局对象中的this&lt;/h2&gt;
 &lt;p&gt;关于全局对象的this，我之前在总结变量对象的时候提到过，它是一个比较特殊的存在。全局环境中的this，指向它本身。&lt;/p&gt;
 &lt;h2 id=&#34;112-函数中的this&#34;&gt;11.2 函数中的this&lt;/h2&gt;
