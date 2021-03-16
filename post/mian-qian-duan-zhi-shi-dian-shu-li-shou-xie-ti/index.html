@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（手写题） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615857085891">
+<link rel="shortcut icon" href="/favicon.ico?v=1615866950650">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -259,6 +259,13 @@
 <li><a href="#14-%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0%E6%B7%B1%E6%8B%B7%E8%B4%9D">14. 手写实现深拷贝</a></li>
 <li><a href="#15-%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0%E6%B5%85%E6%8B%B7%E8%B4%9D">15. 手写实现浅拷贝(...)</a></li>
 <li><a href="#16-%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0%E6%95%B0%E7%BB%84%E6%8B%8D%E5%B9%B3">16. 手写实现数组拍平</a></li>
+<li><a href="#17-%E6%89%8B%E5%86%99%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96">17. 手写函数防抖</a></li>
+<li><a href="#18-%E6%89%8B%E5%86%99%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81">18. 手写函数节流</a></li>
+<li><a href="#19-%E6%89%8B%E5%86%99%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96%E5%AE%9E%E7%8E%B0-sum123">19. 手写函数柯里化（实现 sum(1,2)(3)()）</a></li>
+<li><a href="#20-%E6%89%8B%E5%86%99%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">20. 手写快速排序</a></li>
+<li><a href="#21-%E6%89%8B%E5%86%99%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F">21. 手写归并排序</a></li>
+<li><a href="#22-%E6%89%8B%E5%86%99%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D">22. 手写数组去重</a></li>
+<li><a href="#23-%E6%89%8B%E5%86%99%E6%95%B0%E7%BB%84%E5%90%88%E5%B9%B6">23. 手写数组合并</a></li>
 </ul>
 
   </div>
@@ -539,12 +546,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>6<span class="language" data-lan="minute">分钟</span></span>
+      <span>8<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>975<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1338<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -859,6 +866,103 @@ let obj2 = {...obj};
 }
 
 console.log(flatten([1,[1,2,[2,4]],3,5]));  // [1, 1, 2, 2, 4, 3, 5]
+</code></pre>
+<h1 id="17-手写函数防抖">17. 手写函数防抖</h1>
+<pre><code>function debounce(fn, wait) {
+  let timeout = null;
+  return function() {
+    let context = this;
+    let args = arguments;
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() =&gt; {
+      fn.apply(context, args);
+    }, wait);
+  }
+}
+</code></pre>
+<h1 id="18-手写函数节流">18. 手写函数节流</h1>
+<pre><code>function throttle(fn, wait) {
+  let  pre = new Date();
+  return function() {
+    let context = this;
+    let args = arguments;
+    let now = new  Date();
+    if (now - pre &gt;= wait) {
+      fn.apply(context, args);
+      pre = now;
+    }
+  }
+}
+</code></pre>
+<h1 id="19-手写函数柯里化实现-sum123">19. 手写函数柯里化（实现 sum(1,2)(3)()）</h1>
+<pre><code>function sum(...args1) {
+  let x = args1.reduce((prev, next) =&gt; {return prev+next;})
+  return function(...args2) {
+    if (args2.length == 0) return x;
+    let y = args2.reduce((prev, next) =&gt; {return prev+next;})
+    return sum(x+y)
+  }
+}
+
+console.log(sum(1,2,2,5)(7)()) // 17
+</code></pre>
+<h1 id="20-手写快速排序">20. 手写快速排序</h1>
+<pre><code>function quicksort(arr) {
+  if (arr.length &lt;= 1) return arr;
+  let pivotIndex = arr.length &gt;&gt; 1;
+  let pivot = arr.splice(pivotIndex, 1)[0];
+  let left = [];
+  let right = [];
+  for (let i = 0; i &lt; arr.length; i++) {
+    if (arr[i] &lt;= pivot)  {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  return quicksort(left).concat(pivot, quicksort(right));
+
+}
+
+console.log(quicksort([4,3,5,2,1,6]));   //  [1, 2, 3, 4, 5, 6]
+</code></pre>
+<h1 id="21-手写归并排序">21. 手写归并排序</h1>
+<pre><code>function merge(left, right) {
+  let res = [];
+  while(left.length &gt; 0 &amp;&amp; right.length &gt; 0) {
+    if (left[0] &lt; right[0]) {
+      res.push(left.shift());
+    } else {
+      res.push(right.shift());
+    }
+  }
+  return res.concat(left).concat(right);
+}
+
+function mergeSort(arr) {
+  if (arr.length == 1) return arr;
+  var middle = Math.floor(arr.length / 2);
+  var left = arr.slice(0, middle);
+  var right = arr.slice(middle);
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+console.log(mergeSort([3,2,4,5,1,6]));  // [1, 2, 3, 4, 5, 6]
+</code></pre>
+<h1 id="22-手写数组去重">22. 手写数组去重</h1>
+<pre><code>let arr2 = [1, 2, 3, 2, 33, 55, 66, 3, 55];
+let newArr = [...new Set(arr2)];
+console.log(newArr);
+
+// (6) [1, 2, 3, 33, 55, 66]
+</code></pre>
+<h1 id="23-手写数组合并">23. 手写数组合并</h1>
+<pre><code>let arr3 = ['a', 'b']
+let arr4 = ['c', 'd']
+
+let arr6 = [...arr3, ...arr4];
+console.log(arr6);
+// ['a', 'b', 'c', 'd']
 </code></pre>
 
             </div>
@@ -1691,6 +1795,103 @@ let obj2 = {...obj};
 }
 
 console.log(flatten([1,[1,2,[2,4]],3,5]));  // [1, 1, 2, 2, 4, 3, 5]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;17-手写函数防抖&#34;&gt;17. 手写函数防抖&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function debounce(fn, wait) {
+  let timeout = null;
+  return function() {
+    let context = this;
+    let args = arguments;
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() =&amp;gt; {
+      fn.apply(context, args);
+    }, wait);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;18-手写函数节流&#34;&gt;18. 手写函数节流&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function throttle(fn, wait) {
+  let  pre = new Date();
+  return function() {
+    let context = this;
+    let args = arguments;
+    let now = new  Date();
+    if (now - pre &amp;gt;= wait) {
+      fn.apply(context, args);
+      pre = now;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;19-手写函数柯里化实现-sum123&#34;&gt;19. 手写函数柯里化（实现 sum(1,2)(3)()）&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function sum(...args1) {
+  let x = args1.reduce((prev, next) =&amp;gt; {return prev+next;})
+  return function(...args2) {
+    if (args2.length == 0) return x;
+    let y = args2.reduce((prev, next) =&amp;gt; {return prev+next;})
+    return sum(x+y)
+  }
+}
+
+console.log(sum(1,2,2,5)(7)()) // 17
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;20-手写快速排序&#34;&gt;20. 手写快速排序&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function quicksort(arr) {
+  if (arr.length &amp;lt;= 1) return arr;
+  let pivotIndex = arr.length &amp;gt;&amp;gt; 1;
+  let pivot = arr.splice(pivotIndex, 1)[0];
+  let left = [];
+  let right = [];
+  for (let i = 0; i &amp;lt; arr.length; i++) {
+    if (arr[i] &amp;lt;= pivot)  {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  return quicksort(left).concat(pivot, quicksort(right));
+
+}
+
+console.log(quicksort([4,3,5,2,1,6]));   //  [1, 2, 3, 4, 5, 6]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;21-手写归并排序&#34;&gt;21. 手写归并排序&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function merge(left, right) {
+  let res = [];
+  while(left.length &amp;gt; 0 &amp;amp;&amp;amp; right.length &amp;gt; 0) {
+    if (left[0] &amp;lt; right[0]) {
+      res.push(left.shift());
+    } else {
+      res.push(right.shift());
+    }
+  }
+  return res.concat(left).concat(right);
+}
+
+function mergeSort(arr) {
+  if (arr.length == 1) return arr;
+  var middle = Math.floor(arr.length / 2);
+  var left = arr.slice(0, middle);
+  var right = arr.slice(middle);
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+console.log(mergeSort([3,2,4,5,1,6]));  // [1, 2, 3, 4, 5, 6]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;22-手写数组去重&#34;&gt;22. 手写数组去重&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;let arr2 = [1, 2, 3, 2, 33, 55, 66, 3, 55];
+let newArr = [...new Set(arr2)];
+console.log(newArr);
+
+// (6) [1, 2, 3, 33, 55, 66]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;23-手写数组合并&#34;&gt;23. 手写数组合并&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;let arr3 = [&#39;a&#39;, &#39;b&#39;]
+let arr4 = [&#39;c&#39;, &#39;d&#39;]
+
+let arr6 = [...arr3, ...arr4];
+console.log(arr6);
+// [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
 &lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（手写题）</a>
       </div>
