@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Windows系统下Typora 完全使用详解 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615897024835">
+<link rel="shortcut icon" href="/favicon.ico?v=1615980895589">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">51</span>
+        <span class="site-item-stat-count">52</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1256,6 +1256,363 @@ CR 表示回车 \r ，即回到一行的开头，而 LF 表示换行 \n ，即�
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-xiang-mu/"" data-c="
+          &lt;h1 id=&#34;1-vue-中如何实现监测数组变化&#34;&gt;1. Vue 中如何实现监测数组变化&lt;/h1&gt;
+&lt;p&gt;Vue 框架是通过&lt;strong&gt;遍历数组&lt;/strong&gt; 和&lt;strong&gt;递归遍历&lt;/strong&gt;对象，从⽽达到利⽤Object.defineProperty() 也能对对象和数组（部分⽅法的操作）进⾏监听。&lt;/p&gt;
+&lt;p&gt;Vue 将被侦听的数组的变更⽅法进⾏了包裹，所以它们也将会触发视图更新。这些被包裹过的⽅法包&lt;br&gt;
+括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;push()&lt;/li&gt;
+&lt;li&gt;pop()&lt;/li&gt;
+&lt;li&gt;shift()&lt;/li&gt;
+&lt;li&gt;unshift()&lt;/li&gt;
+&lt;li&gt;splice()&lt;/li&gt;
+&lt;li&gt;sort()&lt;/li&gt;
+&lt;li&gt;reverse()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使⽤函数劫持的⽅式，重写了数组的⽅法&lt;/li&gt;
+&lt;li&gt;Vue 将 data 中的数组，进⾏了原型链重写。指向了⾃⼰定义的数组原型⽅法，这样当调⽤数组&lt;br&gt;
+API 的时候，可以通知依赖更新。如果数组中包含着引⽤类型。会对数组中的引⽤类型再次进⾏监&lt;br&gt;
+控拦截处理&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;2-vue-中的-key-有什么作用&#34;&gt;2. Vue 中的 key 有什么作用&lt;/h1&gt;
+&lt;p&gt;所以 Vue 中 key 的作⽤是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;key 是为 Vue 中 vnode 的唯⼀标记，通过这个 key，我们的 diff 操作可以更准确、更快速&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;更准确&lt;/code&gt;：因为带 key 就不是就地复⽤了，在 sameNode 函数&lt;code&gt;a.key === b.key&lt;/code&gt; 对⽐中可以避免就地复⽤的情况。所以会更加准确。&lt;br&gt;
+&lt;code&gt;更快速&lt;/code&gt;：利⽤ key 的唯⼀性⽣成 map 对象来获取对应节点，⽐遍历⽅式更快&lt;/p&gt;
+&lt;h1 id=&#34;3-你对-vue-项目做过哪些优化&#34;&gt;3. 你对 Vue 项⽬做过哪些优化&lt;/h1&gt;
+&lt;h2 id=&#34;1-代码层面的优化&#34;&gt;1. 代码层面的优化&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;v-if 和 v-show 区分使用场景&lt;/li&gt;
+&lt;li&gt;computed 和 watch 区分使用场景&lt;/li&gt;
+&lt;li&gt;v-for 遍历必须为 item 添加 key，且避免同时使用 v-if&lt;/li&gt;
+&lt;li&gt;图片资源懒加载&lt;/li&gt;
+&lt;li&gt;路由懒加载&lt;/li&gt;
+&lt;li&gt;服务端渲染 SSR or 预渲染&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-webpack-层面的优化&#34;&gt;2. Webpack 层⾯的优化&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Webpack 对图片进行压缩（image-webpack-loader）&lt;/li&gt;
+&lt;li&gt;减少 ES6 转为 ES5 的冗余代码（babel-plugin-transform-runtime）&lt;/li&gt;
+&lt;li&gt;提取公共代码（CommonsChunkPlugin）&lt;/li&gt;
+&lt;li&gt;提取组件的 CSS&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-基础的-web-技术优化&#34;&gt;3. 基础的 Web 技术优化&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;开启 gzip 压缩&lt;/li&gt;
+&lt;li&gt;浏览器缓存（静态资源进行缓存）&lt;/li&gt;
+&lt;li&gt;CDN 的使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;4-vue30特性你有什么了解的吗&#34;&gt;4.  vue3.0特性你有什么了解的吗&lt;/h1&gt;
+&lt;p&gt;Vue 3.0 正⾛在发布的路上，Vue 3.0 的⽬标是让 Vue 核⼼变得更⼩、更快、更强⼤，因此 Vue 3.0 增加以下这些新特性：&lt;/p&gt;
+&lt;h2 id=&#34;1-监测机制的改变&#34;&gt;1. 监测机制的改变&lt;/h2&gt;
+&lt;p&gt;3.0 将带来基于代理 Proxy 的 observer 实现，提供全语⾔覆盖的反应性跟踪。这消除了 Vue 2 当中基于Object.defineProperty 的实现所存在的很多限制：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;只能监测属性，不能监测对象&lt;/li&gt;
+&lt;li&gt;检测属性的添加和删除；&lt;/li&gt;
+&lt;li&gt;检测数组索引和⻓度的变更；&lt;/li&gt;
+&lt;li&gt;⽀持 Map、Set、WeakMap 和 WeakSet。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;新的 observer 还提供了以下特性：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;⽤于创建 observable 的公开 API。这为中⼩规模场景提供了简单轻量级的跨组件状态管理解决⽅&lt;br&gt;
+案。&lt;/li&gt;
+&lt;li&gt;默认采⽤惰性观察。在 2.x 中，不管反应式数据有多⼤，都会在启动时被观察到。如果你的数据集&lt;br&gt;
+很⼤，这可能会在应⽤启动时带来明显的开销。在 3.x 中，只观察⽤于渲染应⽤程序最初可⻅部分&lt;br&gt;
+的数据。&lt;/li&gt;
+&lt;li&gt;更精确的变更通知。在 2.x 中，通过 Vue.set 强制添加新属性将导致依赖于该对象的 watcher 收到变更通知。在 3.x 中，只有依赖于特定属性的 watcher 才会收到通知。&lt;/li&gt;
+&lt;li&gt;不可变的 observable：我们可以创建值的“不可变”版本（即使是嵌套属性），除⾮系统在内部暂时&lt;br&gt;
+将其“解禁”。这个机制可⽤于冻结 prop 传递或 Vuex 状态树以外的变化。&lt;/li&gt;
+&lt;li&gt;更好的调试功能：我们可以使⽤新的 renderTracked 和 renderTriggered 钩⼦精确地跟踪组件在&lt;br&gt;
+什么时候以及为什么重新渲染。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-模板&#34;&gt;2. 模板&lt;/h2&gt;
+&lt;p&gt;模板⽅⾯没有⼤的变更，只改了作⽤域插槽，2.x 的机制导致作⽤域插槽变了，⽗组件会重新渲染，⽽&lt;br&gt;
+3.0 把作⽤域插槽改成了函数的⽅式，这样只会影响⼦组件的重新渲染，提升了渲染的性能。&lt;/p&gt;
+&lt;p&gt;同时，对于 render 函数的⽅⾯，vue3.0 也会进⾏⼀系列更改来⽅便习惯直接使⽤ api 来⽣成 vdom 。&lt;/p&gt;
+&lt;h2 id=&#34;3-对象式的组件声明方式&#34;&gt;3. 对象式的组件声明⽅式&lt;/h2&gt;
+&lt;p&gt;vue2.x 中的组件是通过声明的⽅式传⼊⼀系列 option，和 TypeScript 的结合需要通过⼀些装饰器的⽅式来做，虽然能实现功能，但是⽐较麻烦。3.0 修改了组件的声明⽅式，改成了类式的写法，这样使得和&lt;br&gt;
+TypeScript 的结合变得很容易。&lt;/p&gt;
+&lt;p&gt;此外，vue 的源码也改⽤了 TypeScript 来写。其实当代码的功能复杂之后，必须有⼀个静态类型系统来&lt;br&gt;
+做⼀些辅助管理。现在 vue3.0 也全⾯改⽤ TypeScript 来重写了，更是使得对外暴露的 api 更容易结合TypeScript。静态类型系统对于复杂代码的维护确实很有必要。&lt;/p&gt;
+&lt;h2 id=&#34;4-其它方面的更改&#34;&gt;4. 其它⽅⾯的更改&lt;/h2&gt;
+&lt;p&gt;vue3.0 的改变是全⾯的，上⾯只涉及到主要的 3 个⽅⾯，还有⼀些其他的更改：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;⽀持⾃定义渲染器，从⽽使得 weex 可以通过⾃定义渲染器的⽅式来扩展，⽽不是直接 fork 源码来&lt;br&gt;
+改的⽅式。&lt;/li&gt;
+&lt;li&gt;⽀持 Fragment（多个根节点）和 Protal（在 dom 其他部分渲染组建内容）组件，针对⼀些特殊&lt;br&gt;
+的场景做了处理。&lt;/li&gt;
+&lt;li&gt;基于 treeshaking 优化，提供了更多的内置功能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;5-滚动到底部加载更多&#34;&gt;5. 滚动到底部加载更多&lt;/h1&gt;
+&lt;p&gt;需要三个高度：&lt;code&gt;scrollHeight&lt;/code&gt;（文档内容实际高度，包括超出视窗的溢出部分）、&lt;code&gt;scrollTop&lt;/code&gt;（滚动条滚动距离）、&lt;code&gt;clientHeight&lt;/code&gt;（窗口可视范围高度）。当 &lt;code&gt;clientHeight + scrollTop &amp;gt;= scrollHeight&lt;/code&gt; 时，表示已经抵达内容的底部了，可以加载更多内容。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;scrollHeight：通过 document.documentElement.scrollHeight 、document.body.scrollHeight 可以获取;&lt;/li&gt;
+&lt;li&gt;scrollTop：通过window.pageYOffset 、 document.documentElement.scrollTop 、 document.body.scrollTop 可以获取&lt;/li&gt;
+&lt;li&gt;clientHeight：通过window.innerHeight 、 document.documentElement.clientHeight 、 document.body.clientHeight 可以获取;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;   window.onscroll= function(){
+        //文档内容实际高度（包括超出视窗的溢出部分）
+        var scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+        //滚动条滚动距离
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        //窗口可视范围高度
+        var clientHeight = window.innerHeight || Math.min(document.documentElement.clientHeight,document.body.clientHeight);
+        
+        if(clientHeight + scrollTop &amp;gt;= scrollHeight){
+            console.log(&amp;quot;===加载更多内容……===&amp;quot;);
+        }
+   }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;6-vue无限滚动方案&#34;&gt;6. vue无限滚动方案&lt;/h1&gt;
+&lt;h2 id=&#34;1-实现无限滚动逻辑&#34;&gt;1. 实现无限滚动逻辑&lt;/h2&gt;
+&lt;p&gt;在组件的方法中，您需要创建一个名为&lt;code&gt;scroll()&lt;/code&gt;的新函数，并将其加载到&lt;code&gt;mounted()&lt;/code&gt;生命周期方法中。&lt;br&gt;
+这个&lt;code&gt;scroll()&lt;/code&gt;方法应该有一个简单的条件来计算页面的底部，判断它为true或false，并执行一些操作。我们将利用文档对象的&lt;code&gt;documentElement.scrollTop&lt;/code&gt;，&lt;code&gt;documentElement.offsetHeight&lt;/code&gt;属性和窗口的&lt;code&gt;innerHeight&lt;/code&gt;属性来确定是否滚动到底部：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;window.onscroll = () =&amp;gt; {
+  let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+
+  if (bottomOfWindow) {
+    // Do something, anything!
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-性能优化方案&#34;&gt;2. 性能优化方案&lt;/h2&gt;
+&lt;p&gt;对此前端业界有一个通用解决方案叫virtualize，虚拟化，就是把整个列表虚拟化，无论你列表元素有多少，我只虚拟化一定数目的元素(大于一屏幕)，然后在滚动过程中动态的更新这些元素，这样的话我们页面重新渲染时候进行的style和layout过程的对象元素就是固定的了，时间不会变长。具体的实现方法参考下图。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615968713779.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;当列表滚动到item8之前，不做任何操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;滚动到8的时候，此时可见区域的元素是4到8，这时更新DOM的8个元素为4到11，也就是说1-8批量更新成了4-11。但是用户可见区域看到的仍然是4到8，只是bench缓冲区的元素添加了9到11三个元素。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元素完成了更新，但是滚动条的位置也要完成更新，因为实际上此时可见区域的item4并不是之前列表DOM中的第4个元素了，而是变成了第1个元素，所以滚动条此时位置变回到了列表的起点，这里需要给列表一个padding-top值，设成3倍元素高度size，从而维持滚动条的位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;7-vuex&#34;&gt;7. VueX&lt;/h1&gt;
+&lt;h2 id=&#34;1-vuex是什么怎么使用哪种功能场景使用它&#34;&gt;1. vuex是什么？怎么使用？哪种功能场景使用它？&lt;/h2&gt;
+&lt;p&gt;Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。简单来说就是：应用遇到多个组件共享状态时，使用vuex。&lt;/p&gt;
+&lt;p&gt;场景：多个组件共享数据或者是跨组件传递数据时&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;vuex的流程&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615511816855.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+页面通过mapAction异步提交事件到action。action通过commit把对应参数同步提交到mutation，mutation会修改state中对应的值。最后通过getter把对应值跑出去，在页面的计算属性中，通过，mapGetter来动态获取state中的值&lt;/p&gt;
+&lt;h2 id=&#34;2-vuex有哪几种属性&#34;&gt;2. vuex有哪几种属性&lt;/h2&gt;
+&lt;p&gt;有五种,分别是State , Getter , Mutation , Action , Module (就是mapAction)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;state：vuex的基本数据，用来存储变量&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;getter：从基本数据(state)派生的数据，相当于state的计算属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;mutation：提交更新数据的方法，必须是同步的(如果需要异步使用action)。每个mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数，提交载荷作为第二个参数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;action：和mutation的功能大致相同，不同之处在于 ==》1. Action 提交的是 mutation，而不是直接变更状态。 2. Action 可以包含任意异步操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;modules：模块化vuex，可以让每一个模块拥有自己的state、mutation、action、getters,使得结构非常清晰，方便管理。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-vuex中如何异步修改状态&#34;&gt;3. Vuex中如何异步修改状态&lt;/h2&gt;
+&lt;p&gt;actions与mutations作用类似，都是可以对状态进行修改。不同的是actions是异步操作的。&lt;/p&gt;
+&lt;p&gt;actions是可以调用Mutations里的方法的。&lt;/p&gt;
+&lt;h2 id=&#34;4-vuex中actions和mutations的区别&#34;&gt;4. Vuex中actions和mutations的区别&lt;/h2&gt;
+&lt;p&gt;Mutation 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数&lt;/p&gt;
+&lt;p&gt;Action Action 类似于 mutation，不同在于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Action 提交的是 mutation，而不是直接变更状态。&lt;/li&gt;
+&lt;li&gt;Action 可以包含任意异步操作。 .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;8-移动端返回顶部&#34;&gt;8. 移动端返回顶部&lt;/h1&gt;
+&lt;p&gt;页面滚动到一定高度出现返回顶部按钮，点击返回顶部，按钮消失&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; mounted() {
+	window.addEventListener(&#39;scroll&#39;,function(){
+	 var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	 if(scrollTop&amp;gt;800){
+		 document.getElementById(&amp;quot;default_drag_return&amp;quot;).style.visibility=&amp;quot;visible&amp;quot;;
+		 
+	 }
+	 if(scrollTop&amp;lt;800){
+		 document.getElementById(&amp;quot;default_drag_return&amp;quot;).style.visibility=&amp;quot;hidden&amp;quot;;
+	 }
+	 });
+  },
+
+  methods: {
+	  topreturn:function(){
+		  document.documentElement.scrollTop = document.body.scrollTop =0;
+		  document.getElementById(&amp;quot;default_drag_return&amp;quot;).style.visibility=&amp;quot;hidden&amp;quot;;
+		  
+	  }
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;9-vue后台登录权限&#34;&gt;9. vue后台登录权限&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;大体思路&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所谓的根据不同的角色显示不同的页面，也就是根据不同的角色渲染不同的路由，顺着这个思路，我发现我们需要跟后端约定一个枚举值代表不同的角色，这个跟后端约定在登录的时候返回，然后根据这个字段来渲染不同的路由。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;1-跟后端进行讨论&#34;&gt;1. 跟后端进行讨论&lt;/h2&gt;
+&lt;p&gt;假设我们的系统分为A角色（只能查看A页面）、B角色（只能查看B页面）、root角色（可以看全部页面），需求方要求home页面为所有权限都可以显示的页面，和后端约定在登录后返回的请求题里面增加一个roleType字段，值可能为A、B、root，分别代码相应的权限。&lt;/p&gt;
+&lt;h2 id=&#34;2-登录方法的实现&#34;&gt;2. 登录方法的实现&lt;/h2&gt;
+&lt;p&gt;假设账号aaa为A角色的账号,bbb为B角色账号，除那里两个之外随便输入或者不输入都是root账号，在登录成功之后把roleType这个字段相应的值存到localStorage里面，然后跳转到home&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615974927825.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-编写渲染导航栏的静态数据&#34;&gt;3. 编写渲染导航栏的静态数据&lt;/h2&gt;
+&lt;p&gt;登录成功后我们就可以拿到roleType这个字段，根据之前和后端的约定我们需要对导航栏进行过滤。在这之前我们已经在assets/js 这个文件里新建了一个sideNavigationPath.js 文件，由于我们使用的是element-ui的组件，所以这里我们根据这个组件需要的数据格式把我们现有的路由页面在这里进行相应编写&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615975226480.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-过滤数据&#34;&gt;4. 过滤数据&lt;/h2&gt;
+&lt;p&gt;由于之前我们编写的sideNavigationPath里面是所有的页面的数据，所以我们需要根据roleType这个字段进行过滤，过滤完成后进行渲染注意可能会出现二级菜单的情况，我们认为只有二级菜单的上级菜单出现那么他就会出现，二级菜单本身不做权限管理（如果要做的话，就要改一下过滤方法改成递归，如果确定菜单最多二级的话在套一层循环也行）&lt;/p&gt;
+&lt;h2 id=&#34;5-渲染导航栏&#34;&gt;5. 渲染导航栏&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615976350819.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;6-总结&#34;&gt;6. 总结&lt;/h2&gt;
+&lt;p&gt;通过以上几步的讲解就可以完成一个基础的对路由的权限管理，总体来说首先我们要跟后端确定字段，然后编写一个静态文件，然后根据和后端确定的值进行过滤，然后根据数据格式进行先渲染。这些是只是一个项目最开始的样子，比如：文件模块的划分、数据存入vuex、路由细致化管理等等，以上代码只是帮助大家迅速了解权限管理前端应该怎么做，更细致的实现后面会有新的探讨。&lt;/p&gt;
+&lt;h1 id=&#34;10-vue实现带进度条的文件拖动上传&#34;&gt;10. Vue实现带进度条的文件拖动上传&lt;/h1&gt;
+&lt;h2 id=&#34;1-基本界面&#34;&gt;1. 基本界面&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;meta name=&amp;quot;viewport&amp;quot;
+          content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&amp;quot;&amp;gt;
+    &amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;ie=edge&amp;quot;&amp;gt;
+    &amp;lt;link href=&amp;quot;https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+    &amp;lt;script src=&amp;quot;https://cdn.bootcss.com/vue/2.5.13/vue.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;style&amp;gt;
+        .dropbox {
+            border: .25rem dashed #007bff;
+            min-height: 5rem;
+        }
+    &amp;lt;/style&amp;gt;
+    &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;div id=&amp;quot;app&amp;quot; class=&amp;quot;m-5&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;dropbox p-3&amp;quot;&amp;gt;
+        &amp;lt;h2 class=&amp;quot;text-center&amp;quot;&amp;gt;把要上传的文件拖动到这里&amp;lt;/h2&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;script&amp;gt;
+    new Vue({
+        el: &#39;#app&#39;,
+        data: {},
+        methods: {},
+        mounted: function () {}
+    });
+&amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615980095840.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;2-检测拖动事件&#34;&gt;2. 检测拖动事件&lt;/h2&gt;
+&lt;p&gt;首先让页面支持文件拖拽，在 Vue 的&lt;code&gt;mounted()&lt;/code&gt; 函数中添加代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mounted: function () {
+    var dropbox = document.querySelector(&#39;.dropbox&#39;);
+    dropbox.addEventListener(&#39;dragenter&#39;, this.onDrag, false);
+    dropbox.addEventListener(&#39;dragover&#39;, this.onDrag, false);
+    dropbox.addEventListener(&#39;drop&#39;, this.onDrop, false);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当把文件拖动到浏览器的拖动区域时，会触发三种事件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;文件第一次进入拖动区时，触发 dragenter 事件&lt;/li&gt;
+&lt;li&gt;文件在拖动区来回拖拽时，不断触发 dragover 事件&lt;/li&gt;
+&lt;li&gt;文件已经在拖动区，并松开鼠标时，触发 drop 事件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;实现拖动上传，我们只需要关心 drop 事件。不过另外两个事件也需要监听，目的是阻止浏览器默认行为。如果不阻止，那么把文件拖到浏览器时，浏览器就会自动下载这个文件（默认行为），drop 事件触发不出来。&lt;/p&gt;
+&lt;p&gt;事件的监听函数添加在 Vue 的 &lt;code&gt;methods&lt;/code&gt; 对象中：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;methods: {
+    uploadFile: function (file) {
+        console.log(file);
+    },
+    onDrag: function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+    },
+    onDrop: function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var dt = e.dataTransfer;
+        for (var i = 0; i !== dt.files.length; i++) {
+            this.uploadFile(dt.files[i]);
+        }
+    }
+},
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;onDrop()&lt;/code&gt; 函数中，通过&lt;code&gt;e.dataTransfer.files&lt;/code&gt; 可以拿到用户拖动到浏览器的文件的基本信息，&lt;code&gt;uploadFile()&lt;/code&gt; 函数现在只这些信息打印了出来，可以了解到，拖动到浏览器的每个文件都是一个 File 对象：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615980412873.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-处理拖动事件&#34;&gt;3. 处理拖动事件&lt;/h2&gt;
+&lt;p&gt;现在，我们要给 &lt;code&gt;uploadFile()&lt;/code&gt; 函数增加功能，实现拖动文件时，拖动区出现文件名和一个上传进度条。&lt;/p&gt;
+&lt;p&gt;首先在 Vue 的 data 对象中定义 &lt;strong&gt;files&lt;/strong&gt; 属性，用来保存所有拖动到浏览器中文件的名称。然后在&lt;code&gt;uploadFile()&lt;/code&gt; 函数每当被调用时，把文件名和上传进度保存到 files 中：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;data: {
+    files: []
+},
+methods: {
+    uploadFile: function (file) {
+        var item = {
+            name: file.name,
+            uploadPercentage: 67
+        };
+        this.files.push(item);
+    },
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上传进度的功能在后面再介绍，先写一个固定值。&lt;/p&gt;
+&lt;p&gt;相应地，在HTML代码中，用 &lt;code&gt;v-for&lt;/code&gt; 关键字显示 &lt;code&gt;files&lt;/code&gt; 的每一项：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;dropbox p-3&amp;quot;&amp;gt;
+    &amp;lt;h2 class=&amp;quot;text-center&amp;quot;&amp;gt;把要上传的文件拖动到这里&amp;lt;/h2&amp;gt;
+    &amp;lt;div class=&amp;quot;border m-2 d-inline-block p-4&amp;quot; style=&amp;quot;width:15rem&amp;quot; v-for=&amp;quot;file in files&amp;quot;&amp;gt;
+        &amp;lt;h5 class=&amp;quot;mt-0&amp;quot;&amp;gt;{{ file.name }}&amp;lt;/h5&amp;gt;
+        &amp;lt;div class=&amp;quot;progress&amp;quot;&amp;gt;
+            &amp;lt;div class=&amp;quot;progress-bar progress-bar-striped&amp;quot;
+                    :style=&amp;quot;{ width: file.uploadPercentage+&#39;%&#39; }&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;而且，“把要上传的文件拖动到这里” 的提示只在拖动区没有文件的时候才显示：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;h2 v-if=&amp;quot;files.length===0&amp;quot; class=&amp;quot;text-center&amp;quot;&amp;gt;把要上传的文件拖动到这里&amp;lt;/h2&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样，拖动效果就有了：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615980581346.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-文件上传&#34;&gt;4. 文件上传&lt;/h2&gt;
+&lt;p&gt;接下来实现真正的文件上传，继续往 &lt;code&gt;uploadFile()&lt;/code&gt; 函数添加代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;uploadFile: function (file) {
+    var item = {
+        name: file.name,
+        uploadPercentage: 67
+    };
+    this.files.push(item);
+    var fd = new FormData();
+    fd.append(&#39;myFile&#39;, file);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open(&#39;POST&#39;, &#39;upload.php&#39;, true);
+    xhr.send(fd);
+},
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里用到了 FormData，把要上传的文件附在了 FormData 上，并通过AJAX方式发送给PHP端。&lt;/p&gt;
+&lt;h2 id=&#34;5-进度条的展示&#34;&gt;5. 进度条的展示&lt;/h2&gt;
+&lt;p&gt;基本的上传功能完成了，最后我们来完成进度条。每当AJAX请求发送了一段时间的数据时，都会生成一个 progress 事件，我们可以监听 progress 事件来知道当前的上传进度：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;uploadFile: function (file) {
+    ...
+    xhr.upload.addEventListener(&#39;progress&#39;, function (e) {
+        item.uploadPercentage = Math.round((e.loaded * 100) / e.total);
+    }, false);
+    xhr.send(fd);
+},
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;e.loaded&lt;/code&gt; 代表当前AJAX发送了多少字节，e.total 代表AJAX总共要发送多少字节。通过这两个属性可以计算上传进度的百分比。&lt;/p&gt;
+&lt;p&gt;这样，一个带进度条的文件拖动上传功能就完成了。&lt;/p&gt;
+">【面】前端知识点梳理（Vue项目）</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-shou-xie-ti/"" data-c="
           &lt;h1 id=&#34;1-ip地址与整数的相互转换&#34;&gt;1 ip地址与整数的相互转换&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;//IP转成整型
@@ -2276,6 +2633,13 @@ this.$nextTick().then(cb)
 &lt;p&gt;在实际代码中，会对新旧两棵树进行一个深度的遍历，每个节点都会有一个标记。每遍历到一个节点就把该节点和新的树进行对比，如果有差异就记录到一个对象中。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;比较只会在同层级进行, 不会跨层级比较。&lt;/code&gt;&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615712855481.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;实现原理&#34;&gt;实现原理&lt;/h2&gt;
+&lt;p&gt;虚拟 DOM 的实现原理主要包括以下 3 部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;⽤ JavaScript 对象模拟真实 DOM 树，对真实 DOM 进⾏抽象；&lt;/li&gt;
+&lt;li&gt;diff 算法 — ⽐较两棵虚拟 DOM 树的差异；&lt;/li&gt;
+&lt;li&gt;pach 算法 — 将两个虚拟 DOM 对象的差异应⽤到真正的 DOM 树。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;7-如何实现一个自定义组件不同组件之间如何通信的&#34;&gt;7. 如何实现一个自定义组件，不同组件之间如何通信的？&lt;/h1&gt;
 &lt;p&gt;全局注册：Vue.component(tagName, options)&lt;/p&gt;
 &lt;p&gt;局部注册：在其他组件中的 components 属性中注册某个组件，就可以使用它了&lt;/p&gt;
