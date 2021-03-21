@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616306701243">
+<link rel="shortcut icon" href="/favicon.ico?v=1616312673144">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -251,12 +251,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>16<span class="language" data-lan="minute">分钟</span></span>
+      <span>18<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>3916<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>4389<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
@@ -476,12 +476,12 @@ function _ip2int(ip)
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>34<span class="language" data-lan="minute">分钟</span></span>
+      <span>40<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>9112<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>10306<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
@@ -550,12 +550,12 @@ function _ip2int(ip)
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>35<span class="language" data-lan="minute">分钟</span></span>
+      <span>40<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>9166<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>10800<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
@@ -1595,6 +1595,34 @@ methods: {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;e.loaded&lt;/code&gt; 代表当前AJAX发送了多少字节，e.total 代表AJAX总共要发送多少字节。通过这两个属性可以计算上传进度的百分比。&lt;/p&gt;
 &lt;p&gt;这样，一个带进度条的文件拖动上传功能就完成了。&lt;/p&gt;
+&lt;h1 id=&#34;10-vue防止用户手动修改url访问非权限页面&#34;&gt;10. Vue防止用户手动修改URL访问非权限页面&lt;/h1&gt;
+&lt;p&gt;今天在写filter的时候，要做一个防止用户手动修改URL访问非权限页面的验证。在网上搜索了下，&lt;/p&gt;
+&lt;p&gt;发现可以通过：&lt;code&gt;request.getHeader(&amp;quot;referer&amp;quot;);&lt;/code&gt;  &lt;br&gt;
+// js的话：javascript:document.referrer来防止，&lt;/p&gt;
+&lt;p&gt;如果返回值为null的话，说明是手动修改url访问的，然后进而通过后台，判断是否该登陆用户具&lt;/p&gt;
+&lt;p&gt;有访问权限，如果有，放行，否则，跳转到错误页面。&lt;/p&gt;
+&lt;p&gt;原理：&lt;code&gt;referer只有从别的页面点击连接来到这页的才会有内容，否则为null。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;request.getHeader(&amp;quot;referer&amp;quot;)的作用：&lt;/strong&gt;&lt;br&gt;
+①防止盗连，比如我是个下载软件的网站，在下载页面我先用referer来判断上一页面是不是自己网站，如果不是，说明有人盗连了你的下载地址。&lt;/p&gt;
+&lt;p&gt;②电子商务网站的安全，我在提交信用卡等重要信息的页面用referer来判断上一页是不是自己的网站，如果不是，可能是黑客用自己写的一个表单，来提交，为了能跳过你上一页里的javascript的验证等目的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public void doFilter(ServletRequest request, ServletResponse response,
+			FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse resp = (HttpServletResponse) response;
+		String conString = &amp;quot;&amp;quot;;
+		conString = req.getHeader(&amp;quot;REFERER&amp;quot;);//获取父url--如果不是直接输入的话就是先前的访问过来的页面，要是用户输入了，这个父url是不存在的
+		if(&amp;quot;&amp;quot;.equals(conString) || null==conString){ //判断如果上一个目录为空的话，说明是用户直接输入url访问的
+			String servletPath = req.getServletPath();//当前请求url，去掉几个可以直接访问的页面
+			if(servletPath.contains(&amp;quot;index.jsp&amp;quot;) || servletPath.contains(&amp;quot;admin/login.jsp&amp;quot;)){ //跳过index.jsp和登陆Login.jsp
+				chain.doFilter(request, response);
+			} else {
+				resp.sendRedirect(&amp;quot;/ejuornal/index.jsp&amp;quot;);//跳回首页
+			}
+		} else {
+			chain.doFilter(request, response);
+		}
+	}
+&lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（Vue项目）</a>
       </div>
       
@@ -2626,7 +2654,11 @@ this.$nextTick().then(cb)
 &lt;li&gt;diff 算法 — ⽐较两棵虚拟 DOM 树的差异；&lt;/li&gt;
 &lt;li&gt;pach 算法 — 将两个虚拟 DOM 对象的差异应⽤到真正的 DOM 树。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;7-如何实现一个自定义组件不同组件之间如何通信的&#34;&gt;7. 如何实现一个自定义组件，不同组件之间如何通信的？&lt;/h1&gt;
+&lt;h1 id=&#34;7-vue不同组件之间如何通信的&#34;&gt;7. Vue不同组件之间如何通信的？&lt;/h1&gt;
+&lt;p&gt;组件是 vue.js最强大的功能之一，而组件实例的作用域是相互独立的，这就意味着不同组件之间的数据无法相互引用。一般来说，组件可以有以下几种关系：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616310215248.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如上图所示，A 和 B、B 和 C、B 和 D 都是父子关系，C 和 D 是兄弟关系，A 和 C 是隔代关系（可能隔多代）。&lt;/p&gt;
+&lt;h2 id=&#34;0-组件注册&#34;&gt;0. 组件注册&lt;/h2&gt;
 &lt;p&gt;全局注册：Vue.component(tagName, options)&lt;/p&gt;
 &lt;p&gt;局部注册：在其他组件中的 components 属性中注册某个组件，就可以使用它了&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import HelloWorld from &#39;./components/HelloWorld&#39;
@@ -2637,14 +2669,270 @@ export default {
   }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;不同组件间通过 &lt;code&gt;props&lt;/code&gt; 和事件中心来通信：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;props 特性和非 props 特性&lt;/strong&gt;：父组件通过属性方式将数据传递给子组件，子组件通过写明 props 来接收数据，如果没有在 props 中接收这个数据，那么这个数据称为非 props 特性（除了 class 和 style），所有非 props 特性存储在 $attrs 中，在子组件中声明 inheritAttrs 为 false，非 props 特性不赋予在子组件的根元素上，再配合 v-bind=&amp;quot;$attrs&amp;quot; 绑定 $attrs 到非根元素上，这样非 props 特性就会赋予在非根元素上，如果是绑定到子组件的子组件，就可以达到跨组件通讯的目的了。&lt;/p&gt;
-&lt;p&gt;事件中心简单来说就是将所有事件放在一个对象中，通过一些 API 来管理这些事件。&lt;/p&gt;
-&lt;p&gt;我们知道子组件通过 &lt;strong&gt;$emit&lt;/strong&gt; 来触发定义在父组件的自定义事件，并且可以以此传递数据给父组件。这个过程并不是往父组件派发事件，而是往子组件实例派发事件，因为在子组件初始化时，就将所有定义在父组件的绑定在子组件的自定义事件的回调函数，通过 listeners 参数传递给子组件，然后将所有的回调函数以事件名为 key，以对应的回调函数组成的数组为 value，通过 $on 这个 API 添加到 vm._event 对象中（vm 为子组件实例），然后通过 $emit 可以触发具体的回调函数，通过 $off 可以删除具体的回调函数，通过 $once 可以让回调函数只执行一次（先执行 $emit 再执行 $off）。&lt;/p&gt;
-&lt;p&gt;所以，我们可以通过 $listeners （等同于 listeners 参数）来达到跨组件的目的，在子组件 A 的子组件 B 中这样使用：v-on=&amp;quot;$listeners&amp;quot; 可以将父组件的所有绑定在子组件 A 的自定义事件函数传给孙子组件 B，在初始化组件 B 时，就会将那些回调函数都添加到组件 B 实例的对象中，那么在组件 B 中执行 $emit 就可以触发对应的回调函数了。&lt;/p&gt;
-&lt;p&gt;也因此 bus 总线机制也就很好理解了，是在根实例的原型上生成一个 vue 实例，然后通过 $on 在这个实例中添加的回调函数，所有地方都可以通过 $emit 来触发这个回调函数，也达到了跨组件通信的目的（所有组件都可以通信了），因为它们都可以访问原型上的这个 vue 实例。&lt;/p&gt;
-&lt;p&gt;使用状态管理模式 vuex 实现数据共享，下面这道面试题来回答。&lt;/p&gt;
-&lt;p&gt;总结：不同组件之间的通信方式是多样的，因此应该统一规范通信方式，如此有利于代码的维护和开发效率，否则容易混淆一个数据的来源。&lt;/p&gt;
+&lt;h2 id=&#34;1-propsemit&#34;&gt;1. props/$emit&lt;/h2&gt;
+&lt;p&gt;父组件A通过props的方式向子组件B传递，B to A 通过在 B 组件中 $emit, A 组件中 v-on 的方式实现。&lt;/p&gt;
+&lt;h3 id=&#34;1-父组件向子组件传值&#34;&gt;1. 父组件向子组件传值&lt;/h3&gt;
+&lt;p&gt;接下来我们通过一个例子，说明父组件如何向子组件传递值：在子组件Users.vue中如何获取父组件App.vue中的数据 &lt;code&gt;users:[&amp;quot;Henry&amp;quot;,&amp;quot;Bucky&amp;quot;,&amp;quot;Emily&amp;quot;]&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//App.vue父组件
+&amp;lt;template&amp;gt;
+  &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+    &amp;lt;users v-bind:users=&amp;quot;users&amp;quot;&amp;gt;&amp;lt;/users&amp;gt;//前者自定义名称便于子组件调用，后者要传递数据名
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+import Users from &amp;quot;./components/Users&amp;quot;
+export default {
+  name: &#39;App&#39;,
+  data(){
+    return{
+      users:[&amp;quot;Henry&amp;quot;,&amp;quot;Bucky&amp;quot;,&amp;quot;Emily&amp;quot;]
+    }
+  },
+  components:{
+    &amp;quot;users&amp;quot;:Users
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;//users子组件
+&amp;lt;template&amp;gt;
+  &amp;lt;div class=&amp;quot;hello&amp;quot;&amp;gt;
+    &amp;lt;ul&amp;gt;
+      &amp;lt;li v-for=&amp;quot;user in users&amp;quot;&amp;gt;{{user}}&amp;lt;/li&amp;gt;//遍历传递过来的值，然后呈现到页面
+    &amp;lt;/ul&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+export default {
+  name: &#39;HelloWorld&#39;,
+  props:{
+    users:{           //这个就是父组件中子标签自定义名字
+      type:Array,
+      required:true
+    }
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;总结：父组件通过props向下传递数据给子组件。注：组件中的数据共有三种形式：data、props、computed&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-子组件向父组件传值通过事件形式&#34;&gt;2. 子组件向父组件传值（通过事件形式）&lt;/h3&gt;
+&lt;p&gt;接下来我们通过一个例子，说明子组件如何向父组件传递值：当我们点击“Vue.js Demo”后，子组件向父组件传递值，文字由原来的“传递的是一个值”变成“子向父组件传值”，实现子组件向父组件值的传递。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616310448077.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 子组件
+&amp;lt;template&amp;gt;
+  &amp;lt;header&amp;gt;
+    &amp;lt;h1 @click=&amp;quot;changeTitle&amp;quot;&amp;gt;{{title}}&amp;lt;/h1&amp;gt;//绑定一个点击事件
+  &amp;lt;/header&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+export default {
+  name: &#39;app-header&#39;,
+  data() {
+    return {
+      title:&amp;quot;Vue.js Demo&amp;quot;
+    }
+  },
+  methods:{
+    changeTitle() {
+      this.$emit(&amp;quot;titleChanged&amp;quot;,&amp;quot;子向父组件传值&amp;quot;);//自定义事件  传递值“子向父组件传值”
+    }
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;// 父组件
+&amp;lt;template&amp;gt;
+  &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+    &amp;lt;app-header v-on:titleChanged=&amp;quot;updateTitle&amp;quot; &amp;gt;&amp;lt;/app-header&amp;gt;//与子组件titleChanged自定义事件保持一致
+   // updateTitle($event)接受传递过来的文字
+    &amp;lt;h2&amp;gt;{{title}}&amp;lt;/h2&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+import Header from &amp;quot;./components/Header&amp;quot;
+export default {
+  name: &#39;App&#39;,
+  data(){
+    return{
+      title:&amp;quot;传递的是一个值&amp;quot;
+    }
+  },
+  methods:{
+    updateTitle(e){   //声明这个函数
+      this.title = e;
+    }
+  },
+  components:{
+   &amp;quot;app-header&amp;quot;:Header,
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;总结：子组件通过events给父组件发送消息，实际上就是子组件把自己的数据发送到父组件。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-emiton&#34;&gt;2. &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;/&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;emit/&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;on&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;这种方法通过一个空的Vue实例作为中央事件总线（事件中心），用它来触发事件和监听事件,巧妙而轻量地实现了任何组件间的通信，包括父子、兄弟、跨级&lt;/strong&gt;。当我们的项目比较大时，可以选择更好的状态管理解决方案vuex。&lt;/p&gt;
+&lt;h3 id=&#34;1-具体实现方式&#34;&gt;1. 具体实现方式：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    var Event=new Vue();
+    Event.$emit(事件名,数据);
+    Event.$on(事件名,data =&amp;gt; {});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-举个例子&#34;&gt;2. 举个例子&lt;/h3&gt;
+&lt;p&gt;假设兄弟组件有三个，分别是A、B、C组件，C组件如何获取A或者B组件的数据&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;itany&amp;quot;&amp;gt;
+    &amp;lt;my-a&amp;gt;&amp;lt;/my-a&amp;gt;
+    &amp;lt;my-b&amp;gt;&amp;lt;/my-b&amp;gt;
+    &amp;lt;my-c&amp;gt;&amp;lt;/my-c&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;template id=&amp;quot;a&amp;quot;&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;h3&amp;gt;A组件：{{name}}&amp;lt;/h3&amp;gt;
+    &amp;lt;button @click=&amp;quot;send&amp;quot;&amp;gt;将数据发送给C组件&amp;lt;/button&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;template id=&amp;quot;b&amp;quot;&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;h3&amp;gt;B组件：{{age}}&amp;lt;/h3&amp;gt;
+    &amp;lt;button @click=&amp;quot;send&amp;quot;&amp;gt;将数组发送给C组件&amp;lt;/button&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;template id=&amp;quot;c&amp;quot;&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;h3&amp;gt;C组件：{{name}}，{{age}}&amp;lt;/h3&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+var Event = new Vue();//定义一个空的Vue实例
+var A = {
+    template: &#39;#a&#39;,
+    data() {
+      return {
+        name: &#39;tom&#39;
+      }
+    },
+    methods: {
+      send() {
+        Event.$emit(&#39;data-a&#39;, this.name);
+      }
+    }
+}
+var B = {
+    template: &#39;#b&#39;,
+    data() {
+      return {
+        age: 20
+      }
+    },
+    methods: {
+      send() {
+        Event.$emit(&#39;data-b&#39;, this.age);
+      }
+    }
+}
+var C = {
+    template: &#39;#c&#39;,
+    data() {
+      return {
+        name: &#39;&#39;,
+        age: &amp;quot;&amp;quot;
+      }
+    },
+    mounted() {//在模板编译完成后执行
+     Event.$on(&#39;data-a&#39;,name =&amp;gt; {
+         this.name = name;//箭头函数内部不会产生新的this，这边如果不用=&amp;gt;,this指代Event
+     })
+     Event.$on(&#39;data-b&#39;,age =&amp;gt; {
+         this.age = age;
+     })
+    }
+}
+var vm = new Vue({
+    el: &#39;#itany&#39;,
+    components: {
+      &#39;my-a&#39;: A,
+      &#39;my-b&#39;: B,
+      &#39;my-c&#39;: C
+    }
+}); 
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616310652213.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+$on 监听了自定义事件 data-a和data-b，因为有时不确定何时会触发事件，一般会在 mounted 或 created 钩子中来监听。&lt;/p&gt;
+&lt;h2 id=&#34;3-vuex&#34;&gt;3. Vuex&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616310687124.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;1-vuex与localstorage&#34;&gt;1. Vuex与localStorage&lt;/h3&gt;
+&lt;p&gt;vuex 是 vue 的状态管理器，存储的数据是响应式的。但是并不会保存起来，刷新之后就回到了初始状态，&lt;strong&gt;具体做法应该在vuex里数据改变的时候把数据拷贝一份保存到localStorage里面，刷新之后，如果localStorage里有保存的数据，取出来再替换store里的state&lt;/strong&gt;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let defaultCity = &amp;quot;上海&amp;quot;
+try {   // 用户关闭了本地存储功能，此时在外层加个try...catch
+  if (!defaultCity){
+    defaultCity = JSON.parse(window.localStorage.getItem(&#39;defaultCity&#39;))
+  }
+}catch(e){}
+export default new Vuex.Store({
+  state: {
+    city: defaultCity
+  },
+  mutations: {
+    changeCity(state, city) {
+      state.city = city
+      try {
+      window.localStorage.setItem(&#39;defaultCity&#39;, JSON.stringify(state.city));
+      // 数据改变的时候把数据拷贝一份保存到localStorage里面
+      } catch (e) {}
+    }
+  }
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里需要注意的是：由于vuex里，我们保存的状态，都是数组，而localStorage只支持字符串，所以需要用JSON转换：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;JSON.stringify(state.subscribeList);   // array -&amp;gt; string
+JSON.parse(window.localStorage.getItem(&amp;quot;subscribeList&amp;quot;));    // string -&amp;gt; array 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-attrslisteners&#34;&gt;4. &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;/&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;attrs/&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;listeners&lt;/h2&gt;
+&lt;p&gt;多级组件嵌套需要传递数据时，通常使用的方法是通过vuex。但如果仅仅是传递数据，而不做中间处理，使用 vuex 处理，未免有点大材小用。为此Vue2.4 版本提供了另一种方法----$attrs/$listeners&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$attrs：包含了父作用域中不被 prop 所识别 (且获取) 的特性绑定 (class 和 style 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，并且可以通过 v-bind=&amp;quot;$attrs&amp;quot; 传入内部组件。通常配合 interitAttrs 选项一起使用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$listeners：包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 v-on=&amp;quot;$listeners&amp;quot; 传入内部组件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;简单来说：&lt;code&gt;$attrs&lt;/code&gt;与&lt;code&gt;$listeners&lt;/code&gt;是两个对象，&lt;code&gt;$attrs&lt;/code&gt;里存放的是父组件中绑定的非 Props 属性，&lt;code&gt;$listeners&lt;/code&gt;里存放的是父组件中绑定的非原生事件。&lt;/p&gt;
+&lt;h2 id=&#34;5-parent-children与-ref&#34;&gt;5. $parent / $children与 ref&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ref&lt;/code&gt;：如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$parent&lt;/code&gt;/ &lt;code&gt;$children&lt;/code&gt;：访问父 / 子实例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;需要注意的是：这两种都是直接得到组件实例，使用后可以直接调用组件的方法或访问数据。我们先来看个用&lt;code&gt;ref&lt;/code&gt;来访问组件的例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// component-a 子组件
+export default {
+  data () {
+    return {
+      title: &#39;Vue.js&#39;
+    }
+  },
+  methods: {
+    sayHello () {
+      window.alert(&#39;Hello&#39;);
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;// 父组件
+&amp;lt;template&amp;gt;
+  &amp;lt;component-a ref=&amp;quot;comA&amp;quot;&amp;gt;&amp;lt;/component-a&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+  export default {
+    mounted () {
+      const comA = this.$refs.comA;
+      console.log(comA.title);  // Vue.js
+      comA.sayHello();  // 弹窗
+    }
+  }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;不过，这两种方法的弊端是，无法在跨级或兄弟间通信。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们想在 component-a 中，访问到引用它的页面中（这里就是 parent.vue）的两个 component-b 组件，那这种情况下，就得配置额外的插件或工具了，比如 Vuex 和 Bus 的解决方案。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616312059426.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h1 id=&#34;8-vuex-的理解&#34;&gt;8. vuex 的理解&lt;/h1&gt;
 &lt;h2 id=&#34;1-初识vuex&#34;&gt;1. 初识VueX&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;VueX&lt;/code&gt;是适用于在&lt;code&gt;Vue&lt;/code&gt;项目开发时使用的状态管理工具。&lt;br&gt;
@@ -2660,7 +2948,7 @@ export default {
 &lt;li&gt;modules 模块化状态管理&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;21-vuex的工作流程&#34;&gt;2.1 VueX的工作流程&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616207478171.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616207478171.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;首先，&lt;code&gt;Vue&lt;/code&gt;组件如果调用某个&lt;code&gt;VueX&lt;/code&gt;的方法过程中需要向后端请求时或者说出现异步操作时，需要&lt;code&gt;dispatch&lt;/code&gt; VueX中&lt;code&gt;actions&lt;/code&gt;的方法，以保证数据的同步。可以说，&lt;code&gt;action&lt;/code&gt;的存在就是为了让&lt;code&gt;mutations&lt;/code&gt;中的方法能在异步操作中起作用。&lt;/p&gt;
 &lt;p&gt;如果没有异步操作，那么我们就可以直接在组件内提交状态中的&lt;code&gt;Mutations&lt;/code&gt;中自己编写的方法来达成对&lt;code&gt;state&lt;/code&gt;成员的操作。不建议在组件中直接对state中的成员进行操作，这是因为直接修改(例如：this.$store.state.name = &#39;hello&#39;)的话不能被&lt;code&gt;VueDevtools&lt;/code&gt;所监控到。&lt;/p&gt;
 &lt;p&gt;最后被修改后的&lt;code&gt;state&lt;/code&gt;成员会被渲染到组件的原位置当中去。&lt;/p&gt;
@@ -3074,7 +3362,7 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;li&gt;减少了服务器的负担，大大提升了网站的性能&lt;/li&gt;
 &lt;li&gt;加快了客户端加载网页的速度&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;3-cookie-session-token&#34;&gt;3. cookie, session, token&lt;/h1&gt;
+&lt;h1 id=&#34;3-token&#34;&gt;3. Token&lt;/h1&gt;
 &lt;h2 id=&#34;token&#34;&gt;Token&lt;/h2&gt;
 &lt;p&gt;在Web领域基于Token的身份验证随处可见。在大多数使用Web API的互联网公司中，tokens 是多用户下处理认证的最佳方式。&lt;/p&gt;
 &lt;p&gt;以下几点特性会让你在程序中使用基于Token的身份验证&lt;/p&gt;
@@ -3349,91 +3637,106 @@ fetch(&#39;http://localhost:9099/api/iframePost&#39;, {
 &lt;h1 id=&#34;11-前端安全xss-csrf&#34;&gt;11. 前端安全XSS、CSRF&lt;/h1&gt;
 &lt;h2 id=&#34;1-xss&#34;&gt;1. XSS&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;跨网站指令码（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程式的安全漏洞攻击，是代码注入的一种。它允许恶意使用者将程式码注入到网页上，其他使用者在观看网页时就会受到影响。这类攻击通常包含了 HTML 以及使用者端脚本语言。&lt;/p&gt;
+&lt;p&gt;跨网站指令码（英语：Cross-site scripting，通常简称为：XSS）XSS 攻击是指攻击者在网站上注入恶意的客户端代码，通过恶意脚本对客户端网页进行篡改，从而在用户浏览网页时，对用户浏览器进行控制或者获取用户隐私数据的一种攻击方式。&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;攻击者对客户端网页注入的恶意脚本一般包括 JavaScript，有时也会包含 HTML 和 Flash。有很多种方式进行 XSS 攻击，但它们的共同点为：将一些隐私数据像 cookie、session 发送给攻击者，将受害者重定向到一个由攻击者控制的网站，在受害者的机器上进行一些恶意操作。&lt;/p&gt;
 &lt;p&gt;XSS 分为三种：&lt;strong&gt;反射型，存储型和 DOM-based&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;如何攻击&#34;&gt;如何攻击&lt;/h3&gt;
-&lt;p&gt;XSS 通过修改 HTML 节点或者执行 JS 代码来攻击网站。&lt;/p&gt;
-&lt;p&gt;例如通过 URL 获取某些参数&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;!-- http://www.domain.com?name=&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; --&amp;gt;
-&amp;lt;div&amp;gt;{{name}}&amp;lt;/div&amp;gt;
+&lt;h3 id=&#34;1-反射性&#34;&gt;1. 反射性&lt;/h3&gt;
+&lt;p&gt;反射型 XSS 只是简单地把用户输入的数据 “反射” 给浏览器，这种攻击方式往往需要攻击者诱使用户点击一个恶意链接，或者提交一个表单，或者进入一个恶意网站时，注入脚本进入被攻击者的网站。&lt;/p&gt;
+&lt;p&gt;看一个示例。我先准备一个如下的静态页：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616308450110.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+当用户点击恶意链接时，页面跳转到攻击者预先准备的页面，会发现在攻击者的页面执行了 js 脚本：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616308453096.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这样就产生了反射型 XSS 攻击。攻击者可以注入任意的恶意脚本进行攻击，可能注入恶作剧脚本，或者注入能获取用户隐私数据(如cookie)的脚本，这取决于攻击者的目的。&lt;/p&gt;
+&lt;h3 id=&#34;2-存储型&#34;&gt;2. 存储型&lt;/h3&gt;
+&lt;p&gt;存储型 XSS 会把用户输入的数据 “存储” 在服务器端，当浏览器请求数据时，脚本从服务器上传回并执行。这种 XSS 攻击具有很强的稳定性。&lt;/p&gt;
+&lt;p&gt;比较常见的一个场景是攻击者在社区或论坛上写下一篇包含恶意 JavaScript 代码的文章或评论，文章或评论发表后，所有访问该文章或评论的用户，都会在他们的浏览器中执行这段恶意的 JavaScript 代码。&lt;/p&gt;
+&lt;p&gt;当用户点击提交按钮将输入信息提交到服务端时，服务端通过 userInput 变量保存了输入内容。当用户通过 http://localhost:8001/${id} 访问时，服务端会返回与 id 对应的内容(本示例简化了处理)。如果用户输入了恶意脚本内容，则其他用户访问该内容时，恶意脚本就会在浏览器端执行：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616308560547.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-基于dom&#34;&gt;3. 基于DOM&lt;/h3&gt;
+&lt;p&gt;基于 DOM 的 XSS 攻击是指通过恶意脚本修改页面的 DOM 结构，是纯粹发生在客户端的攻击。&lt;/p&gt;
+&lt;p&gt;点击 Submit 按钮后，会在当前页面插入一个链接，其地址为用户的输入内容。如果用户在输入时构造了如下内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&#39;&#39; onclick=alert(/xss/)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;上述 URL 输入可能会将 HTML 改为 &amp;lt;div&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&amp;lt;/div&amp;gt; ，这样页面中就凭空多了一段可执行脚本。这种攻击类型是反射型攻击，也可以说是 DOM-based 攻击。&lt;/p&gt;
-&lt;p&gt;也有另一种场景，比如写了一篇包含攻击代码 &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; 的文章，那么可能浏览文章的用户都会被攻击到。这种攻击类型是存储型攻击，也可以说是 DOM-based 攻击，并且这种攻击打击面更广。&lt;/p&gt;
-&lt;h3 id=&#34;如何防御&#34;&gt;如何防御&lt;/h3&gt;
-&lt;p&gt;最普遍的做法是转义输入输出的内容，对于引号，尖括号，斜杠进行转义&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function escape(str) {
-  str = str.replace(/&amp;amp;/g, &#39;&amp;amp;amp;&#39;)
-  str = str.replace(/&amp;lt;/g, &#39;&amp;amp;lt;&#39;)
-  str = str.replace(/&amp;gt;/g, &#39;&amp;amp;gt;&#39;)
-  str = str.replace(/&amp;quot;/g, &#39;&amp;amp;quto;&#39;)
-  str = str.replace(/&#39;/g, &#39;&amp;amp;#39;&#39;)
-  str = str.replace(/`/g, &#39;&amp;amp;#96;&#39;)
-  str = str.replace(/\//g, &#39;&amp;amp;#x2F;&#39;)
-  return str
+&lt;p&gt;用户提交之后，页面代码就变成了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href onlick=&amp;quot;alert(/xss/)&amp;quot;&amp;gt;testLink&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此时，用户点击生成的链接，就会执行对应的脚本：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616308646010.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-xss攻击的防范&#34;&gt;2. XSS攻击的防范&lt;/h2&gt;
+&lt;p&gt;现在主流的浏览器内置了防范 XSS 的措施，例如 CSP。但对于开发者来说，也应该寻找可靠的解决方案来防止 XSS 攻击。&lt;/p&gt;
+&lt;h3 id=&#34;1-httponly-防止劫取-cookie&#34;&gt;1. HttpOnly 防止劫取 Cookie&lt;/h3&gt;
+&lt;p&gt;浏览器将禁止页面的Javascript 访问带有 HttpOnly 属性的Cookie。&lt;/p&gt;
+&lt;p&gt;上文有说到，攻击者可以通过注入恶意脚本获取用户的 Cookie 信息。通常 Cookie 中都包含了用户的登录凭证信息，攻击者在获取到 Cookie 之后，则可以发起 Cookie 劫持攻击。所以，严格来说，HttpOnly 并非阻止 XSS 攻击，而是能阻止 XSS 攻击后的 Cookie 劫持攻击。&lt;/p&gt;
+&lt;h3 id=&#34;2-输入检查&#34;&gt;2. 输入检查&lt;/h3&gt;
+&lt;p&gt;不要相信用户的任何输入。 对于用户的任何输入要进行检查、过滤和转义。建立可信任的字符和 HTML 标签白名单，对于不在白名单之列的字符或者标签进行过滤或编码。&lt;/p&gt;
+&lt;p&gt;在 XSS 防御中，输入检查一般是检查用户输入的数据中是否包含 &amp;lt;，&amp;gt; 等特殊字符，如果存在，则对特殊字符进行过滤或编码，这种方式也称为 XSS Filter。&lt;/p&gt;
+&lt;p&gt;而在一些前端框架中，都会有一份 decodingMap， 用于对用户输入所包含的特殊字符或标签进行编码或过滤，如 &amp;lt;，&amp;gt;，script，防止 XSS 攻击：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// vuejs 中的 decodingMap
+// 在 vuejs 中，如果输入带 script 标签的内容，会直接过滤掉
+const decodingMap = {
+  &#39;&amp;amp;lt;&#39;: &#39;&amp;lt;&#39;,
+  &#39;&amp;amp;gt;&#39;: &#39;&amp;gt;&#39;,
+  &#39;&amp;amp;quot;&#39;: &#39;&amp;quot;&#39;,
+  &#39;&amp;amp;amp;&#39;: &#39;&amp;amp;&#39;,
+  &#39;
+  &#39;: &#39;\n&#39;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;通过转义可以将攻击代码 &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; 变成&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// -&amp;gt; &amp;amp;lt;script&amp;amp;gt;alert(1)&amp;amp;lt;&amp;amp;#x2F;script&amp;amp;gt;
-escape(&#39;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;对于显示富文本来说，不能通过上面的办法来转义所有字符，因为这样会把需要的格式也过滤掉。这种情况通常采用白名单过滤的办法，当然也可以通过黑名单过滤，但是考虑到需要过滤的标签和标签属性实在太多，更加推荐使用白名单的方式。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var xss = require(&#39;xss&#39;)
-var html = xss(&#39;&amp;lt;h1 id=&amp;quot;title&amp;quot;&amp;gt;XSS Demo&amp;lt;/h1&amp;gt;&amp;lt;script&amp;gt;alert(&amp;quot;xss&amp;quot;);&amp;lt;/script&amp;gt;&#39;)
-// -&amp;gt; &amp;lt;h1&amp;gt;XSS Demo&amp;lt;/h1&amp;gt;&amp;amp;lt;script&amp;amp;gt;alert(&amp;quot;xss&amp;quot;);&amp;amp;lt;/script&amp;amp;gt;
-console.log(html)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;以上示例使用了 js-xss 来实现。可以看到在输出中保留了 h1 标签且过滤了 script 标签&lt;/p&gt;
-&lt;h2 id=&#34;2-csp&#34;&gt;2. CSP&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;内容安全策略 (CSP) 是一个额外的安全层，用于检测并削弱某些特定类型的攻击，包括跨站脚本 (XSS) 和数据注入攻击等。无论是数据盗取、网站内容污染还是散发恶意软件，这些攻击都是主要的手段。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;我们可以通过 CSP 来尽量减少 XSS 攻击。CSP 本质上也是建立白名单，规定了浏览器只能够执行特定来源的代码。&lt;/p&gt;
-&lt;p&gt;通常可以通过 &lt;code&gt;HTTP Header&lt;/code&gt; 中的 &lt;code&gt;Content-Security-Policy&lt;/code&gt; 来开启 CSP&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;只允许加载本站资源&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;Content-Security-Policy: default-src ‘self’
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;只允许加载 HTTPS 协议图片&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;Content-Security-Policy: img-src https://*
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;允许加载任何来源框架&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;Content-Security-Policy: child-src &#39;none&#39;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-输出检查&#34;&gt;3. 输出检查&lt;/h3&gt;
+&lt;p&gt;用户的输入会存在问题，服务端的输出也会存在问题。一般来说，除富文本的输出外，在变量输出到 HTML 页面时，可以使用编码或转义的方式来防御 XSS 攻击。例如利用 sanitize-html 对输出内容进行有规则的过滤之后再输出到页面中。&lt;/p&gt;
 &lt;h2 id=&#34;3-csrf&#34;&gt;3. CSRF&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。[1] 跟跨網站指令碼（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。&lt;/p&gt;
+&lt;p&gt;跨站请求伪造（英语：Cross-site request forgery），中译是跨站请求伪造，是一种劫持受信任用户向服务器发送非预期请求的攻击方式。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;简单点说：攻击者盗用了你的身份，以你的名义发送恶意请求，容易造成个人隐私泄露以及财产安全。&lt;br&gt;
+&lt;p&gt;通常情况下，CSRF 攻击是攻击者借助受害者的 Cookie 骗取服务器的信任，可以在受害者毫不知情的情况下以受害者名义伪造请求发送给受攻击服务器，从而在并未授权的情况下执行在权限保护之下的操作。&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615455801140.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;如何攻击-2&#34;&gt;如何攻击&lt;/h3&gt;
-&lt;p&gt;假设网站中有一个通过 Get 请求提交用户评论的接口，那么攻击者就可以在钓鱼网站中加入一个图片，图片的地址就是评论接口&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src=&amp;quot;http://www.domain.com/xxx?comment=&#39;attack&#39;&amp;quot; /&amp;gt;
+&lt;h3 id=&#34;1-浏览器的-cookie-策略&#34;&gt;1. 浏览器的 Cookie 策略&lt;/h3&gt;
+&lt;p&gt;Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。Cookie 主要用于以下两个方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）&lt;/li&gt;
+&lt;li&gt;个性化设置（如用户自定义设置、主题等）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而浏览器所持有的 Cookie 分为两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Session Cookie(会话期 Cookie)：会话期 Cookie 是最简单的Cookie，它不需要指定过期时间（Expires）或者有效期（Max-Age），它仅在会话期内有效，浏览器关闭之后它会被自动删除。&lt;/li&gt;
+&lt;li&gt;Permanent Cookie(持久性 Cookie)：与会话期 Cookie 不同的是，持久性 Cookie 可以指定一个特定的过期时间（Expires）或有效期（Max-Age）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;res.setHeader(&#39;Set-Cookie&#39;, [&#39;mycookie=222&#39;, &#39;test=3333; expires=Sat, 21 Jul 2018 00:00:00 GMT;&#39;]);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果接口是 Post 提交的，就相对麻烦点，需要用表单来提交接口&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;form action=&amp;quot;http://www.domain.com/xxx&amp;quot; id=&amp;quot;CSRF&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;
-  &amp;lt;input name=&amp;quot;comment&amp;quot; value=&amp;quot;attack&amp;quot; type=&amp;quot;hidden&amp;quot; /&amp;gt;
-&amp;lt;/form&amp;gt;
+&lt;p&gt;上述代码创建了两个 Cookie：mycookie 和 test，前者属于会话期 Cookie，后者则属于持久性 Cookie。当我们去查看 Cookie 相关的属性时，不同的浏览器对会话期 Cookie 的 Expires 属性值会不一样：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616309731128.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+每个 Cookie 都会有与之关联的域，这个域的范围一般通过 donmain 属性指定。如果 Cookie 的域和页面的域相同，那么我们称这个 Cookie 为第一方 Cookie（first-party cookie），如果 Cookie 的域和页面的域不同，则称之为第三方 Cookie（third-party cookie）。一个页面包含图片或存放在其他域上的资源（如图片）时，第一方的 Cookie 也只会发送给设置它们的服务器。&lt;/p&gt;
+&lt;h3 id=&#34;2-通过-cookie-进行-csrf-攻击&#34;&gt;2. 通过 Cookie 进行 CSRF 攻击&lt;/h3&gt;
+&lt;p&gt;假设有一个 bbs 站点：http://www.c.com，当登录后的用户发起如下 GET 请求时，会删除 ID 指定的帖子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://www.c.com:8002/content/delete/:id
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;如何防御-2&#34;&gt;如何防御&lt;/h3&gt;
-&lt;p&gt;防范 CSRF 可以遵循以下几种规则：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Get 请求不对数据进行修改&lt;/li&gt;
-&lt;li&gt;不让第三方网站访问到用户 Cookie&lt;/li&gt;
-&lt;li&gt;阻止第三方网站请求接口&lt;/li&gt;
-&lt;li&gt;请求时附带验证信息，比如验证码或者 token&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;SameSite&lt;/strong&gt;&lt;br&gt;
-可以对 Cookie 设置 SameSite 属性。该属性设置 Cookie 不随着跨域请求发送，该属性可以很大程度减少 CSRF 的攻击，但是该属性目前并不是所有浏览器都兼容。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;验证 Referer&lt;/strong&gt;&lt;br&gt;
-对于需要防范 CSRF 的请求，我们可以通过验证 Referer 来判断该请求是否为第三方网站发起的。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Token&lt;/strong&gt;&lt;br&gt;
-服务器下发一个随机 Token（算法不能复杂），每次发起请求时将 Token 携带上，服务器验证 Token 是否有效。&lt;/p&gt;
+&lt;p&gt;如发起 http://www.c.com:8002/content/delete/87343 请求时，会删除 id 为 87343 的帖子。当用户登录之后，会设置如下 cookie：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;res.setHeader(&#39;Set-Cookie&#39;, [&#39;user=22333; expires=Sat, 21 Jul 2018 00:00:00 GMT;&#39;]);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616309827160.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+user 对应的值是用户 ID。然后构造一个页面 A：&lt;/p&gt;
+&lt;p&gt;CSRF 攻击者准备的网站：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;CSRF 攻击者准备的网站：&amp;lt;/p&amp;gt;
+&amp;lt;img src=&amp;quot;http://www.c.com:8002/content/delete/87343&amp;quot;&amp;gt;
+页面 A 使用了一个 img 标签，其地址指向了删除用户帖子的链接：
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616309871152.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+可以看到，当登录用户访问攻击者的网站时，会向 www.c.com 发起一个删除用户帖子的请求。此时若用户在切换到 www.c.com 的帖子页面刷新，会发现ID 为 87343 的帖子已经被删除。&lt;/p&gt;
+&lt;p&gt;由于 Cookie 中包含了用户的认证信息，当用户访问攻击者准备的攻击环境时，攻击者就可以对服务器发起 CSRF 攻击。在这个攻击过程中，攻击者借助受害者的 Cookie 骗取服务器的信任，但并不能拿到 Cookie，也看不到 Cookie 的内容。而对于服务器返回的结果，由于浏览器同源策略的限制，攻击者也无法进行解析。因此，攻击者无法从返回的结果中得到任何东西，他所能做的就是给服务器发送请求，以执行请求中所描述的命令，在服务器端直接改变数据的值，而非窃取服务器中的数据。&lt;/p&gt;
+&lt;p&gt;但若 CSRF 攻击的目标并不需要使用 Cookie，则也不必顾虑浏览器的 Cookie 策略了。&lt;/p&gt;
+&lt;h2 id=&#34;4-csrf-攻击的防范&#34;&gt;4. CSRF 攻击的防范&lt;/h2&gt;
+&lt;p&gt;当前，对 CSRF 攻击的防范措施主要有如下几种方式。&lt;/p&gt;
+&lt;h3 id=&#34;1-验证码&#34;&gt;1. 验证码&lt;/h3&gt;
+&lt;p&gt;验证码被认为是对抗 CSRF 攻击最简洁而有效的防御方法。&lt;/p&gt;
+&lt;p&gt;从上述示例中可以看出，CSRF 攻击往往是在用户不知情的情况下构造了网络请求。而验证码会强制用户必须与应用进行交互，才能完成最终请求。因为通常情况下，验证码能够很好地遏制 CSRF 攻击。&lt;/p&gt;
+&lt;p&gt;但验证码并不是万能的，因为出于用户考虑，不能给网站所有的操作都加上验证码。因此，验证码只能作为防御 CSRF 的一种辅助手段，而不能作为最主要的解决方案。&lt;/p&gt;
+&lt;h3 id=&#34;2-referer-check&#34;&gt;2. Referer Check&lt;/h3&gt;
+&lt;p&gt;根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址。通过 Referer Check，可以检查请求是否来自合法的”源”。&lt;/p&gt;
+&lt;p&gt;比如，如果用户要删除自己的帖子，那么先要登录 www.c.com，然后找到对应的页面，发起删除帖子的请求。此时，Referer 的值是 http://www.c.com；当请求是从 www.a.com 发起时，Referer 的值是 http://www.a.com 了。因此，要防御 CSRF 攻击，只需要对于每一个删帖请求验证其 Referer 值，如果是以 www.c.com 开头的域名，则说明该请求是来自网站自己的请求，是合法的。如果 Referer 是其他网站的话，则有可能是 CSRF 攻击，可以拒绝该请求。&lt;/p&gt;
+&lt;p&gt;Referer Check 不仅能防范 CSRF 攻击，另一个应用场景是 “防止图片盗链”。&lt;/p&gt;
+&lt;h3 id=&#34;3-添加-token-验证token令牌&#34;&gt;3. 添加 token 验证(token==令牌)&lt;/h3&gt;
+&lt;p&gt;CSRF 攻击之所以能够成功，是因为攻击者可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于 Cookie 中，因此攻击者可以在不知道这些验证信息的情况下直接利用用户自己的 Cookie 来通过安全验证。要抵御 CSRF，关键在于在请求中放入攻击者所不能伪造的信息，并且该信息不存在于 Cookie 之中。可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。&lt;/p&gt;
 &lt;h1 id=&#34;12-websocket&#34;&gt;12. websocket&lt;/h1&gt;
 &lt;p&gt;webSocket是一项可以让服务器将数据主动推送给客户端的技术。&lt;/p&gt;
 &lt;h2 id=&#34;1-什么是websocket&#34;&gt;1. 什么是WebSocket&lt;/h2&gt;
