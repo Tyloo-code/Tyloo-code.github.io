@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（ES6） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1615985234046">
+<link rel="shortcut icon" href="/favicon.ico?v=1616305479329">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1119,8 +1119,8 @@ setTimeout (function(){
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="【面】前端知识点梳理（浏览器+复杂度）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-liu-lan-qi/">【面】前端知识点梳理（浏览器+复杂度）</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="【面】前端知识点梳理（浏览器+复杂度）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-liu-lan-qi/">上一篇</a>
+        <a class="nav-pc-next" title="【面】前端知识点梳理（浏览器）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-liu-lan-qi/">【面】前端知识点梳理（浏览器）</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="【面】前端知识点梳理（浏览器）" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-liu-lan-qi/">上一篇</a>
       
     </div>
     <div class="nav-next">
@@ -1760,43 +1760,7 @@ TypeScript 的结合变得很容易。&lt;/p&gt;
 &lt;p&gt;元素完成了更新，但是滚动条的位置也要完成更新，因为实际上此时可见区域的item4并不是之前列表DOM中的第4个元素了，而是变成了第1个元素，所以滚动条此时位置变回到了列表的起点，这里需要给列表一个padding-top值，设成3倍元素高度size，从而维持滚动条的位置。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;7-vuex&#34;&gt;7. VueX&lt;/h1&gt;
-&lt;h2 id=&#34;1-vuex是什么怎么使用哪种功能场景使用它&#34;&gt;1. vuex是什么？怎么使用？哪种功能场景使用它？&lt;/h2&gt;
-&lt;p&gt;Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。简单来说就是：应用遇到多个组件共享状态时，使用vuex。&lt;/p&gt;
-&lt;p&gt;场景：多个组件共享数据或者是跨组件传递数据时&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;vuex的流程&lt;/strong&gt;&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615511816855.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-页面通过mapAction异步提交事件到action。action通过commit把对应参数同步提交到mutation，mutation会修改state中对应的值。最后通过getter把对应值跑出去，在页面的计算属性中，通过，mapGetter来动态获取state中的值&lt;/p&gt;
-&lt;h2 id=&#34;2-vuex有哪几种属性&#34;&gt;2. vuex有哪几种属性&lt;/h2&gt;
-&lt;p&gt;有五种,分别是State , Getter , Mutation , Action , Module (就是mapAction)&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;state：vuex的基本数据，用来存储变量&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;getter：从基本数据(state)派生的数据，相当于state的计算属性&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;mutation：提交更新数据的方法，必须是同步的(如果需要异步使用action)。每个mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数，提交载荷作为第二个参数。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;action：和mutation的功能大致相同，不同之处在于 ==》1. Action 提交的是 mutation，而不是直接变更状态。 2. Action 可以包含任意异步操作。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;modules：模块化vuex，可以让每一个模块拥有自己的state、mutation、action、getters,使得结构非常清晰，方便管理。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;3-vuex中如何异步修改状态&#34;&gt;3. Vuex中如何异步修改状态&lt;/h2&gt;
-&lt;p&gt;actions与mutations作用类似，都是可以对状态进行修改。不同的是actions是异步操作的。&lt;/p&gt;
-&lt;p&gt;actions是可以调用Mutations里的方法的。&lt;/p&gt;
-&lt;h2 id=&#34;4-vuex中actions和mutations的区别&#34;&gt;4. Vuex中actions和mutations的区别&lt;/h2&gt;
-&lt;p&gt;Mutation 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数&lt;/p&gt;
-&lt;p&gt;Action Action 类似于 mutation，不同在于：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Action 提交的是 mutation，而不是直接变更状态。&lt;/li&gt;
-&lt;li&gt;Action 可以包含任意异步操作。 .&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;8-移动端返回顶部&#34;&gt;8. 移动端返回顶部&lt;/h1&gt;
+&lt;h1 id=&#34;7-移动端返回顶部&#34;&gt;7. 移动端返回顶部&lt;/h1&gt;
 &lt;p&gt;页面滚动到一定高度出现返回顶部按钮，点击返回顶部，按钮消失&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; mounted() {
 	window.addEventListener(&#39;scroll&#39;,function(){
@@ -1819,7 +1783,7 @@ TypeScript 的结合变得很容易。&lt;/p&gt;
 	  }
   }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;9-vue后台登录权限&#34;&gt;9. vue后台登录权限&lt;/h1&gt;
+&lt;h1 id=&#34;8-vue后台登录权限&#34;&gt;8. vue后台登录权限&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;大体思路&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;所谓的根据不同的角色显示不同的页面，也就是根据不同的角色渲染不同的路由，顺着这个思路，我发现我们需要跟后端约定一个枚举值代表不同的角色，这个跟后端约定在登录的时候返回，然后根据这个字段来渲染不同的路由。&lt;/p&gt;
@@ -1838,7 +1802,7 @@ TypeScript 的结合变得很容易。&lt;/p&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615976350819.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;6-总结&#34;&gt;6. 总结&lt;/h2&gt;
 &lt;p&gt;通过以上几步的讲解就可以完成一个基础的对路由的权限管理，总体来说首先我们要跟后端确定字段，然后编写一个静态文件，然后根据和后端确定的值进行过滤，然后根据数据格式进行先渲染。这些是只是一个项目最开始的样子，比如：文件模块的划分、数据存入vuex、路由细致化管理等等，以上代码只是帮助大家迅速了解权限管理前端应该怎么做，更细致的实现后面会有新的探讨。&lt;/p&gt;
-&lt;h1 id=&#34;10-vue实现带进度条的文件拖动上传&#34;&gt;10. Vue实现带进度条的文件拖动上传&lt;/h1&gt;
+&lt;h1 id=&#34;9-vue实现带进度条的文件拖动上传&#34;&gt;9. Vue实现带进度条的文件拖动上传&lt;/h1&gt;
 &lt;h2 id=&#34;1-基本界面&#34;&gt;1. 基本界面&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
 &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
@@ -3021,29 +2985,241 @@ export default {
 &lt;p&gt;&lt;strong&gt;props 特性和非 props 特性&lt;/strong&gt;：父组件通过属性方式将数据传递给子组件，子组件通过写明 props 来接收数据，如果没有在 props 中接收这个数据，那么这个数据称为非 props 特性（除了 class 和 style），所有非 props 特性存储在 $attrs 中，在子组件中声明 inheritAttrs 为 false，非 props 特性不赋予在子组件的根元素上，再配合 v-bind=&amp;quot;$attrs&amp;quot; 绑定 $attrs 到非根元素上，这样非 props 特性就会赋予在非根元素上，如果是绑定到子组件的子组件，就可以达到跨组件通讯的目的了。&lt;/p&gt;
 &lt;p&gt;事件中心简单来说就是将所有事件放在一个对象中，通过一些 API 来管理这些事件。&lt;/p&gt;
 &lt;p&gt;我们知道子组件通过 &lt;strong&gt;$emit&lt;/strong&gt; 来触发定义在父组件的自定义事件，并且可以以此传递数据给父组件。这个过程并不是往父组件派发事件，而是往子组件实例派发事件，因为在子组件初始化时，就将所有定义在父组件的绑定在子组件的自定义事件的回调函数，通过 listeners 参数传递给子组件，然后将所有的回调函数以事件名为 key，以对应的回调函数组成的数组为 value，通过 $on 这个 API 添加到 vm._event 对象中（vm 为子组件实例），然后通过 $emit 可以触发具体的回调函数，通过 $off 可以删除具体的回调函数，通过 $once 可以让回调函数只执行一次（先执行 $emit 再执行 $off）。&lt;/p&gt;
-&lt;p&gt;所以，我们可以通过 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;（&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;等&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;同&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;于&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;参&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;数&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;）&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;来&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;达&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;到&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;跨&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;组&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;件&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;目&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;在&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;子&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;组&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;件&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;子&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;组&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;件&lt;/mi&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;中&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;这&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;样&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;使&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;用&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;：&lt;/mi&gt;&lt;mi&gt;v&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;&amp;quot;&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;listeners （等同于 listeners 参数）来达到跨组件的目的，在子组件 A 的子组件 B 中这样使用：v-on=&amp;quot;&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.77777em;vertical-align:-0.08333em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;等&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;同&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;于&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;参&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;数&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;）&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;来&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;达&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;到&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;跨&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;组&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;件&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;目&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;在&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;子&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;组&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;件&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;子&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;组&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;件&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05017em;&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;中&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;这&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;样&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;使&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;用&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.03588em;&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;listeners&amp;quot; 可以将父组件的所有绑定在子组件 A 的自定义事件函数传给孙子组件 B，在初始化组件 B 时，就会将那些回调函数都添加到组件 B 实例的对象中，那么在组件 B 中执行 $emit 就可以触发对应的回调函数了。&lt;/p&gt;
+&lt;p&gt;所以，我们可以通过 $listeners （等同于 listeners 参数）来达到跨组件的目的，在子组件 A 的子组件 B 中这样使用：v-on=&amp;quot;$listeners&amp;quot; 可以将父组件的所有绑定在子组件 A 的自定义事件函数传给孙子组件 B，在初始化组件 B 时，就会将那些回调函数都添加到组件 B 实例的对象中，那么在组件 B 中执行 $emit 就可以触发对应的回调函数了。&lt;/p&gt;
 &lt;p&gt;也因此 bus 总线机制也就很好理解了，是在根实例的原型上生成一个 vue 实例，然后通过 $on 在这个实例中添加的回调函数，所有地方都可以通过 $emit 来触发这个回调函数，也达到了跨组件通信的目的（所有组件都可以通信了），因为它们都可以访问原型上的这个 vue 实例。&lt;/p&gt;
 &lt;p&gt;使用状态管理模式 vuex 实现数据共享，下面这道面试题来回答。&lt;/p&gt;
 &lt;p&gt;总结：不同组件之间的通信方式是多样的，因此应该统一规范通信方式，如此有利于代码的维护和开发效率，否则容易混淆一个数据的来源。&lt;/p&gt;
 &lt;h1 id=&#34;8-vuex-的理解&#34;&gt;8. vuex 的理解&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;vuex 是什么？&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;当我们的项目中多个组件之间进行复杂的数据传值困难的时候，如果我们能把这些公用数据放在一个公共的存储空间去存储，一个组件改变了一个数据，其他的组件就能感知到。&lt;/p&gt;
-&lt;p&gt;将这个存储空间理解成一个 store 仓库，由几部分组成：&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615511816855.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;p&gt;所有的公用数据都存储在 state 之中，如果组件想&lt;strong&gt;调用数据&lt;/strong&gt;，直接调用 state 就行，有的时候要&lt;strong&gt;改变 state 数据&lt;/strong&gt;，不能直接用组件去改变 state 数据，必须走一个流程，如果我有异步操作，那么我把异步操作放在 actions 中，或者比较复杂的同步操作，比如批量的同步操作，也可以放在 actions 里面，组件先去调用 actions，actions 去调用 mutations，mutations 放的是同步的对 state 的修改，只有通过 mutations 才能改变公用数据的值。&lt;/p&gt;
-&lt;p&gt;但这个流程也不是绝对的，有的时候可以绕过 actions，让组件直接去调用 mutations 修改state 里面的数据，这块需要额外注意的是：当组件调用 actions 的时候，我们调用的是&lt;code&gt;dispatch&lt;/code&gt;方法，然后组件去调用 mutations 的时候，或者 actions 去调用 mutations 的时候，我们都需要调用的 &lt;code&gt;commit&lt;/code&gt; 这个方法，其实就是一个单向数据的改变流程。&lt;/p&gt;
-&lt;p&gt;在使用 vuex 的时候，还可以借助 Devtools 这个开发者工具，帮助我们做代码的调试。&lt;/p&gt;
-&lt;h1 id=&#34;9-proxy-相比于-defineproperty-的优势&#34;&gt;9. Proxy 相比于 defineProperty 的优势&lt;/h1&gt;
+&lt;h2 id=&#34;1-初识vuex&#34;&gt;1. 初识VueX&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;VueX&lt;/code&gt;是适用于在&lt;code&gt;Vue&lt;/code&gt;项目开发时使用的状态管理工具。&lt;br&gt;
+&lt;code&gt;Vue&lt;/code&gt;为这些被多个组件频繁使用的值提供了一个统一管理的工具——&lt;code&gt;VueX&lt;/code&gt;。在具有VueX的Vue项目中，我们只需要把这些值定义在VueX中，即可在整个Vue项目的组件中使用。&lt;/p&gt;
+&lt;h2 id=&#34;2-vuex中的核心内容&#34;&gt;2. VueX中的核心内容&lt;/h2&gt;
+&lt;p&gt;在VueX对象中，其实不止有&lt;code&gt;state&lt;/code&gt;，还有用来操作&lt;code&gt;state&lt;/code&gt;中数据的方法集，以及当我们需要对state中的数据需要加工的方法集等等成员。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;成员列表：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;state 存放状态&lt;/li&gt;
+&lt;li&gt;mutations state成员操作&lt;/li&gt;
+&lt;li&gt;getters 加工state成员给外界&lt;/li&gt;
+&lt;li&gt;actions 异步操作&lt;/li&gt;
+&lt;li&gt;modules 模块化状态管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;21-vuex的工作流程&#34;&gt;2.1 VueX的工作流程&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616207478171.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;首先，&lt;code&gt;Vue&lt;/code&gt;组件如果调用某个&lt;code&gt;VueX&lt;/code&gt;的方法过程中需要向后端请求时或者说出现异步操作时，需要&lt;code&gt;dispatch&lt;/code&gt; VueX中&lt;code&gt;actions&lt;/code&gt;的方法，以保证数据的同步。可以说，&lt;code&gt;action&lt;/code&gt;的存在就是为了让&lt;code&gt;mutations&lt;/code&gt;中的方法能在异步操作中起作用。&lt;/p&gt;
+&lt;p&gt;如果没有异步操作，那么我们就可以直接在组件内提交状态中的&lt;code&gt;Mutations&lt;/code&gt;中自己编写的方法来达成对&lt;code&gt;state&lt;/code&gt;成员的操作。不建议在组件中直接对state中的成员进行操作，这是因为直接修改(例如：this.$store.state.name = &#39;hello&#39;)的话不能被&lt;code&gt;VueDevtools&lt;/code&gt;所监控到。&lt;/p&gt;
+&lt;p&gt;最后被修改后的&lt;code&gt;state&lt;/code&gt;成员会被渲染到组件的原位置当中去。&lt;/p&gt;
+&lt;h3 id=&#34;22-mutations&#34;&gt;2.2 Mutations&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;mutations&lt;/code&gt;是操作&lt;code&gt;state&lt;/code&gt;数据的方法的集合，比如对该数据的修改、增加、删除等等。&lt;/p&gt;
+&lt;p&gt;mutations方法都有默认的形参：&lt;/p&gt;
+&lt;p&gt;([state] [,payload])&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;state&lt;/code&gt;是当前VueX对象中的state&lt;br&gt;
+&lt;code&gt;payload&lt;/code&gt;是该方法在被调用时传递参数使用的&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;修改&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.$store.commit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;增加&lt;/strong&gt;：Vue.set 为某个对象设置成员的值，若不存在则新增&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Vue.set(state,&amp;quot;age&amp;quot;,15)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;删除&lt;/strong&gt;：Vue.delete 删除成员&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Vue.delete(state,&#39;age&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;23-getters&#34;&gt;2.3 Getters&lt;/h3&gt;
+&lt;p&gt;可以对state中的成员加工后传递给外界&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Getters中的方法有两个默认参数&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;state 当前VueX对象中的状态对象&lt;/li&gt;
+&lt;li&gt;getters 当前getters对象，用于将getters下的其他getter拿来用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;getters:{
+    nameInfo(state){
+        return &amp;quot;姓名:&amp;quot;+state.name
+    },
+    fullInfo(state,getters){
+        return getters.nameInfo+&#39;年龄:&#39;+state.age
+    }  
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;组件中调用：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.$store.getters.fullInfo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;24-actions&#34;&gt;2.4 Actions&lt;/h3&gt;
+&lt;p&gt;由于直接在&lt;code&gt;mutation&lt;/code&gt;方法中进行&lt;strong&gt;异步操作&lt;/strong&gt;，将会引起数据失效。所以提供了&lt;code&gt;Actions&lt;/code&gt;来专门进行异步操作，最终提交&lt;code&gt;mutation&lt;/code&gt;方法。&lt;/p&gt;
+&lt;p&gt;Actions中的方法有两个默认参数&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;context 上下文(相当于箭头函数中的this)对象&lt;/li&gt;
+&lt;li&gt;payload 挂载参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;由于&lt;code&gt;setTimeout&lt;/code&gt;和&lt;code&gt;promise&lt;/code&gt;是异步操作，所以需要使用&lt;code&gt;actions&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; aEdit(context,payload){
+        return new Promise((resolve,reject)=&amp;gt;{
+            setTimeout(()=&amp;gt;{
+                context.commit(&#39;edit&#39;,payload)
+                resolve()
+            },2000)
+        })
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在组件中调用:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.$store.dispatch(&#39;aEdit&#39;,{age:15})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;25-models&#34;&gt;2.5 Models&lt;/h3&gt;
+&lt;p&gt;当项目庞大，状态非常多时，可以采用&lt;strong&gt;模块化管理模式&lt;/strong&gt;。Vuex 允许我们将 &lt;code&gt;store&lt;/code&gt;分割成模块（&lt;code&gt;module&lt;/code&gt;）。每个模块拥有自己的&lt;code&gt;state、mutation、action、getter&lt;/code&gt;、甚至是嵌套子模块——从上至下进行同样方式的分割。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;models:{
+    a:{
+        state:{},
+        getters:{},
+        ....
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;组件内调用模块a的状态：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.$store.state.a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;对于模块内部的 mutation 和 getter，&lt;strong&gt;接收的第一个参数是模块的局部状态对象&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;同样，对于模块内部的 action，局部状态通过 &lt;code&gt;context.state&lt;/code&gt; 暴露出来，根节点状态则为 &lt;code&gt;context.rootState&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于模块内部的&lt;code&gt;getter&lt;/code&gt;，根节点状态会作为第三个参数暴露出来&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-规范目录结构&#34;&gt;3. 规范目录结构&lt;/h2&gt;
+&lt;p&gt;如果把整个&lt;code&gt;store&lt;/code&gt;都放在&lt;code&gt;index.js&lt;/code&gt;中是不合理的，所以需要拆分。比较合适的目录格式如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;store:.
+│  actions.js
+│  getters.js
+│  index.js
+│  mutations.js
+│  mutations_type.js   ##该项为存放mutaions方法常量的文件，按需要可加入
+│
+└─modules
+        Astore.js
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对应的内容存放在对应的文件中，和以前一样，在&lt;code&gt;index.js&lt;/code&gt;中存放并导出&lt;code&gt;store&lt;/code&gt;。&lt;code&gt;state&lt;/code&gt;中的数据尽量放在&lt;code&gt;index.j&lt;/code&gt;s中。而&lt;code&gt;modules&lt;/code&gt;中的&lt;code&gt;Astore&lt;/code&gt;局部模块状态如果多的话也可以进行细分。&lt;/p&gt;
+&lt;h2 id=&#34;4-vuex的优缺点&#34;&gt;4. vuex的优缺点&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;vuex的优点&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;解决了非父子组件的消息传递（将数据存放在state中）&lt;/li&gt;
+&lt;li&gt;减少了AJAX请求次数，有些情景可以直接从内存中的state获取&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;vuex的缺点&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;刷新浏览器，vuex中的state会重新变为初始状态&lt;br&gt;
+解决方案vuex-along ,vuex-persistedstate&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-命名空间&#34;&gt;5. 命名空间&lt;/h2&gt;
+&lt;p&gt;getter，mutation，action 他们默认都是注册在全局命名空间的，所以我们默认是可以和使用根状态一样去使用他们，但是这样不可避免会出现命名冲突的问题，所以使模块有更高的封装性与复用性，我们可以通过添加 &lt;code&gt;namespaced: true&lt;/code&gt; 使其成为带命名空间的模块。当模块被注册后，它的所有 getter、action 及 mutation 都会自动根据模块注册的路径调整命名。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// moduleB 模块导出的时候加个 namespaced: true,
+export default {
+  namespaced: true,
+  state,
+  getters,
+  mutations,
+  actions,
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;51-辅助函数的使用&#34;&gt;5.1 辅助函数的使用&lt;/h3&gt;
+&lt;p&gt;除了这个之外，如果你当前组件用的 vuex 状态都是一个模块的话，我们可以使用 createNamespacedHelpers 创建基于某个命名空间辅助函数，如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import { createNamespacedHelpers } from &#39;vuex&#39;
+
+const { mapState, mapActions } = createNamespacedHelpers(&#39;moduleB&#39;) // moduleName
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样创建之后，我们就可以用之前的写法来访问到模块的状态。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;...mapState({
+  bName: state =&amp;gt; state.bName,
+}),
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;52-在带命名空间的模块内访问全局内容&#34;&gt;5.2 在带命名空间的模块内访问全局内容&lt;/h3&gt;
+&lt;p&gt;如果你希望使用全局 state 和 getter，rootState 和 rootGetter 会作为第三和第四参数传入 getter，也会通过 context 对象的属性传入 action。&lt;/p&gt;
+&lt;p&gt;若需要在全局命名空间内分发 action 或提交 mutation，将 { root: true } 作为第三参数传给 dispatch 或 commit 即可&lt;/p&gt;
+&lt;h1 id=&#34;9-defineproperty对数组和对象的监听&#34;&gt;9. defineProperty对数组和对象的监听&lt;/h1&gt;
+&lt;h2 id=&#34;1-objectdefineproperty-对象属性监听&#34;&gt;1. Object.defineProperty 对象属性监听&lt;/h2&gt;
+&lt;p&gt;现在我们有这样一个对象&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let obj = {
+	name:&#39;码不停息&#39;,
+    age:18,
+    love:[&#39;吃饭&#39;,&#39;睡觉&#39;,&#39;打豆豆&#39;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们想实现只要是对象里面的任何数据改变,都要跟新视图或者执行我们自己的逻辑,那我们需要怎么办呢?&lt;/p&gt;
+&lt;p&gt;我们似乎需要解决以下几个问题:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;obj&lt;/code&gt;对象有多个属性,可能需要__循环__添加到&lt;code&gt;Object.defineProperty&lt;/code&gt;里面&lt;br&gt;
+*&lt;code&gt;obj&lt;/code&gt;的属性也可能是对象或者数组,可能需要__递归__&lt;/li&gt;
+&lt;li&gt;用户可能给&lt;code&gt;obj&lt;/code&gt;赋值新的属性,这种情况可能需要 &lt;strong&gt;单独处理&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;let a = {&#39;b&#39;: 1};
+Object.defineProperty(a, &#39;b&#39;, {
+    enumerable: false,
+    configurable: false,
+    get: function(){
+        console.log(&#39;b&#39; + &#39;被访问&#39;);
+    },
+    set: function(newVal){
+        console.log(&#39;b&#39; + &#39;被修改，新&#39; + &#39;b&#39; + &#39;=&#39; + newVal);
+    }
+});
+
+a.b = 2;   // b被修改，新b=2
+a.b;       // b被访问
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们可能会有对象中属性的值还是对象这种嵌套情况，可以通过递归解决&lt;/p&gt;
+&lt;h2 id=&#34;2-objectdefineproperty-数组属性监听&#34;&gt;2. Object.defineProperty 数组属性监听&lt;/h2&gt;
+&lt;p&gt;Object.defineProperty 是对象的方法监听不到数组的变更的，重写&lt;code&gt;Array&lt;/code&gt;的原型方法来实现&lt;/p&gt;
+&lt;p&gt;原理就是&lt;code&gt;重写数组的七个原始方法&lt;/code&gt;，当使用者执行这些方法时，我们就可以监听到数据的变化，然后做些更新操作，下面我们在&lt;code&gt;observer&lt;/code&gt;中加上关于对数组的判断&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const orginalProto = Array.prototype;
+const arrayProto = Object.create(orginalProto); // 先克隆一份Array的原型出来
+const methodsToPatch = [
+  &#39;push&#39;,
+  &#39;pop&#39;,
+  &#39;shift&#39;,
+  &#39;unshift&#39;,
+  &#39;splice&#39;,
+  &#39;sort&#39;,
+  &#39;reverse&#39;
+]
+methodsToPatch.forEach(method =&amp;gt; {
+  arrayProto[method] = function () {
+    // 执行原始操作
+    orginalProto[method].apply(this, arguments)
+    console.log(&#39;监听赋值成功&#39;, method)
+  }
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;10-proxy-相比于-defineproperty-的优势&#34;&gt;10. Proxy 相比于 defineProperty 的优势&lt;/h1&gt;
 &lt;p&gt;Proxy 是 ES6 提供的一个对象代理，简单来说就是我们不直接对一个（私有）对象进行读写，而是通过这个对象代理对这个对象进行读写，通过对象代理可以对这个对象的&lt;strong&gt;数据作过滤保护&lt;/strong&gt;，使得这个对象可以成为&lt;strong&gt;私有属性&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;创建私有属性（只能通过内部提供的方法访问，不能直接访问），ES3 使用的是闭包，ES5 使用的是 defineProperty API，ES6 使用对象代理。&lt;/p&gt;
+&lt;h2 id=&#34;1-objectdefineproperty只能劫持对象的属性而proxy是直接代理对象&#34;&gt;1. Object.defineProperty只能劫持对象的属性，而Proxy是直接代理对象。&lt;/h2&gt;
+&lt;p&gt;由于 &lt;code&gt;Object.defineProperty&lt;/code&gt; 只能对属性进行劫持，需要遍历对象的每个属性，如果属性值也是对象，则需要深度遍历。而 &lt;code&gt;Proxy&lt;/code&gt; 直接代理对象，不需要遍历操作。&lt;/p&gt;
+&lt;h2 id=&#34;2-objectdefineproperty对新增属性需要手动进行observe&#34;&gt;2. Object.defineProperty对新增属性需要手动进行Observe。&lt;/h2&gt;
+&lt;p&gt;由于 &lt;code&gt;Object.defineProperty&lt;/code&gt; 劫持的是对象的属性，所以新增属性时，需要重新遍历对象，对其新增属性再使用 &lt;code&gt;Object.defineProperty&lt;/code&gt; 进行劫持。&lt;/p&gt;
+&lt;p&gt;也正是因为这个原因，使用vue给 &lt;code&gt;data&lt;/code&gt; 中的数组或对象新增属性时，需要使用 &lt;code&gt;vm.$set&lt;/code&gt; 才能保证新增的属性也是响应式的。&lt;/p&gt;
+&lt;p&gt;在 set 方法中，对 &lt;code&gt;target&lt;/code&gt; 是&lt;strong&gt;数组&lt;/strong&gt;和&lt;strong&gt;对象&lt;/strong&gt;做了分别的处理：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;target 是数组时，会调用重写过的 splice 方法进行手动 Observe 。&lt;/li&gt;
+&lt;li&gt;对于对象，如果 key 本来就是对象的属性，则直接修改值触发更新，否则调用 defineReactive 方法重新定义响应式对象。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果采用 proxy 实现， &lt;code&gt;Proxy&lt;/code&gt; 通过 set(target, propKey, value, receiver) 拦截对象属性的设置，是可以拦截到对象的新增属性的。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616222994837.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+不止如此， Proxy 对数组的方法也可以监测到，不需要像上面vue2.x源码中那样进行 hack 。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616223001054.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-proxy支持13种拦截操作这是defineproperty所不具有的&#34;&gt;3. Proxy支持13种拦截操作，这是defineProperty所不具有的&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;get(target, propKey, receiver)：拦截对象属性的读取，比如 proxy.foo 和 proxy[&#39;foo&#39;] 。&lt;/li&gt;
+&lt;li&gt;set(target, propKey, value, receiver)：拦截对象属性的设置，比如 proxy.foo = v 或 proxy[&#39;foo&#39;] = v ，返回一个布尔值。&lt;/li&gt;
+&lt;li&gt;has(target, propKey)：拦截 propKey in proxy 的操作，返回一个布尔值。&lt;/li&gt;
+&lt;li&gt;deleteProperty(target, propKey)：拦截 delete proxy[propKey] 的操作，返回一个布尔值。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;优势一：Proxy 可以直接&lt;code&gt;监听对象本身&lt;/code&gt;，而 defineProperty 只能&lt;code&gt;监听属性&lt;/code&gt;，只有通过递归调用才能监听对象；&lt;br&gt;
-优势二：当我们使用数组方法来操作数组后，Proxy 可以直接监听&lt;code&gt;数组变化&lt;/code&gt;，而 defineProperty 是无法监听到的，常用八种数组方法 push, pop, shift, unshift, splice, sort, reverse 在 vue 中能监听得到，是因为 vue 源码中使用了 defineReactive 方法来渲染页面；&lt;br&gt;
+优势二：当我们使用数组方法来操作数组后，Proxy 可以直接监听&lt;code&gt;数组变化&lt;/code&gt;，而 defineProperty 是无法监听到数组下标变化的，常用八种数组方法 push, pop, shift, unshift, splice, sort, reverse 在 vue 中能监听得到，是因为 vue 源码中使用了 defineReactive 方法来渲染页面；&lt;br&gt;
 优势三：Proxy 有 13 中拦截方式，多于 defineProperty；&lt;br&gt;
 优势四：Proxy 返回一个新对象，可以只&lt;code&gt;操作新对象&lt;/code&gt;，不会污染原对象，而 defineProperty 只能遍历对象属性&lt;code&gt;直接修改&lt;/code&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;而 defineProperty 的兼容性更好，vue 3.0 版本将会用 Proxy 代替 definProperty。&lt;/p&gt;
-&lt;h1 id=&#34;10-computed-和-watch-区别&#34;&gt;10、computed 和 watch 区别&lt;/h1&gt;
+&lt;h1 id=&#34;11-computed-和-watch-区别&#34;&gt;11、computed 和 watch 区别&lt;/h1&gt;
 &lt;h2 id=&#34;计算属性computed&#34;&gt;计算属性computed :&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;支持缓存，只有依赖数据发生改变，才会重新进行计算&lt;/li&gt;
@@ -3087,7 +3263,7 @@ watch: {
   }
 })
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;11-vue-router-hash-html5-新增的-pushstate&#34;&gt;11. vue-router (hash， HTML5 新增的 pushState)&lt;/h1&gt;
+&lt;h1 id=&#34;12-vue-router-hash-html5-新增的-pushstate&#34;&gt;12. vue-router (hash， HTML5 新增的 pushState)&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;单页应用，如何实现其路由功能---路由原理&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;vue-router 默认启用 &lt;code&gt;hash&lt;/code&gt; 模式，如果只是 hash 的改变在任何时候都不会向后端发起请求，如果想要在一个页面中跳转到一个区域，有两种方法：设置一个锚点：使用 a 标签的 name 属性，二是使用 id 元素，可以在任何元素上使用。&lt;br&gt;
@@ -3141,7 +3317,7 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 4）创建一个 vue-router 实例，new vueRouter({})&lt;br&gt;
 5）创建 vue 根实例，将 router 作为配置参数传入&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;12-vue中v-if与v-show的区别以及使用场景&#34;&gt;12. vue中v-if与v-show的区别以及使用场景&lt;/h1&gt;
+&lt;h1 id=&#34;13-vue中v-if与v-show的区别以及使用场景&#34;&gt;13. vue中v-if与v-show的区别以及使用场景&lt;/h1&gt;
 &lt;h2 id=&#34;区别&#34;&gt;区别&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;手段：v-if是通过控制dom节点的&lt;code&gt;存在&lt;/code&gt;与否来控制元素的显隐；v-show是通过设置DOM元素的&lt;code&gt;display样式&lt;/code&gt;，block为显示，none为隐藏；&lt;/li&gt;
@@ -3155,7 +3331,7 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 &lt;p&gt;基于以上区别，因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。&lt;/p&gt;
 &lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
 &lt;p&gt;v-if判断是否加载，可以减轻服务器的压力，在需要时加载,但有更高的切换开销;v-show调整DOM元素的CSS的dispaly属性，可以使客户端操作更加流畅，但有更高的初始渲染开销。如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。&lt;/p&gt;
-&lt;h1 id=&#34;13-vue项目中实现token验证&#34;&gt;13. Vue项目中实现token验证&lt;/h1&gt;
+&lt;h1 id=&#34;14-vue项目中实现token验证&#34;&gt;14. Vue项目中实现token验证&lt;/h1&gt;
 &lt;p&gt;在前后端完全分离的情况下，Vue项目中实现token验证大致思路如下：&lt;/p&gt;
 &lt;p&gt;1、第一次登录的时候，前端调后端的登陆接口，发送用户名和密码&lt;br&gt;
 2、后端收到请求，验证用户名和密码，验证成功，就给前端返回一个token&lt;br&gt;
@@ -3164,7 +3340,7 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 5、每次调后端接口，都要在请求头中加token&lt;br&gt;
 6、后端判断请求头中有无token，有token，就拿到token并验证token，验证成功就返回数据，验证失败（例如：token过期）就返回401，请求头中没有token也返回401&lt;br&gt;
 7、如果前端拿到状态码为401，就清除token信息并跳转到登录页面&lt;/p&gt;
-&lt;h1 id=&#34;14-vue插槽v-slot&#34;&gt;14. Vue插槽（v-slot）&lt;/h1&gt;
+&lt;h1 id=&#34;15-vue插槽v-slot&#34;&gt;15. Vue插槽（v-slot）&lt;/h1&gt;
 &lt;h2 id=&#34;匿名插槽&#34;&gt;匿名插槽&lt;/h2&gt;
 &lt;p&gt;匿名插槽，我们也可以叫它单个插槽或者默认插槽。和具名插槽相对，它是不需要设置  name 属性的，它隐藏的name属性为default。&lt;/p&gt;
 &lt;p&gt;在使用的时候还有一个问题要注意的 如果是有2个以上的匿名插槽是会child标签里面的内容全部都替换到每个slot；&lt;/p&gt;
@@ -3878,39 +4054,313 @@ WebKit内核代表作品Safari、Chromewebkit 是一个开源项目，包含了�
 有Google和Opera Software开发的浏览器排版引擎，2013年4月发布，现在Chrome内核是Blink。Blink其实是webkit的分支，大部分国产浏览器最新版都采用Blink内核。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Opera（Presto）&lt;/strong&gt;&lt;br&gt;
 Presto内核代表作品OperaPresto是由Opera Software开发的浏览器排版引擎，供Opera 7.0及以上使用。它取代了旧版Opera 4至6版本使用的Elektra排版引擎，包括加入动态功能，例如网页或其部分可随着DOM及Script语法的事件而重新排版。在13年之后，Opera宣布加入谷歌阵营，弃用了Presto。&lt;/p&gt;
-&lt;h1 id=&#34;6-算法的时间与空间复杂度&#34;&gt;6. 算法的时间与空间复杂度&lt;/h1&gt;
-&lt;p&gt;主要还是从算法所占用的「时间」和「空间」两个维度去考量。&lt;/p&gt;
+&lt;h1 id=&#34;6-从浏览器多进程到js单线程&#34;&gt;6. 从浏览器多进程到JS单线程&lt;/h1&gt;
+&lt;h2 id=&#34;1-区分进程和线程&#34;&gt;1. 区分进程和线程&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;进程是cpu资源分配的最小单位（系统会给它分配内存）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;最后，再用较为官方的术语描述一遍：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。&lt;/li&gt;
-&lt;li&gt;空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。&lt;/li&gt;
+&lt;li&gt;进程是cpu资源分配的最小单位（是能拥有资源和独立运行的最小单位）&lt;/li&gt;
+&lt;li&gt;线程是cpu调度的最小单位（线程是建立在进程的基础上的一次程序运行单位，一个进程中可以有多个线程）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;1-时间复杂度&#34;&gt;1. 时间复杂度&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;「 大O符号表示法 」，即 T(n) = O(f(n))&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;常见的时间复杂度量级有：&lt;/p&gt;
+&lt;h2 id=&#34;2-浏览器是多进程的&#34;&gt;2. 浏览器是多进程的&lt;/h2&gt;
+&lt;p&gt;先看下简化理解：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;常数阶O(1)：&lt;code&gt;没有循环&lt;/code&gt;等复杂结构&lt;/li&gt;
-&lt;li&gt;对数阶O(logN)：在&lt;code&gt;while&lt;/code&gt;循环里面，每次都&lt;code&gt;将 i 乘以 2&lt;/code&gt;，乘完之后，i 距离 n 就越来越近了。&lt;/li&gt;
-&lt;li&gt;线性阶O(n)：&lt;code&gt;for循环里面&lt;/code&gt;的代码会执行n遍&lt;/li&gt;
-&lt;li&gt;线性对数阶O(nlogN)：将时间复杂度为O(logn)的代码循环N遍&lt;/li&gt;
-&lt;li&gt;平方阶O(n²)：如果把 O(n) 的代码&lt;code&gt;再嵌套循环一遍&lt;/code&gt;，它的时间复杂度就是 O(n²)&lt;/li&gt;
-&lt;li&gt;立方阶O(n³)&lt;/li&gt;
-&lt;li&gt;K次方阶O(n^k)&lt;/li&gt;
-&lt;li&gt;指数阶(2^n)&lt;/li&gt;
+&lt;li&gt;浏览器是多进程的&lt;/li&gt;
+&lt;li&gt;浏览器之所以能够运行，是因为系统给它的进程分配了资源（cpu、内存）&lt;/li&gt;
+&lt;li&gt;简单点理解，每打开一个Tab页，就相当于创建了一个独立的浏览器进程。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;2-空间复杂度&#34;&gt;2. 空间复杂度&lt;/h2&gt;
-&lt;p&gt;空间复杂度是对一个算法在运行过程中临时占用存储空间大小的一个量度，同样反映的是一个趋势，我们用 S(n) 来定义。&lt;/p&gt;
-&lt;p&gt;空间复杂度比较常用的有：O(1)、O(n)、O(n²)&lt;/p&gt;
+&lt;p&gt;关于以上几点的验证，&lt;strong&gt;请再第一张图&lt;/strong&gt;：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616224931683.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+图中打开了&lt;code&gt;Chrome&lt;/code&gt;浏览器的多个标签页，然后可以在&lt;code&gt;Chrome&lt;/code&gt;的任务管理器中看到有多个进程（分别是每一个&lt;code&gt;Tab&lt;/code&gt;页面有一个独立的进程，以及一个主进程）。&lt;br&gt;
+感兴趣的可以自行尝试下，如果再多打开一个Tab页，进程正常会+1以上&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：在这里浏览器应该也有自己的优化机制，有时候打开多个tab页后，可以在Chrome任务管理器中看到，有些进程被合并了&lt;br&gt;
+（所以每一个Tab标签对应一个进程并不一定是绝对的）&lt;/p&gt;
+&lt;h3 id=&#34;1-浏览器都包含哪些进程&#34;&gt;1. 浏览器都包含哪些进程？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Browser进程：浏览器的主进程（负责协调、主控），只有一个。作用有&lt;br&gt;
+负责浏览器界面显示，与用户交互。如前进，后退等&lt;br&gt;
+负责各个页面的管理，创建和销毁其他进程&lt;br&gt;
+将Renderer进程得到的内存中的Bitmap，绘制到用户界面上&lt;br&gt;
+网络资源的管理，下载等&lt;/li&gt;
+&lt;li&gt;第三方插件进程：每种类型的插件对应一个进程，仅当使用该插件时才创建&lt;/li&gt;
+&lt;li&gt;GPU进程：最多一个，用于3D绘制等&lt;/li&gt;
+&lt;li&gt;浏览器渲染进程（浏览器内核）（Renderer进程，内部是多线程的）：默认每个Tab页面一个进程，互不影响。主要作用为 &lt;strong&gt;页面渲染，脚本执行，事件处理&lt;/strong&gt;等&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;强化记忆：&lt;code&gt;在浏览器中打开一个网页相当于新起了一个进程（进程内有自己的多线程）&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-浏览器多进程的优势&#34;&gt;2. 浏览器多进程的优势&lt;/h3&gt;
+&lt;p&gt;相比于单进程浏览器，多进程有如下优点：&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;避免单个page crash影响整个浏览器&lt;/li&gt;
+&lt;li&gt;避免第三方插件crash影响整个浏览器&lt;/li&gt;
+&lt;li&gt;多进程充分利用多核优势&lt;/li&gt;
+&lt;li&gt;方便使用沙盒模型隔离插件等进程，提高浏览器稳定性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;简单点理解：&lt;code&gt;如果浏览器是单进程，那么某个Tab页崩溃了，就影响了整个浏览器，体验有多差；同理如果是单进程，插件崩溃了也会影响整个浏览器；而且多进程还有其它的诸多优势&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-重点是浏览器内核渲染进程&#34;&gt;3. 重点是浏览器内核（渲染进程）&lt;/h3&gt;
+&lt;p&gt;可以这样理解，页面的渲染，JS的执行，事件的循环，都在这个进程内进行。接下来重点分析这个进程&lt;br&gt;
+请牢记，浏览器的渲染进程是&lt;strong&gt;多线程&lt;/strong&gt;的（这点如果不理解，请回头看进程和线程的区分）&lt;/p&gt;
+&lt;p&gt;那么接下来看看它都包含了哪些线程（列举一些主要常驻线程）：&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;空间复杂度 O(1)&lt;br&gt;
-如果算法执行所需要的临时空间不随着某个变量n的大小而变化，即此算法空间复杂度为一个常量，可表示为 O(1)&lt;/p&gt;
+&lt;p&gt;GUI渲染线程&lt;br&gt;
+- 负责渲染浏览器界面，解析HTML，CSS，构建DOM树和RenderObject树，布局和绘制等。&lt;br&gt;
+- 当界面需要重绘（Repaint）或由于某种操作引发回流(reflow)时，该线程就会执行&lt;br&gt;
+- 注意，&lt;strong&gt;GUI渲染线程与JS引擎线程是互斥的&lt;/strong&gt;，当JS引擎执行时GUI线程会被挂起（相当于被冻结了），GUI更新会被保存在一个队列中&lt;strong&gt;等到JS引擎空闲时&lt;/strong&gt;立即被执行。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;空间复杂度 O(n)&lt;br&gt;
-第一行new了一个数组出来，这个数据占用的大小为n，这段代码的2-6行，虽然有循环，但没有再分配新的空间&lt;/p&gt;
+&lt;p&gt;JS引擎线程&lt;br&gt;
+- 也称为JS内核，负责处理Javascript脚本程序。（例如V8引擎）&lt;br&gt;
+- JS引擎线程负责解析Javascript脚本，运行代码。&lt;br&gt;
+- JS引擎一直等待着任务队列中任务的到来，然后加以处理，一个Tab页（renderer进程）中无论什么时候都只有一个JS线程在运行JS程序&lt;br&gt;
+- 同样注意，&lt;strong&gt;GUI渲染线程与JS引擎线程是互斥的&lt;/strong&gt;，所以如果JS执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;事件触发线程&lt;br&gt;
+- 归属于浏览器而不是JS引擎，用来控制事件循环（可以理解，JS引擎自己都忙不过来，需要浏览器另开线程协助）&lt;br&gt;
+- 当JS引擎执行代码块如setTimeOut时（也可来自浏览器内核的其他线程，如鼠标点击、AJAX异步请求等），会将对应任务添加到事件线程中&lt;br&gt;
+- 当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理&lt;br&gt;
+- 注意，由于JS的单线程关系，所以这些待处理队列中的事件都得排队等待JS引擎处理（当JS引擎空闲时才会去执行）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;定时触发器线程&lt;br&gt;
+- 传说中的&lt;code&gt;setInterva&lt;/code&gt;l与&lt;code&gt;setTimeout&lt;/code&gt;所在线程&lt;br&gt;
+- 浏览器定时计数器并不是由JavaScript引擎计数的,（因为JavaScript引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确）&lt;br&gt;
+- 因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待JS引擎空闲后执行）&lt;br&gt;
+- 注意，W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;异步http请求线程&lt;br&gt;
+- 在XMLHttpRequest在连接后是通过浏览器新开一个线程请求&lt;br&gt;
+- 将检测到状态变更时，如果设置有回调函数，异步线程就&lt;strong&gt;产生状态变更事件&lt;/strong&gt;，将这个回调再放入事件队列中。再由JavaScript引擎执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;后续将提到的事件循环机制就是基于&lt;code&gt;事件触发线程&lt;/code&gt;的，所以如果仅仅是看某个碎片化知识，&lt;br&gt;
+可能会有一种似懂非懂的感觉。要完成的梳理一遍才能快速沉淀，不易遗忘。放张图巩固下吧：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616225471604.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;4-browser进程和浏览器内核renderer进程的通信过程&#34;&gt;4. Browser进程和浏览器内核（Renderer进程）的通信过程&lt;/h3&gt;
+&lt;p&gt;那么接下来，再谈谈浏览器的Browser进程（控制进程）是如何和内核通信的，这点也理解后，就可以将这部分的知识串联起来，从头到尾有一个完整的概念。&lt;/p&gt;
+&lt;p&gt;如果自己打开任务管理器，然后打开一个浏览器，就可以看到：&lt;strong&gt;任务管理器中出现了两个进程&lt;/strong&gt;（一个是主控进程，一个则是打开Tab页的渲染进程），&lt;br&gt;
+然后在这前提下，看下整个的过程：(简化了很多)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Browser进程收到用户请求，首先需要获取页面内容（譬如通过网络下载资源），随后将该任务通过RendererHost接口传递给Render进程&lt;/li&gt;
+&lt;li&gt;Renderer进程的Renderer接口收到消息，简单解释后，交给渲染线程，然后开始渲染
+&lt;ul&gt;
+&lt;li&gt;渲染线程接收请求，加载网页并渲染网页，这其中可能需要Browser进程获取资源和需要GPU进程来帮助渲染&lt;/li&gt;
+&lt;li&gt;当然可能会有JS线程操作DOM（这样可能会造成回流并重绘）&lt;/li&gt;
+&lt;li&gt;最后Render进程将结果传递给Browser进程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Browser进程接收到结果并将结果绘制出来&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里绘一张简单的图：（很简化）&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616226222410.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;看完这一整套流程，应该对浏览器的运作有了一定理解了，这样有了知识架构的基础后，后续就方便往上填充内容。&lt;br&gt;
+这块再往深处讲的话就涉及到浏览器内核源码解析了，不属于本文范围。&lt;br&gt;
+如果这一块要深挖，建议去读一些浏览器内核源码解析文章，或者可以先看看参考下来源中的第一篇文章，写的不错&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;3-梳理浏览器内核中线程之间的关系&#34;&gt;3. 梳理浏览器内核中线程之间的关系&lt;/h2&gt;
+&lt;h3 id=&#34;1-gui渲染线程与js引擎线程互斥&#34;&gt;1. GUI渲染线程与JS引擎线程互斥&lt;/h3&gt;
+&lt;p&gt;由于JavaScript是可操纵DOM的，如果在修改这些元素属性同时渲染界面（即JS线程和UI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。&lt;/p&gt;
+&lt;p&gt;因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JS引擎为互斥的关系，当JS引擎执行时GUI线程会被挂起，GUI更新则会被保存在一个队列中等到JS引擎线程空闲时立即被执行。&lt;/p&gt;
+&lt;h3 id=&#34;2-js阻塞页面加载&#34;&gt;2. JS阻塞页面加载&lt;/h3&gt;
+&lt;p&gt;从上述的互斥关系，可以推导出，JS如果执行时间过长就会阻塞页面。&lt;/p&gt;
+&lt;p&gt;譬如，假设JS引擎正在进行巨量的计算，此时就算GUI有更新，也会被保存到队列中，等待JS引擎空闲后执行。&lt;br&gt;
+然后，由于巨量计算，所以JS引擎很可能很久很久后才能空闲，自然会感觉到巨卡无比。&lt;/p&gt;
+&lt;p&gt;所以，要尽量避免JS执行时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉。&lt;/p&gt;
+&lt;h3 id=&#34;3-webworkerjs的多线程&#34;&gt;3. WebWorker，JS的多线程？&lt;/h3&gt;
+&lt;p&gt;前文中有提到JS引擎是单线程的，而且JS执行时间过长会阻塞页面，那么JS就真的对cpu密集型计算无能为力么？&lt;br&gt;
+所以，后来HTML5中支持了&lt;code&gt;Web Worker&lt;/code&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Web Worker为Web内容在后台线程中运行脚本提供了一种简单的方法。线程可以执行任务而不干扰用户界面&lt;br&gt;
+一个worker是使用一个构造函数创建的一个对象(e.g. Worker()) 运行一个命名的JavaScript文件&lt;br&gt;
+这个文件包含将在工作线程中运行的代码; workers 运行在另一个全局上下文中,不同于当前的window&lt;br&gt;
+因此，使用 window快捷方式获取当前全局的范围 (而不是self) 在一个 Worker 内将返回错误&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这样理解下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建Worker时，JS引擎向浏览器申请开一个子线程（子线程是浏览器开的，完全受主线程控制，而且不能操作DOM）&lt;/li&gt;
+&lt;li&gt;JS引擎线程与worker线程间通过特定的方式通信（postMessage API，需要通过序列化对象来与线程交互特定的数据）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以，如果有非常耗时的工作，请单独开一个Worker线程，这样里面不管如何翻天覆地都不会影响JS引擎主线程，只待计算出结果后，将结果通信给主线程即可，perfect!&lt;/p&gt;
+&lt;p&gt;而且注意下，&lt;strong&gt;JS引擎是单线程的&lt;/strong&gt;，这一点的本质仍然未改变，Worker可以理解是浏览器给JS引擎开的外挂，专门用来解决那些大量计算问题。&lt;/p&gt;
+&lt;h3 id=&#34;4-webworker与sharedworker&#34;&gt;4. WebWorker与SharedWorker&lt;/h3&gt;
+&lt;p&gt;既然都到了这里，就再提一下&lt;code&gt;SharedWorker&lt;/code&gt;（避免后续将这两个概念搞混）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;WebWorker只属于某个页面，不会和其他页面的Render进程（浏览器内核进程）共享
+&lt;ul&gt;
+&lt;li&gt;所以Chrome在Render进程中（每一个Tab页就是一个render进程）创建一个新的线程来运行Worker中的JavaScript程序。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SharedWorker是浏览器所有页面共享的，不能采用与Worker同样的方式实现，因为它不隶属于某个Render进程，可以为多个Render进程共享使用
+&lt;ul&gt;
+&lt;li&gt;所以Chrome浏览器为SharedWorker单独创建一个进程来运行JavaScript程序，在浏览器中每个相同的JavaScript只存在一个SharedWorker进程，不管它被创建多少次。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-">【面】前端知识点梳理（浏览器+复杂度）</a>
+&lt;p&gt;看到这里，应该就很容易明白了，本质上就是进程和线程的区别。&lt;strong&gt;SharedWorker由独立的进程管理，WebWorker只是属于render进程下的一个线程&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-简单梳理下浏览器渲染流程&#34;&gt;4. 简单梳理下浏览器渲染流程&lt;/h2&gt;
+&lt;p&gt;为了简化理解，前期工作直接省略成：（要展开的或完全可以写另一篇超长文）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;浏览器输入url，浏览器主进程接管，开一个下载线程，&lt;br&gt;
+然后进行 http请求（略去DNS查询，IP寻址等等操作），然后等待响应，获取内容，&lt;br&gt;
+随后将内容通过RendererHost接口转交给Renderer进程&lt;br&gt;
+浏览器渲染流程开始&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;浏览器器内核拿到内容后，渲染大概可以划分成以下几个步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;解析html建立dom树&lt;/li&gt;
+&lt;li&gt;解析css构建render树（将CSS代码解析成树形的数据结构，然后结合DOM合并成render树）&lt;/li&gt;
+&lt;li&gt;布局render树（Layout/reflow），负责各元素尺寸、位置的计算&lt;/li&gt;
+&lt;li&gt;绘制render树（paint），绘制页面像素信息&lt;/li&gt;
+&lt;li&gt;浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所有详细步骤都已经略去，渲染完毕后就是&lt;code&gt;load&lt;/code&gt;事件了，之后就是自己的JS逻辑处理了&lt;/p&gt;
+&lt;p&gt;既然略去了一些详细的步骤，那么就提一些可能需要注意的细节把。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616246903018.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1-css加载是否会阻塞dom树渲染&#34;&gt;1. css加载是否会阻塞dom树渲染？&lt;/h3&gt;
+&lt;p&gt;这里说的是头部引入css的情况&lt;/p&gt;
+&lt;p&gt;首先，我们都知道：&lt;strong&gt;css是由单独的下载线程异步下载的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;然后再说下几个现象：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;css加载不会阻塞DOM树解析（异步加载时DOM照常构建）&lt;/li&gt;
+&lt;li&gt;但会阻塞render树渲染（渲染时需等css加载完毕，因为render树需要css信息）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这可能也是浏览器的一种优化机制。&lt;/p&gt;
+&lt;h2 id=&#34;5-从event-loop谈js的运行机制&#34;&gt;5. 从Event Loop谈JS的运行机制&lt;/h2&gt;
+&lt;p&gt;这里会用到上文中的几个概念：（如果不是很理解，可以回头温习）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JS引擎线程&lt;/li&gt;
+&lt;li&gt;事件触发线程&lt;/li&gt;
+&lt;li&gt;定时触发器线程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后再理解一个概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JS分为同步任务和异步任务&lt;/li&gt;
+&lt;li&gt;同步任务都在主线程上执行，形成一个&lt;code&gt;执行栈&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;主线程之外，&lt;strong&gt;事件触发线程&lt;/strong&gt;管理着一个&lt;code&gt;任务队列&lt;/code&gt;，只要异步任务有了运行结果，就在&lt;code&gt;任务队列&lt;/code&gt;之中放置一个事件。&lt;/li&gt;
+&lt;li&gt;一旦&lt;code&gt;执行栈&lt;/code&gt;中的所有同步任务执行完毕（此时JS引擎空闲），系统就会读取&lt;code&gt;任务队列&lt;/code&gt;，将可运行的异步任务添加到可执行栈中，开始执行。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616247319925.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+看到这里，应该就可以理解了：为什么有时候setTimeout推入的事件不能准时执行？因为可能在它推入到事件列表时，主线程还不空闲，正在执行其它代码，所以自然有误差。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-事件循环机制进一步补充&#34;&gt;1. 事件循环机制进一步补充&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616247383302.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+上图大致描述就是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;主线程运行时会产生执行栈，&lt;br&gt;
+栈中的代码调用某些api时，它们会在事件队列中添加各种事件（当满足触发条件后，如ajax请求完毕）&lt;/li&gt;
+&lt;li&gt;而栈中的代码执行完毕，就会读取事件队列中的事件，去执行那些回调&lt;/li&gt;
+&lt;li&gt;如此循环&lt;/li&gt;
+&lt;li&gt;注意，总是要等待栈中的代码执行完毕后才会去读取事件队列中的事件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-单独说说定时器&#34;&gt;2. 单独说说定时器&lt;/h3&gt;
+&lt;p&gt;上述事件循环机制的核心是：&lt;strong&gt;JS引擎线程和事件触发线程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;它是由&lt;strong&gt;定时器线程&lt;/strong&gt;控制（因为JS引擎自己都忙不过来，根本无暇分身）&lt;/p&gt;
+&lt;p&gt;因为JavaScript引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确，因此很有必要单独开一个线程用来计时。&lt;/p&gt;
+&lt;p&gt;当使用&lt;code&gt;setTimeout&lt;/code&gt;或&lt;code&gt;setInterval&lt;/code&gt;时，它需要定时器线程计时，计时完成后就会将特定的事件推入事件队列中。&lt;br&gt;
+譬如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;setTimeout(function(){
+    console.log(&#39;hello!&#39;);
+}, 1000);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这段代码的作用是当1000毫秒计时完毕后（由定时器线程计时），将回调函数推入事件队列中，等待主线程执行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;setTimeout(function(){
+    console.log(&#39;hello!&#39;);
+}, 0);
+
+console.log(&#39;begin&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这段代码的效果是最快的时间内将回调函数推入事件队列中，等待主线程执行&lt;/p&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;执行结果是：先begin后hello!&lt;/li&gt;
+&lt;li&gt;虽然代码的本意是0毫秒后就推入事件队列，但是W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。&lt;br&gt;
+(不过也有一说是不同浏览器有不同的最小时间设定)&lt;/li&gt;
+&lt;li&gt;就算不等待4ms，就算假设0毫秒就推入事件队列，也会先执行begin（因为只有可执行栈内空了后才会主动读取事件队列）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-settimeout而不是setinterval&#34;&gt;3. setTimeout而不是setInterval&lt;/h3&gt;
+&lt;p&gt;用setTimeout模拟定期计时和直接用setInterval是有区别的。&lt;/p&gt;
+&lt;p&gt;因为每次&lt;code&gt;setTimeout&lt;/code&gt;计时到后就会去执行，然后执行一段时间后才会继续setTimeout，中间就多了误差（误差多少与代码执行时间有关）&lt;/p&gt;
+&lt;p&gt;而&lt;code&gt;setInterval&lt;/code&gt;则是每次都精确的隔一段时间推入一个事件（但是，事件的实际执行时间不一定就准确，还有可能是这个事件还没执行完毕，下一个事件就来了）&lt;/p&gt;
+&lt;p&gt;而且setInterval有一些比较致命的问题就是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;累计效应（上面提到的），如果setInterval代码在（setInterval）再次添加到队列之前还没有完成执行，就会导致定时器代码连续运行好几次，而之间没有间隔。就算正常间隔执行，多个setInterval的代码执行时间可能会比预期小（因为代码执行需要一定时间）&lt;/li&gt;
+&lt;li&gt;而且把浏览器最小化显示等操作时，setInterval并不是不执行程序，它会把setInterval的回调函数放在队列中，等浏览器窗口再次打开时，一瞬间全部执行时&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以，鉴于这么多但问题，目前一般认为的最佳方案是：&lt;strong&gt;用setTimeout模拟setInterval，或者特殊场合直接用requestAnimationFrame&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;补充：JS高程中有提到，JS引擎会对setInterval进行优化，如果当前事件队列中有setInterval的回调，不会重复添加。不过，仍然是有很多问题。。。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;6-事件循环进阶macrotask与microtask&#34;&gt;6. 事件循环进阶：macrotask与microtask&lt;/h2&gt;
+&lt;p&gt;上文中将JS事件循环机制梳理了一遍，在ES5的情况是够用了，但是在ES6盛行的现在，仍然会遇到一些问题，譬如下面这题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(&#39;script start&#39;);
+
+setTimeout(function() {
+    console.log(&#39;setTimeout&#39;);
+}, 0);
+
+Promise.resolve().then(function() {
+    console.log(&#39;promise1&#39;);
+}).then(function() {
+    console.log(&#39;promise2&#39;);
+});
+
+console.log(&#39;script end&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;嗯哼，它的正确执行顺序是这样子的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;script start
+script end
+promise1
+promise2
+setTimeout
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;为什么呢？因为Promise里有了一个一个新的概念：&lt;code&gt;microtask&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;或者，进一步，JS中分为两种任务类型：&lt;code&gt;macrotask&lt;/code&gt;和&lt;code&gt;microtask&lt;/code&gt;，在ECMAScript中，microtask称为&lt;code&gt;jobs&lt;/code&gt;，macrotask可称为&lt;code&gt;task&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;它们的定义？区别？简单点可以按如下理解：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;macrotask（又称之为宏任务），可以理解是每次执行栈执行的代码就是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）
+&lt;ul&gt;
+&lt;li&gt;每一个task会从头到尾将这个任务执行完毕，不会执行其它&lt;/li&gt;
+&lt;li&gt;浏览器为了能够使得JS内部task与DOM任务能够有序的执行，会在一个task执行结束后，在下一个 task 执行开始前，对页面进行重新渲染&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;（`task-&amp;gt;渲染-&amp;gt;task-&amp;gt;...`）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;microtask（又称为微任务），可以理解是在当前 task 执行结束后立即执行的任务
+&lt;ul&gt;
+&lt;li&gt;也就是说，在当前task任务后，下一个task之前，在&lt;code&gt;渲染之前&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;所以它的响应速度相比setTimeout（&lt;code&gt;setTimeout是task&lt;/code&gt;）会更快，因为无需等渲染&lt;/li&gt;
+&lt;li&gt;也就是说，在某一个macrotask执行完后，就会将在它执行期间产生的所有microtask都执行完毕（在渲染前）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;分别很么样的场景会形成macrotask和microtask呢？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;macrotask：主代码块，setTimeout，setInterval等（可以看到，事件队列中的每一个事件都是一个macrotask）&lt;/li&gt;
+&lt;li&gt;microtask：Promise，process.nextTick等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;再根据线程来理解下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;macrotask中的事件都是放在一个事件队列中的，而这个队列由&lt;strong&gt;事件触发线程&lt;/strong&gt;维护&lt;/li&gt;
+&lt;li&gt;microtask中的所有微任务都是添加到微任务队列（Job Queues）中，等待当前macrotask执行完毕后执行，而这个队列由&lt;strong&gt;JS引擎线程&lt;/strong&gt;维护&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以，总结下运行机制：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;执行一个宏任务（栈中没有就从事件队列中获取）&lt;/li&gt;
+&lt;li&gt;执行过程中如果遇到微任务，就将它添加到微任务的任务队列中&lt;/li&gt;
+&lt;li&gt;宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）&lt;/li&gt;
+&lt;li&gt;当前宏任务执行完毕，开始检查渲染，然后GUI线程接管渲染&lt;/li&gt;
+&lt;li&gt;渲染完毕后，JS线程继续接管，开始下一个宏任务（从事件队列中获取）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616250099288.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+另外，请注意下&lt;code&gt;Promise&lt;/code&gt;的&lt;code&gt;polyfill&lt;/code&gt;与官方版本的区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Promise官方版本中，是标准的microtask形式&lt;/li&gt;
+&lt;li&gt;polyfill，一般都是通过setTimeout模拟的，所以是macrotask形式&lt;/li&gt;
+&lt;/ul&gt;
+">【面】前端知识点梳理（浏览器）</a>
       </div>
       
       <div class="item">
@@ -5077,14 +5527,14 @@ render(new BaiduMapAdapter())  // 渲染百度地图
         pub.publish();
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;24-iframe的缺点有哪些&#34;&gt;24. iframe的缺点有哪些&lt;/h1&gt;
-&lt;h1 id=&#34;1-iframe的优点&#34;&gt;1. iframe的优点：&lt;/h1&gt;
+&lt;h2 id=&#34;1-iframe的优点&#34;&gt;1. iframe的优点：&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;iframe能够原封不动的把嵌入的网页展现出来。&lt;/li&gt;
 &lt;li&gt;如果有多个网页引用iframe，那么你只需要修改iframe的内容，就可以实现调用的每一个页面内容的更改，方便快捷。&lt;/li&gt;
 &lt;li&gt;网页如果为了统一风格，头部和版本都是一样的，就可以写成一个页面，用iframe来嵌套，可以增加代码的可重用。&lt;/li&gt;
 &lt;li&gt;如果遇到加载缓慢的第三方内容如图标和广告，这些问题可以由iframe来解决。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;2-iframe的缺点&#34;&gt;2. iframe的缺点：&lt;/h1&gt;
+&lt;h2 id=&#34;2-iframe的缺点&#34;&gt;2. iframe的缺点：&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;会产生很多页面，&lt;code&gt;不容易管理&lt;/code&gt;。&lt;/li&gt;
 &lt;li&gt;iframe框架结构有时会让人感到迷惑，如果框架个数多的话，可能会出现上下、左右滚动条，会分散访问者的注意力，&lt;code&gt;用户体验度差&lt;/code&gt;。&lt;/li&gt;
@@ -5488,7 +5938,7 @@ function flatten(arr) {
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;（1）了解事件代理吗，这样做有什么好处&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;事件代理就是说我们将事件添加到本来要添加的事件的父节点，将事件委托给父节点来触发处理函数，这通常会使用在大量的同级元素需要添加同一类事件的时候，比如一个动态的非常多的列表，需要为每个列表项都添加点击事件，这时就可以使用事件代理，通过判断e.target.nodeName来判断发生的具体元素，这样做的好处是减少事件绑定，同事动态的DOM结构任然可以监听，事件代理发生在冒泡阶段&lt;/p&gt;
-&lt;p&gt;** （2）事件代理在捕获阶段的实际应用：**&lt;/p&gt;
+&lt;p&gt;** （2）事件代理在捕获阶段的实际应用**&lt;/p&gt;
 &lt;p&gt;可以在父元素层面阻止事件向子元素传播，也可代替子元素执行某些操作。&lt;/p&gt;
 &lt;h3 id=&#34;9-事件类型相关&#34;&gt;9. 事件类型相关：&lt;/h3&gt;
 &lt;p&gt;（1）&lt;code&gt;mouseover和mouseenter的区别&lt;/code&gt;&lt;/p&gt;
@@ -8051,7 +8501,39 @@ CSS3的animation制作动画效果主要包括两部分：1. 用关键帧声明�
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-pai-xu-suan-fa/"" data-c="
-          &lt;h1 id=&#34;1大o表示法&#34;&gt;1.大O表示法&lt;/h1&gt;
+          &lt;h1 id=&#34;0-算法的时间与空间复杂度&#34;&gt;0. 算法的时间与空间复杂度&lt;/h1&gt;
+&lt;p&gt;主要还是从算法所占用的「时间」和「空间」两个维度去考量。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。&lt;/li&gt;
+&lt;li&gt;空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1-时间复杂度&#34;&gt;1. 时间复杂度&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;「 大O符号表示法 」，即 T(n) = O(f(n))&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;常见的时间复杂度量级有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;常数阶O(1)：&lt;code&gt;没有循环&lt;/code&gt;等复杂结构&lt;/li&gt;
+&lt;li&gt;对数阶O(logN)：在&lt;code&gt;while&lt;/code&gt;循环里面，每次都&lt;code&gt;将 i 乘以 2&lt;/code&gt;，乘完之后，i 距离 n 就越来越近了。&lt;/li&gt;
+&lt;li&gt;线性阶O(n)：&lt;code&gt;for循环里面&lt;/code&gt;的代码会执行n遍&lt;/li&gt;
+&lt;li&gt;线性对数阶O(nlogN)：将时间复杂度为O(logn)的代码循环N遍&lt;/li&gt;
+&lt;li&gt;平方阶O(n²)：如果把 O(n) 的代码&lt;code&gt;再嵌套循环一遍&lt;/code&gt;，它的时间复杂度就是 O(n²)&lt;/li&gt;
+&lt;li&gt;立方阶O(n³)&lt;/li&gt;
+&lt;li&gt;K次方阶O(n^k)&lt;/li&gt;
+&lt;li&gt;指数阶(2^n)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-空间复杂度&#34;&gt;2. 空间复杂度&lt;/h2&gt;
+&lt;p&gt;空间复杂度是对一个算法在运行过程中临时占用存储空间大小的一个量度，同样反映的是一个趋势，我们用 S(n) 来定义。&lt;/p&gt;
+&lt;p&gt;空间复杂度比较常用的有：O(1)、O(n)、O(n²)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;空间复杂度 O(1)&lt;br&gt;
+如果算法执行所需要的临时空间不随着某个变量n的大小而变化，即此算法空间复杂度为一个常量，可表示为 O(1)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;空间复杂度 O(n)&lt;br&gt;
+第一行new了一个数组出来，这个数据占用的大小为n，这段代码的2-6行，虽然有循环，但没有再分配新的空间&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;1大o表示法&#34;&gt;1.大O表示法&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;大O表示法：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;在计算机中采用&lt;strong&gt;粗略的度量&lt;/strong&gt;来描述计算机算法的&lt;strong&gt;效率&lt;/strong&gt;，这种方法被称为**“大O”表示法**&lt;/li&gt;
