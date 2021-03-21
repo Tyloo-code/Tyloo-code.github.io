@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（Vue项目） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616312673144">
+<link rel="shortcut icon" href="/favicon.ico?v=1616334894133">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -2824,6 +2824,8 @@ this.$nextTick().then(cb)
 &lt;p&gt;在实际代码中，会对新旧两棵树进行一个深度的遍历，每个节点都会有一个标记。每遍历到一个节点就把该节点和新的树进行对比，如果有差异就记录到一个对象中。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;比较只会在同层级进行, 不会跨层级比较。&lt;/code&gt;&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615712855481.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;diff算法的时间复杂度&#34;&gt;diff算法的时间复杂度&lt;/h2&gt;
+&lt;p&gt;两个树的&lt;code&gt;完全的 diff 算法&lt;/code&gt;是一个时间复杂度为 &lt;code&gt;O(n^3)&lt;/code&gt;,&lt;code&gt;Vue&lt;/code&gt; 进行了优化·O(n^3) 复杂度的问题转换成&lt;code&gt;O(n)&lt;/code&gt;复杂度的问题(只比较同级不考虑跨级问题)，因为在前端操作dom的时候了，不会把当前元素作为上一级元素或下一级元素，很少会跨越层级地移动Dom元素，常见的都是同级的比较。 所 以 Virtual Dom只会对同一个层级的元素进行对比。&lt;/p&gt;
 &lt;h2 id=&#34;实现原理&#34;&gt;实现原理&lt;/h2&gt;
 &lt;p&gt;虚拟 DOM 的实现原理主要包括以下 3 部分：&lt;/p&gt;
 &lt;ul&gt;
@@ -3593,14 +3595,111 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 （2）通过域名访问资源，首先是通过DNS分查找离用户最近的CDN节点（边缘服务器）的IP&lt;br&gt;
 （3）通过IP访问实际资源时，如果CDN上并没有缓存资源，则会到源站请求资源，并缓存到CDN节点上，这样，用户下一次访问时，该CDN节点就会有对应资源的缓存了。&lt;/p&gt;
 &lt;h1 id=&#34;6-计算机网络的相关协议&#34;&gt;6. 计算机网络的相关协议&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;层级&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;数据格式&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能与连接方式&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;包含的协议&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;典型设备&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;应用层 Application&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据Data&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;网络服务与使用者应用程序间的一个接口&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;如HTTP、FTP、SMTP&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;文件传输，电子邮件，文件服务，虚拟终端&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;终端设备（PC、手机、平板等）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;6&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;表示层 Presentation&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据Data&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据表示、数据安全、数据压缩&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;如XDR、ASN.1、SMB、AFP、NCP&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据格式化，代码转换，数据加密&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;终端设备（PC、手机、平板等）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;会话层 Session&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据Data&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;会话层连接到传输层的映射；会话连接的流量控制；数据传输；会话连接恢复与释放；会话连接管理、差错控制&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;如ASAP、TLS、SSH、ISO 8327 / CCITT X.225、RPC&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;解除或建立与别的结点的联系&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;终端设备（PC、手机、平板等）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;传输层 Transport&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据组织成数据段Segment&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用一个寻址机制来标识一个特定的应用程序（端口号）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;如TCP、UDP、RTP、SCTP、SPX、ATP、IL&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;提供端对端的接口&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;终端设备（PC、手机、平板等）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;网络层 Network&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;分割和重新组合数据包Packet&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;基于网络层地址（IP地址）进行不同网络系统间的路径选择&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;如IP、ICMP、IGMP、IPX、BGP、OSPF&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;为数据包选择路由&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;路由器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据链路层 Data Link&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;将比特信息封装成数据帧Frame&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;在物理层上建立、撤销、标识逻辑链接和链路复用、以及差错校验等功能。通过使用接收系统的硬件地址或物理地址来寻址&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;如以太网、令牌环、HDLC、帧中继、ISDN、ATM、IEEE 802.11&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;传输有地址的帧以及错误检测功能&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;网桥、交换机、中继器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;物理层 Physical&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;传输比特（bit）流&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;建立、维护、取消物理连接&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;如线路、无线电、光纤、信鸽&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;以二进制数据形式在物理媒体上传输数据&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;光纤、同轴电缆、 双绞线、网卡&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;将 &lt;code&gt;IP&lt;/code&gt; 比作一个&lt;code&gt;高速公路&lt;/code&gt;，它允许其他协议在上面行使并找到 到其他电脑的出口。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;TCP&lt;/code&gt;、&lt;code&gt;UDP&lt;/code&gt;是高速公路上的&lt;code&gt;卡车&lt;/code&gt;，它们携带的货物就像&lt;code&gt;HTTP&lt;/code&gt;、&lt;code&gt;FTP&lt;/code&gt;协议。（TCP、UDP都是用来传输其他协议的）&lt;/p&gt;
+&lt;p&gt;每个&lt;code&gt;IP地址&lt;/code&gt;都包括两个&lt;code&gt;标识码（ID）&lt;/code&gt;：&lt;code&gt;网络ID&lt;/code&gt;、&lt;code&gt;主机ID&lt;/code&gt;。同一个物理网络上的所有主机都使用同一个&lt;code&gt;网络ID&lt;/code&gt;，网络上的一个主机（包括网络上工作站、服务器、路由器等）有一个&lt;code&gt;主机ID&lt;/code&gt;与其对应。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TCP/IP&lt;/strong&gt; 是传输层协议，主要解决&lt;code&gt;数据如何在网络传输&lt;/code&gt;；&lt;strong&gt;HTTP&lt;/strong&gt;是应用层协议，主要解决&lt;code&gt;如何包装数据&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;**TCP/IP网络协议栈 **分为应用层（Application）、传输层（Transport）、网络层（Network）、链路层（Link）4层&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616320048849.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;通信过程中，每层协议都要加上一个数据首部（header），称之为&lt;code&gt;封装（Encapsulation）&lt;/code&gt;。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616334538399.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;不同的协议层对数据包有不同的称谓：在&lt;strong&gt;传输层&lt;/strong&gt;称为&lt;code&gt;段&lt;/code&gt;（segment）；在&lt;strong&gt;网络层&lt;/strong&gt;称为&lt;code&gt;数据报&lt;/code&gt;（datagram）；在&lt;strong&gt;链路层&lt;/strong&gt;称为&lt;code&gt;帧&lt;/code&gt;（frame）。&lt;/p&gt;
+&lt;p&gt;数据封装成帧后发到传输介质上，到达目的主机后每层协议再剥掉相应的首部，最后将应用层数据交给应用程序处理。&lt;/p&gt;
 &lt;h2 id=&#34;1-典型协议&#34;&gt;1. 典型协议：&lt;/h2&gt;
 &lt;p&gt;传输层： 常见的协议有 TCP/UDP 协议&lt;br&gt;
 应用层： 常见的协议有 HTTP，FTP 协议&lt;br&gt;
 网络层： 常见的协议有 IP 协议，ICMP 协议，IGMP 协议&lt;br&gt;
 网络接口层： 常见的协议有 ARP 协议，RARP 协议&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;TCP 传输控协议（TransmissionControl Protocol）是一种面向连接的，可靠的，基于字节流的传输层通信协议&lt;/li&gt;
-&lt;li&gt;UDP 用户数据包协议（UserDatagram Protocol）是 OSI 参考模型中一种无连接的传输层协议，提供面向事物的简单不可靠信息传送服务&lt;/li&gt;
+&lt;li&gt;TCP 传输控协议（TransmissionControl Protocol）是一种&lt;code&gt;面向连接的，可靠的&lt;/code&gt;，基于字节流的传输层通信协议
+&lt;ul&gt;
+&lt;li&gt;面向连接----三次握手&lt;/li&gt;
+&lt;li&gt;可靠的—任何数据在传递过程中，都有一个确认的过程，只有收到确认，才会进行后续传递，如果超过最长等待时间(2MSL)则重新发送&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;UDP 用户数据包协议（UserDatagram Protocol）是 OSI 参考模型中一种无连接的传输层协议，提供面向事物的简单不可靠信息传送服务&lt;br&gt;
+- 用户数据报协议&lt;br&gt;
+- 无连接&lt;br&gt;
+- 支持一对一，一对多，多对一&lt;br&gt;
+- 不可靠传输服务&lt;/li&gt;
 &lt;li&gt;HTTP 超文本传输系协议（HyperText Transfer Protocol）是互联网上应用最为广泛的一种协议&lt;/li&gt;
 &lt;li&gt;FTP 文件传输协议（File Transfer Protocol）&lt;/li&gt;
 &lt;li&gt;IP 协议是英特网互联协议（Internet Protocol）&lt;/li&gt;
@@ -4056,7 +4155,7 @@ export用于导出本模块对外的接口，import用于导入某个模块的�
 &lt;li&gt;如果在200ms内没有再次触发滚动事件，那么就执行函数&lt;/li&gt;
 &lt;li&gt;如果在200ms内再次触发滚动事件，那么当前的计时取消，重新开始计时&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;效果&lt;/strong&gt;：如果短时间内大量触发同一事件，只会执行一次函数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;效果&lt;/strong&gt;：如果短时间内大量触发同一事件，只会执行一次函数。利用计时器setTimeout和clearTimeout，只要触发事件，就会销毁上一次的计时器，重新计时，计时结束后才会触发回掉函数的事件。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;实现&lt;/strong&gt;：既然前面都提到了计时，那实现的关键就在于&lt;code&gt;setTimeout&lt;/code&gt;这个函数，由于还需要一个变量来保存计时，考虑维护全局纯净，可以借助闭包来实现：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;function debounce(fn,delay){
     let timer = null //借助闭包
@@ -4097,6 +4196,7 @@ export用于导出本模块对外的接口，import用于导入某个模块的�
 &lt;ul&gt;
 &lt;li&gt;如果一直拖着滚动条进行滚动，那么会以1s的时间间隔，持续输出当前位置和顶部的距离&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;可以完全&lt;code&gt;不借助setTimeout&lt;/code&gt;，可以把状态位换成时间戳，然后利用时间戳差值是否大于指定间隔时间来做判定。&lt;/p&gt;
 &lt;h2 id=&#34;3-其他场景&#34;&gt;3. 其他场景&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;搜索框input事件，例如要支持输入实时搜索可以使用节流方案（间隔一段时间就必须查询相关内容），或者实现输入间隔大于某个值（如500ms），就当做用户输入完成，然后开始搜索，具体使用哪种方案要看业务需求。&lt;/li&gt;
@@ -4134,16 +4234,58 @@ export用于导出本模块对外的接口，import用于导入某个模块的�
 &lt;li&gt;使用 session： client 再次访问 server，会带上首次访问时获得的 值为 sessionID 的cookie，server 读取 cookie 中的 sessionID，根据 sessionID 到保存 session 的内存寻找与 sessionID 匹配的数据，若寻找成功就将数据返回给 client。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;session有效期&#34;&gt;Session有效期&lt;/h3&gt;
-&lt;p&gt;Session生成后，只要用户继续访问，服务器就会更新Session的最后访问时间，并维护该Session。用户每访问服务器一次，无论是否读写Session，服务器都认为该用户的Session“活跃（active）”了一次。&lt;/p&gt;
+&lt;p&gt;Session生成后，只要用户继续访问，&lt;code&gt;服务器就会更新Session的最后访问时间，并维护该Session&lt;/code&gt;。用户每访问服务器一次，无论是否读写Session，服务器都认为该用户的Session“活跃（active）”了一次。&lt;/p&gt;
 &lt;p&gt;由于会有越来越多的用户访问服务器，因此Session也会越来越多。为防止内存溢出，服务器会把长时间内没有活跃的Session从内存删除。这个时间就是Session的超时时间。如果超过了超时时间没访问过服务器，Session就自动失效了。&lt;/p&gt;
 &lt;h2 id=&#34;3-cookie与session的区别&#34;&gt;3. cookie与session的区别&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Cookie数据存放在客户端，Session数据放在服务器端&lt;/li&gt;
-&lt;li&gt;Cookie的安全性一般，他人可通过分析存放在本地的Cookie并进行Cookie欺骗。在安全性第一的前提下，选择Session更优。重要交互信息比如权限等就要放在Session中，一般的信息记录放Cookie中&lt;/li&gt;
-&lt;li&gt;单个Cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个Cookie，而Session原则上没有限制&lt;/li&gt;
-&lt;li&gt;Session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用Cookie。&lt;/li&gt;
-&lt;li&gt;Session 的运行依赖Session ID，而 Session ID 是存在 Cookie 中的，也就是说，如果浏览器禁用了 Cookie，Session 也会失效（但是可以通过其它方式实现，比如在 url 中传递 Session ID，也就是地址重写）&lt;/li&gt;
-&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;使用方式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cookie机制：如果不在浏览器中设置过期事件，cookie被保存在内存中，生命周期随浏览器的关闭而结束，这种cookie简称为会话cookie。如果在浏览器中设置了cookie的过期事件，cookie会被保存在硬盘中，关闭浏览器后，cookie数据仍然存在，直到过期事件结束才消失。cookie是服务端发给客户端的特殊信息，cookie是以文本的方式保存在客户端，每次请求时都带上它&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;session机制：当服务器收到请求需要创建session对象时，首先会检查客户端请求中是否包含sessionid。如果有sessionid，服务器将根据该id返回对应session对象。如果客户端请求中没有sessionid，服务器会创建新的session对象，并把sessionid在本次响应中返回给客户端。通常使用cookie方式存储sessionid到客户端，在交互中浏览器按照规则将sessionid发送给服务器。如果用户禁用cookie，则要使用URL重写，可以通过response.encodeURL(url)进行实现；API对encodeURL的结束为，当浏览器支持cookie时，url不做任何处理；当浏览器不支持cookie的时候，将会重写URL将sessionid拼接到访问地址后。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;保持状态&lt;br&gt;
+cookie保存在浏览器端，session保存在服务器端&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;存储的大小&lt;br&gt;
+单个cookie保存的数据不能超过4kb；session大小没有限制。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;存储内容&lt;br&gt;
+cookie只能保存字符串类型，以文本的方式。&lt;br&gt;
+session通过类似与Hashtable的数据结构来保存，能支持任何类型的对象（session中可含有多个对象）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安全性&lt;br&gt;
+session的安全性大于cookie。原因如下：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;① sessionid存储在cookie中，若要攻破session首先要攻破cookie；
+② sessionid是要有人登录，或者启动session_start才会有，所以攻破cookie也不一定能得到sessionid；
+③ 第二次启动session_start后，前一次的sessionid就是失效了，session过期后，sessionid也随之失效。
+④ sessionid是加密的。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;应用场景&lt;br&gt;
+cookie：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;（1）判断用户是否登录过网站，以便下次登录时能够实现自动登录（或者记住密码）。
+（2）保存上次登录的事件等信息。
+（3）保存上次查看的页面
+（4）浏览计数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;session：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;（1）网上商城中的购物车
+（2）保存用户登录信息
+（3）将某些数据放入session中，供同一用户的不同页面使用
+（4）防止用户非法登录
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果说&lt;strong&gt;Cookie机制是通过检查客户身上的“通行证”来确定客户身份的话，那么Session机制就是通过检查服务器上的“客户明细表”来确认客户身份。Session相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;4-localstorage&#34;&gt;4. localStorage&lt;/h2&gt;
 &lt;p&gt;localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。&lt;/p&gt;
 &lt;p&gt;并且不会因为刷新而释放，所以，&lt;strong&gt;可以使用 localStorage 来实现变量的持久化存储&lt;/strong&gt;&lt;/p&gt;
