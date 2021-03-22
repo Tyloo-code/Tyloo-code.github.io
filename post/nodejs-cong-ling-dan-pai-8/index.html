@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>NodeJs从零单排(8) | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616334894133">
+<link rel="shortcut icon" href="/favicon.ico?v=1616418924055">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -3155,57 +3155,252 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-fu-wu-duan-yu-wang-luo/"" data-c="
           &lt;h1 id=&#34;1-常见状态码&#34;&gt;1. 常见状态码&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;1XX 信息&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;消息:&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;描述:&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;100 Continue&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;服务器仅接收到部分请求，但是一旦服务器并没有拒绝该请求，客户端应该继续发送其余的请求。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;101 Switching Protocols&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;服务器转换协议：服务器将遵从客户的请求转换到另外一种协议。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;p&gt;&lt;code&gt;2XX 成功&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;200 OK，表示从客户端发来的请求在服务器端被正确处理&lt;/li&gt;
-&lt;li&gt;204 No content，表示请求成功，但响应报文不含实体的主体部分&lt;/li&gt;
-&lt;li&gt;206 Partial Content，进行范围请求&lt;/li&gt;
-&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;消息:&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;描述:&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;200 OK&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;请求成功（其后是对GET和POST请求的应答文档。）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;201 Created&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;请求被创建完成，同时新的资源被创建。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;202 Accepted&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;供处理的请求已被接受，但是处理未完成。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;203 Non-authoritative Information&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;文档已经正常地返回，但一些应答头可能不正确，因为使用的是文档的拷贝。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;204 No Content&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;没有新文档。浏览器应该继续显示原来的文档。如果用户定期地刷新页面，而Servlet可以确定用户文档足够新，这个状态代码是很有用的。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;p&gt;&lt;code&gt;3XX 重定向&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;301 moved permanently，永久性重定向，表示资源已被分配了新的 URL&lt;/li&gt;
-&lt;li&gt;302 found，临时性重定向，表示资源临时被分配了新的 URL&lt;/li&gt;
-&lt;li&gt;303 see other，表示资源存在着另一个 URL，应使用 GET 方法丁香获取资源&lt;/li&gt;
-&lt;li&gt;304:该资源在上次请求之后没有任何修改(这通常用于浏览器的缓存机制，使用GET请求时尤其需要注意)。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;消息:&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;描述:&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;300 Multiple Choices&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;多重选择。链接列表。用户可以选择某链接到达目的地。最多允许五个地址。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;301 Moved Permanently&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;所请求的页面已经转移至新的url。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;302 Found&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;所请求的页面已经临时转移至新的url。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;303 See Other&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;所请求的页面可在别的url下被找到。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;304 Not Modified&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;未按预期修改文档。客户端有缓冲的文档并发出了一个条件性的请求（一般是提供If-Modified-Since头表示客户只想比指定日期更新的文档）。服务器告诉客户，原来缓冲的文档还可以继续使用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;p&gt;&lt;code&gt;4XX 客户端错误&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;400:无法找到请求的资源。&lt;/li&gt;
-&lt;li&gt;401:访问资源的权限不够。&lt;/li&gt;
-&lt;li&gt;403:没有权限访问资源。&lt;/li&gt;
-&lt;li&gt;404:需要访问的资源不存在。&lt;/li&gt;
-&lt;li&gt;405:需要访问的资源被禁止。&lt;/li&gt;
-&lt;li&gt;407:访问的资源需要代理身份验证。&lt;/li&gt;
-&lt;li&gt;414:请求的URL太长。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;消息:&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;描述:&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;400 Bad Request&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;服务器未能理解请求。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;401 Unauthorized&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;被请求的页面需要用户名和密码。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;403 Forbidden&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;对被请求页面的访问被禁止。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;404 Not Found&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;服务器无法找到被请求的页面。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;405 Method Not Allowed&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;请求中指定的方法不被允许。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;406 Not Acceptable&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;服务器生成的响应无法被客户端所接受。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;407 Proxy Authentication Required&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户必须首先使用代理服务器进行验证，这样请求才会被处理。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;408 Request Timeout&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;请求超出了服务器的等待时间。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;409 Conflict&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;由于冲突，请求无法被完成。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;413 Request Entity Too Large&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;由于所请求的实体的太大，服务器不会接受请求。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;414 Request-url Too Long&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;由于url太长，服务器不会接受请求。当post请求被转换为带有很长的查询信息的get请求时，就会发生这种情况。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;p&gt;&lt;code&gt;5XX 服务器错误&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;500:服务器内部错误。&lt;/li&gt;
-&lt;li&gt;503:表明服务器暂时处于超负载或正在停机维护，无法处理请求&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;2-缓存&#34;&gt;2. 缓存&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;消息:&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;描述:&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;500 Internal Server Error&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;请求未完成。服务器遇到不可预知的情况。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;501 Not Implemented&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;请求未完成。服务器不支持所请求的功能。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;502 Bad Gateway&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;请求未完成。服务器从上游服务器收到一个无效的响应。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;503 Service Unavailable&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;请求未完成。服务器临时过载或当机。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;504 Gateway Timeout&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;网关超时。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;505 HTTP Version Not Supported&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;服务器不支持请求中指明的HTTP协议版本。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;2-浏览器缓存&#34;&gt;2. 浏览器缓存&lt;/h1&gt;
 &lt;h2 id=&#34;1-200-from-cache和200-ok&#34;&gt;1. 200 From cache和200 ok&lt;/h2&gt;
 &lt;p&gt;为什么有的缓存是 200 OK (from cache)，有的缓存是 304 Not Modified 呢？很简单，看运维是否移除了 Entity Tag。移除了，就总是 200 OK (from cache)。没有移除，就两者交替出现。&lt;/p&gt;
 &lt;p&gt;其实， 200 OK (from cache)  是浏览器没有跟服务器确认，直接用了浏览器缓存；而 304 Not Modified 是浏览器和服务器多确认了一次缓存有效性，再用的缓存。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;它们都是在设置了缓存的情况下触发的。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;200 OK (from cache) 是直接点击链接访问，输入网址按回车访问也能触发；而 304 Not Modified 是刷新页面时触发，或是设置了长缓存、但 Entity Tags 没有移除时触发。&lt;/p&gt;
-&lt;h2 id=&#34;2-400401403状态码分别代表什么&#34;&gt;2. 400,401,403状态码分别代表什么&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;400 bad request，请求报文存在语法错误&lt;/li&gt;
-&lt;li&gt;401 unauthorized，表示发送的请求需要有通过 HTTP 认证的认证信息&lt;/li&gt;
-&lt;li&gt;403 forbidden，表示对请求资源的访问被服务器拒绝&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;3-浏览器缓存&#34;&gt;3. 浏览器缓存&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615443053998.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;2-dns-缓存&#34;&gt;2. DNS 缓存&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;什么是DNS&lt;/strong&gt;&lt;br&gt;
+全称 Domain Name System ,即域名系统。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;万维网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。DNS协议运行在UDP协议之上，使用端口号53。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;DNS解析&lt;/strong&gt;&lt;br&gt;
+通过域名,最终得到该域名对应的IP地址的过程叫做域名解析（或主机名解析）。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;www.dnscache.com (域名) - DNS解析 -&amp;gt; 11.222.33.444 (IP地址)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;DNS缓存&lt;/strong&gt;&lt;br&gt;
+DNS查询过程如下:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先搜索浏览器自身的DNS缓存,如果存在，则域名解析到此完成。&lt;/li&gt;
+&lt;li&gt;如果浏览器自身的缓存里面没有找到对应的条目，那么会尝试读取操作系统的hosts文件看是否存在对应的映射关系,如果存在，则域名解析到此完成。&lt;/li&gt;
+&lt;li&gt;如果本地hosts文件不存在映射关系，则查找本地DNS服务器(ISP服务器,或者自己手动设置的DNS服务器),如果存在,域名到此解析完成。&lt;/li&gt;
+&lt;li&gt;如果本地DNS服务器还没找到的话,它就会向根服务器发出请求,进行递归查询。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-cdn-缓存&#34;&gt;3. CDN 缓存&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;什么是CDN&lt;/strong&gt;&lt;br&gt;
+简单的理解CDN就是这些代售点(缓存服务器)的承包商,他为买票者提供了便利,帮助他们在最近的地方(最近的CDN节点)用最短的时间(最短的请求时间)买到票(拿到资源),这样去火车站售票大厅排队的人也就少了。也就减轻了售票大厅的压力(起到分流作用,减轻服务器负载压力)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CDN缓存&lt;/strong&gt;&lt;br&gt;
+关于CDN缓存,在浏览器本地缓存失效后,浏览器会向CDN边缘节点发起请求。类似浏览器缓存,CDN边缘节点也存在着一套缓存机制。CDN边缘节点缓存策略因服务商不同而不同，但一般都会遵循http标准协议，通过http响应头中的&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Cache-control: max-age //后面会提到
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;的字段来设置CDN边缘节点数据缓存时间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CDN 优势&lt;/strong&gt;&lt;br&gt;
+CDN节点解决了跨运营商和跨地域访问的问题，访问延时大大降低。&lt;br&gt;
+大部分请求在CDN边缘节点完成，CDN起到了分流作用，减轻了源服务器的负载。&lt;/p&gt;
+&lt;h2 id=&#34;4-浏览器缓存http缓存&#34;&gt;4. 浏览器缓存(http缓存)&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616396215607.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;1-什么是浏览器缓存&#34;&gt;1. 什么是浏览器缓存&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615444453979.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-简单来说，浏览器缓存其实就是浏览器保存通过HTTP获取的所有资源，是浏览器将网络资源存储在本地的一种行为。&lt;/p&gt;
-&lt;h3 id=&#34;2-缓存的资源去哪里了&#34;&gt;2. 缓存的资源去哪里了?&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;memory cache&lt;/strong&gt;&lt;br&gt;
-MemoryCache顾名思义，就是将资源缓存到内存中，等待下次访问时不需要重新下载资源，而直接从内存中获取。&lt;br&gt;
-&lt;strong&gt;disk cache&lt;/strong&gt;&lt;br&gt;
-DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问时不需要重新下载资源，而直接从磁盘中获取。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615444570064.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616396248637.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+简单来说,浏览器缓存其实就是浏览器保存通过HTTP获取的所有资源,是浏览器将网络资源存储在本地的一种行为。&lt;/p&gt;
+&lt;h3 id=&#34;2-缓存的资源去哪里了&#34;&gt;2. 缓存的资源去哪里了&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;memory cache&lt;/code&gt;JS等派生资源&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;MemoryCache顾名思义，就是将资源缓存到内存中，等待下次访问时不需要重新下载资源，而直接从内存中获取。Webkit早已支持memoryCache。&lt;br&gt;
+目前Webkit资源分成两类，一类是主资源，比如HTML页面，或者下载项，一类是派生资源，比如HTML页面中内嵌的图片或者脚本链接，分别对应代码中两个类：MainResourceLoader和SubresourceLoader。虽然Webkit支持memoryCache，但是也只是针对派生资源，它对应的类为CachedResource，用于保存原始数据（比如CSS，JS等），以及解码过的图片数据。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;disk cache&lt;/code&gt;保存CSS等不频繁读取资源&lt;br&gt;
+DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问时不需要重新下载资源，而直接从磁盘中获取，它的直接操作对象为CurlCacheManager。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;*&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;memory cache&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;disk cache&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;相同点&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;只能存储一些派生类资源文件&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;只能存储一些派生类资源文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;不同点&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;退出进程时数据会被清除&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;退出进程时数据不会被清除&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;存储资源&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;一般脚本、字体、图片会存在内存当中&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;一般非脚本会存在内存当中，如css等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;因为CSS文件加载一次就可渲染出来,我们不会频繁读取它,所以它不适合缓存到内存中,但是js之类的脚本却随时可能会执行,如果脚本在磁盘当中,我们在执行脚本的时候需要从磁盘取到内存中来,这样IO开销就很大了,有可能导致浏览器失去响应。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;三级缓存原理 (访问缓存优先级)&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;先在内存中查找,如果有,直接加载。&lt;/li&gt;
@@ -3219,6 +3414,21 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;li&gt;减少了服务器的负担，大大提升了网站的性能&lt;/li&gt;
 &lt;li&gt;加快了客户端加载网页的速度&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h3 id=&#34;3-浏览器缓存的分类&#34;&gt;3. 浏览器缓存的分类&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;1. 强缓存&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;浏览器在加载资源时，会先根据本地缓存资源的 header 中的信息判断是否命中强缓存，如果命中则直接使用缓存中的资源不会再向服务器发送请求。&lt;/p&gt;
+&lt;p&gt;这里的 header 中的信息指的是 expires 和 cahe-control.&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616397711376.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;2. 协商缓存&lt;/code&gt;&lt;br&gt;
+当强缓存没有命中的时候，浏览器会发送一个请求到服务器，服务器根据 header 中的部分信息来判断是否命中缓存。如果命中，则返回 304 ，告诉浏览器资源未更新，可使用本地的缓存。&lt;/p&gt;
+&lt;p&gt;这里的 header 中的信息指的是 Last-Modify/If-Modify-Since 和 ETag/If-None-Match.&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616397767641.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;br&gt;
+当浏览器再次访问一个已经访问过的资源时，它会这样做：&lt;/p&gt;
+&lt;p&gt;1.看看是否命中强缓存，如果命中，就直接使用缓存了。&lt;/p&gt;
+&lt;p&gt;2.如果没有命中强缓存，就发请求到服务器检查是否命中协商缓存。&lt;/p&gt;
+&lt;p&gt;3.如果命中协商缓存，服务器会返回 304 告诉浏览器使用本地缓存。&lt;/p&gt;
+&lt;p&gt;4.否则，返回最新的资源。&lt;/p&gt;
 &lt;h1 id=&#34;3-token&#34;&gt;3. Token&lt;/h1&gt;
 &lt;h2 id=&#34;token&#34;&gt;Token&lt;/h2&gt;
 &lt;p&gt;在Web领域基于Token的身份验证随处可见。在大多数使用Web API的互联网公司中，tokens 是多用户下处理认证的最佳方式。&lt;/p&gt;
@@ -3354,8 +3564,8 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;p&gt;将 &lt;code&gt;IP&lt;/code&gt; 比作一个&lt;code&gt;高速公路&lt;/code&gt;，它允许其他协议在上面行使并找到 到其他电脑的出口。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;TCP&lt;/code&gt;、&lt;code&gt;UDP&lt;/code&gt;是高速公路上的&lt;code&gt;卡车&lt;/code&gt;，它们携带的货物就像&lt;code&gt;HTTP&lt;/code&gt;、&lt;code&gt;FTP&lt;/code&gt;协议。（TCP、UDP都是用来传输其他协议的）&lt;/p&gt;
 &lt;p&gt;每个&lt;code&gt;IP地址&lt;/code&gt;都包括两个&lt;code&gt;标识码（ID）&lt;/code&gt;：&lt;code&gt;网络ID&lt;/code&gt;、&lt;code&gt;主机ID&lt;/code&gt;。同一个物理网络上的所有主机都使用同一个&lt;code&gt;网络ID&lt;/code&gt;，网络上的一个主机（包括网络上工作站、服务器、路由器等）有一个&lt;code&gt;主机ID&lt;/code&gt;与其对应。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;TCP/IP&lt;/strong&gt; 是传输层协议，主要解决&lt;code&gt;数据如何在网络传输&lt;/code&gt;；&lt;strong&gt;HTTP&lt;/strong&gt;是应用层协议，主要解决&lt;code&gt;如何包装数据&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;**TCP/IP网络协议栈 **分为应用层（Application）、传输层（Transport）、网络层（Network）、链路层（Link）4层&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;TCP/IP&lt;/strong&gt;是传输层协议，主要解决&lt;code&gt;数据如何在网络传输&lt;/code&gt;；&lt;strong&gt;HTTP&lt;/strong&gt;是应用层协议，主要解决&lt;code&gt;如何包装数据&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TCP/IP网络协议栈&lt;/strong&gt;分为应用层（Application）、传输层（Transport）、网络层（Network）、链路层（Link）4层&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616320048849.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;p&gt;通信过程中，每层协议都要加上一个数据首部（header），称之为&lt;code&gt;封装（Encapsulation）&lt;/code&gt;。&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616334538399.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
@@ -3392,52 +3602,152 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;li&gt;TCP是&lt;code&gt;一对一&lt;/code&gt;的连接，而UDP则可以支持一对一，&lt;code&gt;多对多&lt;/code&gt;，一对多的通信。&lt;/li&gt;
 &lt;li&gt;TCP面向的是字节流的服务，UDP面向的是报文的服务。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;7-httphttpshttp20&#34;&gt;7. http/https/http2.0&lt;/h1&gt;
+&lt;h2 id=&#34;3-网络分层模型&#34;&gt;3. 网络分层模型&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616399158170.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616399361438.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;7-httphttp2http3https&#34;&gt;7. http/http2/http3/https&lt;/h1&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615448355999.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ul&gt;
-&lt;li&gt;HTTP是互联网上应用最为广泛的一种网络协议,设计最初的目的是为了提供一种发布和接收HTML页面的方法，万维网协会（World Wide Web Consortium，W3C）和互联网工程任务组（Internet Engineering Task Force，IETF）合作不断发展改进了HTTP,之后HTTP有了好几个版本。&lt;/li&gt;
 &lt;li&gt;HTTP是基于TCP的，由HTTP客户端发起一个请求，会创建一个到服务器指定端口（默认80端口）的TCP连接，HTTP服务器会在那个端口监听客户端的请求。一旦收到请求，服务器会向客户端返回一个状态（如&amp;quot;HTTP/1.1 200 OK&amp;quot;）以及返回的内容（如请求的文件、错误消息、或者其它信息）。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;http的版本&#34;&gt;HTTP的版本&lt;/h2&gt;
-&lt;p&gt;在不断的改进中，HTTP存在有以下几个版本：HTTP/0.9、HTTP/1.0、HTTP/1.1、HTTP/2。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;0.9
-已过时。只接受GET一种请求方法，没有在通讯中指定版本号，且不支持请求头。由于该版本不支持POST方法，因此客户端无法向服务器传递太多信息。
-
-HTTP/1.0
-这是第一个在通讯中指定版本号的HTTP协议版本，至今仍被广泛采用，特别是在代理服务器中。
-
-HTTP/1.1
-持久连接被默认采用，并能很好地配合代理服务器工作。还支持以管道方式在同时发送多个请求，以便降低线路负载，提高传输速度。
-
-HTTP/1.1相较于HTTP/1.0协议的区别主要体现在：
-
-缓存处理
-带宽优化及网络连接的使用
-错误通知的管理
-消息在网络中的发送
-互联网地址的维护
-安全性及完整性
-
-HTTP/2
-当前版本，于2015年5月作为互联网标准正式发布。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;HTTP/0.9是HTTP的第一个版本，现在已经过时，为了改进协议，之后相继有了HTTP/1.0、HTTP/1.1。1.0和1.1并存了很长时间，HTTP/1.1是目前主流版本。2015年发布了HTTP/2.0,这个也是这两年讨论比较多的技术了，因为它相对于HTTP/1.x来说有非常大的进步，优化了HTTP/1.x很多问题，不过作为下一代的HTTP协议，需要很长一段的时间才会普及。&lt;/p&gt;
-&lt;h2 id=&#34;https&#34;&gt;HTTPS&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;超文本传输安全协议&lt;/strong&gt;（英语：Hyper Text Transfer Protocol over Secure Socket Layer，缩写HTTPS。也被称为HTTP over TLS，HTTP over SSL或HTTP Secure）。&lt;/p&gt;
-&lt;p&gt;简单来说HTTPS就是安全增强版的HTTP,是HTTP协议与加密协议的结合，使HTTP的协议数据在传输过程中更加安全。&lt;/p&gt;
-&lt;p&gt;上面说到的加密协议叫SSL，是英文Secure Sockets Layer的缩写，中文叫“安全套接层”，也是由网景公司设计的，所以上面说HTTPS也被称为HTTP over SSL。&lt;/p&gt;
-&lt;p&gt;HTTPS将HTTP协议数据包放到SSL/TSL层加密后，在TCP/IP层组成IP数据报去传输，以此保证传输数据的安全；而对于接收端，在SSL/TSL将接收的数据包解密之后，将数据传给HTTP协议层，就是普通的HTTP数据。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615449424117.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;https性能问题&#34;&gt;HTTPS性能问题&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;HTTPS 降低用户访问速度。SSL握手，HTTPS 对速度会有一定程度的降低，但是只要经过合理优化和部署，HTTPS 对速度的影响完全可以接受。在很多场景下，HTTPS 速度完全不逊于 HTTP，如果使用 SPDY，HTTPS 的速度甚至还要比 HTTP 快。&lt;/li&gt;
-&lt;li&gt;相对于HTTPS降低访问速度，其实更需要关心的是服务器端的CPU压力，HTTPS中大量的密钥算法计算，会消耗大量的CPU资源，只有足够的优化，HTTPS 的机器成本才不会明显增加。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;http2&#34;&gt;HTTP2&lt;/h2&gt;
-&lt;p&gt;HTTP2.0可以说是SPDY的升级版（其实原本也是基于SPDY设计的），但是，HTTP2.0 跟 SPDY 仍有不同的地方，主要是以下两点：&lt;/p&gt;
+&lt;h2 id=&#34;1-http11发明以来发生了哪些变化&#34;&gt;1. HTTP/1.1发明以来发生了哪些变化？&lt;/h2&gt;
+&lt;p&gt;我们更应该关心的是：平均每个页面为了完成显示与渲染所需要下载的资源数已经超过了100个。&lt;/p&gt;
+&lt;p&gt;正如下图所示，从2011年以来,传输数据大小与平均请求资源数量不断持续增长，并没有减缓的迹象。该图表中绿色直线展示了传输数据大小的增长，红色直线展示了平均请求资源数量的增长。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616379489429.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+HTTP/1.1自从1997年发布以来，我们已经使用HTTP/1.x 相当长一段时间了，但是随着近十年互联网的爆炸式发展，从当初网页内容以文本为主,到现在以富媒体（如图片、声音、视频）为主,而且对页面内容实时性高要求的应用越来越多(比如聊天、视频直播),于是当时协议规定的某些特性，已经无法满足现代网络的需求了。&lt;/p&gt;
+&lt;h2 id=&#34;2-http11的缺陷&#34;&gt;2. HTTP/1.1的缺陷&lt;/h2&gt;
+&lt;h3 id=&#34;1-高延迟-带来页面加载速度的降低&#34;&gt;1. 高延迟--带来页面加载速度的降低&lt;/h3&gt;
+&lt;p&gt;虽然近几年来网络带宽增长非常快，然而我们却并没有看到网络延迟有对应程度的降低。&lt;strong&gt;网络延迟问题主要由于队头阻塞(Head-Of-Line Blocking),导致带宽无法被充分利用&lt;/strong&gt;。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616379642442.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;队头阻塞是指当顺序发送的请求序列中的一个请求因为某种原因被阻塞时，在后面排队的所有请求也一并被阻塞，会导致客户端迟迟收不到数据。针对队头阻塞,人们尝试过以下办法来解决：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;HTTP2.0 支持明文 HTTP 传输，而 SPDY 强制使用 HTTPS&lt;/li&gt;
-&lt;li&gt;HTTP2.0 消息头的压缩算法采用 HPACK，而非 SPDY 采用的 DEFLATE&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将同一页面的资源分散到不同域名下，提升连接上限。Chrome有个机制，对于同一个域名，默认允许同时建立 6 个 TCP持久连接，使用持久连接时，虽然能公用一个TCP管道，但是在一个管道中同一时刻只能处理一个请求，在当前的请求没有结束之前，其他的请求只能处于阻塞状态。另外如果在同一个域名下同时有10个请求发生，那么其中4个请求会进入排队等待状态，直至进行中的请求完成。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spriting合并多张小图为一张大图,再用JavaScript或者CSS将小图重新“切割”出来的技术。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;内联(Inlining)是另外一种防止发送很多小图请求的技巧，将图片的原始数据嵌入在CSS文件里面的URL里，减少网络请求次数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;拼接(Concatenation)将多个体积较小的JavaScript使用webpack等工具打包成1个体积更大的JavaScript文件,但如果其中1个文件的改动就会导致大量数据被重新下载多个文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-无状态特性-带来的巨大http头部&#34;&gt;2. 无状态特性--带来的巨大HTTP头部&lt;/h3&gt;
+&lt;p&gt;由于报文Header一般会携带&amp;quot;User Agent&amp;quot;&amp;quot;Cookie&amp;quot;&amp;quot;Accept&amp;quot;&amp;quot;Server&amp;quot;等许多固定的头字段（如下图），多达几百字节甚至上千字节，但Body却经常只有几十字节（比如GET请求、 204/301/304响应），成了不折不扣的“大头儿子”。Header里携带的内容过大，在一定程度上增加了传输的成本。更要命的是，成千上万的请求响应报文里有很多字段值都是重复的，非常浪费。&lt;/p&gt;
+&lt;h3 id=&#34;3-明文传输-带来的不安全性&#34;&gt;3. 明文传输--带来的不安全性&lt;/h3&gt;
+&lt;p&gt;HTTP/1.1在传输数据时，所有传输的内容都是明文，客户端和服务器端都无法验证对方的身份，这在一定程度上无法保证数据的安全性。&lt;/p&gt;
+&lt;h3 id=&#34;4-不支持服务器推送消息&#34;&gt;4. 不支持服务器推送消息&lt;/h3&gt;
+&lt;h2 id=&#34;3-spdy-协议与-http2-简介&#34;&gt;3. SPDY 协议与 HTTP/2 简介&lt;/h2&gt;
+&lt;h3 id=&#34;1-spdy-协议&#34;&gt;1. SPDY 协议&lt;/h3&gt;
+&lt;p&gt;上面我们提到,由于HTTP/1.x的缺陷，我们会引入雪碧图、将小图内联、使用多个域名等等的方式来提高性能。不过这些优化都绕开了协议，直到2009年，谷歌公开了自行研发的 SPDY 协议，主要解决HTTP/1.1效率不高的问题。谷歌推出SPDY，才算是正式改造HTTP协议本身。降低延迟，压缩header等等，SPDY的实践证明了这些优化的效果，也最终带来HTTP/2的诞生。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616380230751.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HTTP/1.1有两个主要的缺点：安全不足和性能不高&lt;/strong&gt;，由于背负着 HTTP/1.x 庞大的历史包袱,所以协议的修改,兼容性是首要考虑的目标，否则就会破坏互联网上无数现有的资产。如上图所示, SPDY位于HTTP之下，TCP和SSL之上，这样可以轻松兼容老版本的HTTP协议(将HTTP1.x的内容封装成一种新的frame格式)，同时可以使用已有的SSL功能。&lt;/p&gt;
+&lt;p&gt;SPDY 协议在Chrome浏览器上证明可行以后，就被当作 HTTP/2 的基础，主要特性都在 HTTP/2 之中得到继承。&lt;/p&gt;
+&lt;h3 id=&#34;2-http2-简介&#34;&gt;2. HTTP/2 简介&lt;/h3&gt;
+&lt;p&gt;2015年，HTTP/2 发布。HTTP/2是现行HTTP协议（HTTP/1.x）的替代，但它不是重写，HTTP方法/状态码/语义都与HTTP/1.x一样。&lt;strong&gt;HTTP/2基于SPDY，专注于性能，最大的一个目标是在用户和网站间只用一个连接（connection）&lt;/strong&gt;。从目前的情况来看，国内外一些排名靠前的站点基本都实现了HTTP/2的部署，使用HTTP/2能带来20%~60%的效率提升。&lt;/p&gt;
+&lt;h2 id=&#34;4-http2-新特性&#34;&gt;4. HTTP/2 新特性&lt;/h2&gt;
+&lt;h3 id=&#34;1-二进制传输&#34;&gt;1. 二进制传输&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;HTTP/2传输数据量的大幅减少,主要有两个原因：以二进制方式传输和Header 压缩&lt;/strong&gt;。我们先来介绍二进制传输，HTTP/2 采用二进制格式传输数据，而非HTTP/1.x 里纯文本形式的报文 ，二进制协议解析起来更高效。&lt;strong&gt;HTTP/2 将请求和响应数据分割为更小的帧，并且它们采用二进制编码。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;它把TCP协议的部分特性挪到了应用层，把原来的&amp;quot;Header+Body&amp;quot;的消息&amp;quot;打散&amp;quot;为数个小片的二进制&amp;quot;帧&amp;quot;(Frame),用&amp;quot;HEADERS&amp;quot;帧存放头数据、&amp;quot;DATA&amp;quot;帧存放实体数据。HTP/2数据分帧后&amp;quot;Header+Body&amp;quot;的报文结构就完全消失了，协议看到的只是一个个的&amp;quot;碎片&amp;quot;。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616380446582.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;HTTP/2 中，同域名下所有通信都在单个连接上完成，该连接可以承载任意数量的双向数据流。每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。&lt;strong&gt;多个帧之间可以乱序发送，根据帧首部的流标识可以重新组装&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;2-header-压缩&#34;&gt;2. Header 压缩&lt;/h3&gt;
+&lt;p&gt;HTTP/2并没有使用传统的压缩算法，而是开发了专门的&amp;quot;HPACK”算法，在客户端和服务器两端建立“字典”，用索引号表示重复的字符串，还采用哈夫曼编码来压缩整数和字符串，可以达到50%~90%的高压缩率。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;具体来说:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在客户端和服务器端使用“首部表”来跟踪和存储之前发送的键-值对，对于相同的数据，不再通过每次请求和响应发送；&lt;/li&gt;
+&lt;li&gt;首部表在HTTP/2的连接存续期内始终存在，由客户端和服务器共同渐进地更新;&lt;/li&gt;
+&lt;li&gt;每个新的首部键-值对要么被追加到当前表的末尾，要么替换表中之前的值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如下图中的两个请求， 请求一发送了所有的头部字段，第二个请求则只需要发送差异数据，这样可以减少冗余数据，降低开销&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616380864613.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-多路复用&#34;&gt;3. 多路复用&lt;/h3&gt;
+&lt;p&gt;在 HTTP/2 中引入了多路复用的技术。多路复用很好的解决了浏览器限制同一个域名下的请求数量的问题，同时也接更容易实现全速传输，毕竟新开一个 TCP 连接都需要慢慢提升传输速度。&lt;/p&gt;
+&lt;p&gt;大家可以通过 该链接 直观感受下 HTTP/2 比 HTTP/1 到底快了多少。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616380934161.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在 HTTP/2 中，有了二进制分帧之后，HTTP /2 不再依赖 TCP 链接去实现多流并行了，在 HTTP/2中,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同域名下所有通信都在单个连接上完成。&lt;/li&gt;
+&lt;li&gt;单个连接可以承载任意数量的双向数据流。&lt;/li&gt;
+&lt;li&gt;数据流以消息的形式发送，而消息又由一个或多个帧组成，多个帧之间可以乱序发送，因为根据帧首部的流标识可以重新组装。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这一特性，使性能有了极大提升：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同个域名只需要占用一个 TCP 连接，使用一个连接并行发送多个请求和响应,这样整个页面资源的下载过程只需要一次慢启动，同时也避免了多个TCP连接竞争带宽所带来的问题。&lt;/li&gt;
+&lt;li&gt;并行交错地发送多个请求/响应，请求/响应之间互不影响。&lt;/li&gt;
+&lt;li&gt;在HTTP/2中，每个请求都可以带一个31bit的优先值，0表示最高优先级， 数值越大优先级越低。有了这个优先值，客户端和服务器就可以在处理不同的流时采取不同的策略，以最优的方式发送流、消息和帧。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616381290207.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如上图所示，多路复用的技术可以只通过一个 TCP 连接就可以传输所有的请求数据。&lt;/p&gt;
+&lt;h3 id=&#34;4-server-push&#34;&gt;4. Server Push&lt;/h3&gt;
+&lt;p&gt;HTTP2还在一定程度上改变了传统的“请求-应答”工作模式，服务器不再是完全被动地响应请求，也可以新建“流”主动向客户端发送消息。比如，在浏览器刚请求HTML的时候就提前把可能会用到的JS、CSS文件发给客户端，减少等待的延迟，这被称为&amp;quot;服务器推送&amp;quot;（ Server Push，也叫 Cache push）&lt;/p&gt;
+&lt;p&gt;例如下图所示,服务端主动把JS和CSS文件推送给客户端，而不需要客户端解析HTML时再发送这些请求。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616381342954.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;另外需要补充的是,服务端可以主动推送，客户端也有权利选择是否接收。如果服务端推送的资源已经被浏览器缓存过，浏览器可以通过发送RST_STREAM帧来拒收。主动推送也遵守同源策略，换句话说，服务器不能随便将第三方资源推送给客户端，而必须是经过双方确认才行。&lt;/p&gt;
+&lt;h3 id=&#34;5-提高安全性&#34;&gt;5. 提高安全性&lt;/h3&gt;
+&lt;p&gt;出于兼容的考虑，HTTP/2延续了HTTP/1的“明文”特点，可以像以前一样使用明文传输数据，不强制使用加密通信，不过格式还是二进制，只是不需要解密。&lt;/p&gt;
+&lt;p&gt;但由于HTTPS已经是大势所趋，而且主流的浏览器Chrome、Firefox等都公开宣布只支持加密的HTTP/2，所以&lt;code&gt;“事实上”的HTTP/2是加密的&lt;/code&gt;。也就是说，互联网上通常所能见到的HTTP/2都是使用&amp;quot;https”协议名，跑在TLS上面。HTTP/2协议定义了两个字符串标识符：“h2&amp;quot;表示加密的HTTP/2，“h2c”表示明文的HTTP/2。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616381645851.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-http3-新特性&#34;&gt;5. HTTP/3 新特性&lt;/h2&gt;
+&lt;h3 id=&#34;1-http2-的缺点&#34;&gt;1. HTTP/2 的缺点&lt;/h3&gt;
+&lt;p&gt;虽然 HTTP/2 解决了很多之前旧版本的问题，但是它还是存在一个巨大的问题，主要是底层支撑的 TCP 协议造成的。HTTP/2的缺点主要有以下几点：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;1. TCP 以及 TCP+TLS建立连接的延时&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;HTTP/2都是使用TCP协议来传输的，而如果使用HTTPS的话，还需要使用TLS协议进行安全传输，而使用TLS也需要一个握手过程，&lt;strong&gt;这样就需要有两个握手延迟过程&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;①在建立TCP连接的时候，需要和服务器进行三次握手来确认连接成功，也就是说需要在消耗完1.5个RTT(往返时延)之后才能进行数据传输。&lt;br&gt;
+②进行TLS连接，TLS有两个版本——TLS1.2和TLS1.3，每个版本建立连接所花的时间不同，大致是需要1~2个RTT。&lt;/p&gt;
+&lt;p&gt;总之，在传输数据之前，我们需要花掉 3～4 个 RTT。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;2. TCP的队头阻塞并没有彻底解决&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;上文我们提到在HTTP/2中，多个请求是跑在一个TCP管道中的。但当出现了丢包时，HTTP/2 的表现反倒不如 HTTP/1 了。因为TCP为了保证可靠传输，有个特别的“丢包重传”机制，丢失的包必须要等待重新传输确认，HTTP/2出现丢包时，整个 TCP 都要开始等待重传，那么就会阻塞该TCP连接中的所有请求（如下图）。而对于 HTTP/1.1 来说，可以开启多个 TCP 连接，出现这种情况反到只会影响其中一个连接，剩余的 TCP 连接还可以正常传输数据。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616393250282.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-http3简介&#34;&gt;2. HTTP/3简介&lt;/h3&gt;
+&lt;p&gt;Google 在推SPDY的时候就已经意识到了这些问题，于是就另起炉灶搞了一个基于 UDP 协议的“QUIC”协议，让HTTP跑在QUIC上而不是TCP上。而这个“HTTP over QUIC”就是HTTP协议的下一个大版本，HTTP/3。它在HTTP/2的基础上又实现了质的飞跃，真正“完美”地解决了“队头阻塞”问题。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616393318966.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+QUIC 虽然基于 UDP，但是在原本的基础上新增了很多功能，接下来我们重点介绍几个QUIC新功能。不过HTTP/3目前还处于草案阶段，正式发布前可能会有变动，所以本文尽量不涉及那些不稳定的细节。&lt;/p&gt;
+&lt;h3 id=&#34;3-quic新功能&#34;&gt;3. QUIC新功能&lt;/h3&gt;
+&lt;p&gt;上面我们提到QUIC基于UDP，而UDP是“无连接”的，根本就不需要“握手”和“挥手”，所以就比TCP来得快。此外QUIC也实现了可靠传输，保证数据一定能够抵达目的地。它还引入了类似HTTP/2的“流”和“多路复用”，单个“流&amp;quot;是有序的，可能会因为丢包而阻塞，但其他“流”不会受到影响。具体来说QUIC协议有以下特点：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;实现了类似TCP的流量控制、传输可靠性的功能。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;虽然UDP不提供可靠性的传输，但QUIC在UDP的基础之上增加了一层来保证数据可靠性传输。它提供了数据包重传、拥塞控制以及其他一些TCP中存在的特性。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;实现了快速握手功能。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;由于QUIC是基于UDP的，所以QUIC可以实现使用0-RTT或者1-RTT来建立连接，这意味着QUIC可以用最快的速度来发送和接收数据，这样可以大大提升首次打开页面的速度。&lt;strong&gt;0RTT 建连可以说是 QUIC 相比 HTTP2 最大的性能优势。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;集成了TLS加密功能。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;目前QUIC使用的是TLS1.3，相较于早期版本TLS1.3有更多的优点，其中最重要的一点是减少了握手所花费的RTT个数。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;多路复用，彻底解决TCP中队头阻塞的问题&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;和TCP不同，QUIC实现了在同一物理连接上可以有多个独立的逻辑数据流（如下图）。实现了数据流的单独传输，就解决了TCP中队头阻塞的问题。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616393511806.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;6-https&#34;&gt;6. HTTPS&lt;/h2&gt;
+&lt;p&gt;回到我们的HTTPS，HTTPS其实就是在HTTP协议下多加了一层SSL协议(ps:现在都用TLS协议了)&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616394705351.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;HTTPS采用的是&lt;strong&gt;混合方式加密&lt;/strong&gt;：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616394729798.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;过程是这样子的：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616394747189.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616394766145.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户向web服务器发起一个安全连接的请求&lt;/li&gt;
+&lt;li&gt;服务器返回经过CA认证的数字证书，证书里面包含了服务器的public key(公钥)&lt;/li&gt;
+&lt;li&gt;用户拿到数字证书，用自己浏览器内置的CA证书解密得到服务器的public key&lt;/li&gt;
+&lt;li&gt;用户用服务器的public key加密一个用于接下来的对称加密算法的密钥，传给web服务器&lt;br&gt;
+- 因为只有服务器有private key可以解密，&lt;strong&gt;所以不用担心中间人拦截这个加密的密钥&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;服务器拿到这个加密的密钥，解密获取密钥，再使用对称加密算法，和用户完成接下来的网络通信&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616394852941.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以相比HTTP，HTTPS 传输更加安全&lt;br&gt;
+（1） 所有信息都是加密传播，黑客无法窃听。&lt;br&gt;
+（2） 具有校验机制，一旦被篡改，通信双方会立刻发现。&lt;br&gt;
+（3） 配备身份证书，防止身份被冒充。&lt;/p&gt;
+&lt;h2 id=&#34;7-总结&#34;&gt;7. 总结&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;HTTP/1.1有两个主要的缺点：安全不足和性能不高。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;HTTP/2完全兼容HTTP/1，是“更安全的HTTP、更快的HTTPS&amp;quot;，头部压缩、多路复用等技术可以充分利用带宽，降低延迟，从而大幅度提高上网体验；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;QUIC 基于 UDP 实现，是 HTTP/3 中的底层支撑协议，该协议基于 UDP，又取了 TCP 中的精华，实现了即快又可靠的协议。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;8-get-post区别&#34;&gt;8. get post区别&lt;/h1&gt;
 &lt;h2 id=&#34;1-浏览器的get和post&#34;&gt;1. 浏览器的GET和POST&lt;/h2&gt;
@@ -3724,7 +4034,7 @@ user 对应的值是用户 ID。然后构造一个页面 A：&lt;/p&gt;
 &lt;li&gt;OSI参考模型（Open Systems Interconnection Reference Model，七层）：模型过于理想化，未能在因特网上进行广泛推广。&lt;/li&gt;
 &lt;li&gt;TCP/IP参考模型(或TCP/IP协议，四层)：事实上的国际标准。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615458129735.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615458129735.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;网际层（internet layer）&lt;/strong&gt;&lt;br&gt;
 在OSI模型中，网际层使用了一个更一般的名字，称为网络层（network layer）。网络层协议定义了数据位和字节如何组织为更大的分组，称为包，还定义了寻址机制，不同的计算机要按照这个寻址机制查找对方。网际协议（IP）是世界上使用最广发的网络层协议，也是Java唯一理解的网络层协议。实际上，这是两个协议：IPv4 和 IPv6。在 IPv4 和 IPv6 中，数据按包在网际层上传输，这些包称为数据报（datagram）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;传输层&lt;/strong&gt;&lt;br&gt;
@@ -3778,54 +4088,209 @@ export用于导出本模块对外的接口，import用于导入某个模块的�
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-liu-lan-qi/"" data-c="
-          &lt;h1 id=&#34;1-输入url到展示页面过程发生了什么&#34;&gt;1. 输入url到展示页面过程发生了什么？&lt;/h1&gt;
-&lt;h2 id=&#34;1首先是域名解析dns解析&#34;&gt;1.首先是域名解析(DNS解析)&lt;/h2&gt;
+          &lt;h1 id=&#34;1-输入url到展示页面过程发生了什么详细&#34;&gt;1. 输入url到展示页面过程发生了什么？（详细）&lt;/h1&gt;
+&lt;h2 id=&#34;0-梳理主干流程&#34;&gt;0. 梳理主干流程&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;1、从浏览器接收url到开启网络请求线程（涉及到：浏览器机制，线程和进程之间的关系等）
+
+2、开启网络线程到发出一个完整的http请求（涉及到：dns查询，tcp/ip请求，5层网络协议栈等）
+
+3、从服务器接收到请求到对应后台接收到请求（涉及到：均衡负载，安全拦截，后台内部的处理等）
+
+4、后台和前台的http交互（涉及到：http头，响应码，报文结构，cookie等，可以提下静态资源的cookie优化，以及编码解码如gzip压缩等）
+
+5、缓存问题：http缓存（涉及到：涉及到http缓存头部，etag，expired，cache-control等）
+
+6、浏览器接收到http数据包后的解析流程（涉及到：html的词法分析，然后解析成dom树，同时解析css生成css规则树，合并生成render树。然后layout布局、painting渲染、复合图层的合成、GPU绘制、外链接处理、loaded和documentloaded等）
+
+7、css可视化格式模型（涉及到：元素渲染规则，如：包含块，控制框，BFC，IFC等概念）
+
+8、js引擎解析过程（涉及到：js解释阶段，预处理阶段，执行阶段生成执行上下文，VO（全局对象），作用域链，回收机制等）
+
+9、其他（扩展其他模块：跨域，web安全等）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;1-从浏览器接受url到开启网络请求线程&#34;&gt;1. 从浏览器接受URL到开启网络请求线程&lt;/h2&gt;
+&lt;h3 id=&#34;1-解析url&#34;&gt;1. 解析URL&lt;/h3&gt;
+&lt;p&gt;输入URL后，会进行解析（URL的意思就是统一资源定位符）&lt;br&gt;
+URL一般包含以下几个部分&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616400775746.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-网络请求都是单独的线程&#34;&gt;2. 网络请求都是单独的线程&lt;/h3&gt;
+&lt;p&gt;每次网络请求时，都需要开辟单独的线程去进行，比如URL解析到了http协议，就会新建一个网络线程去处理资源下载。&lt;/p&gt;
+&lt;p&gt;因此浏览器会根据解析得出协议，开辟一个网络线程，前往请求资源。&lt;/p&gt;
+&lt;h2 id=&#34;2-开启网络线程到发出一个完整的http请求&#34;&gt;2. 开启网络线程到发出一个完整的HTTP请求&lt;/h2&gt;
+&lt;p&gt;这一部分主要包括：&lt;code&gt;dns&lt;/code&gt;查询，&lt;code&gt;tcp/ip&lt;/code&gt;请求构建，&lt;code&gt;五层因特网协议栈&lt;/code&gt;等等&lt;/p&gt;
+&lt;h3 id=&#34;1-dns查询得到ip&#34;&gt;1. DNS查询得到IP&lt;/h3&gt;
+&lt;p&gt;如果输入的域名，需要DNS解析成IP，流程如下：&lt;br&gt;
+（1）浏览器有缓存，直接用浏览器缓存，没有就去本机缓存，没有就看是不是host。&lt;br&gt;
+（2）如果还没有，就向DNS域名服务器查询（这个过程经过路由，路由也有缓存），查询到对应的IP。&lt;br&gt;
+（3）本地DNS服务器将ip返回给浏览器，并将ip存入缓存，方便下次访问，加快访问速度&lt;/p&gt;
+&lt;p&gt;注意：1、域名查询的时候有可能经过CDN调度器（如果CDN有存储功能）；&lt;br&gt;
+2、DNS解析是很耗时的，因此如果解析域名过多，首屏加载会变慢，可以考虑使用dns-prefetch优化。&lt;/p&gt;
+&lt;h3 id=&#34;2-tcpip请求构建&#34;&gt;2. tcp/ip请求构建&lt;/h3&gt;
+&lt;p&gt;http的本质就是tcp/ip请求构建。需要3次握手规则简历连接，以及断开连接时候的4次挥手。&lt;/p&gt;
+&lt;p&gt;tcp将http长报文划分为短报文，通过3次握手与服务端建立连接，进行可靠的传输。&lt;/p&gt;
+&lt;p&gt;建立成功之后，接下来就是正式传输数据。&lt;/p&gt;
+&lt;p&gt;然后，等到断开连接时，需要进行4次挥手（因为是全双工的，所以需要4次握手）。&lt;/p&gt;
+&lt;h3 id=&#34;3-五层网络协议栈&#34;&gt;3. 五层网络协议栈&lt;/h3&gt;
+&lt;p&gt;客户端发出http请求到服务器接收，中间会经过一系列的流程。&lt;/p&gt;
+&lt;p&gt;客户端发送请求具体：&lt;strong&gt;从应用层发动http请求，到传输层通过三次握手简历tcp/ip连接，再到网络层的ip寻址，再到数据链路层的封装成帧，最后在物理层通过物理介质传输&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;服务端接收请求具体：反过来。&lt;/p&gt;
+&lt;p&gt;五层因特网协议栈其实就是：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616402062824.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;其实也有一个完整的OSI七层框架，与之相比，多了&lt;strong&gt;会话层、表示层&lt;/strong&gt;。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;首先浏览器解析输入的域名，先查找&lt;code&gt;本地硬盘的host&lt;/code&gt;文件,看有没有和这个域名对应的ip，如果有，就直接使用这个ip&lt;/li&gt;
-&lt;li&gt;如果没有，浏览器会发出一个DNS请求到本地&lt;code&gt;DNS(域名分布系统)服务器&lt;/code&gt;，本地DNS服务器一般都是你的网络接入服务器商提供，比如中国电信，中国移动&lt;/li&gt;
-&lt;li&gt;请求到达DNS服务器后，DNS服务器首先会查询他的缓存记录，如果有对应的ip地址，则返回，如果没有，本地DNS服务器向&lt;code&gt;DNS根服务器&lt;/code&gt;发送查询请求&lt;/li&gt;
-&lt;li&gt;根服务器不会记录具体的域名和ip的对应关系，而是返回&lt;code&gt;域服务器&lt;/code&gt;的地址，本地服务器会继续向域服务器发起请求&lt;/li&gt;
-&lt;li&gt;域服务器并没有记录域名和ip的对应关系，而是返回你的&lt;code&gt;域名的解析服务器&lt;/code&gt;的地址&lt;/li&gt;
-&lt;li&gt;本地DNS服务器继续向域名解析服务器发出请求，这时会收到&lt;code&gt;域名对应的ip&lt;/code&gt;，本地DNS服务器将ip返回给浏览器，并将ip存入缓存，方便下次访问，加快访问速度&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615435439972.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;表示层：主要处理两个通信系统中交互信息的表示方式，包括数据格式交换，数据加密和解密，数据压缩和终端类型转换等。&lt;/li&gt;
+&lt;li&gt;会话层：具体管理不同用户和进程之间的对话，如控制登录和注销过程。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;2-建立tcp链接&#34;&gt;2. 建立TCP链接&lt;/h2&gt;
-&lt;p&gt;在拿到ip地址后，浏览器会向对应的web服务器(Nginx,Apache...)发起TCP连接请求，通过三次握手，建立TCP连接&lt;/p&gt;
-&lt;h2 id=&#34;3-建立http请求&#34;&gt;3. 建立Http请求&lt;/h2&gt;
-&lt;p&gt;建立TCP连接后，浏览器向web服务器发送Http请求&lt;/p&gt;
-&lt;h2 id=&#34;4-服务器处理http请求&#34;&gt;4. 服务器处理Http请求&lt;/h2&gt;
-&lt;p&gt;服务器在接收到请求后，解析用户请求，知道了要调度那些资源文件，再通过相应的资源文件，处理用户的请求和参数，并调用数据库信息，最后将结果通过web服务器返回给浏览器&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615435586035.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;5-关闭tcp连接&#34;&gt;5. 关闭TCP连接&lt;/h2&gt;
-&lt;p&gt;在这次数据传输完成后，为了避免服务器与客户端双方的资源占用和损耗，会经过四次挥手，关闭TCP连接&lt;/p&gt;
-&lt;h2 id=&#34;6-浏览器解析资源&#34;&gt;6. 浏览器解析资源&lt;/h2&gt;
-&lt;p&gt;在拿到html,css,js,图片等资源后，浏览器开始解析，通过解析HTML，生成DOM树，解析CSS，生成CSS规则树，然后通过DOM树和CSS规则树生成渲染树&lt;/p&gt;
-&lt;p&gt;在解析CSS的同时，可以继续加载解析HTML，但在解析执行JS脚本时，会停止解析后续HTML，这就会出现阻塞问题&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615435666741.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;7-浏览器渲染页面&#34;&gt;7. 浏览器渲染页面&lt;/h2&gt;
-&lt;p&gt;生成渲染树后，浏览器根据渲染树布局页面，同时计算css样式或js对Dom的动态样式改变，然后绘制出页面&lt;/p&gt;
+&lt;h2 id=&#34;3-从服务器接收到请求到对应后台接收到请求&#34;&gt;3. 从服务器接收到请求，到对应后台接收到请求&lt;/h2&gt;
+&lt;p&gt;包括：负载均衡、后台处理、&lt;/p&gt;
+&lt;h3 id=&#34;1-负载均衡&#34;&gt;1. 负载均衡&lt;/h3&gt;
+&lt;p&gt;对于大型项目，并发访问很大，一台服务器吃不消，一般会有若干台服务器组成一个集群，然后配合反向代理实现均衡负载。均衡负载不止一种实现方式。&lt;/p&gt;
+&lt;p&gt;概括的说：&lt;strong&gt;用户发送的请求指向调度服务器（反向代理服务器，比如nginx的均衡负载），然后调度服务器根据实际的调度算法，分配不同的请求给对应的集群中的服务器执行，然后调度服务器等待实际服务器的HTTP响应，并且反馈给用户&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;2-后台处理&#34;&gt;2. 后台处理&lt;/h3&gt;
+&lt;p&gt;（1）一般有的后端有统一的验证，比如安全拦截，跨域验证；&lt;br&gt;
+（2）如果不符合验证规则，就直接返回相应的http报文（拒绝请求等）；&lt;br&gt;
+（3）如果验证通过了，才会进入到实际的后台代码，此时程序接收到请求，然后执行查询数据库，大量计算等等；&lt;br&gt;
+（4）等程序执行完毕后，会返回一个http响应包（一般这一步会经过多层封装）；&lt;br&gt;
+（5）然后将这个数据包从后端返回到前端，完成交互。&lt;/p&gt;
+&lt;h2 id=&#34;4-后台和前台的http交互&#34;&gt;4. 后台和前台的http交互&lt;/h2&gt;
+&lt;p&gt;前后端的交互，http报文作为信息的载体。&lt;/p&gt;
+&lt;h3 id=&#34;1-http报文结构&#34;&gt;1. http报文结构&lt;/h3&gt;
+&lt;p&gt;报文一般包括了：&lt;code&gt;通用头部&lt;/code&gt;，&lt;code&gt;请求/响应头部&lt;/code&gt;，&lt;code&gt;请求/相应体&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;1. 通用头部&lt;/code&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616402828678.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;比如，在跨域拒绝的时候，可能的method是options，状态码是404/405等（可能的组合有很多）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;2. 请求头/响应头&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;常用的请求头部（部分）：&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Accept: 接收类型，表示浏览器支持的MIME类型 （对标服务端返回的Content-Type）&lt;br&gt;
+Accept-Encoding：浏览器支持的压缩类型,如gzip等,超出类型不能接收&lt;br&gt;
+Content-Type：客户端发送出去实体内容的类型&lt;br&gt;
+Cache-Control: 指定请求和响应遵循的缓存机制，如no-cache&lt;br&gt;
+If-Modified-Since：对应服务端的Last-Modified，用来匹配看文件是否变动，只能精确到1s之内，http1.0中&lt;br&gt;
+Expires：缓存控制，在这个时间内不会请求，直接使用缓存，http1.0，而且是服务端时间&lt;br&gt;
+Max-age：代表资源在本地缓存多少秒，有效时间内不会请求，而是使用缓存，http1.1中&lt;br&gt;
+If-None-Match：对应服务端的ETag，用来匹配文件内容是否改变（非常精确），http1.1中&lt;br&gt;
+Cookie: 有cookie并且同域访问时会自动带上&lt;br&gt;
+Connection: 当浏览器与服务器通信时对于长连接如何进行处理,如keep-alive&lt;br&gt;
+Host：请求的服务器URL&lt;br&gt;
+Origin：最初的请求是从哪里发起的（只会精确到端口）,Origin比Referer更尊重隐私&lt;br&gt;
+Referer：该页面的来源URL(适用于所有类型的请求，会精确到详细页面地址，csrf拦截常用到这个字段)&lt;br&gt;
+User-Agent：用户客户端的一些必要信息，如UA头部等&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;常用的响应头部（部分）：&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Access-Control-Allow-Headers: 服务器端允许的请求Headers&lt;br&gt;
+Access-Control-Allow-Methods: 服务器端允许的请求方法&lt;br&gt;
+Access-Control-Allow-Origin: 服务器端允许的请求Origin头部（譬如为*）&lt;br&gt;
+Content-Type：服务端返回的实体内容的类型&lt;br&gt;
+Date：数据从服务器发送的时间&lt;br&gt;
+Cache-Control：告诉浏览器或其他客户，什么环境可以安全的缓存文档&lt;br&gt;
+Last-Modified：请求资源的最后修改时间&lt;br&gt;
+Expires：应该在什么时候认为文档已经过期,从而不再缓存它&lt;br&gt;
+Max-age：客户端的本地资源应该缓存多少秒，开启了Cache-Control后有效&lt;br&gt;
+ETag：请求变量的实体标签的当前值&lt;br&gt;
+Set-Cookie：设置和页面关联的cookie，服务器通过这个头部把cookie传给客户端&lt;br&gt;
+Keep-Alive：如果客户端有keep-alive，服务端也会有响应（如timeout=38）&lt;br&gt;
+Server：服务器的一些相关信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;一般来说，请求头部和响应头部是匹配分析的&lt;/strong&gt;。&lt;br&gt;
+比如：&lt;br&gt;
+（1）请求头部的Accept要和响应头部的Content-Type匹配，否则会报错；&lt;br&gt;
+（2）跨域请求中，请求头部的Origin要匹配响应头的Access-Control-Allow-Origin，否则会报跨域错误；&lt;br&gt;
+（3）使用缓存，请求头部的if-modified-since，if-none-match分别和响应头的Last-modified，etag对应。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;3. 请求/响应实体&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;http请求时，除了头部，还有消息实体。&lt;br&gt;
+请求实体中会将一些需要的参数都放入进入（用于post请求）。&lt;/p&gt;
+&lt;p&gt;比如：（1）实体中可以放参数的序列化形式（a=1&amp;amp;b=2这种），或者直接放表单（Form Data对象，上传时可以夹杂其他以及文件）等等。&lt;/p&gt;
+&lt;p&gt;响应实体中，就是服务端需要传给客户端的内容。&lt;/p&gt;
+&lt;p&gt;一般现在的接口请求时，实体中就是对应信息的json格式，而像&lt;strong&gt;页面请求&lt;/strong&gt;这种，里面就是直接放一个html的字符串，然后浏览器自己解析并渲染。&lt;/p&gt;
+&lt;p&gt;下图是对某请求的http报文结构的简要分析：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616403142489.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-解析页面流程&#34;&gt;5. 解析页面流程&lt;/h2&gt;
+&lt;p&gt;前面提到是http交互，接下来是浏览器获取到html，然后解析，渲染。&lt;/p&gt;
+&lt;h3 id=&#34;1-流程简述&#34;&gt;1. 流程简述&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;（1）解析html，构建DOM树；同时解析CSS，生成CSS规则树。&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616405665707.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;（2）合并DOM树和CSS规则树，生成Render树。&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616405717426.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;（3）布局Render树（layout/reflow）,负责各元素的尺寸，位置计算。&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616405786916.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;（4）绘制render树（paint），绘制页面像素信息。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（5）浏览器会将各层的信息发给GPU。GPU会将各层合成（composite），显示在屏幕上。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-资源外链的下载&#34;&gt;2. 资源外链的下载&lt;/h3&gt;
+&lt;p&gt;上面介绍了HTML解析，渲染流程。但是实际上，在解析HTML时，会遇到一些资源连接，此时就需要进行单独处理&lt;/p&gt;
+&lt;p&gt;简单起见，这里将遇到的静态资源分为以下几大类（未列举所有）：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616405978122.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;（1）遇到外链的处理&lt;/strong&gt;&lt;br&gt;
+当遇到上述的外链时，会单&lt;strong&gt;独开启一个下载线程去下载资源&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;（2）遇到CSS样式资源&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616406119704.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;（3）遇到JS脚本资源&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616406134535.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+注意，defer和async是有区别的：** defer是延迟执行，而async是异步执行**。&lt;br&gt;
+&lt;strong&gt;（4）遇到img图片类的资源&lt;/strong&gt;&lt;br&gt;
+遇到图片等资源时，直接就是异步下载，不会阻塞解析，下载完毕后直接用图片替换原有src的地方&lt;/p&gt;
 &lt;h1 id=&#34;2-重绘与回流&#34;&gt;2. 重绘与回流&lt;/h1&gt;
+&lt;h2 id=&#34;0-浏览器的渲染原理&#34;&gt;0. 浏览器的渲染原理&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616378131657.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-重绘与回流&#34;&gt;1. 重绘与回流&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;重绘(repaint)&lt;/code&gt;: 当元素样式的改变不影响布局时，浏览器将使用重绘对元素进行&lt;strong&gt;更新&lt;/strong&gt;，此时由于只需要UI层面的重新像素绘制，因此 &lt;strong&gt;损耗较少&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;回流(reflow)&lt;/code&gt;: 当元素的尺寸、结构或触发某些属性时，浏览器会&lt;strong&gt;重新渲染&lt;/strong&gt;页面，称为回流。此时，浏览器需要重新经过计算，计算后还需要重新页面布局，因此是较重的操作。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;重绘(repaint)&lt;/code&gt;:当页面元素样式改变不影响元素在文档流中的位置时（如background-color，border-color，visibility），浏览器只会将新样式赋予元素并进行重新绘制操作。此时由于只需要UI层面的重新像素绘制，因此 &lt;strong&gt;损耗较少&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;回流(reflow)&lt;/code&gt;: 当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变时，网络浏览器重新渲染部分或全部文档的过程。此时，浏览器需要重新经过计算，计算后还需要重新页面布局，因此是较重的操作。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;回流必定触发重绘，重绘不一定触发回流。重绘的开销较小，回流的代价较高。&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;会触发回流的操作:&lt;/p&gt;
-&lt;ul&gt;
+&lt;ol&gt;
+&lt;li&gt;添加或者删除可见的DOM元素；&lt;/li&gt;
+&lt;li&gt;元素位置改变；&lt;/li&gt;
+&lt;li&gt;元素尺寸改变——边距、填充、边框、宽度和高度&lt;/li&gt;
+&lt;li&gt;内容变化，比如用户在input框中输入文字，文本或者图片大小改变而引起的计算值宽度和高度改变&lt;/li&gt;
+&lt;li&gt;页面渲染初始化&lt;/li&gt;
+&lt;li&gt;浏览器窗口尺寸改变——resize事件发生时&lt;/li&gt;
+&lt;li&gt;计算 offsetWidth 和 offsetHeight 属性&lt;/li&gt;
+&lt;li&gt;设置 style 属性的值&lt;/li&gt;
 &lt;li&gt;页面初次渲染&lt;/li&gt;
-&lt;li&gt;浏览器窗口大小改变&lt;/li&gt;
-&lt;li&gt;元素尺寸、位置、内容发生改变&lt;/li&gt;
 &lt;li&gt;元素字体大小变化&lt;/li&gt;
-&lt;li&gt;添加或者删除可见的 dom 元素&lt;/li&gt;
 &lt;li&gt;激活 CSS 伪类（例如：:hover）&lt;/li&gt;
-&lt;li&gt;查询某些属性或调用某些方法&lt;/li&gt;
 &lt;li&gt;clientWidth、clientHeight、clientTop、clientLeft&lt;/li&gt;
 &lt;li&gt;offsetWidth、offsetHeight、offsetTop、offsetLeft&lt;/li&gt;
 &lt;li&gt;scrollWidth、scrollHeight、scrollTop、scrollLeft&lt;/li&gt;
-&lt;li&gt;getComputedStyle()&lt;/li&gt;
-&lt;li&gt;getBoundingClientRect()&lt;/li&gt;
-&lt;li&gt;scrollTo()&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-性能优化&#34;&gt;2. 性能优化&lt;/h2&gt;
+&lt;p&gt;回流比重绘的代价要更高，回流的花销跟render tree有多少节点需要重新构建有关系;浏览器本身能够进行优化，尽可能减少重绘和回流。&lt;/p&gt;
+&lt;p&gt;如果每行JS代码操作DOM都需要回流重绘的话，浏览器可能就会受不了。所以很多浏览器都会优化这些操作，浏览器会维护1个队列，把所有会引起回流、重绘的操作放入这个队列，等队列中的操作到了一定的数量或者到了一定的时间间隔，浏览器就会flush队列，进行一个批处理。这样就会让多次的回流、重绘变成一次回流重绘。&lt;/p&gt;
+&lt;h2 id=&#34;3-如何减少回流-重绘&#34;&gt;3. 如何减少回流、重绘&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var s = document.body.style; 
+s.padding = &amp;quot;2px&amp;quot;; // 回流+重绘
+s.border = &amp;quot;1px solid red&amp;quot;; // 再一次 回流+重绘
+s.color = &amp;quot;blue&amp;quot;; // 再一次重绘
+s.backgroundColor = &amp;quot;#ccc&amp;quot;; // 再一次 重绘
+s.fontSize = &amp;quot;14px&amp;quot;; // 再一次 回流+重绘
+// 添加node，再一次 回流+重绘
+document.body.appendChild(document.createTextNode(&#39;abc!&#39;));
+///可以看到每次DOM元素的样式操作都会引发重绘，如果涉及布局还会引发回流。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一. CSS中避免回流&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;尽可能在DOM树的最末端改变class&lt;/li&gt;
+&lt;li&gt;避免设置多层内联样式&lt;/li&gt;
+&lt;li&gt;动画效果应用到position属性为absolute或fixed的元素上&lt;/li&gt;
+&lt;li&gt;牺牲平滑度换取速度&lt;/li&gt;
+&lt;li&gt;避免使用table布局&lt;/li&gt;
+&lt;li&gt;避免使用CSS的JavaScript表达式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;二. JS操作避免回流&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;避免逐项更改样式。最好一次性更改style属性，或者将样式列表定义为class并一次性更改class属性。&lt;/li&gt;
+&lt;li&gt;避免循环操作DOM。创建一个documentFragment或div，在它上面应用所有DOM操作，最后再把它添加到window.document。&lt;/li&gt;
+&lt;li&gt;也可以在一个display:none的元素上进行操作，最终把它显示出来。因为display:none上的DOM操作不会引发回流和重绘。&lt;/li&gt;
+&lt;li&gt;避免循环读取offsetLeft等属性。在循环之前把它们存起来。&lt;/li&gt;
+&lt;li&gt;绝对定位具有复杂动画的元素。绝对定位使它脱离文档刘，否则会引起父元素及后续元素大量的回流。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h1 id=&#34;3-防抖与节流&#34;&gt;3. 防抖与节流&lt;/h1&gt;
 &lt;h2 id=&#34;1-防抖debounce&#34;&gt;1. 防抖(debounce)&lt;/h2&gt;
 &lt;p&gt;基于上述场景，首先提出第一种思路：&lt;strong&gt;在第一次触发事件时，不立即执行函数，而是给出一个期限值&lt;/strong&gt;比如200ms，然后：&lt;/p&gt;
@@ -6247,6 +6712,84 @@ ECMAScript中可用的3种强制类型转换如下：&lt;/li&gt;
     return result;
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;31-js中v8引擎的详解&#34;&gt;31. js中v8引擎的详解&lt;/h1&gt;
+&lt;h2 id=&#34;1-v8引擎出现的原因&#34;&gt;1. v8引擎出现的原因&lt;/h2&gt;
+&lt;p&gt;这里先说一下什么是&lt;code&gt;编译型语言&lt;/code&gt;和&lt;code&gt;解释性语言&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;编译型&lt;/code&gt;语言： 在程序执行之前必须进行专门的编译过程，有如下特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;只须编译一次&lt;/code&gt;就可以把源代码&lt;code&gt;编译成机器语言&lt;/code&gt;，后面的执行&lt;code&gt;无须重新编译&lt;/code&gt;，直接使用之前的编译结果就可以；因此其执行的&lt;code&gt;效率比较高&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;编译性语言代表：C、C++、Java、Pascal/Object Pascal（Delphi）&lt;/li&gt;
+&lt;li&gt;程序执行效率比较高，但比较依赖编译器，因此跨平台性差一些&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;解释型&lt;/code&gt;语言 - 解释型语言，支持动态类型，弱类型，在&lt;code&gt;程序运行&lt;/code&gt;的时候&lt;code&gt;才进行编译&lt;/code&gt;，而编译前需要确定变量的类型，效率比较低，对不同系统平台有较大的兼容性&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;源代码&lt;code&gt;不能直接&lt;/code&gt;翻译成机器语言，而是先翻译成&lt;code&gt;中间代码&lt;/code&gt;，再由&lt;code&gt;解释器&lt;/code&gt;对中间代码进行&lt;code&gt;解释运行&lt;/code&gt; 源代码—&amp;gt;中间代码—&amp;gt;机器语言&lt;/li&gt;
+&lt;li&gt;程序&lt;code&gt;不需要编译&lt;/code&gt;，程序在运行时才翻译成机器语言，&lt;code&gt;每执行一次都要翻译一次&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;解释型语言代表：Python、JavaScript、Shell、Ruby、MATLAB等&lt;/li&gt;
+&lt;li&gt;运行效率一般相对&lt;code&gt;比较低&lt;/code&gt;，&lt;code&gt;依赖解释器&lt;/code&gt;，跨平台性好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;比较：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一般，&lt;code&gt;编译型语言的运行效率比解释型语言更高&lt;/code&gt;；但是不能一概而论，部分解释性语言的解释器通过在运行时动态优化代码，甚至能使解释性语言的性能超过编译性语言；&lt;/li&gt;
+&lt;li&gt;编译性语言的跨平台特性比解释性语言差一些；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;进过以上说明，解释型语言，&lt;code&gt;运行效率低&lt;/code&gt;，随着Web相关技术的发展，JavaScript所要承担的工作也越来越多，早就超越了“表单验证”的范畴，&lt;code&gt;这就更需要快速的解析和执行JavaScript脚本&lt;/code&gt;。&lt;code&gt;V8引擎&lt;/code&gt;就是为解决这一问题而生，在node中也是采用该引擎来解析JavaScript&lt;/p&gt;
+&lt;h2 id=&#34;2-渲染引擎及网页渲染&#34;&gt;2. 渲染引擎及网页渲染&lt;/h2&gt;
+&lt;p&gt;为用户提供网页浏览服务无疑是最重要的功能，如下介绍：&lt;/p&gt;
+&lt;h3 id=&#34;1-渲染引擎&#34;&gt;1. 渲染引擎&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;渲染引擎&lt;/code&gt; - 能够能够将HTML/CSS/JavaScript文本及相应的&lt;code&gt;资源文件&lt;/code&gt;转换成&lt;code&gt;图像&lt;/code&gt;结果.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;作用&lt;/code&gt; - 将&lt;code&gt;资源文件&lt;/code&gt;转化为&lt;code&gt;用户可见&lt;/code&gt;的结果。&lt;/li&gt;
+&lt;li&gt;渲染引擎的种类 - Tridend(IE)、Gecko(FF),WebKit(Safari,Chrome,Andriod浏览器)等.&lt;/li&gt;
+&lt;li&gt;介绍 - WebKit是由苹果2005年发起的一个开源项目，引起了众多公司的重视，几年间被很多公司所采用，在移动端更占据了垄断地位。更有甚者，开发出了基于WebKit的支持HTML5的web操作系统(如：Chrome OS、Web OS)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;WebKit的大致结构&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375134643.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375172770.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-网页渲染流程&#34;&gt;2. 网页渲染流程&lt;/h3&gt;
+&lt;p&gt;上面介绍了渲染引擎的各个模块，那么一张网页，要经历怎样的过程，才能展示给用户。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375416528.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;过程&lt;/code&gt; - 首先是网页内容，输入到HTML解析器，HTML解析器解析，然后构建DOM树，在这期间如果遇到JavaScript代码则交给JavaScript引擎处理；如果来自CSS解析器的样式信息，构建一个内部绘图模型。该模型由布局模块计算模型内部各个元素的位置和大小信息，最后由绘图模块完成从该模型到图像的绘制。在网页渲染的过程中，大致可分为下面3个阶段：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375499789.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;上述是一个完整的渲染过程，现代网页很多都是动态的，随着网页与用户的交互，浏览器需要不断的重复渲染过程。&lt;/p&gt;
+&lt;h3 id=&#34;3-javascript引擎&#34;&gt;3. JavaScript引擎&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616376387769.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+JavaScript本质上是一种&lt;code&gt;解释型语言&lt;/code&gt;，与编译型语言不同的是它需要&lt;code&gt;一边执行一边解析&lt;/code&gt;，而编译型语言在执行时已经完成编译，可直接执行，有更快的执行速度(如上图所示)。JavaScript代码是在浏览器端解析和执行的，如果需要时间太长，会影响用户体验。那么&lt;code&gt;提高JavaScript的解析速度&lt;/code&gt;就是当务之急。JavaScript引擎和渲染引擎的关系如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616376459980.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+avaScript语言是解释型语言，为了&lt;code&gt;提高性能&lt;/code&gt;，引入了J&lt;code&gt;ava虚拟机&lt;/code&gt;和&lt;code&gt;C++编译器&lt;/code&gt;中的众多&lt;code&gt;技术&lt;/code&gt;。现在JavaScript引擎的执行过程大致是:&lt;br&gt;
+&lt;code&gt;源代码&lt;/code&gt;-→&lt;code&gt;抽象语法树&lt;/code&gt;-→&lt;code&gt;字节码&lt;/code&gt;-→&lt;code&gt;JIT&lt;/code&gt;-→&lt;code&gt;本地代码&lt;/code&gt;(V8引擎没有中间字节码)。&lt;/p&gt;
+&lt;p&gt;V8更加直接的将&lt;code&gt;抽象语法树&lt;/code&gt;通过&lt;code&gt;JIT技术&lt;/code&gt;转换成&lt;code&gt;本地代码&lt;/code&gt;，&lt;code&gt;放弃了&lt;/code&gt;在&lt;code&gt;字节码&lt;/code&gt;阶段可以进行的一些性能优化，但保证了执行速度。在V8生成本地代码后，也会通过Profiler采集一些信息，来优化本地代码。虽然，少了生成字节码这一阶段的性能优化，但极大减少了转换时间。&lt;/p&gt;
+&lt;h2 id=&#34;3-v8引擎&#34;&gt;3. V8引擎&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;V8引擎是一个&lt;code&gt;JavaScript引擎&lt;/code&gt;实现，最初由一些语言方面专家设计，后被谷歌收购，随后谷歌对其进行了&lt;code&gt;开源&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;V8使用&lt;code&gt;C++开发&lt;/code&gt;，在运行JavaScript之前，相比其它的JavaScript的引擎转换成字节码或解释执行，&lt;code&gt;V8将其编译成原生机器码&lt;/code&gt;（IA-32, x86-64, ARM, or MIPS CPUs），并且使用了如&lt;code&gt;内联缓存&lt;/code&gt;（inline caching）等方法来&lt;code&gt;提高性能&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;有了这些功能，JavaScript程序在V8引擎下的运行速度媲美二进制程序。&lt;/li&gt;
+&lt;li&gt;V8支持&lt;code&gt;众多操作系统&lt;/code&gt;，如windows、linux、android等，也支持其他硬件架构，如IA32,X64,ARM等，具有很好的&lt;code&gt;可移植&lt;/code&gt;和&lt;code&gt;跨平台特性&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-数据表示&#34;&gt;4. 数据表示&lt;/h2&gt;
+&lt;p&gt;JavaScript是一种动态类型语言，&lt;code&gt;在编译时并不能准确知道变量的类型&lt;/code&gt;，&lt;code&gt;只可以在运行时确定&lt;/code&gt;，这就不像c++或者java等静态类型语言，在编译时候就可以确切知道变量的类型。然而，&lt;code&gt;在运行时计算和决定类型，会严重影响语言性能&lt;/code&gt;，这也就是JavaScript运行效率比C++或者JAVA低很多的原因之一。&lt;/p&gt;
+&lt;p&gt;在C++中，源代码需要经过编译才能执行，在生成本地代码的过程中，变量的地址和类型已经确定，运行本地代码时利用数组和位移就可以存取变量和方法的地址，不需要再进行额外的查找，几个机器指令即可完成，节省了确定类型和地址的时间。由于JavaScript是无类型语言，那就不能像c++那样在执行时已经知道变量的类型和地址，需要临时确定。JavaScript 和C++有以下几个区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;编译确定位置&lt;/code&gt; -&lt;code&gt;C++&lt;/code&gt;编译阶段确定位置偏移信息，在&lt;code&gt;执行时直接存取&lt;/code&gt;，&lt;code&gt;JavaScript&lt;/code&gt;在&lt;code&gt;执行阶段确定&lt;/code&gt;，而且执行期间可以修改对象属性；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;偏移信息共享&lt;/code&gt; - &lt;code&gt;C++&lt;/code&gt;有类型定义，执行时&lt;code&gt;不能动态改变&lt;/code&gt;，可共享偏移信息，&lt;code&gt;JavaScript&lt;/code&gt;每个对象都是&lt;code&gt;自描述&lt;/code&gt;，属性和位置偏移信息都包含在自身的结构中；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;偏移信息查找&lt;/code&gt; - &lt;code&gt;C++&lt;/code&gt;查找偏移地址很简单，在编译代码阶段，对使用的某类型成员变量&lt;code&gt;直接设置偏移位置&lt;/code&gt;，&lt;code&gt;JavaScript&lt;/code&gt;中使用一个对象，需要通过&lt;code&gt;属性名匹配&lt;/code&gt;才能找到相应的值，需要更多的操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377366139.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;5-工作过程&#34;&gt;5. 工作过程&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377457407.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;编译阶段&#34;&gt;编译阶段&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377563413.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;运行阶段&#34;&gt;运行阶段&lt;/h3&gt;
+&lt;p&gt;由于&lt;code&gt;V8缺少了生成中间代码这一环节&lt;/code&gt;，缺少了必要的优化，为了提升性能，V8会在&lt;code&gt;生成本地代码后&lt;/code&gt;，使用&lt;code&gt;数据分析器&lt;/code&gt;(profiler)&lt;code&gt;采集一些信息&lt;/code&gt;，然后根据这些数据将本地代码进行优化，生成更高效的本地代码，这是一个逐步改进的过程。同时，当发现优化后代码的性能还不如未优化的代码，V8将退回原来的代码，也就是优化回滚。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377618319.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;优化回滚&#34;&gt;优化回滚&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377669446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 ">【面】前端知识点梳理（JS下）</a>
       </div>
       
@@ -6306,9 +6849,174 @@ F.prototype.__proto__ === Object.prototype; // true Object.prototype.__proto__ =
 &lt;li&gt;寄生组合式继承&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;寄生组合式&lt;/strong&gt;继承是大家公认的最好的实现引用类型继承的方法。&lt;/p&gt;
-&lt;p&gt;ES6新增class和extends语法，用来定义类和实现继承，底层也是采用了寄生组合式继承。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614925710279.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614925713288.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-原型链继承&#34;&gt;1.  原型链继承&lt;/h2&gt;
+&lt;p&gt;原型链继承的基本思想是&lt;strong&gt;利用原型让一个引用类型继承另一个引用类型的属性和方法&lt;/strong&gt;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+function SuperType() {
+    this.name = &#39;Yvette&#39;;
+    this.colors = [&#39;pink&#39;, &#39;blue&#39;, &#39;green&#39;];
+}
+SuperType.prototype.getName = function () {
+    return this.name;
+}
+function SubType() {
+    this.age = 22;
+}
+SubType.prototype = new SuperType();
+SubType.prototype.getAge = function() {
+    return this.age;
+}
+SubType.prototype.constructor = SubType;
+let instance1 = new SubType();
+instance1.colors.push(&#39;yellow&#39;);
+console.log(instance1.getName()); //&#39;Yvette&#39;
+console.log(instance1.colors);//[ &#39;pink&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;yellow&#39; ]
+ 
+let instance2 = new SubType();
+console.log(instance2.colors);//[ &#39;pink&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;yellow&#39; ]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;缺点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;通过原型来实现继承时，原型会变成另一个类型的实例，原先的实例属性变成了现在的原型属性，该原型的引用类型属性会被所有的实例共享。&lt;/li&gt;
+&lt;li&gt;在创建子类型的实例时，没有办法在不影响所有对象实例的情况下给超类型的构造函数中传递参数。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-借用构造函数&#34;&gt;2. 借用构造函数&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;借用构造函数&lt;/strong&gt;的技术，其基本思想为: 在子类型的构造函数中调用超类型构造函数。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function SuperType(name) {
+    this.name = name;
+    this.colors = [&#39;pink&#39;, &#39;blue&#39;, &#39;green&#39;];
+}
+function SubType(name) {
+    SuperType.call(this, name);
+}
+let instance1 = new SubType(&#39;Yvette&#39;);
+instance1.colors.push(&#39;yellow&#39;);
+console.log(instance1.colors);//[&#39;pink&#39;, &#39;blue&#39;, &#39;green&#39;, yellow]
+ 
+let instance2 = new SubType(&#39;Jack&#39;);
+console.log(instance2.colors); //[&#39;pink&#39;, &#39;blue&#39;, &#39;green&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;优点:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以向超类传递参数&lt;/li&gt;
+&lt;li&gt;解决了原型中包含引用类型值被所有实例共享的问题&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;缺点:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;方法都在构造函数中定义，函数复用无从谈起，另外超类型原型中定义的方法对于子类型而言都是不可见的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-组合继承原型链-借用构造函数&#34;&gt;3. 组合继承(原型链 + 借用构造函数)&lt;/h2&gt;
+&lt;p&gt;基本思路：使用原型链实现对原型属性和方法的继承，通过借用构造函数来实现对实例属性的继承，既通过在原型上定义方法来实现了函数复用，又保证了每个实例都有自己的属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function SuperType(name) {
+    this.name = name;
+    this.colors = [&#39;pink&#39;, &#39;blue&#39;, &#39;green&#39;];
+}
+SuperType.prototype.sayName = function () {
+    console.log(this.name);
+}
+function SuberType(name, age) {
+    SuperType.call(this, name);
+    this.age = age;
+}
+SuberType.prototype = new SuperType();
+SuberType.prototype.constructor = SuberType;
+SuberType.prototype.sayAge = function () {
+    console.log(this.age);
+}
+let instance1 = new SuberType(&#39;Yvette&#39;, 20);
+instance1.colors.push(&#39;yellow&#39;);
+console.log(instance1.colors); //[ &#39;pink&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;yellow&#39; ]
+instance1.sayName(); //Yvette
+ 
+let instance2 = new SuberType(&#39;Jack&#39;, 22);
+console.log(instance2.colors); //[ &#39;pink&#39;, &#39;blue&#39;, &#39;green&#39; ]
+instance2.sayName();//Jack
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;优点:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以向超类传递参数&lt;/li&gt;
+&lt;li&gt;每个实例都有自己的属性&lt;/li&gt;
+&lt;li&gt;实现了函数复用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;缺点:&lt;/strong&gt;&lt;br&gt;
+无论什么情况下，都会调用两次超类型构造函数：一次是在创建子类型原型的时候，另一次是在子类型构造函数内部。&lt;/p&gt;
+&lt;h2 id=&#34;4-原型式继承&#34;&gt;4. 原型式继承&lt;/h2&gt;
+&lt;p&gt;原型继承的基本思想：&lt;br&gt;
+借助原型可以基于已有的对象创建新对象，同时还不必因此创建自定义类型。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+function object(o) {
+    function F() { }
+    F.prototype = o;
+    return new F();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在 object() 函数内部，先创建一个临时性的构造函数，然后将传入的对象作为这个构造函数的原型，最后返回了这个临时类型的一个新实例，从本质上讲，object() 对传入的对象执行了一次浅拷贝。&lt;/p&gt;
+&lt;p&gt;在没有必要创建构造函数，仅让一个对象与另一个对象保持相似的情况下，原型式继承是可以胜任的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;同原型链实现继承一样，包含引用类型值的属性会被所有实例共享。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-寄生式继承&#34;&gt;5. 寄生式继承&lt;/h2&gt;
+&lt;p&gt;寄生式继承是与原型式继承紧密相关的一种思路。寄生式继承的思路与寄生构造函数和工厂模式类似，即创建一个仅用于封装继承过程的函数，该函数在内部已某种方式来增强对象，最后再像真地是它做了所有工作一样返回对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+function createAnother(original) {
+    var clone = object(original);//通过调用函数创建一个新对象
+    clone.sayHi = function () {//以某种方式增强这个对象
+        console.log(&#39;hi&#39;);
+    };
+    return clone;//返回这个对象
+}
+var person = {
+    name: &#39;Yvette&#39;,
+    hobbies: [&#39;reading&#39;, &#39;photography&#39;]
+};
+ 
+var person2 = createAnother(person);
+person2.sayHi(); //hi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;基于 person 返回了一个新对象 -—— person2，新对象不仅具有 person 的所有属性和方法，而且还有自己的 sayHi() 方法。在考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用寄生式继承来为对象添加函数，会由于不能做到函数复用而效率低下。&lt;/li&gt;
+&lt;li&gt;同原型链实现继承一样，包含引用类型值的属性会被所有实例共享。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;6-寄生组合式继承&#34;&gt;6. 寄生组合式继承&lt;/h2&gt;
+&lt;p&gt;所谓寄生组合式继承，即通过借用构造函数来继承属性，通过原型链的混成形式来继承方法，&lt;br&gt;
+&lt;strong&gt;基本思路：&lt;/strong&gt;&lt;br&gt;
+不必为了指定子类型的原型而调用超类型的构造函数，我们需要的仅是超类型原型的一个副本，本质上就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function inheritPrototype(subType, superType) {
+    var prototype = object(superType.prototype); //创建对象
+    prototype.constructor = subType;//增强对象
+    subType.prototype = prototype;//指定对象
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;第一步：创建超类型原型的一个副本&lt;/li&gt;
+&lt;li&gt;第二步：为创建的副本添加 constructor 属性&lt;/li&gt;
+&lt;li&gt;第三步：将新创建的对象赋值给子类型的原型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;至此，我们就可以通过调用 inheritPrototype 来替换为子类型原型赋值的语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+function SuperType(name) {
+    this.name = name;
+    this.colors = [&#39;pink&#39;, &#39;blue&#39;, &#39;green&#39;];
+}
+//...code
+function SuberType(name, age) {
+    SuperType.call(this, name);
+    this.age = age;
+}
+SuberType.prototype = new SuperType();
+inheritPrototype(SuberType, SuperType);
+//...code
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;优点:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;只调用了一次超类构造函数，效率更高。避免在SuberType.prototype上面创建不必要的、多余的属性，与其同时，原型链还能保持不变。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;因此寄生组合继承是引用类型最理性的继承范式。&lt;/p&gt;
+&lt;h2 id=&#34;7-es6继承&#34;&gt;7 es6继承&lt;/h2&gt;
+&lt;p&gt;ES6新增class和extends语法，用来定义类和实现继承，底层也是采用了寄生组合式继承。&lt;/p&gt;
 &lt;h1 id=&#34;3-用原型实现继承有什么缺点怎么解决&#34;&gt;3. 用原型实现继承有什么缺点，怎么解决&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;原型继承&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;function Human(){
@@ -6496,10 +7204,33 @@ t();
 &lt;p&gt;当执行s时，将创建函数s的执行环境(调用对象),并将该对象置于链表开头，然后将函数t的调用对象链接在之后，最后是全局对象。然后从链表开头寻找变量name,很明显name是&amp;quot;slwy&amp;quot;。&lt;/p&gt;
 &lt;p&gt;但执行ss()时，作用域链是： ss()-&amp;gt;t()-&amp;gt;window,所以name是”tlwy&amp;quot;&lt;/p&gt;
 &lt;h2 id=&#34;63-闭包&#34;&gt;6.3 闭包&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614941970240.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-闭包有两个作用：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614941970240.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;1-闭包的定义&#34;&gt;1. 闭包的定义&lt;/h3&gt;
+&lt;p&gt;一个函数对其周围状态(变量)的&lt;strong&gt;引用&lt;/strong&gt;并&lt;strong&gt;保存&lt;/strong&gt;周围变量，乃至函数执行完成后仍然可以访问的现象称之为闭包。&lt;/p&gt;
+&lt;h3 id=&#34;2-闭包的原理&#34;&gt;2. 闭包的原理&lt;/h3&gt;
+&lt;p&gt;闭包的实现原理，其实是利用了作用域链的特性，我们都知道作用域链就是在当前执行环境下访问某个变量时，如果不存在就一直向外层寻找，最终寻找到最外层也就是全局作用域，这样就形成了一个链条。&lt;/p&gt;
+&lt;h3 id=&#34;3-闭包的特点&#34;&gt;3. 闭包的特点&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;函数嵌套函数。&lt;/li&gt;
+&lt;li&gt;函数内部可以引用外部的参数和变量。&lt;/li&gt;
+&lt;li&gt;参数和变量不会被垃圾回收机制回收。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;4-闭包的优缺点&#34;&gt;4. 闭包的优缺点&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;第一个就是可以读取自身函数外部的变量（沿着作用域链寻找）&lt;/li&gt;
+&lt;li&gt;希望一个变量长期存储在内存中。&lt;/li&gt;
+&lt;li&gt;避免全局变量的污染。&lt;/li&gt;
+&lt;li&gt;私有成员的存在。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;导致变量不会被垃圾回收机制回收，造成内存消耗&lt;/li&gt;
+&lt;li&gt;不恰当的使用闭包可能会造成内存泄漏的问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-闭包的作用&#34;&gt;5. 闭包的作用&lt;/h3&gt;
+&lt;p&gt;闭包有两个&lt;code&gt;作用&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一个就是读取及操作外部函数的私有变量（沿着作用域链寻找）&lt;/li&gt;
 &lt;li&gt;第二个就是让这些外部变量始终保存在内存中&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;script&amp;gt;
@@ -6519,8 +7250,6 @@ t();
    &amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;js函数内的变量值不是在编译的时候就确定的，而是等在运行时期再去寻找的。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;定义&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;一个函数对其周围状态(变量)的&lt;strong&gt;引用&lt;/strong&gt;并&lt;strong&gt;保存&lt;/strong&gt;周围变量，乃至函数执行完成后仍然可以访问的现象称之为闭包。&lt;/p&gt;
 &lt;p&gt;闭包让外部访问函数内部的变量成为可能（私有属性），因为被引用的数据常驻内存，可能会造成内存泄露（一块内存长期被变量占据而不进行释放），闭包可以让你在一个内层函数中访问到其外层函数的作用域的状态并保存，在js中每当创建一个函数，闭包环境就在函数创建时产生，闭包环境相互独立，如果闭包环境引用外部函数作用域的一个变量a，即使当外部函数作用域的变量被销毁释放内存，但变量a不会被删除。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; function outer(){
          var result = new Array();
@@ -6537,6 +7266,8 @@ t();
          return result;
       }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;6-闭包变量回收&#34;&gt;6. 闭包变量回收&lt;/h3&gt;
+&lt;p&gt;当闭包函数无外链引用时，闭包函数被垃圾回收机制标记，&lt;code&gt;闭包自身呗回收，里边的变量自然就一起被回收了&lt;/code&gt;&lt;/p&gt;
 &lt;h1 id=&#34;7-ajax的原生写法&#34;&gt;7. Ajax的原生写法&lt;/h1&gt;
 &lt;h2 id=&#34;71-ajax-是什么&#34;&gt;7.1 Ajax 是什么？&lt;/h2&gt;
 &lt;ul&gt;
@@ -6703,7 +7434,7 @@ console.log(b.jobs.first) // FE
 方法3：使用ajax实现预加载&lt;/p&gt;
 &lt;p&gt;常用的是&lt;code&gt;new Image()&lt;/code&gt;;设置其src来实现预载，再使用onload方法回调预载完成事件。只要浏览器把图片下载到本地，同样的src就会使用缓存，这是最基本也是最实用的预载方法。当Image下载完图片头后，会得到宽和高，因此可以在预载前得到图片的大小(方法是用记时器轮循宽高变化。)&lt;/p&gt;
 &lt;h1 id=&#34;10-实现页面加载进度条&#34;&gt;10. 实现页面加载进度条&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615011309891.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615011309891.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;101-html结构&#34;&gt;10.1 html结构：&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt; &amp;lt;div id=&amp;quot;progressBox&amp;quot;&amp;gt;
         &amp;lt;div id=&amp;quot;progressBar&amp;quot;&amp;gt;0%&amp;lt;/div&amp;gt;
