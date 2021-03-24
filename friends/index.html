@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616419676187">
+<link rel="shortcut icon" href="/favicon.ico?v=1616592137201">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -184,7 +184,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">52</span>
+        <span class="site-item-stat-count">53</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -487,6 +487,12 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/jian-zhi-offerjs-ban/"" data-c="
+          &lt;h1 id=&#34;1-在一个二维数组中每个一维数组的长度相同每一行都按照从左到右递增的顺序排序每一列都按照从上到下递增的顺序排序-请完成一个函数输入这样的一个二维数组和一个整数判断数组中是否含有该整数&#34;&gt;1. 在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。&lt;/h1&gt;
+">剑指offer（js版）</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-xiang-mu/"" data-c="
@@ -806,7 +812,152 @@ methods: {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;e.loaded&lt;/code&gt; 代表当前AJAX发送了多少字节，e.total 代表AJAX总共要发送多少字节。通过这两个属性可以计算上传进度的百分比。&lt;/p&gt;
 &lt;p&gt;这样，一个带进度条的文件拖动上传功能就完成了。&lt;/p&gt;
-&lt;h1 id=&#34;10-vue防止用户手动修改url访问非权限页面&#34;&gt;10. Vue防止用户手动修改URL访问非权限页面&lt;/h1&gt;
+&lt;h1 id=&#34;10-formdata传递参数&#34;&gt;10. FormData传递参数&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;FormData的主要用途有两个：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将form表单元素的name与value进行组合，实现表单数据的序列化，从而减少表单元素的拼接，提高工作效率。&lt;/li&gt;
+&lt;li&gt;异步上传文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;1-创建formdata对象&#34;&gt;1. 创建formData对象&lt;/h2&gt;
+&lt;h3 id=&#34;1-创建一个空对象&#34;&gt;1. 创建一个空对象：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;//通过FormData构造函数创建一个空对象
+var formdata=new FormData();
+//可以通过append()方法来追加数据
+formdata.append(&amp;quot;name&amp;quot;,&amp;quot;laotie&amp;quot;);
+//通过get方法对值进行读取
+console.log(formdata.get(&amp;quot;name&amp;quot;));//laotie
+//通过set方法对值进行设置
+formdata.set(&amp;quot;name&amp;quot;,&amp;quot;laoliu&amp;quot;);
+console.log(formdata.get(&amp;quot;name&amp;quot;));//laoliu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-通过表单对formdata进行初始化&#34;&gt;2. 通过表单对formData进行初始化&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;创建表单：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;form id=&amp;quot;advForm&amp;quot;&amp;gt;
+    &amp;lt;p&amp;gt;广告名称：&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;advName&amp;quot;  value=&amp;quot;xixi&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;广告类别：&amp;lt;select name=&amp;quot;advType&amp;quot;&amp;gt;
+        &amp;lt;option value=&amp;quot;1&amp;quot;&amp;gt;轮播图&amp;lt;/option&amp;gt;
+        &amp;lt;option value=&amp;quot;2&amp;quot;&amp;gt;轮播图底部广告&amp;lt;/option&amp;gt;
+        &amp;lt;option value=&amp;quot;3&amp;quot;&amp;gt;热门回收广告&amp;lt;/option&amp;gt;
+        &amp;lt;option value=&amp;quot;4&amp;quot;&amp;gt;优品精选广告&amp;lt;/option&amp;gt;
+    &amp;lt;/select&amp;gt;&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;&amp;lt;input type=&amp;quot;button&amp;quot; id=&amp;quot;btn&amp;quot; value=&amp;quot;添加&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;/form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;通过表单元素作为参数，实现对formData的初始化：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//获得表单按钮元素
+var btn=document.querySelector(&amp;quot;#btn&amp;quot;);
+//为按钮添加点击事件
+btn.onclick=function(){
+    //根据ID获得页面当中的form表单元素
+    var form=document.querySelector(&amp;quot;#advForm&amp;quot;);
+    //将获得的表单元素作为参数，对formData进行初始化
+    var formdata=new FormData(form);
+    //通过get方法获得name为advName元素的value值
+    console.log(formdata.get(&amp;quot;advName&amp;quot;));//xixi
+    //通过get方法获得name为advType元素的value值
+    console.log(formdata.get(&amp;quot;advType&amp;quot;));//1 
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-操作方法&#34;&gt;2. 操作方法&lt;/h2&gt;
+&lt;h3 id=&#34;1-通过getkey与getallkey来获取相对应的值&#34;&gt;1. 通过get(key)与getAll(key)来获取相对应的值&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;// 获取key为age的第一个值
+formdata.get(&amp;quot;age&amp;quot;); 
+ // 获取key为age的所有值，返回值为数组类型
+formdata.getAll(&amp;quot;age&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-通过appendkeyvalue在数据末尾追加数据&#34;&gt;2. 通过append(key,value)在数据末尾追加数据&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;//通过FormData构造函数创建一个空对象
+var formdata=new FormData();
+//通过append()方法在末尾追加key为name值为laoliu的数据
+formdata.append(&amp;quot;name&amp;quot;,&amp;quot;laoliu&amp;quot;);
+//通过append()方法在末尾追加key为name值为laoli的数据
+formdata.append(&amp;quot;name&amp;quot;,&amp;quot;laoli&amp;quot;);
+//通过append()方法在末尾追加key为name值为laotie的数据
+formdata.append(&amp;quot;name&amp;quot;,&amp;quot;laotie&amp;quot;);
+//通过get方法读取key为name的第一个值
+console.log(formdata.get(&amp;quot;name&amp;quot;));//laoliu
+//通过getAll方法读取key为name的所有值
+console.log(formdata.getAll(&amp;quot;name&amp;quot;));//[&amp;quot;laoliu&amp;quot;, &amp;quot;laoli&amp;quot;, &amp;quot;laotie&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-通过setkey-value来设置修改数据&#34;&gt;3. 通过set(key, value)来设置修改数据&lt;/h3&gt;
+&lt;p&gt;key的值不存在，会添加一条数据&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//通过FormData构造函数创建一个空对象
+var formdata=new FormData();
+//如果key的值不存在会为数据添加一个key为name值为laoliu的数据
+formdata.set(&amp;quot;name&amp;quot;,&amp;quot;laoli&amp;quot;);
+//通过get方法读取key为name的第一个值
+console.log(formdata.get(&amp;quot;name&amp;quot;));//laoli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;key的值存在，会修改对应的value值&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//通过FormData构造函数创建一个空对象
+var formdata=new FormData();
+//通过append()方法在末尾追加key为name值为laoliu的数据
+formdata.append(&amp;quot;name&amp;quot;,&amp;quot;laoliu&amp;quot;);
+//通过append()方法在末尾追加key为name值为laoliu2的数据
+formdata.append(&amp;quot;name&amp;quot;,&amp;quot;laoliu2&amp;quot;);
+//通过get方法读取key为name的第一个值
+console.log(formdata.get(&amp;quot;name&amp;quot;));//laoliu
+//通过getAll方法读取key为name的所有值
+console.log(formdata.getAll(&amp;quot;name&amp;quot;));//[&amp;quot;laoliu&amp;quot;, &amp;quot;laoliu2&amp;quot;]
+
+//将存在的key为name的值修改为laoli
+formdata.set(&amp;quot;name&amp;quot;,&amp;quot;laoli&amp;quot;);
+//通过get方法读取key为name的第一个值
+console.log(formdata.get(&amp;quot;name&amp;quot;));//laoli
+//通过getAll方法读取key为name的所有值
+console.log(formdata.getAll(&amp;quot;name&amp;quot;));//[&amp;quot;laoli&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;4-通过haskey来判断是否存在对应的key值&#34;&gt;4. 通过has(key)来判断是否存在对应的key值&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;//通过FormData构造函数创建一个空对象
+var formdata=new FormData();
+//通过append()方法在末尾追加key为name值为laoliu的数据
+formdata.append(&amp;quot;name&amp;quot;,&amp;quot;laoliu&amp;quot;);
+//判断是否包含key为name的数据
+console.log(formdata.has(&amp;quot;name&amp;quot;));//true
+//判断是否包含key为age的数据
+console.log(formdata.has(&amp;quot;age&amp;quot;));//false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;5-通过deletekey可以删除数据&#34;&gt;5. 通过delete(key)可以删除数据&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;//通过FormData构造函数创建一个空对象
+var formdata=new FormData();
+//通过append()方法在末尾追加key为name值为laoliu的数据
+formdata.append(&amp;quot;name&amp;quot;,&amp;quot;laoliu&amp;quot;);
+console.log(formdata.get(&amp;quot;name&amp;quot;));//laoliu
+//删除key为name的值
+formdata.delete(&amp;quot;name&amp;quot;);
+console.log(formdata.get(&amp;quot;name&amp;quot;));//null
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-通过xmlhttprequest发送数据&#34;&gt;3. 通过XMLHttpRequest发送数据&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;创建表单：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;form id=&amp;quot;advForm&amp;quot;&amp;gt;
+    &amp;lt;p&amp;gt;广告名称：&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;advName&amp;quot; value=&amp;quot;xixi&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;广告类别：&amp;lt;select name=&amp;quot;advType&amp;quot;&amp;gt;
+        &amp;lt;option value=&amp;quot;1&amp;quot;&amp;gt;轮播图&amp;lt;/option&amp;gt;
+        &amp;lt;option value=&amp;quot;2&amp;quot;&amp;gt;轮播图底部广告&amp;lt;/option&amp;gt;
+        &amp;lt;option value=&amp;quot;3&amp;quot;&amp;gt;热门回收广告&amp;lt;/option&amp;gt;
+        &amp;lt;option value=&amp;quot;4&amp;quot;&amp;gt;优品精选广告&amp;lt;/option&amp;gt;
+    &amp;lt;/select&amp;gt;&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;广告图片：&amp;lt;input type=&amp;quot;file&amp;quot; name=&amp;quot;advPic&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;广告地址：&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;advUrl&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;广告排序：&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;orderBy&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;&amp;lt;input type=&amp;quot;button&amp;quot; id=&amp;quot;btn&amp;quot; value=&amp;quot;添加&amp;quot;&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;/form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;发送数据：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var btn=document.querySelector(&amp;quot;#btn&amp;quot;);
+btn.onclick=function(){
+    var formdata=new FormData(document.getElementById(&amp;quot;advForm&amp;quot;));
+    var xhr=new XMLHttpRequest();
+    xhr.open(&amp;quot;post&amp;quot;,&amp;quot;http://127.0.0.1/adv&amp;quot;);
+    xhr.send(formdata);
+    xhr.onload=function(){
+        if(xhr.status==200){
+            //...
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;11-vue防止用户手动修改url访问非权限页面&#34;&gt;11. Vue防止用户手动修改URL访问非权限页面&lt;/h1&gt;
 &lt;p&gt;今天在写filter的时候，要做一个防止用户手动修改URL访问非权限页面的验证。在网上搜索了下，&lt;/p&gt;
 &lt;p&gt;发现可以通过：&lt;code&gt;request.getHeader(&amp;quot;referer&amp;quot;);&lt;/code&gt;  &lt;br&gt;
 // js的话：javascript:document.referrer来防止，&lt;/p&gt;
@@ -834,6 +985,267 @@ methods: {
 		}
 	}
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;12-手动一个v-model组件&#34;&gt;12. 手动一个v-model组件&lt;/h1&gt;
+&lt;h2 id=&#34;1-知识储备&#34;&gt;1. 知识储备&lt;/h2&gt;
+&lt;p&gt;在开始之前我们先需要知道一些知识，v-model是一个语法糖，如下：&lt;br&gt;
+&lt;code&gt;&amp;lt;input type=&amp;quot;text&amp;quot; v-model=&amp;quot;name&amp;quot;&amp;gt;&lt;/code&gt;&lt;br&gt;
+实则是等于下面的：&lt;br&gt;
+&lt;code&gt;&amp;lt;input type=&amp;quot;text&amp;quot; :value=&amp;quot;name&amp;quot; @input=&amp;quot;name=$event.target.value&amp;quot;&amp;gt;&lt;/code&gt;&lt;br&gt;
+也就是说，&lt;strong&gt;v-model就是绑定了一个名为value的props和一个事件input&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;注意：所以在子组件中可以通过props中定义value接受值，然后通过$emit触发input事件传新值并修改。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616570989198.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-最简单的实现方法&#34;&gt;1. 最简单的实现方法&lt;/h2&gt;
+&lt;p&gt;综合上述特性，我们可以认为我们要实现自定义组件的双向绑定，其实需要的功能其实是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;组件内部可以接收并同步父组件传入的value值&lt;/li&gt;
+&lt;li&gt;组件内部可以在该双向绑定值修改时emit一个input事件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们知道，直接修改父组件传入的值（prop）是不被允许的，&lt;br&gt;
+而且需要在双向绑定值于组件内部修改时拦截其操作，改为向父组件emit事件&lt;/p&gt;
+&lt;p&gt;首先是父组件的代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div class=&amp;quot;&amp;quot;&amp;gt;
+      &amp;lt;p&amp;gt;{{name}}&amp;lt;/p&amp;gt;
+      &amp;lt;son v-model=&amp;quot;name&amp;quot;&amp;gt;&amp;lt;/son&amp;gt;
+      &amp;lt;!-- 等同于下面 --&amp;gt;
+      &amp;lt;!-- &amp;lt;son type=&amp;quot;text&amp;quot; :value=&amp;quot;name&amp;quot; @input=&amp;quot;name=子组件传回来的值&amp;quot;&amp;gt; --&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+import Son from &#39;./son&#39;
+export default {
+  name: &amp;quot;&amp;quot;,
+  data() {
+    return {
+        name:&#39;ydw&#39;,
+    }
+  },
+  components: {
+      Son
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后是子组件的代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div class&amp;gt;
+      &amp;lt;input type=&amp;quot;text&amp;quot; :value=&amp;quot;value&amp;quot; @input=&amp;quot;$emit(&#39;input&#39;,$event.target.value)&amp;quot;&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+export default {
+  name: &amp;quot;&amp;quot;,
+  props:{
+      value:{
+          type: String,
+          defalut () 
+              return &#39;&#39;
+          }
+      }
+  },
+  data() {
+    return {
+
+    }
+  },
+  components: {
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;父组件中我加了一个注释的代码行，其实是帮助我自己理解的，不知道有没有小伙伴跟我一样，第一次看的时候压根不知道它在做什么的？哭唧唧。&lt;/p&gt;
+&lt;h2 id=&#34;3-使用最新的语法model属性&#34;&gt;3. 使用最新的语法，model属性。&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616555019332.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+也就是说这个属性是为了回避props定义的value这个名字的。&lt;/p&gt;
+&lt;p&gt;下面看看它的用法，我们先看子组件怎么修改：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div class&amp;gt;
+    &amp;lt;input type=&amp;quot;text&amp;quot; :value=&amp;quot;val&amp;quot; @input=&amp;quot;$emit(&#39;change&#39;,$event.target.value)&amp;quot; /&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;                                                 export default {         
+  name: &amp;quot;&amp;quot;,
+  model:{
+    prop:&#39;val&#39;,
+    event:&#39;change&#39;
+  },
+  props: {
+    val: {
+      type: String,
+      defalut() {
+        return &amp;quot;&amp;quot;;
+      }
+    }
+  },
+  data() {                                                       
+    return {                                                                  
+    };
+  }
+};
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;model属性中prop是重新命名传值的名字，而event则是重新命名事件的名字，但是同样的，props中的传值名字必须与model属性中的prop的名字一样。其实只要对比一下第一种方法就知道，vue多出一个model属性是为了value这个名字可以使用。&lt;/p&gt;
+&lt;h2 id=&#34;4-vue20封装elementui&#34;&gt;4. Vue2.0封装elementUI&lt;/h2&gt;
+&lt;p&gt;首先讲我简单的封装代码上来：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div class=&amp;quot;form-container&amp;quot;&amp;gt;
+    &amp;lt;el-form
+      :model=&amp;quot;filterObject&amp;quot;
+      label-position=&amp;quot;left&amp;quot;
+      :label-width=&amp;quot;labelWidth&amp;quot;
+    &amp;gt;
+      &amp;lt;el-row :gutter=&amp;quot;10&amp;quot;&amp;gt;
+        &amp;lt;el-col
+          v-for=&amp;quot;item in formData&amp;quot;
+          :key=&amp;quot;item.prop&amp;quot;
+          :span=&amp;quot;item.span || 8&amp;quot;
+        &amp;gt;
+          &amp;lt;el-form-item :label=&amp;quot;item.label&amp;quot;&amp;gt;
+            &amp;lt;el-input
+              v-if=&amp;quot;item.type === &#39;text&#39;&amp;quot;
+              v-model=&amp;quot;filterObject[item.prop]&amp;quot;
+              clearable
+              :disabled=&amp;quot;item.disabled || false&amp;quot;
+              :placeholder=&amp;quot;item.placeholder&amp;quot;
+            &amp;gt;&amp;lt;/el-input&amp;gt;
+
+            &amp;lt;el-select
+              v-if=&amp;quot;item.type === &#39;select&#39;&amp;quot;
+              v-model=&amp;quot;filterObject[item.prop]&amp;quot;
+              clearable
+              :placeholder=&amp;quot;item.placeholder&amp;quot;
+              @change=&amp;quot;handleChange&amp;quot;
+            &amp;gt;
+              &amp;lt;el-option
+                v-for=&amp;quot;sub in item.arr&amp;quot;
+                :key=&amp;quot;sub.value&amp;quot;
+                :label=&amp;quot;sub.label&amp;quot;
+                :value=&amp;quot;sub.value&amp;quot;
+              &amp;gt;&amp;lt;/el-option&amp;gt;
+            &amp;lt;/el-select&amp;gt;
+          &amp;lt;/el-form-item&amp;gt;
+        &amp;lt;/el-col&amp;gt;
+      &amp;lt;/el-row&amp;gt;
+    &amp;lt;/el-form&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+export default {
+  model: {
+    prop: &#39;filterObject&#39;,
+    event: &#39;change&#39;,
+  },
+  props: {
+    filterObject: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+    labelWidth: {
+      type: String,
+      default: &#39;80px&#39;,
+    },
+    formData: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+  },
+  data() {
+    return {}
+  },
+  methods: {
+    handleChange() {
+      console.log(this.filterObject)
+    },
+  },
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中的&lt;strong&gt;filterObject&lt;/strong&gt;就是今天的主角了，我的想法是在父组件直接传递一个对象进来，在进行相关操作的时候，父组件直接可以在外面用到这些值，而不是通过子组件暴露方法获取这些值。(ps:在封装search组件的时候可以这么做，向外暴露search，reset方法可以暴露子组件里面的值。&lt;strong&gt;其实封装search跟这个form有点相似，都是用elementUI的form表单来封装的。&lt;/strong&gt;)&lt;/p&gt;
+&lt;p&gt;接下来是父组件的代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div class=&amp;quot;home&amp;quot;&amp;gt;
+    &amp;lt;HHform
+      :formData=&amp;quot;searchOptions&amp;quot;
+      labelWidth=&amp;quot;120px&amp;quot;
+      v-model=&amp;quot;filterObject&amp;quot;
+    &amp;gt;&amp;lt;/HHform&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+import HHform from &#39;@/components/HH-form&#39;
+export default {
+  name: &#39;Home&#39;,
+  components: {
+    HHform,
+  },
+  data() {
+    return {
+      searchOptions: [
+        {
+          type: &#39;select&#39;,
+          prop: &#39;status&#39;,
+          label: &#39;状态：&#39;,
+          span: 5,
+          placeholder: &#39;请选择&#39;,
+          arr: [
+            {
+              value: &#39;&#39;,
+              label: &#39;全部招生顾问&#39;,
+            },
+            {
+              value: 1,
+              label: &#39;正常招顾&#39;,
+            },
+            {
+              value: 2,
+              label: &#39;冻结招顾&#39;,
+            },
+          ],
+        },
+        {
+          type: &#39;select&#39;,
+          prop: &#39;region&#39;,
+          label: &#39;地区：&#39;,
+          span: 5,
+          placeholder: &#39;请选择&#39;,
+          arr: [],
+        },
+        {
+          type: &#39;text&#39;,
+          prop: &#39;userName&#39;,
+          span: 8,
+          label: &#39;招生顾问名称：&#39;,
+          placeholder: &#39;选择或输入搜索&#39;,
+        },
+        {
+          type: &#39;text&#39;,
+          prop: &#39;phone&#39;,
+          label: &#39;手机号：&#39;,
+          span: 5,
+          placeholder: &#39;选择或输入搜索&#39;,
+        },
+      ],
+      filterObject: {},
+    }
+  },
+  methods: {},
+  },
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;父组件的代码比较简单，直接通过v-model传值过去就行了。下面是演示效果。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616568833036.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;目前封装form组件的时候是使用这种方法，父组件直接传值的话，不需要子组件提供方法返回值。在封装search组件的时候则是使用子组件暴露方法的方式拿到值的，为什么这么做呢？因为在进行搜索的时候一定会暴露search跟reset方法，这时候带出去就行了。&lt;/p&gt;
 ">【面】前端知识点梳理（Vue项目）</a>
       </div>
       
@@ -1981,7 +2393,7 @@ export default {
 &amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;总结：子组件通过events给父组件发送消息，实际上就是子组件把自己的数据发送到父组件。&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;2-emiton&#34;&gt;2. &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;/&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;emit/&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;on&lt;/h2&gt;
+&lt;h2 id=&#34;2-emiton&#34;&gt;2. $emit/$on&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;这种方法通过一个空的Vue实例作为中央事件总线（事件中心），用它来触发事件和监听事件,巧妙而轻量地实现了任何组件间的通信，包括父子、兄弟、跨级&lt;/strong&gt;。当我们的项目比较大时，可以选择更好的状态管理解决方案vuex。&lt;/p&gt;
 &lt;h3 id=&#34;1-具体实现方式&#34;&gt;1. 具体实现方式：&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;    var Event=new Vue();
@@ -2098,7 +2510,7 @@ export default new Vuex.Store({
 &lt;pre&gt;&lt;code&gt;JSON.stringify(state.subscribeList);   // array -&amp;gt; string
 JSON.parse(window.localStorage.getItem(&amp;quot;subscribeList&amp;quot;));    // string -&amp;gt; array 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;4-attrslisteners&#34;&gt;4. &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;/&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;attrs/&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;listeners&lt;/h2&gt;
+&lt;h2 id=&#34;4-attrslisteners&#34;&gt;4. $attrs/$listeners&lt;/h2&gt;
 &lt;p&gt;多级组件嵌套需要传递数据时，通常使用的方法是通过vuex。但如果仅仅是传递数据，而不做中间处理，使用 vuex 处理，未免有点大材小用。为此Vue2.4 版本提供了另一种方法----$attrs/$listeners&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -2718,10 +3130,37 @@ DNS查询过程如下:&lt;/p&gt;
 CDN节点解决了跨运营商和跨地域访问的问题，访问延时大大降低。&lt;br&gt;
 大部分请求在CDN边缘节点完成，CDN起到了分流作用，减轻了源服务器的负载。&lt;/p&gt;
 &lt;h2 id=&#34;4-浏览器缓存http缓存&#34;&gt;4. 浏览器缓存(http缓存)&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616396215607.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;1-什么是浏览器缓存&#34;&gt;1. 什么是浏览器缓存&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616396248637.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-简单来说,浏览器缓存其实就是浏览器保存通过HTTP获取的所有资源,是浏览器将网络资源存储在本地的一种行为。&lt;/p&gt;
+&lt;h3 id=&#34;1-浏览器缓存流程&#34;&gt;1. 浏览器缓存流程&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616571869231.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;设置缓存超时时间&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Expires：时间戳，具体时间后过期&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cache-Control：max-age多少秒后过期&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Application Cache：会默认缓存当前页面&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;Last-Modified/If-Modified-Since&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Last-Modified：标示这个响应资源的最后修改时间。&lt;/li&gt;
+&lt;li&gt;If-Modified-Since：当资源过期时（使用Cache-Control标识的max-age），发现资源具有&lt;code&gt;Last-Modified&lt;/code&gt;声明，则&lt;code&gt;再次向web服务器请求&lt;/code&gt;时带上头 If-Modified-Since，&lt;code&gt;表示请求时间&lt;/code&gt;。web服务器收到请求后发现有头If-Modified-Since 则与被请求资源的&lt;code&gt;最后修改时间进行比对&lt;/code&gt;。若最后&lt;code&gt;修改时间较新&lt;/code&gt;，说明资源又被改动过，则响应整片资源内容（写在响应消息包体内），&lt;code&gt;HTTP 200&lt;/code&gt;；若最后&lt;code&gt;修改时间较旧&lt;/code&gt;，说明资源无新修改，则响应&lt;code&gt;HTTP 304&lt;/code&gt; (无需包体，节省浏览)，告知浏览器继续使用所保存的cache。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;Etag/If-None-Match&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Etag：(Entity Tag) web服务器响应请求时，告诉浏览器当前资源&lt;code&gt;在服务器的唯一标识&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;If-None-Match：当资源过期时（使用Cache-Control标识的max-age），发现资源具有Etage声明，则&lt;code&gt;再次向web服务器请求&lt;/code&gt;时带上头If-None-Match （Etag的值）。 web服务器收到请求后发现有头If-None-Match 则与被请求资源的相应&lt;code&gt;校验串进行比对&lt;/code&gt;，决定返回200或304。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;为什么有了Last-Modified还要Etag&lt;/strong&gt;&lt;br&gt;
+Etag的出现主要是为了解决几个Last-Modified比较难解决的问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Last-Modified标注的最后修改只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，它将不能准确标注文件的修改时间&lt;/li&gt;
+&lt;li&gt;如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存&lt;/li&gt;
+&lt;li&gt;有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;2-缓存的资源去哪里了&#34;&gt;2. 缓存的资源去哪里了&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;memory cache&lt;/code&gt;JS等派生资源&lt;/p&gt;
 &lt;blockquote&gt;
@@ -4282,66 +4721,156 @@ foo.classMethod()
 &lt;p&gt;如果在实例上调用静态方法，会抛出一个错误，表示不存在该方法。&lt;/p&gt;
 &lt;h1 id=&#34;4-promise的使用与实现&#34;&gt;4. Promise的使用与实现&lt;/h1&gt;
 &lt;p&gt;Promise 是 ES6 新增的语法，解决了回调地狱的问题。&lt;/p&gt;
-&lt;p&gt;可以把 Promise 看成一个状态机。初始是 &lt;code&gt;pending&lt;/code&gt; 状态，可以通过函数 &lt;code&gt;resolve&lt;/code&gt; 和 &lt;code&gt;reject&lt;/code&gt; ，将状态转变为 &lt;code&gt;resolved&lt;/code&gt;或者&lt;code&gt;rejected&lt;/code&gt; 状态，状态一旦改变就不能再次变化。&lt;/p&gt;
-&lt;h2 id=&#34;1-promise的使用及原理&#34;&gt;1. Promise的使用及原理&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;基本形式&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;newPromise(resolve=&amp;gt;{
-    ajax(&amp;quot;/pay/post&amp;quot;, data=&amp;gt;resolve() );
-}).then(resolve=&amp;gt;{
-    ajax(&amp;quot;/order/fix&amp;quot;, data=&amp;gt;{
-        //处理数据   
-    })
+&lt;h2 id=&#34;1-什么是promise&#34;&gt;1. 什么是Promise？&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理，让开发者不用再关注于时序和底层的结果。Promise的状态具有不受外界影响和不可逆两个特点。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;特点：&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;对象的状态不受外界影响&lt;/code&gt;。Promise对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）和rejected（以失败）。只有异步操作的结果可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是Promise这个名字的由来。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;一旦状态改变，就不会再变&lt;/code&gt;，任何时候都是可以得到这个结果的。Promise对象的状态改变只有两种可能：从pending变为fulfilled和从pending变为rejected。只要这两种情况发生，状态就会凝固，不会再变了。再对Promise对象添加回调函数也会立即得到这个结果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;缺点：&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;首先无法取消Promise，一旦新建他就会立即执行，无法中途取消。其次，如果不设置回调函数，Promise内部跑出的错误无法反应到外部。当pending的时候，无法知道进展到了哪一步。&lt;/p&gt;
+&lt;h2 id=&#34;2-promise-解决的痛点是什么&#34;&gt;2. Promise 解决的痛点是什么？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;回调地狱，代码难以维护&lt;/li&gt;
+&lt;li&gt;promise可以支持多个并发的请求，获取并发请求中的数据&lt;/li&gt;
+&lt;li&gt;promise可以解决可读性的问题，异步的嵌套带来的可读性的问题&lt;/li&gt;
+&lt;li&gt;promise可以解决信任问题，对于回调过早、回调过晚或没有调用和回调次数太少或太多，由于promise只能决议一次，决议值只能有一个，决议之后无法改变，任何then中的回调也只会被调用一次，所以这就保证了Promise可以解决信任问题&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-promise-如何使用&#34;&gt;3. Promise 如何使用？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;创造一个Promise实例&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可用Promise的try和catch方法预防异常&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;4-promise中的异步模式有哪些有什么区别&#34;&gt;4. Promise中的异步模式有哪些？有什么区别？&lt;/h2&gt;
+&lt;p&gt;回到问题本身，&lt;code&gt;Promise.all()&lt;/code&gt;和&lt;code&gt;Promise.race()&lt;/code&gt;的区别&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;all&lt;/code&gt;会将传入的数组中的所有promise全部决议以后，将决议值以数组的形式传入到观察回调中，任何一个promise决议为拒绝，那么就会调用拒绝回调。&lt;strong&gt;Promise.all获得的成功结果的数组里面的数据顺序和Promise.all接收到的数组顺序是一致的&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;race&lt;/code&gt;会将传入的数组中的所有promise中第一个决议的决议值传递给观察回调，即使决议结果是拒绝。(超时取消)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果向Promise.all()和Promise.race()传递空数组，运行结果会有什么不同？&lt;br&gt;
+all会立即决议，决议结果是fullfilled，值是undefined&lt;br&gt;
+race会永远都不决议，程序卡死&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;5-promise-常用的方法有哪些&#34;&gt;5. Promise 常用的方法有哪些？&lt;/h2&gt;
+&lt;h3 id=&#34;1-promiseresolve的用法&#34;&gt;1. Promise.resolve的用法&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;当我们在执行函数中调用resolve方法时，Promise的状态就变成fulfilled，即操作成功状态&lt;/code&gt;，还记得上面Promise.prototype上面的then和catch方法吗？当Promise状态为fullfilled状态时执行then方法里的操作，注意了，&lt;code&gt;then方法里面有两个参数&lt;/code&gt;onfulfilled(Promise为fulfilled状态时执行) 和onrejected（Promise为rejected状态时执行），步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实例化Promise（new Promise（function（resolve,reject）））&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;用Promise的实例调用then方法&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;具体来看下面的例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var p = new Promise(function (resolve, reject) {
+            var timer = setTimeout(function () {
+                console.log(&#39;执行操作1&#39;);
+                resolve(&#39;这是数据1&#39;);
+            }, 1000);
+        });
+        p.then(function (data) {
+            console.log(data);
+            console.log(&#39;这是成功操作&#39;);
+        });
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;简单的理解就是&lt;code&gt;调用resolve方法，Promise变为操作成功状态（fulfilled）&lt;/code&gt;，执行then方法里面onfulfilled里的操作。其实then里面的函数就是我们平时所说的回调函数，只不过在这里只是把它分离出来而已。我们可以看到控制台上的输出结果如下所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616496390953.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-promisereject的用法&#34;&gt;2. Promise.reject的用法&lt;/h3&gt;
+&lt;p&gt;调用reject方法后，Promise状态变为rejected，即操作失败状态，此时执行then方法里面onrejected操作，&lt;code&gt;上面我们提到了then方法有两个参数&lt;/code&gt;，一种是Promise状态为fulfilled时执行（onfullfilled），一种是Promise状态为rejected时执行（onrejected）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var p = new Promise(function (resolve, reject) {
+          var flag = false;
+          if(flag){
+            resolve(&#39;这是数据2&#39;);
+          }else{
+            reject(&#39;这是数据2&#39;);
+          }
+        });
+        p.then(function(data){//状态为fulfilled时执行
+            console.log(data);
+            console.log(&#39;这是成功操作&#39;);
+        },function(reason){ //状态为rejected时执行
+            console.log(reason);
+            console.log(&#39;这是失败的操作&#39;);
+        });
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们可以看到输出结果：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616496519288.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-promiseprototypethen方法&#34;&gt;3. Promise.prototype.then()方法&lt;/h3&gt;
+&lt;p&gt;Promise实例具有then方法，也就是说then方法时定义在原型对象上的。&lt;br&gt;
+它的作用是为&lt;code&gt;Promise实例添加状态改变时的回调函数&lt;/code&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）因此可以采用链式写法，即then方法后面再调用另一个then方法。&lt;/li&gt;
+&lt;li&gt;采用链式的then可以指定一组按照次序调用的回调函数。这时，前一个回调函数可能返回一个还是Promise对象（即有异步操作），这时候一个回调函数就会等该Promise对象的状态发生变化，才会被调用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;getJSON(&#39;/post/1.json&#39;).then(function(post) {
+    return getJSON(post.commentURL)
+}).then(function funcA() {
+    console.log(&amp;quot;resolved:&amp;quot;, comments)
+}, function funcB(err) {
+    console.log(&amp;quot;rejected:&amp;quot;, err)
 })
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;链式调用&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;一旦A执行完，B开始后，这次承诺也就兑现了，Promise对象也就失效了&lt;br&gt;
-那如果还有C呢？ 我们就必须在函数B中，&lt;br&gt;
-重新创建新的Promise对象，来完成下一个承诺，具体的写法就像这样：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;new Promise(函数1(resolve){
-    ajaxA(&amp;quot;xxxx&amp;quot;, function(){
-        resolve();//通知Promise该任务结束
-    })    
-}).then(函数2(){
-    //在函数2开始运行后，第一次创建的Promise对象完成使命，已经不能再继续工作。
-    //此时，我们创建并返回了新的Promise对象
-    return new Promise(function(resolve){
-        ajaxB(&amp;quot;xxxx&amp;quot;, function(){
-            resolve();//通知新的Promise对象该任务结束
-        })    
-    })
-}).then(函数3(){ //尽管这里使用了链式调用，但负责执行函数3的，已经是新的Promise对象了
-    // 如果，我们还有ajaxD需要顺序调用
-    // 那就必须在这里重新new Promise()对象了
-    ajaxC(&amp;quot;xxx&amp;quot;, function(){     })
-})   
+&lt;p&gt;第一个then方法指定的回调函数，返回的是一个Promise对象。这时，第二个方法指定的回调函数，就会等待这个新的Promise对象状态发生变化。如果变为resolved，就调用funcA, 如果状态变为rejected，就调用funcB.&lt;/p&gt;
+&lt;h3 id=&#34;4-promiseprototypecatch方法&#34;&gt;4. Promise.prototype.catch()方法&lt;/h3&gt;
+&lt;p&gt;Promise.prototype.catch方法是.then(null, rejection)的别名，用于指定发生错误时的回调函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;getJSON(&#39;/post/1.json&#39;).then(function(posts) {
+    //...
+}).catch(function() {
+    console.log(&#39;发生错误&#39;, error)
+})
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果我有 A,B,C 三个异步任务，ABC同时开始执行&lt;br&gt;
-当&lt;code&gt;A,B,C三个任务全部都结束&lt;/code&gt;时，执任务D，&lt;br&gt;
-传统方法实现起来就比较复杂，Promise就非常简单，就像这样：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Promise.all([new Promise(A), new Promise(B), new Promise(C)])
-.then(function(){
-    D();
-});
+&lt;p&gt;上面代码中，getJSON方法返回一个Promise对象，如果该对象状态变为resolved，则会调用then方法指定的回调函数；如果异步操作抛出错误，状态就会变为rejected，就会调用catch方法指定的回调函数。另外，then方法指定的回调函数，如果运行抛出错误，也会被catch方法捕获。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Promise对象的错误具有冒泡性质，会一直向后传递，直到被捕获为止，也就是说错误总会被下一个catch语句捕获。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;6-promise-在事件循环中的执行过程是怎样的&#34;&gt;6. Promise 在事件循环中的执行过程是怎样的？&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1）事件循环&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;从代码执行顺序的角度来看，程序最开始是按代码顺序执行代码的，遇到同步任务，立刻执行；遇到异步任务，则只是调用异步函数发起异步请求。此时，异步任务开始执行异步操作，执行完成后到消息队列中排队。程序按照代码顺序执行完毕后，查询消息队列中是否有等待的消息。如果有，则按照次序从消息队列中把消息放到执行栈中执行。执行完毕后，再从消息队列中获取消息，再执行，不断重复。由于主线程不断的重复获得消息、执行消息、再取消息、再执行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;2）promise的事件循环&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Promise在初始化时，传入的函数是同步执行的，然后注册 then 回调。注册完之后，继续往下执行同步代码，在这之前，then 中回调不会执行。同步代码块执行完毕后，才会在事件循环中检测是否有可用的 promise 回调，如果有，那么执行，如果没有，继续下一个事件循环&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;7-promise的问题解决办法&#34;&gt;7. Promise的问题？解决办法？&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;promise的问题为：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;promise一旦执行，无法中途取消&lt;/li&gt;
+&lt;li&gt;promise的错误无法在外部被捕捉到，只能在内部进行预判处理&lt;/li&gt;
+&lt;li&gt;promise的内如何执行，监测起来很难&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;解决办法&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;正是因为这些原因，ES7引入了更加灵活多变的async，await来处理异步&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;8-手写promise与ajax的结合&#34;&gt;8. 手写Promise与ajax的结合？&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;实例代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function promiseGet (url) {
+  return new Promise((resolve, reject) =&amp;gt; {
+    let xhr = new XMLHttpRequest()
+    xhr.open(&#39;GET&#39;, url, true)
+    xhr.onreadystatechange = function () {
+      if (this.readyState === 4) {
+        if (this.status === 200) {
+          resolve(this.responseText,this)
+        } else {
+          let resJson = {
+            code: this.status,
+            response: this.response
+          }
+          reject(resJson, this)
+        }
+      }
+    }
+  })
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;那如果我希望A,B,C 其中&lt;code&gt;任意一个&lt;/code&gt;任务完成，&lt;br&gt;
-就马上开始任务D，该怎么做？&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Promise.race([new Promise(A), new Promise(B), new Promise(C)])
-.then(function(){
-   D();
-});
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;2-promisea-方案&#34;&gt;2. Promise/A+ 方案&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;promise 有三个状态 pending、fulfilled、rejected，只能由 pending 向 fulfilled 、rejected 两种状态发生改变。&lt;/li&gt;
-&lt;li&gt;promise 需要提供一个 then 方法，then 方法接收 (onFulfilled,onRejected) 两个函数作为参数。&lt;/li&gt;
-&lt;li&gt;onFulfilled、onRejected 须在 promise 完成后后（状态扭转）后调用，且只能调用一次。&lt;/li&gt;
-&lt;li&gt;onFulfilled、onRejected 仅仅作为函数进行调用，不能够将 this 指向调用它的 promise。&lt;/li&gt;
-&lt;li&gt;onFulfilled、onRejected 必须在&lt;strong&gt;执行上下文栈&lt;/strong&gt;只包含&lt;strong&gt;平台代码&lt;/strong&gt;后才能执行。平台代码指 引擎，环境，Promise 实现代码。（PS:这处规范要求 onFulfilled、onRejected 函数的执行必须在 then 被调用的那个事件循环之后的事件循环。但是规范并没有要求是把它们作为一个微任务或是宏任务去执行，只是各平台的实现均把 Promise 的 onFulfilled、onRejected 放到微任务队列中去执行了)&lt;/li&gt;
-&lt;li&gt;onFulfilled、onRejected 必须是个函数，否则忽略。&lt;/li&gt;
-&lt;li&gt;then 方法可以被一个 promise 多次调用。&lt;/li&gt;
-&lt;li&gt;then 方法需要返回一个 promise。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;5-generator异步编程-yield-next-await-async&#34;&gt;5. Generator（异步编程、yield、next()、await 、async）&lt;/h1&gt;
+&lt;h1 id=&#34;5-generator异步编程-yield-next&#34;&gt;5. Generator（异步编程、yield、next()）&lt;/h1&gt;
 &lt;h2 id=&#34;1-generator&#34;&gt;1. Generator&lt;/h2&gt;
 &lt;p&gt;Generator是一个函数，可以在函数内部通过&lt;code&gt;yield&lt;/code&gt;返回一个值（此时，Generator函数的执行会暂定，直到下次触发&lt;code&gt;.next()&lt;/code&gt;）&lt;br&gt;
 创建一个&lt;code&gt;Generator函数&lt;/code&gt;的方法是在&lt;code&gt;function&lt;/code&gt;关键字后添加&lt;code&gt;*&lt;/code&gt;标识。&lt;/p&gt;
@@ -4424,7 +4953,7 @@ for (let value of gen1()) {
 //  4
 //  5
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;5-async和await&#34;&gt;5. async和await&lt;/h2&gt;
+&lt;h1 id=&#34;6-async和await&#34;&gt;6. async和await&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;async函数是Generator函数的语法糖，将Generator的&lt;code&gt;星号&lt;/code&gt;换成&lt;code&gt;async&lt;/code&gt;将&lt;code&gt;yield&lt;/code&gt;换成&lt;code&gt;await&lt;/code&gt;，async函数比Generator函数更好用。&lt;code&gt;async&lt;/code&gt; 表示函数里有异步操作，&lt;code&gt;await&lt;/code&gt; 表示紧跟在后面的表达式需要等待结果。&lt;/li&gt;
 &lt;li&gt;await 只能出现在 async 函数中&lt;/li&gt;
@@ -4433,7 +4962,175 @@ for (let value of gen1()) {
 如果它等到的是一个 Promise 对象，await 就会阻塞后面的代码，等着 Promise 对象 resolve或者reject方法，然后得到 resolve的值，作为 await 表达式的运算结果。&lt;/li&gt;
 &lt;li&gt;一般await都会用try/catch包起来&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;6-箭头函数this指向问题-拓展运算符&#34;&gt;6. 箭头函数this指向问题、拓展运算符&lt;/h1&gt;
+&lt;h2 id=&#34;1-作用&#34;&gt;1. 作用&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;async&lt;/code&gt;和&lt;code&gt;await&lt;/code&gt;是用来处理异步的。即你需要异步像同步一样执行，需要异步返回结果之后，再往下依据结果继续执行。&lt;br&gt;
+&lt;code&gt;async&lt;/code&gt; 是“异步”的简写，而 &lt;code&gt;await&lt;/code&gt; 可以认为是 &lt;code&gt;async wait&lt;/code&gt; 的简写。&lt;br&gt;
+&lt;code&gt;async&lt;/code&gt; 用于申明一个 &lt;code&gt;function&lt;/code&gt; 是异步的，而 &lt;code&gt;await&lt;/code&gt; 用于等待一个异步方法执行完成。&lt;/p&gt;
+&lt;h2 id=&#34;2-async&#34;&gt;2. async&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;async function testAsync() {
+    return &amp;quot;hello async&amp;quot;;
+}
+
+const result = testAsync();
+console.log(result);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;打印输出的是一个&lt;code&gt;Promise&lt;/code&gt; 对象，&lt;code&gt;async&lt;/code&gt; 函数会返回一个 &lt;code&gt;Promise&lt;/code&gt; 对象。&lt;br&gt;
+在最外层不能用 &lt;code&gt;await&lt;/code&gt; 获取其返回值的情况下，使用 &lt;code&gt;then()&lt;/code&gt; 链来处理这个 &lt;code&gt;Promise&lt;/code&gt; 对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;testAsync().then(v =&amp;gt; {
+    console.log(v);    // 输出 hello async
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当 &lt;code&gt;async&lt;/code&gt; 函数没有返回值时，返回 &lt;code&gt;Promise.resolve(undefined)&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-awit&#34;&gt;3. awit&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;await&lt;/code&gt;只能放在&lt;code&gt;async&lt;/code&gt;函数内部使用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;await&lt;/code&gt; 用于一个异步操作之前，表示要“等待”这个异步操作的返回值。&lt;br&gt;
+&lt;code&gt;await&lt;/code&gt; 也可以用于一个同步的值。&lt;/p&gt;
+&lt;p&gt;如果它等到的不是一个 &lt;code&gt;Promise&lt;/code&gt; 对象，那 &lt;code&gt;await&lt;/code&gt; 表达式的运算结果就是它等到的东西。&lt;br&gt;
+如果它等到的是一个 &lt;code&gt;Promise&lt;/code&gt; 对象，&lt;code&gt;await&lt;/code&gt; 就会阻塞后面的代码，等着 &lt;code&gt;Promise&lt;/code&gt; 对象 &lt;code&gt;resolve&lt;/code&gt;，然后得到 &lt;code&gt;resolve&lt;/code&gt; 的值，作为 &lt;code&gt;await&lt;/code&gt; 表达式的运算结果。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;异步代码&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 2s 之后返回双倍的值
+function doubleAfter2seconds(num) {
+    return new Promise((resolve, reject) =&amp;gt; {
+        setTimeout(() =&amp;gt; {
+            resolve(2 * num)
+        }, 2000);
+    })
+}
+
+async function testResult () {
+    let result = await doubleAfter2seconds(30);
+    console.log(result);
+}
+
+testResult();
+// 2s 之后，输出了60. 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-执行顺序&#34;&gt;4. 执行顺序&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 2s 之后返回双倍的值
+function doubleAfter2seconds(num) {
+    return new Promise((resolve, reject) =&amp;gt; {
+        setTimeout(() =&amp;gt; {
+            resolve(2 * num)
+        }, 2000);
+    })
+}
+
+async function testResult () {
+    console.log(&#39;内部调用前&#39;) // 2
+    let result = await doubleAfter2seconds(30);
+    console.log(result); // 4
+    console.log(&#39;内部调用后&#39;) // 5
+}
+
+console.log(&#39;外部调用前&#39;) // 1
+testResult();
+console.log(&#39;外部调用后&#39;) // 3
+// --- 依次输出
+// 外部调用前
+// 内部调用前
+// 外部调用后
+// --- 2s 之后输出
+// 60
+// 内部调用后
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;分析一下上面的执行顺序：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先打印输出&lt;code&gt;外部调用前&lt;/code&gt;，同步代码，顺序执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;然后调用方法&lt;code&gt;testResult()&lt;/code&gt;，打印输出&lt;code&gt;内部调用前&lt;/code&gt;，同步代码，顺序执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;再执行异步方法&lt;code&gt;doubleAfter2seconds&lt;/code&gt;，&lt;br&gt;
+　1&amp;gt;如果没用&lt;code&gt;await&lt;/code&gt;关键字，此后的执行顺序应该是&lt;br&gt;
+　　&lt;code&gt;内部调用后，外部调用后，2s 之后输出60&lt;/code&gt;&lt;br&gt;
+　　因为异步方法不阻塞其他代码的执行，最后再输出&lt;code&gt;60&lt;/code&gt;&lt;br&gt;
+　2&amp;gt;这里使用了&lt;code&gt;await&lt;/code&gt;关键字，所以到这里后会等待异步返回结果，再往下执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当&lt;code&gt;testResult&lt;/code&gt;函数内部&lt;code&gt;await&lt;/code&gt;阻塞执行后，不会影响到&lt;code&gt;testResult&lt;/code&gt;函数外面&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;async&lt;/code&gt; &lt;strong&gt;函数调用不会造成阻塞，它内部所有的阻塞都被封装在一个 Promise 对象中异步执行。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所以，在调用&lt;code&gt;testResult&lt;/code&gt;函数后，会继续向下执行，打印输出外部调用后&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当2s之后，异步函数&lt;code&gt;doubleAfter2seconds&lt;/code&gt;执行完成，返回结果，&lt;br&gt;
+打印输出&lt;code&gt;60&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;因为&lt;code&gt;await&lt;/code&gt;将异步变成同步，所以在输出&lt;code&gt;60&lt;/code&gt;后，同步执行，再输出&lt;code&gt;内部调用后&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-错误处理&#34;&gt;5. 错误处理&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 2s 之后返回双倍的值
+function doubleAfter2seconds(num) {
+    return new Promise((resolve, reject) =&amp;gt; {
+        setTimeout(() =&amp;gt; {
+            resolve(2 * num)
+        }, 2000);
+    })
+}
+
+async function testResult () {
+    let first = await doubleAfter2seconds(10);
+    let second = await doubleAfter2seconds(20);    
+    let res = first + second;
+    return res;
+}
+
+testResult().then(res =&amp;gt; {
+    console.log(res);      
+}).catch(error =&amp;gt; {
+    console.log(error);     
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;连写&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const [err, data] = await fetchData().then(data =&amp;gt; [null, data] ).catch(err =&amp;gt; [err, null])
+ console.log(&#39;err&#39;, err)
+ console.log(&#39;data&#39;, data)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6在接口中使用axios&#34;&gt;6.在接口中使用(axios)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;created () {
+    this.init()
+},
+methods: {
+    async init () {
+      try {
+          let first = await this.getOne();
+          let second = await this.getTwo();    
+          let res = first + second;
+          console.log(res);
+      } catch (error) {
+          console.log(error);
+      }        
+    },
+    getOne () {
+        const params = {name: &#39;one&#39;}
+        return new Promise((resolve, reject) =&amp;gt; {
+            axios.get(&#39;/one&#39;, { params}).then((res) =&amp;gt; {
+                if (res.status === 200) {
+                    resolve(res)
+                }
+            }).catch((err) =&amp;gt; {
+                reject(err)
+            })
+        })
+    },
+    getTwo () {
+        const params = {name: &#39;two&#39;}
+        return new Promise((resolve, reject) =&amp;gt; {
+            axios.get(&#39;/two&#39;, { params}).then((res) =&amp;gt; {
+                if (res.status === 200) {
+                    resolve(res)
+                }
+            }).catch((err) =&amp;gt; {
+                reject(err)
+            })
+        })
+    },
+},
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;7-箭头函数this指向问题-拓展运算符&#34;&gt;7. 箭头函数this指向问题、拓展运算符&lt;/h1&gt;
 &lt;h2 id=&#34;1-箭头函数this指向&#34;&gt;1. 箭头函数this指向&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;箭头函数中的this指向的是定义时的this，而不是执行时的this。&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;//定义一个对象
@@ -4505,7 +5202,7 @@ reverseArgs(1,2,3,4,5)//[5, 4, 3, 2, 1]
 var p = Object.assign({},o)
 console.log(o === p) //false
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;7map和set数组去重map数据结构有什么优点&#34;&gt;7.map和set数组去重，map数据结构有什么优点？&lt;/h1&gt;
+&lt;h1 id=&#34;8-map和set数组去重map数据结构有什么优点&#34;&gt;8. map和set数组去重，map数据结构有什么优点？&lt;/h1&gt;
 &lt;h2 id=&#34;1-set数组去重&#34;&gt;1. set数组去重&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;et arr = [1, 2, 2, 3, 4]
 function unique (arr) {
@@ -4525,7 +5222,7 @@ console.log(unique(arr)) // [1, 2, 3, 4]
 &lt;li&gt;任何具有 Iterator接口、且每个成员都是一个双元素的数组的数据结构都可以当作Map构造函数的参数。&lt;/li&gt;
 &lt;li&gt;Map 的键实际上是跟内存地址绑定的，只要内存地址不一样，就视为两个键。这就解决了同名属性碰撞（clash）的问题&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;8-es6怎么编译成es5css-loader原理-过程&#34;&gt;8. ES6怎么编译成ES5？css-loader原理、过程&lt;/h1&gt;
+&lt;h1 id=&#34;9-es6怎么编译成es5css-loader原理-过程&#34;&gt;9. ES6怎么编译成ES5？css-loader原理、过程&lt;/h1&gt;
 &lt;h2 id=&#34;1-es6怎么编译成es5&#34;&gt;1. ES6怎么编译成ES5&lt;/h2&gt;
 &lt;p&gt;Babel是一个广泛使用的转码器，babel可以将ES6代码完美地转换为ES5代码&lt;/p&gt;
 &lt;ol&gt;
@@ -4543,7 +5240,7 @@ console.log(unique(arr)) // [1, 2, 3, 4]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;2-css-loader&#34;&gt;2. css-loader&lt;/h2&gt;
 &lt;p&gt;webpack的一个loader，用于解释@import 和 url()，并通过import后进行解析，通常和style-loader结合使用&lt;/p&gt;
-&lt;h1 id=&#34;9-使用es5模拟实现es6的class&#34;&gt;9. 使用ES5模拟实现ES6的class&lt;/h1&gt;
+&lt;h1 id=&#34;10-使用es5模拟实现es6的class&#34;&gt;10. 使用ES5模拟实现ES6的class&lt;/h1&gt;
 &lt;h2 id=&#34;1new操作符检查函数&#34;&gt;1.new操作符检查函数&lt;/h2&gt;
 &lt;p&gt;解决问题：&lt;br&gt;
 类必须使用new调用，否则会报错。ES的构造函数是可以当成普通函数使用的&lt;/p&gt;
@@ -4608,7 +5305,7 @@ function _createClass (constructor, protoDesc, staticDesc) {
     return Foo
 }()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;10-settimeout和setinterval的区别&#34;&gt;10. setTimeout和setInterval的区别&lt;/h1&gt;
+&lt;h1 id=&#34;11-settimeout和setinterval的区别&#34;&gt;11. setTimeout和setInterval的区别&lt;/h1&gt;
 &lt;p&gt;1.setTimeout和setInterval都属于JS中的定时器，可以规定延迟时间再执行某个操作，不同的是setTimeout在规定时间后执行完某个操作就停止了，而setInterval则可以一直循环下去。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;function fun(){
   alert(&#39;hello&#39;);
@@ -4914,171 +5611,7 @@ Function.prototype.myBind = function(objThis,...params){
     return funcForBind //返回绑定好的函数
 } 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;21-async-和-await&#34;&gt;21. async 和 await&lt;/h1&gt;
-&lt;h2 id=&#34;1-作用&#34;&gt;1. 作用&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;async&lt;/code&gt;和&lt;code&gt;await&lt;/code&gt;是用来处理异步的。即你需要异步像同步一样执行，需要异步返回结果之后，再往下依据结果继续执行。&lt;br&gt;
-&lt;code&gt;async&lt;/code&gt; 是“异步”的简写，而 &lt;code&gt;await&lt;/code&gt; 可以认为是 &lt;code&gt;async wait&lt;/code&gt; 的简写。&lt;br&gt;
-&lt;code&gt;async&lt;/code&gt; 用于申明一个 &lt;code&gt;function&lt;/code&gt; 是异步的，而 &lt;code&gt;await&lt;/code&gt; 用于等待一个异步方法执行完成。&lt;/p&gt;
-&lt;h2 id=&#34;2-async&#34;&gt;2. async&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;async function testAsync() {
-    return &amp;quot;hello async&amp;quot;;
-}
-
-const result = testAsync();
-console.log(result);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;打印输出的是一个&lt;code&gt;Promise&lt;/code&gt; 对象，&lt;code&gt;async&lt;/code&gt; 函数会返回一个 &lt;code&gt;Promise&lt;/code&gt; 对象。&lt;br&gt;
-在最外层不能用 &lt;code&gt;await&lt;/code&gt; 获取其返回值的情况下，使用 &lt;code&gt;then()&lt;/code&gt; 链来处理这个 &lt;code&gt;Promise&lt;/code&gt; 对象。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;testAsync().then(v =&amp;gt; {
-    console.log(v);    // 输出 hello async
-});
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;当 &lt;code&gt;async&lt;/code&gt; 函数没有返回值时，返回 &lt;code&gt;Promise.resolve(undefined)&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;3-awit&#34;&gt;3. awit&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;await&lt;/code&gt;只能放在&lt;code&gt;async&lt;/code&gt;函数内部使用&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;await&lt;/code&gt; 用于一个异步操作之前，表示要“等待”这个异步操作的返回值。&lt;br&gt;
-&lt;code&gt;await&lt;/code&gt; 也可以用于一个同步的值。&lt;/p&gt;
-&lt;p&gt;如果它等到的不是一个 &lt;code&gt;Promise&lt;/code&gt; 对象，那 &lt;code&gt;await&lt;/code&gt; 表达式的运算结果就是它等到的东西。&lt;br&gt;
-如果它等到的是一个 &lt;code&gt;Promise&lt;/code&gt; 对象，&lt;code&gt;await&lt;/code&gt; 就会阻塞后面的代码，等着 &lt;code&gt;Promise&lt;/code&gt; 对象 &lt;code&gt;resolve&lt;/code&gt;，然后得到 &lt;code&gt;resolve&lt;/code&gt; 的值，作为 &lt;code&gt;await&lt;/code&gt; 表达式的运算结果。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;异步代码&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 2s 之后返回双倍的值
-function doubleAfter2seconds(num) {
-    return new Promise((resolve, reject) =&amp;gt; {
-        setTimeout(() =&amp;gt; {
-            resolve(2 * num)
-        }, 2000);
-    })
-}
-
-async function testResult () {
-    let result = await doubleAfter2seconds(30);
-    console.log(result);
-}
-
-testResult();
-// 2s 之后，输出了60. 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;4-执行顺序&#34;&gt;4. 执行顺序&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;// 2s 之后返回双倍的值
-function doubleAfter2seconds(num) {
-    return new Promise((resolve, reject) =&amp;gt; {
-        setTimeout(() =&amp;gt; {
-            resolve(2 * num)
-        }, 2000);
-    })
-}
-
-async function testResult () {
-    console.log(&#39;内部调用前&#39;) // 2
-    let result = await doubleAfter2seconds(30);
-    console.log(result); // 4
-    console.log(&#39;内部调用后&#39;) // 5
-}
-
-console.log(&#39;外部调用前&#39;) // 1
-testResult();
-console.log(&#39;外部调用后&#39;) // 3
-// --- 依次输出
-// 外部调用前
-// 内部调用前
-// 外部调用后
-// --- 2s 之后输出
-// 60
-// 内部调用后
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;分析一下上面的执行顺序：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;首先打印输出&lt;code&gt;外部调用前&lt;/code&gt;，同步代码，顺序执行。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;然后调用方法&lt;code&gt;testResult()&lt;/code&gt;，打印输出&lt;code&gt;内部调用前&lt;/code&gt;，同步代码，顺序执行。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;再执行异步方法&lt;code&gt;doubleAfter2seconds&lt;/code&gt;，&lt;br&gt;
-　1&amp;gt;如果没用&lt;code&gt;await&lt;/code&gt;关键字，此后的执行顺序应该是&lt;br&gt;
-　　&lt;code&gt;内部调用后，外部调用后，2s 之后输出60&lt;/code&gt;&lt;br&gt;
-　　因为异步方法不阻塞其他代码的执行，最后再输出&lt;code&gt;60&lt;/code&gt;&lt;br&gt;
-　2&amp;gt;这里使用了&lt;code&gt;await&lt;/code&gt;关键字，所以到这里后会等待异步返回结果，再往下执行。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;当&lt;code&gt;testResult&lt;/code&gt;函数内部&lt;code&gt;await&lt;/code&gt;阻塞执行后，不会影响到&lt;code&gt;testResult&lt;/code&gt;函数外面&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;async&lt;/code&gt; &lt;strong&gt;函数调用不会造成阻塞，它内部所有的阻塞都被封装在一个 Promise 对象中异步执行。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;所以，在调用&lt;code&gt;testResult&lt;/code&gt;函数后，会继续向下执行，打印输出外部调用后&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;当2s之后，异步函数&lt;code&gt;doubleAfter2seconds&lt;/code&gt;执行完成，返回结果，&lt;br&gt;
-打印输出&lt;code&gt;60&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;因为&lt;code&gt;await&lt;/code&gt;将异步变成同步，所以在输出&lt;code&gt;60&lt;/code&gt;后，同步执行，再输出&lt;code&gt;内部调用后&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;5-错误处理&#34;&gt;5. 错误处理&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;// 2s 之后返回双倍的值
-function doubleAfter2seconds(num) {
-    return new Promise((resolve, reject) =&amp;gt; {
-        setTimeout(() =&amp;gt; {
-            resolve(2 * num)
-        }, 2000);
-    })
-}
-
-async function testResult () {
-    let first = await doubleAfter2seconds(10);
-    let second = await doubleAfter2seconds(20);    
-    let res = first + second;
-    return res;
-}
-
-testResult().then(res =&amp;gt; {
-    console.log(res);      
-}).catch(error =&amp;gt; {
-    console.log(error);     
-});
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;6在接口中使用axios&#34;&gt;6.在接口中使用(axios)&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;created () {
-    this.init()
-},
-methods: {
-    async init () {
-      try {
-          let first = await this.getOne();
-          let second = await this.getTwo();    
-          let res = first + second;
-          console.log(res);
-      } catch (error) {
-          console.log(error);
-      }        
-    },
-    getOne () {
-        const params = {name: &#39;one&#39;}
-        return new Promise((resolve, reject) =&amp;gt; {
-            axios.get(&#39;/one&#39;, { params}).then((res) =&amp;gt; {
-                if (res.status === 200) {
-                    resolve(res)
-                }
-            }).catch((err) =&amp;gt; {
-                reject(err)
-            })
-        })
-    },
-    getTwo () {
-        const params = {name: &#39;two&#39;}
-        return new Promise((resolve, reject) =&amp;gt; {
-            axios.get(&#39;/two&#39;, { params}).then((res) =&amp;gt; {
-                if (res.status === 200) {
-                    resolve(res)
-                }
-            }).catch((err) =&amp;gt; {
-                reject(err)
-            })
-        })
-    },
-},
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;22-立即执行函数和使用场景与闭包结合&#34;&gt;22. 立即执行函数和使用场景（与闭包结合）&lt;/h1&gt;
+&lt;h1 id=&#34;21-立即执行函数和使用场景与闭包结合&#34;&gt;21. 立即执行函数和使用场景（与闭包结合）&lt;/h1&gt;
 &lt;h2 id=&#34;1-什么是立即执行函数&#34;&gt;1. 什么是立即执行函数？&lt;/h2&gt;
 &lt;p&gt;声明一个函数，并马上调用这个匿名函数就叫做立即执行函数；也可以说立即执行函数是一种语法，让你的函数在定义以后立即执行；&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615271995138.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
@@ -5140,7 +5673,7 @@ methods: {
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273235393.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 比如上面的代码，如果没有被包裹在立即执行函数中，而是直接以非函数的形式直接写在&amp;lt;script&amp;gt;&lt;/script&gt;标签里面，虽然也会立即执行，但是临时变量todaydom,days,today,year,month,date,day,msg都将成为全局变量（初始化代码遗留的产物）。&lt;br&gt;
 而用立即执行函数之后，这些变量都不会在全局变量中存在，以后也不会其他地方使用，有效的避免了污染全局变量。&lt;/p&gt;
-&lt;h1 id=&#34;23-设计模式要求说出如何实现应用优缺点单例模式实现&#34;&gt;23. 设计模式(要求说出如何实现,应用,优缺点)/单例模式实现&lt;/h1&gt;
+&lt;h1 id=&#34;22-设计模式要求说出如何实现应用优缺点单例模式实现&#34;&gt;22. 设计模式(要求说出如何实现,应用,优缺点)/单例模式实现&lt;/h1&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273736555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;1-创建型模式&#34;&gt;1. 创建型模式&lt;/h2&gt;
 &lt;h3 id=&#34;1-工厂模式&#34;&gt;1. 工厂模式&lt;/h3&gt;
@@ -5303,7 +5836,7 @@ render(new BaiduMapAdapter())  // 渲染百度地图
         var dep = new Dep();
         pub.publish();
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;24-iframe的缺点有哪些&#34;&gt;24. iframe的缺点有哪些&lt;/h1&gt;
+&lt;h1 id=&#34;23-iframe的缺点有哪些&#34;&gt;23. iframe的缺点有哪些&lt;/h1&gt;
 &lt;h2 id=&#34;1-iframe的优点&#34;&gt;1. iframe的优点：&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;iframe能够原封不动的把嵌入的网页展现出来。&lt;/li&gt;
@@ -5320,7 +5853,7 @@ render(new BaiduMapAdapter())  // 渲染百度地图
 &lt;li&gt;iframe框架页面会&lt;code&gt;增加服务器的http请求&lt;/code&gt;，对于大型网站是不可取的。&lt;br&gt;
 分析了这么多，现在基本上都是用&lt;code&gt;Ajax来代替iframe&lt;/code&gt;，所以iframe已经渐渐的退出了前端开发。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;25-数组问题&#34;&gt;25. 数组问题&lt;/h1&gt;
+&lt;h1 id=&#34;24-数组问题&#34;&gt;24. 数组问题&lt;/h1&gt;
 &lt;h2 id=&#34;1-数组去重&#34;&gt;1. 数组去重&lt;/h2&gt;
 &lt;h3 id=&#34;1-利用es6-set去重es6中最常用&#34;&gt;1. 利用ES6 Set去重（ES6中最常用）&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;function unique (arr) {
@@ -5615,7 +6148,7 @@ function flatten(arr) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;转成字符串，之后再复原成数组，不过这个方法有个缺点，就是原来的空数组转的空字符串也会被放入新生成的数组里去。&lt;/p&gt;
-&lt;h1 id=&#34;26-dom和bom相关&#34;&gt;26. DOM和BOM相关&lt;/h1&gt;
+&lt;h1 id=&#34;25-dom和bom相关&#34;&gt;25. DOM和BOM相关&lt;/h1&gt;
 &lt;h2 id=&#34;1dom&#34;&gt;1.DOM&lt;/h2&gt;
 &lt;h3 id=&#34;1-dom是什么&#34;&gt;1. DOM是什么：&lt;/h3&gt;
 &lt;p&gt;DOM（Document Object Model）&lt;code&gt;文档对象模型&lt;/code&gt;，是&lt;strong&gt;处理可扩展标志语言&lt;/strong&gt;的标准编程接口。&lt;/p&gt;
@@ -5715,7 +6248,7 @@ function flatten(arr) {
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;（1）了解事件代理吗，这样做有什么好处&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;事件代理就是说我们将事件添加到本来要添加的事件的父节点，将事件委托给父节点来触发处理函数，这通常会使用在大量的同级元素需要添加同一类事件的时候，比如一个动态的非常多的列表，需要为每个列表项都添加点击事件，这时就可以使用事件代理，通过判断e.target.nodeName来判断发生的具体元素，这样做的好处是减少事件绑定，同事动态的DOM结构任然可以监听，事件代理发生在冒泡阶段&lt;/p&gt;
-&lt;p&gt;** （2）事件代理在捕获阶段的实际应用**&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（2）事件代理在捕获阶段的实际应用&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;可以在父元素层面阻止事件向子元素传播，也可代替子元素执行某些操作。&lt;/p&gt;
 &lt;h3 id=&#34;9-事件类型相关&#34;&gt;9. 事件类型相关：&lt;/h3&gt;
 &lt;p&gt;（1）&lt;code&gt;mouseover和mouseenter的区别&lt;/code&gt;&lt;/p&gt;
@@ -5874,7 +6407,7 @@ function flatten(arr) {
 &lt;li&gt;通过定时器增减索引，显示对应的图片，实现轮播功能。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;如果有两个轮播，可封装一个轮播组件，将需要轮播的图片作为参数传递。&lt;/p&gt;
-&lt;h1 id=&#34;27-服务端渲染server-side-render&#34;&gt;27. 服务端渲染（server side render）&lt;/h1&gt;
+&lt;h1 id=&#34;26-服务端渲染server-side-render&#34;&gt;26. 服务端渲染（server side render）&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;服务端渲染(SSR)&lt;/code&gt;：页面上的内容是由服务器上的代码决定的。即，页面上的内容在服务器上已经生成好了，服务器把这个内容给到浏览器，浏览器拿到这个内容直接显示在页面上即可。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;客户端渲染(CSR)&lt;/code&gt; ：一个网页是由JS文件渲染出来的，而不是服务器直接返回回来的。&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615364099956.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
@@ -5901,7 +6434,7 @@ function flatten(arr) {
 &lt;p&gt;学习成本相对较高&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;28-js-垃圾回收机制&#34;&gt;28.  JS 垃圾回收机制&lt;/h1&gt;
+&lt;h1 id=&#34;27-js-垃圾回收机制&#34;&gt;27.  JS 垃圾回收机制&lt;/h1&gt;
 &lt;h2 id=&#34;1-垃圾回收&#34;&gt;1. 垃圾回收&lt;/h2&gt;
 &lt;p&gt;JavaScript 中的内存管理是自动执行的，而且是不可见的。我们创建基本类型、对象、函数……所有这些都需要内存。&lt;/p&gt;
 &lt;h2 id=&#34;2-可达性&#34;&gt;2. 可达性&lt;/h2&gt;
@@ -6006,7 +6539,7 @@ delete family.mother.husband;
 &lt;p&gt;一般来说没有被引用的对象就是垃圾，就是要被清除， 有个例外如果几个对象引用形成一个环，互相引用，但根访问不到它们，这几个对象也是垃圾，也要被清除。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2）如何检垃圾&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;一种算法是标记 标记-清除 算法&lt;/p&gt;
-&lt;h1 id=&#34;29-eventloop&#34;&gt;29. eventloop&lt;/h1&gt;
+&lt;h1 id=&#34;28-eventloop&#34;&gt;28. eventloop&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;Event Loop&lt;/code&gt;即事件循环，是指浏览器或Node的一种解决javaScript单线程运行时不会阻塞的一种机制，也就是我们经常使用&lt;strong&gt;异步&lt;/strong&gt;的原理。&lt;/p&gt;
 &lt;h2 id=&#34;1-进程和线程&#34;&gt;1. 进程和线程&lt;/h2&gt;
 &lt;p&gt;线程，是程序执行流的最小单位。线程可与同属一个进程的其他线程共享所拥有的全部资源，同一进程中的多个线程之间可以并发执行。线程有&lt;code&gt;就绪&lt;/code&gt;，&lt;code&gt;阻塞&lt;/code&gt;，&lt;code&gt;运行&lt;/code&gt;三种基本状态。&lt;/p&gt;
@@ -6031,7 +6564,7 @@ delete family.mother.husband;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615368924655.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 主线程运行产生堆heap和栈stack，栈里面是各种同步方法，栈里面代码执行完毕主线程会读取任务队列，依次执行事件的回调函数。&lt;/p&gt;
 &lt;p&gt;所以，栈里面的同步任务总是在任务队列之前执行。&lt;/p&gt;
-&lt;h1 id=&#34;30-如何快速让字符串变成以千为精度的数字&#34;&gt;30. 如何快速让字符串变成以千为精度的数字&lt;/h1&gt;
+&lt;h1 id=&#34;29-如何快速让字符串变成以千为精度的数字&#34;&gt;29. 如何快速让字符串变成以千为精度的数字&lt;/h1&gt;
 &lt;h2 id=&#34;1-字符串转换成数字的三种方法&#34;&gt;1. 字符串转换成数字的三种方法&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;转换函数、强制类型转换、利用js变量弱类型转换&lt;/code&gt;。&lt;/p&gt;
 &lt;ol&gt;
@@ -6068,7 +6601,7 @@ ECMAScript中可用的3种强制类型转换如下：&lt;/li&gt;
     return result;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;31-js中v8引擎的详解&#34;&gt;31. js中v8引擎的详解&lt;/h1&gt;
+&lt;h1 id=&#34;30-js中v8引擎的详解&#34;&gt;30. js中v8引擎的详解&lt;/h1&gt;
 &lt;h2 id=&#34;1-v8引擎出现的原因&#34;&gt;1. v8引擎出现的原因&lt;/h2&gt;
 &lt;p&gt;这里先说一下什么是&lt;code&gt;编译型语言&lt;/code&gt;和&lt;code&gt;解释性语言&lt;/code&gt;：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;编译型&lt;/code&gt;语言： 在程序执行之前必须进行专门的编译过程，有如下特点：&lt;/p&gt;
