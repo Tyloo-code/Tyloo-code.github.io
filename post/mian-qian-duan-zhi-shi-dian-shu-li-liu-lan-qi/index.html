@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（浏览器） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616660190461">
+<link rel="shortcut icon" href="/favicon.ico?v=1616660764308">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -4753,16 +4753,22 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;/ol&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615444886393.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h1 id=&#34;4-dns解析&#34;&gt;4. DNS解析&lt;/h1&gt;
-&lt;p&gt;首先是域名解析(DNS解析)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;首先浏览器解析输入的域名，先查找&lt;code&gt;本地硬盘的host&lt;/code&gt;文件,看有没有和这个域名对应的ip，如果有，就直接使用这个ip&lt;/li&gt;
-&lt;li&gt;如果没有，浏览器会发出一个DNS请求到本地&lt;code&gt;DNS(域名分布系统)服务器&lt;/code&gt;，本地DNS服务器一般都是你的网络接入服务器商提供，比如中国电信，中国移动&lt;/li&gt;
-&lt;li&gt;请求到达DNS服务器后，DNS服务器首先会查询他的缓存记录，如果有对应的ip地址，则返回，如果没有，本地DNS服务器向&lt;code&gt;DNS根服务器&lt;/code&gt;发送查询请求&lt;/li&gt;
-&lt;li&gt;根服务器不会记录具体的域名和ip的对应关系，而是返回&lt;code&gt;域服务器&lt;/code&gt;的地址，本地服务器会继续向域服务器发起请求&lt;/li&gt;
-&lt;li&gt;域服务器并没有记录域名和ip的对应关系，而是返回你的&lt;code&gt;域名的解析服务器&lt;/code&gt;的地址&lt;/li&gt;
-&lt;li&gt;本地DNS服务器继续向域名解析服务器发出请求，这时会收到&lt;code&gt;域名对应的ip&lt;/code&gt;，本地DNS服务器将ip返回给浏览器，并将ip存入缓存，方便下次访问，加快访问速度&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615435439972.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;1） 浏览器缓存　　&lt;br&gt;
+当用户通过浏览器访问某域名时，浏览器首先会在自己的缓存中查找是否有该域名对应的IP地址（若曾经访问过该域名且没有清空缓存便存在）；&lt;/p&gt;
+&lt;p&gt;2） 系统缓存　　&lt;br&gt;
+当浏览器缓存中无域名对应IP则会自动检查用户计算机系统Hosts文件DNS缓存是否有该域名对应IP；&lt;/p&gt;
+&lt;p&gt;3） 路由器缓存　　&lt;br&gt;
+当浏览器及系统缓存中均无域名对应IP则进入路由器缓存中检查，以上三步均为客服端的DNS缓存；&lt;/p&gt;
+&lt;p&gt;4） DNS缓存　　&lt;br&gt;
+当在用户客服端查找不到域名对应IP地址，则将进入DNS缓存中进行查询。比如你用的是电信的网络，则会进入电信的DNS缓存服务器中进行查找；&lt;/p&gt;
+&lt;p&gt;5） 根域名服务器　　&lt;br&gt;
+当以上均未完成，则进入根服务器进行查询。全球仅有13台根域名服务器，1个主根域名服务器，其余12为辅根域名服务器。根域名收到请求后会查看区域文件记录，若无则将其管辖范围内顶级域名（如.com）服务器IP告诉本地DNS服务器；&lt;/p&gt;
+&lt;p&gt;6） 顶级域名服务器　　&lt;br&gt;
+顶级域名服务器收到请求后查看区域文件记录，若无则将其管辖范围内主域名服务器的IP地址告诉本地DNS服务器；&lt;/p&gt;
+&lt;p&gt;7） 主域名服务器　　&lt;br&gt;
+主域名服务器接受到请求后查询自己的缓存，如果没有则进入下一级域名服务器进行查找，并重复该步骤直至找到正确纪录；&lt;/p&gt;
+&lt;p&gt;8）保存结果至缓存　　&lt;br&gt;
+本地域名服务器把返回的结果保存到缓存，以备下一次使用，同时将该结果反馈给客户端，客户端通过这个IP地址与web服务器建立链接。&lt;/p&gt;
 &lt;h1 id=&#34;5-cdn内容分发网络&#34;&gt;5. cdn（内容分发网络）&lt;/h1&gt;
 &lt;h2 id=&#34;1-cdn工作原理&#34;&gt;1. CDN工作原理&lt;/h2&gt;
 &lt;p&gt;内容分发网络（Content Delivery Network，简称CDN）是建立并覆盖在承载网之上，由分布在不同区域的边缘节点服务器群组成的分布式网络。&lt;/p&gt;
