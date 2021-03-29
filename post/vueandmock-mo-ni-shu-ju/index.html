@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Vue&amp;mock模拟数据 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616979885134">
+<link rel="shortcut icon" href="/favicon.ico?v=1616981593467">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -4633,38 +4633,34 @@ function foo(data){
         //处理data数据
 }
 $.getJSON(&#39;http://www.a.com/user?id=123&amp;amp;callback=foo&#39;);
- ```
-
-
-### 2. CORS
-CORS是一个W3C标准，全称是&amp;quot;跨域资源共享&amp;quot;（Cross-origin resource sharing）。看名字就知道这是处理跨域问题的标准做法。浏览器将CORS请求分成两类：简单请求（simple request）和非简单请求（not-so-simple request）。
-
-**只要同时满足以下两大条件，就属于简单请求。**
-（1) 请求方法是以下三种方法之一：
-* HEAD
-* GET
-* POST
-
-（2）HTTP的头信息不超出以下几种字段：
-* Accept
-* Accept-Language
-* Content-Language
-* Last-Event-ID
-* Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain
-
-前端什么也不用干，就是正常发请求就可以
-~~~
-fetch(`http://localhost:9871/api/cors?msg=helloCors`).then(res =&amp;gt; {
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-cors&#34;&gt;2. CORS&lt;/h3&gt;
+&lt;p&gt;CORS是一个W3C标准，全称是&amp;quot;跨域资源共享&amp;quot;（Cross-origin resource sharing）。看名字就知道这是处理跨域问题的标准做法。浏览器将CORS请求分成两类：简单请求（simple request）和非简单请求（not-so-simple request）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;只要同时满足以下两大条件，就属于简单请求。&lt;/strong&gt;&lt;br&gt;
+（1) 请求方法是以下三种方法之一：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HEAD&lt;/li&gt;
+&lt;li&gt;GET&lt;/li&gt;
+&lt;li&gt;POST&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（2）HTTP的头信息不超出以下几种字段：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Accept&lt;/li&gt;
+&lt;li&gt;Accept-Language&lt;/li&gt;
+&lt;li&gt;Content-Language&lt;/li&gt;
+&lt;li&gt;Last-Event-ID&lt;/li&gt;
+&lt;li&gt;Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;前端什么也不用干，就是正常发请求就可以&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fetch(`http://localhost:9871/api/cors?msg=helloCors`).then(res =&amp;gt; {
   console.log(res)
 })
-~~~
-
-**非简单请求**
-非简单请求会发出一次预检测请求，返回码是204，预检测通过才会真正发出请求，这才返回200。这里通过前端发请求的时候增加一个额外的headers来触发非简单请求。
-![](https://Tyloo-code.github.io/post-images/1615453729332.png)
-前端
-~~~
-fetch(`http://localhost:9871/api/cors?msg=helloCors`, {
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;非简单请求&lt;/strong&gt;&lt;br&gt;
+非简单请求会发出一次预检测请求，返回码是204，预检测通过才会真正发出请求，这才返回200。这里通过前端发请求的时候增加一个额外的headers来触发非简单请求。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615453729332.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+前端&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fetch(`http://localhost:9871/api/cors?msg=helloCors`, {
   // 需要带上cookie
   credentials: &#39;include&#39;,
   // 这里添加额外的headers来触发非简单请求
@@ -4674,14 +4670,11 @@ fetch(`http://localhost:9871/api/cors?msg=helloCors`, {
 }).then(res =&amp;gt; {
   console.log(res)
 })
-~~~
-
-###  3. 代理
-想一下，如果我们请求的时候还是用前端的域名，然后有个东西帮我们把这个请求转发到真正的后端域名上，不就避免跨域了吗？这时候，Nginx出场了。
-
-Nginx配置
-~~~
-server{
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-代理&#34;&gt;3. 代理&lt;/h3&gt;
+&lt;p&gt;想一下，如果我们请求的时候还是用前端的域名，然后有个东西帮我们把这个请求转发到真正的后端域名上，不就避免跨域了吗？这时候，Nginx出场了。&lt;/p&gt;
+&lt;p&gt;Nginx配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server{
     # 监听9099端口
     listen 9099;
     # 域名是localhost
@@ -4691,10 +4684,9 @@ server{
         proxy_pass http://localhost:9871;
     }    
 }
-~~~
-前端就不用干什么事情了，除了写接口，也没后端什么事情了
-~~~
-// 请求的时候直接用回前端这边的域名http://localhost:9099，这就不会跨域，然后Nginx监听到凡是localhost:9099/api这个样子的，都转发到真正的服务端地址http://localhost:9871 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;前端就不用干什么事情了，除了写接口，也没后端什么事情了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 请求的时候直接用回前端这边的域名http://localhost:9099，这就不会跨域，然后Nginx监听到凡是localhost:9099/api这个样子的，都转发到真正的服务端地址http://localhost:9871 
 fetch(&#39;http://localhost:9099/api/iframePost&#39;, {
   method: &#39;POST&#39;,
   headers: {
@@ -4705,124 +4697,104 @@ fetch(&#39;http://localhost:9099/api/iframePost&#39;, {
     msg: &#39;helloIframePost&#39;
   })
 })
-~~~
-
-## 2. 同源策略限制下Dom查询的正确打开方式
-### 1.postMessage
-window.postMessage() 是HTML5的一个接口，专注实现不同窗口不同页面的跨域通讯。
-
-### 2.document.domain
-这种方式只适合主域名相同，但子域名不同的iframe跨域。
-比如主域名是http://crossdomain.com:9099，子域名是http://child.crossdomain.com:9099，这种情况下给两个页面指定一下document.domain即document.domain = crossdomain.com就可以访问各自的window对象了。
-
-### 3.canvas操作图片的跨域问题
-这个应该是一个比较冷门的跨域问题
-
-# 11. 前端安全XSS、CSRF
-## 1. XSS
-&amp;gt;跨网站指令码（英语：Cross-site scripting，通常简称为：XSS）XSS 攻击是指攻击者在网站上注入恶意的客户端代码，通过恶意脚本对客户端网页进行篡改，从而在用户浏览网页时，对用户浏览器进行控制或者获取用户隐私数据的一种攻击方式。
-
-攻击者对客户端网页注入的恶意脚本一般包括 JavaScript，有时也会包含 HTML 和 Flash。有很多种方式进行 XSS 攻击，但它们的共同点为：将一些隐私数据像 cookie、session 发送给攻击者，将受害者重定向到一个由攻击者控制的网站，在受害者的机器上进行一些恶意操作。
-
-XSS 分为三种：**反射型，存储型和 DOM-based**
-
-### 1. 反射性
-反射型 XSS 只是简单地把用户输入的数据 “反射” 给浏览器，这种攻击方式往往需要攻击者诱使用户点击一个恶意链接，或者提交一个表单，或者进入一个恶意网站时，注入脚本进入被攻击者的网站。
-
-看一个示例。我先准备一个如下的静态页：
-![](https://Tyloo-code.github.io/post-images/1616308450110.png)
-当用户点击恶意链接时，页面跳转到攻击者预先准备的页面，会发现在攻击者的页面执行了 js 脚本：
-![](https://Tyloo-code.github.io/post-images/1616308453096.png)
-这样就产生了反射型 XSS 攻击。攻击者可以注入任意的恶意脚本进行攻击，可能注入恶作剧脚本，或者注入能获取用户隐私数据(如cookie)的脚本，这取决于攻击者的目的。
-
-### 2. 存储型
-存储型 XSS 会把用户输入的数据 “存储” 在服务器端，当浏览器请求数据时，脚本从服务器上传回并执行。这种 XSS 攻击具有很强的稳定性。
-
-比较常见的一个场景是攻击者在社区或论坛上写下一篇包含恶意 JavaScript 代码的文章或评论，文章或评论发表后，所有访问该文章或评论的用户，都会在他们的浏览器中执行这段恶意的 JavaScript 代码。
-
-当用户点击提交按钮将输入信息提交到服务端时，服务端通过 userInput 变量保存了输入内容。当用户通过 http://localhost:8001/${id} 访问时，服务端会返回与 id 对应的内容(本示例简化了处理)。如果用户输入了恶意脚本内容，则其他用户访问该内容时，恶意脚本就会在浏览器端执行：
-![](https://Tyloo-code.github.io/post-images/1616308560547.png)
-
-### 3. 基于DOM
-基于 DOM 的 XSS 攻击是指通过恶意脚本修改页面的 DOM 结构，是纯粹发生在客户端的攻击。
-
-点击 Submit 按钮后，会在当前页面插入一个链接，其地址为用户的输入内容。如果用户在输入时构造了如下内容：
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&#39;&#39; onclick=alert(/xss/)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;用户提交之后，页面代码就变成了：
+&lt;h2 id=&#34;2-同源策略限制下dom查询的正确打开方式&#34;&gt;2. 同源策略限制下Dom查询的正确打开方式&lt;/h2&gt;
+&lt;h3 id=&#34;1postmessage&#34;&gt;1.postMessage&lt;/h3&gt;
+&lt;p&gt;window.postMessage() 是HTML5的一个接口，专注实现不同窗口不同页面的跨域通讯。&lt;/p&gt;
+&lt;h3 id=&#34;2documentdomain&#34;&gt;2.document.domain&lt;/h3&gt;
+&lt;p&gt;这种方式只适合主域名相同，但子域名不同的iframe跨域。&lt;br&gt;
+比如主域名是http://crossdomain.com:9099，子域名是http://child.crossdomain.com:9099，这种情况下给两个页面指定一下document.domain即document.domain = crossdomain.com就可以访问各自的window对象了。&lt;/p&gt;
+&lt;h3 id=&#34;3canvas操作图片的跨域问题&#34;&gt;3.canvas操作图片的跨域问题&lt;/h3&gt;
+&lt;p&gt;这个应该是一个比较冷门的跨域问题&lt;/p&gt;
+&lt;h1 id=&#34;11-前端安全xss-csrf&#34;&gt;11. 前端安全XSS、CSRF&lt;/h1&gt;
+&lt;h2 id=&#34;1-xss&#34;&gt;1. XSS&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;跨网站指令码（英语：Cross-site scripting，通常简称为：XSS）XSS 攻击是指攻击者在网站上注入恶意的客户端代码，通过恶意脚本对客户端网页进行篡改，从而在用户浏览网页时，对用户浏览器进行控制或者获取用户隐私数据的一种攻击方式。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;攻击者对客户端网页注入的恶意脚本一般包括 JavaScript，有时也会包含 HTML 和 Flash。有很多种方式进行 XSS 攻击，但它们的共同点为：将一些隐私数据像 cookie、session 发送给攻击者，将受害者重定向到一个由攻击者控制的网站，在受害者的机器上进行一些恶意操作。&lt;/p&gt;
+&lt;p&gt;XSS 分为三种：&lt;strong&gt;反射型，存储型和 DOM-based&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1-反射性&#34;&gt;1. 反射性&lt;/h3&gt;
+&lt;p&gt;反射型 XSS 只是简单地把用户输入的数据 “反射” 给浏览器，这种攻击方式往往需要攻击者诱使用户点击一个恶意链接，或者提交一个表单，或者进入一个恶意网站时，注入脚本进入被攻击者的网站。&lt;/p&gt;
+&lt;p&gt;看一个示例。我先准备一个如下的静态页：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616308450110.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+当用户点击恶意链接时，页面跳转到攻击者预先准备的页面，会发现在攻击者的页面执行了 js 脚本：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616308453096.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这样就产生了反射型 XSS 攻击。攻击者可以注入任意的恶意脚本进行攻击，可能注入恶作剧脚本，或者注入能获取用户隐私数据(如cookie)的脚本，这取决于攻击者的目的。&lt;/p&gt;
+&lt;h3 id=&#34;2-存储型&#34;&gt;2. 存储型&lt;/h3&gt;
+&lt;p&gt;存储型 XSS 会把用户输入的数据 “存储” 在服务器端，当浏览器请求数据时，脚本从服务器上传回并执行。这种 XSS 攻击具有很强的稳定性。&lt;/p&gt;
+&lt;p&gt;比较常见的一个场景是攻击者在社区或论坛上写下一篇包含恶意 JavaScript 代码的文章或评论，文章或评论发表后，所有访问该文章或评论的用户，都会在他们的浏览器中执行这段恶意的 JavaScript 代码。&lt;/p&gt;
+&lt;p&gt;当用户点击提交按钮将输入信息提交到服务端时，服务端通过 userInput 变量保存了输入内容。当用户通过 http://localhost:8001/${id} 访问时，服务端会返回与 id 对应的内容(本示例简化了处理)。如果用户输入了恶意脚本内容，则其他用户访问该内容时，恶意脚本就会在浏览器端执行：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616308560547.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-基于dom&#34;&gt;3. 基于DOM&lt;/h3&gt;
+&lt;p&gt;基于 DOM 的 XSS 攻击是指通过恶意脚本修改页面的 DOM 结构，是纯粹发生在客户端的攻击。&lt;/p&gt;
+&lt;p&gt;点击 Submit 按钮后，会在当前页面插入一个链接，其地址为用户的输入内容。如果用户在输入时构造了如下内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&#39;&#39; onclick=alert(/xss/)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;a href onlick=&#34;alert(/xss/)&#34;&gt;testLink&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;此时，用户点击生成的链接，就会执行对应的脚本：
-![](https://Tyloo-code.github.io/post-images/1616308646010.png)
-
-
-## 2. XSS攻击的防范
-现在主流的浏览器内置了防范 XSS 的措施，例如 CSP。但对于开发者来说，也应该寻找可靠的解决方案来防止 XSS 攻击。
-### 1. HttpOnly 防止劫取 Cookie
-浏览器将禁止页面的Javascript 访问带有 HttpOnly 属性的Cookie。
-
-上文有说到，攻击者可以通过注入恶意脚本获取用户的 Cookie 信息。通常 Cookie 中都包含了用户的登录凭证信息，攻击者在获取到 Cookie 之后，则可以发起 Cookie 劫持攻击。所以，严格来说，HttpOnly 并非阻止 XSS 攻击，而是能阻止 XSS 攻击后的 Cookie 劫持攻击。
-
-### 2. 输入检查
-不要相信用户的任何输入。 对于用户的任何输入要进行检查、过滤和转义。建立可信任的字符和 HTML 标签白名单，对于不在白名单之列的字符或者标签进行过滤或编码。
-
-在 XSS 防御中，输入检查一般是检查用户输入的数据中是否包含 &amp;lt;，&amp;gt; 等特殊字符，如果存在，则对特殊字符进行过滤或编码，这种方式也称为 XSS Filter。
-
-而在一些前端框架中，都会有一份 decodingMap， 用于对用户输入所包含的特殊字符或标签进行编码或过滤，如 &amp;lt;，&amp;gt;，script，防止 XSS 攻击：
+&lt;p&gt;用户提交之后，页面代码就变成了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href onlick=&amp;quot;alert(/xss/)&amp;quot;&amp;gt;testLink&amp;lt;/a&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;// vuejs 中的 decodingMap&lt;br&gt;
-// 在 vuejs 中，如果输入带 script 标签的内容，会直接过滤掉&lt;br&gt;
-const decodingMap = {&lt;br&gt;
-&#39;&amp;lt;&#39;: &#39;&amp;lt;&#39;,&lt;br&gt;
-&#39;&amp;gt;&#39;: &#39;&amp;gt;&#39;,&lt;br&gt;
-&#39;&amp;quot;&#39;: &#39;&amp;quot;&#39;,&lt;br&gt;
-&#39;&amp;amp;&#39;: &#39;&amp;amp;&#39;,&lt;br&gt;
-&#39;&lt;br&gt;
-&#39;: &#39;\n&#39;&lt;br&gt;
-}&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;
-### 3. 输出检查
-用户的输入会存在问题，服务端的输出也会存在问题。一般来说，除富文本的输出外，在变量输出到 HTML 页面时，可以使用编码或转义的方式来防御 XSS 攻击。例如利用 sanitize-html 对输出内容进行有规则的过滤之后再输出到页面中。
-
-
-## 3. CSRF
-&amp;gt;跨站请求伪造（英语：Cross-site request forgery），中译是跨站请求伪造，是一种劫持受信任用户向服务器发送非预期请求的攻击方式。
-
-通常情况下，CSRF 攻击是攻击者借助受害者的 Cookie 骗取服务器的信任，可以在受害者毫不知情的情况下以受害者名义伪造请求发送给受攻击服务器，从而在并未授权的情况下执行在权限保护之下的操作。
-![](https://Tyloo-code.github.io/post-images/1615455801140.jpg)
-
-### 1. 浏览器的 Cookie 策略
-Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。Cookie 主要用于以下两个方面：
-* 会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）
-* 个性化设置（如用户自定义设置、主题等）
-
-而浏览器所持有的 Cookie 分为两种：
-* Session Cookie(会话期 Cookie)：会话期 Cookie 是最简单的Cookie，它不需要指定过期时间（Expires）或者有效期（Max-Age），它仅在会话期内有效，浏览器关闭之后它会被自动删除。
-* Permanent Cookie(持久性 Cookie)：与会话期 Cookie 不同的是，持久性 Cookie 可以指定一个特定的过期时间（Expires）或有效期（Max-Age）。
+&lt;p&gt;此时，用户点击生成的链接，就会执行对应的脚本：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616308646010.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-xss攻击的防范&#34;&gt;2. XSS攻击的防范&lt;/h2&gt;
+&lt;p&gt;现在主流的浏览器内置了防范 XSS 的措施，例如 CSP。但对于开发者来说，也应该寻找可靠的解决方案来防止 XSS 攻击。&lt;/p&gt;
+&lt;h3 id=&#34;1-httponly-防止劫取-cookie&#34;&gt;1. HttpOnly 防止劫取 Cookie&lt;/h3&gt;
+&lt;p&gt;浏览器将禁止页面的Javascript 访问带有 HttpOnly 属性的Cookie。&lt;/p&gt;
+&lt;p&gt;上文有说到，攻击者可以通过注入恶意脚本获取用户的 Cookie 信息。通常 Cookie 中都包含了用户的登录凭证信息，攻击者在获取到 Cookie 之后，则可以发起 Cookie 劫持攻击。所以，严格来说，HttpOnly 并非阻止 XSS 攻击，而是能阻止 XSS 攻击后的 Cookie 劫持攻击。&lt;/p&gt;
+&lt;h3 id=&#34;2-输入检查&#34;&gt;2. 输入检查&lt;/h3&gt;
+&lt;p&gt;不要相信用户的任何输入。 对于用户的任何输入要进行检查、过滤和转义。建立可信任的字符和 HTML 标签白名单，对于不在白名单之列的字符或者标签进行过滤或编码。&lt;/p&gt;
+&lt;p&gt;在 XSS 防御中，输入检查一般是检查用户输入的数据中是否包含 &amp;lt;，&amp;gt; 等特殊字符，如果存在，则对特殊字符进行过滤或编码，这种方式也称为 XSS Filter。&lt;/p&gt;
+&lt;p&gt;而在一些前端框架中，都会有一份 decodingMap， 用于对用户输入所包含的特殊字符或标签进行编码或过滤，如 &amp;lt;，&amp;gt;，script，防止 XSS 攻击：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// vuejs 中的 decodingMap
+// 在 vuejs 中，如果输入带 script 标签的内容，会直接过滤掉
+const decodingMap = {
+  &#39;&amp;amp;lt;&#39;: &#39;&amp;lt;&#39;,
+  &#39;&amp;amp;gt;&#39;: &#39;&amp;gt;&#39;,
+  &#39;&amp;amp;quot;&#39;: &#39;&amp;quot;&#39;,
+  &#39;&amp;amp;amp;&#39;: &#39;&amp;amp;&#39;,
+  &#39;
+  &#39;: &#39;\n&#39;
+}
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;res.setHeader(&#39;Set-Cookie&#39;, [&#39;mycookie=222&#39;, &#39;test=3333; expires=Sat, 21 Jul 2018 00:00:00 GMT;&#39;]);&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;上述代码创建了两个 Cookie：mycookie 和 test，前者属于会话期 Cookie，后者则属于持久性 Cookie。当我们去查看 Cookie 相关的属性时，不同的浏览器对会话期 Cookie 的 Expires 属性值会不一样：
-![](https://Tyloo-code.github.io/post-images/1616309731128.png)
-每个 Cookie 都会有与之关联的域，这个域的范围一般通过 donmain 属性指定。如果 Cookie 的域和页面的域相同，那么我们称这个 Cookie 为第一方 Cookie（first-party cookie），如果 Cookie 的域和页面的域不同，则称之为第三方 Cookie（third-party cookie）。一个页面包含图片或存放在其他域上的资源（如图片）时，第一方的 Cookie 也只会发送给设置它们的服务器。
-
-### 2. 通过 Cookie 进行 CSRF 攻击
-假设有一个 bbs 站点：http://www.c.com，当登录后的用户发起如下 GET 请求时，会删除 ID 指定的帖子：
+&lt;h3 id=&#34;3-输出检查&#34;&gt;3. 输出检查&lt;/h3&gt;
+&lt;p&gt;用户的输入会存在问题，服务端的输出也会存在问题。一般来说，除富文本的输出外，在变量输出到 HTML 页面时，可以使用编码或转义的方式来防御 XSS 攻击。例如利用 sanitize-html 对输出内容进行有规则的过滤之后再输出到页面中。&lt;/p&gt;
+&lt;h2 id=&#34;3-csrf&#34;&gt;3. CSRF&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;跨站请求伪造（英语：Cross-site request forgery），中译是跨站请求伪造，是一种劫持受信任用户向服务器发送非预期请求的攻击方式。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;通常情况下，CSRF 攻击是攻击者借助受害者的 Cookie 骗取服务器的信任，可以在受害者毫不知情的情况下以受害者名义伪造请求发送给受攻击服务器，从而在并未授权的情况下执行在权限保护之下的操作。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615455801140.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1-浏览器的-cookie-策略&#34;&gt;1. 浏览器的 Cookie 策略&lt;/h3&gt;
+&lt;p&gt;Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。Cookie 主要用于以下两个方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）&lt;/li&gt;
+&lt;li&gt;个性化设置（如用户自定义设置、主题等）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而浏览器所持有的 Cookie 分为两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Session Cookie(会话期 Cookie)：会话期 Cookie 是最简单的Cookie，它不需要指定过期时间（Expires）或者有效期（Max-Age），它仅在会话期内有效，浏览器关闭之后它会被自动删除。&lt;/li&gt;
+&lt;li&gt;Permanent Cookie(持久性 Cookie)：与会话期 Cookie 不同的是，持久性 Cookie 可以指定一个特定的过期时间（Expires）或有效期（Max-Age）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;res.setHeader(&#39;Set-Cookie&#39;, [&#39;mycookie=222&#39;, &#39;test=3333; expires=Sat, 21 Jul 2018 00:00:00 GMT;&#39;]);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;http://www.c.com:8002/content/delete/:id&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;如发起 http://www.c.com:8002/content/delete/87343 请求时，会删除 id 为 87343 的帖子。当用户登录之后，会设置如下 cookie：
+&lt;p&gt;上述代码创建了两个 Cookie：mycookie 和 test，前者属于会话期 Cookie，后者则属于持久性 Cookie。当我们去查看 Cookie 相关的属性时，不同的浏览器对会话期 Cookie 的 Expires 属性值会不一样：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616309731128.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+每个 Cookie 都会有与之关联的域，这个域的范围一般通过 donmain 属性指定。如果 Cookie 的域和页面的域相同，那么我们称这个 Cookie 为第一方 Cookie（first-party cookie），如果 Cookie 的域和页面的域不同，则称之为第三方 Cookie（third-party cookie）。一个页面包含图片或存放在其他域上的资源（如图片）时，第一方的 Cookie 也只会发送给设置它们的服务器。&lt;/p&gt;
+&lt;h3 id=&#34;2-通过-cookie-进行-csrf-攻击&#34;&gt;2. 通过 Cookie 进行 CSRF 攻击&lt;/h3&gt;
+&lt;p&gt;假设有一个 bbs 站点：http://www.c.com，当登录后的用户发起如下 GET 请求时，会删除 ID 指定的帖子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://www.c.com:8002/content/delete/:id
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;res.setHeader(&#39;Set-Cookie&#39;, [&#39;user=22333; expires=Sat, 21 Jul 2018 00:00:00 GMT;&#39;]);&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;![](https://Tyloo-code.github.io/post-images/1616309827160.png)
-user 对应的值是用户 ID。然后构造一个页面 A：
-
-CSRF 攻击者准备的网站：
+&lt;p&gt;如发起 http://www.c.com:8002/content/delete/87343 请求时，会删除 id 为 87343 的帖子。当用户登录之后，会设置如下 cookie：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;res.setHeader(&#39;Set-Cookie&#39;, [&#39;user=22333; expires=Sat, 21 Jul 2018 00:00:00 GMT;&#39;]);
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616309827160.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+user 对应的值是用户 ID。然后构造一个页面 A：&lt;/p&gt;
 &lt;p&gt;CSRF 攻击者准备的网站：&lt;/p&gt;
-&lt;img src=&#34;http://www.c.com:8002/content/delete/87343&#34;&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;CSRF 攻击者准备的网站：&amp;lt;/p&amp;gt;
+&amp;lt;img src=&amp;quot;http://www.c.com:8002/content/delete/87343&amp;quot;&amp;gt;
 页面 A 使用了一个 img 标签，其地址指向了删除用户帖子的链接：
-```
-![](https://Tyloo-code.github.io/post-images/1616309871152.png)
-可以看到，当登录用户访问攻击者的网站时，会向 www.c.com 发起一个删除用户帖子的请求。此时若用户在切换到 www.c.com 的帖子页面刷新，会发现ID 为 87343 的帖子已经被删除。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616309871152.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+可以看到，当登录用户访问攻击者的网站时，会向 www.c.com 发起一个删除用户帖子的请求。此时若用户在切换到 www.c.com 的帖子页面刷新，会发现ID 为 87343 的帖子已经被删除。&lt;/p&gt;
 &lt;p&gt;由于 Cookie 中包含了用户的认证信息，当用户访问攻击者准备的攻击环境时，攻击者就可以对服务器发起 CSRF 攻击。在这个攻击过程中，攻击者借助受害者的 Cookie 骗取服务器的信任，但并不能拿到 Cookie，也看不到 Cookie 的内容。而对于服务器返回的结果，由于浏览器同源策略的限制，攻击者也无法进行解析。因此，攻击者无法从返回的结果中得到任何东西，他所能做的就是给服务器发送请求，以执行请求中所描述的命令，在服务器端直接改变数据的值，而非窃取服务器中的数据。&lt;/p&gt;
 &lt;p&gt;但若 CSRF 攻击的目标并不需要使用 Cookie，则也不必顾虑浏览器的 Cookie 策略了。&lt;/p&gt;
 &lt;h2 id=&#34;4-csrf-攻击的防范&#34;&gt;4. CSRF 攻击的防范&lt;/h2&gt;
