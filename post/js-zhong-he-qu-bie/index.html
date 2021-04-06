@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>js中==和===区别 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616982463062">
+<link rel="shortcut icon" href="/favicon.ico?v=1617703852612">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -2154,70 +2154,184 @@ console.log(obj) //{name: &#39;LL&#39;, age: 100}
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/"" data-c="
-          &lt;h1 id=&#34;1-webpack打包原理&#34;&gt;1. webpack打包原理&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615517470320.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;1几个关键词&#34;&gt;1.几个关键词&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，来找出直接或者间接依赖的文件。&lt;/li&gt;
-&lt;li&gt;Output： 出口，规定webpack输出的bundles的路径以及文件名，默认为 ./dist&lt;/li&gt;
-&lt;li&gt;Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。&lt;/li&gt;
-&lt;li&gt;Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。&lt;/li&gt;
-&lt;li&gt;Loader：模块转换器，用于把模块原内容按照需求转换成 webpack 能处理的有效模块&lt;/li&gt;
-&lt;li&gt;Plugin：扩展插件，在 webpack 构建流程中的特定时机会广播出对应的事件，插件可以监听这些事件的发生，在特定时机做对应的事情。插件的范围包括从打包优化和压缩，一直到重新定义环境中的变量，可扩展功能丰富。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;2-webpack-的构建流程&#34;&gt;2. Webpack 的构建流程：&lt;/h2&gt;
+          &lt;h1 id=&#34;1-关于webpack的面试题总结&#34;&gt;1. 关于webpack的面试题总结&lt;/h1&gt;
 &lt;ol&gt;
-&lt;li&gt;初始化：启动构建，读取与合并配置参数，加载 Plugin，实例化 Compiler。&lt;/li&gt;
-&lt;li&gt;编译：从 Entry 发出，针对每个 Module 串行调用对应的 Loader 去翻译文件内容，再找到该 Module 依赖的 Module，递归地进行编译处理。&lt;/li&gt;
-&lt;li&gt;输出：对编译后的 Module 组合成 Chunk，把 Chunk 转换成文件，输出到文件系统。&lt;/li&gt;
+&lt;li&gt;webpack与grunt、gulp的不同？&lt;/li&gt;
+&lt;li&gt;与webpack类似的工具还有哪些？谈谈你为什么最终选择（或放弃）使用webpack？&lt;/li&gt;
+&lt;li&gt;有哪些常见的Loader？他们是解决什么问题的？&lt;/li&gt;
+&lt;li&gt;有哪些常见的Plugin？他们是解决什么问题的？&lt;/li&gt;
+&lt;li&gt;Loader和Plugin的不同？&lt;/li&gt;
+&lt;li&gt;webpack的构建流程是什么?从读取配置到输出文件这个过程尽量说全&lt;/li&gt;
+&lt;li&gt;是否写过Loader和Plugin？描述一下编写loader或plugin的思路？&lt;/li&gt;
+&lt;li&gt;webpack的热更新是如何做到的？说明其原理？&lt;/li&gt;
+&lt;li&gt;如何利用webpack来优化前端性能？（提高性能和体验）&lt;/li&gt;
+&lt;li&gt;如何提高webpack的构建速度？&lt;/li&gt;
+&lt;li&gt;怎么配置单页应用？怎么配置多页应用？&lt;/li&gt;
+&lt;li&gt;npm打包时需要注意哪些？如何利用webpack来更好的构建？&lt;/li&gt;
+&lt;li&gt;如何在vue项目中实现按需加载？&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;3-loader&#34;&gt;3. loader&lt;/h2&gt;
-&lt;p&gt;loader是用来处理各种形式的资源，本质上是一个函数, 接受文件作为参数，返回转化后的结构&lt;/p&gt;
-&lt;p&gt;一个loader只做一种转换，比如解析less文件，less建立在css基础上，先解析less，再转为css，再插入到head&lt;/p&gt;
-&lt;p&gt;注意：&lt;code&gt;loader&lt;/code&gt; 的调用是&lt;code&gt;链式&lt;/code&gt;调用，&lt;code&gt;从后往前&lt;/code&gt;，所以先写 style-loader 再写 css-loader，less-loader 在最后，执行时先用less-loader将less文件转化为css，再由 css-loader 解析css文件转成对象，传递给 style-loader 插入到 head&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;module.exports={
-    entry:{...},
-    outpath:{path:...,filename:...},
-    mode:&#39;production&#39;,
-    module:{
-        rules:[
-            {
-                test:/\.less$/,
-                use:[
-                &#39;style-loader&#39;,
-                &#39;css-loader&#39;,
-                &#39;less-loader&#39;
-                ]
-            },
-        ]
-    }
+&lt;h2 id=&#34;1-webpack与grunt-gulp的不同&#34;&gt;1. webpack与grunt、gulp的不同？&lt;/h2&gt;
+&lt;p&gt;三者都是前端构建工具，grunt和gulp在早期比较流行，现在webpack相对来说比较主流，不过一些轻量化的任务还是会用gulp来处理，比如单独打包CSS文件等。&lt;/p&gt;
+&lt;p&gt;grunt和gulp是基于任务和流（Task、Stream）的。类似jQuery，找到一个（或一类）文件，对其做一系列链式操作，更新流上的数据， 整条链式操作构成了一个任务，多个任务就构成了整个web的构建流程。&lt;/p&gt;
+&lt;p&gt;webpack是基于入口的。webpack会自动地递归解析入口所需要加载的所有资源文件，然后用不同的Loader来处理不同的文件，用Plugin来扩展webpack功能。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所以总结一下：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;从构建思路来说&lt;/strong&gt;：gulp和grunt需要开发者将整个前端构建过程拆分成多个&lt;code&gt;Task&lt;/code&gt;，并合理控制所有&lt;code&gt;Task&lt;/code&gt;的调用关系；webpack需要开发者找到入口，并需要清楚对于不同的资源应该使用什么Loader做何种解析和加工&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对于知识背景来说&lt;/strong&gt;：gulp更像后端开发者的思路，需要对于整个流程了如指掌 webpack更倾向于前端开发者的思路&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-与webpack类似的工具还有哪些谈谈你为什么最终选择或放弃使用webpack&#34;&gt;2. 与webpack类似的工具还有哪些？谈谈你为什么最终选择（或放弃）使用webpack？&lt;/h2&gt;
+&lt;p&gt;同样是基于入口的打包工具还有以下几个主流的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;webpack&lt;/li&gt;
+&lt;li&gt;rollup&lt;/li&gt;
+&lt;li&gt;parcel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;从应用场景上来看：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;webpack适用于大型复杂的前端站点构建&lt;/li&gt;
+&lt;li&gt;rollup适用于基础库的打包，如vue、react&lt;/li&gt;
+&lt;li&gt;parcel适用于简单的实验性项目，他可以满足低门槛的快速看到效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-有哪些常见的loader他们是解决什么问题的&#34;&gt;3. 有哪些常见的Loader？他们是解决什么问题的？&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;file-loader：把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件&lt;/li&gt;
+&lt;li&gt;url-loader：和 file-loader 类似，但是能在文件很小的情况下以 base64 的方式把文件内容注入到代码中去&lt;/li&gt;
+&lt;li&gt;source-map-loader：加载额外的 Source Map 文件，以方便断点调试&lt;/li&gt;
+&lt;li&gt;image-loader：加载并且压缩图片文件&lt;/li&gt;
+&lt;li&gt;babel-loader：把 ES6 转换成 ES5&lt;/li&gt;
+&lt;li&gt;css-loader：加载 CSS，支持模块化、压缩、文件导入等特性&lt;/li&gt;
+&lt;li&gt;style-loader：把 CSS 代码注入到 JavaScript 中，通过 DOM 操作去加载 CSS。&lt;/li&gt;
+&lt;li&gt;eslint-loader：通过 ESLint 检查 JavaScript 代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-有哪些常见的plugin他们是解决什么问题的&#34;&gt;4. 有哪些常见的Plugin？他们是解决什么问题的？&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;define-plugin：定义环境变量&lt;/li&gt;
+&lt;li&gt;commons-chunk-plugin：提取公共代码&lt;/li&gt;
+&lt;li&gt;uglifyjs-webpack-plugin：通过UglifyES压缩ES6代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;5-loader和plugin的不同&#34;&gt;5. Loader和Plugin的不同？&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;不同的作用&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Loader直译为&amp;quot;加载器&amp;quot;。Webpack将一切文件视为模块，但是webpack原生是只能解析js文件，如果想将其他文件也打包的话，就会用到loader。 所以Loader的作用是让webpack拥有了&lt;code&gt;加载和解析非JavaScript文件的能力&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;Plugin直译为&amp;quot;插件&amp;quot;。Plugin可以扩展webpack的功能，让webpack具有更多的灵活性。 在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;不同的用法&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Loader在&lt;code&gt;module.rules&lt;/code&gt;中配置，也就是说他作为模块的解析规则而存在。 类型为数组，每一项都是一个Object，里面描述了对于什么类型的文件（test），使用什么加载(loader)和使用的参数（options）&lt;/li&gt;
+&lt;li&gt;Plugin在&lt;code&gt;plugins&lt;/code&gt;中单独配置。 类型为数组，每一项是一个plugin的实例，参数都通过构造函数传入。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;6-webpack的构建流程是什么从读取配置到输出文件这个过程尽量说全&#34;&gt;6. webpack的构建流程是什么?从读取配置到输出文件这个过程尽量说全&lt;/h2&gt;
+&lt;p&gt;Webpack 的运行流程是一个串行的过程，从启动到结束会依次执行以下流程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化参数：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数；&lt;/li&gt;
+&lt;li&gt;开始编译：用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的 run 方法开始执行编译；&lt;/li&gt;
+&lt;li&gt;确定入口：根据配置中的 entry 找出所有的入口文件；&lt;/li&gt;
+&lt;li&gt;编译模块：从入口文件出发，调用所有配置的 Loader 对模块进行翻译，再找出该模块依赖的模块，再递归本步骤直到所有入口依赖的文件都经过了本步骤的处理；&lt;/li&gt;
+&lt;li&gt;完成模块编译：在经过第4步使用 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及它们之间的依赖关系；&lt;/li&gt;
+&lt;li&gt;输出资源：根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，再把每个 Chunk 转换成一个单独的文件加入到输出列表，这步是可以修改输出内容的最后机会；&lt;/li&gt;
+&lt;li&gt;输出完成：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在以上过程中，Webpack 会在特定的时间点广播出特定的事件，插件在监听到感兴趣的事件后会执行特定的逻辑，并且插件可以调用 Webpack 提供的 API 改变 Webpack 的运行结果。&lt;/p&gt;
+&lt;h2 id=&#34;7-是否写过loader和plugin描述一下编写loader或plugin的思路&#34;&gt;7. 是否写过Loader和Plugin？描述一下编写loader或plugin的思路？&lt;/h2&gt;
+&lt;p&gt;Loader像一个&amp;quot;翻译官&amp;quot;把读到的源文件内容转义成新的文件内容，并且每个Loader通过链式操作，将源文件一步步翻译成想要的样子。&lt;/p&gt;
+&lt;p&gt;编写Loader时要遵循单一原则，每个Loader只做一种&amp;quot;转义&amp;quot;工作。 每个Loader的拿到的是源文件内容（source），可以通过返回值的方式将处理后的内容输出，也可以调用this.callback()方法，将内容返回给webpack。 还可以通过 this.async()生成一个callback函数，再用这个callback将处理后的内容输出出去。 此外webpack还为开发者准备了开发loader的工具函数集——loader-utils。&lt;/p&gt;
+&lt;p&gt;相对于Loader而言，Plugin的编写就灵活了许多。 webpack在运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。&lt;/p&gt;
+&lt;h2 id=&#34;8-webpack的热更新是如何做到的说明其原理&#34;&gt;8. webpack的热更新是如何做到的？说明其原理？&lt;/h2&gt;
+&lt;p&gt;webpack的热更新又称热替换（Hot Module Replacement），缩写为HMR。 这个机制可以做到不用刷新浏览器而将新变更的模块替换掉旧的模块。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1617701765337.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;首先要知道server端和client端都做了处理工作&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第一步，在 webpack 的 watch 模式下，文件系统中某一个文件发生修改，webpack 监听到文件变化，根据配置文件对模块重新编译打包，并将打包后的代码通过简单的 JavaScript 对象保存在内存中。&lt;/li&gt;
+&lt;li&gt;第二步是 webpack-dev-server 和 webpack 之间的接口交互，而在这一步，主要是 dev-server 的中间件 webpack-dev-middleware 和 webpack 之间的交互，webpack-dev-middleware 调用 webpack 暴露的 API对代码变化进行监控，并且告诉 webpack，将代码打包到内存中。&lt;/li&gt;
+&lt;li&gt;第三步是 webpack-dev-server 对文件变化的一个监控，这一步不同于第一步，并不是监控代码变化重新打包。当我们在配置文件中配置了devServer.watchContentBase 为 true 的时候，Server 会监听这些配置文件夹中静态文件的变化，变化后会通知浏览器端对应用进行 live reload。注意，这儿是浏览器刷新，和 HMR 是两个概念。&lt;/li&gt;
+&lt;li&gt;第四步也是 webpack-dev-server 代码的工作，该步骤主要是通过 sockjs（webpack-dev-server 的依赖）在浏览器端和服务端之间建立一个 websocket 长连接，将 webpack 编译打包的各个阶段的状态信息告知浏览器端，同时也包括第三步中 Server 监听静态文件变化的信息。浏览器端根据这些 socket 消息进行不同的操作。当然服务端传递的最主要信息还是新模块的 hash 值，后面的步骤根据这一 hash 值来进行模块热替换。&lt;/li&gt;
+&lt;li&gt;webpack-dev-server/client 端并不能够请求更新的代码，也不会执行热更模块操作，而把这些工作又交回给了 webpack，webpack/hot/dev-server 的工作就是根据 webpack-dev-server/client 传给它的信息以及 dev-server 的配置决定是刷新浏览器呢还是进行模块热更新。当然如果仅仅是刷新浏览器，也就没有后面那些步骤了。&lt;/li&gt;
+&lt;li&gt;HotModuleReplacement.runtime 是客户端 HMR 的中枢，它接收到上一步传递给他的新模块的 hash 值，它通过 JsonpMainTemplate.runtime 向 server 端发送 Ajax 请求，服务端返回一个 json，该 json 包含了所有要更新的模块的 hash 值，获取到更新列表后，该模块再次通过 jsonp 请求，获取到最新的模块代码。这就是上图中 7、8、9 步骤。&lt;/li&gt;
+&lt;li&gt;而第 10 步是决定 HMR 成功与否的关键步骤，在该步骤中，HotModulePlugin 将会对新旧模块进行对比，决定是否更新模块，在决定更新模块后，检查模块之间的依赖关系，更新模块的同时更新模块间的依赖引用。&lt;/li&gt;
+&lt;li&gt;最后一步，当 HMR 失败后，回退到 live reload 操作，也就是进行浏览器刷新来获取最新打包代码。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;9-如何利用webpack来优化前端性能提高性能和体验&#34;&gt;9. 如何利用webpack来优化前端性能？（提高性能和体验）&lt;/h2&gt;
+&lt;p&gt;用webpack优化前端性能是指优化webpack的&lt;code&gt;输出结果&lt;/code&gt;，让打包的最终结果在浏览器运行快速高效。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;压缩代码。删除多余的代码、注释、简化代码的写法等等方式。可以利用webpack的UglifyJsPlugin和ParallelUglifyPlugin来压缩JS文件， 利用cssnano（css-loader?minimize）来压缩css&lt;/li&gt;
+&lt;li&gt;利用CDN加速。在构建过程中，将引用的静态资源路径修改为CDN上对应的路径。可以利用webpack对于output参数和各loader的publicPath参数来修改资源路径&lt;/li&gt;
+&lt;li&gt;删除死代码（Tree Shaking）。将代码中永远不会走到的片段删除掉。可以通过在启动webpack时追加参数--optimize-minimize来实现&lt;/li&gt;
+&lt;li&gt;提取公共代码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;10-如何提高webpack的构建速度&#34;&gt;10. 如何提高webpack的构建速度？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;多入口情况下，使用CommonsChunkPlugin来提取公共代码&lt;/li&gt;
+&lt;li&gt;通过externals配置来提取常用库&lt;/li&gt;
+&lt;li&gt;利用DllPlugin和DllReferencePlugin预编译资源模块 通过DllPlugin来对那些我们引用但是绝对不会修改的npm包来进行预编译，再通过DllReferencePlugin将预编译的模块加载进来。&lt;/li&gt;
+&lt;li&gt;使用Happypack 实现多线程加速编译&lt;/li&gt;
+&lt;li&gt;使用webpack-uglify-parallel来提升uglifyPlugin的压缩速度。 原理上webpack-uglify-parallel采用了多核并行压缩来提升压缩速度&lt;/li&gt;
+&lt;li&gt;使用Tree-shaking和Scope Hoisting来剔除多余代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;11-怎么配置单页应用怎么配置多页应用&#34;&gt;11. 怎么配置单页应用？怎么配置多页应用？&lt;/h2&gt;
+&lt;p&gt;单页应用可以理解为webpack的标准模式，直接在entry中指定单页应用的入口即可，这里不再赘述&lt;/p&gt;
+&lt;p&gt;多页应用的话，可以使用webpack的 AutoWebPlugin来完成简单自动化的构建，但是前提是项目的目录结构必须遵守他预设的规范。 多页应用中要注意的是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个页面都有公共的代码，可以将这些代码抽离出来，避免重复的加载。比如，每个页面都引用了同一套css样式表&lt;/li&gt;
+&lt;li&gt;随着业务的不断扩展，页面可能会不断的追加，所以一定要让入口的配置足够灵活，避免每次添加新页面还需要修改构建配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;12-npm打包时需要注意哪些如何利用webpack来更好的构建&#34;&gt;12. npm打包时需要注意哪些？如何利用webpack来更好的构建？&lt;/h2&gt;
+&lt;p&gt;NPM模块需要注意以下问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;要支持CommonJS模块化规范，所以要求打包后的最后结果也遵守该规则。&lt;/li&gt;
+&lt;li&gt;Npm模块使用者的环境是不确定的，很有可能并不支持ES6，所以打包的最后结果应该是采用ES5编写的。并且如果ES5是经过转换的，请最好连同SourceMap一同上传。&lt;/li&gt;
+&lt;li&gt;Npm包大小应该是尽量小（有些仓库会限制包大小）&lt;/li&gt;
+&lt;li&gt;发布的模块不能将依赖的模块也一同打包，应该让用户选择性的去自行安装。这样可以避免模块应用者再次打包时出现底层模块被重复打包的情况。&lt;/li&gt;
+&lt;li&gt;UI组件类的模块应该将依赖的其它资源文件，例如.css文件也需要包含在发布的模块里。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;基于以上需要注意的问题，我们可以对于webpack配置做以下扩展和优化：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CommonJS模块化规范的解决方案： 设置output.libraryTarget=&#39;commonjs2&#39;使输出的代码符合CommonJS2 模块化规范，以供给其它模块导入使用&lt;/li&gt;
+&lt;li&gt;输出ES5代码的解决方案：使用babel-loader把 ES6 代码转换成 ES5 的代码。再通过开启devtool: &#39;source-map&#39;输出SourceMap以发布调试。&lt;/li&gt;
+&lt;li&gt;Npm包大小尽量小的解决方案：Babel 在把 ES6 代码转换成 ES5 代码时会注入一些辅助函数，最终导致每个输出的文件中都包含这段辅助函数的代码，造成了代码的冗余。解决方法是修改.babelrc文件，为其加入transform-runtime插件&lt;/li&gt;
+&lt;li&gt;不能将依赖模块打包到NPM模块中的解决方案：使用externals配置项来告诉webpack哪些模块不需要打包。&lt;/li&gt;
+&lt;li&gt;对于依赖的资源文件打包的解决方案：通过css-loader和extract-text-webpack-plugin来实现，配置如下：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;const ExtractTextPlugin = require(&#39;extract-text-webpack-plugin&#39;);
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        // 增加对 CSS 文件的支持
+        test: /\.css/,
+        // 提取出 Chunk 中的 CSS 代码到单独的文件中
+        use: ExtractTextPlugin.extract({
+          use: [&#39;css-loader&#39;]
+        }),
+      },
+    ]
+  },
+  plugins: [
+    new ExtractTextPlugin({
+      // 输出的 CSS 文件名称
+      filename: &#39;index.css&#39;,
+    }),
+  ],
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;13-如何在vue项目中实现按需加载&#34;&gt;13. 如何在vue项目中实现按需加载？&lt;/h2&gt;
+&lt;p&gt;Vue UI组件库的按需加载 为了快速开发前端项目，经常会引入现成的UI组件库如ElementUI、iView等，但是他们的体积和他们所提供的功能一样，是很庞大的。 而通常情况下，我们仅仅需要少量的几个组件就足够了，但是我们却将庞大的组件库打包到我们的源码中，造成了不必要的开销。&lt;/p&gt;
+&lt;p&gt;不过很多组件库已经提供了现成的解决方案，如Element出品的babel-plugin-component和AntDesign出品的babel-plugin-import 安装以上插件后，在.babelrc配置中或babel-loader的参数中进行设置，即可实现组件按需加载了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;presets&amp;quot;: [[&amp;quot;es2015&amp;quot;, { &amp;quot;modules&amp;quot;: false }]],
+  &amp;quot;plugins&amp;quot;: [
+    [
+      &amp;quot;component&amp;quot;,
+      {
+        &amp;quot;libraryName&amp;quot;: &amp;quot;element-ui&amp;quot;,
+        &amp;quot;styleLibraryName&amp;quot;: &amp;quot;theme-chalk&amp;quot;
+      }
+    ]
+  ]
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;4-常用插件&#34;&gt;4. 常用插件&lt;/h2&gt;
-&lt;p&gt;【常用插件】&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ExtractTextPlugin ：从bundle 中提取特定的text到一个文件中。&lt;/li&gt;
-&lt;li&gt;DefinePlugin :允许创建一个在编译时可以配置的全局变量，这使得一个应用可以打包编译出多个不同的应用。webpack 在打包编译时会对变量直接做文本替换，所以给定的字符串必须包含字符串本省的实际引号。JSON.string()。&lt;/li&gt;
-&lt;li&gt;ProvidePlugin 插件，自动加载对应的模块，而不需要到处 通过import 或者 require 引入。&lt;/li&gt;
-&lt;li&gt;CopyWebpackPlugin：将单个文件或者整个目录复制到构建目录&lt;/li&gt;
-&lt;li&gt;HtmlWebpackPlugin 简化了 HTML 文件的创建，为应用生成一个 index.html，并添加一个script 脚本标签来加载生成的 bundle.js&lt;/li&gt;
-&lt;li&gt;BudlieAnalyzerPlugin: 可视化的webpack 打包后文件的分析插件，作用：1.认识打包后的文件和大小；2.以便优化打包后的文件&lt;/li&gt;
-&lt;li&gt;CommonsChunkPlugin :从 bundle中分离出公共的模块，便于缓存使用。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;5-热更新&#34;&gt;5. 热更新&lt;/h2&gt;
-&lt;p&gt;现象就是你修改代码保存之后，浏览器不会刷新，只会修改你更改过的依赖代码。我们平时用webpack-dev-server如果没有配置，是直接刷新浏览器，并不是热更新。&lt;/p&gt;
-&lt;p&gt;大概流程是我们用webpack-dev-server启动一个服务之后，浏览器和服务端是通过websocket进行长连接，webpack内部实现的watch就会监听文件修改，只要有修改就webpack会重新打包编译到内存中，然后webpack-dev-server依赖中间件webpack-dev-middleware和webpack之间进行交互，每次热更新都会请求一个携带hash值的json文件和一个js，websocker传递的也是hash值，内部机制通过hash值检查进行热更新， 至于内部原理，因为水平限制，目前还看不懂。&lt;/p&gt;
-&lt;h2 id=&#34;6-优化构建速度&#34;&gt;6. 优化构建速度&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;优化Loader配置&lt;/strong&gt;&lt;br&gt;
-Loader处理文件的转换操作是很耗时的，所以需要让尽可能少的文件被Loader处理&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;优化resolve.modules配置&lt;/strong&gt;&lt;br&gt;
-resolve.modules用于配置webpack去哪些目录下寻找第三方模块，默认是[&#39;node_modules&#39;]，但是，它会先去当前目录的./node_modules查找，没有的话再去../node_modules最后到根目录；&lt;code&gt;所以第三方库安到根目录下&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;优化resolve.extensions配置&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;频率出现高的文件后缀优先放在前面；&lt;/li&gt;
-&lt;li&gt;列表尽可能的小；&lt;/li&gt;
-&lt;li&gt;书写导入语句时，尽量写上后缀名&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;单页应用的按需加载&lt;/strong&gt; 现在很多前端项目都是通过单页应用的方式开发的，但是随着业务的不断扩展，会面临一个严峻的问题——首次加载的代码量会越来越多，影响用户的体验。&lt;/p&gt;
+&lt;p&gt;通过&lt;code&gt;import(*)&lt;/code&gt;语句来控制加载时机，webpack内置了对于import(*)的解析，会将import(*)中引入的模块作为一个新的入口在生成一个chunk。 当代码执行到import(*)语句时，会去加载Chunk对应生成的文件。import()会返回一个Promise对象，所以为了让浏览器支持，需要事先注入Promise polyfill&lt;/p&gt;
 &lt;h1 id=&#34;2-原生js实现轮播图&#34;&gt;2. 原生js实现轮播图&lt;/h1&gt;
 &lt;h2 id=&#34;步骤一建立html基本布局&#34;&gt;步骤一：建立html基本布局&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
@@ -2728,6 +2842,16 @@ this.$nextTick().then(cb)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;请注意第一种方式的使用，虽然它们都是异步执行的，但是如果你将第一种方式放在响应式数据更新的前面，那么你拿到的将是老的 DOM 结果。&lt;/p&gt;
 &lt;p&gt;因为 wather 的回调函数是在 nextTick 之后执行的，使用第一种方式 wather 的回调函数将和 this.$nextTick(cb) 中的 cb 同步执行，你将它放在响应式数据更新之前的话，会先执行这个 cb，所以拿到的是未被重新渲染的 DOM 结果，而如果是放在之后，你就能拿到被重新渲染的 DOM 结果。而第二种方式的 cb 跟 watcher 的回调函数是异步执行的，所以没有顺序问题。&lt;/p&gt;
+&lt;p&gt;也就是说，当我们想要改变vue中的某个数据的值时，vue不会立即重新渲染，数据不会立即发生改变，而是会在下一次事件循环的时候更新。这&lt;code&gt;主要是因为Vue中DOM的操作是异步的&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;nextTick()的应用场景主要是：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在Vue生命周期的&lt;code&gt;created()&lt;/code&gt;钩子函数进行的DOM操作一定要放在&lt;code&gt;Vue.nextTick()&lt;/code&gt;的回调函数中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在数据变化后要执行的某个操作，而这个操作需要使用随数据改变而改变的DOM结构的时候，这个操作都应该放进&lt;code&gt;Vue.nextTick()&lt;/code&gt;的回调函数中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h1 id=&#34;5-生命周期&#34;&gt;5. 生命周期&lt;/h1&gt;
 &lt;p&gt;Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615470829040.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
@@ -3742,7 +3866,17 @@ DNS查询过程如下:&lt;/p&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;3-cdn-缓存&#34;&gt;3. CDN 缓存&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;什么是CDN&lt;/strong&gt;&lt;br&gt;
-简单的理解CDN就是这些代售点(缓存服务器)的承包商,他为买票者提供了便利,帮助他们在最近的地方(最近的CDN节点)用最短的时间(最短的请求时间)买到票(拿到资源),这样去火车站售票大厅排队的人也就少了。也就减轻了售票大厅的压力(起到分流作用,减轻服务器负载压力)。&lt;/p&gt;
+简单的理解CDN就是这些缓存服务器，帮助在最近的CDN节点，用最短的请求时间拿到资源，这样排队的人也就少了。也就起到分流作用,减轻服务器负载压力。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CDN原理&lt;/strong&gt;&lt;br&gt;
+&lt;code&gt;资源上传cdn之后，当用户访问cdn的资源地址之后会经历下面的步骤：&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先经过本地的dns解析，请求cname指向的那台cdn专用的dns服务器。&lt;/li&gt;
+&lt;li&gt;dns服务器返回全局负载均衡的服务器ip给用户&lt;/li&gt;
+&lt;li&gt;用户请求全局负载均衡服务器，服务器根据ip返回所在区域的负载均衡服务器ip给用户&lt;/li&gt;
+&lt;li&gt;用户请求区域负载均衡服务器，负载均衡服务器根据用户ip选择距离近的，并且存在用户所需内容的，负载比较合适的一台缓存服务器ip给用户。当没有对应内容的时候，会去上一级缓存服务器去找，直到找到资源所在的源站服务器，并且缓存在缓存服务器中。用户下一次在请求该资源，就可以就近拿缓存了。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注意： 因为cdn的负载均衡和就近选择缓存都是根据用户的ip来的，服务器只能拿到local dns的ip，也就是网络设置中设置的dns ip，如果这个设置的不合理，那么可能起不到加速的效果。可能就近找到的缓存服务器实际离得很远。&lt;/p&gt;
+&lt;p&gt;cdn的原理主要答出&lt;code&gt;负载均衡&lt;/code&gt;和&lt;code&gt;缓存&lt;/code&gt;再就是&lt;code&gt;dns解析&lt;/code&gt;这三部分就行了吧，通过&lt;code&gt;dns解析&lt;/code&gt;到&lt;code&gt;全局负载均衡服务器&lt;/code&gt;，然后再到&lt;code&gt;区域的负载均衡&lt;/code&gt;，之后根据一些条件来找合适的&lt;code&gt;缓存服务器&lt;/code&gt;，如果第一次访问就从源站拿过来缓存。 需要注意的是一切都是根据请求的ip来的，如果ip不合理，那么可能起不到加速效果。缓存和负载均衡的思想在减轻服务器压力方面其实是很常见的。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;CDN缓存&lt;/strong&gt;&lt;br&gt;
 关于CDN缓存,在浏览器本地缓存失效后,浏览器会向CDN边缘节点发起请求。类似浏览器缓存,CDN边缘节点也存在着一套缓存机制。CDN边缘节点缓存策略因服务商不同而不同，但一般都会遵循http标准协议，通过http响应头中的&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Cache-control: max-age //后面会提到
@@ -4747,6 +4881,9 @@ document.body.appendChild(document.createTextNode(&#39;abc!&#39;));
 &lt;/ol&gt;
 &lt;h1 id=&#34;3-防抖与节流&#34;&gt;3. 防抖与节流&lt;/h1&gt;
 &lt;h2 id=&#34;1-防抖debounce&#34;&gt;1. 防抖(debounce)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回顶部。这个按钮只会在滚动到距离顶部一定位置之后才出现，那么我们现在抽象出这个功能需求-- 监听浏览器滚动事件，返回当前滚条与顶部的距离。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;基于上述场景，首先提出第一种思路：&lt;strong&gt;在第一次触发事件时，不立即执行函数，而是给出一个期限值&lt;/strong&gt;比如200ms，然后：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;如果在200ms内没有再次触发滚动事件，那么就执行函数&lt;/li&gt;
@@ -4763,6 +4900,12 @@ document.body.appendChild(document.createTextNode(&#39;abc!&#39;));
         timer = setTimeout(fn,delay) // 简化写法
     }
 }
+// 然后是旧代码
+function showTop  () {
+    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+　　console.log(&#39;滚动条位置：&#39; + scrollTop);
+}
+window.onscroll = debounce(showTop,1000) // 为了方便观察效果我们取个大点的间断值，实际使用根据需要来配置
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;对于短时间内连续触发的事件（上面的滚动事件），防抖的含义就是让某个时间期限（如上面的1000毫秒）内，事件处理函数只执行一次。&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;2-节流throttle&#34;&gt;2. 节流(throttle)&lt;/h2&gt;
@@ -4788,6 +4931,12 @@ document.body.appendChild(document.createTextNode(&#39;abc!&#39;));
    例如可以完全不借助setTimeout，可以把状态位换成时间戳，然后利用时间戳差值是否大于指定间隔时间来做判定。
    也可以直接将setTimeout的返回的标记当做判断条件-判断当前定时器是否存在，如果存在表示还在冷却，并且在执行fn之后消除定时器表示激活，原理都一样
     */
+// 以下照旧
+function showTop  () {
+    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+　　console.log(&#39;滚动条位置：&#39; + scrollTop);
+}
+window.onscroll = throttle(showTop,1000) 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;运行以上代码的结果是：&lt;/p&gt;
 &lt;ul&gt;
@@ -4799,6 +4948,74 @@ document.body.appendChild(document.createTextNode(&#39;abc!&#39;));
 &lt;li&gt;搜索框input事件，例如要支持输入实时搜索可以使用节流方案（间隔一段时间就必须查询相关内容），或者实现输入间隔大于某个值（如500ms），就当做用户输入完成，然后开始搜索，具体使用哪种方案要看业务需求。&lt;/li&gt;
 &lt;li&gt;页面resize事件，常见于需要做页面适配的时候。需要根据最终呈现的页面情况进行dom渲染（这种情形一般是使用防抖，因为只需要判断最后一次的变化情况）&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;4-接受传参&#34;&gt;4. 接受传参&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;防抖&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt; window.onload = function() {
+      // 1、获取这个按钮，并绑定事件
+      var myDebounce = document.getElementById(&amp;quot;debounce&amp;quot;);
+      myDebounce.addEventListener(&amp;quot;click&amp;quot;, debounce(sayDebounce));
+    }
+ 
+    // 2、防抖功能函数，接受传参
+    function debounce(fn) {
+      // 4、创建一个标记用来存放定时器的返回值
+      let timeout = null;
+      return function() {
+        // 5、每次当用户点击/输入的时候，把前一个定时器清除
+        clearTimeout(timeout);
+        // 6、然后创建一个新的 setTimeout，
+        // 这样就能保证点击按钮后的 interval 间隔内
+        // 如果用户还点击了的话，就不会执行 fn 函数
+        timeout = setTimeout(() =&amp;gt; {
+          fn.call(this, arguments);
+        }, 1000);
+      };
+    }
+ 
+    // 3、需要进行防抖的事件处理
+    function sayDebounce() {
+      // ... 有些需要防抖的工作，在这里执行
+      console.log(&amp;quot;防抖成功！&amp;quot;);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;节流&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;  window.onload = function() {
+      // 1、获取按钮，绑定点击事件
+      var myThrottle = document.getElementById(&amp;quot;throttle&amp;quot;);
+      myThrottle.addEventListener(&amp;quot;click&amp;quot;, throttle(sayThrottle));
+    }
+ 
+    // 2、节流函数体
+    function throttle(fn) {
+      // 4、通过闭包保存一个标记
+      let canRun = true;
+      return function() {
+        // 5、在函数开头判断标志是否为 true，不为 true 则中断函数
+        if(!canRun) {
+          return;
+        }
+        // 6、将 canRun 设置为 false，防止执行之前再被执行
+        canRun = false;
+        // 7、定时器
+        setTimeout( () =&amp;gt; {
+          fn.call(this, arguments);
+          // 8、执行完事件（比如调用完接口）之后，重新将这个标志设置为 true
+          canRun = true;
+        }, 1000);
+      };
+    }
+ 
+    // 3、需要节流的事件
+    function sayThrottle() {
+      console.log(&amp;quot;节流成功！&amp;quot;);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5-区别&#34;&gt;5. 区别&lt;/h2&gt;
+&lt;p&gt;函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，而函数防抖只是在最后一次事件后才触发一次函数。 比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次 Ajax 请求，而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现。&lt;/p&gt;
 &lt;h1 id=&#34;4-前端持久化储存-cookies-session-sessionstorage-localstorage&#34;&gt;4. 前端持久化储存 cookies、session、sessionStorage、localStorage&lt;/h1&gt;
 &lt;h2 id=&#34;1-cookie&#34;&gt;1. cookie&lt;/h2&gt;
 &lt;p&gt;由于HTTP是一种&lt;strong&gt;无状态的协议&lt;/strong&gt;，服务器单从网络连接上是无法知道客户身份的。这时候服务器就需要给客户端颁发一个cookie，用来确认用户的身份。&lt;/p&gt;
@@ -7207,7 +7424,45 @@ delete family.mother.husband;
 &lt;p&gt;但是房间大小不同个，容纳量不同，有些线程进去了，其他线程就不能再进去使用了。这就是：&lt;code&gt;一个线程使用某些共享内存时，其他线程得等它结束后才能使用共享内存&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;内存可以上锁，防止其他线程进来，【互斥锁】也就是防止多个线程读写同一块内存区域。&lt;/p&gt;
 &lt;p&gt;还有些共享内存比较大，可以容纳多个线程，但是也是有限的，只能容纳固定数目的线程使用。如何保证多个线程不冲突呢？内存门口有个钥匙架，如果发现钥匙架空了，那就不能再进去了【信号量】。&lt;/p&gt;
-&lt;h2 id=&#34;2事件循环event-loop&#34;&gt;2.事件循环（Event Loop）&lt;/h2&gt;
+&lt;h2 id=&#34;2-函数调用栈与任务队列&#34;&gt;2. 函数调用栈与任务队列&lt;/h2&gt;
+&lt;p&gt;Javascript有一个main thread 主进程和call-stack（一个调用堆栈），在对一个调用堆栈中的task处理的时候，其他的都要等着。当在执行过程中遇到一些类似于setTimeout等异步操作的时候，会交给浏览器的其他模块(以webkit为例，是webcore模块)进行处理，当到达setTimeout指定的延时执行的时间之后，task(回调函数)会放入到任务队列之中。一般不同的异步任务的回调函数会放入不同的任务队列之中。等到调用栈中所有task执行完毕之后，接着去执行任务队列之中的task(回调函数)。&lt;/p&gt;
+&lt;p&gt;任务队列是“先进先出”的数据结构，先来的优先被主线程读取。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615368924655.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在上图中，调用栈中遇到DOM操作、ajax请求以及setTimeout等WebAPIs的时候就会交给浏览器内核的其他模块进行处理，webkit内核在Javasctipt执行引擎之外，有一个重要的模块是webcore模块。对于图中WebAPIs提到的三种API，webcore分别提供了DOM Binding、network、timer模块来处理底层实现。等到这些模块处理完这些操作的时候将回调函数放入任务队列中，之后等栈中的task执行完之后再去执行任务队列之中的回调函数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;小结：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;所有的代码都要通过函数调用栈中调用执行。&lt;/li&gt;
+&lt;li&gt;当遇到前文中提到的APIs的时候，会交给浏览器内核的其他模块进行处理。&lt;/li&gt;
+&lt;li&gt;任务队列中存放的是回调函数。&lt;/li&gt;
+&lt;li&gt;等到调用栈中的task执行完之后再回去执行任务队列之中的task。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-宏任务与微任务&#34;&gt;3. 宏任务与微任务&lt;/h2&gt;
+&lt;p&gt;其中setTimeout叫做macro-task(宏任务)，当然如我们所想，还有如promise的micro-task(微任务)。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;macro-task包括：script(整体代码), setTimeout, setInterval, setImmediate, I/O, UI rendering。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;micro-task包括：process.nextTick, Promise, Object.observe, MutationObserver&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;事件循环的顺序是从script开始第一次循环，随后全局上下文进入函数调用栈，碰到macro-task就将其交给处理它的模块处理完之后将回调函数放进macro-task的队列之中，碰到micro-task也是将其回调函数放进micro-task的队列之中。直到函数调用栈清空只剩全局执行上下文，然后开始执行所有的micro-task。当所有可执行的micro-task执行完毕之后。循环再次执行macro-task中的一个任务队列，执行完之后再执行所有的micro-task，就这样一直循环。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;不同的任务会放进不同的任务队列之中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;先执行macro-task，等到函数调用栈清空之后再执行所有在队列之中的micro-task。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;等到所有micro-task执行完之后再从macro-task中的一个任务队列开始执行，就这样一直循环。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当有多个macro-task(micro-task)队列时，事件循环的顺序是按上文macro-task(micro-task)的分类中书写的顺序执行的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;4事件循环event-loop&#34;&gt;4.事件循环（Event Loop）&lt;/h2&gt;
 &lt;p&gt;JavaScript是单线程的，单线程意味着需要一个任务队列来管理任务事件，任务分为两种：&lt;code&gt;同步任务&lt;/code&gt;和&lt;code&gt;异步任务&lt;/code&gt;。同步任务是在主线程上面排队执行的任务，只有前面任务完成，下一个任务才能执行。异步任务是不进入主线程，而是进入任务队列中，只有通知主线程某个异步任务可以执行了，该任务方可执行。&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615368575238.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -7217,12 +7472,6 @@ delete family.mother.husband;
 &lt;li&gt;event loop永远不会断&lt;/li&gt;
 &lt;li&gt;以上的这一整个流程就是Event Loop（事件循环机制）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;3-任务队列&#34;&gt;3. 任务队列&lt;/h2&gt;
-&lt;p&gt;同步任务在主线程执行形成一个执行栈，主线程之外有个任务队列（鼠标点击事件，键盘点击事件，网络请求），只要异步任务触发，在任务队列中放置一个事件，等执行栈中同步任务完成后，系统才会读取任务队列执行异步任务。主线程会重复去任务队列中读取任务并执行——事件循环。&lt;/p&gt;
-&lt;p&gt;任务队列是“先进先出”的数据结构，先来的优先被主线程读取。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615368924655.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-主线程运行产生堆heap和栈stack，栈里面是各种同步方法，栈里面代码执行完毕主线程会读取任务队列，依次执行事件的回调函数。&lt;/p&gt;
-&lt;p&gt;所以，栈里面的同步任务总是在任务队列之前执行。&lt;/p&gt;
 &lt;h1 id=&#34;29-如何快速让字符串变成以千为精度的数字&#34;&gt;29. 如何快速让字符串变成以千为精度的数字&lt;/h1&gt;
 &lt;h2 id=&#34;1-字符串转换成数字的三种方法&#34;&gt;1. 字符串转换成数字的三种方法&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;转换函数、强制类型转换、利用js变量弱类型转换&lt;/code&gt;。&lt;/p&gt;
@@ -7902,8 +8151,16 @@ a.age = 2
 console.log(b.age) // 2
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;从上述例子中我们可以发现，如果给一个变量赋值一个对象，那么两者的值会是同一个引用，其中一方改变，另一方也会相应改变。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如何区分深拷贝与浅拷贝，简单点来说，就是假设B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，拿人手短，如果B没变，那就是深拷贝，自食其力。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;如果是基本数据类型，名字和值都会储存在栈内存中&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;如果是引用数据类型，名字存在栈内存中，值存在堆内存中，但是栈内存会提供一个引用的地址指向堆内存中的值&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2 id=&#34;81-浅拷贝&#34;&gt;8.1 浅拷贝&lt;/h2&gt;
-&lt;p&gt;首先可以通过 &lt;code&gt;Object.assign&lt;/code&gt; 来解决这个问题。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1617331269019.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+首先可以通过 &lt;code&gt;Object.assign&lt;/code&gt; 来解决这个问题。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;let a = {
     age: 1
 }
@@ -7932,7 +8189,8 @@ console.log(b.jobs.first) // native
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;浅拷贝只解决了第一层的问题，如果接下去的值中还有对象的话，那么就又回到刚开始的话题了，两者享有相同的引用。要解决这个问题，我们需要引入深拷贝。&lt;/p&gt;
 &lt;h2 id=&#34;82-深拷贝&#34;&gt;8.2 深拷贝&lt;/h2&gt;
-&lt;p&gt;这个问题通常可以通过 &lt;code&gt;JSON.parse(JSON.stringify(object))&lt;/code&gt; 来解决。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1617331301932.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这个问题通常可以通过 &lt;code&gt;JSON.parse(JSON.stringify(object))&lt;/code&gt; 来解决。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;let a = {
     age: 1,
     jobs: {
