@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>JavaScript实现图结构 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1618126394525">
+<link rel="shortcut icon" href="/favicon.ico?v=1618325585189">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -564,8 +564,8 @@
 </ul>
 <p><strong>图的特点：</strong></p>
 <ul>
-<li><strong>一组顶点</strong>：通常用**V **（Vertex）表示顶点的集合；</li>
-<li><strong>一组边</strong>：通常用 **E **（Edge）表示边的集合；<br>
+<li><strong>一组顶点</strong>：通常用<strong>V</strong>（Vertex）表示顶点的集合；</li>
+<li><strong>一组边</strong>：通常用 <strong>E</strong>（Edge）表示边的集合；<br>
 1. 边是顶点和顶点之间的连线；<br>
 2. 边可以是有向的，也可以是无向的。比如A----B表示无向，A ---&gt; B 表示有向；</li>
 </ul>
@@ -610,7 +610,7 @@
 另外一种表示图的常用方式为：<strong>邻接表。</strong></p>
 <ul>
 <li>邻接表由图中<strong>每个顶点</strong>以及<strong>和顶点相邻的顶点列表</strong>组成；</li>
-<li>这个列表可用多种方式存储，比如：**数组/链表/字典（哈希表）**等都可以；<br>
+<li>这个列表可用多种方式存储，比如：**数组/链表/字典(哈希表)**等都可以；<br>
 <img src="https://Tyloo-code.github.io/post-images/1614605685712.png" alt="" loading="lazy"></li>
 </ul>
 <p>如上图所示：</p>
@@ -3709,7 +3709,11 @@ sameSum(arr,5);
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-vue/"" data-c="
-          &lt;h1 id=&#34;1-vue解决了什么问题&#34;&gt;1. vue解决了什么问题&lt;/h1&gt;
+          &lt;h1 id=&#34;0-v-for中key的作用&#34;&gt;0. v-for中key的作用&lt;/h1&gt;
+&lt;p&gt;所以我们需要使用key来给每个节点做一个唯一标识，Diff算法就可以正确的识别此节点，找到正确的位置区插入新的节点。&lt;/p&gt;
+&lt;p&gt;vue中列表循环需加:key=&amp;quot;唯一标识&amp;quot; 唯一标识可以是item里面id index等，因为vue组件高度复用增加Key可以标识组件的唯一性，为了更好地区别各个组件 key的作用主要是为了高效的更新虚拟DOM&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;可以这样简单地理解，无：key属性时，状态默认绑定的是位置；有：key属性时，状态根据key的属性值绑定到了相应的数组元素。&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;1-vue解决了什么问题&#34;&gt;1. vue解决了什么问题&lt;/h1&gt;
 &lt;p&gt;要回答这个问题，要先理解核心知识点：组件化&lt;/p&gt;
 &lt;p&gt;组件化就是一种代码设计理念。最开始的面向过程编程使一个文件的代码特别多，难以维护，所以借鉴了后端的面向对象编程，使一个本需要几千行代码的文件可以被拆分成几个几百行的文件。&lt;/p&gt;
 &lt;p&gt;一个组件就是一个类 new 出来的一个对象，是一个页面的一个部分，一个组件要负责这一部分的 CSS 展示，DOM 节点的设计，以及 JS 的逻辑。合理拆解组件可以提升代码的可读性以及可维护性，将组件间共性抽离出一个通用组件，让子组件去继承这个通用组件，可以少写很多代码，最小的组件颗粒度是一个元素。&lt;/p&gt;
@@ -4456,7 +4460,7 @@ methodsToPatch.forEach(method =&amp;gt; {
 &lt;/blockquote&gt;
 &lt;p&gt;而 defineProperty 的兼容性更好，vue 3.0 版本将会用 Proxy 代替 definProperty。&lt;/p&gt;
 &lt;h1 id=&#34;11-computed-和-watch-区别&#34;&gt;11、computed 和 watch 区别&lt;/h1&gt;
-&lt;h2 id=&#34;计算属性computed&#34;&gt;计算属性computed :&lt;/h2&gt;
+&lt;h2 id=&#34;1-计算属性computed&#34;&gt;1. 计算属性computed :&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;支持缓存，只有依赖数据发生改变，才会重新进行计算&lt;/li&gt;
 &lt;li&gt;不支持异步，当computed内有异步操作时无效，无法监听数据的变化&lt;/li&gt;
@@ -4464,7 +4468,7 @@ methodsToPatch.forEach(method =&amp;gt; {
 &lt;li&gt;如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed&lt;/li&gt;
 &lt;li&gt;如果computed属性属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个get和一个set方法，当数据变化时，调用set方法。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;侦听属性watch&#34;&gt;侦听属性watch：&lt;/h2&gt;
+&lt;h2 id=&#34;2-侦听属性watch&#34;&gt;2. 侦听属性watch：&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;不支持缓存，数据变，直接会触发相应的操作；&lt;/li&gt;
 &lt;li&gt;watch支持异步；&lt;/li&gt;
@@ -4500,61 +4504,49 @@ watch: {
 })
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;12-vue-router-hash-html5-新增的-pushstate&#34;&gt;12. vue-router (hash， HTML5 新增的 pushState)&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;单页应用，如何实现其路由功能---路由原理&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;vue-router 默认启用 &lt;code&gt;hash&lt;/code&gt; 模式，如果只是 hash 的改变在任何时候都不会向后端发起请求，如果想要在一个页面中跳转到一个区域，有两种方法：设置一个锚点：使用 a 标签的 name 属性，二是使用 id 元素，可以在任何元素上使用。&lt;br&gt;
-核心原理是利用了 hash 的 &lt;code&gt;onhashchange&lt;/code&gt;事件，一旦 hash 发生改变就会触发这个事件&lt;br&gt;
-还可以在路由配置中，用 mode 配置项，值为 history，就可以改成 history 模式，实际上就是使用了浏览器的 history API&lt;br&gt;
-通过这种模式可以去掉 hash 的丑陋，但是也有一个问题，如果用户刷新或者手动输入 URL 按回车，那么就会向后端发起请求，如果后端没有匹配的路径，就会报 404 错误，所以后端要配置支持。&lt;br&gt;
+&lt;h2 id=&#34;1-单页应用如何实现其路由功能-路由原理&#34;&gt;1. 单页应用，如何实现其路由功能---路由原理&lt;/h2&gt;
+&lt;p&gt;vue-router 默认启用 &lt;code&gt;hash&lt;/code&gt; 模式，如果只是 hash 的改变在任何时候都不会向后端发起请求，如果想要在一个页面中跳转到一个区域，有两种方法：设置一个锚点：使用 a 标签的 name 属性，二是使用 id 元素，可以在任何元素上使用。&lt;/p&gt;
+&lt;p&gt;核心原理是利用了 hash 的 &lt;code&gt;onhashchange&lt;/code&gt;事件，一旦 hash 发生改变就会触发这个事件&lt;br&gt;
+还可以在路由配置中，用 mode 配置项，值为 history，就可以改成 history 模式，实际上就是使用了浏览器的 history API&lt;/p&gt;
+&lt;p&gt;通过这种模式可以去掉 hash 的丑陋，但是也有一个问题，如果用户刷新或者手动输入 URL 按回车，那么就会向后端发起请求，如果后端没有匹配的路径，就会报 404 错误，所以后端要配置支持。&lt;br&gt;
 &lt;code&gt;核心原理&lt;/code&gt;（跟使用何种模式无关）：利用的的是 history.pushState 和 history.replaceState 方法，并且在后退和前进以及跳转时利用的是 popstate 事件&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;vue-router 如何做用户登录权限等&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;2-vue-router-如何做用户登录权限等&#34;&gt;2. vue-router 如何做用户登录权限等&lt;/h2&gt;
 &lt;p&gt;使用 meta 来检测一个目标页面是否需要登陆权限，然后向服务器发送一个带有 Cookie 字段的请求，询问浏览器端的 cookie 中的 sessionID 是否已过期（因为 session 是保存在服务器端的），如果过期就需要重新登陆，跳转到登陆页面，否则表示已是登陆状态，进入目标页面。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;你在项目中怎么实现路由的嵌套&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;3-你在项目中怎么实现路由的嵌套&#34;&gt;3. 你在项目中怎么实现路由的嵌套&lt;/h2&gt;
 &lt;p&gt;一个被渲染组件同样可以包含自己的&amp;lt;router-view&amp;gt;（一个出口）&lt;br&gt;
 要在嵌套的出口中渲染组件，需要在 VueRouter 中使用 children 配置&lt;br&gt;
 在 children 中的路由不需要以 / 开头，因为是嵌套的路由&lt;br&gt;
 除此之外就像和 routes 配置一样的路由配置数组&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;vue-router 有哪几种导航钩子&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;全局的：&lt;br&gt;
-全局前置守卫 beforeEach&lt;br&gt;
+&lt;h2 id=&#34;4-vue-router-有哪几种导航钩子&#34;&gt;4. vue-router 有哪几种导航钩子&lt;/h2&gt;
+&lt;h3 id=&#34;1全局的&#34;&gt;1.全局的：&lt;/h3&gt;
+&lt;p&gt;全局前置守卫 beforeEach&lt;br&gt;
 全局解析守卫（在组件路由所有守卫之后） beforeResolve&lt;br&gt;
 全局后置钩子（没有 next 参数，因为不在导航守卫队列中，此时导航被确认） afterEach&lt;br&gt;
 router.beforeEach((to,from.next) =&amp;gt; {})&lt;br&gt;
 单个路由独享（在路由配置上直接定义）：beforeEnter&lt;br&gt;
-组件级：在路由组件内直接调用的守卫，像调用生命周期那样&lt;br&gt;
-beforeRouteEnter&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618320145843.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-组件级在路由组件内直接调用的守卫像调用生命周期那样&#34;&gt;2. 组件级：在路由组件内直接调用的守卫，像调用生命周期那样&lt;/h3&gt;
+&lt;p&gt;beforeRouteEnter&lt;br&gt;
 这是唯一可以给 next() 传递回调函数作为参数的守卫（对于所有守卫而言的）&lt;br&gt;
-其他两个已经可以直接使用 this，所以不需要再传入回调&lt;br&gt;
-beforeRouteUpdate 在重复组件中调用这个守卫，所以可以访问 this&lt;br&gt;
-主要是因为在重用组件中使用了这个守卫，因此在这里请求数据可以在组件复用是更新数据&lt;br&gt;
-beforeRouteLeave 离开失活组件时执行的守卫，所以可以访问到失活组件的 this&lt;br&gt;
+其他两个已经可以直接使用 this，所以不需要再传入回调&lt;/p&gt;
+&lt;p&gt;beforeRouteUpdate 在重复组件中调用这个守卫，所以可以访问 this&lt;br&gt;
+主要是因为在重用组件中使用了这个守卫，因此在这里请求数据可以在组件复用是更新数据&lt;/p&gt;
+&lt;p&gt;beforeRouteLeave 离开失活组件时执行的守卫，所以可以访问到失活组件的 this&lt;br&gt;
 当导航守卫的队列都清空时，表示导航被确认，然后调用全局的 afterEach 钩子，然后触发 DOM 更新，然后再会执行 beforeRouteEnter 中的 next 方法中的回调函数。&lt;br&gt;
 只要有 next 参数的，最后都要执行 next() 才能跳转到下一个守卫&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;$route 和 $router 的区别：&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;5-route-和-router-的区别&#34;&gt;5. $route 和 $router 的区别：&lt;/h2&gt;
 &lt;p&gt;this.&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;是&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;访&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;问&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;路&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;由&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;器&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;router 是访问路由器
 this.&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;是&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;访&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;问&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;路&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;由&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;器&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;route 是访问当前路由&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;p&gt;this.$router.push会往history栈中添加一个新的记录。&lt;br&gt;
- &lt;br&gt;
 this.$route相当于当前正在跳转的路由对象。可以从里面获取name,path,params,query等。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;如何使用 vue-router&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;6-如何使用-vue-router&#34;&gt;6. 如何使用 vue-router&lt;/h2&gt;
 &lt;p&gt;1）import 进来，然后通过 Vue.use() 明确安装路由功能&lt;br&gt;
 2）定义路由组件，或者引入单文件组件&lt;br&gt;
 3）定义路由配置，配置是一个数组，元素是对象&lt;br&gt;
 4）创建一个 vue-router 实例，new vueRouter({})&lt;br&gt;
 5）创建 vue 根实例，将 router 作为配置参数传入&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;h1 id=&#34;13-vue中v-if与v-show的区别以及使用场景&#34;&gt;13. vue中v-if与v-show的区别以及使用场景&lt;/h1&gt;
-&lt;h2 id=&#34;区别&#34;&gt;区别&lt;/h2&gt;
+&lt;h2 id=&#34;1-区别&#34;&gt;1. 区别&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;手段：v-if是通过控制dom节点的&lt;code&gt;存在&lt;/code&gt;与否来控制元素的显隐；v-show是通过设置DOM元素的&lt;code&gt;display样式&lt;/code&gt;，block为显示，none为隐藏；&lt;/li&gt;
 &lt;li&gt;编译过程：v-if切换有一个局部编译/卸载的过程，切换过程中合适地销毁和重建内部的事件监听和子组件；v-show只是简单的&lt;code&gt;基于css切换&lt;/code&gt;；&lt;/li&gt;
@@ -4563,9 +4555,9 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 &lt;/ol&gt;
 &lt;p&gt;换句话说，v-if 的表达式返回值，会直接触发到&lt;code&gt;当前组件 生命周期&lt;/code&gt;，并且事件监听器和子组件会被适当地被销毁和重建。 所以，可以理解为 v-if 是惰性的，他不会在页面初始化时，被无条件渲染，而是按需响应式地渲染。&lt;/p&gt;
 &lt;p&gt;而 v-show ，这是无论表达式返回值是否是 true 都会在&lt;code&gt;create 生命周期&lt;/code&gt;，无条件消耗资源生成对应的 Virtual DOM，并挂载到HTML页面中，只是再根据表达式返回值，切换 display 这个 CSS 属性。&lt;/p&gt;
-&lt;h2 id=&#34;使用场景&#34;&gt;使用场景&lt;/h2&gt;
+&lt;h2 id=&#34;2-使用场景&#34;&gt;2. 使用场景&lt;/h2&gt;
 &lt;p&gt;基于以上区别，因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。&lt;/p&gt;
-&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;h2 id=&#34;3-总结&#34;&gt;3. 总结&lt;/h2&gt;
 &lt;p&gt;v-if判断是否加载，可以减轻服务器的压力，在需要时加载,但有更高的切换开销;v-show调整DOM元素的CSS的dispaly属性，可以使客户端操作更加流畅，但有更高的初始渲染开销。如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。&lt;/p&gt;
 &lt;h1 id=&#34;14-vue项目中实现token验证&#34;&gt;14. Vue项目中实现token验证&lt;/h1&gt;
 &lt;p&gt;在前后端完全分离的情况下，Vue项目中实现token验证大致思路如下：&lt;/p&gt;
@@ -4577,13 +4569,70 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 6、后端判断请求头中有无token，有token，就拿到token并验证token，验证成功就返回数据，验证失败（例如：token过期）就返回401，请求头中没有token也返回401&lt;br&gt;
 7、如果前端拿到状态码为401，就清除token信息并跳转到登录页面&lt;/p&gt;
 &lt;h1 id=&#34;15-vue插槽v-slot&#34;&gt;15. Vue插槽（v-slot）&lt;/h1&gt;
-&lt;h2 id=&#34;匿名插槽&#34;&gt;匿名插槽&lt;/h2&gt;
+&lt;h2 id=&#34;1-匿名插槽&#34;&gt;1. 匿名插槽&lt;/h2&gt;
 &lt;p&gt;匿名插槽，我们也可以叫它单个插槽或者默认插槽。和具名插槽相对，它是不需要设置  name 属性的，它隐藏的name属性为default。&lt;/p&gt;
 &lt;p&gt;在使用的时候还有一个问题要注意的 如果是有2个以上的匿名插槽是会child标签里面的内容全部都替换到每个slot；&lt;/p&gt;
-&lt;h2 id=&#34;具名插槽&#34;&gt;具名插槽&lt;/h2&gt;
+&lt;h2 id=&#34;2-具名插槽&#34;&gt;2. 具名插槽&lt;/h2&gt;
 &lt;p&gt;顾名思义就是slot 是带有name的 ，定义：&amp;lt;slot name=&amp;quot;header&amp;quot; /&amp;gt;  或者使用简单缩写的定义 #header&lt;br&gt;
 使用：要用一个 template标签包裹&lt;/p&gt;
 &lt;p&gt;这里说一下多个具名插槽的使用 &lt;code&gt;多个具名插槽，插槽的位置不是使用插槽的位置而定的，是在定义的时候的位置来替换的&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;16-vue的scoped属性&#34;&gt;16. Vue的Scoped属性&lt;/h1&gt;
+&lt;h2 id=&#34;1-什么是scoped&#34;&gt;1. 什么是scoped&lt;/h2&gt;
+&lt;p&gt;在Vue文件中的style标签上有一个特殊的属性，scoped。当一个style标签拥有scoped属性时候，它的css样式只能用于&lt;code&gt;当前&lt;/code&gt;的Vue组件，可以使组件的样式不相互污染。如果一个项目的&lt;code&gt;所有style标签&lt;/code&gt;都加上了scoped属性，相当于实现了样式的&lt;code&gt;模块化&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;2-scoped的实现原理&#34;&gt;2. Scoped的实现原理&lt;/h2&gt;
+&lt;p&gt;Vue中的scoped属性的效果主要是通过&lt;code&gt;PostCss&lt;/code&gt;实现的。&lt;br&gt;
+以下是转译前的代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style scoped lang=&amp;quot;less&amp;quot;&amp;gt;
+    .example{
+        color:red;
+    }
+&amp;lt;/style&amp;gt;
+&amp;lt;template&amp;gt;
+    &amp;lt;div class=&amp;quot;example&amp;quot;&amp;gt;scoped测试案例&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;转译后：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.example[data-v-5558831a] {
+  color: red;
+}
+&amp;lt;template&amp;gt;
+    &amp;lt;div class=&amp;quot;example&amp;quot; data-v-5558831a&amp;gt;scoped测试案例&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;PostCSS&lt;/code&gt;给一个组件中的所有&lt;code&gt;dom&lt;/code&gt;添加了一个独一无二的&lt;code&gt;动态属性&lt;/code&gt;，给&lt;code&gt;css选择器&lt;/code&gt;额外添加一个对应的&lt;code&gt;属性选择器&lt;/code&gt;，来选择组件中的dom，这种做法使得样式只作用于含有该属性的dom元素(组件内部的dom)。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;总结：scoped的渲染规则：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;给HTML的dom节点添加一个不重复的data属性(例如: data-v-5558831a)来唯一标识这个dom 元素&lt;/li&gt;
+&lt;li&gt;在每句css选择器的末尾(编译后生成的css语句)加一个当前组件的data属性选择器(例如：[data-v-5558831a])来私有化样式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-scoped穿透&#34;&gt;3. Scoped穿透&lt;/h2&gt;
+&lt;p&gt;Scoped看起来很好用，当时在Vue项目中，当我们引入第三方组件库时(如使用vue-awesome-swiper实现移动端轮播)，需要在局部组件中修改第三方组件库的样式，而又不想去除scoped属性造成组件之间的样式覆盖。这时我们可以通过特殊的方式穿透scoped。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;stylus的样式穿透 使用&amp;gt;&amp;gt;&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;外层 &amp;gt;&amp;gt;&amp;gt; 第三方组件 
+        样式
+        
+   .wrapper &amp;gt;&amp;gt;&amp;gt; .swiper-pagination-bullet-active
+    background: #fff
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sass和less的样式穿透 使用/deep/&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  外层 /deep/ 第三方组件 {
+        样式
+    }
+    .wrapper /deep/ .swiper-pagination-bullet-active{
+      background: #fff;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-在组件中修改第三方组件库样式的其它方法&#34;&gt;4. 在组件中修改第三方组件库样式的其它方法&lt;/h2&gt;
+&lt;p&gt;上面我们介绍了在使用scoped 属性时，通过scopd穿透的方式修改引入第三方组件库样式的方法，下面我们介绍其它方式来修改引入第三方组件库的样式。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在vue组件中不使用scoped属性&lt;/li&gt;
+&lt;li&gt;在vue组建中使用两个style标签，一个加上scoped属性，一个不加scoped属性，把需要覆盖的css样式写在不加scoped属性的style标签里&lt;/li&gt;
+&lt;li&gt;建立一个reset.css(基础全局样式)文件，里面写覆盖的css样式，在入口文件main.js 中引入&lt;/li&gt;
+&lt;/ol&gt;
 ">【面】前端知识点梳理（Vue）</a>
       </div>
       
@@ -5579,20 +5628,83 @@ Vary: Origin
 &lt;li&gt;服务器拿到用户信息 和 id 之后，写入数据库&lt;/li&gt;
 &lt;li&gt;这时候服务器轮询就会得到结果，说明用户已经确认登陆，并且得到服务器返回的 token 和用户信息。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;8-get-post区别&#34;&gt;8. get post区别&lt;/h1&gt;
-&lt;h2 id=&#34;1-浏览器的get和post&#34;&gt;1. 浏览器的GET和POST&lt;/h2&gt;
+&lt;h1 id=&#34;8-getpostputdeleteoptions等请求方式&#34;&gt;8. GET,POST,PUT,DELETE,OPTIONS等请求方式&lt;/h1&gt;
+&lt;h2 id=&#34;1-不同请求方式区别&#34;&gt;1. 不同请求方式区别&lt;/h2&gt;
+&lt;h3 id=&#34;1-get&#34;&gt;1. GET&lt;/h3&gt;
+&lt;p&gt;get请求是用来获取数据的，只是用来&lt;code&gt;查询数据&lt;/code&gt;，不对服务器的数据做任何的修改，新增，删除等操作。&lt;/p&gt;
+&lt;p&gt;在这里我们认为get请求是&lt;code&gt;安全的&lt;/code&gt;，以及&lt;code&gt;幂等的&lt;/code&gt;。安全就是指不影响服务器的数据，幂等是指同一个请求发送多次返回的结果应该相同。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;get请求会把请求的参数附加在URL后面，这样会产生安全问题，如果是系统的登陆接口采用的get请求，需要对请求的参数做一个加密。&lt;/li&gt;
+&lt;li&gt;get请求其实本身HTTP协议并没有限制它的URL大小，但是不同的浏览器对其有不同的大小长度限制&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-post&#34;&gt;2. POST&lt;/h3&gt;
+&lt;p&gt;post请求一般是对服务器的数据做改变，常用来数据的提交，新增操作。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;post请求的请求参数都是请求体中&lt;/li&gt;
+&lt;li&gt;post请求本身HTTP协议也是没有限制大小的，限制它的是服务器的处理能力&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;3-put&#34;&gt;3. PUT&lt;/h3&gt;
+&lt;p&gt;put请求与post一样都会改变服务器的数据，但是put的侧重点在于对于数据的修改操作，但是post侧重于对于数据的增加。&lt;/p&gt;
+&lt;h3 id=&#34;4-delete&#34;&gt;4. DELETE&lt;/h3&gt;
+&lt;p&gt;delete请求用来删除服务器的资源。&lt;/p&gt;
+&lt;h3 id=&#34;5-options&#34;&gt;5. OPTIONS&lt;/h3&gt;
+&lt;p&gt;options请求属于浏览器的&lt;code&gt;预检请求&lt;/code&gt;，查看服务器是否接受请求，预检通过后，浏览器才会去发get，post，put，delete等请求。至于什么情况下浏览器会发预检请求，浏览器会会将请求分为两类，简单请求与非简单请求，&lt;code&gt;非简单请求&lt;/code&gt;会产生预检options请求。(结合CORS跨域)&lt;/p&gt;
+&lt;h2 id=&#34;2-浏览器的get和post&#34;&gt;2. 浏览器的GET和POST&lt;/h2&gt;
 &lt;p&gt;浏览器用GET请求来获取一个html页面/图片/css/js等资源；用POST来提交一个&lt;form&gt;表单，并得到一个结果的网页。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;GET&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;“读取“一个资源。比如Get到一个html文件。反复读取不应该对访问的数据有副作用。比如”GET一下，用户就下单了，返回订单已受理“，这是不可接受的。没有副作用被称为“幂等“（Idempotent)。因为GET因为是读取，就可以对GET请求的数据做缓存。这个缓存可以做到浏览器本身上（彻底避免浏览器发请求），也可以做到代理上（如nginx），或者做到server端（用Etag，至少可以减少带宽消耗）&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;POST&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;在页面里&amp;lt;form&amp;gt; 标签会定义一个表单。点击其中的submit元素会发出一个POST请求让服务器做一件事。这件事往往是有副作用的，不幂等的。&lt;br&gt;
-不幂等也就意味着不能随意多次执行。因此也就不能缓存。&lt;/p&gt;
-&lt;h2 id=&#34;2-接口中的get和post&#34;&gt;2. 接口中的GET和POST&lt;/h2&gt;
-&lt;p&gt;这里是指通过浏览器的Ajax api之类的工具发出来的GET和POST请求。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以？分割URL和传输数据，参数之间以&amp;amp;相连&lt;/li&gt;
-&lt;li&gt;POST的安全性要比GET的安全性高。注意：这里所说的安全性和上面GET提到的“安全”不是同个概念。上面“安全”的含义仅仅是不作数据修改，而这里安全的含义是真正的Security的含义。比如：通过GET提交数据，用户名和密码将明文出现在URL上，因为：(1)登录页面有可能被浏览器缓存，(2)其他人查看浏览器的历史纪录，那么别人就可以拿到你的账号和密码了，除此之外，使用GET提交数据还可能会造成Cross-site request forgery攻击（CSRF,跨站请求伪造，也被称为：one click attack/session riding）。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&#34;1-get-2&#34;&gt;1. GET&lt;/h3&gt;
+&lt;p&gt;“读取“一个资源。比如Get到一个html文件。反复读取不应该对访问的数据有副作用。没有副作用被称为“幂等“（Idempotent)。因为GET因为是读取，就可以对GET请求的数据做缓存。这个缓存可以做到浏览器本身上（彻底避免浏览器发请求），也可以做到代理上（如nginx），或者做到server端（用Etag，至少可以减少带宽消耗）&lt;/p&gt;
+&lt;h3 id=&#34;2-post-2&#34;&gt;2. POST&lt;/h3&gt;
+&lt;p&gt;在页面里&amp;lt;form&amp;gt; 标签会定义一个表单。点击其中的submit元素会发出一个POST请求让服务器做一件事。这件事往往是有副作用的，&lt;code&gt;不幂等&lt;/code&gt;的。不幂等也就意味着不能随意多次执行。因此也就不能缓存。&lt;/p&gt;
+&lt;p&gt;此外如果尝试重新执行POST请求，浏览器也会弹一个框提示下这个刷新可能会有副作用，询问要不要继续。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618324396186.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-区别&#34;&gt;3. 区别&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;GET和POST携带数据的格式也有区别&lt;/code&gt;。当浏览器发出一个GET请求时，就意味着要么是用户自己在浏览器的地址栏输入，要不就是点击了html里a标签的href中的url。所以其实并不是GET只能用url，而是浏览器直接发出的GET只能由一个url触发。所以没办法，GET上要在url之外带一些参数就只能依靠url上附带querystring。但是HTTP协议本身并没有这个限制。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;浏览器的POST请求都来自表单提交&lt;/code&gt;。每次提交，表单的数据被浏览器用编码到HTTP请求的body里。浏览器发出的POST请求的body主要有有两种格式，一种是application/x-www-form-urlencoded用来传输简单的数据，大概就是&amp;quot;key1=value1&amp;amp;key2=value2&amp;quot;这样的格式。另外一种是传文件，会采用multipart/form-data格式。采用后者是因为application/x-www-form-urlencoded的编码方式对于文件这种二进制的数据非常低效。&lt;/p&gt;
+&lt;p&gt;浏览器在POST一个表单时，url上也可以带参数，只要&amp;lt;form action=&amp;quot;url&amp;quot; &amp;gt;里的url带querystring就行。只不过表单里面的那些用&amp;lt;input&amp;gt; 等标签经过用户操作产生的数据都在会在body里。&lt;/p&gt;
+&lt;h2 id=&#34;3-接口中的get和post&#34;&gt;3. 接口中的GET和POST&lt;/h2&gt;
+&lt;p&gt;这里是指通过浏览器的Ajax api，或者iOS/Android的App的http client，java的commons-httpclient/okhttp或者是curl，postman之类的工具发出来的GET和POST请求。此时GET/POST不光能用在前端和后端的交互中，还能用在后端各个子服务的调用中（即当一种RPC协议使用）。尽管RPC有很多协议，比如thrift，grpc，但是http本身已经有大量的现成的支持工具可以使用，并且对人类很友好，容易debug。HTTP协议在微服务中的使用是相当普遍的。&lt;/p&gt;
+&lt;p&gt;当用HTTP实现接口发送请求时，就&lt;code&gt;没有浏览器中那么多限制&lt;/code&gt;了，只要是符合HTTP格式的就可以发。HTTP请求的格式，大概是这样的一个字符串（为了美观，我在\r\n后都换行一下）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;METHOD&amp;gt; &amp;lt;URL&amp;gt; HTTP/1.1\r\n
+&amp;lt;Header1&amp;gt;: &amp;lt;HeaderValue1&amp;gt;\r\n
+&amp;lt;Header2&amp;gt;: &amp;lt;HeaderValue2&amp;gt;\r\n
+...
+&amp;lt;HeaderN&amp;gt;: &amp;lt;HeaderValueN&amp;gt;\r\n
+\r\n
+&amp;lt;Body Data....&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接口规范/风格。其中名气最大的当属REST。REST充分运用GET、POST、PUT和DELETE，约定了这4个接口分别获取、创建、替换和删除“资源”，REST最佳实践还推荐在请求体使用json格式。这样仅仅通过看HTTP的method就可以明白接口是什么意思，并且解析格式也得到了统一。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;json相对于x-www-form-urlencoded的优势在于&lt;br&gt;
+1）可以有嵌套结构；&lt;br&gt;
+2）可以支持更丰富的数据类型。通过一些框架，json可以直接被服务器代码映射为业务实体。用起来十分方便。但是如果是写一个接口支持上传文件，那么还是multipart/form-data格式更合适。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;REST中GET和POST不是随便用的。在REST中, 【GET】 + 【资源定位符】被专用于获取资源或者资源列表，比如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GET http://foo.com/books          获取书籍列表
+GET http://foo.com/books/:bookId  根据bookId获取一本具体的书
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;REST 【POST】+ 【资源定位符】则用于“创建一个资源”，比如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;POST http://foo.com/books
+{
+  &amp;quot;title&amp;quot;: &amp;quot;大宽宽的碎碎念&amp;quot;,
+  &amp;quot;author&amp;quot;: &amp;quot;大宽宽&amp;quot;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里你就能留意到&lt;strong&gt;浏览器中用来实现表单提交的POST&lt;/strong&gt;，和REST里实现创建资源的POST语义上的不同。&lt;/p&gt;
+&lt;h2 id=&#34;4-关于安全性&#34;&gt;4. 关于安全性&lt;/h2&gt;
+&lt;p&gt;我们常听到GET不如POST安全，因为POST用body传输数据，而GET用url传输，更加容易看到。但是从攻击的角度，无论是GET还是POST都不够安全，因为HTTP本身是&lt;code&gt;明文协议&lt;/code&gt;。&lt;code&gt;每个HTTP请求和返回的每个byte都会在网络上明文传播，不管是url，header还是body&lt;/code&gt;。这完全不是一个“是否容易在浏览器地址栏上看到“的问题。&lt;/p&gt;
+&lt;p&gt;为了避免传输中数据被窃取，&lt;code&gt;必须做从客户端到服务器的端端加密。业界的通行做法就是https&lt;/code&gt;——即用SSL协议协商出的密钥加密明文的http数据。这个加密的协议和HTTP协议本身相互独立。如果是利用HTTP开发公网的站点/App，要保证安全，https是最最基本的要求。&lt;/p&gt;
+&lt;p&gt;从客户端到服务器端，有大量的中间节点，包括网关，代理等。他们的access log通常会输出完整的url，比如nginx的默认access log就是如此。如果url上携带敏感数据，就会被记录下来。但请注意，&lt;code&gt;就算私密数据在body里，也是可以被记录下来的&lt;/code&gt;，因此如果请求要经过不信任的公网，避免泄密的&lt;code&gt;唯一手段就是https&lt;/code&gt;。这里说的“避免access log泄漏“仅仅是指避免可信区域中的http代理的默认行为带来的安全隐患。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618325278742.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-关于url的长度&#34;&gt;5. 关于URL的长度&lt;/h2&gt;
+&lt;p&gt;因为上面提到了不论是GET和POST都可以使用URL传递数据，所以我们常说的“GET数据有长度限制“其实是指”URL的长度限制“。&lt;/p&gt;
+&lt;p&gt;HTTP协议本身对URL长度并没有做任何规定。实际的限制是由客户端/浏览器以及服务器端决定的。&lt;/p&gt;
+&lt;p&gt;先说浏览器。不同浏览器不太一样。比如我们常说的2048个字符的限制，其实是IE8的限制。并且原始文档的说的其实是“URL的最大长度是2083个字符，path的部分最长是2048个字符“。Chrome的URL限制是2MB&lt;/p&gt;
+&lt;p&gt;除了浏览器，服务器这边也有限制，比如apache的LimieRequestLine指令。&lt;/p&gt;
+&lt;p&gt;apache实际上限制的是HTTP请求第一行“Request Line“的长度，即&amp;lt;METHOD&amp;gt;&amp;lt;URL&amp;gt; &amp;lt;VERSION&amp;gt;那一行。再比如nginx用&lt;code&gt;large_client_header_buffers&lt;/code&gt; 指令来分配请求头中的很长数据的buffer。这个buffer可以用来处理url，header value等。&lt;/p&gt;
+&lt;p&gt;为啥要限制呢？如果写过解析一段字符串的代码就能明白，解析的时候要分配内存。对于一个字节流的解析，必须分配buffer来保存所有要存储的数据。而URL这种东西必须当作一个整体看待，无法一块一块处理，于是就处理一个请求时必须分配一整块足够大的内存。如果URL太长，而并发又很高，就容易挤爆服务器的内存；同时，超长URL的好处并不多，我也只有处理老系统的URL时因为不敢碰原来的逻辑，又得追加更多数据，才会使用超长URL。&lt;/p&gt;
 &lt;h1 id=&#34;9-ajax-axios库&#34;&gt;9. ajax、 axios库&lt;/h1&gt;
 &lt;h2 id=&#34;1ajax&#34;&gt;1.ajax&lt;/h2&gt;
 &lt;ul&gt;
@@ -10961,7 +11073,7 @@ docEl.style.fontSize = fontsize;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614738716059.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;2标准模型与ie模型的区别&#34;&gt;2.标准模型与IE模型的区别&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;标准模型&lt;/strong&gt;与** IE 模型**的区别在于宽高的计算方式不同。&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;标准模型&lt;/strong&gt;与&lt;strong&gt;IE 模型&lt;/strong&gt;的区别在于宽高的计算方式不同。&lt;br&gt;
 标准模型计算元素的宽高只算 content 的宽高，IE模型是 content + padding + border 的总尺寸。&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614739310471.jfif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 从上图可以看到标准 &lt;code&gt;W3C 盒子模型的范围包括 margin、border、padding、content，并且 content 部分不包含其他部分。&lt;/code&gt;&lt;br&gt;
@@ -12373,8 +12485,8 @@ console.log(QuickSort(arr));
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;图的特点：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;一组顶点&lt;/strong&gt;：通常用**V **（Vertex）表示顶点的集合；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;一组边&lt;/strong&gt;：通常用 **E **（Edge）表示边的集合；&lt;br&gt;
+&lt;li&gt;&lt;strong&gt;一组顶点&lt;/strong&gt;：通常用&lt;strong&gt;V&lt;/strong&gt;（Vertex）表示顶点的集合；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;一组边&lt;/strong&gt;：通常用 &lt;strong&gt;E&lt;/strong&gt;（Edge）表示边的集合；&lt;br&gt;
 1. 边是顶点和顶点之间的连线；&lt;br&gt;
 2. 边可以是有向的，也可以是无向的。比如A----B表示无向，A ---&amp;gt; B 表示有向；&lt;/li&gt;
 &lt;/ul&gt;
@@ -12419,7 +12531,7 @@ console.log(QuickSort(arr));
 另外一种表示图的常用方式为：&lt;strong&gt;邻接表。&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;邻接表由图中&lt;strong&gt;每个顶点&lt;/strong&gt;以及&lt;strong&gt;和顶点相邻的顶点列表&lt;/strong&gt;组成；&lt;/li&gt;
-&lt;li&gt;这个列表可用多种方式存储，比如：**数组/链表/字典（哈希表）**等都可以；&lt;br&gt;
+&lt;li&gt;这个列表可用多种方式存储，比如：**数组/链表/字典(哈希表)**等都可以；&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614605685712.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;如上图所示：&lt;/p&gt;
@@ -14608,7 +14720,7 @@ Node{
 &lt;p&gt;Java中的HashMap采用的是链地址法，哈希化采用的是公式为：&lt;strong&gt;index = HashCode（key）&amp;amp;（Length-1）&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;即将数据化为二进制进行&lt;strong&gt;与&lt;/strong&gt;运算，而不是取余运算。这样计算机直接运算二进制数据，效率更高。但是JavaScript在进行叫大数据的&lt;strong&gt;与&lt;/strong&gt;运算时会出现问题，所以以下使用JavaScript实现哈希化时还是采用取余运算。&lt;/p&gt;
 &lt;h1 id=&#34;2初步封装哈希表&#34;&gt;2.初步封装哈希表&lt;/h1&gt;
-&lt;p&gt;** 哈希表的常见操作为**：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;哈希表的常见操作为&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;put（key，value）：插入或修改操作；&lt;/li&gt;
 &lt;li&gt;get（key）：获取哈希表中特定位置的元素；&lt;/li&gt;
@@ -15607,8 +15719,8 @@ function Dictionary(){
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;双向链表常见的操作（方法）：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;append（element）：向链表尾部添加一个新的项；&lt;br&gt;
-*inset（position，element）：向链表的特定位置插入一个新的项；&lt;/li&gt;
+&lt;li&gt;append（element）：向链表尾部添加一个新的项；&lt;/li&gt;
+&lt;li&gt;inset（position，element）：向链表的特定位置插入一个新的项；&lt;/li&gt;
 &lt;li&gt;get（element）：获取对应位置的元素；&lt;/li&gt;
 &lt;li&gt;indexOf（element）：返回元素在链表中的索引，如果链表中没有元素就返回-1；&lt;/li&gt;
 &lt;li&gt;update（position，element）：修改某个位置的元素；&lt;/li&gt;
