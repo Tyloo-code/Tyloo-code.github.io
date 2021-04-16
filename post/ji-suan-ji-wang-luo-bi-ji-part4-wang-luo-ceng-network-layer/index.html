@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>计算机网络笔记Part4 网络层（Network Layer） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1618470318274">
+<link rel="shortcut icon" href="/favicon.ico?v=1618533930118">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">53</span>
+        <span class="site-item-stat-count">52</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1764,12 +1764,6 @@ Packet Switching 分组交换</p>
 
 &lt;/code&gt;&lt;/pre&gt;
 ">JavaScript实现堆结构</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/jian-zhi-offerjs-ban/"" data-c="
-          &lt;h2 id=&#34;1-在一个二维数组中每个一维数组的长度相同每一行都按照从左到右递增的顺序排序每一列都按照从上到下递增的顺序排序-请完成一个函数输入这样的一个二维数组和一个整数判断数组中是否含有该整数&#34;&gt;1. 在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。&lt;/h2&gt;
-">剑指offer（js版）</a>
       </div>
       
       <div class="item">
@@ -3355,6 +3349,41 @@ module.exports = {
 &lt;p&gt;&lt;strong&gt;单页应用的按需加载&lt;/strong&gt; 现在很多前端项目都是通过单页应用的方式开发的，但是随着业务的不断扩展，会面临一个严峻的问题——首次加载的代码量会越来越多，影响用户的体验。&lt;/p&gt;
 &lt;p&gt;通过&lt;code&gt;import(*)&lt;/code&gt;语句来控制加载时机，webpack内置了对于import(*)的解析，会将import(*)中引入的模块作为一个新的入口在生成一个chunk。 当代码执行到import(*)语句时，会去加载Chunk对应生成的文件。import()会返回一个Promise对象，所以为了让浏览器支持，需要事先注入Promise polyfill&lt;/p&gt;
 &lt;h1 id=&#34;2-git命令&#34;&gt;2. Git命令&lt;/h1&gt;
+&lt;h2 id=&#34;1-什么是-rebase&#34;&gt;1. 什么是 rebase?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;git rebase&lt;/strong&gt;你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。&lt;/p&gt;
+&lt;p&gt;原理很简单：rebase需要基于一个分支来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最新的跟踪分支的最后面，这样你的当前分支就是最新的跟踪分支。这里的操作是基于文件事务处理的，所以你不用怕中间失败会影响文件的一致性。在中间的过程中你可以随时取消rebase 事务。&lt;/p&gt;
+&lt;h2 id=&#34;2-git-rebase-和-git-merge-有啥区别&#34;&gt;2. git rebase 和 git merge 有啥区别？&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;rebase&lt;/strong&gt;会把你当前分支的 commit 放到公共分支的最后面,所以叫变基。就好像你从公共分支又重新拉出来这个分支一样。&lt;br&gt;
+举例：如果你从 master 拉了个feature分支出来，然后你提交了几个 commit,这个时候刚好有人把他开发的东西合并到 master 了，这个时候 master 就比你拉分支的时候多了几个 commit,如果这个时候你 rebase master 的话，就会把你当前的几个 commit，放到那个人 commit 的后面。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618473236809.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;merge&lt;/strong&gt;会把公共分支和你当前的commit 合并在一起，形成一个新的 commit 提交&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618473414229.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不要在公共分支使用rebase&lt;/li&gt;
+&lt;li&gt;本地和远端对应同一条分支，优先使用rebase，而不是merge&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-为什么不要再公共分支使用rebase&#34;&gt;3. 为什么不要再公共分支使用rebase?&lt;/h2&gt;
+&lt;p&gt;因为往后放的这些 commit 都是新的，这样其他从这个公共分支拉出去的人，都需要再 rebase，相当于你 rebase 东西进来，就都是新的 commit 了&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618473493968.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;merge和rebase实际上只是用的场景不一样&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;更通俗的解释一波&lt;/strong&gt;&lt;br&gt;
+比如rebase，你自己开发分支一直在做，然后某一天，你想把主线的修改合到你的分支上，做一次集成，这种情况就用rebase比较好。把你的提交都放在主线修改的头上&lt;/p&gt;
+&lt;p&gt;同样的,如果你在主分支上用rebase, rebase其他分支的修改,是不是要是别人想看主分支上有什么历史,他看到的就不是完整的历史，这个历史已经被你篡改了&lt;/p&gt;
+&lt;h2 id=&#34;4-常用指令&#34;&gt;4. 常用指令&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;git rebase -i dev 可以将dev分支合并到当前分支&lt;br&gt;
+这里的”-i“是指交互模式。就是说你可以干预rebase这个事务的过程，包括设置commit message，暂停commit等等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;git rebase –abort 放弃一次合并&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;合并多次commit操作&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618473857337.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;3-原生js实现轮播图&#34;&gt;3. 原生js实现轮播图&lt;/h1&gt;
 &lt;h2 id=&#34;步骤一建立html基本布局&#34;&gt;步骤一：建立html基本布局&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
@@ -10749,6 +10778,131 @@ console.log(oBox.children[0].hasChildNodes());
             node = stack.pop();//弹出栈的子节点顺序就是原来的正确顺序(因为栈是先入后出的)        
     }     
 };  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;19-面试查缺补漏&#34;&gt;19. 面试查缺补漏&lt;/h1&gt;
+&lt;h2 id=&#34;1-js页面跳转方式&#34;&gt;1. JS页面跳转方式&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;window.location.href= &#39;url&#39;: 比较常用的方法，直接跟指定要跳转的地方。&lt;/li&gt;
+&lt;li&gt;window.history.back(-1);: 参见的浏览器返回上一个已访问的页面，直到访问最初访问的页面。&lt;/li&gt;
+&lt;li&gt;window.navigate(&amp;quot;url&amp;quot;);: navigate对象包含有关浏览器的信息，也可以作为页面跳转，后面直接加要跳转的地方。&lt;/li&gt;
+&lt;li&gt;top.location= &#39;url&#39;;: 当页面中有内嵌框架时，指定最顶层的窗口跳转，及包含框架的最外层浏览器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618478544386.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;2-js弹出框有哪些&#34;&gt;2. JS弹出框有哪些&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;第一种：alert()方法&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618479050149.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;第二种：confirm()方法&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618479053584.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;第三种： prompt()方法&lt;/strong&gt;&lt;br&gt;
+不但可以显示信息，而且还提供了一个文本框要求用户使用键盘输入自己的信息，同时她还包含“确认”或“取消”两个按钮，如果用户“确认”按钮，则prompt()方法返回用户在文本框中输入的内容（是字符串类型)或者初始值(如果用户没有输入信息);如果用户单击“取消”按钮，则prompt()方法返回null&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618479103065.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618479124548.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-url编码和解码的方式&#34;&gt;3. url编码和解码的方式&lt;/h2&gt;
+&lt;h3 id=&#34;1-为什么要url编码&#34;&gt;1. 为什么要URL编码？&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;在因特网上传送URL，只能采用ASCII字符集&lt;/strong&gt;&lt;br&gt;
+只有字母和数字[0-9a-zA-Z]、一些特殊符号$-_.+!*&#39;()[不包括双引号]、以及某些保留字（空格转换为+），才可以不经过编码直接用于URL&lt;/p&gt;
+&lt;p&gt;这意味着 如果URL中有汉字，就必须编码后使用。&lt;/p&gt;
+&lt;h3 id=&#34;2-js编码函数&#34;&gt;2. JS编码函数&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;encodeURI函数(推荐使用)&lt;/strong&gt;&lt;br&gt;
+这个函数才是javascript中真正用来对URL编码的函数&lt;/p&gt;
+&lt;p&gt;它着眼于对整个URL进行编码，因此除了常见的符号以外，对其他一些在网址中有特殊含义的符号&amp;quot;; / ? : @ &amp;amp; = + $ , #&amp;quot;，也不进行编码。编码后，它输出符号的utf-8形式，并且在每个字节前加上%。&lt;br&gt;
+需要注意的是，它不对单引号’编码&lt;/p&gt;
+&lt;p&gt;它对应的解码函数是decodeURI()。&lt;/p&gt;
+&lt;h3 id=&#34;3-为什么两次编码&#34;&gt;3. 为什么两次编码&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;25&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618481823390.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;4-meta常用属性&#34;&gt;4. meta常用属性&lt;/h2&gt;
+&lt;h3 id=&#34;1-charset属性&#34;&gt;1. charset属性&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- 定义网页文档的字符集 --&amp;gt;
+&amp;lt;meta charset=&amp;quot;utf-8&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-name-content属性&#34;&gt;2. name + content属性&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- 网页作者 --&amp;gt;
+&amp;lt;meta name=&amp;quot;author&amp;quot; content=&amp;quot;开源技术团队&amp;quot;/&amp;gt;
+&amp;lt;!-- 网页地址 --&amp;gt;
+&amp;lt;meta name=&amp;quot;website&amp;quot; content=&amp;quot;https://sanyuan0704.github.io/frontend_daily_question/&amp;quot;/&amp;gt;
+&amp;lt;!-- 网页版权信息 --&amp;gt;
+ &amp;lt;meta name=&amp;quot;copyright&amp;quot; content=&amp;quot;2018-2019 demo.com&amp;quot;/&amp;gt;
+&amp;lt;!-- 网页关键字, 用于SEO --&amp;gt;
+&amp;lt;meta name=&amp;quot;keywords&amp;quot; content=&amp;quot;meta,html&amp;quot;/&amp;gt;
+&amp;lt;!-- 网页描述 --&amp;gt;
+&amp;lt;meta name=&amp;quot;description&amp;quot; content=&amp;quot;网页描述&amp;quot;/&amp;gt;
+&amp;lt;!-- 搜索引擎索引方式，一般为all，不用深究 --&amp;gt;
+&amp;lt;meta name=&amp;quot;robots&amp;quot; content=&amp;quot;all&amp;quot; /&amp;gt;
+&amp;lt;!-- 移动端常用视口设置 --&amp;gt;
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no&amp;quot;/&amp;gt;
+&amp;lt;!-- 
+  viewport参数详解：
+  width：宽度（数值 / device-width）（默认为980 像素）
+  height：高度（数值 / device-height）
+  initial-scale：初始的缩放比例 （范围从&amp;gt;0 到10）
+  minimum-scale：允许用户缩放到的最小比例
+  maximum-scale：允许用户缩放到的最大比例
+  user-scalable：用户是否可以手动缩 (no,yes)
+ --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-http-equiv属性&#34;&gt;3. http-equiv属性&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- expires指定网页的过期时间。一旦网页过期，必须从服务器上下载。 --&amp;gt;
+&amp;lt;meta http-equiv=&amp;quot;expires&amp;quot; content=&amp;quot;Fri, 12 Jan 2020 18:18:18 GMT&amp;quot;/&amp;gt;
+&amp;lt;!-- 等待一定的时间刷新或跳转到其他url。下面1表示1秒 --&amp;gt;
+&amp;lt;meta http-equiv=&amp;quot;refresh&amp;quot; content=&amp;quot;1; url=https://www.baidu.com&amp;quot;/&amp;gt;
+&amp;lt;!-- 禁止浏览器从本地缓存中读取网页，即浏览器一旦离开网页在无法连接网络的情况下就无法访问到页面。 --&amp;gt;
+&amp;lt;meta http-equiv=&amp;quot;pragma&amp;quot; content=&amp;quot;no-cache&amp;quot;/&amp;gt;
+&amp;lt;!-- 也是设置cookie的一种方式，并且可以指定过期时间 --&amp;gt;
+&amp;lt;meta http-equiv=&amp;quot;set-cookie&amp;quot; content=&amp;quot;name=value expires=Fri, 12 Jan 2001 18:18:18 GMT,path=/&amp;quot;/&amp;gt;
+&amp;lt;!-- 使用浏览器版本 --&amp;gt;
+&amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;IE=edge,chrome=1&amp;quot; /&amp;gt;
+&amp;lt;!-- 针对WebApp全屏模式，隐藏状态栏/设置状态栏颜色，content的值为default | black | black-translucent --&amp;gt;
+&amp;lt;meta name=&amp;quot;apple-mobile-web-app-status-bar-style&amp;quot; content=&amp;quot;black-translucent&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5-a标签实现打电话&#34;&gt;5. a标签实现打电话&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;最常用WEB页面JS实现一键拨号的电话拨打功能：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;tel:13764567708&amp;quot;&amp;gt;移动WEB页面JS一键拨打号码咨询功能&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在拨号界面，显示号码，并提示拨打。支持大部分的浏览器，但是在QQ浏览器上支持不好。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;最常用WEB页面JS实现一键发送短信功能：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;sms:13764567708&amp;quot;&amp;gt;移动WEB页面JS一键发送短信咨询功能&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在信息录入界面，显示发送号码，并提示录入信息。&lt;/p&gt;
+&lt;p&gt;支持大部分的浏览器，但是在QQ浏览器上支持不好。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;最常用WEB页面发邮件：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;mailto:youemail@mail.com?subject=邮件标题&amp;amp;body=邮件内容&amp;quot;&amp;gt;告诉我们&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-css哪些属性可以继承&#34;&gt;6. CSS哪些属性可以继承？&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;css继承特性主要是指文本方面的继承，盒模型相关的属性基本没有继承特性&lt;/strong&gt;。&lt;br&gt;
+&lt;code&gt;不可继承的&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;display、margin、border、padding、background、height、min-height、max-height、width、min-width、max-width、overflow、position、top、bottom、left、right、z-index、float、clear、 table-layout、vertical-align、page-break-after&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;所有元素可继承的&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;visibility和cursor&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;终极块级元素可继承的&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;text-indent和text-align&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;内联元素可继承的&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;letter-spacing、word-spacing、white-space、line-height、color、font、font-family、font-size、font-style、font-variant、font-weight、text-decoration、text-transform、direction&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;列表元素可继承的&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;list-style、list-style-type、list-style-position、list-style-image&lt;/p&gt;
+&lt;h2 id=&#34;7-windowscroll方法&#34;&gt;7. window.scroll方法&lt;/h2&gt;
+&lt;h3 id=&#34;1-windowscroll到&#34;&gt;1. window.scroll（到）&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;26&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490087718.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;2windowscrollto&#34;&gt;2.window.scrollTo&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;27&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490106662.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;与scroll一样&lt;/p&gt;
+&lt;h3 id=&#34;3-windowscrollby距离&#34;&gt;3. window.scrollBy（距离）&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;28&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490176094.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;8-head头包含哪些标签&#34;&gt;8. head头包含哪些标签？&lt;/h2&gt;
+&lt;p&gt;head标签是所有头部元素的容器。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;内的元素可包含脚本，指示浏览器在何处可以找到样式表，提供元信息等。
+可添加到head部分的标签：&amp;lt;title&amp;gt;、&amp;lt;base&amp;gt;、&amp;lt;meta&amp;gt;、&amp;lt;link&amp;gt;、&amp;lt;script&amp;gt;、&amp;lt;style&amp;gt;:
+&amp;lt;title&amp;gt;：指定整个网页的标题，在浏览器最上方显示。
+&amp;lt;base&amp;gt;:为页面上的所有链接规定默认地址或默认目标(target)。
+&amp;lt;meta&amp;gt;：提供有关页面的基本信息。
+&amp;lt;link&amp;gt;：定义文档与外部资源的关系。
+&amp;lt;script&amp;gt;:定义客户端脚本，如JavaScript。
+&amp;lt;style&amp;gt;:定义内部样式表与网页的关系。
 &lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（JS上）</a>
       </div>
