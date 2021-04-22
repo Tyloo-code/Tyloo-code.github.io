@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（CSS上） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1619086187512">
+<link rel="shortcut icon" href="/favicon.ico?v=1619086602138">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -2318,6 +2318,71 @@ TypeScript 的结合变得很容易。&lt;/p&gt;
   }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;8-vue-jwt后台登录权限&#34;&gt;8. Vue - JWT后台登录权限&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618468865167.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-令牌组成&#34;&gt;1. 令牌组成&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;header.payload.signature&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;标头(Header)&lt;/li&gt;
+&lt;li&gt;有效载荷(Payload)&lt;/li&gt;
+&lt;li&gt;签名(Signature)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;因此，JWT通常如下所示：xxxx.yyyy.zzzz&lt;/p&gt;
+&lt;h2 id=&#34;2-header&#34;&gt;2. Header&lt;/h2&gt;
+&lt;p&gt;标头通常由两部分组成：令牌的类型(JWT)和所使用的签名算法，例如HMAC SHA256或RSA。它会使用 Base64 编码组成 JWT 结构的第一部分。&lt;/p&gt;
+&lt;p&gt;注意：Base64是一种编码，也就是说，它是可以被翻译回原来的样子来的。它并不是一种加密过程。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;alg&amp;quot;:&amp;quot;HS256&amp;quot;,
+    &amp;quot;typ&amp;quot;:&amp;quot;JWT&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-payload&#34;&gt;3. Payload&lt;/h2&gt;
+&lt;p&gt;令牌的第二部分是有效负载，其中包含声明。声明是有关实体（通常是用户）和其他数据的声明。同样的，它会使用 Base64编码组成JWT结构的第二部分&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;sub&amp;quot;:&amp;quot;123456789&amp;quot;,
+    &amp;quot;name&amp;quot;:&amp;quot;John Doe&amp;quot;,
+    &amp;quot;admin&amp;quot;:true
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-signature&#34;&gt;4. Signature&lt;/h2&gt;
+&lt;p&gt;前面两部分都是使用Base64进行编码的，即前端可以解开知道里面的信息。Signature 需要使用编码后的 header 和 payload 以及我们提供的一个密钥，然后使用 header 中指定的签名算法(HS256)进行签名。签名的作用是保证JWT没有被篡改过&lt;br&gt;
+如：&lt;br&gt;
+HMACSHA256(base64UrlEncode(header) + &amp;quot;.&amp;quot; + base64UrlEncode(payload) , secret);&lt;/p&gt;
+&lt;h2 id=&#34;5-签名目的&#34;&gt;5. 签名目的&lt;/h2&gt;
+&lt;p&gt;最后一步签名的过程，实际上是对头部以及负载内容进行签名，防止内容被窜改。如果有人对头部以及负载的内容解码之后进行修改，再进行编码，最后加上之前的签名组合形成新的JWT的话，那么服务器端会判断出新的头部和负载形成的签名和JWT附带上的签名是不一样的。如果要对新的头部和负载进行签名，在不知道服务器加密时用的密钥的话，得出来的签名也是不一样的。&lt;/p&gt;
+&lt;h2 id=&#34;6-信息安全问题&#34;&gt;6. 信息安全问题&lt;/h2&gt;
+&lt;p&gt;在这里大家一定会问一个问题：Base64是一种编码，是可逆的，那么我的信息不就被暴露了吗?&lt;/p&gt;
+&lt;p&gt;是的。所以，在JWT中，不应该在负载里面加入任何敏感的数据。在上面的例子中，我们传输的是用户的User ID。这个值实际上不是什么敏感内容，一般情况下被知道也是安全的。但是像密码这样的内容就不能被放在JWT中了。如果将用户的密码放在了JWT中，那么怀有恶意的第三方通过Base64解码就能很快地知道你的密码了。因此JWT适合用于向Web应用传递一些非敏感信息。JWT还经常用于设计用户认证和授权系统，甚至实现Web应用的单点登录。&lt;/p&gt;
+&lt;h2 id=&#34;7-认证流程&#34;&gt;7. 认证流程&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先，前端通过Web表单将自己的用户名和密码发送到后端的接口。这一过程一般是一个HTTP POST请求。建议的方式是通过SSL加密的传输（https协议），从而避免敏感信息被嗅探。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;后端核对用户名和密码成功后，将用户的id等其他信息作为JWT Payload(负载)，将其与头部分别进行Base64编码拼接后签名，形成一个JWT(Token)。形成的JWT就是一个形同111.zzz.xxx的字符串。token head.payload.signature&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;后端将JWT字符串作为登录成功的返回结果返回给前端。前端可以将返回的结果保存在localStorage或sessionStorage上，退出登录时前端删除保存的JWT即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;前端在每次请求时将JWT放入HTTP Header中的Authorization位。(解决XSS和XSRF问题）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;后端检查是否存在，如存在验证JWT的有效性。例如，检查签名是否正确；检查Token是否过期；检查Token的接收方是否是自己(可选)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;验证通过后后端使用JWT中包含的用户信息进行其他逻辑操作，返回相应结果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;8-jwt优势&#34;&gt;8. JWT优势&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;简洁(Compact)：可以通过URL，POST参数或者在HTTP header发送，因为数据量小，传输速度也很快&lt;/li&gt;
+&lt;li&gt;自包含(Self-contained)：负载中包含了所有用户所需要的信息，避免了多次查询数据库&lt;/li&gt;
+&lt;li&gt;因为Token是以JSON加密的形式保存在客户端的，所以JWT是跨语言的，原则上任何web形式都支持。&lt;/li&gt;
+&lt;li&gt;不需要在服务端保存会话信息，特别适用于分布式微服务。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619086600490.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;9-vue实现带进度条的文件拖动上传&#34;&gt;9. Vue实现带进度条的文件拖动上传&lt;/h1&gt;
 &lt;h2 id=&#34;1-基本界面&#34;&gt;1. 基本界面&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
@@ -2354,7 +2419,7 @@ TypeScript 的结合变得很容易。&lt;/p&gt;
 &amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615980095840.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615980095840.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;2-检测拖动事件&#34;&gt;2. 检测拖动事件&lt;/h2&gt;
 &lt;p&gt;首先让页面支持文件拖拽，在 Vue 的&lt;code&gt;mounted()&lt;/code&gt; 函数中添加代码：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;mounted: function () {
@@ -2637,7 +2702,7 @@ btn.onclick=function(){
 也就是说，&lt;strong&gt;v-model就是绑定了一个名为value的props和一个事件input&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;注意：所以在子组件中可以通过props中定义value接受值，然后通过$emit触发input事件传新值并修改。
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616570989198.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616570989198.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;1-最简单的实现方法&#34;&gt;1. 最简单的实现方法&lt;/h2&gt;
 &lt;p&gt;综合上述特性，我们可以认为我们要实现自定义组件的双向绑定，其实需要的功能其实是：&lt;/p&gt;
 &lt;ul&gt;
@@ -2925,7 +2990,7 @@ export default {
 &lt;p&gt;优点是优化了表格渲染的性能。可以和假分页真分页一起使用。可以摆脱复杂的分页实现方式，只用单页渲染不卡顿。&lt;/p&gt;
 &lt;p&gt;缺点是实现起来比较复杂。&lt;/p&gt;
 &lt;h2 id=&#34;6-总结&#34;&gt;6. 总结&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618378715611.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618378715611.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h1 id=&#34;14-前端性能监控你会监控哪些数据&#34;&gt;14. 前端性能监控你会监控哪些数据?&lt;/h1&gt;
 &lt;h2 id=&#34;1-为什么要做性能监控&#34;&gt;1. 为什么要做性能监控&lt;/h2&gt;
 &lt;p&gt;对于公司来说，性能在一定程度上与利益直接相关&lt;/p&gt;
@@ -2971,71 +3036,6 @@ export default {
 &lt;li&gt;首屏时间指可视区域内最后一张图片加载完成的时间&lt;/li&gt;
 &lt;li&gt;可操作时间指Document.onready时间&lt;/li&gt;
 &lt;li&gt;总下载时间指Document.onload时间&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;15-jwt原理及流程&#34;&gt;15. JWT原理及流程&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618468865167.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;1-令牌组成&#34;&gt;1. 令牌组成&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;header.payload.signature&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;标头(Header)&lt;/li&gt;
-&lt;li&gt;有效载荷(Payload)&lt;/li&gt;
-&lt;li&gt;签名(Signature)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;因此，JWT通常如下所示：xxxx.yyyy.zzzz&lt;/p&gt;
-&lt;h2 id=&#34;2-header&#34;&gt;2. Header&lt;/h2&gt;
-&lt;p&gt;标头通常由两部分组成：令牌的类型(JWT)和所使用的签名算法，例如HMAC SHA256或RSA。它会使用 Base64 编码组成 JWT 结构的第一部分。&lt;/p&gt;
-&lt;p&gt;注意：Base64是一种编码，也就是说，它是可以被翻译回原来的样子来的。它并不是一种加密过程。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;alg&amp;quot;:&amp;quot;HS256&amp;quot;,
-    &amp;quot;typ&amp;quot;:&amp;quot;JWT&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;3-payload&#34;&gt;3. Payload&lt;/h2&gt;
-&lt;p&gt;令牌的第二部分是有效负载，其中包含声明。声明是有关实体（通常是用户）和其他数据的声明。同样的，它会使用 Base64编码组成JWT结构的第二部分&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;sub&amp;quot;:&amp;quot;123456789&amp;quot;,
-    &amp;quot;name&amp;quot;:&amp;quot;John Doe&amp;quot;,
-    &amp;quot;admin&amp;quot;:true
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;4-signature&#34;&gt;4. Signature&lt;/h2&gt;
-&lt;p&gt;前面两部分都是使用Base64进行编码的，即前端可以解开知道里面的信息。Signature 需要使用编码后的 header 和 payload 以及我们提供的一个密钥，然后使用 header 中指定的签名算法(HS256)进行签名。签名的作用是保证JWT没有被篡改过&lt;br&gt;
-如：&lt;br&gt;
-HMACSHA256(base64UrlEncode(header) + &amp;quot;.&amp;quot; + base64UrlEncode(payload) , secret);&lt;/p&gt;
-&lt;h2 id=&#34;5-签名目的&#34;&gt;5. 签名目的&lt;/h2&gt;
-&lt;p&gt;最后一步签名的过程，实际上是对头部以及负载内容进行签名，防止内容被窜改。如果有人对头部以及负载的内容解码之后进行修改，再进行编码，最后加上之前的签名组合形成新的JWT的话，那么服务器端会判断出新的头部和负载形成的签名和JWT附带上的签名是不一样的。如果要对新的头部和负载进行签名，在不知道服务器加密时用的密钥的话，得出来的签名也是不一样的。&lt;/p&gt;
-&lt;h2 id=&#34;6-信息安全问题&#34;&gt;6. 信息安全问题&lt;/h2&gt;
-&lt;p&gt;在这里大家一定会问一个问题：Base64是一种编码，是可逆的，那么我的信息不就被暴露了吗?&lt;/p&gt;
-&lt;p&gt;是的。所以，在JWT中，不应该在负载里面加入任何敏感的数据。在上面的例子中，我们传输的是用户的User ID。这个值实际上不是什么敏感内容，一般情况下被知道也是安全的。但是像密码这样的内容就不能被放在JWT中了。如果将用户的密码放在了JWT中，那么怀有恶意的第三方通过Base64解码就能很快地知道你的密码了。因此JWT适合用于向Web应用传递一些非敏感信息。JWT还经常用于设计用户认证和授权系统，甚至实现Web应用的单点登录。&lt;/p&gt;
-&lt;h2 id=&#34;7-认证流程&#34;&gt;7. 认证流程&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;首先，前端通过Web表单将自己的用户名和密码发送到后端的接口。这一过程一般是一个HTTP POST请求。建议的方式是通过SSL加密的传输（https协议），从而避免敏感信息被嗅探。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;后端核对用户名和密码成功后，将用户的id等其他信息作为JWT Payload(负载)，将其与头部分别进行Base64编码拼接后签名，形成一个JWT(Token)。形成的JWT就是一个形同111.zzz.xxx的字符串。token head.payload.signature&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;后端将JWT字符串作为登录成功的返回结果返回给前端。前端可以将返回的结果保存在localStorage或sessionStorage上，退出登录时前端删除保存的JWT即可。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;前端在每次请求时将JWT放入HTTP Header中的Authorization位。(解决XSS和XSRF问题）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;后端检查是否存在，如存在验证JWT的有效性。例如，检查签名是否正确；检查Token是否过期；检查Token的接收方是否是自己(可选)。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;验证通过后后端使用JWT中包含的用户信息进行其他逻辑操作，返回相应结果。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;8-jwt优势&#34;&gt;8. JWT优势&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;简洁(Compact)：可以通过URL，POST参数或者在HTTP header发送，因为数据量小，传输速度也很快&lt;/li&gt;
-&lt;li&gt;自包含(Self-contained)：负载中包含了所有用户所需要的信息，避免了多次查询数据库&lt;/li&gt;
-&lt;li&gt;因为Token是以JSON加密的形式保存在客户端的，所以JWT是跨语言的，原则上任何web形式都支持。&lt;/li&gt;
-&lt;li&gt;不需要在服务端保存会话信息，特别适用于分布式微服务。&lt;/li&gt;
 &lt;/ul&gt;
 ">【面】前端知识点梳理（Vue项目）</a>
       </div>
@@ -5108,7 +5108,8 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 4、前端每次跳转路由，就判断 localStroage 中有无 token ，没有就跳转到登录页面，有则跳转到对应路由页面&lt;br&gt;
 5、每次调后端接口，都要在请求头中加token&lt;br&gt;
 6、后端判断请求头中有无token，有token，就拿到token并验证token，验证成功就返回数据，验证失败（例如：token过期）就返回401，请求头中没有token也返回401&lt;br&gt;
-7、如果前端拿到状态码为401，就清除token信息并跳转到登录页面&lt;/p&gt;
+7、如果前端拿到状态码为401，就清除token信息并跳转到登录页面&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619086516830.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;15-vue插槽v-slot&#34;&gt;15. Vue插槽（v-slot）&lt;/h1&gt;
 &lt;h2 id=&#34;1-匿名插槽&#34;&gt;1. 匿名插槽&lt;/h2&gt;
 &lt;p&gt;匿名插槽，我们也可以叫它单个插槽或者默认插槽。和具名插槽相对，它是不需要设置  name 属性的，它隐藏的name属性为default。&lt;/p&gt;
