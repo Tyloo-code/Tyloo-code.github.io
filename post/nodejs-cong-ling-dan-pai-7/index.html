@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>NodeJs从零单排(7) | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1618629794948">
+<link rel="shortcut icon" href="/favicon.ico?v=1619086187512">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -2650,6 +2650,27 @@ console.log(obj) //{name: &#39;LL&#39;, age: 100}
   return str;
 };
 console.log(&#39;hello&#39;.repeatify(3));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;28-手写实现翻转链表&#34;&gt;28. 手写实现翻转链表&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;function ReverseList(pHead)
+{
+    let prev = null;
+    let cur = pHead;
+    while(cur){
+      let next = cur.next;
+      cur.next = prev;
+      prev = cur;
+      cur = next;
+    }
+    return prev;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;29-手写实现反转数组&#34;&gt;29. 手写实现反转数组&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;for (var i=0;i&amp;lt;array.length/2;i++){
+  var temp = array[i]
+  array[i] = array[array.length-1-i]
+  array[array.length-1-i] = temp
+}
 &lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（手写题）</a>
       </div>
@@ -11091,6 +11112,24 @@ flex-flow: &lt;code&gt;&amp;lt;flex-direction&amp;gt;&lt;/code&gt; || &lt;code&g
       color: red;
  }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;43-css优先级&#34;&gt;4.3 CSS优先级&lt;/h2&gt;
+&lt;p&gt;当两个规则都作用到了同一个html元素上时，如果定义的属性有冲突，那么应该用谁的值的，CSS有一套优先级的定义。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不同级别&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在属性后面使用 !important 会覆盖页面内任何位置定义的元素样式。&lt;/li&gt;
+&lt;li&gt;作为style属性写在元素内的样式&lt;/li&gt;
+&lt;li&gt;id选择器&lt;/li&gt;
+&lt;li&gt;类选择器&lt;/li&gt;
+&lt;li&gt;标签选择器&lt;/li&gt;
+&lt;li&gt;通配符选择器&lt;/li&gt;
+&lt;li&gt;浏览器自定义或继承&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;总结排序：!important &amp;gt; 行内样式&amp;gt;ID选择器 &amp;gt; 类选择器 &amp;gt; 标签 &amp;gt; 通配符 &amp;gt; 继承 &amp;gt; 浏览器默认属性&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;同一级别&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同一级别中后写的会覆盖先写的样式&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619086185333.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;5bfc-清除浮动&#34;&gt;5.bfc 清除浮动&lt;/h1&gt;
 &lt;p&gt;BFC(Block Formatting Context) 块级格式化环境&lt;/p&gt;
 &lt;ol&gt;
