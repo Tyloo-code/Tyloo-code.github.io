@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1619086602138">
+<link rel="shortcut icon" href="/favicon.ico?v=1619158821918">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -185,7 +185,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">52</span>
+        <span class="site-item-stat-count">50</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -238,7 +238,7 @@
   <div class="archive-timeline-box">
     <div class="archive-timeline-title">
       
-        <h2 class="language" data-lan="archives" data-count="52">非常好！目前共计52篇日志，继续努力！</h2>
+        <h2 class="language" data-lan="archives" data-count="50">非常好！目前共计50篇日志，继续努力！</h2>
       
     </div>
     
@@ -366,25 +366,12 @@
     
       
       
-      <a href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-xia/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              03-08
-              <small>【面】前端知识点梳理（JS下）</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
       <a href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-shang/">
         <div class="motion-warpper tag-archive-node">
           <div class="tag-node">
             <h1>
               03-05
-              <small>【面】前端知识点梳理（JS上）</small>
+              <small>【面】前端知识点梳理（JS）</small>
             </h1>
           </div>  
       </div>
@@ -418,25 +405,12 @@
     
       
       
-      <a href="https://Tyloo-code.github.io/post/shi-shi/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              03-04
-              <small>【面】前端知识点梳理（CSS下）</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
       <a href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css-xia/">
         <div class="motion-warpper tag-archive-node">
           <div class="tag-node">
             <h1>
               03-04
-              <small>【面】前端知识点梳理（CSS上）</small>
+              <small>【面】前端知识点梳理（CSS）</small>
             </h1>
           </div>  
       </div>
@@ -579,7 +553,7 @@
           <div class="tag-node">
             <h1>
               02-03
-              <small>JavaScript数据结构与算法—实现栈结构（Stack）</small>
+              <small>JavaScript实现栈结构（Stack）</small>
             </h1>
           </div>  
       </div>
@@ -902,6 +876,32 @@
       </div>
       </a>
     
+      
+      
+      <a href="https://Tyloo-code.github.io/post/markdown-ji-ben-yu-fa/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              11-30
+              <small>Markdown基本语法</small>
+            </h1>
+          </div>  
+      </div>
+      </a>
+    
+      
+      
+      <a href="https://Tyloo-code.github.io/post/helloworld/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              11-29
+              <small>HelloWorld</small>
+            </h1>
+          </div>  
+      </div>
+      </a>
+    
   </div>
   
 <div class="page bg-color">
@@ -915,19 +915,7 @@
             </a>
         </li>
       
-        <li class="pagination-li ">
-            <a href="/archives/page/2">
-              2
-            </a>
-        </li>
-      
     
-    
-      <li class="pagination-dir">
-        <a href="/archives/page/2">
-          <i class="fa fa-angle-right"></i>
-        </a>
-      </li>
     
   </ul>
 </div>
@@ -7464,1370 +7452,6 @@ setTimeout (function(){
       </div>
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-xia/"" data-c="
-          &lt;h1 id=&#34;17-window的onload事件和domcontentloaded&#34;&gt;17. window的onload事件和domcontentloaded&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;DOMContentLoaded方法是当DOM加载完成，不包括样式表，图片，flash触发的事件&lt;/li&gt;
-&lt;li&gt;onload事件触发时，页面上所有的DOM，样式表，脚本，图片，flash都已经加载完成了，用于检测一个加载完全的页面&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;开发中我们经常需要给一些元素的事件绑定处理函数。但问题是，如果那个元素还没有加载到页面上，但是绑定事件已经执行完了，是没有效果的。这两个事件大致就是用来避免这样一种情况，将绑定的函数放在这两个事件的回调中，保证能在页面的某些元素加载完毕之后再绑定事件的函数。&lt;/p&gt;
-&lt;p&gt;当然DOMContentLoaded机制更加合理，因为我们可以容忍图片，flash延迟加载，却不可以容忍看见内容后页面不可交互。&lt;/p&gt;
-&lt;h1 id=&#34;18-forin迭代和forof有什么区别&#34;&gt;18. for...in迭代和for...of有什么区别&lt;/h1&gt;
-&lt;h2 id=&#34;1-forin&#34;&gt;1. for…in&lt;/h2&gt;
-&lt;p&gt;for…in 循环返回的值是数据的结构的&lt;strong&gt;key&lt;/strong&gt;(类比键值名)&lt;br&gt;
-&lt;code&gt;遍历对象&lt;/code&gt;返回的对象&lt;code&gt;key&lt;/code&gt;值，&lt;code&gt;遍历数组&lt;/code&gt;返回的数组的&lt;code&gt;下标&lt;/code&gt;（key）&lt;br&gt;
-for…in 不仅可以遍历数字 键名，还会遍历原型上的值和手动添加其他的键&lt;br&gt;
-for…in 循环出的是（key）&lt;br&gt;
-总结：&lt;br&gt;
-for…in 循环特别适合遍历对象&lt;/p&gt;
-&lt;h2 id=&#34;2-forof&#34;&gt;2. for…of&lt;/h2&gt;
-&lt;p&gt;for…of 是ES6新引入的特性。修复了ES5引入的for…in的不足支持set().map()&lt;br&gt;
-for…of不能循环普通的对象，需要通过和OBject.Keys()搭配使用&lt;br&gt;
-for…of不同与forEach&lt;br&gt;
-它可以与break.continue和return 配合使用&lt;br&gt;
-for…of 循环可以随时推出循环&lt;br&gt;
-for…of 循环出的是（&lt;strong&gt;value&lt;/strong&gt;）&lt;br&gt;
-总结：&lt;br&gt;
-for…of 循环特别适合&lt;code&gt;遍历数组&lt;/code&gt;&lt;/p&gt;
-&lt;h1 id=&#34;19-函数柯里化-和-高阶函数&#34;&gt;19. 函数柯里化 和 高阶函数&lt;/h1&gt;
-&lt;h2 id=&#34;1-函数柯里化&#34;&gt;1. 函数柯里化&lt;/h2&gt;
-&lt;p&gt;柯里化，是函数式编程的一个重要概念。它既能减少代码冗余，也能增加可读性。&lt;br&gt;
-&lt;strong&gt;定义&lt;/strong&gt;：在数学和计算机科学中，柯里化是一种将使用&lt;strong&gt;多个参数&lt;/strong&gt;的一个函数转换成一系列使用&lt;strong&gt;一个参数&lt;/strong&gt;的函数的技术。&lt;br&gt;
-&lt;code&gt;简单版：&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function add(a) {
-  function sum(b) { // 使用闭包
-      a = a + b; // 累加
-      return sum;
-   }
-   sum.toString = function() { // 重写toString()方法
-      return a;
-  }
-   return sum; // 返回一个函数
-}
-
-add(1); // 1
-add(1)(2);  // 3
-add(1)(2)(3) // 6
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;完整版：&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function add() {
-  // 第一次执行时，定义一个数组专门用来存储所有的参数
-  var _args = [].slice.call(arguments);
-
-  // 在内部声明一个函数，利用闭包的特性保存_args并收集所有的参数值
-  var adder = function () {
-      var _adder = function() {
-          _args.push(...arguments);
-          return _adder;
-      };
-
-      // 利用隐式转换的特性，当最后执行时隐式转换，并计算最终的值返回
-      _adder.toString = function () {
-          return _args.reduce(function (a, b) {
-              return a + b;
-          });
-      }
-
-      return _adder;
-  }
-  return adder(..._args);
-}
-
-var a = add(1)(2)(3)(4);   // f 10
-var b = add(1, 2, 3, 4);   // f 10
-var c = add(1, 2)(3, 4);   // f 10
-var d = add(1, 2, 3)(4);   // f 10
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;函数的柯里化，是 Javascript 中函数式编程的一个重要概念。&lt;code&gt;它返回的，是一个函数的函数&lt;/code&gt;。其实现方式，需要依赖&lt;code&gt;参数以及递归&lt;/code&gt;，通过&lt;code&gt;拆分参数&lt;/code&gt;的方式，来调用一个多参数的函数方法，以达到减少代码冗余，增加可读性的目的。&lt;/p&gt;
-&lt;h2 id=&#34;2-高阶函数&#34;&gt;2. 高阶函数&lt;/h2&gt;
-&lt;h3 id=&#34;1-arrayprototypemap&#34;&gt;1. Array.prototype.map&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;map()&lt;/code&gt;(映射)方法最后生成一个新数组，不改变原始数组的值。其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;array.map(callback,[ thisObject]);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;callback(回调函数)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[].map(function(currentValue, index, array) {
-    // ...
-});
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;传递给&lt;code&gt;map&lt;/code&gt;的回调函数（&lt;code&gt;callback&lt;/code&gt;）接受三个参数，分别是&lt;code&gt;currentValue&lt;/code&gt;——正在遍历的元素；&lt;code&gt;index&lt;/code&gt;（可选）——元素索引；&lt;code&gt;array&lt;/code&gt;（可选）——原数组本身，除了 callback 之外还可以接受 this 值（可选），用于执行 callback 函数时使用的this 值。&lt;/p&gt;
-&lt;p&gt;来个简单的例子方便理解，现在有一个数组[1,2,3,4]，我们想要生成一个新数组，其每个元素皆是之前数组的两倍&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;const arr1 = [1, 2, 3, 4];
-const arr2 = arr1.map(item =&amp;gt; item * 2);
-
-console.log( arr2 );
-// [2, 4, 6, 8]
-console.log( arr1 );
-// [1, 2, 3, 4]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;map高阶函数注意点&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;callback需要有return值，否则会出现所有项映射为undefind；&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[&amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;].map(parseInt);
-//输出结果为  [1,NaN,NaN]
-
-[&amp;quot;1&amp;quot;,&amp;quot;2&amp;quot;,&amp;quot;3&amp;quot;].map(x=&amp;gt;parseInt(x));
-//输出结果为  [1,2,3]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;2-arrayprototypereduce&#34;&gt;2. Array.prototype.reduce&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;reduce()&lt;/code&gt;方法对数组中的每个元素执行一个提供的 reducer 函数(升序执行)，将其结果汇总为单个返回值。传递给 reduce 的回调函数（callback）接受四个参数，分别是累加器 &lt;code&gt;accumulator&lt;/code&gt;；&lt;code&gt;currentValue&lt;/code&gt;——正在操作的元素；&lt;code&gt;currentIndex&lt;/code&gt;（可选）——元素索引，但是它的开始会有特殊说明；&lt;code&gt;array&lt;/code&gt;（可选）——原始数组本身，除了 callback 之外还可以接受初始值 initialValue 值（可选）。&lt;/p&gt;
-&lt;p&gt;例子，现在有一个数组 [0, 1, 2, 3, 4]，需要计算数组元素的和，需求比较简单，来看下代码实现。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;const arr = [0, 1, 2, 3, 4];
-let sum = arr.reduce((accumulator, currentValue, currentIndex, array) =&amp;gt; {
-  return accumulator + currentValue;
-});
-
-console.log( sum );
-// 10
-console.log( arr );
-// [0, 1, 2, 3, 4]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615256323803.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;3-arrayprototypefilter&#34;&gt;3. Array.prototype.filter&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;filter&lt;/code&gt;(过滤，筛选) 方法创建一个新数组,原始数组不发生改变。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;array.filter(callback,[ thisObject]);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;接收的参数和 map 是一样的，filter的&lt;code&gt;callback&lt;/code&gt;函数需要返回布尔值true或false. 如果为true则表示通过啦！如果为false则失败，其返回值是一个新数组，由通过测试为true的所有元素组成，如果没有任何数组元素通过测试，则返回空数组。&lt;/p&gt;
-&lt;p&gt;来个例子介绍下，现在有一个数组 [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4]，我们想要生成一个新数组，这个数组要求没有重复的内容，即为去重。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;const arr1 = [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4];
-const arr2 = arr1.filter( (element, index, self) =&amp;gt; {
-    return self.indexOf( element ) === index;
-});
-
-console.log( arr2 );
-// [1, 2, 3, 5, 4]
-console.log( arr1 );
-// [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;20-call-与-apply区别原生实现bind&#34;&gt;20.  call 与 apply区别，原生实现bind&lt;/h1&gt;
-&lt;h2 id=&#34;1-call-和-apply-的共同点&#34;&gt;1. call 和 apply 的共同点&lt;/h2&gt;
-&lt;p&gt;它们的共同点是，都能够&lt;strong&gt;改变函数执行时的上下文&lt;/strong&gt;，将一个对象的方法交给另一个对象来执行，并且是立即执行的。&lt;/p&gt;
-&lt;p&gt;为何要改变执行上下文？举一个生活中的小例子：平时没时间做饭的我，周末想给孩子炖个腌笃鲜尝尝。但是没有适合的锅，而我又不想出去买。所以就问邻居借了一个锅来用，这样既达到了目的，又节省了开支，一举两得。&lt;/p&gt;
-&lt;p&gt;改变执行上下文也是一样的，A 对象有一个方法，而 B 对象因为某种原因，也需要用到同样的方法，那么这时候我们是单独为 B 对象扩展一个方法呢，还是借用一下 A 对象的方法呢？当然是借用 A 对象的啦，既完成了需求，又减少了内存的占用。&lt;/p&gt;
-&lt;p&gt;另外，它们的写法也很类似，&lt;strong&gt;调用 call 和 apply 的对象，必须是一个函数 Function&lt;/strong&gt;。接下来，就会说到具体的写法，那也是它们区别的主要体现。&lt;/p&gt;
-&lt;h2 id=&#34;2-call-和-apply-的区别&#34;&gt;2. call 和 apply 的区别&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;call 的写法&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Function.call(obj,[param1[,param2[,…[,paramN]]]])
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;调用 call 的对象，必须是个函数 Function。&lt;/li&gt;
-&lt;li&gt;call 的第一个参数，是一个对象。 Function 的调用者，将会指向这个对象。如果不传，则默认为全局对象 window。&lt;/li&gt;
-&lt;li&gt;第二个参数开始，可以接收任意个参数。每个参数会映射到相应位置的 Function 的参数上。但是如果将所有的参数作为数组传入，它们会作为一个整体映射到 Function 对应的第一个参数上，之后参数都为空。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;function func (a,b,c) {}
-
-func.call(obj, 1,2,3)
-// func 接收到的参数实际上是 1,2,3
-
-func.call(obj, [1,2,3])
-// func 接收到的参数实际上是 [1,2,3],undefined,undefined
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;apply 的写法&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Function.apply(obj[,argArray])
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;它的调用者必须是函数 Function，并且只接收两个参数，第一个参数的规则与 call 一致。&lt;/li&gt;
-&lt;li&gt;第二个参数，必须是数组或者类数组，它们会被转换成类数组，传入 Function 中，并且会被映射到 Function 对应的参数上。这也是 call 和 apply 之间，很重要的一个区别。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;func.apply(obj, [1,2,3])
-// func 接收到的参数实际上是 1,2,3
-
-func.apply(obj, {
-    0: 1,
-    1: 2,
-    2: 3,
-    length: 3
-})
-// func 接收到的参数实际上是 1,2,3
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;类数组无法使用 forEach、splice、push 等数组原型链上的方法&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;3-call-和-apply-的用途&#34;&gt;3 call 和 apply 的用途&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;call 的使用场景&lt;/code&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;对象的继承&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;function superClass () {
-    this.a = 1;
-    this.print = function () {
-        console.log(this.a);
-    }
-}
-
-function subClass () {
-    superClass.call(this);
-    this.print();
-}
-
-subClass();
-// 1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;subClass 通过 call 方法，继承了 superClass 的 print 方法和 a 变量。此外，subClass 还可以扩展自己的其他方法。&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;&lt;strong&gt;借用方法&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;let domNodes = Array.prototype.slice.call(document.getElementsByTagName(&amp;quot;*&amp;quot;));
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;apply 的一些妙用&lt;/code&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Math.max&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;let max = Math.max.apply(null, array);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;同理，要获取数组中最小的一项，可以这样：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let min = Math.min.apply(null, array);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;&lt;strong&gt;实现两个数组合并&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;let arr1 = [1, 2, 3];
-let arr2 = [4, 5, 6];
-
-Array.prototype.push.apply(arr1, arr2);
-console.log(arr1); // [1, 2, 3, 4, 5, 6]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;4-bind-的使用&#34;&gt;4. bind 的使用&lt;/h2&gt;
-&lt;p&gt;bind() 方法创建一个新的函数，在调用时设置 this 关键字为提供的值。并在调用新函数时，将给定参数列表作为原函数的参数序列的前若干项。&lt;/p&gt;
-&lt;p&gt;它的语法如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Function.bind(thisArg[, arg1[, arg2[, ...]]])
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;bind 方法 与 apply 和 call 比较类似，也能改变函数体内的 this 指向。不同的是，&lt;code&gt;bind 方法的返回值是函数，并且需要稍后调用，才会执行&lt;/code&gt;。而 apply 和 call 则是&lt;code&gt;立即调用&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;来看下面这个例子：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function add (a, b) {
-    return a + b;
-}
-
-function sub (a, b) {
-    return a - b;
-}
-
-add.bind(sub, 5, 3); // 这时，并不会返回 8
-add.bind(sub, 5, 3)(); // 调用后，返回 8
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果 bind 的第一个参数是 null 或者 undefined，this 就指向全局对象 window。&lt;/p&gt;
-&lt;h2 id=&#34;5-总结&#34;&gt;5. 总结&lt;/h2&gt;
-&lt;p&gt;call 和 apply 的主要作用，是改变对象的执行上下文，并且是立即执行的。它们在参数上的写法略有区别。&lt;/p&gt;
-&lt;p&gt;bind 也能改变对象的执行上下文，它与 call 和 apply 不同的是，返回值是一个函数，并且需要稍后再调用一下，才会执行。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;原生实现bind函数&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 原生js实现bind函数
-// 所有的函数都要有bind方法，所以要定义在Function的原型对象上
-Function.prototype.myBind = function(objThis,...params){
-    // objThis是要绑定的this对象，...params是因为参数数量不确定才用解构语法
-    const thisFn = this;//当前调用的函数，例如fn.myBind()就把fn保存到thisFn
-    let funcForBind = function(...secondParams){ // 要返回的函数
-        // 判断函数是否是用new function生成的
-        const isNew = this instanceof funcForBind
-        const thisArg = isNew?this:objThis //this的指向
-        // 绑定好this和参数返回到外层，暂时用call绑定，call也可以原生实现
-        return thisFn.call(thisArg,...params,...secondParams)
-    }
-    // 绑定原型
-    funcForBind.prototype = Object.create(thisFn)
-    return funcForBind //返回绑定好的函数
-} 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;21-立即执行函数和使用场景与闭包结合&#34;&gt;21. 立即执行函数和使用场景（与闭包结合）&lt;/h1&gt;
-&lt;h2 id=&#34;1-什么是立即执行函数&#34;&gt;1. 什么是立即执行函数？&lt;/h2&gt;
-&lt;p&gt;声明一个函数，并马上调用这个匿名函数就叫做立即执行函数；也可以说立即执行函数是一种语法，让你的函数在定义以后立即执行；&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615271995138.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;2-立即执行函数的写法&#34;&gt;2. 立即执行函数的写法：&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;(function(){
-//code
-}())
-
-(function (){
-//code
-})()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;上边的两种写法，都是以圆括号开头，引擎会意味后面跟的是表达式，而不是一个函数定义语句，所以就避免了错误，这就叫做&amp;quot;立即调用的函数表达式&amp;quot;。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;(function () {alert(&amp;quot;我是匿名函数&amp;quot;)}())   //用括号把整个表达式包起来
-(function () {alert(&amp;quot;我是匿名函数&amp;quot;)})()  //用括号把函数包起来
-!function () {alert(&amp;quot;我是匿名函数&amp;quot;)}()  //求反，我们不在意值是多少，只想通过语法检查
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;3-立即执行函数的作用&#34;&gt;3. 立即执行函数的作用：&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;不必为函数命名，避免了污染全局变量&lt;/li&gt;
-&lt;li&gt;立即执行函数内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量&lt;/li&gt;
-&lt;li&gt;封装变量&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;总而言之：&lt;strong&gt;立即执行函数会形成一个单独的作用域，我们可以封装一些临时变量或者局部变量，避免污染全局变量&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;4-使用场景&#34;&gt;4. 使用场景&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;怎样使以下alert的结果为0,1,2：&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt; &amp;lt;ul id=&amp;quot;list&amp;quot;&amp;gt;
-        &amp;lt;li&amp;gt;公司简介&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;联系我们&amp;lt;/li&amp;gt;
-        &amp;lt;li&amp;gt;营销网络&amp;lt;/li&amp;gt;
-    &amp;lt;/ul&amp;gt;
-    &amp;lt;script&amp;gt;
-       var list = document.getElementById(&amp;quot;list&amp;quot;);
-      var li = list.children;
-      for(var i = 0 ;i&amp;lt;li.length;i++){
-       ( function(j){
-            li[j].onclick = function(){
-              alert(j);
-          })(i); //把实参i赋值给形参j
-        }
-      }
-     &amp;lt;/script&amp;gt;  
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;结合闭包&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;for (var i = 1; i &amp;lt;= 5; i++) {
-  (function(j) {
-    setTimeout(function timer() {
-      console.log(j);
-    }, j * 1000);
-  })(i);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;如何避免了污染全局变量&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;某些代码只需要执行一次，比如只需要显示一个时间，但是这些代码也需要一些临时的变量，但是初始化过程结束之后，就再也不会被用到，如果将这些变量作为全局变量，不是一个好的主意，我们可以用立即执行函数——去将我们所有的代码包裹在它的局部作用域中，不会让任何变量泄露成全局变量，看如下代码：&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273235393.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-比如上面的代码，如果没有被包裹在立即执行函数中，而是直接以非函数的形式直接写在&amp;lt;script&amp;gt;&lt;/script&gt;标签里面，虽然也会立即执行，但是临时变量todaydom,days,today,year,month,date,day,msg都将成为全局变量（初始化代码遗留的产物）。&lt;br&gt;
-而用立即执行函数之后，这些变量都不会在全局变量中存在，以后也不会其他地方使用，有效的避免了污染全局变量。&lt;/p&gt;
-&lt;h1 id=&#34;22-设计模式要求说出如何实现应用优缺点单例模式实现&#34;&gt;22. 设计模式(要求说出如何实现,应用,优缺点)/单例模式实现&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273736555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;1-创建型模式&#34;&gt;1. 创建型模式&lt;/h2&gt;
-&lt;h3 id=&#34;1-工厂模式&#34;&gt;1. 工厂模式&lt;/h3&gt;
-&lt;p&gt;工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象，用工厂方法代替new操作的一种模式。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Animal(opts){
-    var obj = new Object();
-    obj.color = opts.color;
-    obj.name= opts.name;
-    obj.getInfo = function(){
-        return &#39;名称：&#39;+ onj.name+&#39;， 颜色：&#39;+ obj.color;
-    }
-    return obj;
-}
-var cat = Animal({name: &#39;波斯猫&#39;, color: &#39;白色&#39;});
-cat.getInfo();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;小结:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;构造函数和创建者分离，对new操作进行封装&lt;/li&gt;
-&lt;li&gt;符合开放封闭原则&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;2-单例模式&#34;&gt;2. 单例模式&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274155679.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-单例模式，是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中，应用该模式的一个类只有一个实例。即一个类只有一个对象实例。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var Single = (function(){
-    var instance;
-    function init() {
-        // 定义私有方法和属性
-        // 操作逻辑
-        return {
-           // 定义公共方法和属性
-        };
-    }
-    return {
-        // 获取实例
-        getInstance:function(){
-            if(!instance){
-                instance = init();
-            }
-            return instance;
-        }
-    }
-})();
-
-var obj1 = Single.getInstance();
-var obj2 = Single.getInstance();
-console.log(obj1 === obj2);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;小结:&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;单例模式的主要思想就是，实例如果已经创建，则直接返回&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;function creatSingleton() {
-    var obj = null
-    // 实例如已经创建过，直接返回
-    if (!obj) {
-        obj = xxx
-    }
-    return obj
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;符合开放封闭原则&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;3-原型模式&#34;&gt;3. 原型模式&lt;/h3&gt;
-&lt;p&gt;用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。&lt;/p&gt;
-&lt;p&gt;在JavaScript中，实现原型模式是在ECMAScript5中，提出的Object.create方法，使用现有的对象来提供新创建的对象的__proto__。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var prototype = {
-    name: &#39;Jack&#39;,
-    getName: function() {
-        return this.name
-    }
-}
-
-var obj = Object.create(prototype, {
-    job: {
-        value: &#39;IT&#39;
-    }
-})
-
-console.log(obj.getName())  // Jack
-console.log(obj.job)  // IT
-console.log(obj.__proto__ === prototype)  //true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;2-结构型模式&#34;&gt;2. 结构型模式&lt;/h2&gt;
-&lt;h3 id=&#34;1-适配器模式&#34;&gt;1. 适配器模式&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274391311.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;pre&gt;&lt;code&gt;class GooleMap {
-    show() {
-        console.log(&#39;渲染谷歌地图&#39;)
-    }
-}
-
-class BaiduMap {
-    display() {
-        console.log(&#39;渲染百度地图&#39;)
-    }
-}
-
-
-// 定义适配器类, 对BaiduMap类进行封装
-class BaiduMapAdapter {
-    show() {
-        var baiduMap = new BaiduMap()
-        return baiduMap.display() 
-    }
-}
-
-function render(map) {
-    if (map.show instanceof Function) {
-        map.show()
-    }
-}
-
-render(new GooleMap())         // 渲染谷歌地图
-render(new BaiduMapAdapter())  // 渲染百度地图
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;小结:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;适配器模式主要解决两个接口之间不匹配的问题，不会改变原有的接口，而是由一个对象对另一个对象的包装。&lt;/li&gt;
-&lt;li&gt;适配器模式符合开放封闭原则&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;3-行为型模式&#34;&gt;3. 行为型模式&lt;/h2&gt;
-&lt;h3 id=&#34;1-观察者模式订阅-发布模式&#34;&gt;1. 观察者模式(订阅-发布模式)&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274507790.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-&lt;strong&gt;发布者发出通知 =&amp;gt;主题对象收到通知并推送给订阅者 =&amp;gt; 订阅者执行相应的操作。&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; // 一个发布者 publisher，功能就是负责发布消息 - publish
-        var pub = {
-            publish: function () {
-                dep.notify();
-            }
-        }
-        // 多个订阅者 subscribers， 在发布者发布消息之后执行函数
-        var sub1 = { 
-            update: function () {
-                console.log(1);
-            }
-        }
-        var sub2 = { 
-            update: function () {
-                console.log(2);
-            }
-        }
-        var sub3 = { 
-            update: function () {
-                console.log(3);
-            }
-        }
-        // 一个主题对象
-        function Dep() {
-            this.subs = [sub1, sub2, sub3];
-        }
-        Dep.prototype.notify = function () {
-            this.subs.forEach(function (sub) {
-                sub.update();
-            });
-        }
-
-        // 发布者发布消息， 主题对象执行notify方法，进而触发订阅者执行Update方法
-        var dep = new Dep();
-        pub.publish();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;23-iframe的缺点有哪些&#34;&gt;23. iframe的缺点有哪些&lt;/h1&gt;
-&lt;h2 id=&#34;1-iframe的优点&#34;&gt;1. iframe的优点：&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;iframe能够原封不动的把嵌入的网页展现出来。&lt;/li&gt;
-&lt;li&gt;如果有多个网页引用iframe，那么你只需要修改iframe的内容，就可以实现调用的每一个页面内容的更改，方便快捷。&lt;/li&gt;
-&lt;li&gt;网页如果为了统一风格，头部和版本都是一样的，就可以写成一个页面，用iframe来嵌套，可以增加代码的可重用。&lt;/li&gt;
-&lt;li&gt;如果遇到加载缓慢的第三方内容如图标和广告，这些问题可以由iframe来解决。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;2-iframe的缺点&#34;&gt;2. iframe的缺点：&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;会产生很多页面，&lt;code&gt;不容易管理&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;iframe框架结构有时会让人感到迷惑，如果框架个数多的话，可能会出现上下、左右滚动条，会分散访问者的注意力，&lt;code&gt;用户体验度差&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;代码复杂，无法被一些搜索引擎索引到，这一点很关键，现在的搜索引擎爬虫还不能很好的处理iframe中的内容，所以使用iframe会&lt;code&gt;不利于搜索引擎优化&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;很多的移动设备（PDA手机）无法完全显示框架，&lt;code&gt;设备兼容性差&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;iframe框架页面会&lt;code&gt;增加服务器的http请求&lt;/code&gt;，对于大型网站是不可取的。&lt;br&gt;
-分析了这么多，现在基本上都是用&lt;code&gt;Ajax来代替iframe&lt;/code&gt;，所以iframe已经渐渐的退出了前端开发。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;24-数组问题&#34;&gt;24. 数组问题&lt;/h1&gt;
-&lt;h2 id=&#34;1-数组去重&#34;&gt;1. 数组去重&lt;/h2&gt;
-&lt;h3 id=&#34;1-利用es6-set去重es6中最常用&#34;&gt;1. 利用ES6 Set去重（ES6中最常用）&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;function unique (arr) {
-  return Array.from(new Set(arr))
-}
-var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
-console.log(unique(arr))
- //[1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {}, {}]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;不考虑兼容性，这种去重的方法代码最少。这种方法还无法去掉“{}”空对象，后面的高阶方法会添加去掉重复“{}”的方法。&lt;/p&gt;
-&lt;h3 id=&#34;2-利用for嵌套for然后splice去重es5中最常用&#34;&gt;2. 利用for嵌套for，然后splice去重（ES5中最常用）&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;function unique(arr){            
-  for(var i=0; i&amp;lt;arr.length; i++){
-      for(var j=i+1; j&amp;lt;arr.length; j++){
-          if(arr[i]===arr[j]){         //第一个等同于第二个，splice方法删除第二个
-              arr.splice(j,1);
-              j--;
-          }
-      }
-  }
-return arr;
-}
-var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
-console.log(unique(arr))
-//  [1, &#39;true&#39;,true, 15,false,undefined,null, NaN,NaN, &#39;NaN&#39;,0, &#39;a&#39;,{}, {}]  //NaN和{}没有去重
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;双层循环，外层循环元素，内层循环时比较值。值相同时，则删去这个值。&lt;/p&gt;
-&lt;h3 id=&#34;3-利用indexof去重&#34;&gt;3. 利用indexOf去重&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;function unique(arr) {
-  if (!Array.isArray(arr)) {
-      console.log(&#39;type error!&#39;)
-      return
-  }
-  var array = [];
-  for (var i = 0; i &amp;lt; arr.length; i++) {
-      if (array .indexOf(arr[i]) === -1) {
-          array .push(arr[i])
-      }
-  }
-  return array;
-}
-var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
-console.log(unique(arr))
- // [1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, NaN, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, {…}]  //NaN、{}没有去重
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;新建一个空的结果数组，for 循环原数组，判断结果数组是否存在当前元素，如果有相同的值则跳过，不相同则push进数组。&lt;/p&gt;
-&lt;h3 id=&#34;4-利用sort&#34;&gt;4. 利用sort()&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;function unique(arr) {
-  if (!Array.isArray(arr)) {
-      console.log(&#39;type error!&#39;)
-      return;
-  }
-  arr = arr.sort()
-  var arrry= [arr[0]];
-  for (var i = 1; i &amp;lt; arr.length; i++) {
-      if (arr[i] !== arr[i-1]) {
-          arrry.push(arr[i]);
-      }
-  }
-  return arrry;
-}
-   var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
-      console.log(unique(arr))
-// [0, 1, 15, &amp;quot;NaN&amp;quot;, NaN, NaN, {…}, {…}, &amp;quot;a&amp;quot;, false, null, true, &amp;quot;true&amp;quot;, undefined]      //NaN、{}没有去重
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;利用sort()排序方法，然后根据排序后的结果进行遍历及相邻元素比对。&lt;/p&gt;
-&lt;h3 id=&#34;5-利用includes&#34;&gt;5. 利用includes&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;function unique(arr) {
-    if (!Array.isArray(arr)) {
-        console.log(&#39;type error!&#39;)
-        return
-    }
-    var array =[];
-    for(var i = 0; i &amp;lt; arr.length; i++) {
-            if( !array.includes( arr[i]) ) {//includes 检测数组是否有某个值
-                    array.push(arr[i]);
-              }
-    }
-    return array
-}
-var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
-    console.log(unique(arr))
-    //[1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, {…}]     //{}没有去重
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;6-利用filter&#34;&gt;6. 利用filter&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;function unique(arr) {
-  return arr.filter(function(item, index, arr) {
-    //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
-    return arr.indexOf(item, 0) === index;
-  });
-}
-    var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
-        console.log(unique(arr))
-//[1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, {…}]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;7-利用map数据结构去重&#34;&gt;7. 利用Map数据结构去重&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;function arrayNonRepeatfy(arr) {
-  let map = new Map();
-  let array = new Array();  // 数组用于返回结果
-  for (let i = 0; i &amp;lt; arr.length; i++) {
-    if(map.has(arr[i])) {  // 如果有该key值
-      map.set(arr[i], true); 
-    } else { 
-      map.set(arr[i], false);   // 如果没有该key值
-      array.push(arr[i]);
-    }
-  } 
-  return array ;
-}
- var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
-    console.log(arrayNonRepeatfy(arr))
-//[1, &amp;quot;a&amp;quot;, &amp;quot;true&amp;quot;, true, 15, false, 1, {…}, null, NaN, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, undefined]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;2-数组常用方法&#34;&gt;2. 数组常用方法&lt;/h2&gt;
-&lt;h3 id=&#34;1-arraymap&#34;&gt;1. Array.map()&lt;/h3&gt;
-&lt;p&gt;此方法是将数组中的每个元素调用一个提供的函数，结果作为一个新的数组返回，并&lt;code&gt;没有改变原来的数组&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
-    let newArr = arr.map(x =&amp;gt; x*2)
-    //arr= [1, 2, 3, 4, 5]   原数组保持不变
-    //newArr = [2, 4, 6, 8, 10] 返回新数组
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;2-arrayforeach&#34;&gt;2. Array.forEach()&lt;/h3&gt;
-&lt;p&gt;此方法是将数组中的每个元素执行传进提供的函数，没有返回值，&lt;code&gt;改变原数组&lt;/code&gt;，注意和map方法区分&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
-   num.forEach(x =&amp;gt; x*2)
-   // arr = [1, 2, 3, 4, 5]  数组改变,注意和map区分
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;3-arrayfilter&#34;&gt;3. Array.filter()&lt;/h3&gt;
-&lt;p&gt;此方法是将所有元素进行判断，将满足条件的元素作为一个新的数组返回&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
-    const isBigEnough = value =&amp;gt; value &amp;gt;= 3
-    let newArr = arr.filter(isBigEnough )
-    //newNum = [3, 4, 5] 满足条件的元素返回为一个新的数组
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;4-arrayevery&#34;&gt;4. Array.every()&lt;/h3&gt;
-&lt;p&gt;此方法是将所有元素进行判断返回一个布尔值，如果&lt;code&gt;所有元素&lt;/code&gt;都满足判断条件，则返回true，否则为false：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
-    const isLessThan4 = value =&amp;gt; value &amp;lt; 4
-    const isLessThan6 =&amp;gt; value =&amp;gt; value &amp;lt; 6
-    arr.every(isLessThan4 ) //false
-    arr.every(isLessThan6 ) //true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;5-arraysome&#34;&gt;5. Array.some()&lt;/h3&gt;
-&lt;p&gt;此方法是将所有元素进行判断返回一个布尔值，如果&lt;code&gt;存在&lt;/code&gt;元素都满足判断条件，则返回true，若所有元素都不满足判断条件，则返回false：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr= [1, 2, 3, 4, 5]
-    const isLessThan4 = value =&amp;gt; value &amp;lt; 4
-    const isLessThan6 = value =&amp;gt; value &amp;gt; 6
-    arr.some(isLessThan4 ) //true
-    arr.some(isLessThan6 ) //false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;6-arrayreduce&#34;&gt;6. Array.reduce()&lt;/h3&gt;
-&lt;p&gt;此方法是所有元素调用返回函数，返回值为最后结果,传入的值必须是函数类型：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
-   const add = (a, b) =&amp;gt; a + b
-   let sum = arr.reduce(add)
-   //sum = 15  相当于累加的效果
-   与之相对应的还有一个 Array.reduceRight() 方法，区别是这个是从右向左操作的
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;7-arraypush&#34;&gt;7. Array.push()&lt;/h3&gt;
-&lt;p&gt;此方法是在数组的后面添加新加元素，此方法改变了数组的长度：&lt;/p&gt;
-&lt;h3 id=&#34;8-arraypop&#34;&gt;8. Array.pop()&lt;/h3&gt;
-&lt;p&gt;此方法在数组后面删除&lt;code&gt;最后一个元素&lt;/code&gt;，并返回数组，此方法改变了数组的长度：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
-    arr.pop()
-    console.log(arr) //[1, 2, 3, 4]
-    console.log(arr.length) //4
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;9-arrayshift&#34;&gt;9. Array.shift()&lt;/h3&gt;
-&lt;p&gt;此方法在数组后面删除&lt;code&gt;第一个元素&lt;/code&gt;，并返回数组，此方法改变了数组的长度：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
-    arr.shift()
-    console.log(arr) //[2, 3, 4, 5]
-    console.log(arr.length) //4 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;10-arrayunshift&#34;&gt;10. Array.unshift()&lt;/h3&gt;
-&lt;p&gt;此方法是将一个或多个元素添加到数组的开头，并返回新数组的长度：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
-    arr.unshift(6, 7)
-    console.log(arr) //[6, 7, 1, 2, 3, 4, 5]
-    console.log(arr.length) //7 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;11-arrayisarray&#34;&gt;11. Array.isArray()&lt;/h3&gt;
-&lt;p&gt;判断一个对象是不是数组，返回的是布尔值&lt;/p&gt;
-&lt;h3 id=&#34;12-arrayconcat&#34;&gt;12. Array.concat()&lt;/h3&gt;
-&lt;p&gt;此方法是一个可以将多个数组拼接成一个数组：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr1 = [1, 2, 3]
-      arr2 = [4, 5]
-  let arr = arr1.concat(arr2)
-  console.log(arr)//[1, 2, 3, 4, 5]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;13-arraytostring&#34;&gt;13. Array.toString()&lt;/h3&gt;
-&lt;p&gt;此方法将数组转化为字符串：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5];
-   let str = arr.toString()
-   console.log(str)// 1,2,3,4,5
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;14-arrayjoin&#34;&gt;14. Array.join()&lt;/h3&gt;
-&lt;p&gt;此方法也是将数组转化为字符串：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5];
-  let str1 = arr.join()
-  let str2 = arr.join(&#39;,&#39;)
-  let str3 = arr.join(&#39;##&#39;)
-  console.log(str1)// 1,2,3,4,5
-  console.log(str2)// 1,2,3,4,5
-  console.log(str3)// 1##2##3##4##5
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;可以设置元素之间的间隔&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;15-arraysplice开始位置-删除的个数元素&#34;&gt;15. Array.splice(开始位置， 删除的个数，元素)&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;万能方法，可以实现增删改：&lt;/strong&gt;&lt;code&gt;0增，3删，1改&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5];
-     let arr1 = arr.splice(2, 0 &#39;haha&#39;)
-     let arr2 = arr.splice(2, 3)
-     let arr1 = arr.splice(2, 1 &#39;haha&#39;)
-     console.log(arr1) //[1, 2, &#39;haha&#39;, 3, 4, 5]新增一个元素
-     console.log(arr2) //[1, 2] 删除三个元素
-     console.log(arr3) //[1, 2, &#39;haha&#39;, 4, 5] 替换一个元素
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;3-查找数组重复项&#34;&gt;3. 查找数组重复项&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;let arr= [1,2,3,4,5,1,2];
-let rep = [];
-arr.forEach((item,index)=&amp;gt;{
-	if(arr.indexOf(item)!=index){ // 匹配数组元素第一个item位置和当前循环的index
-        let obj = {};
-        obj.key = (arr.indexOf(item) + 1) + &#39;|&#39; + (index + 1); // 用&#39;|&#39;分隔两个重复项的下标   
-		obj.value = item;
-        rep.push(obj);
-	}
-});
-console.log(rep)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;4-扁平化数组flatten&#34;&gt;4. 扁平化数组（flatten）&lt;/h2&gt;
-&lt;p&gt;扁平化就是将嵌套的数组变成一维数组的过程。&lt;/p&gt;
-&lt;p&gt;通常有几种方法可以实现扁平化：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;迭代递归法&lt;/li&gt;
-&lt;li&gt;曲线救国法&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;1-迭代递归&#34;&gt;1. 迭代递归&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;var array = [[1,2,3],4,5,6,[[7]],[]]
-var result = flatten(array)
-
-console.log(result)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;for...of 实现&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function flatten(arr, result = []) {
-    for (let item of arr) {
-        if (Array.isArray(item))
-            flatten(item, result)
-        else
-            result.push(item)
-    }
-    return result
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我们使用 result 变量存储结果，然后迭代当前数组，如果值也是数组则继续扁平化，否则将值放入 result 里。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;生成器实现&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;迭代器的升级版就是生成器（Generator），其实这种扁平化最适合用生成器来做了，因为我们的目的就是生成一个个的值，然后把它们组织成一维数组：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function* flat(arr) {
-    for (let item of arr) {
-        if (Array.isArray(item))
-            yield* flat(item)
-        else
-            yield item
-    }
-}
-
-function flatten(arr) {
-    let result = []
-    for (let val of flat(arr)) {
-        result.push(val)
-    }
-    return result
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这里有两点需要注意：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;嵌套 yield 需要再加一个星号，这被称为生成器委托。&lt;/li&gt;
-&lt;li&gt;不能使用 forEach 代替 for...of 但可以用 for 循环，因为 for 循环和for...of 可以中断迭代去执行 yield，forEach 不行&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;reduce 三句实现法&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function flatten(arr) {
-  return arr.reduce((flat, toFlatten) =&amp;gt; {
-    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
-  }, []);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;2-曲线救国法&#34;&gt;2. 曲线救国法&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;降维打击法&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function flatten(arr){
-    let str = arr.toString()
-    return str.split(&#39;,&#39;)
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;转成字符串，之后再复原成数组，不过这个方法有个缺点，就是原来的空数组转的空字符串也会被放入新生成的数组里去。&lt;/p&gt;
-&lt;h1 id=&#34;25-dom和bom相关&#34;&gt;25. DOM和BOM相关&lt;/h1&gt;
-&lt;h2 id=&#34;1dom&#34;&gt;1.DOM&lt;/h2&gt;
-&lt;h3 id=&#34;1-dom是什么&#34;&gt;1. DOM是什么：&lt;/h3&gt;
-&lt;p&gt;DOM（Document Object Model）&lt;code&gt;文档对象模型&lt;/code&gt;，是&lt;strong&gt;处理可扩展标志语言&lt;/strong&gt;的标准编程接口。&lt;/p&gt;
-&lt;p&gt;DOM 是 &lt;strong&gt;W3C&lt;/strong&gt; 的标准&lt;/p&gt;
-&lt;h3 id=&#34;2-dom0级和dom2级有什么区别&#34;&gt;2. DOM0级和DOM2级有什么区别：&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;DOM0&lt;/code&gt;级中为某个dom元素绑定多个事件时，只有最后一个事件有效。&lt;code&gt;onclick&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;DOM2&lt;/code&gt;级中可以为单个元素绑定多个事件，每个事件都可以被触发。&lt;code&gt;addEventListener&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;3-textcontent-innertext-innnerhtml-value的区别&#34;&gt;3. textContent、innerText、innnerHTML、value的区别：&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;textContent用来获取和设置文本内容，与innerText的差别是:&lt;code&gt;textContent&lt;/code&gt;获取到的内容包括了元素中的&lt;code&gt;style标签&lt;/code&gt;和&lt;code&gt;script标签&lt;/code&gt;的内容。&lt;/li&gt;
-&lt;li&gt;innerText只能获取和设置&lt;code&gt;文本&lt;/code&gt;内容，不能获取和设置html代码&lt;/li&gt;
-&lt;li&gt;innerHTML可以获取和设置&lt;code&gt;html&lt;/code&gt;代码&lt;/li&gt;
-&lt;li&gt;value获取的是&lt;code&gt;表单元素&lt;/code&gt;的值&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;4-关于dom的api有什么&#34;&gt;4. 关于dom的api有什么：&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;节点创建型api：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;document.createElement()&lt;/li&gt;
-&lt;li&gt;document.createTextNode()&lt;/li&gt;
-&lt;li&gt;parent.cloneNode(true)&lt;/li&gt;
-&lt;li&gt;document.createDocumentFragment() &lt;code&gt;创建文档片段,解决大量添加节点造成的回流问题&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;页面修改型API：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;parent.appendChild(child)&lt;/li&gt;
-&lt;li&gt;parent.insertBefore(newNode,referenceNode) &lt;code&gt;将新元素添加到父元素中指定的子元素前面&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;parent.removeChild(child)&lt;/li&gt;
-&lt;li&gt;parent.replcaeChild(newChild,oldChild)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;节点查询型API：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;document.getElementById()&lt;/li&gt;
-&lt;li&gt;document.getElementsByTagName() 返回的是一个即时的HTMLCollection类型&lt;/li&gt;
-&lt;li&gt;document.getElementsByName() 根据指定的name属性获取元素,返回的是一个即时的NodeList&lt;/li&gt;
-&lt;li&gt;document.getElementsByClassName() 返回的是一个即时的HTMLCollection&lt;/li&gt;
-&lt;li&gt;document.querySelector() 获取匹配到的第一个元素，采用的是深度优先搜索。&lt;/li&gt;
-&lt;li&gt;docuemnt.querySelectorAll()&lt;br&gt;
-返回的是一个非即时的NodeList，也就是说结果不会随着文档树的变化而变化&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;节点关系型api：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;父关系型：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;node.parentNode()&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;兄弟关系型&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;node.previouSibling() 返回节点的前一个节点（包括元素节点，文本节点，注释节点）&lt;/li&gt;
-&lt;li&gt;node.previousElementSibling() 返回前一个元素节点&lt;/li&gt;
-&lt;li&gt;node.nextSibling() 返回下一个节点&lt;/li&gt;
-&lt;li&gt;node.nextElementSibling() 返回下一个元素节点&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;子关系型&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;parent.childNodes() 返回一个即时的NodeList，包括了文本节点和注释节点&lt;/li&gt;
-&lt;li&gt;parent.children() 一个即时的HTMLCollection，子节点都是Element&lt;/li&gt;
-&lt;li&gt;parent.firsrtNode()&lt;/li&gt;
-&lt;li&gt;parent.lastNode()&lt;/li&gt;
-&lt;li&gt;hasChildNodes()&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;元素属性型api：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;element.setAttribute(“name”,“value”) 为元素添加属性&lt;/li&gt;
-&lt;li&gt;element.getAtrribute(“name”) 获取元素的属性&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;元素样式型api：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;window.getComputedStyle(element) 返回一个CSSStyleDeclaration,可以从中访问元素的任意样式属性。&lt;/li&gt;
-&lt;li&gt;element.getBoundingClientRect() 返回一个DOMRect对象，里面&lt;strong&gt;包括了元素相对于可视区的位置top,left&lt;/strong&gt;,以及元素的大小,单位为纯数字。可用于判断某元素是否出现在了可视区域。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;5什么是事件监听&#34;&gt;5.什么是事件监听:&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;addEventListener()方法&lt;/code&gt;，用于向指定元素添加事件句柄，它可以更简单的控制事件，语法为&lt;/p&gt;
-&lt;p&gt;element.addEventListener(event, function, useCapture);&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第一个参数是事件的类型(如 “click” 或 “mousedown”).&lt;/li&gt;
-&lt;li&gt;第二个参数是事件触发后调用的函数。&lt;/li&gt;
-&lt;li&gt;第三个参数是个布尔值用于描述事件是冒泡还是捕获。该参数是可选的。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;事件传递有两种方式，&lt;code&gt;冒泡&lt;/code&gt;和&lt;code&gt;捕获&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;事件传递定义了元素事件触发的顺序，如果你将P元素插入到div元素中，用户点击P元素，&lt;/p&gt;
-&lt;p&gt;在冒泡中，内部元素先被触发，然后再触发外部元素，&lt;br&gt;
-捕获中，外部元素先被触发，在触发内部元素，&lt;/p&gt;
-&lt;h3 id=&#34;6-说说前端中的事件流&#34;&gt;6. 说说前端中的事件流&lt;/h3&gt;
-&lt;p&gt;事件发生时会在元素节点之间按照特定的顺序传播，整个过程分为&lt;code&gt;捕获阶段，目标阶段和冒泡阶段&lt;/code&gt;，这个&lt;code&gt;传播过程&lt;/code&gt;叫做Dom事件流。&lt;/p&gt;
-&lt;p&gt;事件冒泡：从事件源逐级向上传播到DOM最顶层节点的过程。&lt;/p&gt;
-&lt;p&gt;事件捕获：从DOM最顶层节点逐级向下传播到事件源的过程。&lt;/p&gt;
-&lt;p&gt;addEventListener用于指定事件处理程序，共接收三个参数。分别是触发事件，事件处理程序函数以及一个布尔值。第三个参数默认为false，表示在该事件的处理函数会在冒泡阶段被调用。若改为true，则表示事件处理函数会在捕获阶段被调用。&lt;/p&gt;
-&lt;h3 id=&#34;7-如何让事件先冒泡后捕获&#34;&gt;7. 如何让事件先冒泡后捕获&lt;/h3&gt;
-&lt;p&gt;对于&lt;code&gt;目标元素&lt;/code&gt;来说，如果DOM节点通过addEventListener同时绑定了两个事件监听函数，一个用于捕获，一个用于冒泡，那么两个事件的执行顺序是按照代码添加的顺序执行的。所以，先绑定冒泡的函数，再绑定捕获的函数，即可实现。&lt;/p&gt;
-&lt;p&gt;对于&lt;code&gt;非目标元素&lt;/code&gt;来说，可以给捕获事件的处理程序添加一个定时器，将处理程序推入下一个宏任务执行。&lt;/p&gt;
-&lt;h3 id=&#34;8-说一下事件代理&#34;&gt;8. 说一下事件代理：&lt;/h3&gt;
-&lt;p&gt;事件委托是指 不在子节点单独设置事件监听器，而将事件&lt;code&gt;监听器设置在父节点上&lt;/code&gt;，再利用&lt;code&gt;冒泡原理&lt;/code&gt;使每一个子节点都能触发该事件。&lt;/p&gt;
-&lt;p&gt;事件委托的优点：只操作一次Dom，提高了程序的性能。&lt;/p&gt;
-&lt;p&gt;常用于&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ul和li标签的事件监听，一般采用事件委托机制将事件监听器绑定在ul上。&lt;/li&gt;
-&lt;li&gt;还适合动态元素的绑定，新添加的子元素不需单独添加事件处理程序。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;（1）了解事件代理吗，这样做有什么好处&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;事件代理就是说我们将事件添加到本来要添加的事件的父节点，将事件委托给父节点来触发处理函数，这通常会使用在大量的同级元素需要添加同一类事件的时候，比如一个动态的非常多的列表，需要为每个列表项都添加点击事件，这时就可以使用事件代理，通过判断e.target.nodeName来判断发生的具体元素，这样做的好处是减少事件绑定，同事动态的DOM结构任然可以监听，事件代理发生在冒泡阶段&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;（2）事件代理在捕获阶段的实际应用&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;可以在父元素层面阻止事件向子元素传播，也可代替子元素执行某些操作。&lt;/p&gt;
-&lt;h3 id=&#34;9-事件类型相关&#34;&gt;9. 事件类型相关：&lt;/h3&gt;
-&lt;p&gt;（1）&lt;code&gt;mouseover和mouseenter的区别&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;mouseover：当鼠标移入元素或其子元素都会触发事件，所以有一个重复触发，冒泡的过程。对应的移出事件是mouseout。&lt;/li&gt;
-&lt;li&gt;mouseenter：鼠标移入子元素时不会再次触发mouseenter事件，对应的移出事件是mouseleave。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;（2）&lt;code&gt;三种键盘事件的区别：&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;keyup: 松开键盘触发&lt;/li&gt;
-&lt;li&gt;keydown:按下键盘触发&lt;/li&gt;
-&lt;li&gt;keypress:不能识别功能键，比如ctrl,alt,shift,左右箭头。可以区分大小写。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在输入框中按下一个键的全过程：触发keydown/keypress事件-&amp;gt;文字键入输入框中-&amp;gt;触发keyup事件&lt;/p&gt;
-&lt;p&gt;按下按键后&lt;code&gt;自动对焦&lt;/code&gt;输入框，应该使用&lt;code&gt;keyup&lt;/code&gt;，不应该使用keydown/keypress,因为后者会使按键落入输入框中,对于回车键的话还不能使用keypress。&lt;/p&gt;
-&lt;h3 id=&#34;10-静态绑定事件与动态绑定事件的区别&#34;&gt;10. 静态绑定事件与动态绑定事件的区别：&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;静态绑定&lt;/strong&gt;事件是指直接在Html标签上通过οnclick=&amp;quot;hide()&amp;quot;来绑定事件。&lt;/p&gt;
-&lt;p&gt;缺点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;html和js文件存在耦合，不符合结构和行为分离的原则。&lt;/li&gt;
-&lt;li&gt;可能存在引发错误，如果js代码还没加载就触发该事件则会抛出错误&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;动态绑定&lt;/strong&gt;事件是指通过js动态绑定事件，element.onclick() element.addEventListener()。&lt;/p&gt;
-&lt;h3 id=&#34;11-元素的位置和大小&#34;&gt;11. 元素的位置和大小&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;① offset系列：&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;offsetTop（获取元素位置）: 相对于带有‘定位’的父元素的偏移量&lt;/strong&gt;&lt;br&gt;
-&lt;code&gt;offsetHeight: content+padding+border&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;② cilent系列：&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;clientHeight(获取元素宽高): content+padding,不包含border&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;③ scroll系列：&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;scrollTop（获取滚动的距离）&lt;/strong&gt;: 向下滚动后，上面被卷去的距离，即隐藏的高度。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;④ document.clientWidth与document.style.width的区别：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;区别1：前者可以获取任意样式表中的width样式值，包括行内样式的，内嵌样式的，外部样式的；后者只能获取行内的样式。&lt;/li&gt;
-&lt;li&gt;区别2：clientWidth获取的是数字型的，style获取的带有px后缀&lt;/li&gt;
-&lt;li&gt;区别3：clientWidth包含了padding,而style.width只包含content。&lt;/li&gt;
-&lt;li&gt;区别4：clientWidth是只读属性，所以一般用于获取元素的大小；而style.width是可读可写的，可用于获取，也可用于修改。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;⑤ 判断一个元素是否已经出现在了可视区域：(此问题可应用在懒加载中)&lt;/strong&gt;&lt;br&gt;
-&lt;code&gt;使用element.getBoundingClientRect().top获取在可视区的位置。&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;window.addEventListener(&amp;quot;scroll&amp;quot;, function () {
-    let viewPortHeight = window.pageYOffset;
-    let offset = box2.getBoundingClientRect().top;
-    if (offset &amp;lt; viewPortHeight) {
-        if (offset + box2.offsetHeight &amp;lt; 0) {
-            console.log(&amp;quot;他走了&amp;quot;);
-        } else {
-            console.log(&amp;quot;他来啦他来啦&amp;quot;);
-        }
-    }
-});
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;12-js拖动及拖拽功能的实现&#34;&gt;12. js拖动及拖拽功能的实现&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;（1）拖动功能的实现：&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;前置条件：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;拖动事件的三个过程：鼠标按下mousedown,鼠标移动mousemove,鼠标松开mouseup&lt;br&gt;
-鼠标按下后执行mousemove事件。&lt;/li&gt;
-&lt;li&gt;盒子采用绝对定位，通过left和top属性来修改位置。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;方法一：（直接根据鼠标移动的距离确定元素移动的距离）&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;鼠标的坐标通过clientX,clientY获取：&lt;/li&gt;
-&lt;li&gt;盒子的定位信息：鼠标移动时候的坐标-鼠标按下去时候的坐标+元素初始情况下的offetLeft.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;（2）拖拽功能的实现：&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;使用html5提供的拖拽API（Drag 和 drop）&lt;/p&gt;
-&lt;h2 id=&#34;2-bom浏览器对象模型&#34;&gt;2. (BOM)浏览器对象模型：&lt;/h2&gt;
-&lt;h3 id=&#34;1-实用的bom属性对象方法&#34;&gt;1. 实用的BOM属性对象方法：&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;location对象&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;location.href– 返回或设置当前文档的URL&lt;/li&gt;
-&lt;li&gt;location.search – 返回URL中的查询字符串部分。例如 http://www.dreamdu.com/dreamdu.php?id=5&amp;amp;name=dreamdu 返回包括(?)后面的内容?id=5&amp;amp;name=dreamdu&lt;/li&gt;
-&lt;li&gt;location.hash – 返回URL#后面的内容，如果没有#，返回空&lt;/li&gt;
-&lt;li&gt;location. – 返回URL中的域名部分，例如www.dreamdu.com&lt;/li&gt;
-&lt;li&gt;location.hostname – 返回URL中的主域名部分，例如dreamdu.com&lt;/li&gt;
-&lt;li&gt;location.pathname – 返回URL的域名后的部分。例如 http://www.dreamdu.com/xhtml/ 返回/xhtml/&lt;/li&gt;
-&lt;li&gt;location.port – 返回URL中的端口部分。例如 http://www.dreamdu.com:8080/xhtml/ 返回8080&lt;/li&gt;
-&lt;li&gt;location.protocol – 返回URL中的协议部分。例如 http://www.dreamdu.com:8080/xhtml/ 返回(//)前面的内容http:&lt;/li&gt;
-&lt;li&gt;location.assign() – 重定向页面，与location.href一样，会记录历史，能后退页面&lt;/li&gt;
-&lt;li&gt;location.replace() – 设置当前文档的URL，不记录历史，不能后退页面&lt;/li&gt;
-&lt;li&gt;location.reload() – 重载当前页面,相当于F5。添加参数true则表示强制刷新，直接从服务器获取数据，不从浏览器缓存中取数据，相当于Ctrl+F5&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;history对象&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;history.go(n) – 前进或后退指定的页面数;&lt;/li&gt;
-&lt;li&gt;history.back() – 后退一页&lt;/li&gt;
-&lt;li&gt;history.forward() – 前进一页&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;navigator对象&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;navigator包含了用户浏览器的信息&lt;/li&gt;
-&lt;li&gt;navigator.userAgent – 返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串)&lt;/li&gt;
-&lt;li&gt;navigator.cookieEnabled – 返回浏览器是否支持(启用)cookie&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;2-settimeoutfn100100毫秒是如何权衡的&#34;&gt;2. setTimeout(fn,100);100毫秒是如何权衡的：&lt;/h3&gt;
-&lt;p&gt;100ms指的是将回调函数加入到任务队列所花的时间。至于具体什么时候执行，需要看主线程的执行栈中是否还有任务在执行。&lt;/p&gt;
-&lt;h3 id=&#34;3-requestanimationframe&#34;&gt;3. requestAnimationFrame&lt;/h3&gt;
-&lt;p&gt;特点：requestAnimationFrame采用系统时间间隔，保证了最佳的绘制效率。&lt;/p&gt;
-&lt;p&gt;使用方法：requestAnimationFrame接收一个回调函数，这个回调函数会在下一次浏览器重绘之前调用。&lt;/p&gt;
-&lt;h3 id=&#34;4-分别用setintervalsettimeoutrequestanimationframe制作有个简单的进度条效果&#34;&gt;4. 分别用setInterval,setTimeout,requestAnimationFrame制作有个简单的进度条效果：&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;setInterval:&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;div
-     style=&amp;quot;width: 0; height: 20px; background-color: orange&amp;quot;
-     id=&amp;quot;div&amp;quot;
-     &amp;gt;&amp;lt;/div&amp;gt;
-&amp;lt;script&amp;gt;
-    let timer = setInterval(() =&amp;gt; {
-        if (parseInt(div.style.width) &amp;gt;= 500) {
-            return clearInterval(timer);
-        }
-        console.log(div.style.width);
-        div.style.width = parseInt(div.style.width) + 5 + &amp;quot;px&amp;quot;;
-        div.innerHTML = parseInt(div.style.width) / 5 + &amp;quot;%&amp;quot;;
-    }, 16);
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;setTimeout:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;div
-     style=&amp;quot;width: 0; height: 20px; background-color: orange&amp;quot;
-     id=&amp;quot;div&amp;quot;
-     &amp;gt;&amp;lt;/div&amp;gt;
-&amp;lt;script&amp;gt;
-    let timer = setTimeout(function fn() {
-        if (parseInt(div.style.width) &amp;lt; 500) {
-            div.style.width = parseInt(div.style.width) + 5 + &amp;quot;px&amp;quot;;
-            div.innerHTML = parseInt(div.style.width) / 5 + &amp;quot;%&amp;quot;;
-            timer = setTimeout(fn, 16);
-        } else {
-            clearTimeout(timer);
-        }
-    }, 16);
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;requestAnimationFrame:类似于setTimeout,需要一次次的调用&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;div
-     style=&amp;quot;width: 0; height: 20px; background-color: orange&amp;quot;
-     id=&amp;quot;div&amp;quot;
-     &amp;gt;&amp;lt;/div&amp;gt;
-&amp;lt;script&amp;gt;
-    let timer = requestAnimationFrame(function fn() {
-        if (parseInt(div.style.width) &amp;lt; 500) {
-            div.style.width = parseInt(div.style.width) + 5 + &amp;quot;px&amp;quot;;
-            div.innerHTML = parseInt(div.style.width) / 5 + &amp;quot;%&amp;quot;;
-            requestAnimationFrame(fn);
-        } else {
-            cancelAnimationFrame(timer);
-        }
-    });
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;5-js中的轮播实现原理假如一个页面上有两个轮播你会怎么实现&#34;&gt;5. js中的轮播实现原理？假如一个页面上有两个轮播，你会怎么实现？&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;让图片存在一个数组中，然后将最后一张图片重复添加在数组的头部，将第一张图片重复添加在数组的最后。&lt;/li&gt;
-&lt;li&gt;然后准备一个只能显示一张图片的盒子，对盒子做溢出隐藏处理。&lt;/li&gt;
-&lt;li&gt;通过定时器增减索引，显示对应的图片，实现轮播功能。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;如果有两个轮播，可封装一个轮播组件，将需要轮播的图片作为参数传递。&lt;/p&gt;
-&lt;h1 id=&#34;26-服务端渲染server-side-render&#34;&gt;26. 服务端渲染（server side render）&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;服务端渲染(SSR)&lt;/code&gt;：页面上的内容是由服务器上的代码决定的。即，页面上的内容在服务器上已经生成好了，服务器把这个内容给到浏览器，浏览器拿到这个内容直接显示在页面上即可。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;客户端渲染(CSR)&lt;/code&gt; ：一个网页是由JS文件渲染出来的，而不是服务器直接返回回来的。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615364099956.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;1-ssr的优势&#34;&gt;1. SSR的优势&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;更利于SEO&lt;br&gt;
-服务端渲染返回给客户端的是已经获取了异步数据并执行JavaScript脚本的最终HTML，网络爬中就可以抓取到完整页面的信息。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;更利于首屏渲染&lt;br&gt;
-首屏的渲染是node发送过来的html字符串，并不依赖于js文件了，这就会使用户更快的看到页面的内容。尤其是针对大型单页应用，打包后文件体积比较大，普通客户端渲染加载所有所需文件时间较长，首页就会有一个很长的白屏等待时间。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;2-ssr的劣势&#34;&gt;2. SSR的劣势&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;服务端压力较大&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;开发条件受限&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;学习成本相对较高&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;27-js-垃圾回收机制&#34;&gt;27.  JS 垃圾回收机制&lt;/h1&gt;
-&lt;h2 id=&#34;1-垃圾回收&#34;&gt;1. 垃圾回收&lt;/h2&gt;
-&lt;p&gt;JavaScript 中的内存管理是自动执行的，而且是不可见的。我们创建基本类型、对象、函数……所有这些都需要内存。&lt;/p&gt;
-&lt;h2 id=&#34;2-可达性&#34;&gt;2. 可达性&lt;/h2&gt;
-&lt;p&gt;JavaScript 中内存管理的主要概念是可达性。&lt;/p&gt;
-&lt;p&gt;简单地说，“可达性” 值就是那些以某种方式&lt;code&gt;可访问&lt;/code&gt;或&lt;code&gt;可用&lt;/code&gt;的值，它们被保证存储在内存中。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;有一组基本的固有可达值，由于显而易见的原因无法删除。例如:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;本地函数的局部变量和参数&lt;/li&gt;
-&lt;li&gt;当前嵌套调用链上的其他函数的变量和参数&lt;/li&gt;
-&lt;li&gt;全局变量&lt;/li&gt;
-&lt;li&gt;还有一些其他的，内部的&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;这些值称为根。&lt;/code&gt;&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;如果引用或引用链可以从根访问任何其他值，则认为该值是可访问的。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;如果局部变量中有对象，并且该对象具有引用另一个对象的属性，则该对象被视为&lt;strong&gt;可达性&lt;/strong&gt;， 它引用的那些也是可以访问的&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;下面是最简单的例子:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// user 具有对象的引用
-let user = {
-  name: &amp;quot;John&amp;quot;
-};
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366337580.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-这里箭头表示一个对象引用。全局变量&lt;code&gt;“user”&lt;/code&gt;引用对象 &lt;code&gt;{name:“John”}&lt;/code&gt;(为了简洁起见，我们将其命名为John)。John 的 &lt;code&gt;“name”&lt;/code&gt;属性存储一个基本类型，因此它被绘制在对象中。&lt;/p&gt;
-&lt;p&gt;如果 &lt;code&gt;user&lt;/code&gt; 的值被覆盖，则引用丢失:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;user = null;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366388527.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-现在 John 变成不可达的状态，没有办法访问它，没有对它的引用。垃圾回收器将丢弃 John 数据并释放内存。&lt;/p&gt;
-&lt;h2 id=&#34;3两个引用&#34;&gt;3.两个引用&lt;/h2&gt;
-&lt;p&gt;现在让我们假设我们将引用从 &lt;code&gt;user&lt;/code&gt;复制到 &lt;code&gt;admin&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// user具有对象的引用
-let user = {
-  name: &amp;quot;John&amp;quot;
-};
-let admin = user;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366454334.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-现在如果我们做同样的事情:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;user = null;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;该对象仍然可以通过 &lt;code&gt;admin&lt;/code&gt; 全局变量访问，所以它在内存中。如果我们也覆盖&lt;code&gt;admin&lt;/code&gt;，那么它可以被释放。&lt;/p&gt;
-&lt;h2 id=&#34;4-相互关联的对象&#34;&gt;4. 相互关联的对象&lt;/h2&gt;
-&lt;p&gt;现在来看一个更复杂的例子， family 对象：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function marry (man, woman) {
-  woman.husban = man;
-  man.wife = woman;
-
-  return {
-    father: man,
-    mother: woman
-  }
-}
-
-let family = marry({
-  name: &amp;quot;John&amp;quot;
-}, {
-  name: &amp;quot;Ann&amp;quot;
-})
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;产生的内存结构:&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366611256.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-现在让我们删除两个引用:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;delete family.father;
-delete family.mother.husband;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366634406.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-仅仅删除这两个引用中的一个是不够的，因为所有对象仍然是可访问的。&lt;/p&gt;
-&lt;p&gt;但是如果我们把这两个都删除，那么我们可以看到 John 不再有传入的引用:&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366651083.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-输出引用无关紧要。只有传入的对象才能使对象可访问，因此，John 现在是不可访问的，并将从内存中删除所有不可访问的数据。&lt;/p&gt;
-&lt;p&gt;垃圾回收之后：&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366668995.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;5-内部算法&#34;&gt;5. 内部算法&lt;/h2&gt;
-&lt;p&gt;基本的垃圾回收算法称为“&lt;strong&gt;标记-清除&lt;/strong&gt;”，定期执行以下“垃圾回收”步骤:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;垃圾回收器获取根并“&lt;strong&gt;标记&lt;/strong&gt;”(记住)它们。&lt;/li&gt;
-&lt;li&gt;然后它访问并“标记”所有来自它们的引用。&lt;/li&gt;
-&lt;li&gt;然后它访问标记的对象并标记它们的引用。所有被访问的对象都被记住，以便以后不再访问同一个对象两次。&lt;/li&gt;
-&lt;li&gt;以此类推，直到有未访问的引用(可以从根访问)为止。&lt;/li&gt;
-&lt;li&gt;除标记的对象外，所有对象都被删除。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;例如，对象结构如下:&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366772644.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-我们可以清楚地看到右边有一个“不可到达的块”。现在让我们看看“&lt;strong&gt;标记并清除&lt;/strong&gt;”垃圾回收器如何处理它。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;第一步标记根&lt;/strong&gt;&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367324843.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-&lt;strong&gt;然后标记他们的引用&lt;/strong&gt;&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367344647.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-&lt;strong&gt;以及子孙代的引用:&lt;/strong&gt;&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367365917.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-现在进程中不能访问的对象被认为是不可访问的，将被删除:&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367388777.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-&lt;code&gt;这就是垃圾收集的工作原理。JavaScript引擎应用了许多优化，使其运行得更快，并且不影响执行。&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;6面试怎么回答&#34;&gt;6.面试怎么回答&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;1）问什么是垃圾&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;一般来说没有被引用的对象就是垃圾，就是要被清除， 有个例外如果几个对象引用形成一个环，互相引用，但根访问不到它们，这几个对象也是垃圾，也要被清除。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2）如何检垃圾&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;一种算法是标记 标记-清除 算法&lt;/p&gt;
-&lt;h1 id=&#34;28-eventloop&#34;&gt;28. eventloop&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;Event Loop&lt;/code&gt;即事件循环，是指浏览器或Node的一种解决javaScript单线程运行时不会阻塞的一种机制，也就是我们经常使用&lt;strong&gt;异步&lt;/strong&gt;的原理。&lt;/p&gt;
-&lt;h2 id=&#34;1-进程和线程&#34;&gt;1. 进程和线程&lt;/h2&gt;
-&lt;p&gt;线程，是程序执行流的最小单位。线程可与同属一个进程的其他线程共享所拥有的全部资源，同一进程中的多个线程之间可以并发执行。线程有&lt;code&gt;就绪&lt;/code&gt;，&lt;code&gt;阻塞&lt;/code&gt;，&lt;code&gt;运行&lt;/code&gt;三种基本状态。&lt;/p&gt;
-&lt;p&gt;阮一峰大神针对进程和线程的类比，很是形象：&lt;code&gt;计算机的核心CPU&lt;/code&gt;，是个工厂，时刻运转着，工厂里有很多个车间（进程），一个车间开工其他车间不能开工，就是说：&lt;code&gt;单核CPU一次只能运行一个进程。任何时候，CPU总是运行一个进程&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;而一个车间里面有很多工人（线程），协同完成一个任务。所以：&lt;code&gt;一个进程可以包括多个线程&lt;/code&gt;。车间空间是工人共享的，&lt;code&gt;一个进程中的内存空间是所有线程共享的&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;但是房间大小不同个，容纳量不同，有些线程进去了，其他线程就不能再进去使用了。这就是：&lt;code&gt;一个线程使用某些共享内存时，其他线程得等它结束后才能使用共享内存&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;内存可以上锁，防止其他线程进来，【互斥锁】也就是防止多个线程读写同一块内存区域。&lt;/p&gt;
-&lt;p&gt;还有些共享内存比较大，可以容纳多个线程，但是也是有限的，只能容纳固定数目的线程使用。如何保证多个线程不冲突呢？内存门口有个钥匙架，如果发现钥匙架空了，那就不能再进去了【信号量】。&lt;/p&gt;
-&lt;h2 id=&#34;2-函数调用栈与任务队列&#34;&gt;2. 函数调用栈与任务队列&lt;/h2&gt;
-&lt;p&gt;Javascript有一个main thread 主进程和call-stack（一个调用堆栈），在对一个调用堆栈中的task处理的时候，其他的都要等着。当在执行过程中遇到一些类似于setTimeout等异步操作的时候，会交给浏览器的其他模块(以webkit为例，是webcore模块)进行处理，当到达setTimeout指定的延时执行的时间之后，task(回调函数)会放入到任务队列之中。一般不同的异步任务的回调函数会放入不同的任务队列之中。等到调用栈中所有task执行完毕之后，接着去执行任务队列之中的task(回调函数)。&lt;/p&gt;
-&lt;p&gt;任务队列是“先进先出”的数据结构，先来的优先被主线程读取。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615368924655.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;p&gt;在上图中，调用栈中遇到DOM操作、ajax请求以及setTimeout等WebAPIs的时候就会交给浏览器内核的其他模块进行处理，webkit内核在Javasctipt执行引擎之外，有一个重要的模块是webcore模块。对于图中WebAPIs提到的三种API，webcore分别提供了DOM Binding、network、timer模块来处理底层实现。等到这些模块处理完这些操作的时候将回调函数放入任务队列中，之后等栈中的task执行完之后再去执行任务队列之中的回调函数。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;小结：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;所有的代码都要通过函数调用栈中调用执行。&lt;/li&gt;
-&lt;li&gt;当遇到前文中提到的APIs的时候，会交给浏览器内核的其他模块进行处理。&lt;/li&gt;
-&lt;li&gt;任务队列中存放的是回调函数。&lt;/li&gt;
-&lt;li&gt;等到调用栈中的task执行完之后再回去执行任务队列之中的task。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;3-宏任务与微任务&#34;&gt;3. 宏任务与微任务&lt;/h2&gt;
-&lt;p&gt;其中setTimeout叫做macro-task(宏任务)，当然如我们所想，还有如promise的micro-task(微任务)。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;macro-task包括：script(整体代码), setTimeout, setInterval, setImmediate, I/O, UI rendering。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;micro-task包括：process.nextTick, Promise, Object.observe, MutationObserver&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;事件循环的顺序是从script开始第一次循环，随后全局上下文进入函数调用栈，碰到macro-task就将其交给处理它的模块处理完之后将回调函数放进macro-task的队列之中，碰到micro-task也是将其回调函数放进micro-task的队列之中。直到函数调用栈清空只剩全局执行上下文，然后开始执行所有的micro-task。当所有可执行的micro-task执行完毕之后。循环再次执行macro-task中的一个任务队列，执行完之后再执行所有的micro-task，就这样一直循环。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;不同的任务会放进不同的任务队列之中。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;先执行macro-task，等到函数调用栈清空之后再执行所有在队列之中的micro-task。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;等到所有micro-task执行完之后再从macro-task中的一个任务队列开始执行，就这样一直循环。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;当有多个macro-task(micro-task)队列时，事件循环的顺序是按上文macro-task(micro-task)的分类中书写的顺序执行的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;4事件循环event-loop&#34;&gt;4.事件循环（Event Loop）&lt;/h2&gt;
-&lt;p&gt;JavaScript是单线程的，单线程意味着需要一个任务队列来管理任务事件，任务分为两种：&lt;code&gt;同步任务&lt;/code&gt;和&lt;code&gt;异步任务&lt;/code&gt;。同步任务是在主线程上面排队执行的任务，只有前面任务完成，下一个任务才能执行。异步任务是不进入主线程，而是进入任务队列中，只有通知主线程某个异步任务可以执行了，该任务方可执行。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615368575238.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;我们的同步任务在主线程上运行会形成一个执行栈&lt;/li&gt;
-&lt;li&gt;如果碰到异步任务，比如setTimeout、onClick等等的一些操作，我们会将他的执行结果放入队列，此期间主线程不阻塞&lt;/li&gt;
-&lt;li&gt;等到主线程中的所有同步任务执行完毕，就会通过event loop在队列里面从头开始取，在执行栈中执行&lt;/li&gt;
-&lt;li&gt;event loop永远不会断&lt;/li&gt;
-&lt;li&gt;以上的这一整个流程就是Event Loop（事件循环机制）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;29-如何快速让字符串变成以千为精度的数字&#34;&gt;29. 如何快速让字符串变成以千为精度的数字&lt;/h1&gt;
-&lt;h2 id=&#34;1-字符串转换成数字的三种方法&#34;&gt;1. 字符串转换成数字的三种方法&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;转换函数、强制类型转换、利用js变量弱类型转换&lt;/code&gt;。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;转换函数：&lt;br&gt;
-js提供了parseInt()和parseFloat()两个转换函数。前者把值转换成整数，后者把值转换成浮点数。只有对String类型调用这些方法，这两个函数才能正确运行；对其他类型返回的都是NaN(Not a Number)。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;parseInt()方法还有基模式，可以把二进制、八进制、十六进制或其他任何进制的字符串转换成整数。基是由parseInt()方法的第二个参数指定的，示例如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;parseInt(&amp;quot;AF&amp;quot;,   16);   //returns   175
-parseInt(&amp;quot;10&amp;quot;,   2);   //returns   2
-parseInt(&amp;quot;10&amp;quot;,   8);   //returns   8
-parseInt(&amp;quot;10&amp;quot;,   10);   //returns   10
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;强制类型转换&lt;br&gt;
-ECMAScript中可用的3种强制类型转换如下：&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;Boolean(value)——把给定的值转换成Boolean型；&lt;/li&gt;
-&lt;li&gt;Number(value)——把给定的值转换成数字（可以是整数或浮点数）；&lt;/li&gt;
-&lt;li&gt;String(value)——把给定的值转换成字符串。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;利用js变量弱类型转换&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;2-数字千位符格式化&#34;&gt;2. 数字千位符格式化&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;function toThousands(num) {
-    var result = &#39;&#39;, counter = 0;
-    num = (num || 0).toString();
-    for (var i = num.length - 1; i &amp;gt;= 0; i--) {
-        counter++;
-        result = num.charAt(i) + result;
-        if (!(counter % 3) &amp;amp;&amp;amp; i != 0) { result = &#39;,&#39; + result; }
-    }
-    return result;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;30-js中v8引擎的详解&#34;&gt;30. js中v8引擎的详解&lt;/h1&gt;
-&lt;h2 id=&#34;1-v8引擎出现的原因&#34;&gt;1. v8引擎出现的原因&lt;/h2&gt;
-&lt;p&gt;这里先说一下什么是&lt;code&gt;编译型语言&lt;/code&gt;和&lt;code&gt;解释性语言&lt;/code&gt;：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;编译型&lt;/code&gt;语言： 在程序执行之前必须进行专门的编译过程，有如下特点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;只须编译一次&lt;/code&gt;就可以把源代码&lt;code&gt;编译成机器语言&lt;/code&gt;，后面的执行&lt;code&gt;无须重新编译&lt;/code&gt;，直接使用之前的编译结果就可以；因此其执行的&lt;code&gt;效率比较高&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;编译性语言代表：C、C++、Java、Pascal/Object Pascal（Delphi）&lt;/li&gt;
-&lt;li&gt;程序执行效率比较高，但比较依赖编译器，因此跨平台性差一些&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;解释型&lt;/code&gt;语言 - 解释型语言，支持动态类型，弱类型，在&lt;code&gt;程序运行&lt;/code&gt;的时候&lt;code&gt;才进行编译&lt;/code&gt;，而编译前需要确定变量的类型，效率比较低，对不同系统平台有较大的兼容性&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;源代码&lt;code&gt;不能直接&lt;/code&gt;翻译成机器语言，而是先翻译成&lt;code&gt;中间代码&lt;/code&gt;，再由&lt;code&gt;解释器&lt;/code&gt;对中间代码进行&lt;code&gt;解释运行&lt;/code&gt; 源代码—&amp;gt;中间代码—&amp;gt;机器语言&lt;/li&gt;
-&lt;li&gt;程序&lt;code&gt;不需要编译&lt;/code&gt;，程序在运行时才翻译成机器语言，&lt;code&gt;每执行一次都要翻译一次&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;解释型语言代表：Python、JavaScript、Shell、Ruby、MATLAB等&lt;/li&gt;
-&lt;li&gt;运行效率一般相对&lt;code&gt;比较低&lt;/code&gt;，&lt;code&gt;依赖解释器&lt;/code&gt;，跨平台性好&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;比较：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;一般，&lt;code&gt;编译型语言的运行效率比解释型语言更高&lt;/code&gt;；但是不能一概而论，部分解释性语言的解释器通过在运行时动态优化代码，甚至能使解释性语言的性能超过编译性语言；&lt;/li&gt;
-&lt;li&gt;编译性语言的跨平台特性比解释性语言差一些；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;进过以上说明，解释型语言，&lt;code&gt;运行效率低&lt;/code&gt;，随着Web相关技术的发展，JavaScript所要承担的工作也越来越多，早就超越了“表单验证”的范畴，&lt;code&gt;这就更需要快速的解析和执行JavaScript脚本&lt;/code&gt;。&lt;code&gt;V8引擎&lt;/code&gt;就是为解决这一问题而生，在node中也是采用该引擎来解析JavaScript&lt;/p&gt;
-&lt;h2 id=&#34;2-渲染引擎及网页渲染&#34;&gt;2. 渲染引擎及网页渲染&lt;/h2&gt;
-&lt;p&gt;为用户提供网页浏览服务无疑是最重要的功能，如下介绍：&lt;/p&gt;
-&lt;h3 id=&#34;1-渲染引擎&#34;&gt;1. 渲染引擎&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;渲染引擎&lt;/code&gt; - 能够能够将HTML/CSS/JavaScript文本及相应的&lt;code&gt;资源文件&lt;/code&gt;转换成&lt;code&gt;图像&lt;/code&gt;结果.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;作用&lt;/code&gt; - 将&lt;code&gt;资源文件&lt;/code&gt;转化为&lt;code&gt;用户可见&lt;/code&gt;的结果。&lt;/li&gt;
-&lt;li&gt;渲染引擎的种类 - Tridend(IE)、Gecko(FF),WebKit(Safari,Chrome,Andriod浏览器)等.&lt;/li&gt;
-&lt;li&gt;介绍 - WebKit是由苹果2005年发起的一个开源项目，引起了众多公司的重视，几年间被很多公司所采用，在移动端更占据了垄断地位。更有甚者，开发出了基于WebKit的支持HTML5的web操作系统(如：Chrome OS、Web OS)。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;WebKit的大致结构&lt;/strong&gt;&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375134643.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375172770.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;2-网页渲染流程&#34;&gt;2. 网页渲染流程&lt;/h3&gt;
-&lt;p&gt;上面介绍了渲染引擎的各个模块，那么一张网页，要经历怎样的过程，才能展示给用户。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375416528.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;过程&lt;/code&gt; - 首先是网页内容，输入到HTML解析器，HTML解析器解析，然后构建DOM树，在这期间如果遇到JavaScript代码则交给JavaScript引擎处理；如果来自CSS解析器的样式信息，构建一个内部绘图模型。该模型由布局模块计算模型内部各个元素的位置和大小信息，最后由绘图模块完成从该模型到图像的绘制。在网页渲染的过程中，大致可分为下面3个阶段：&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375499789.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;p&gt;上述是一个完整的渲染过程，现代网页很多都是动态的，随着网页与用户的交互，浏览器需要不断的重复渲染过程。&lt;/p&gt;
-&lt;h3 id=&#34;3-javascript引擎&#34;&gt;3. JavaScript引擎&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616376387769.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-JavaScript本质上是一种&lt;code&gt;解释型语言&lt;/code&gt;，与编译型语言不同的是它需要&lt;code&gt;一边执行一边解析&lt;/code&gt;，而编译型语言在执行时已经完成编译，可直接执行，有更快的执行速度(如上图所示)。JavaScript代码是在浏览器端解析和执行的，如果需要时间太长，会影响用户体验。那么&lt;code&gt;提高JavaScript的解析速度&lt;/code&gt;就是当务之急。JavaScript引擎和渲染引擎的关系如下图所示：&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616376459980.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-avaScript语言是解释型语言，为了&lt;code&gt;提高性能&lt;/code&gt;，引入了J&lt;code&gt;ava虚拟机&lt;/code&gt;和&lt;code&gt;C++编译器&lt;/code&gt;中的众多&lt;code&gt;技术&lt;/code&gt;。现在JavaScript引擎的执行过程大致是:&lt;br&gt;
-&lt;code&gt;源代码&lt;/code&gt;-→&lt;code&gt;抽象语法树&lt;/code&gt;-→&lt;code&gt;字节码&lt;/code&gt;-→&lt;code&gt;JIT&lt;/code&gt;-→&lt;code&gt;本地代码&lt;/code&gt;(V8引擎没有中间字节码)。&lt;/p&gt;
-&lt;p&gt;V8更加直接的将&lt;code&gt;抽象语法树&lt;/code&gt;通过&lt;code&gt;JIT技术&lt;/code&gt;转换成&lt;code&gt;本地代码&lt;/code&gt;，&lt;code&gt;放弃了&lt;/code&gt;在&lt;code&gt;字节码&lt;/code&gt;阶段可以进行的一些性能优化，但保证了执行速度。在V8生成本地代码后，也会通过Profiler采集一些信息，来优化本地代码。虽然，少了生成字节码这一阶段的性能优化，但极大减少了转换时间。&lt;/p&gt;
-&lt;h2 id=&#34;3-v8引擎&#34;&gt;3. V8引擎&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;V8引擎是一个&lt;code&gt;JavaScript引擎&lt;/code&gt;实现，最初由一些语言方面专家设计，后被谷歌收购，随后谷歌对其进行了&lt;code&gt;开源&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;V8使用&lt;code&gt;C++开发&lt;/code&gt;，在运行JavaScript之前，相比其它的JavaScript的引擎转换成字节码或解释执行，&lt;code&gt;V8将其编译成原生机器码&lt;/code&gt;（IA-32, x86-64, ARM, or MIPS CPUs），并且使用了如&lt;code&gt;内联缓存&lt;/code&gt;（inline caching）等方法来&lt;code&gt;提高性能&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;有了这些功能，JavaScript程序在V8引擎下的运行速度媲美二进制程序。&lt;/li&gt;
-&lt;li&gt;V8支持&lt;code&gt;众多操作系统&lt;/code&gt;，如windows、linux、android等，也支持其他硬件架构，如IA32,X64,ARM等，具有很好的&lt;code&gt;可移植&lt;/code&gt;和&lt;code&gt;跨平台特性&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;4-数据表示&#34;&gt;4. 数据表示&lt;/h2&gt;
-&lt;p&gt;JavaScript是一种动态类型语言，&lt;code&gt;在编译时并不能准确知道变量的类型&lt;/code&gt;，&lt;code&gt;只可以在运行时确定&lt;/code&gt;，这就不像c++或者java等静态类型语言，在编译时候就可以确切知道变量的类型。然而，&lt;code&gt;在运行时计算和决定类型，会严重影响语言性能&lt;/code&gt;，这也就是JavaScript运行效率比C++或者JAVA低很多的原因之一。&lt;/p&gt;
-&lt;p&gt;在C++中，源代码需要经过编译才能执行，在生成本地代码的过程中，变量的地址和类型已经确定，运行本地代码时利用数组和位移就可以存取变量和方法的地址，不需要再进行额外的查找，几个机器指令即可完成，节省了确定类型和地址的时间。由于JavaScript是无类型语言，那就不能像c++那样在执行时已经知道变量的类型和地址，需要临时确定。JavaScript 和C++有以下几个区别：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;编译确定位置&lt;/code&gt; -&lt;code&gt;C++&lt;/code&gt;编译阶段确定位置偏移信息，在&lt;code&gt;执行时直接存取&lt;/code&gt;，&lt;code&gt;JavaScript&lt;/code&gt;在&lt;code&gt;执行阶段确定&lt;/code&gt;，而且执行期间可以修改对象属性；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;偏移信息共享&lt;/code&gt; - &lt;code&gt;C++&lt;/code&gt;有类型定义，执行时&lt;code&gt;不能动态改变&lt;/code&gt;，可共享偏移信息，&lt;code&gt;JavaScript&lt;/code&gt;每个对象都是&lt;code&gt;自描述&lt;/code&gt;，属性和位置偏移信息都包含在自身的结构中；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;偏移信息查找&lt;/code&gt; - &lt;code&gt;C++&lt;/code&gt;查找偏移地址很简单，在编译代码阶段，对使用的某类型成员变量&lt;code&gt;直接设置偏移位置&lt;/code&gt;，&lt;code&gt;JavaScript&lt;/code&gt;中使用一个对象，需要通过&lt;code&gt;属性名匹配&lt;/code&gt;才能找到相应的值，需要更多的操作。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377366139.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;5-工作过程&#34;&gt;5. 工作过程&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377457407.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;编译阶段&#34;&gt;编译阶段&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377563413.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;运行阶段&#34;&gt;运行阶段&lt;/h3&gt;
-&lt;p&gt;由于&lt;code&gt;V8缺少了生成中间代码这一环节&lt;/code&gt;，缺少了必要的优化，为了提升性能，V8会在&lt;code&gt;生成本地代码后&lt;/code&gt;，使用&lt;code&gt;数据分析器&lt;/code&gt;(profiler)&lt;code&gt;采集一些信息&lt;/code&gt;，然后根据这些数据将本地代码进行优化，生成更高效的本地代码，这是一个逐步改进的过程。同时，当发现优化后代码的性能还不如未优化的代码，V8将退回原来的代码，也就是优化回滚。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377618319.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;优化回滚&#34;&gt;优化回滚&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377669446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-">【面】前端知识点梳理（JS下）</a>
-      </div>
-      
-      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-shang/"" data-c="
           &lt;h1 id=&#34;0-new-与-objectcreate-区别&#34;&gt;0. new 与 Object.create() 区别&lt;/h1&gt;
 &lt;h2 id=&#34;1-new的原理&#34;&gt;1. new的原理&lt;/h2&gt;
@@ -10408,7 +9032,1366 @@ console.log(oBox.children[0].hasChildNodes());
 &amp;lt;script&amp;gt;:定义客户端脚本，如JavaScript。
 &amp;lt;style&amp;gt;:定义内部样式表与网页的关系。
 &lt;/code&gt;&lt;/pre&gt;
-">【面】前端知识点梳理（JS上）</a>
+&lt;h1 id=&#34;17-window的onload事件和domcontentloaded&#34;&gt;17. window的onload事件和domcontentloaded&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;DOMContentLoaded方法是当DOM加载完成，不包括样式表，图片，flash触发的事件&lt;/li&gt;
+&lt;li&gt;onload事件触发时，页面上所有的DOM，样式表，脚本，图片，flash都已经加载完成了，用于检测一个加载完全的页面&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;开发中我们经常需要给一些元素的事件绑定处理函数。但问题是，如果那个元素还没有加载到页面上，但是绑定事件已经执行完了，是没有效果的。这两个事件大致就是用来避免这样一种情况，将绑定的函数放在这两个事件的回调中，保证能在页面的某些元素加载完毕之后再绑定事件的函数。&lt;/p&gt;
+&lt;p&gt;当然DOMContentLoaded机制更加合理，因为我们可以容忍图片，flash延迟加载，却不可以容忍看见内容后页面不可交互。&lt;/p&gt;
+&lt;h1 id=&#34;18-forin迭代和forof有什么区别&#34;&gt;18. for...in迭代和for...of有什么区别&lt;/h1&gt;
+&lt;h2 id=&#34;1-forin&#34;&gt;1. for…in&lt;/h2&gt;
+&lt;p&gt;for…in 循环返回的值是数据的结构的&lt;strong&gt;key&lt;/strong&gt;(类比键值名)&lt;br&gt;
+&lt;code&gt;遍历对象&lt;/code&gt;返回的对象&lt;code&gt;key&lt;/code&gt;值，&lt;code&gt;遍历数组&lt;/code&gt;返回的数组的&lt;code&gt;下标&lt;/code&gt;（key）&lt;br&gt;
+for…in 不仅可以遍历数字 键名，还会遍历原型上的值和手动添加其他的键&lt;br&gt;
+for…in 循环出的是（key）&lt;br&gt;
+总结：&lt;br&gt;
+for…in 循环特别适合遍历对象&lt;/p&gt;
+&lt;h2 id=&#34;2-forof&#34;&gt;2. for…of&lt;/h2&gt;
+&lt;p&gt;for…of 是ES6新引入的特性。修复了ES5引入的for…in的不足支持set().map()&lt;br&gt;
+for…of不能循环普通的对象，需要通过和OBject.Keys()搭配使用&lt;br&gt;
+for…of不同与forEach&lt;br&gt;
+它可以与break.continue和return 配合使用&lt;br&gt;
+for…of 循环可以随时推出循环&lt;br&gt;
+for…of 循环出的是（&lt;strong&gt;value&lt;/strong&gt;）&lt;br&gt;
+总结：&lt;br&gt;
+for…of 循环特别适合&lt;code&gt;遍历数组&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;19-函数柯里化-和-高阶函数&#34;&gt;19. 函数柯里化 和 高阶函数&lt;/h1&gt;
+&lt;h2 id=&#34;1-函数柯里化&#34;&gt;1. 函数柯里化&lt;/h2&gt;
+&lt;p&gt;柯里化，是函数式编程的一个重要概念。它既能减少代码冗余，也能增加可读性。&lt;br&gt;
+&lt;strong&gt;定义&lt;/strong&gt;：在数学和计算机科学中，柯里化是一种将使用&lt;strong&gt;多个参数&lt;/strong&gt;的一个函数转换成一系列使用&lt;strong&gt;一个参数&lt;/strong&gt;的函数的技术。&lt;br&gt;
+&lt;code&gt;简单版：&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function add(a) {
+  function sum(b) { // 使用闭包
+      a = a + b; // 累加
+      return sum;
+   }
+   sum.toString = function() { // 重写toString()方法
+      return a;
+  }
+   return sum; // 返回一个函数
+}
+
+add(1); // 1
+add(1)(2);  // 3
+add(1)(2)(3) // 6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;完整版：&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function add() {
+  // 第一次执行时，定义一个数组专门用来存储所有的参数
+  var _args = [].slice.call(arguments);
+
+  // 在内部声明一个函数，利用闭包的特性保存_args并收集所有的参数值
+  var adder = function () {
+      var _adder = function() {
+          _args.push(...arguments);
+          return _adder;
+      };
+
+      // 利用隐式转换的特性，当最后执行时隐式转换，并计算最终的值返回
+      _adder.toString = function () {
+          return _args.reduce(function (a, b) {
+              return a + b;
+          });
+      }
+
+      return _adder;
+  }
+  return adder(..._args);
+}
+
+var a = add(1)(2)(3)(4);   // f 10
+var b = add(1, 2, 3, 4);   // f 10
+var c = add(1, 2)(3, 4);   // f 10
+var d = add(1, 2, 3)(4);   // f 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;函数的柯里化，是 Javascript 中函数式编程的一个重要概念。&lt;code&gt;它返回的，是一个函数的函数&lt;/code&gt;。其实现方式，需要依赖&lt;code&gt;参数以及递归&lt;/code&gt;，通过&lt;code&gt;拆分参数&lt;/code&gt;的方式，来调用一个多参数的函数方法，以达到减少代码冗余，增加可读性的目的。&lt;/p&gt;
+&lt;h2 id=&#34;2-高阶函数&#34;&gt;2. 高阶函数&lt;/h2&gt;
+&lt;h3 id=&#34;1-arrayprototypemap&#34;&gt;1. Array.prototype.map&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;map()&lt;/code&gt;(映射)方法最后生成一个新数组，不改变原始数组的值。其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;array.map(callback,[ thisObject]);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;callback(回调函数)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[].map(function(currentValue, index, array) {
+    // ...
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;传递给&lt;code&gt;map&lt;/code&gt;的回调函数（&lt;code&gt;callback&lt;/code&gt;）接受三个参数，分别是&lt;code&gt;currentValue&lt;/code&gt;——正在遍历的元素；&lt;code&gt;index&lt;/code&gt;（可选）——元素索引；&lt;code&gt;array&lt;/code&gt;（可选）——原数组本身，除了 callback 之外还可以接受 this 值（可选），用于执行 callback 函数时使用的this 值。&lt;/p&gt;
+&lt;p&gt;来个简单的例子方便理解，现在有一个数组[1,2,3,4]，我们想要生成一个新数组，其每个元素皆是之前数组的两倍&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const arr1 = [1, 2, 3, 4];
+const arr2 = arr1.map(item =&amp;gt; item * 2);
+
+console.log( arr2 );
+// [2, 4, 6, 8]
+console.log( arr1 );
+// [1, 2, 3, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;map高阶函数注意点&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;callback需要有return值，否则会出现所有项映射为undefind；&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[&amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;].map(parseInt);
+//输出结果为  [1,NaN,NaN]
+
+[&amp;quot;1&amp;quot;,&amp;quot;2&amp;quot;,&amp;quot;3&amp;quot;].map(x=&amp;gt;parseInt(x));
+//输出结果为  [1,2,3]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-arrayprototypereduce&#34;&gt;2. Array.prototype.reduce&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;reduce()&lt;/code&gt;方法对数组中的每个元素执行一个提供的 reducer 函数(升序执行)，将其结果汇总为单个返回值。传递给 reduce 的回调函数（callback）接受四个参数，分别是累加器 &lt;code&gt;accumulator&lt;/code&gt;；&lt;code&gt;currentValue&lt;/code&gt;——正在操作的元素；&lt;code&gt;currentIndex&lt;/code&gt;（可选）——元素索引，但是它的开始会有特殊说明；&lt;code&gt;array&lt;/code&gt;（可选）——原始数组本身，除了 callback 之外还可以接受初始值 initialValue 值（可选）。&lt;/p&gt;
+&lt;p&gt;例子，现在有一个数组 [0, 1, 2, 3, 4]，需要计算数组元素的和，需求比较简单，来看下代码实现。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const arr = [0, 1, 2, 3, 4];
+let sum = arr.reduce((accumulator, currentValue, currentIndex, array) =&amp;gt; {
+  return accumulator + currentValue;
+});
+
+console.log( sum );
+// 10
+console.log( arr );
+// [0, 1, 2, 3, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;29&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615256323803.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;3-arrayprototypefilter&#34;&gt;3. Array.prototype.filter&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;filter&lt;/code&gt;(过滤，筛选) 方法创建一个新数组,原始数组不发生改变。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;array.filter(callback,[ thisObject]);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接收的参数和 map 是一样的，filter的&lt;code&gt;callback&lt;/code&gt;函数需要返回布尔值true或false. 如果为true则表示通过啦！如果为false则失败，其返回值是一个新数组，由通过测试为true的所有元素组成，如果没有任何数组元素通过测试，则返回空数组。&lt;/p&gt;
+&lt;p&gt;来个例子介绍下，现在有一个数组 [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4]，我们想要生成一个新数组，这个数组要求没有重复的内容，即为去重。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const arr1 = [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4];
+const arr2 = arr1.filter( (element, index, self) =&amp;gt; {
+    return self.indexOf( element ) === index;
+});
+
+console.log( arr2 );
+// [1, 2, 3, 5, 4]
+console.log( arr1 );
+// [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;20-call-与-apply区别原生实现bind&#34;&gt;20.  call 与 apply区别，原生实现bind&lt;/h1&gt;
+&lt;h2 id=&#34;1-call-和-apply-的共同点&#34;&gt;1. call 和 apply 的共同点&lt;/h2&gt;
+&lt;p&gt;它们的共同点是，都能够&lt;strong&gt;改变函数执行时的上下文&lt;/strong&gt;，将一个对象的方法交给另一个对象来执行，并且是立即执行的。&lt;/p&gt;
+&lt;p&gt;为何要改变执行上下文？举一个生活中的小例子：平时没时间做饭的我，周末想给孩子炖个腌笃鲜尝尝。但是没有适合的锅，而我又不想出去买。所以就问邻居借了一个锅来用，这样既达到了目的，又节省了开支，一举两得。&lt;/p&gt;
+&lt;p&gt;改变执行上下文也是一样的，A 对象有一个方法，而 B 对象因为某种原因，也需要用到同样的方法，那么这时候我们是单独为 B 对象扩展一个方法呢，还是借用一下 A 对象的方法呢？当然是借用 A 对象的啦，既完成了需求，又减少了内存的占用。&lt;/p&gt;
+&lt;p&gt;另外，它们的写法也很类似，&lt;strong&gt;调用 call 和 apply 的对象，必须是一个函数 Function&lt;/strong&gt;。接下来，就会说到具体的写法，那也是它们区别的主要体现。&lt;/p&gt;
+&lt;h2 id=&#34;2-call-和-apply-的区别&#34;&gt;2. call 和 apply 的区别&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;call 的写法&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Function.call(obj,[param1[,param2[,…[,paramN]]]])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;调用 call 的对象，必须是个函数 Function。&lt;/li&gt;
+&lt;li&gt;call 的第一个参数，是一个对象。 Function 的调用者，将会指向这个对象。如果不传，则默认为全局对象 window。&lt;/li&gt;
+&lt;li&gt;第二个参数开始，可以接收任意个参数。每个参数会映射到相应位置的 Function 的参数上。但是如果将所有的参数作为数组传入，它们会作为一个整体映射到 Function 对应的第一个参数上，之后参数都为空。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;function func (a,b,c) {}
+
+func.call(obj, 1,2,3)
+// func 接收到的参数实际上是 1,2,3
+
+func.call(obj, [1,2,3])
+// func 接收到的参数实际上是 [1,2,3],undefined,undefined
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;apply 的写法&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Function.apply(obj[,argArray])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;它的调用者必须是函数 Function，并且只接收两个参数，第一个参数的规则与 call 一致。&lt;/li&gt;
+&lt;li&gt;第二个参数，必须是数组或者类数组，它们会被转换成类数组，传入 Function 中，并且会被映射到 Function 对应的参数上。这也是 call 和 apply 之间，很重要的一个区别。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;func.apply(obj, [1,2,3])
+// func 接收到的参数实际上是 1,2,3
+
+func.apply(obj, {
+    0: 1,
+    1: 2,
+    2: 3,
+    length: 3
+})
+// func 接收到的参数实际上是 1,2,3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;类数组无法使用 forEach、splice、push 等数组原型链上的方法&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-call-和-apply-的用途&#34;&gt;3 call 和 apply 的用途&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;call 的使用场景&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;对象的继承&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;function superClass () {
+    this.a = 1;
+    this.print = function () {
+        console.log(this.a);
+    }
+}
+
+function subClass () {
+    superClass.call(this);
+    this.print();
+}
+
+subClass();
+// 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;subClass 通过 call 方法，继承了 superClass 的 print 方法和 a 变量。此外，subClass 还可以扩展自己的其他方法。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;借用方法&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;let domNodes = Array.prototype.slice.call(document.getElementsByTagName(&amp;quot;*&amp;quot;));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;apply 的一些妙用&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Math.max&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;let max = Math.max.apply(null, array);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同理，要获取数组中最小的一项，可以这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let min = Math.min.apply(null, array);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;实现两个数组合并&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+
+Array.prototype.push.apply(arr1, arr2);
+console.log(arr1); // [1, 2, 3, 4, 5, 6]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-bind-的使用&#34;&gt;4. bind 的使用&lt;/h2&gt;
+&lt;p&gt;bind() 方法创建一个新的函数，在调用时设置 this 关键字为提供的值。并在调用新函数时，将给定参数列表作为原函数的参数序列的前若干项。&lt;/p&gt;
+&lt;p&gt;它的语法如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Function.bind(thisArg[, arg1[, arg2[, ...]]])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;bind 方法 与 apply 和 call 比较类似，也能改变函数体内的 this 指向。不同的是，&lt;code&gt;bind 方法的返回值是函数，并且需要稍后调用，才会执行&lt;/code&gt;。而 apply 和 call 则是&lt;code&gt;立即调用&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;来看下面这个例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function add (a, b) {
+    return a + b;
+}
+
+function sub (a, b) {
+    return a - b;
+}
+
+add.bind(sub, 5, 3); // 这时，并不会返回 8
+add.bind(sub, 5, 3)(); // 调用后，返回 8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果 bind 的第一个参数是 null 或者 undefined，this 就指向全局对象 window。&lt;/p&gt;
+&lt;h2 id=&#34;5-总结&#34;&gt;5. 总结&lt;/h2&gt;
+&lt;p&gt;call 和 apply 的主要作用，是改变对象的执行上下文，并且是立即执行的。它们在参数上的写法略有区别。&lt;/p&gt;
+&lt;p&gt;bind 也能改变对象的执行上下文，它与 call 和 apply 不同的是，返回值是一个函数，并且需要稍后再调用一下，才会执行。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;原生实现bind函数&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 原生js实现bind函数
+// 所有的函数都要有bind方法，所以要定义在Function的原型对象上
+Function.prototype.myBind = function(objThis,...params){
+    // objThis是要绑定的this对象，...params是因为参数数量不确定才用解构语法
+    const thisFn = this;//当前调用的函数，例如fn.myBind()就把fn保存到thisFn
+    let funcForBind = function(...secondParams){ // 要返回的函数
+        // 判断函数是否是用new function生成的
+        const isNew = this instanceof funcForBind
+        const thisArg = isNew?this:objThis //this的指向
+        // 绑定好this和参数返回到外层，暂时用call绑定，call也可以原生实现
+        return thisFn.call(thisArg,...params,...secondParams)
+    }
+    // 绑定原型
+    funcForBind.prototype = Object.create(thisFn)
+    return funcForBind //返回绑定好的函数
+} 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;21-立即执行函数和使用场景与闭包结合&#34;&gt;21. 立即执行函数和使用场景（与闭包结合）&lt;/h1&gt;
+&lt;h2 id=&#34;1-什么是立即执行函数&#34;&gt;1. 什么是立即执行函数？&lt;/h2&gt;
+&lt;p&gt;声明一个函数，并马上调用这个匿名函数就叫做立即执行函数；也可以说立即执行函数是一种语法，让你的函数在定义以后立即执行；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615271995138.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-立即执行函数的写法&#34;&gt;2. 立即执行函数的写法：&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;(function(){
+//code
+}())
+
+(function (){
+//code
+})()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上边的两种写法，都是以圆括号开头，引擎会意味后面跟的是表达式，而不是一个函数定义语句，所以就避免了错误，这就叫做&amp;quot;立即调用的函数表达式&amp;quot;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(function () {alert(&amp;quot;我是匿名函数&amp;quot;)}())   //用括号把整个表达式包起来
+(function () {alert(&amp;quot;我是匿名函数&amp;quot;)})()  //用括号把函数包起来
+!function () {alert(&amp;quot;我是匿名函数&amp;quot;)}()  //求反，我们不在意值是多少，只想通过语法检查
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-立即执行函数的作用&#34;&gt;3. 立即执行函数的作用：&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;不必为函数命名，避免了污染全局变量&lt;/li&gt;
+&lt;li&gt;立即执行函数内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量&lt;/li&gt;
+&lt;li&gt;封装变量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总而言之：&lt;strong&gt;立即执行函数会形成一个单独的作用域，我们可以封装一些临时变量或者局部变量，避免污染全局变量&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-使用场景&#34;&gt;4. 使用场景&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;怎样使以下alert的结果为0,1,2：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;ul id=&amp;quot;list&amp;quot;&amp;gt;
+        &amp;lt;li&amp;gt;公司简介&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;联系我们&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;营销网络&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+    &amp;lt;script&amp;gt;
+       var list = document.getElementById(&amp;quot;list&amp;quot;);
+      var li = list.children;
+      for(var i = 0 ;i&amp;lt;li.length;i++){
+       ( function(j){
+            li[j].onclick = function(){
+              alert(j);
+          })(i); //把实参i赋值给形参j
+        }
+      }
+     &amp;lt;/script&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结合闭包&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for (var i = 1; i &amp;lt;= 5; i++) {
+  (function(j) {
+    setTimeout(function timer() {
+      console.log(j);
+    }, j * 1000);
+  })(i);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;如何避免了污染全局变量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;某些代码只需要执行一次，比如只需要显示一个时间，但是这些代码也需要一些临时的变量，但是初始化过程结束之后，就再也不会被用到，如果将这些变量作为全局变量，不是一个好的主意，我们可以用立即执行函数——去将我们所有的代码包裹在它的局部作用域中，不会让任何变量泄露成全局变量，看如下代码：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273235393.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+比如上面的代码，如果没有被包裹在立即执行函数中，而是直接以非函数的形式直接写在&amp;lt;script&amp;gt;&lt;/script&gt;标签里面，虽然也会立即执行，但是临时变量todaydom,days,today,year,month,date,day,msg都将成为全局变量（初始化代码遗留的产物）。&lt;br&gt;
+而用立即执行函数之后，这些变量都不会在全局变量中存在，以后也不会其他地方使用，有效的避免了污染全局变量。&lt;/p&gt;
+&lt;h1 id=&#34;22-设计模式要求说出如何实现应用优缺点单例模式实现&#34;&gt;22. 设计模式(要求说出如何实现,应用,优缺点)/单例模式实现&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;30&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273736555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-创建型模式&#34;&gt;1. 创建型模式&lt;/h2&gt;
+&lt;h3 id=&#34;1-工厂模式&#34;&gt;1. 工厂模式&lt;/h3&gt;
+&lt;p&gt;工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象，用工厂方法代替new操作的一种模式。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Animal(opts){
+    var obj = new Object();
+    obj.color = opts.color;
+    obj.name= opts.name;
+    obj.getInfo = function(){
+        return &#39;名称：&#39;+ onj.name+&#39;， 颜色：&#39;+ obj.color;
+    }
+    return obj;
+}
+var cat = Animal({name: &#39;波斯猫&#39;, color: &#39;白色&#39;});
+cat.getInfo();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;小结:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;构造函数和创建者分离，对new操作进行封装&lt;/li&gt;
+&lt;li&gt;符合开放封闭原则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-单例模式&#34;&gt;2. 单例模式&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274155679.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+单例模式，是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中，应用该模式的一个类只有一个实例。即一个类只有一个对象实例。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var Single = (function(){
+    var instance;
+    function init() {
+        // 定义私有方法和属性
+        // 操作逻辑
+        return {
+           // 定义公共方法和属性
+        };
+    }
+    return {
+        // 获取实例
+        getInstance:function(){
+            if(!instance){
+                instance = init();
+            }
+            return instance;
+        }
+    }
+})();
+
+var obj1 = Single.getInstance();
+var obj2 = Single.getInstance();
+console.log(obj1 === obj2);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;小结:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;单例模式的主要思想就是，实例如果已经创建，则直接返回&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;function creatSingleton() {
+    var obj = null
+    // 实例如已经创建过，直接返回
+    if (!obj) {
+        obj = xxx
+    }
+    return obj
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;符合开放封闭原则&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;3-原型模式&#34;&gt;3. 原型模式&lt;/h3&gt;
+&lt;p&gt;用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。&lt;/p&gt;
+&lt;p&gt;在JavaScript中，实现原型模式是在ECMAScript5中，提出的Object.create方法，使用现有的对象来提供新创建的对象的__proto__。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var prototype = {
+    name: &#39;Jack&#39;,
+    getName: function() {
+        return this.name
+    }
+}
+
+var obj = Object.create(prototype, {
+    job: {
+        value: &#39;IT&#39;
+    }
+})
+
+console.log(obj.getName())  // Jack
+console.log(obj.job)  // IT
+console.log(obj.__proto__ === prototype)  //true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-结构型模式&#34;&gt;2. 结构型模式&lt;/h2&gt;
+&lt;h3 id=&#34;1-适配器模式&#34;&gt;1. 适配器模式&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;31&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274391311.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt;class GooleMap {
+    show() {
+        console.log(&#39;渲染谷歌地图&#39;)
+    }
+}
+
+class BaiduMap {
+    display() {
+        console.log(&#39;渲染百度地图&#39;)
+    }
+}
+
+
+// 定义适配器类, 对BaiduMap类进行封装
+class BaiduMapAdapter {
+    show() {
+        var baiduMap = new BaiduMap()
+        return baiduMap.display() 
+    }
+}
+
+function render(map) {
+    if (map.show instanceof Function) {
+        map.show()
+    }
+}
+
+render(new GooleMap())         // 渲染谷歌地图
+render(new BaiduMapAdapter())  // 渲染百度地图
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;小结:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;适配器模式主要解决两个接口之间不匹配的问题，不会改变原有的接口，而是由一个对象对另一个对象的包装。&lt;/li&gt;
+&lt;li&gt;适配器模式符合开放封闭原则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-行为型模式&#34;&gt;3. 行为型模式&lt;/h2&gt;
+&lt;h3 id=&#34;1-观察者模式订阅-发布模式&#34;&gt;1. 观察者模式(订阅-发布模式)&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274507790.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;发布者发出通知 =&amp;gt;主题对象收到通知并推送给订阅者 =&amp;gt; 订阅者执行相应的操作。&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; // 一个发布者 publisher，功能就是负责发布消息 - publish
+        var pub = {
+            publish: function () {
+                dep.notify();
+            }
+        }
+        // 多个订阅者 subscribers， 在发布者发布消息之后执行函数
+        var sub1 = { 
+            update: function () {
+                console.log(1);
+            }
+        }
+        var sub2 = { 
+            update: function () {
+                console.log(2);
+            }
+        }
+        var sub3 = { 
+            update: function () {
+                console.log(3);
+            }
+        }
+        // 一个主题对象
+        function Dep() {
+            this.subs = [sub1, sub2, sub3];
+        }
+        Dep.prototype.notify = function () {
+            this.subs.forEach(function (sub) {
+                sub.update();
+            });
+        }
+
+        // 发布者发布消息， 主题对象执行notify方法，进而触发订阅者执行Update方法
+        var dep = new Dep();
+        pub.publish();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;23-iframe的缺点有哪些&#34;&gt;23. iframe的缺点有哪些&lt;/h1&gt;
+&lt;h2 id=&#34;1-iframe的优点&#34;&gt;1. iframe的优点：&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;iframe能够原封不动的把嵌入的网页展现出来。&lt;/li&gt;
+&lt;li&gt;如果有多个网页引用iframe，那么你只需要修改iframe的内容，就可以实现调用的每一个页面内容的更改，方便快捷。&lt;/li&gt;
+&lt;li&gt;网页如果为了统一风格，头部和版本都是一样的，就可以写成一个页面，用iframe来嵌套，可以增加代码的可重用。&lt;/li&gt;
+&lt;li&gt;如果遇到加载缓慢的第三方内容如图标和广告，这些问题可以由iframe来解决。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-iframe的缺点&#34;&gt;2. iframe的缺点：&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;会产生很多页面，&lt;code&gt;不容易管理&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;iframe框架结构有时会让人感到迷惑，如果框架个数多的话，可能会出现上下、左右滚动条，会分散访问者的注意力，&lt;code&gt;用户体验度差&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;代码复杂，无法被一些搜索引擎索引到，这一点很关键，现在的搜索引擎爬虫还不能很好的处理iframe中的内容，所以使用iframe会&lt;code&gt;不利于搜索引擎优化&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;很多的移动设备（PDA手机）无法完全显示框架，&lt;code&gt;设备兼容性差&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;iframe框架页面会&lt;code&gt;增加服务器的http请求&lt;/code&gt;，对于大型网站是不可取的。&lt;br&gt;
+分析了这么多，现在基本上都是用&lt;code&gt;Ajax来代替iframe&lt;/code&gt;，所以iframe已经渐渐的退出了前端开发。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;24-数组问题&#34;&gt;24. 数组问题&lt;/h1&gt;
+&lt;h2 id=&#34;1-数组去重&#34;&gt;1. 数组去重&lt;/h2&gt;
+&lt;h3 id=&#34;1-利用es6-set去重es6中最常用&#34;&gt;1. 利用ES6 Set去重（ES6中最常用）&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique (arr) {
+  return Array.from(new Set(arr))
+}
+var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+console.log(unique(arr))
+ //[1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {}, {}]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不考虑兼容性，这种去重的方法代码最少。这种方法还无法去掉“{}”空对象，后面的高阶方法会添加去掉重复“{}”的方法。&lt;/p&gt;
+&lt;h3 id=&#34;2-利用for嵌套for然后splice去重es5中最常用&#34;&gt;2. 利用for嵌套for，然后splice去重（ES5中最常用）&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique(arr){            
+  for(var i=0; i&amp;lt;arr.length; i++){
+      for(var j=i+1; j&amp;lt;arr.length; j++){
+          if(arr[i]===arr[j]){         //第一个等同于第二个，splice方法删除第二个
+              arr.splice(j,1);
+              j--;
+          }
+      }
+  }
+return arr;
+}
+var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+console.log(unique(arr))
+//  [1, &#39;true&#39;,true, 15,false,undefined,null, NaN,NaN, &#39;NaN&#39;,0, &#39;a&#39;,{}, {}]  //NaN和{}没有去重
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;双层循环，外层循环元素，内层循环时比较值。值相同时，则删去这个值。&lt;/p&gt;
+&lt;h3 id=&#34;3-利用indexof去重&#34;&gt;3. 利用indexOf去重&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique(arr) {
+  if (!Array.isArray(arr)) {
+      console.log(&#39;type error!&#39;)
+      return
+  }
+  var array = [];
+  for (var i = 0; i &amp;lt; arr.length; i++) {
+      if (array .indexOf(arr[i]) === -1) {
+          array .push(arr[i])
+      }
+  }
+  return array;
+}
+var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+console.log(unique(arr))
+ // [1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, NaN, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, {…}]  //NaN、{}没有去重
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;新建一个空的结果数组，for 循环原数组，判断结果数组是否存在当前元素，如果有相同的值则跳过，不相同则push进数组。&lt;/p&gt;
+&lt;h3 id=&#34;4-利用sort&#34;&gt;4. 利用sort()&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique(arr) {
+  if (!Array.isArray(arr)) {
+      console.log(&#39;type error!&#39;)
+      return;
+  }
+  arr = arr.sort()
+  var arrry= [arr[0]];
+  for (var i = 1; i &amp;lt; arr.length; i++) {
+      if (arr[i] !== arr[i-1]) {
+          arrry.push(arr[i]);
+      }
+  }
+  return arrry;
+}
+   var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+      console.log(unique(arr))
+// [0, 1, 15, &amp;quot;NaN&amp;quot;, NaN, NaN, {…}, {…}, &amp;quot;a&amp;quot;, false, null, true, &amp;quot;true&amp;quot;, undefined]      //NaN、{}没有去重
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;利用sort()排序方法，然后根据排序后的结果进行遍历及相邻元素比对。&lt;/p&gt;
+&lt;h3 id=&#34;5-利用includes&#34;&gt;5. 利用includes&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique(arr) {
+    if (!Array.isArray(arr)) {
+        console.log(&#39;type error!&#39;)
+        return
+    }
+    var array =[];
+    for(var i = 0; i &amp;lt; arr.length; i++) {
+            if( !array.includes( arr[i]) ) {//includes 检测数组是否有某个值
+                    array.push(arr[i]);
+              }
+    }
+    return array
+}
+var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+    console.log(unique(arr))
+    //[1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, {…}]     //{}没有去重
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;6-利用filter&#34;&gt;6. 利用filter&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function unique(arr) {
+  return arr.filter(function(item, index, arr) {
+    //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
+    return arr.indexOf(item, 0) === index;
+  });
+}
+    var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+        console.log(unique(arr))
+//[1, &amp;quot;true&amp;quot;, true, 15, false, undefined, null, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, {…}]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;7-利用map数据结构去重&#34;&gt;7. 利用Map数据结构去重&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function arrayNonRepeatfy(arr) {
+  let map = new Map();
+  let array = new Array();  // 数组用于返回结果
+  for (let i = 0; i &amp;lt; arr.length; i++) {
+    if(map.has(arr[i])) {  // 如果有该key值
+      map.set(arr[i], true); 
+    } else { 
+      map.set(arr[i], false);   // 如果没有该key值
+      array.push(arr[i]);
+    }
+  } 
+  return array ;
+}
+ var arr = [1,1,&#39;true&#39;,&#39;true&#39;,true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,&#39;NaN&#39;, 0, 0, &#39;a&#39;, &#39;a&#39;,{},{}];
+    console.log(arrayNonRepeatfy(arr))
+//[1, &amp;quot;a&amp;quot;, &amp;quot;true&amp;quot;, true, 15, false, 1, {…}, null, NaN, NaN, &amp;quot;NaN&amp;quot;, 0, &amp;quot;a&amp;quot;, {…}, undefined]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-数组常用方法&#34;&gt;2. 数组常用方法&lt;/h2&gt;
+&lt;h3 id=&#34;1-arraymap&#34;&gt;1. Array.map()&lt;/h3&gt;
+&lt;p&gt;此方法是将数组中的每个元素调用一个提供的函数，结果作为一个新的数组返回，并&lt;code&gt;没有改变原来的数组&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    let newArr = arr.map(x =&amp;gt; x*2)
+    //arr= [1, 2, 3, 4, 5]   原数组保持不变
+    //newArr = [2, 4, 6, 8, 10] 返回新数组
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-arrayforeach&#34;&gt;2. Array.forEach()&lt;/h3&gt;
+&lt;p&gt;此方法是将数组中的每个元素执行传进提供的函数，没有返回值，&lt;code&gt;改变原数组&lt;/code&gt;，注意和map方法区分&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+   num.forEach(x =&amp;gt; x*2)
+   // arr = [1, 2, 3, 4, 5]  数组改变,注意和map区分
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-arrayfilter&#34;&gt;3. Array.filter()&lt;/h3&gt;
+&lt;p&gt;此方法是将所有元素进行判断，将满足条件的元素作为一个新的数组返回&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    const isBigEnough = value =&amp;gt; value &amp;gt;= 3
+    let newArr = arr.filter(isBigEnough )
+    //newNum = [3, 4, 5] 满足条件的元素返回为一个新的数组
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;4-arrayevery&#34;&gt;4. Array.every()&lt;/h3&gt;
+&lt;p&gt;此方法是将所有元素进行判断返回一个布尔值，如果&lt;code&gt;所有元素&lt;/code&gt;都满足判断条件，则返回true，否则为false：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    const isLessThan4 = value =&amp;gt; value &amp;lt; 4
+    const isLessThan6 =&amp;gt; value =&amp;gt; value &amp;lt; 6
+    arr.every(isLessThan4 ) //false
+    arr.every(isLessThan6 ) //true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;5-arraysome&#34;&gt;5. Array.some()&lt;/h3&gt;
+&lt;p&gt;此方法是将所有元素进行判断返回一个布尔值，如果&lt;code&gt;存在&lt;/code&gt;元素都满足判断条件，则返回true，若所有元素都不满足判断条件，则返回false：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr= [1, 2, 3, 4, 5]
+    const isLessThan4 = value =&amp;gt; value &amp;lt; 4
+    const isLessThan6 = value =&amp;gt; value &amp;gt; 6
+    arr.some(isLessThan4 ) //true
+    arr.some(isLessThan6 ) //false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;6-arrayreduce&#34;&gt;6. Array.reduce()&lt;/h3&gt;
+&lt;p&gt;此方法是所有元素调用返回函数，返回值为最后结果,传入的值必须是函数类型：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+   const add = (a, b) =&amp;gt; a + b
+   let sum = arr.reduce(add)
+   //sum = 15  相当于累加的效果
+   与之相对应的还有一个 Array.reduceRight() 方法，区别是这个是从右向左操作的
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;7-arraypush&#34;&gt;7. Array.push()&lt;/h3&gt;
+&lt;p&gt;此方法是在数组的后面添加新加元素，此方法改变了数组的长度：&lt;/p&gt;
+&lt;h3 id=&#34;8-arraypop&#34;&gt;8. Array.pop()&lt;/h3&gt;
+&lt;p&gt;此方法在数组后面删除&lt;code&gt;最后一个元素&lt;/code&gt;，并返回数组，此方法改变了数组的长度：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    arr.pop()
+    console.log(arr) //[1, 2, 3, 4]
+    console.log(arr.length) //4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;9-arrayshift&#34;&gt;9. Array.shift()&lt;/h3&gt;
+&lt;p&gt;此方法在数组后面删除&lt;code&gt;第一个元素&lt;/code&gt;，并返回数组，此方法改变了数组的长度：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    arr.shift()
+    console.log(arr) //[2, 3, 4, 5]
+    console.log(arr.length) //4 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;10-arrayunshift&#34;&gt;10. Array.unshift()&lt;/h3&gt;
+&lt;p&gt;此方法是将一个或多个元素添加到数组的开头，并返回新数组的长度：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5]
+    arr.unshift(6, 7)
+    console.log(arr) //[6, 7, 1, 2, 3, 4, 5]
+    console.log(arr.length) //7 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;11-arrayisarray&#34;&gt;11. Array.isArray()&lt;/h3&gt;
+&lt;p&gt;判断一个对象是不是数组，返回的是布尔值&lt;/p&gt;
+&lt;h3 id=&#34;12-arrayconcat&#34;&gt;12. Array.concat()&lt;/h3&gt;
+&lt;p&gt;此方法是一个可以将多个数组拼接成一个数组：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr1 = [1, 2, 3]
+      arr2 = [4, 5]
+  let arr = arr1.concat(arr2)
+  console.log(arr)//[1, 2, 3, 4, 5]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;13-arraytostring&#34;&gt;13. Array.toString()&lt;/h3&gt;
+&lt;p&gt;此方法将数组转化为字符串：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5];
+   let str = arr.toString()
+   console.log(str)// 1,2,3,4,5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;14-arrayjoin&#34;&gt;14. Array.join()&lt;/h3&gt;
+&lt;p&gt;此方法也是将数组转化为字符串：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5];
+  let str1 = arr.join()
+  let str2 = arr.join(&#39;,&#39;)
+  let str3 = arr.join(&#39;##&#39;)
+  console.log(str1)// 1,2,3,4,5
+  console.log(str2)// 1,2,3,4,5
+  console.log(str3)// 1##2##3##4##5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;可以设置元素之间的间隔&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;15-arraysplice开始位置-删除的个数元素&#34;&gt;15. Array.splice(开始位置， 删除的个数，元素)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;万能方法，可以实现增删改：&lt;/strong&gt;&lt;code&gt;0增，3删，1改&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [1, 2, 3, 4, 5];
+     let arr1 = arr.splice(2, 0 &#39;haha&#39;)
+     let arr2 = arr.splice(2, 3)
+     let arr1 = arr.splice(2, 1 &#39;haha&#39;)
+     console.log(arr1) //[1, 2, &#39;haha&#39;, 3, 4, 5]新增一个元素
+     console.log(arr2) //[1, 2] 删除三个元素
+     console.log(arr3) //[1, 2, &#39;haha&#39;, 4, 5] 替换一个元素
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-查找数组重复项&#34;&gt;3. 查找数组重复项&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;let arr= [1,2,3,4,5,1,2];
+let rep = [];
+arr.forEach((item,index)=&amp;gt;{
+	if(arr.indexOf(item)!=index){ // 匹配数组元素第一个item位置和当前循环的index
+        let obj = {};
+        obj.key = (arr.indexOf(item) + 1) + &#39;|&#39; + (index + 1); // 用&#39;|&#39;分隔两个重复项的下标   
+		obj.value = item;
+        rep.push(obj);
+	}
+});
+console.log(rep)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-扁平化数组flatten&#34;&gt;4. 扁平化数组（flatten）&lt;/h2&gt;
+&lt;p&gt;扁平化就是将嵌套的数组变成一维数组的过程。&lt;/p&gt;
+&lt;p&gt;通常有几种方法可以实现扁平化：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;迭代递归法&lt;/li&gt;
+&lt;li&gt;曲线救国法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-迭代递归&#34;&gt;1. 迭代递归&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;var array = [[1,2,3],4,5,6,[[7]],[]]
+var result = flatten(array)
+
+console.log(result)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;for...of 实现&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function flatten(arr, result = []) {
+    for (let item of arr) {
+        if (Array.isArray(item))
+            flatten(item, result)
+        else
+            result.push(item)
+    }
+    return result
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们使用 result 变量存储结果，然后迭代当前数组，如果值也是数组则继续扁平化，否则将值放入 result 里。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;生成器实现&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;迭代器的升级版就是生成器（Generator），其实这种扁平化最适合用生成器来做了，因为我们的目的就是生成一个个的值，然后把它们组织成一维数组：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function* flat(arr) {
+    for (let item of arr) {
+        if (Array.isArray(item))
+            yield* flat(item)
+        else
+            yield item
+    }
+}
+
+function flatten(arr) {
+    let result = []
+    for (let val of flat(arr)) {
+        result.push(val)
+    }
+    return result
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里有两点需要注意：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;嵌套 yield 需要再加一个星号，这被称为生成器委托。&lt;/li&gt;
+&lt;li&gt;不能使用 forEach 代替 for...of 但可以用 for 循环，因为 for 循环和for...of 可以中断迭代去执行 yield，forEach 不行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;reduce 三句实现法&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function flatten(arr) {
+  return arr.reduce((flat, toFlatten) =&amp;gt; {
+    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+  }, []);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-曲线救国法&#34;&gt;2. 曲线救国法&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;降维打击法&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function flatten(arr){
+    let str = arr.toString()
+    return str.split(&#39;,&#39;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;转成字符串，之后再复原成数组，不过这个方法有个缺点，就是原来的空数组转的空字符串也会被放入新生成的数组里去。&lt;/p&gt;
+&lt;h1 id=&#34;25-dom和bom相关&#34;&gt;25. DOM和BOM相关&lt;/h1&gt;
+&lt;h2 id=&#34;1dom&#34;&gt;1.DOM&lt;/h2&gt;
+&lt;h3 id=&#34;1-dom是什么&#34;&gt;1. DOM是什么：&lt;/h3&gt;
+&lt;p&gt;DOM（Document Object Model）&lt;code&gt;文档对象模型&lt;/code&gt;，是&lt;strong&gt;处理可扩展标志语言&lt;/strong&gt;的标准编程接口。&lt;/p&gt;
+&lt;p&gt;DOM 是 &lt;strong&gt;W3C&lt;/strong&gt; 的标准&lt;/p&gt;
+&lt;h3 id=&#34;2-dom0级和dom2级有什么区别&#34;&gt;2. DOM0级和DOM2级有什么区别：&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;DOM0&lt;/code&gt;级中为某个dom元素绑定多个事件时，只有最后一个事件有效。&lt;code&gt;onclick&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;DOM2&lt;/code&gt;级中可以为单个元素绑定多个事件，每个事件都可以被触发。&lt;code&gt;addEventListener&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-textcontent-innertext-innnerhtml-value的区别&#34;&gt;3. textContent、innerText、innnerHTML、value的区别：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;textContent用来获取和设置文本内容，与innerText的差别是:&lt;code&gt;textContent&lt;/code&gt;获取到的内容包括了元素中的&lt;code&gt;style标签&lt;/code&gt;和&lt;code&gt;script标签&lt;/code&gt;的内容。&lt;/li&gt;
+&lt;li&gt;innerText只能获取和设置&lt;code&gt;文本&lt;/code&gt;内容，不能获取和设置html代码&lt;/li&gt;
+&lt;li&gt;innerHTML可以获取和设置&lt;code&gt;html&lt;/code&gt;代码&lt;/li&gt;
+&lt;li&gt;value获取的是&lt;code&gt;表单元素&lt;/code&gt;的值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-关于dom的api有什么&#34;&gt;4. 关于dom的api有什么：&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;节点创建型api：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;document.createElement()&lt;/li&gt;
+&lt;li&gt;document.createTextNode()&lt;/li&gt;
+&lt;li&gt;parent.cloneNode(true)&lt;/li&gt;
+&lt;li&gt;document.createDocumentFragment() &lt;code&gt;创建文档片段,解决大量添加节点造成的回流问题&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;页面修改型API：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;parent.appendChild(child)&lt;/li&gt;
+&lt;li&gt;parent.insertBefore(newNode,referenceNode) &lt;code&gt;将新元素添加到父元素中指定的子元素前面&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;parent.removeChild(child)&lt;/li&gt;
+&lt;li&gt;parent.replcaeChild(newChild,oldChild)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;节点查询型API：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;document.getElementById()&lt;/li&gt;
+&lt;li&gt;document.getElementsByTagName() 返回的是一个即时的HTMLCollection类型&lt;/li&gt;
+&lt;li&gt;document.getElementsByName() 根据指定的name属性获取元素,返回的是一个即时的NodeList&lt;/li&gt;
+&lt;li&gt;document.getElementsByClassName() 返回的是一个即时的HTMLCollection&lt;/li&gt;
+&lt;li&gt;document.querySelector() 获取匹配到的第一个元素，采用的是深度优先搜索。&lt;/li&gt;
+&lt;li&gt;docuemnt.querySelectorAll()&lt;br&gt;
+返回的是一个非即时的NodeList，也就是说结果不会随着文档树的变化而变化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;节点关系型api：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;父关系型：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;node.parentNode()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;兄弟关系型&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;node.previouSibling() 返回节点的前一个节点（包括元素节点，文本节点，注释节点）&lt;/li&gt;
+&lt;li&gt;node.previousElementSibling() 返回前一个元素节点&lt;/li&gt;
+&lt;li&gt;node.nextSibling() 返回下一个节点&lt;/li&gt;
+&lt;li&gt;node.nextElementSibling() 返回下一个元素节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;子关系型&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;parent.childNodes() 返回一个即时的NodeList，包括了文本节点和注释节点&lt;/li&gt;
+&lt;li&gt;parent.children() 一个即时的HTMLCollection，子节点都是Element&lt;/li&gt;
+&lt;li&gt;parent.firsrtNode()&lt;/li&gt;
+&lt;li&gt;parent.lastNode()&lt;/li&gt;
+&lt;li&gt;hasChildNodes()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;元素属性型api：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;element.setAttribute(“name”,“value”) 为元素添加属性&lt;/li&gt;
+&lt;li&gt;element.getAtrribute(“name”) 获取元素的属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;元素样式型api：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;window.getComputedStyle(element) 返回一个CSSStyleDeclaration,可以从中访问元素的任意样式属性。&lt;/li&gt;
+&lt;li&gt;element.getBoundingClientRect() 返回一个DOMRect对象，里面&lt;strong&gt;包括了元素相对于可视区的位置top,left&lt;/strong&gt;,以及元素的大小,单位为纯数字。可用于判断某元素是否出现在了可视区域。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5什么是事件监听&#34;&gt;5.什么是事件监听:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;addEventListener()方法&lt;/code&gt;，用于向指定元素添加事件句柄，它可以更简单的控制事件，语法为&lt;/p&gt;
+&lt;p&gt;element.addEventListener(event, function, useCapture);&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一个参数是事件的类型(如 “click” 或 “mousedown”).&lt;/li&gt;
+&lt;li&gt;第二个参数是事件触发后调用的函数。&lt;/li&gt;
+&lt;li&gt;第三个参数是个布尔值用于描述事件是冒泡还是捕获。该参数是可选的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;事件传递有两种方式，&lt;code&gt;冒泡&lt;/code&gt;和&lt;code&gt;捕获&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;事件传递定义了元素事件触发的顺序，如果你将P元素插入到div元素中，用户点击P元素，&lt;/p&gt;
+&lt;p&gt;在冒泡中，内部元素先被触发，然后再触发外部元素，&lt;br&gt;
+捕获中，外部元素先被触发，在触发内部元素，&lt;/p&gt;
+&lt;h3 id=&#34;6-说说前端中的事件流&#34;&gt;6. 说说前端中的事件流&lt;/h3&gt;
+&lt;p&gt;事件发生时会在元素节点之间按照特定的顺序传播，整个过程分为&lt;code&gt;捕获阶段，目标阶段和冒泡阶段&lt;/code&gt;，这个&lt;code&gt;传播过程&lt;/code&gt;叫做Dom事件流。&lt;/p&gt;
+&lt;p&gt;事件冒泡：从事件源逐级向上传播到DOM最顶层节点的过程。&lt;/p&gt;
+&lt;p&gt;事件捕获：从DOM最顶层节点逐级向下传播到事件源的过程。&lt;/p&gt;
+&lt;p&gt;addEventListener用于指定事件处理程序，共接收三个参数。分别是触发事件，事件处理程序函数以及一个布尔值。第三个参数默认为false，表示在该事件的处理函数会在冒泡阶段被调用。若改为true，则表示事件处理函数会在捕获阶段被调用。&lt;/p&gt;
+&lt;h3 id=&#34;7-如何让事件先冒泡后捕获&#34;&gt;7. 如何让事件先冒泡后捕获&lt;/h3&gt;
+&lt;p&gt;对于&lt;code&gt;目标元素&lt;/code&gt;来说，如果DOM节点通过addEventListener同时绑定了两个事件监听函数，一个用于捕获，一个用于冒泡，那么两个事件的执行顺序是按照代码添加的顺序执行的。所以，先绑定冒泡的函数，再绑定捕获的函数，即可实现。&lt;/p&gt;
+&lt;p&gt;对于&lt;code&gt;非目标元素&lt;/code&gt;来说，可以给捕获事件的处理程序添加一个定时器，将处理程序推入下一个宏任务执行。&lt;/p&gt;
+&lt;h3 id=&#34;8-说一下事件代理&#34;&gt;8. 说一下事件代理：&lt;/h3&gt;
+&lt;p&gt;事件委托是指 不在子节点单独设置事件监听器，而将事件&lt;code&gt;监听器设置在父节点上&lt;/code&gt;，再利用&lt;code&gt;冒泡原理&lt;/code&gt;使每一个子节点都能触发该事件。&lt;/p&gt;
+&lt;p&gt;事件委托的优点：只操作一次Dom，提高了程序的性能。&lt;/p&gt;
+&lt;p&gt;常用于&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ul和li标签的事件监听，一般采用事件委托机制将事件监听器绑定在ul上。&lt;/li&gt;
+&lt;li&gt;还适合动态元素的绑定，新添加的子元素不需单独添加事件处理程序。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;（1）了解事件代理吗，这样做有什么好处&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;事件代理就是说我们将事件添加到本来要添加的事件的父节点，将事件委托给父节点来触发处理函数，这通常会使用在大量的同级元素需要添加同一类事件的时候，比如一个动态的非常多的列表，需要为每个列表项都添加点击事件，这时就可以使用事件代理，通过判断e.target.nodeName来判断发生的具体元素，这样做的好处是减少事件绑定，同事动态的DOM结构任然可以监听，事件代理发生在冒泡阶段&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（2）事件代理在捕获阶段的实际应用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以在父元素层面阻止事件向子元素传播，也可代替子元素执行某些操作。&lt;/p&gt;
+&lt;h3 id=&#34;9-事件类型相关&#34;&gt;9. 事件类型相关：&lt;/h3&gt;
+&lt;p&gt;（1）&lt;code&gt;mouseover和mouseenter的区别&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mouseover：当鼠标移入元素或其子元素都会触发事件，所以有一个重复触发，冒泡的过程。对应的移出事件是mouseout。&lt;/li&gt;
+&lt;li&gt;mouseenter：鼠标移入子元素时不会再次触发mouseenter事件，对应的移出事件是mouseleave。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（2）&lt;code&gt;三种键盘事件的区别：&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;keyup: 松开键盘触发&lt;/li&gt;
+&lt;li&gt;keydown:按下键盘触发&lt;/li&gt;
+&lt;li&gt;keypress:不能识别功能键，比如ctrl,alt,shift,左右箭头。可以区分大小写。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在输入框中按下一个键的全过程：触发keydown/keypress事件-&amp;gt;文字键入输入框中-&amp;gt;触发keyup事件&lt;/p&gt;
+&lt;p&gt;按下按键后&lt;code&gt;自动对焦&lt;/code&gt;输入框，应该使用&lt;code&gt;keyup&lt;/code&gt;，不应该使用keydown/keypress,因为后者会使按键落入输入框中,对于回车键的话还不能使用keypress。&lt;/p&gt;
+&lt;h3 id=&#34;10-静态绑定事件与动态绑定事件的区别&#34;&gt;10. 静态绑定事件与动态绑定事件的区别：&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;静态绑定&lt;/strong&gt;事件是指直接在Html标签上通过οnclick=&amp;quot;hide()&amp;quot;来绑定事件。&lt;/p&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;html和js文件存在耦合，不符合结构和行为分离的原则。&lt;/li&gt;
+&lt;li&gt;可能存在引发错误，如果js代码还没加载就触发该事件则会抛出错误&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;动态绑定&lt;/strong&gt;事件是指通过js动态绑定事件，element.onclick() element.addEventListener()。&lt;/p&gt;
+&lt;h3 id=&#34;11-元素的位置和大小&#34;&gt;11. 元素的位置和大小&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;① offset系列：&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;offsetTop（获取元素位置）: 相对于带有‘定位’的父元素的偏移量&lt;/strong&gt;&lt;br&gt;
+&lt;code&gt;offsetHeight: content+padding+border&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;② cilent系列：&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;clientHeight(获取元素宽高): content+padding,不包含border&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;③ scroll系列：&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;scrollTop（获取滚动的距离）&lt;/strong&gt;: 向下滚动后，上面被卷去的距离，即隐藏的高度。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;④ document.clientWidth与document.style.width的区别：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;区别1：前者可以获取任意样式表中的width样式值，包括行内样式的，内嵌样式的，外部样式的；后者只能获取行内的样式。&lt;/li&gt;
+&lt;li&gt;区别2：clientWidth获取的是数字型的，style获取的带有px后缀&lt;/li&gt;
+&lt;li&gt;区别3：clientWidth包含了padding,而style.width只包含content。&lt;/li&gt;
+&lt;li&gt;区别4：clientWidth是只读属性，所以一般用于获取元素的大小；而style.width是可读可写的，可用于获取，也可用于修改。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;⑤ 判断一个元素是否已经出现在了可视区域：(此问题可应用在懒加载中)&lt;/strong&gt;&lt;br&gt;
+&lt;code&gt;使用element.getBoundingClientRect().top获取在可视区的位置。&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;window.addEventListener(&amp;quot;scroll&amp;quot;, function () {
+    let viewPortHeight = window.pageYOffset;
+    let offset = box2.getBoundingClientRect().top;
+    if (offset &amp;lt; viewPortHeight) {
+        if (offset + box2.offsetHeight &amp;lt; 0) {
+            console.log(&amp;quot;他走了&amp;quot;);
+        } else {
+            console.log(&amp;quot;他来啦他来啦&amp;quot;);
+        }
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;12-js拖动及拖拽功能的实现&#34;&gt;12. js拖动及拖拽功能的实现&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;（1）拖动功能的实现：&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;前置条件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;拖动事件的三个过程：鼠标按下mousedown,鼠标移动mousemove,鼠标松开mouseup&lt;br&gt;
+鼠标按下后执行mousemove事件。&lt;/li&gt;
+&lt;li&gt;盒子采用绝对定位，通过left和top属性来修改位置。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法一：（直接根据鼠标移动的距离确定元素移动的距离）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;鼠标的坐标通过clientX,clientY获取：&lt;/li&gt;
+&lt;li&gt;盒子的定位信息：鼠标移动时候的坐标-鼠标按下去时候的坐标+元素初始情况下的offetLeft.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;（2）拖拽功能的实现：&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;使用html5提供的拖拽API（Drag 和 drop）&lt;/p&gt;
+&lt;h2 id=&#34;2-bom浏览器对象模型&#34;&gt;2. (BOM)浏览器对象模型：&lt;/h2&gt;
+&lt;h3 id=&#34;1-实用的bom属性对象方法&#34;&gt;1. 实用的BOM属性对象方法：&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;location对象&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;location.href– 返回或设置当前文档的URL&lt;/li&gt;
+&lt;li&gt;location.search – 返回URL中的查询字符串部分。例如 http://www.dreamdu.com/dreamdu.php?id=5&amp;amp;name=dreamdu 返回包括(?)后面的内容?id=5&amp;amp;name=dreamdu&lt;/li&gt;
+&lt;li&gt;location.hash – 返回URL#后面的内容，如果没有#，返回空&lt;/li&gt;
+&lt;li&gt;location. – 返回URL中的域名部分，例如www.dreamdu.com&lt;/li&gt;
+&lt;li&gt;location.hostname – 返回URL中的主域名部分，例如dreamdu.com&lt;/li&gt;
+&lt;li&gt;location.pathname – 返回URL的域名后的部分。例如 http://www.dreamdu.com/xhtml/ 返回/xhtml/&lt;/li&gt;
+&lt;li&gt;location.port – 返回URL中的端口部分。例如 http://www.dreamdu.com:8080/xhtml/ 返回8080&lt;/li&gt;
+&lt;li&gt;location.protocol – 返回URL中的协议部分。例如 http://www.dreamdu.com:8080/xhtml/ 返回(//)前面的内容http:&lt;/li&gt;
+&lt;li&gt;location.assign() – 重定向页面，与location.href一样，会记录历史，能后退页面&lt;/li&gt;
+&lt;li&gt;location.replace() – 设置当前文档的URL，不记录历史，不能后退页面&lt;/li&gt;
+&lt;li&gt;location.reload() – 重载当前页面,相当于F5。添加参数true则表示强制刷新，直接从服务器获取数据，不从浏览器缓存中取数据，相当于Ctrl+F5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;history对象&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;history.go(n) – 前进或后退指定的页面数;&lt;/li&gt;
+&lt;li&gt;history.back() – 后退一页&lt;/li&gt;
+&lt;li&gt;history.forward() – 前进一页&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;navigator对象&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;navigator包含了用户浏览器的信息&lt;/li&gt;
+&lt;li&gt;navigator.userAgent – 返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串)&lt;/li&gt;
+&lt;li&gt;navigator.cookieEnabled – 返回浏览器是否支持(启用)cookie&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-settimeoutfn100100毫秒是如何权衡的&#34;&gt;2. setTimeout(fn,100);100毫秒是如何权衡的：&lt;/h3&gt;
+&lt;p&gt;100ms指的是将回调函数加入到任务队列所花的时间。至于具体什么时候执行，需要看主线程的执行栈中是否还有任务在执行。&lt;/p&gt;
+&lt;h3 id=&#34;3-requestanimationframe&#34;&gt;3. requestAnimationFrame&lt;/h3&gt;
+&lt;p&gt;特点：requestAnimationFrame采用系统时间间隔，保证了最佳的绘制效率。&lt;/p&gt;
+&lt;p&gt;使用方法：requestAnimationFrame接收一个回调函数，这个回调函数会在下一次浏览器重绘之前调用。&lt;/p&gt;
+&lt;h3 id=&#34;4-分别用setintervalsettimeoutrequestanimationframe制作有个简单的进度条效果&#34;&gt;4. 分别用setInterval,setTimeout,requestAnimationFrame制作有个简单的进度条效果：&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;setInterval:&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div
+     style=&amp;quot;width: 0; height: 20px; background-color: orange&amp;quot;
+     id=&amp;quot;div&amp;quot;
+     &amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;script&amp;gt;
+    let timer = setInterval(() =&amp;gt; {
+        if (parseInt(div.style.width) &amp;gt;= 500) {
+            return clearInterval(timer);
+        }
+        console.log(div.style.width);
+        div.style.width = parseInt(div.style.width) + 5 + &amp;quot;px&amp;quot;;
+        div.innerHTML = parseInt(div.style.width) / 5 + &amp;quot;%&amp;quot;;
+    }, 16);
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;setTimeout:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div
+     style=&amp;quot;width: 0; height: 20px; background-color: orange&amp;quot;
+     id=&amp;quot;div&amp;quot;
+     &amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;script&amp;gt;
+    let timer = setTimeout(function fn() {
+        if (parseInt(div.style.width) &amp;lt; 500) {
+            div.style.width = parseInt(div.style.width) + 5 + &amp;quot;px&amp;quot;;
+            div.innerHTML = parseInt(div.style.width) / 5 + &amp;quot;%&amp;quot;;
+            timer = setTimeout(fn, 16);
+        } else {
+            clearTimeout(timer);
+        }
+    }, 16);
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;requestAnimationFrame:类似于setTimeout,需要一次次的调用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div
+     style=&amp;quot;width: 0; height: 20px; background-color: orange&amp;quot;
+     id=&amp;quot;div&amp;quot;
+     &amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;script&amp;gt;
+    let timer = requestAnimationFrame(function fn() {
+        if (parseInt(div.style.width) &amp;lt; 500) {
+            div.style.width = parseInt(div.style.width) + 5 + &amp;quot;px&amp;quot;;
+            div.innerHTML = parseInt(div.style.width) / 5 + &amp;quot;%&amp;quot;;
+            requestAnimationFrame(fn);
+        } else {
+            cancelAnimationFrame(timer);
+        }
+    });
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;5-js中的轮播实现原理假如一个页面上有两个轮播你会怎么实现&#34;&gt;5. js中的轮播实现原理？假如一个页面上有两个轮播，你会怎么实现？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;让图片存在一个数组中，然后将最后一张图片重复添加在数组的头部，将第一张图片重复添加在数组的最后。&lt;/li&gt;
+&lt;li&gt;然后准备一个只能显示一张图片的盒子，对盒子做溢出隐藏处理。&lt;/li&gt;
+&lt;li&gt;通过定时器增减索引，显示对应的图片，实现轮播功能。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果有两个轮播，可封装一个轮播组件，将需要轮播的图片作为参数传递。&lt;/p&gt;
+&lt;h1 id=&#34;26-服务端渲染server-side-render&#34;&gt;26. 服务端渲染（server side render）&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;服务端渲染(SSR)&lt;/code&gt;：页面上的内容是由服务器上的代码决定的。即，页面上的内容在服务器上已经生成好了，服务器把这个内容给到浏览器，浏览器拿到这个内容直接显示在页面上即可。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;客户端渲染(CSR)&lt;/code&gt; ：一个网页是由JS文件渲染出来的，而不是服务器直接返回回来的。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615364099956.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-ssr的优势&#34;&gt;1. SSR的优势&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;更利于SEO&lt;br&gt;
+服务端渲染返回给客户端的是已经获取了异步数据并执行JavaScript脚本的最终HTML，网络爬中就可以抓取到完整页面的信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更利于首屏渲染&lt;br&gt;
+首屏的渲染是node发送过来的html字符串，并不依赖于js文件了，这就会使用户更快的看到页面的内容。尤其是针对大型单页应用，打包后文件体积比较大，普通客户端渲染加载所有所需文件时间较长，首页就会有一个很长的白屏等待时间。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-ssr的劣势&#34;&gt;2. SSR的劣势&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;服务端压力较大&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开发条件受限&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;学习成本相对较高&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;27-js-垃圾回收机制&#34;&gt;27.  JS 垃圾回收机制&lt;/h1&gt;
+&lt;h2 id=&#34;1-垃圾回收&#34;&gt;1. 垃圾回收&lt;/h2&gt;
+&lt;p&gt;JavaScript 中的内存管理是自动执行的，而且是不可见的。我们创建基本类型、对象、函数……所有这些都需要内存。&lt;/p&gt;
+&lt;h2 id=&#34;2-可达性&#34;&gt;2. 可达性&lt;/h2&gt;
+&lt;p&gt;JavaScript 中内存管理的主要概念是可达性。&lt;/p&gt;
+&lt;p&gt;简单地说，“可达性” 值就是那些以某种方式&lt;code&gt;可访问&lt;/code&gt;或&lt;code&gt;可用&lt;/code&gt;的值，它们被保证存储在内存中。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;有一组基本的固有可达值，由于显而易见的原因无法删除。例如:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;本地函数的局部变量和参数&lt;/li&gt;
+&lt;li&gt;当前嵌套调用链上的其他函数的变量和参数&lt;/li&gt;
+&lt;li&gt;全局变量&lt;/li&gt;
+&lt;li&gt;还有一些其他的，内部的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;这些值称为根。&lt;/code&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;如果引用或引用链可以从根访问任何其他值，则认为该值是可访问的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;如果局部变量中有对象，并且该对象具有引用另一个对象的属性，则该对象被视为&lt;strong&gt;可达性&lt;/strong&gt;， 它引用的那些也是可以访问的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;下面是最简单的例子:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// user 具有对象的引用
+let user = {
+  name: &amp;quot;John&amp;quot;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366337580.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这里箭头表示一个对象引用。全局变量&lt;code&gt;“user”&lt;/code&gt;引用对象 &lt;code&gt;{name:“John”}&lt;/code&gt;(为了简洁起见，我们将其命名为John)。John 的 &lt;code&gt;“name”&lt;/code&gt;属性存储一个基本类型，因此它被绘制在对象中。&lt;/p&gt;
+&lt;p&gt;如果 &lt;code&gt;user&lt;/code&gt; 的值被覆盖，则引用丢失:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;user = null;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366388527.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在 John 变成不可达的状态，没有办法访问它，没有对它的引用。垃圾回收器将丢弃 John 数据并释放内存。&lt;/p&gt;
+&lt;h2 id=&#34;3两个引用&#34;&gt;3.两个引用&lt;/h2&gt;
+&lt;p&gt;现在让我们假设我们将引用从 &lt;code&gt;user&lt;/code&gt;复制到 &lt;code&gt;admin&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// user具有对象的引用
+let user = {
+  name: &amp;quot;John&amp;quot;
+};
+let admin = user;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366454334.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在如果我们做同样的事情:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;user = null;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;该对象仍然可以通过 &lt;code&gt;admin&lt;/code&gt; 全局变量访问，所以它在内存中。如果我们也覆盖&lt;code&gt;admin&lt;/code&gt;，那么它可以被释放。&lt;/p&gt;
+&lt;h2 id=&#34;4-相互关联的对象&#34;&gt;4. 相互关联的对象&lt;/h2&gt;
+&lt;p&gt;现在来看一个更复杂的例子， family 对象：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function marry (man, woman) {
+  woman.husban = man;
+  man.wife = woman;
+
+  return {
+    father: man,
+    mother: woman
+  }
+}
+
+let family = marry({
+  name: &amp;quot;John&amp;quot;
+}, {
+  name: &amp;quot;Ann&amp;quot;
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;产生的内存结构:&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366611256.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在让我们删除两个引用:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;delete family.father;
+delete family.mother.husband;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366634406.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+仅仅删除这两个引用中的一个是不够的，因为所有对象仍然是可访问的。&lt;/p&gt;
+&lt;p&gt;但是如果我们把这两个都删除，那么我们可以看到 John 不再有传入的引用:&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366651083.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+输出引用无关紧要。只有传入的对象才能使对象可访问，因此，John 现在是不可访问的，并将从内存中删除所有不可访问的数据。&lt;/p&gt;
+&lt;p&gt;垃圾回收之后：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366668995.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-内部算法&#34;&gt;5. 内部算法&lt;/h2&gt;
+&lt;p&gt;基本的垃圾回收算法称为“&lt;strong&gt;标记-清除&lt;/strong&gt;”，定期执行以下“垃圾回收”步骤:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;垃圾回收器获取根并“&lt;strong&gt;标记&lt;/strong&gt;”(记住)它们。&lt;/li&gt;
+&lt;li&gt;然后它访问并“标记”所有来自它们的引用。&lt;/li&gt;
+&lt;li&gt;然后它访问标记的对象并标记它们的引用。所有被访问的对象都被记住，以便以后不再访问同一个对象两次。&lt;/li&gt;
+&lt;li&gt;以此类推，直到有未访问的引用(可以从根访问)为止。&lt;/li&gt;
+&lt;li&gt;除标记的对象外，所有对象都被删除。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如，对象结构如下:&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615366772644.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+我们可以清楚地看到右边有一个“不可到达的块”。现在让我们看看“&lt;strong&gt;标记并清除&lt;/strong&gt;”垃圾回收器如何处理它。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一步标记根&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367324843.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;然后标记他们的引用&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367344647.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;以及子孙代的引用:&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367365917.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在进程中不能访问的对象被认为是不可访问的，将被删除:&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615367388777.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;code&gt;这就是垃圾收集的工作原理。JavaScript引擎应用了许多优化，使其运行得更快，并且不影响执行。&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;6面试怎么回答&#34;&gt;6.面试怎么回答&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1）问什么是垃圾&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一般来说没有被引用的对象就是垃圾，就是要被清除， 有个例外如果几个对象引用形成一个环，互相引用，但根访问不到它们，这几个对象也是垃圾，也要被清除。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2）如何检垃圾&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一种算法是标记 标记-清除 算法&lt;/p&gt;
+&lt;h1 id=&#34;28-eventloop&#34;&gt;28. eventloop&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Event Loop&lt;/code&gt;即事件循环，是指浏览器或Node的一种解决javaScript单线程运行时不会阻塞的一种机制，也就是我们经常使用&lt;strong&gt;异步&lt;/strong&gt;的原理。&lt;/p&gt;
+&lt;h2 id=&#34;1-进程和线程&#34;&gt;1. 进程和线程&lt;/h2&gt;
+&lt;p&gt;线程，是程序执行流的最小单位。线程可与同属一个进程的其他线程共享所拥有的全部资源，同一进程中的多个线程之间可以并发执行。线程有&lt;code&gt;就绪&lt;/code&gt;，&lt;code&gt;阻塞&lt;/code&gt;，&lt;code&gt;运行&lt;/code&gt;三种基本状态。&lt;/p&gt;
+&lt;p&gt;阮一峰大神针对进程和线程的类比，很是形象：&lt;code&gt;计算机的核心CPU&lt;/code&gt;，是个工厂，时刻运转着，工厂里有很多个车间（进程），一个车间开工其他车间不能开工，就是说：&lt;code&gt;单核CPU一次只能运行一个进程。任何时候，CPU总是运行一个进程&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;而一个车间里面有很多工人（线程），协同完成一个任务。所以：&lt;code&gt;一个进程可以包括多个线程&lt;/code&gt;。车间空间是工人共享的，&lt;code&gt;一个进程中的内存空间是所有线程共享的&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;但是房间大小不同个，容纳量不同，有些线程进去了，其他线程就不能再进去使用了。这就是：&lt;code&gt;一个线程使用某些共享内存时，其他线程得等它结束后才能使用共享内存&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;内存可以上锁，防止其他线程进来，【互斥锁】也就是防止多个线程读写同一块内存区域。&lt;/p&gt;
+&lt;p&gt;还有些共享内存比较大，可以容纳多个线程，但是也是有限的，只能容纳固定数目的线程使用。如何保证多个线程不冲突呢？内存门口有个钥匙架，如果发现钥匙架空了，那就不能再进去了【信号量】。&lt;/p&gt;
+&lt;h2 id=&#34;2-函数调用栈与任务队列&#34;&gt;2. 函数调用栈与任务队列&lt;/h2&gt;
+&lt;p&gt;Javascript有一个main thread 主进程和call-stack（一个调用堆栈），在对一个调用堆栈中的task处理的时候，其他的都要等着。当在执行过程中遇到一些类似于setTimeout等异步操作的时候，会交给浏览器的其他模块(以webkit为例，是webcore模块)进行处理，当到达setTimeout指定的延时执行的时间之后，task(回调函数)会放入到任务队列之中。一般不同的异步任务的回调函数会放入不同的任务队列之中。等到调用栈中所有task执行完毕之后，接着去执行任务队列之中的task(回调函数)。&lt;/p&gt;
+&lt;p&gt;任务队列是“先进先出”的数据结构，先来的优先被主线程读取。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615368924655.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在上图中，调用栈中遇到DOM操作、ajax请求以及setTimeout等WebAPIs的时候就会交给浏览器内核的其他模块进行处理，webkit内核在Javasctipt执行引擎之外，有一个重要的模块是webcore模块。对于图中WebAPIs提到的三种API，webcore分别提供了DOM Binding、network、timer模块来处理底层实现。等到这些模块处理完这些操作的时候将回调函数放入任务队列中，之后等栈中的task执行完之后再去执行任务队列之中的回调函数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;小结：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;所有的代码都要通过函数调用栈中调用执行。&lt;/li&gt;
+&lt;li&gt;当遇到前文中提到的APIs的时候，会交给浏览器内核的其他模块进行处理。&lt;/li&gt;
+&lt;li&gt;任务队列中存放的是回调函数。&lt;/li&gt;
+&lt;li&gt;等到调用栈中的task执行完之后再回去执行任务队列之中的task。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-宏任务与微任务&#34;&gt;3. 宏任务与微任务&lt;/h2&gt;
+&lt;p&gt;其中setTimeout叫做macro-task(宏任务)，当然如我们所想，还有如promise的micro-task(微任务)。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;macro-task包括：script(整体代码), setTimeout, setInterval, setImmediate, I/O, UI rendering。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;micro-task包括：process.nextTick, Promise, Object.observe, MutationObserver&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;事件循环的顺序是从script开始第一次循环，随后全局上下文进入函数调用栈，碰到macro-task就将其交给处理它的模块处理完之后将回调函数放进macro-task的队列之中，碰到micro-task也是将其回调函数放进micro-task的队列之中。直到函数调用栈清空只剩全局执行上下文，然后开始执行所有的micro-task。当所有可执行的micro-task执行完毕之后。循环再次执行macro-task中的一个任务队列，执行完之后再执行所有的micro-task，就这样一直循环。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;不同的任务会放进不同的任务队列之中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;先执行macro-task，等到函数调用栈清空之后再执行所有在队列之中的micro-task。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;等到所有micro-task执行完之后再从macro-task中的一个任务队列开始执行，就这样一直循环。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当有多个macro-task(micro-task)队列时，事件循环的顺序是按上文macro-task(micro-task)的分类中书写的顺序执行的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;4事件循环event-loop&#34;&gt;4.事件循环（Event Loop）&lt;/h2&gt;
+&lt;p&gt;JavaScript是单线程的，单线程意味着需要一个任务队列来管理任务事件，任务分为两种：&lt;code&gt;同步任务&lt;/code&gt;和&lt;code&gt;异步任务&lt;/code&gt;。同步任务是在主线程上面排队执行的任务，只有前面任务完成，下一个任务才能执行。异步任务是不进入主线程，而是进入任务队列中，只有通知主线程某个异步任务可以执行了，该任务方可执行。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615368575238.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我们的同步任务在主线程上运行会形成一个执行栈&lt;/li&gt;
+&lt;li&gt;如果碰到异步任务，比如setTimeout、onClick等等的一些操作，我们会将他的执行结果放入队列，此期间主线程不阻塞&lt;/li&gt;
+&lt;li&gt;等到主线程中的所有同步任务执行完毕，就会通过event loop在队列里面从头开始取，在执行栈中执行&lt;/li&gt;
+&lt;li&gt;event loop永远不会断&lt;/li&gt;
+&lt;li&gt;以上的这一整个流程就是Event Loop（事件循环机制）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;29-如何快速让字符串变成以千为精度的数字&#34;&gt;29. 如何快速让字符串变成以千为精度的数字&lt;/h1&gt;
+&lt;h2 id=&#34;1-字符串转换成数字的三种方法&#34;&gt;1. 字符串转换成数字的三种方法&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;转换函数、强制类型转换、利用js变量弱类型转换&lt;/code&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;转换函数：&lt;br&gt;
+js提供了parseInt()和parseFloat()两个转换函数。前者把值转换成整数，后者把值转换成浮点数。只有对String类型调用这些方法，这两个函数才能正确运行；对其他类型返回的都是NaN(Not a Number)。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;parseInt()方法还有基模式，可以把二进制、八进制、十六进制或其他任何进制的字符串转换成整数。基是由parseInt()方法的第二个参数指定的，示例如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;parseInt(&amp;quot;AF&amp;quot;,   16);   //returns   175
+parseInt(&amp;quot;10&amp;quot;,   2);   //returns   2
+parseInt(&amp;quot;10&amp;quot;,   8);   //returns   8
+parseInt(&amp;quot;10&amp;quot;,   10);   //returns   10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;强制类型转换&lt;br&gt;
+ECMAScript中可用的3种强制类型转换如下：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Boolean(value)——把给定的值转换成Boolean型；&lt;/li&gt;
+&lt;li&gt;Number(value)——把给定的值转换成数字（可以是整数或浮点数）；&lt;/li&gt;
+&lt;li&gt;String(value)——把给定的值转换成字符串。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;利用js变量弱类型转换&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-数字千位符格式化&#34;&gt;2. 数字千位符格式化&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;function toThousands(num) {
+    var result = &#39;&#39;, counter = 0;
+    num = (num || 0).toString();
+    for (var i = num.length - 1; i &amp;gt;= 0; i--) {
+        counter++;
+        result = num.charAt(i) + result;
+        if (!(counter % 3) &amp;amp;&amp;amp; i != 0) { result = &#39;,&#39; + result; }
+    }
+    return result;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;30-js中v8引擎的详解&#34;&gt;30. js中v8引擎的详解&lt;/h1&gt;
+&lt;h2 id=&#34;1-v8引擎出现的原因&#34;&gt;1. v8引擎出现的原因&lt;/h2&gt;
+&lt;p&gt;这里先说一下什么是&lt;code&gt;编译型语言&lt;/code&gt;和&lt;code&gt;解释性语言&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;编译型&lt;/code&gt;语言： 在程序执行之前必须进行专门的编译过程，有如下特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;只须编译一次&lt;/code&gt;就可以把源代码&lt;code&gt;编译成机器语言&lt;/code&gt;，后面的执行&lt;code&gt;无须重新编译&lt;/code&gt;，直接使用之前的编译结果就可以；因此其执行的&lt;code&gt;效率比较高&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;编译性语言代表：C、C++、Java、Pascal/Object Pascal（Delphi）&lt;/li&gt;
+&lt;li&gt;程序执行效率比较高，但比较依赖编译器，因此跨平台性差一些&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;解释型&lt;/code&gt;语言 - 解释型语言，支持动态类型，弱类型，在&lt;code&gt;程序运行&lt;/code&gt;的时候&lt;code&gt;才进行编译&lt;/code&gt;，而编译前需要确定变量的类型，效率比较低，对不同系统平台有较大的兼容性&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;源代码&lt;code&gt;不能直接&lt;/code&gt;翻译成机器语言，而是先翻译成&lt;code&gt;中间代码&lt;/code&gt;，再由&lt;code&gt;解释器&lt;/code&gt;对中间代码进行&lt;code&gt;解释运行&lt;/code&gt; 源代码—&amp;gt;中间代码—&amp;gt;机器语言&lt;/li&gt;
+&lt;li&gt;程序&lt;code&gt;不需要编译&lt;/code&gt;，程序在运行时才翻译成机器语言，&lt;code&gt;每执行一次都要翻译一次&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;解释型语言代表：Python、JavaScript、Shell、Ruby、MATLAB等&lt;/li&gt;
+&lt;li&gt;运行效率一般相对&lt;code&gt;比较低&lt;/code&gt;，&lt;code&gt;依赖解释器&lt;/code&gt;，跨平台性好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;比较：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一般，&lt;code&gt;编译型语言的运行效率比解释型语言更高&lt;/code&gt;；但是不能一概而论，部分解释性语言的解释器通过在运行时动态优化代码，甚至能使解释性语言的性能超过编译性语言；&lt;/li&gt;
+&lt;li&gt;编译性语言的跨平台特性比解释性语言差一些；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;进过以上说明，解释型语言，&lt;code&gt;运行效率低&lt;/code&gt;，随着Web相关技术的发展，JavaScript所要承担的工作也越来越多，早就超越了“表单验证”的范畴，&lt;code&gt;这就更需要快速的解析和执行JavaScript脚本&lt;/code&gt;。&lt;code&gt;V8引擎&lt;/code&gt;就是为解决这一问题而生，在node中也是采用该引擎来解析JavaScript&lt;/p&gt;
+&lt;h2 id=&#34;2-渲染引擎及网页渲染&#34;&gt;2. 渲染引擎及网页渲染&lt;/h2&gt;
+&lt;p&gt;为用户提供网页浏览服务无疑是最重要的功能，如下介绍：&lt;/p&gt;
+&lt;h3 id=&#34;1-渲染引擎&#34;&gt;1. 渲染引擎&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;渲染引擎&lt;/code&gt; - 能够能够将HTML/CSS/JavaScript文本及相应的&lt;code&gt;资源文件&lt;/code&gt;转换成&lt;code&gt;图像&lt;/code&gt;结果.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;作用&lt;/code&gt; - 将&lt;code&gt;资源文件&lt;/code&gt;转化为&lt;code&gt;用户可见&lt;/code&gt;的结果。&lt;/li&gt;
+&lt;li&gt;渲染引擎的种类 - Tridend(IE)、Gecko(FF),WebKit(Safari,Chrome,Andriod浏览器)等.&lt;/li&gt;
+&lt;li&gt;介绍 - WebKit是由苹果2005年发起的一个开源项目，引起了众多公司的重视，几年间被很多公司所采用，在移动端更占据了垄断地位。更有甚者，开发出了基于WebKit的支持HTML5的web操作系统(如：Chrome OS、Web OS)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;WebKit的大致结构&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375134643.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375172770.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-网页渲染流程&#34;&gt;2. 网页渲染流程&lt;/h3&gt;
+&lt;p&gt;上面介绍了渲染引擎的各个模块，那么一张网页，要经历怎样的过程，才能展示给用户。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375416528.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;过程&lt;/code&gt; - 首先是网页内容，输入到HTML解析器，HTML解析器解析，然后构建DOM树，在这期间如果遇到JavaScript代码则交给JavaScript引擎处理；如果来自CSS解析器的样式信息，构建一个内部绘图模型。该模型由布局模块计算模型内部各个元素的位置和大小信息，最后由绘图模块完成从该模型到图像的绘制。在网页渲染的过程中，大致可分为下面3个阶段：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616375499789.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;上述是一个完整的渲染过程，现代网页很多都是动态的，随着网页与用户的交互，浏览器需要不断的重复渲染过程。&lt;/p&gt;
+&lt;h3 id=&#34;3-javascript引擎&#34;&gt;3. JavaScript引擎&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616376387769.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+JavaScript本质上是一种&lt;code&gt;解释型语言&lt;/code&gt;，与编译型语言不同的是它需要&lt;code&gt;一边执行一边解析&lt;/code&gt;，而编译型语言在执行时已经完成编译，可直接执行，有更快的执行速度(如上图所示)。JavaScript代码是在浏览器端解析和执行的，如果需要时间太长，会影响用户体验。那么&lt;code&gt;提高JavaScript的解析速度&lt;/code&gt;就是当务之急。JavaScript引擎和渲染引擎的关系如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616376459980.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+avaScript语言是解释型语言，为了&lt;code&gt;提高性能&lt;/code&gt;，引入了J&lt;code&gt;ava虚拟机&lt;/code&gt;和&lt;code&gt;C++编译器&lt;/code&gt;中的众多&lt;code&gt;技术&lt;/code&gt;。现在JavaScript引擎的执行过程大致是:&lt;br&gt;
+&lt;code&gt;源代码&lt;/code&gt;-→&lt;code&gt;抽象语法树&lt;/code&gt;-→&lt;code&gt;字节码&lt;/code&gt;-→&lt;code&gt;JIT&lt;/code&gt;-→&lt;code&gt;本地代码&lt;/code&gt;(V8引擎没有中间字节码)。&lt;/p&gt;
+&lt;p&gt;V8更加直接的将&lt;code&gt;抽象语法树&lt;/code&gt;通过&lt;code&gt;JIT技术&lt;/code&gt;转换成&lt;code&gt;本地代码&lt;/code&gt;，&lt;code&gt;放弃了&lt;/code&gt;在&lt;code&gt;字节码&lt;/code&gt;阶段可以进行的一些性能优化，但保证了执行速度。在V8生成本地代码后，也会通过Profiler采集一些信息，来优化本地代码。虽然，少了生成字节码这一阶段的性能优化，但极大减少了转换时间。&lt;/p&gt;
+&lt;h2 id=&#34;3-v8引擎&#34;&gt;3. V8引擎&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;V8引擎是一个&lt;code&gt;JavaScript引擎&lt;/code&gt;实现，最初由一些语言方面专家设计，后被谷歌收购，随后谷歌对其进行了&lt;code&gt;开源&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;V8使用&lt;code&gt;C++开发&lt;/code&gt;，在运行JavaScript之前，相比其它的JavaScript的引擎转换成字节码或解释执行，&lt;code&gt;V8将其编译成原生机器码&lt;/code&gt;（IA-32, x86-64, ARM, or MIPS CPUs），并且使用了如&lt;code&gt;内联缓存&lt;/code&gt;（inline caching）等方法来&lt;code&gt;提高性能&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;有了这些功能，JavaScript程序在V8引擎下的运行速度媲美二进制程序。&lt;/li&gt;
+&lt;li&gt;V8支持&lt;code&gt;众多操作系统&lt;/code&gt;，如windows、linux、android等，也支持其他硬件架构，如IA32,X64,ARM等，具有很好的&lt;code&gt;可移植&lt;/code&gt;和&lt;code&gt;跨平台特性&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-数据表示&#34;&gt;4. 数据表示&lt;/h2&gt;
+&lt;p&gt;JavaScript是一种动态类型语言，&lt;code&gt;在编译时并不能准确知道变量的类型&lt;/code&gt;，&lt;code&gt;只可以在运行时确定&lt;/code&gt;，这就不像c++或者java等静态类型语言，在编译时候就可以确切知道变量的类型。然而，&lt;code&gt;在运行时计算和决定类型，会严重影响语言性能&lt;/code&gt;，这也就是JavaScript运行效率比C++或者JAVA低很多的原因之一。&lt;/p&gt;
+&lt;p&gt;在C++中，源代码需要经过编译才能执行，在生成本地代码的过程中，变量的地址和类型已经确定，运行本地代码时利用数组和位移就可以存取变量和方法的地址，不需要再进行额外的查找，几个机器指令即可完成，节省了确定类型和地址的时间。由于JavaScript是无类型语言，那就不能像c++那样在执行时已经知道变量的类型和地址，需要临时确定。JavaScript 和C++有以下几个区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;编译确定位置&lt;/code&gt; -&lt;code&gt;C++&lt;/code&gt;编译阶段确定位置偏移信息，在&lt;code&gt;执行时直接存取&lt;/code&gt;，&lt;code&gt;JavaScript&lt;/code&gt;在&lt;code&gt;执行阶段确定&lt;/code&gt;，而且执行期间可以修改对象属性；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;偏移信息共享&lt;/code&gt; - &lt;code&gt;C++&lt;/code&gt;有类型定义，执行时&lt;code&gt;不能动态改变&lt;/code&gt;，可共享偏移信息，&lt;code&gt;JavaScript&lt;/code&gt;每个对象都是&lt;code&gt;自描述&lt;/code&gt;，属性和位置偏移信息都包含在自身的结构中；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;偏移信息查找&lt;/code&gt; - &lt;code&gt;C++&lt;/code&gt;查找偏移地址很简单，在编译代码阶段，对使用的某类型成员变量&lt;code&gt;直接设置偏移位置&lt;/code&gt;，&lt;code&gt;JavaScript&lt;/code&gt;中使用一个对象，需要通过&lt;code&gt;属性名匹配&lt;/code&gt;才能找到相应的值，需要更多的操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;32&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377366139.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;5-工作过程&#34;&gt;5. 工作过程&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;33&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377457407.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;编译阶段&#34;&gt;编译阶段&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;34&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377563413.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;运行阶段&#34;&gt;运行阶段&lt;/h3&gt;
+&lt;p&gt;由于&lt;code&gt;V8缺少了生成中间代码这一环节&lt;/code&gt;，缺少了必要的优化，为了提升性能，V8会在&lt;code&gt;生成本地代码后&lt;/code&gt;，使用&lt;code&gt;数据分析器&lt;/code&gt;(profiler)&lt;code&gt;采集一些信息&lt;/code&gt;，然后根据这些数据将本地代码进行优化，生成更高效的本地代码，这是一个逐步改进的过程。同时，当发现优化后代码的性能还不如未优化的代码，V8将退回原来的代码，也就是优化回滚。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377618319.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;优化回滚&#34;&gt;优化回滚&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;35&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377669446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+">【面】前端知识点梳理（JS）</a>
       </div>
       
       <div class="item">
@@ -10591,238 +10574,128 @@ document.body.appendChild(script);
       </div>
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/shi-shi/"" data-c="
-          &lt;h1 id=&#34;11display哪些取值&#34;&gt;11.display哪些取值&lt;/h1&gt;
-&lt;h2 id=&#34;111-none-此元素不会被显示&#34;&gt;11.1 none ：此元素不会被显示&lt;/h2&gt;
-&lt;p&gt;（1） none此单词的意思是没有一个、毫无的意思；所以当display的属性值设置为none的时候，表示的是没有框类型，没有框类型的元素，是无法在浏览器中显示的，就实现隐藏元素的作用了；&lt;br&gt;
-（2）有很多标签，display的属性值默认是none，比如 &lt;code&gt;head&lt;/code&gt; &lt;code&gt;meta&lt;/code&gt; &lt;code&gt;style&lt;/code&gt; &lt;code&gt;link&lt;/code&gt;等等；&lt;br&gt;
-（3）项目应用中，做二级导航效果或者鼠标悬停效果动态时，会经常用到这个属性值，下次我们写一个好玩的二级效果再来展示这个属性值的作用；&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838389050.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;112-block此元素将显示为块级元素此元素前后会带有换行符&#34;&gt;11.2 block：此元素将显示为块级元素，此元素前后会带有换行符。&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838392829.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;113-inline-默认此元素会被显示为内联元素元素前后没有换行符&#34;&gt;11.3 inline 默认此元素会被显示为内联元素，元素前后没有换行符。&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838421481.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;114-inline-block-行内块元素css21-新增的值&#34;&gt;11.4 inline-block 行内块元素（CSS2.1 新增的值）&lt;/h2&gt;
-&lt;p&gt;说明：行内块元素既具备行内元素的特性也具备块状元素的特性，具备行内元素前后没有换行符可以在一行内并列显示的特性，具备块状元素可以正确解释盒模型属性的特性。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838503882.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;115-list-item-此元素会作为列表显示&#34;&gt;11.5 list-item 此元素会作为列表显示。&lt;/h2&gt;
-&lt;p&gt;(1) 此属性值表示将元素显示为列表项标签，li标签默认的display的属性值是list-item，display的属性值为list-item的标签也属于块状元素；&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838546316.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-(2) li标签作为列表项标签，前面会有列表项标记，下面给div标签设置为list-item，div也会有列表项标记&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838588128.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;116-run-in-此元素会根据上下文作为块级元素或内联元素显示&#34;&gt;11.6 run-in 此元素会根据上下文作为块级元素或内联元素显示。&lt;/h2&gt;
-&lt;h2 id=&#34;117-table-此元素会作为块级表格来显示表格前后带有换行符&#34;&gt;11.7 table 此元素会作为块级表格来显示，表格前后带有换行符。&lt;/h2&gt;
-&lt;p&gt;（1）table标签默认的元素类型是table，显示为块级表格，可以设置大小并且单独占据一行；&lt;br&gt;
-（2）当table标签的元素类型是table时，并且设置宽度和高度之后，后代td标签的宽度和高度，默认是由table根据内容的多少去分配的；&lt;br&gt;
-(3) table属于块状元素，但是对比别的块状元素，有自己的特点， table会单独占据一行，但是在没有设置width的情况下，不会与父元素同宽，而是根据内容而定；&lt;br&gt;
-(4) 其他标签设置display的属性值为table，也不会具有表格的特性；&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;总结&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;通过以上的测试，可以总结出：&lt;br&gt;
-display的属性值为&lt;strong&gt;block，table&lt;/strong&gt;的标签都为&lt;code&gt;块状元素&lt;/code&gt;；&lt;br&gt;
-display的属性值为&lt;strong&gt;inline，inline-table，inline-block&lt;/strong&gt;的标签为&lt;code&gt;行内级元素&lt;/code&gt;；&lt;/p&gt;
-&lt;h1 id=&#34;12-相邻的两个inline-block节点为什么会出现间隔该如何解决&#34;&gt;12. 相邻的两个inline-block节点为什么会出现间隔，该如何解决&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614841169302.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;121-原因&#34;&gt;12.1 原因&lt;/h2&gt;
-&lt;p&gt;其实，html的原因。我们回顾一下这段代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;看这里➡️&amp;lt;/div&amp;gt;
-&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里➡️&amp;lt;/div&amp;gt;
-&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我们不仅看到元素节点，属性节点还有文本节点，问题就是处在文本节点的渲染导致3px(chrome)的间隔。那如何解决它？&lt;/p&gt;
-&lt;h2 id=&#34;122-解决办法&#34;&gt;12.2 解决办法&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;方法一、删除空白节点&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;看这里➡️&amp;lt;/div
-&amp;gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里➡️&amp;lt;/div
-&amp;gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;以上的这些方法，无一列外破坏了代码的可读性。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;方法二、负的marigin值&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.box {
-    margin: -3px; /*左右缩小3px*/
-    display: inline-block;
-    width: 100px;
-    height: 50px;
-    background-color: #ddd;
-    text-align: center;
-    line-height: 50px;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这样的方式，可以解决chrome下面的问题。但是不建议使用。因为在某些游览器上面，这个文本节点可能设置成4px的间隔。因为解决问题，引入了新的问题，那就尴尬！&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;方法三、font-size: 0&lt;/strong&gt;&lt;br&gt;
-既然是文本节点导致的，那我们就把文本节点设置成0不就ok?顺着这个思路，我们这些写： 我们先给div加一个父级节点&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;wrapper&amp;quot;&amp;gt;
-    &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;看这里➡️&amp;lt;/div&amp;gt;
-    &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里➡️&amp;lt;/div&amp;gt;
-    &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;.wrapper{
-    font-size: 0;
-}
-.box {
-    font-size: 14px;
-    display: inline-block;
-    width: 100px;
-    height: 50px;
-    background-color: #ddd;
-    text-align: center;
-    line-height: 50px;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;主要： 因为font-size是默认继承的属性。所以父级给了0，子级要重新设置font-size： 14px。&lt;/p&gt;
-&lt;h1 id=&#34;13-meta-viewport-移动端适配&#34;&gt;13. meta viewport 移动端适配&lt;/h1&gt;
-&lt;h2 id=&#34;131-什么是viewport&#34;&gt;13.1 什么是Viewport?&lt;/h2&gt;
-&lt;p&gt;手机浏览器会把页面放入到一个虚拟的“视口”（viewpoint）中，但viewport又不局限于浏览器可视区域的大小，它可能比浏览器的可视区域大，也可能比浏览器的可视区域小。通常这个虚拟的“视口”（viewport）比屏幕宽，会把网页挤到一个很小的窗口。&lt;br&gt;
-如果不显示地设置viewport，那么浏览器就会把width默认设置为980。但后果是浏览器出现横向滚动条，因为浏览器可视区域的宽度比默认的viewport的宽度小。&lt;br&gt;
-然后浏览器引进了 viewport 这个 meta tag，让网页开发者来控制 viewport 的大小和缩放。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;132-meta-viewport-的6个属性&#34;&gt;13.2 meta viewport 的6个属性：&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;width ： 设置viewport 的宽度&lt;/li&gt;
-&lt;li&gt;height： 设置viewport 的高度&lt;/li&gt;
-&lt;li&gt;initial-scale ： 设置页面的初始缩放值&lt;/li&gt;
-&lt;li&gt;minimum-scale ：允许用户的最小缩放值&lt;/li&gt;
-&lt;li&gt;maximum-scale：允许用户的最大缩放值&lt;/li&gt;
-&lt;li&gt;user-scalable： 是否允许用户进行缩放，值为&amp;quot;no&amp;quot;或&amp;quot;yes&amp;quot;, no 代表不允许，yes代表允许&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;133-3个viewport&#34;&gt;13.3 3个viewport：&lt;/h2&gt;
-&lt;p&gt;（1）&lt;strong&gt;布局视口 layout viewport&lt;/strong&gt;&lt;br&gt;
-如果把移动设备上浏览器的可视区域设为viewport的话，某些网站会因为viewport太窄而显示错乱，所以这些浏览器就默认会把viewport设为一个较宽的值，比如980px，使得即使是那些为PC浏览器设计的网站也能在移动设备浏览器上正常显示。这个浏览器默认的viewport叫做 layout viewport。layout viewport的宽度可以通过 document.documentElement.clientWidth来获取。&lt;/p&gt;
-&lt;p&gt;（2）&lt;strong&gt;视觉视口 visual viewport&lt;/strong&gt;&lt;br&gt;
-layout viewport的宽度是大于浏览器可视区域的宽度的，所以还需要一个viewport来代表浏览器可视区域的大小，这个viewport叫做 visual viewport。visual viewport的宽度可以通过 document.documentElement.innerWidth来获取。&lt;/p&gt;
-&lt;p&gt;（3）&lt;strong&gt;理想视口 ideal viewport&lt;/strong&gt;&lt;br&gt;
-ideal viewport是一个能完美适配移动设备的viewport。首先，不需要缩放和横向滚动条就能正常查看网站的所有内容；其次，显示的文字、图片大小合适，如14px的文字不会因为在一个高密度像素的屏幕里显示得太小而无法看清，无论是在何种密度屏幕，何种分辨率下，显示出来的大小都差不多。这个viewport叫做 ideal viewport。&lt;/p&gt;
-&lt;p&gt;ideal viewport并没有一个固定的尺寸，不同的设备有不同的ideal viewport。例如，所有的iphone的ideal viewport宽度都是320px，无论它的屏幕宽度是320还是640。&lt;br&gt;
-ideal viewport 的意义在于，无论在何种分辨率的屏幕下，针对ideal viewport 而设计的网站，不需要缩放和横向滚动条都可以完美地呈现给用户。&lt;/p&gt;
-&lt;h2 id=&#34;134-终极方案&#34;&gt;13.4  终极方案：&lt;/h2&gt;
-&lt;p&gt;将&lt;code&gt;meta:vp&lt;/code&gt;标签的属性值设置为&lt;code&gt;width=device-width, initial-scale=1&lt;/code&gt;就不仅能够将页面的布局视口自动设置为各个移动设备的理想视口，还能够同时兼容iphone、ipad的Safari以及WP7 IE浏览器的横屏问题。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;14-css实现宽度自适应100宽高169的比例的矩形&#34;&gt;14 CSS实现宽度自适应100%，宽高16:9的比例的矩形&lt;/h1&gt;
-&lt;p&gt;第一步先计算高度，假设宽100%，那么高为h=9/16=56.25%&lt;/p&gt;
-&lt;p&gt;第二步利用之前所说设置padding-bottom方法实现矩形&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;scale&amp;quot;&amp;gt;
-      &amp;lt;/div&amp;gt;
-  &amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
-   .box {
-        width: 20%;
-    }
-    .scale {
-        width: 100%;
-        height: 0px;
-        /* scale 用来实现宽高等比例 1:1 padding-bottom:100%; 4:3 padding-bottom:75%; 16:9 padding-bottom:56.25%; */
-        padding-bottom: 56.25%;
-        position: relative;
-        background-color: pink;
-    }
-  &amp;lt;/style&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;15-rem布局的优缺点&#34;&gt;15 rem布局的优缺点&lt;/h1&gt;
-&lt;h2 id=&#34;151-rem布局原理&#34;&gt;15.1 Rem布局原理&lt;/h2&gt;
-&lt;p&gt;rem布局的本质是什么？这是我问过很多人的一个问题，但得到的回答都差强人意。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;其实rem布局的本质是等比缩放，一般是基于宽度&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;152-rem布局优点&#34;&gt;15.2 Rem布局优点&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;rem的优点就是可以通过修改html里的文字大小来改变页面中元素的大小，可以整体进行控制。&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;153-rem布局缺点&#34;&gt;15.3 Rem布局缺点&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;目前ie不支持 对pc页面来讲使用次数不多；&lt;/li&gt;
-&lt;li&gt;数据量大：所有的图片，盒子都需要我们去给一个准确的值；才能保证不同机型的适配；&lt;/li&gt;
-&lt;li&gt;字体的问题：字体的大小和字体宽度，并不成线性关系，所以字体大小不能使用rem&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;16-css画一个三角形&#34;&gt;16. CSS画一个三角形&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;CSS&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
-        /* css3绘制三角形 */
-        .triangle{
-            width: 0px;                           /*设置宽高为0，所以div的内容为空，从才能形成三角形尖角*/
-            height: 0px;
-            border-bottom: 200px solid #00a3af;
-            border-left: 200px solid transparent;    /*transparent 表示透明*/
-            border-right: 200px solid transparent;
-        }
-    &amp;lt;/style&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;Html&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; &amp;lt;div class=&amp;quot;triangle&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614860077842.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h1 id=&#34;17-1像素边框问题&#34;&gt;17. 1像素边框问题&lt;/h1&gt;
-&lt;h2 id=&#34;171-为什么1px变粗了&#34;&gt;17.1 为什么1px变粗了？&lt;/h2&gt;
-&lt;p&gt;UI设计师要求的1px是指设备的物理像素1px，而CSS里记录的像素是逻辑像素，它们之间存在一个比例关系，可以用javascript中的window.devicePixelRatio来获取&lt;/p&gt;
-&lt;p&gt;移动端开发常需要在html的header里添加如下一句：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&amp;quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这句话定义了本页面的viewport的宽度为设备宽度，初始缩放值和最大缩放值都为1，并禁止了用户缩放。&lt;/p&gt;
-&lt;h2 id=&#34;172-修改方案&#34;&gt;17.2 修改方案&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;viewport + rem 方案&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;该方案是对上述方案的优化，整体思路就是利用viewport + rem + js 动态的修改页面的缩放比例，实现小于1像素的显示。在页面初始化时，在头部引入原始默认状态如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html;charset=UTF-8&amp;quot;&amp;gt;  
-&amp;lt;meta name=&amp;quot;viewport&amp;quot; id=&amp;quot;WebViewport&amp;quot; content=&amp;quot;initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&amp;quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;接下来的任务就是js的动态修改缩放比 以及 实现rem根元素字体大小的设置。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var viewport = document.querySelector(&amp;quot;meta[name=viewport]&amp;quot;)
-if (window.devicePixelRatio == 1) {
-    viewport.setAttribute(&#39;content&#39;, &#39;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&#39;)
-} 
-if (window.devicePixelRatio == 2) {
-    viewport.setAttribute(&#39;content&#39;, &#39;width=device-width, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no&#39;)
-} 
-if (window.devicePixelRatio == 3) {
-    viewport.setAttribute(&#39;content&#39;, &#39;width=device-width, initial-scale=0.333333333, maximum-scale=0.333333333, minimum-scale=0.333333333, user-scalable=no&#39;)
-} 
-
-var docEl = document.documentElement;
-var fontsize = 10 * (docEl.clientWidth / 320) + &#39;px&#39;;
-docEl.style.fontSize = fontsize;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;transform: scale(0.5) 方案 - 推荐: 很灵活&lt;/code&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;设置height: 1px，根据媒体查询结合&lt;code&gt;transform&lt;/code&gt;缩放为相应尺寸。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;div {
-    height:1px;
-    background:#000;
-    -webkit-transform: scaleY(0.5);
-    -webkit-transform-origin:0 0;
-    overflow: hidden;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;用&lt;code&gt;::after&lt;/code&gt;和&lt;code&gt;::befor&lt;/code&gt;,设置&lt;code&gt;border-bottom：1px solid #000&lt;/code&gt;,然后在缩放&lt;code&gt;-webkit-transform: scaleY(0.5)&lt;/code&gt;;可以实现两根边线的需求&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;div::after{
-    content:&#39;&#39;;width:100%;
-    border-bottom:1px solid #000;
-    transform: scaleY(0.5);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;用&lt;code&gt;::after&lt;/code&gt;设置&lt;code&gt;border：1px solid #000; width:200%; height:200%&lt;/code&gt;,然后再缩放&lt;code&gt;scaleY(0.5)&lt;/code&gt;; 优点可以实现圆角，京东就是这么实现的，缺点是按钮添加active比较麻烦。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;.div::after {
-    content: &#39;&#39;;
-    width: 200%;
-    height: 200%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border: 1px solid #bfbfbf;
-    border-radius: 4px;
-    -webkit-transform: scale(0.5,0.5);
-    transform: scale(0.5,0.5);
-    -webkit-transform-origin: top left;
-}
-&lt;/code&gt;&lt;/pre&gt;
-">【面】前端知识点梳理（CSS下）</a>
-      </div>
-      
-      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css-xia/"" data-c="
-          &lt;h1 id=&#34;1盒模型box-model&#34;&gt;1.盒模型（box model）&lt;/h1&gt;
+          &lt;h1 id=&#34;0-动画和过渡animation-和-transition&#34;&gt;0. 动画和过渡（Animation 和 Transition）&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;animation：CSS 动画，将元素的样式配置转换到另一个CSS配置。包括动画所使用的样式规则，以及用于指定动画开始、结束以及中间多个节点的关键帧；&lt;/li&gt;
+&lt;li&gt;transition：CSS过渡属性，为一个元素在不同状态切换的时候定义不同的过渡效果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;CSS 中，如果按一秒24帧的画法来写代码，未免太过繁琐。所以我们把动画拆解为&lt;code&gt;动作(transition)&lt;/code&gt;，一个动作表示从一个状态到另一个状态的变化，然后把一组动作串起来，即是 CSS 中的&lt;code&gt;动画(animation)&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-transition&#34;&gt;1. Transition&lt;/h2&gt;
+&lt;p&gt;transition 直译为过渡，即&lt;strong&gt;给属性变化添加过渡效果&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;我们知道，如果两个样式属性被赋在同一个元素上，后一个样式属性会覆盖前一个，比如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.blueball {
+  ...
+  opacity: 1; /* 不透明 */
+}
+.blueball:hover {
+  opacity: 0.3; /* 透明度 30% */
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当我们把鼠标放在蓝球上时，蓝球会&lt;strong&gt;立刻&lt;/strong&gt;变透明&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619149280679.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+而如果我们给蓝球增加 transition 属性，其透明度变化会有一个过渡&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.blueball {
+  ...
+  opacity: 1;
+  transition: opacity 1s;  /* 改变 opacity 属性，持续1秒 */
+}
+.blueball:hover {
+  opacity: 0.3;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619149305472.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这里的 transition 属性其实是一个简写形式，它由&lt;strong&gt;四部分组成&lt;/strong&gt;，分别是（冒号后为默认值）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;transition-property: all; /* 过渡属性 */
+transition-duration: 0; /* 耗时 */
+transition-timing-function: ease; /* 效果，默认 ease（缓入缓出） */
+transition-delay: 0; /* 延迟 */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果考虑到默认值，上面过渡效果的例子中，可以进一步简写成&lt;code&gt;transition: 1s&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;transition 可以同时给多个属性添加过渡效果，比如可以在移动元素的同时，改变其透明度。&lt;code&gt;但不管有多少个属性同时在变化，这种过渡效果只能是一次性的，也就是单个动作&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;2-animation&#34;&gt;2. Animation&lt;/h2&gt;
+&lt;p&gt;transition 只能做单个动作，如果动画包含多个动作，这时候就需要 animation&lt;/p&gt;
+&lt;p&gt;我们先来看个例子：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619150620116.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这个动画明显由两个动作组成：蓝变绿，绿变橙。&lt;/p&gt;
+&lt;p&gt;两个连续的线段有三个关键点，两个连续的动作必然也有三个&lt;strong&gt;关键帧&lt;/strong&gt;（keyframe），我们通过定义这三个关键帧（起点，蓝变绿，终点）来定义这两个动作。&lt;/p&gt;
+&lt;p&gt;我们来看一下这个动画的 CSS 代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.blueball {
+  ...
+  background-color: #0080ff; /* 蓝色 */
+  position: relative;
+  animation: forward 4s; /* 执行 forward 动画，耗时 4s */
+}
+
+/* 三个关键帧： 起点（蓝色），蓝变绿，终点（橙色） */
+@keyframes forward {
+  0% {left: 0; }
+  50% {left: 200px; background-color: #009a61;}
+  100% {left: 400px; background-color: orange;}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;@keyframes中的百分比，代表时间尺度上的百分比 ，后面跟着的是此时间点的样式。&lt;/p&gt;
+&lt;p&gt;同样的，animation: forward 4s;也是简写形式，完整的 animation 属性包括（冒号后为默认值）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;animation-name: none; /* 动画名称 */
+animation-duration: 0; /* 耗时 */
+animation-timing-function: ease; /* 效果，默认缓入缓出 */
+animation-delay: 0; /* 延迟 */
+animation-iteration-count: 1; /* 循环次数 */
+animation-direction: normal; /* 正放 or 倒放 */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;CSS 动画的知识点，就这么些，但目前看来，我们只能动动元素的大小，位置，透明度，颜色什么的，有点单调。为了给动画加点料，下面介绍一下 &lt;code&gt;transform&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-transform&#34;&gt;3. transform&lt;/h2&gt;
+&lt;p&gt;transform 直译为变换，虽然名字和 transition 有点像，但是它和动画无关。transition 是一个状态到另一个状态的变化过程，而 transform 仅仅是&lt;strong&gt;静止的最终状态&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;例如：如果想把蓝球从水平排列中，向下移动100px&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151581634.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;即可以使用&lt;strong&gt;相对定位&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.blueball {
+  ...
+  position: relative;
+  top: 100px;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以使用 &lt;strong&gt;transform&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.blueball {
+  ...
+  transform: translateY(100px);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;它们的效果是一致的，都是把蓝球向下移动 100px&lt;/p&gt;
+&lt;p&gt;除了位移，tranform 还可以做很多变换&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;matrix 矩阵变换&lt;/li&gt;
+&lt;li&gt;translate 位移&lt;/li&gt;
+&lt;li&gt;scale 缩放&lt;/li&gt;
+&lt;li&gt;rotate 绕轴旋转&lt;/li&gt;
+&lt;li&gt;skew 倾斜&lt;/li&gt;
+&lt;li&gt;perspective 透视距离&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;这里有几点需要说明:&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1-transform-原点位于元素中心&#34;&gt;1. transform 原点位于元素中心&lt;/h3&gt;
+&lt;p&gt;我们知道 CSS 元素默认的坐标系，原点在左上角；而 transform 变换的原点位于元素中心&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151713261.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+图中亦标识了绕轴旋转（rotate）时的默认方向，为了便于记忆，你可以理解为：你站在原点位置，看向正轴方向，默认旋转方向为&lt;strong&gt;逆时针旋转&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-理解-skew倾斜&#34;&gt;2. 理解 skew（倾斜）&lt;/h3&gt;
+&lt;p&gt;skew 倾斜变换并不直观，为了便于记忆，你可以这样想像：&lt;br&gt;
+你拉住了矩形的&lt;code&gt;右下角&lt;/code&gt;，左右横拉，即是沿X轴倾斜&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151914829.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+同样的，skewY 即是抓住右下角上下拉&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151918106.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-理解-perspective透视&#34;&gt;3. 理解 perspective（透视）&lt;/h3&gt;
+&lt;p&gt;perspective 表示透视距离，可简单理解为眼睛离屏幕的距离&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;transform: translateZ(100x); /* 向Z轴正向移动 100px */
+perspective: 200px; /* 透视距离 200px */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们用一张图来说明一下&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151963081.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;d 为透视距离 200px&lt;/li&gt;
+&lt;li&gt;Z 为元素在Z轴上移动的距离 100px&lt;/li&gt;
+&lt;li&gt;虚线的圆表示元素实际的位置&lt;/li&gt;
+&lt;li&gt;而蓝色的圆，是元素在屏幕上的投影，也是最终展示的效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;1-盒模型box-model&#34;&gt;1. 盒模型（box model）&lt;/h1&gt;
 &lt;h2 id=&#34;1基本概念&#34;&gt;1.基本概念&lt;/h2&gt;
 &lt;p&gt;盒子模型，个人的理解，就是一个来装html标签的矩形容器，由四部分组成：&lt;/p&gt;
 &lt;ul&gt;
@@ -11723,7 +11596,232 @@ CSS Animation就是为了解决这些问题而提出的。&lt;/p&gt;
 CSS3的animation制作动画效果主要包括两部分：1. 用关键帧声明一个动画，2.在animation调用关键帧声明的的动画。&lt;/p&gt;
 &lt;h2 id=&#34;3区别&#34;&gt;3.区别&lt;/h2&gt;
 &lt;p&gt;animation属性类似于transition，他们都是随着时间改变元素的属性值，其主要区别在于：transition需要触发一个事件才会随着时间改变其CSS属性；animation在不需要触发任何事件的情况下，也可以显式的随时间变化来改变元素CSS属性，达到一种动画的效果。&lt;/p&gt;
-">【面】前端知识点梳理（CSS上）</a>
+&lt;h1 id=&#34;11display哪些取值&#34;&gt;11.display哪些取值&lt;/h1&gt;
+&lt;h2 id=&#34;111-none-此元素不会被显示&#34;&gt;11.1 none ：此元素不会被显示&lt;/h2&gt;
+&lt;p&gt;（1） none此单词的意思是没有一个、毫无的意思；所以当display的属性值设置为none的时候，表示的是没有框类型，没有框类型的元素，是无法在浏览器中显示的，就实现隐藏元素的作用了；&lt;br&gt;
+（2）有很多标签，display的属性值默认是none，比如 &lt;code&gt;head&lt;/code&gt; &lt;code&gt;meta&lt;/code&gt; &lt;code&gt;style&lt;/code&gt; &lt;code&gt;link&lt;/code&gt;等等；&lt;br&gt;
+（3）项目应用中，做二级导航效果或者鼠标悬停效果动态时，会经常用到这个属性值，下次我们写一个好玩的二级效果再来展示这个属性值的作用；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838389050.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;112-block此元素将显示为块级元素此元素前后会带有换行符&#34;&gt;11.2 block：此元素将显示为块级元素，此元素前后会带有换行符。&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838392829.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;113-inline-默认此元素会被显示为内联元素元素前后没有换行符&#34;&gt;11.3 inline 默认此元素会被显示为内联元素，元素前后没有换行符。&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838421481.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;114-inline-block-行内块元素css21-新增的值&#34;&gt;11.4 inline-block 行内块元素（CSS2.1 新增的值）&lt;/h2&gt;
+&lt;p&gt;说明：行内块元素既具备行内元素的特性也具备块状元素的特性，具备行内元素前后没有换行符可以在一行内并列显示的特性，具备块状元素可以正确解释盒模型属性的特性。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838503882.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;115-list-item-此元素会作为列表显示&#34;&gt;11.5 list-item 此元素会作为列表显示。&lt;/h2&gt;
+&lt;p&gt;(1) 此属性值表示将元素显示为列表项标签，li标签默认的display的属性值是list-item，display的属性值为list-item的标签也属于块状元素；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838546316.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+(2) li标签作为列表项标签，前面会有列表项标记，下面给div标签设置为list-item，div也会有列表项标记&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838588128.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;116-run-in-此元素会根据上下文作为块级元素或内联元素显示&#34;&gt;11.6 run-in 此元素会根据上下文作为块级元素或内联元素显示。&lt;/h2&gt;
+&lt;h2 id=&#34;117-table-此元素会作为块级表格来显示表格前后带有换行符&#34;&gt;11.7 table 此元素会作为块级表格来显示，表格前后带有换行符。&lt;/h2&gt;
+&lt;p&gt;（1）table标签默认的元素类型是table，显示为块级表格，可以设置大小并且单独占据一行；&lt;br&gt;
+（2）当table标签的元素类型是table时，并且设置宽度和高度之后，后代td标签的宽度和高度，默认是由table根据内容的多少去分配的；&lt;br&gt;
+(3) table属于块状元素，但是对比别的块状元素，有自己的特点， table会单独占据一行，但是在没有设置width的情况下，不会与父元素同宽，而是根据内容而定；&lt;br&gt;
+(4) 其他标签设置display的属性值为table，也不会具有表格的特性；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;总结&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;通过以上的测试，可以总结出：&lt;br&gt;
+display的属性值为&lt;strong&gt;block，table&lt;/strong&gt;的标签都为&lt;code&gt;块状元素&lt;/code&gt;；&lt;br&gt;
+display的属性值为&lt;strong&gt;inline，inline-table，inline-block&lt;/strong&gt;的标签为&lt;code&gt;行内级元素&lt;/code&gt;；&lt;/p&gt;
+&lt;h1 id=&#34;12-相邻的两个inline-block节点为什么会出现间隔该如何解决&#34;&gt;12. 相邻的两个inline-block节点为什么会出现间隔，该如何解决&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614841169302.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;121-原因&#34;&gt;12.1 原因&lt;/h2&gt;
+&lt;p&gt;其实，html的原因。我们回顾一下这段代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;看这里➡️&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里➡️&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们不仅看到元素节点，属性节点还有文本节点，问题就是处在文本节点的渲染导致3px(chrome)的间隔。那如何解决它？&lt;/p&gt;
+&lt;h2 id=&#34;122-解决办法&#34;&gt;12.2 解决办法&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;方法一、删除空白节点&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;看这里➡️&amp;lt;/div
+&amp;gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里➡️&amp;lt;/div
+&amp;gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上的这些方法，无一列外破坏了代码的可读性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方法二、负的marigin值&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.box {
+    margin: -3px; /*左右缩小3px*/
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background-color: #ddd;
+    text-align: center;
+    line-height: 50px;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样的方式，可以解决chrome下面的问题。但是不建议使用。因为在某些游览器上面，这个文本节点可能设置成4px的间隔。因为解决问题，引入了新的问题，那就尴尬！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方法三、font-size: 0&lt;/strong&gt;&lt;br&gt;
+既然是文本节点导致的，那我们就把文本节点设置成0不就ok?顺着这个思路，我们这些写： 我们先给div加一个父级节点&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;wrapper&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;看这里➡️&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里➡️&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;⬅️看这里&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;.wrapper{
+    font-size: 0;
+}
+.box {
+    font-size: 14px;
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background-color: #ddd;
+    text-align: center;
+    line-height: 50px;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;主要： 因为font-size是默认继承的属性。所以父级给了0，子级要重新设置font-size： 14px。&lt;/p&gt;
+&lt;h1 id=&#34;13-meta-viewport-移动端适配&#34;&gt;13. meta viewport 移动端适配&lt;/h1&gt;
+&lt;h2 id=&#34;131-什么是viewport&#34;&gt;13.1 什么是Viewport?&lt;/h2&gt;
+&lt;p&gt;手机浏览器会把页面放入到一个虚拟的“视口”（viewpoint）中，但viewport又不局限于浏览器可视区域的大小，它可能比浏览器的可视区域大，也可能比浏览器的可视区域小。通常这个虚拟的“视口”（viewport）比屏幕宽，会把网页挤到一个很小的窗口。&lt;br&gt;
+如果不显示地设置viewport，那么浏览器就会把width默认设置为980。但后果是浏览器出现横向滚动条，因为浏览器可视区域的宽度比默认的viewport的宽度小。&lt;br&gt;
+然后浏览器引进了 viewport 这个 meta tag，让网页开发者来控制 viewport 的大小和缩放。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;132-meta-viewport-的6个属性&#34;&gt;13.2 meta viewport 的6个属性：&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;width ： 设置viewport 的宽度&lt;/li&gt;
+&lt;li&gt;height： 设置viewport 的高度&lt;/li&gt;
+&lt;li&gt;initial-scale ： 设置页面的初始缩放值&lt;/li&gt;
+&lt;li&gt;minimum-scale ：允许用户的最小缩放值&lt;/li&gt;
+&lt;li&gt;maximum-scale：允许用户的最大缩放值&lt;/li&gt;
+&lt;li&gt;user-scalable： 是否允许用户进行缩放，值为&amp;quot;no&amp;quot;或&amp;quot;yes&amp;quot;, no 代表不允许，yes代表允许&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;133-3个viewport&#34;&gt;13.3 3个viewport：&lt;/h2&gt;
+&lt;p&gt;（1）&lt;strong&gt;布局视口 layout viewport&lt;/strong&gt;&lt;br&gt;
+如果把移动设备上浏览器的可视区域设为viewport的话，某些网站会因为viewport太窄而显示错乱，所以这些浏览器就默认会把viewport设为一个较宽的值，比如980px，使得即使是那些为PC浏览器设计的网站也能在移动设备浏览器上正常显示。这个浏览器默认的viewport叫做 layout viewport。layout viewport的宽度可以通过 document.documentElement.clientWidth来获取。&lt;/p&gt;
+&lt;p&gt;（2）&lt;strong&gt;视觉视口 visual viewport&lt;/strong&gt;&lt;br&gt;
+layout viewport的宽度是大于浏览器可视区域的宽度的，所以还需要一个viewport来代表浏览器可视区域的大小，这个viewport叫做 visual viewport。visual viewport的宽度可以通过 document.documentElement.innerWidth来获取。&lt;/p&gt;
+&lt;p&gt;（3）&lt;strong&gt;理想视口 ideal viewport&lt;/strong&gt;&lt;br&gt;
+ideal viewport是一个能完美适配移动设备的viewport。首先，不需要缩放和横向滚动条就能正常查看网站的所有内容；其次，显示的文字、图片大小合适，如14px的文字不会因为在一个高密度像素的屏幕里显示得太小而无法看清，无论是在何种密度屏幕，何种分辨率下，显示出来的大小都差不多。这个viewport叫做 ideal viewport。&lt;/p&gt;
+&lt;p&gt;ideal viewport并没有一个固定的尺寸，不同的设备有不同的ideal viewport。例如，所有的iphone的ideal viewport宽度都是320px，无论它的屏幕宽度是320还是640。&lt;br&gt;
+ideal viewport 的意义在于，无论在何种分辨率的屏幕下，针对ideal viewport 而设计的网站，不需要缩放和横向滚动条都可以完美地呈现给用户。&lt;/p&gt;
+&lt;h2 id=&#34;134-终极方案&#34;&gt;13.4  终极方案：&lt;/h2&gt;
+&lt;p&gt;将&lt;code&gt;meta:vp&lt;/code&gt;标签的属性值设置为&lt;code&gt;width=device-width, initial-scale=1&lt;/code&gt;就不仅能够将页面的布局视口自动设置为各个移动设备的理想视口，还能够同时兼容iphone、ipad的Safari以及WP7 IE浏览器的横屏问题。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;14-css实现宽度自适应100宽高169的比例的矩形&#34;&gt;14 CSS实现宽度自适应100%，宽高16:9的比例的矩形&lt;/h1&gt;
+&lt;p&gt;第一步先计算高度，假设宽100%，那么高为h=9/16=56.25%&lt;/p&gt;
+&lt;p&gt;第二步利用之前所说设置padding-bottom方法实现矩形&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
+      &amp;lt;div class=&amp;quot;scale&amp;quot;&amp;gt;
+      &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+   .box {
+        width: 20%;
+    }
+    .scale {
+        width: 100%;
+        height: 0px;
+        /* scale 用来实现宽高等比例 1:1 padding-bottom:100%; 4:3 padding-bottom:75%; 16:9 padding-bottom:56.25%; */
+        padding-bottom: 56.25%;
+        position: relative;
+        background-color: pink;
+    }
+  &amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;15-rem布局的优缺点&#34;&gt;15 rem布局的优缺点&lt;/h1&gt;
+&lt;h2 id=&#34;151-rem布局原理&#34;&gt;15.1 Rem布局原理&lt;/h2&gt;
+&lt;p&gt;rem布局的本质是什么？这是我问过很多人的一个问题，但得到的回答都差强人意。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;其实rem布局的本质是等比缩放，一般是基于宽度&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;152-rem布局优点&#34;&gt;15.2 Rem布局优点&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;rem的优点就是可以通过修改html里的文字大小来改变页面中元素的大小，可以整体进行控制。&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;153-rem布局缺点&#34;&gt;15.3 Rem布局缺点&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;目前ie不支持 对pc页面来讲使用次数不多；&lt;/li&gt;
+&lt;li&gt;数据量大：所有的图片，盒子都需要我们去给一个准确的值；才能保证不同机型的适配；&lt;/li&gt;
+&lt;li&gt;字体的问题：字体的大小和字体宽度，并不成线性关系，所以字体大小不能使用rem&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;16-css画一个三角形&#34;&gt;16. CSS画一个三角形&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;CSS&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+        /* css3绘制三角形 */
+        .triangle{
+            width: 0px;                           /*设置宽高为0，所以div的内容为空，从才能形成三角形尖角*/
+            height: 0px;
+            border-bottom: 200px solid #00a3af;
+            border-left: 200px solid transparent;    /*transparent 表示透明*/
+            border-right: 200px solid transparent;
+        }
+    &amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Html&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;div class=&amp;quot;triangle&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614860077842.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;17-1像素边框问题&#34;&gt;17. 1像素边框问题&lt;/h1&gt;
+&lt;h2 id=&#34;171-为什么1px变粗了&#34;&gt;17.1 为什么1px变粗了？&lt;/h2&gt;
+&lt;p&gt;UI设计师要求的1px是指设备的物理像素1px，而CSS里记录的像素是逻辑像素，它们之间存在一个比例关系，可以用javascript中的window.devicePixelRatio来获取&lt;/p&gt;
+&lt;p&gt;移动端开发常需要在html的header里添加如下一句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这句话定义了本页面的viewport的宽度为设备宽度，初始缩放值和最大缩放值都为1，并禁止了用户缩放。&lt;/p&gt;
+&lt;h2 id=&#34;172-修改方案&#34;&gt;17.2 修改方案&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;viewport + rem 方案&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;该方案是对上述方案的优化，整体思路就是利用viewport + rem + js 动态的修改页面的缩放比例，实现小于1像素的显示。在页面初始化时，在头部引入原始默认状态如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html;charset=UTF-8&amp;quot;&amp;gt;  
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; id=&amp;quot;WebViewport&amp;quot; content=&amp;quot;initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&amp;quot;&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接下来的任务就是js的动态修改缩放比 以及 实现rem根元素字体大小的设置。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var viewport = document.querySelector(&amp;quot;meta[name=viewport]&amp;quot;)
+if (window.devicePixelRatio == 1) {
+    viewport.setAttribute(&#39;content&#39;, &#39;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&#39;)
+} 
+if (window.devicePixelRatio == 2) {
+    viewport.setAttribute(&#39;content&#39;, &#39;width=device-width, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no&#39;)
+} 
+if (window.devicePixelRatio == 3) {
+    viewport.setAttribute(&#39;content&#39;, &#39;width=device-width, initial-scale=0.333333333, maximum-scale=0.333333333, minimum-scale=0.333333333, user-scalable=no&#39;)
+} 
+
+var docEl = document.documentElement;
+var fontsize = 10 * (docEl.clientWidth / 320) + &#39;px&#39;;
+docEl.style.fontSize = fontsize;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;transform: scale(0.5) 方案 - 推荐: 很灵活&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;设置height: 1px，根据媒体查询结合&lt;code&gt;transform&lt;/code&gt;缩放为相应尺寸。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;div {
+    height:1px;
+    background:#000;
+    -webkit-transform: scaleY(0.5);
+    -webkit-transform-origin:0 0;
+    overflow: hidden;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;用&lt;code&gt;::after&lt;/code&gt;和&lt;code&gt;::befor&lt;/code&gt;,设置&lt;code&gt;border-bottom：1px solid #000&lt;/code&gt;,然后在缩放&lt;code&gt;-webkit-transform: scaleY(0.5)&lt;/code&gt;;可以实现两根边线的需求&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;div::after{
+    content:&#39;&#39;;width:100%;
+    border-bottom:1px solid #000;
+    transform: scaleY(0.5);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;用&lt;code&gt;::after&lt;/code&gt;设置&lt;code&gt;border：1px solid #000; width:200%; height:200%&lt;/code&gt;,然后再缩放&lt;code&gt;scaleY(0.5)&lt;/code&gt;; 优点可以实现圆角，京东就是这么实现的，缺点是按钮添加active比较麻烦。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;.div::after {
+    content: &#39;&#39;;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #bfbfbf;
+    border-radius: 4px;
+    -webkit-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    -webkit-transform-origin: top left;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">【面】前端知识点梳理（CSS）</a>
       </div>
       
       <div class="item">
@@ -17424,7 +17522,7 @@ removeAt方法的实现过程：删除节点时存在多种情况：&lt;/p&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1612336555837.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;a href=&#34;https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;amp;seid=3912456004602554239&#34;&gt;参考资料：JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
-">JavaScript数据结构与算法—实现栈结构（Stack）</a>
+">JavaScript实现栈结构（Stack）</a>
       </div>
       
       <div class="item">
