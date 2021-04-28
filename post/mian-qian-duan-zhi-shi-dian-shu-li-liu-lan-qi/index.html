@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（浏览器） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1619576035527">
+<link rel="shortcut icon" href="/favicon.ico?v=1619597533843">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -5847,6 +5847,33 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616399158170.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;0-http轮询即时通讯&#34;&gt;0. HTTP轮询（即时通讯）&lt;/h2&gt;
+&lt;h3 id=&#34;1-轮询&#34;&gt;1. 轮询&lt;/h3&gt;
+&lt;p&gt;短轮询的基本思路就是&lt;strong&gt;浏览器每隔一段时间向浏览器发送http请求，服务器端在收到请求后，不论是否有数据更新，都直接进行响应&lt;/strong&gt;。这种方式实现的即时通信，本质上还是浏览器发送请求，服务器接受请求的一个过程，通过让客户端不断的进行请求，使得客户端能够模拟实时地收到服务器端的数据的变化。&lt;/p&gt;
+&lt;p&gt;这种方式的优点是比较简单，易于理解，实现起来也没有什么技术难点。缺点是显而易见的，这种方式由于需要不断的建立http连接，&lt;strong&gt;严重浪费了服务器端和客户端的资源&lt;/strong&gt;。尤其是在客户端，距离来说，如果有数量级想对比较大的人同时位于基于短轮询的应用中，那么每一个用户的客户端都会疯狂的向服务器端发送http请求，而且不会间断。人数越多，服务器端压力越大，这是很不合理的。&lt;/p&gt;
+&lt;p&gt;因此短轮询不适用于那些同时在线用户数量比较大，并且很注重性能的Web应用。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var xhr = new XMLHttpRequest();
+    setInterval(function(){
+        xhr.open(&#39;GET&#39;,&#39;/user&#39;);
+        xhr.onreadystatechange = function(){
+
+        };
+        xhr.send();
+    },1000)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-长轮询ajax实现&#34;&gt;2. 长轮询（ajax实现）&lt;/h3&gt;
+&lt;p&gt;当服务器收到客户端发来的请求后，&lt;strong&gt;服务器端不会直接进行响应，而是先将这个请求挂起，然后判断服务器端数据是否有更新&lt;/strong&gt;。如果有更新，则进行响应，如果一直没有数据，则到达一定的时间限制(服务器端设置)才返回。客户端JavaScript响应处理函数会在处理完服务器返回的信息后，再次发出请求，重新建立连接。&lt;/p&gt;
+&lt;p&gt;长轮询和短轮询比起来，明显减少了很多不必要的http请求次数，相比之下节约了资源。&lt;strong&gt;长轮询的缺点在于，连接挂起也会导致资源的浪费&lt;/strong&gt;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   function ajax(){
+        var xhr = new XMLHttpRequest();
+        xhr.open(&#39;GET&#39;,&#39;/user&#39;);
+        xhr.onreadystatechange = function(){
+              ajax();
+        };
+        xhr.send();
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;轮询与长轮询都是基于HTTP的，两者本身存在着缺陷：轮询需要更快的处理速度；长轮询则更要求处理并发的能力；两者都是“&lt;strong&gt;被动型服务器&lt;/strong&gt;”的体现：服务器不会主动推送信息，而是在客户端发送ajax请求后进行返回的响应。而理想的模型是&amp;quot;在服务器端数据有了变化后，可以主动推送给客户端&amp;quot;，这种&amp;quot;&lt;strong&gt;主动型&lt;/strong&gt;&amp;quot;服务器是解决这类问题的很好的方案。&lt;/p&gt;
 &lt;h2 id=&#34;1-http报文结构&#34;&gt;1. HTTP报文结构&lt;/h2&gt;
 &lt;p&gt;HTTP报文由&lt;strong&gt;报文首部&lt;/strong&gt;和&lt;strong&gt;报文主体&lt;/strong&gt;构成，中间由一个&lt;strong&gt;空行分隔&lt;/strong&gt;。&lt;strong&gt;报文首部包含请求行和请求头部&lt;/strong&gt;，报文主体主要包含被发送的信息。&lt;/p&gt;
 &lt;p&gt;报文首部是客户端或服务端需要处理请求或响应的内容及属性，可以传递额外的信息。&lt;/p&gt;
@@ -8511,6 +8538,31 @@ reverseArgs(1,2,3,4,5)//[5, 4, 3, 2, 1]
 var p = Object.assign({},o)
 console.log(o === p) //false
 &lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;code&gt;可变传参&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;es5中参数不确定个数的情况下&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//求参数和
+function f(){
+  var a = Array.prototype.slice.call(arguments);
+  var sum = 0;
+  a.forEach(function(item){
+     sum += item*1;          
+  })     
+  return sum;  
+};
+f(1,2,3);//6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;es6中可变参数&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function f(...a){
+  let sum = 0;
+  a.forEach(item =&amp;gt;{
+     sum += item*1;
+  })    
+  return sum;  
+}
+f(1,2,3);//6
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;8-map和set数组去重map数据结构有什么优点&#34;&gt;8. map和set数组去重，map数据结构有什么优点？&lt;/h1&gt;
 &lt;h2 id=&#34;1-set数组去重&#34;&gt;1. set数组去重&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;et arr = [1, 2, 2, 3, 4]
@@ -8661,7 +8713,67 @@ setTimeout (function(){
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-js-shang/"" data-c="
-          &lt;h1 id=&#34;0-new-与-objectcreate-区别&#34;&gt;0. new 与 Object.create() 区别&lt;/h1&gt;
+          &lt;h1 id=&#34;-1-面向对象编程基础&#34;&gt;-1. 面向对象编程基础！！&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;面向对象适合的是那些业务逻辑复杂（其实用“繁杂”更恰当一些）的大型项目。所谓繁杂，繁指多，杂指乱，项目“杂乱”，可以表现为：功能多改动多，所以代码量大、开发人员多、开发/维护跨度时间长……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;1-什么是面向对象&#34;&gt;1. 什么是面向对象&lt;/h2&gt;
+&lt;p&gt;面向对象 ( Object Oriented ) 是将现实问题构建关系，然后抽象成 &lt;strong&gt;类 ( class )&lt;/strong&gt;，给类定义属性和方法后，再将类实例化成 &lt;strong&gt;实例 ( instance )&lt;/strong&gt; ，通过访问实例的属性和调用方法来进行使用。&lt;/p&gt;
+&lt;p&gt;在不同的语言中，对象的定义范围不同。在 Java 等静态语言中，一般把类的实例称为对象。&lt;/p&gt;
+&lt;h2 id=&#34;2-面向对象的六大原则&#34;&gt;2. 面向对象的六大原则&lt;/h2&gt;
+&lt;h3 id=&#34;1-单一职责原则&#34;&gt;1. 单一职责原则&lt;/h3&gt;
+&lt;p&gt;一个合理的类，应该仅有一个引起它变化的原因，即单一职责,就是设计的这个类功能应该只有一个;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：消除耦合，减小因需求变化引起代码僵化。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-开-闭原则&#34;&gt;2. 开-闭原则&lt;/h3&gt;
+&lt;p&gt;讲的是设计要对扩展有好的支持，而对修改要严格限制。即对扩展开放，对修改封闭。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：降低了程序各部分之间的耦合性，其适应性、灵活性、稳定性都比较好。当已有软件系统需要增加新的功能时，不需要对作为系统基础的抽象层进行修改，只需要在原有基础上附加新的模块就能实现所需要添加的功能。增加的新模块对原有的模块完全没有影响或影响很小，这样就无须为原有模块进行重新测试。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-里氏代换原则&#34;&gt;3. 里氏代换原则&lt;/h3&gt;
+&lt;p&gt;规则是“子类必须能够替换基类，否则不应当设计为其子类。”也就是说，在软件里面，把父类都替换成它的子类，程序的行为没有变化。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：可以很容易的实现同一父类下各个子类的互换，而客户端可以毫不察觉。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-依赖倒换原则&#34;&gt;4. 依赖倒换原则&lt;/h3&gt;
+&lt;p&gt;“设计要依赖于抽象而不是具体化”。换句话说就是设计的时候我们要用抽象来思考，而不是一上来就开始划分我需要哪些哪些类，因为这些是具体。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619593049456.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：人的思维本身实际上就是很抽象的，我们分析问题的时候不是一下子就考虑到细节，而是很抽象的将整个问题都构思出来，所以面向抽象设计是符合人的思维的。另外这个原则会很好的支持（开闭原则）OCP，面向抽象的设计使我们能够不必太多依赖于实现，这样扩展就成为了可能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-接口隔离原则&#34;&gt;5. 接口隔离原则&lt;/h3&gt;
+&lt;p&gt;“将大的接口打散成多个小接口”，让系统解耦，从而容易重构，更改和重新部署。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：会使一个软件系统功能扩展时，修改的压力不会传到别的对象那里。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;6-迪米特法则&#34;&gt;6. 迪米特法则&lt;/h3&gt;
+&lt;p&gt;它讲的是“一个对象应当尽可能少的去了解其他对象”。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：消除耦合。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-面向对象的三大特性&#34;&gt;3. 面向对象的三大特性&lt;/h2&gt;
+&lt;p&gt;理解了理论知识后，接着通过例子，再理解面向对象的三大特征：&lt;code&gt;封装&lt;/code&gt;、&lt;code&gt;继承&lt;/code&gt;、&lt;code&gt;多态&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;1-封装&#34;&gt;1. 封装&lt;/h3&gt;
+&lt;p&gt;封装最好理解了。封装是面向对象的特征之一，是对象和类概念的主要特性。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;封装&lt;/code&gt;，&lt;strong&gt;也就是把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作&lt;/strong&gt;，对不可信的进行信息隐藏。&lt;/p&gt;
+&lt;h3 id=&#34;2-继承&#34;&gt;2. 继承&lt;/h3&gt;
+&lt;p&gt;面向对象编程 (OOP) 语言的一个主要功能就是“&lt;code&gt;继承&lt;/code&gt;”。继承是指这样一种能力：&lt;strong&gt;它可以使用现有类的所有功能，并在无需重新编写原来的类的情况下对这些功能进行扩展&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;通过继承创建的新类称为“子类”或“派生类”。&lt;br&gt;
+被继承的类称为“基类”、“父类”或“超类”。&lt;/p&gt;
+&lt;p&gt;要实现继承，可以通过“&lt;strong&gt;继承&lt;/strong&gt;”（Inheritance）和“&lt;strong&gt;组合&lt;/strong&gt;”（Composition）来实现。&lt;/p&gt;
+&lt;p&gt;继承概念的实现方式有三类：&lt;code&gt;实现继承&lt;/code&gt;、&lt;code&gt;接口继承&lt;/code&gt;和&lt;code&gt;可视继承&lt;/code&gt;。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619592096963.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-多态&#34;&gt;3. 多态&lt;/h3&gt;
+&lt;p&gt;多态性（polymorphisn）是允许你将父对象设置成为和一个或更多的他的子对象相等的技术，&lt;br&gt;
+简单的说，就是一句话：&lt;code&gt;允许将子类类型的指针赋值给父类类型的指针&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;实现多态，有二种方式，覆盖，重载。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;覆盖，是指子类重新定义父类的虚函数的做法。&lt;/li&gt;
+&lt;li&gt;重载，是指允许存在多个同名函数，而这些函数的参数表不同（或许参数个数不同，或许参数类型不同，或许两者都不同）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;那么，多态的作用是什么呢？我们知道，&lt;code&gt;封装&lt;/code&gt;可以隐藏实现细节，使得代码模块化；&lt;code&gt;继承&lt;/code&gt;可以扩展已存在的代码模块（类）；它们的目的都是为了——代码重用。而&lt;code&gt;多态&lt;/code&gt;则是为了实现另一个目的——接口重用！多态的作用，就是为了类在继承和派生的时候，保证使用“家谱”中任一类的实例的某一属性时的正确调用。&lt;/p&gt;
+&lt;h1 id=&#34;0-new-与-objectcreate-区别&#34;&gt;0. new 与 Object.create() 区别&lt;/h1&gt;
 &lt;h2 id=&#34;1-new的原理&#34;&gt;1. new的原理&lt;/h2&gt;
 &lt;p&gt;new 大概会执行以下四个步骤：&lt;/p&gt;
 &lt;ul&gt;
