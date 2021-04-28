@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Vue&amp;mock模拟数据 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1619597533843">
+<link rel="shortcut icon" href="/favicon.ico?v=1619615075867">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -2640,7 +2640,7 @@ console.log(sum(1,2,2,5)(7)()) // 17
 &lt;h1 id=&#34;20-手写快速排序&#34;&gt;20. 手写快速排序&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;function quicksort(arr) {
   if (arr.length &amp;lt;= 1) return arr;
-  let pivotIndex = arr.length &amp;gt;&amp;gt; 1;
+  let pivotIndex = Math.floor(arr.length/2);
   let pivot = arr.splice(pivotIndex, 1)[0];
   let left = [];
   let right = [];
@@ -10860,126 +10860,15 @@ document.body.appendChild(script);
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-qian-duan-zhi-shi-dian-shu-li-css-xia/"" data-c="
-          &lt;h1 id=&#34;0-动画和过渡animation-和-transition&#34;&gt;0. 动画和过渡（Animation 和 Transition）&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;animation：CSS 动画，将元素的样式配置转换到另一个CSS配置。包括动画所使用的样式规则，以及用于指定动画开始、结束以及中间多个节点的关键帧；&lt;/li&gt;
-&lt;li&gt;transition：CSS过渡属性，为一个元素在不同状态切换的时候定义不同的过渡效果。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;CSS 中，如果按一秒24帧的画法来写代码，未免太过繁琐。所以我们把动画拆解为&lt;code&gt;动作(transition)&lt;/code&gt;，一个动作表示从一个状态到另一个状态的变化，然后把一组动作串起来，即是 CSS 中的&lt;code&gt;动画(animation)&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;1-transition&#34;&gt;1. Transition&lt;/h2&gt;
-&lt;p&gt;transition 直译为过渡，即&lt;strong&gt;给属性变化添加过渡效果&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;我们知道，如果两个样式属性被赋在同一个元素上，后一个样式属性会覆盖前一个，比如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.blueball {
-  ...
-  opacity: 1; /* 不透明 */
-}
-.blueball:hover {
-  opacity: 0.3; /* 透明度 30% */
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;当我们把鼠标放在蓝球上时，蓝球会&lt;strong&gt;立刻&lt;/strong&gt;变透明&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619149280679.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-而如果我们给蓝球增加 transition 属性，其透明度变化会有一个过渡&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.blueball {
-  ...
-  opacity: 1;
-  transition: opacity 1s;  /* 改变 opacity 属性，持续1秒 */
-}
-.blueball:hover {
-  opacity: 0.3;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619149305472.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-这里的 transition 属性其实是一个简写形式，它由&lt;strong&gt;四部分组成&lt;/strong&gt;，分别是（冒号后为默认值）：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;transition-property: all; /* 过渡属性 */
-transition-duration: 0; /* 耗时 */
-transition-timing-function: ease; /* 效果，默认 ease（缓入缓出） */
-transition-delay: 0; /* 延迟 */
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果考虑到默认值，上面过渡效果的例子中，可以进一步简写成&lt;code&gt;transition: 1s&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;transition 可以同时给多个属性添加过渡效果，比如可以在移动元素的同时，改变其透明度。&lt;code&gt;但不管有多少个属性同时在变化，这种过渡效果只能是一次性的，也就是单个动作&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;2-animation&#34;&gt;2. Animation&lt;/h2&gt;
-&lt;p&gt;transition 只能做单个动作，如果动画包含多个动作，这时候就需要 animation&lt;/p&gt;
-&lt;p&gt;我们先来看个例子：&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619150620116.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-这个动画明显由两个动作组成：蓝变绿，绿变橙。&lt;/p&gt;
-&lt;p&gt;两个连续的线段有三个关键点，两个连续的动作必然也有三个&lt;strong&gt;关键帧&lt;/strong&gt;（keyframe），我们通过定义这三个关键帧（起点，蓝变绿，终点）来定义这两个动作。&lt;/p&gt;
-&lt;p&gt;我们来看一下这个动画的 CSS 代码&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.blueball {
-  ...
-  background-color: #0080ff; /* 蓝色 */
-  position: relative;
-  animation: forward 4s; /* 执行 forward 动画，耗时 4s */
-}
-
-/* 三个关键帧： 起点（蓝色），蓝变绿，终点（橙色） */
-@keyframes forward {
-  0% {left: 0; }
-  50% {left: 200px; background-color: #009a61;}
-  100% {left: 400px; background-color: orange;}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;@keyframes中的百分比，代表时间尺度上的百分比 ，后面跟着的是此时间点的样式。&lt;/p&gt;
-&lt;p&gt;同样的，animation: forward 4s;也是简写形式，完整的 animation 属性包括（冒号后为默认值）&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;animation-name: none; /* 动画名称 */
-animation-duration: 0; /* 耗时 */
-animation-timing-function: ease; /* 效果，默认缓入缓出 */
-animation-delay: 0; /* 延迟 */
-animation-iteration-count: 1; /* 循环次数 */
-animation-direction: normal; /* 正放 or 倒放 */
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;CSS 动画的知识点，就这么些，但目前看来，我们只能动动元素的大小，位置，透明度，颜色什么的，有点单调。为了给动画加点料，下面介绍一下 &lt;code&gt;transform&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;3-transform&#34;&gt;3. transform&lt;/h2&gt;
-&lt;p&gt;transform 直译为变换，虽然名字和 transition 有点像，但是它和动画无关。transition 是一个状态到另一个状态的变化过程，而 transform 仅仅是&lt;strong&gt;静止的最终状态&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;例如：如果想把蓝球从水平排列中，向下移动100px&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151581634.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;p&gt;即可以使用&lt;strong&gt;相对定位&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.blueball {
-  ...
-  position: relative;
-  top: 100px;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;也可以使用 &lt;strong&gt;transform&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.blueball {
-  ...
-  transform: translateY(100px);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;它们的效果是一致的，都是把蓝球向下移动 100px&lt;/p&gt;
-&lt;p&gt;除了位移，tranform 还可以做很多变换&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;matrix 矩阵变换&lt;/li&gt;
-&lt;li&gt;translate 位移&lt;/li&gt;
-&lt;li&gt;scale 缩放&lt;/li&gt;
-&lt;li&gt;rotate 绕轴旋转&lt;/li&gt;
-&lt;li&gt;skew 倾斜&lt;/li&gt;
-&lt;li&gt;perspective 透视距离&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;这里有几点需要说明:&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;1-transform-原点位于元素中心&#34;&gt;1. transform 原点位于元素中心&lt;/h3&gt;
-&lt;p&gt;我们知道 CSS 元素默认的坐标系，原点在左上角；而 transform 变换的原点位于元素中心&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151713261.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-图中亦标识了绕轴旋转（rotate）时的默认方向，为了便于记忆，你可以理解为：你站在原点位置，看向正轴方向，默认旋转方向为&lt;strong&gt;逆时针旋转&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;2-理解-skew倾斜&#34;&gt;2. 理解 skew（倾斜）&lt;/h3&gt;
-&lt;p&gt;skew 倾斜变换并不直观，为了便于记忆，你可以这样想像：&lt;br&gt;
-你拉住了矩形的&lt;code&gt;右下角&lt;/code&gt;，左右横拉，即是沿X轴倾斜&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151914829.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-同样的，skewY 即是抓住右下角上下拉&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151918106.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;3-理解-perspective透视&#34;&gt;3. 理解 perspective（透视）&lt;/h3&gt;
-&lt;p&gt;perspective 表示透视距离，可简单理解为眼睛离屏幕的距离&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;transform: translateZ(100x); /* 向Z轴正向移动 100px */
-perspective: 200px; /* 透视距离 200px */
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我们用一张图来说明一下&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151963081.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;d 为透视距离 200px&lt;/li&gt;
-&lt;li&gt;Z 为元素在Z轴上移动的距离 100px&lt;/li&gt;
-&lt;li&gt;虚线的圆表示元素实际的位置&lt;/li&gt;
-&lt;li&gt;而蓝色的圆，是元素在屏幕上的投影，也是最终展示的效果&lt;/li&gt;
-&lt;/ul&gt;
+          &lt;h1 id=&#34;0-行内元素与块级元素的区别&#34;&gt;0. 行内元素与块级元素的区别&lt;/h1&gt;
+&lt;h2 id=&#34;1-区别&#34;&gt;1. 区别&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;行内元素和其他行内元素都会在一条水平线上排列，都是在同一行的；块级元素却总是会在新的一行开始排列，各个块级元素独占一行，垂直向下排列，若想使其水平方向排序，可使用左右浮动（float：left/right）让其水平方向排列。&lt;/li&gt;
+&lt;li&gt;行内元素不可以设置宽高，宽度高度随文本内容的变化而变化，但是可以设置行高（line-height），同时在设置外边距margin上下无效，左右有效，内填充padding上下无效，左右有效；块级元素可以设置宽高，并且宽度高度以及外边距，内填充都可随意控制。&lt;/li&gt;
+&lt;li&gt;块级元素可以包含行内元素和块级元素，还可以容纳内联元素和其他元素；行内元素不能包含块级元素，只能容纳文本或者其他行内元素。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-css样式继承&#34;&gt;2. Css样式继承&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619598673120.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h1 id=&#34;1-盒模型box-model&#34;&gt;1. 盒模型（box model）&lt;/h1&gt;
 &lt;h2 id=&#34;1基本概念&#34;&gt;1.基本概念&lt;/h2&gt;
 &lt;p&gt;盒子模型，个人的理解，就是一个来装html标签的矩形容器，由四部分组成：&lt;/p&gt;
@@ -11003,6 +10892,8 @@ box-sizing: content-box;
 //设置IE模型
 box-sizing: border-box;
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-外边距合并&#34;&gt;4. 外边距合并&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619602593954.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h1 id=&#34;2flex布局&#34;&gt;2.flex布局&lt;/h1&gt;
 &lt;p&gt;flex，即弹性布局。一个由css3引入，为我们的盒子属性带来灵活性的一种布局方式。一旦父级采用了flex布局，里边的子控件将收flex布局限制，部分原本的样式（如float:left）也会失效。&lt;/p&gt;
 &lt;p&gt;特别注意： flex:0 0 30%的意义： 等于flex-grow=0（默认不放大）+flex-shrink=0（不缩小）+flex-basis=30%（ 项目占据主轴的空间）&lt;/p&gt;
@@ -11368,7 +11259,7 @@ flex-flow: &lt;code&gt;&amp;lt;flex-direction&amp;gt;&lt;/code&gt; || &lt;code&g
 &lt;li&gt;拥有 z-index:0 的子堆叠上下文元素&lt;/li&gt;
 &lt;li&gt;拥有正 z-index: 的子堆叠上下文元素（正的越低越堆叠层级越低）&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;7常见页面布局&#34;&gt;7.常见页面布局&lt;/h1&gt;
+&lt;h1 id=&#34;7-常见页面布局&#34;&gt;7. 常见页面布局&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;三栏布局&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;题目：假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为 300px，中间自适应。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;解答：可以有很多种布局方式，这里列出五种：float布局，absolute布局，flex布局，table布局，grid布局，代码如下：&lt;/p&gt;
@@ -11839,7 +11730,7 @@ grid 布局也很强大，大体上属性跟 flex 差不多。&lt;/li&gt;
 &lt;blockquote&gt;
 &lt;p&gt;CSS3的过渡功能就像是一种黄油，可以让CSS的一些变化变得平滑。因为原生的CSS过渡在客户端需要处理的资源要比用JavaScript和Flash少的多，所以才会更平滑。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614826493004.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614826493004.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ul&gt;
 &lt;li&gt;transition-property&lt;br&gt;
 不是所有属性都能过渡，只有属性具有一个中间点值才具备过渡效果。&lt;/li&gt;
@@ -11888,9 +11779,9 @@ CSS3的animation制作动画效果主要包括两部分：1. 用关键帧声明�
 （3）项目应用中，做二级导航效果或者鼠标悬停效果动态时，会经常用到这个属性值，下次我们写一个好玩的二级效果再来展示这个属性值的作用；&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838389050.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;112-block此元素将显示为块级元素此元素前后会带有换行符&#34;&gt;11.2 block：此元素将显示为块级元素，此元素前后会带有换行符。&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838392829.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838392829.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;113-inline-默认此元素会被显示为内联元素元素前后没有换行符&#34;&gt;11.3 inline 默认此元素会被显示为内联元素，元素前后没有换行符。&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838421481.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838421481.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;114-inline-block-行内块元素css21-新增的值&#34;&gt;11.4 inline-block 行内块元素（CSS2.1 新增的值）&lt;/h2&gt;
 &lt;p&gt;说明：行内块元素既具备行内元素的特性也具备块状元素的特性，具备行内元素前后没有换行符可以在一行内并列显示的特性，具备块状元素可以正确解释盒模型属性的特性。&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614838503882.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
@@ -11910,7 +11801,7 @@ CSS3的animation制作动画效果主要包括两部分：1. 用关键帧声明�
 display的属性值为&lt;strong&gt;block，table&lt;/strong&gt;的标签都为&lt;code&gt;块状元素&lt;/code&gt;；&lt;br&gt;
 display的属性值为&lt;strong&gt;inline，inline-table，inline-block&lt;/strong&gt;的标签为&lt;code&gt;行内级元素&lt;/code&gt;；&lt;/p&gt;
 &lt;h1 id=&#34;12-相邻的两个inline-block节点为什么会出现间隔该如何解决&#34;&gt;12. 相邻的两个inline-block节点为什么会出现间隔，该如何解决&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614841169302.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614841169302.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;121-原因&#34;&gt;12.1 原因&lt;/h2&gt;
 &lt;p&gt;其实，html的原因。我们回顾一下这段代码：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;看这里➡️&amp;lt;/div&amp;gt;
@@ -11988,7 +11879,127 @@ ideal viewport 的意义在于，无论在何种分辨率的屏幕下，针对id
 &lt;p&gt;将&lt;code&gt;meta:vp&lt;/code&gt;标签的属性值设置为&lt;code&gt;width=device-width, initial-scale=1&lt;/code&gt;就不仅能够将页面的布局视口自动设置为各个移动设备的理想视口，还能够同时兼容iphone、ipad的Safari以及WP7 IE浏览器的横屏问题。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;14-css实现宽度自适应100宽高169的比例的矩形&#34;&gt;14 CSS实现宽度自适应100%，宽高16:9的比例的矩形&lt;/h1&gt;
+&lt;h1 id=&#34;14-动画和过渡animation-和-transition&#34;&gt;14. 动画和过渡（Animation 和 Transition）&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;animation：CSS 动画，将元素的样式配置转换到另一个CSS配置。包括动画所使用的样式规则，以及用于指定动画开始、结束以及中间多个节点的关键帧；&lt;/li&gt;
+&lt;li&gt;transition：CSS过渡属性，为一个元素在不同状态切换的时候定义不同的过渡效果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;CSS 中，如果按一秒24帧的画法来写代码，未免太过繁琐。所以我们把动画拆解为&lt;code&gt;动作(transition)&lt;/code&gt;，一个动作表示从一个状态到另一个状态的变化，然后把一组动作串起来，即是 CSS 中的&lt;code&gt;动画(animation)&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-transition&#34;&gt;1. Transition&lt;/h2&gt;
+&lt;p&gt;transition 直译为过渡，即&lt;strong&gt;给属性变化添加过渡效果&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;我们知道，如果两个样式属性被赋在同一个元素上，后一个样式属性会覆盖前一个，比如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.blueball {
+  ...
+  opacity: 1; /* 不透明 */
+}
+.blueball:hover {
+  opacity: 0.3; /* 透明度 30% */
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当我们把鼠标放在蓝球上时，蓝球会&lt;strong&gt;立刻&lt;/strong&gt;变透明&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619149280679.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+而如果我们给蓝球增加 transition 属性，其透明度变化会有一个过渡&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.blueball {
+  ...
+  opacity: 1;
+  transition: opacity 1s;  /* 改变 opacity 属性，持续1秒 */
+}
+.blueball:hover {
+  opacity: 0.3;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619149305472.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这里的 transition 属性其实是一个简写形式，它由&lt;strong&gt;四部分组成&lt;/strong&gt;，分别是（冒号后为默认值）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;transition-property: all; /* 过渡属性 */
+transition-duration: 0; /* 耗时 */
+transition-timing-function: ease; /* 效果，默认 ease（缓入缓出） */
+transition-delay: 0; /* 延迟 */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果考虑到默认值，上面过渡效果的例子中，可以进一步简写成&lt;code&gt;transition: 1s&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;transition 可以同时给多个属性添加过渡效果，比如可以在移动元素的同时，改变其透明度。&lt;code&gt;但不管有多少个属性同时在变化，这种过渡效果只能是一次性的，也就是单个动作&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;2-animation&#34;&gt;2. Animation&lt;/h2&gt;
+&lt;p&gt;transition 只能做单个动作，如果动画包含多个动作，这时候就需要 animation&lt;/p&gt;
+&lt;p&gt;我们先来看个例子：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619150620116.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这个动画明显由两个动作组成：蓝变绿，绿变橙。&lt;/p&gt;
+&lt;p&gt;两个连续的线段有三个关键点，两个连续的动作必然也有三个&lt;strong&gt;关键帧&lt;/strong&gt;（keyframe），我们通过定义这三个关键帧（起点，蓝变绿，终点）来定义这两个动作。&lt;/p&gt;
+&lt;p&gt;我们来看一下这个动画的 CSS 代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.blueball {
+  ...
+  background-color: #0080ff; /* 蓝色 */
+  position: relative;
+  animation: forward 4s; /* 执行 forward 动画，耗时 4s */
+}
+
+/* 三个关键帧： 起点（蓝色），蓝变绿，终点（橙色） */
+@keyframes forward {
+  0% {left: 0; }
+  50% {left: 200px; background-color: #009a61;}
+  100% {left: 400px; background-color: orange;}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;@keyframes中的百分比，代表时间尺度上的百分比 ，后面跟着的是此时间点的样式。&lt;/p&gt;
+&lt;p&gt;同样的，animation: forward 4s;也是简写形式，完整的 animation 属性包括（冒号后为默认值）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;animation-name: none; /* 动画名称 */
+animation-duration: 0; /* 耗时 */
+animation-timing-function: ease; /* 效果，默认缓入缓出 */
+animation-delay: 0; /* 延迟 */
+animation-iteration-count: 1; /* 循环次数 */
+animation-direction: normal; /* 正放 or 倒放 */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;CSS 动画的知识点，就这么些，但目前看来，我们只能动动元素的大小，位置，透明度，颜色什么的，有点单调。为了给动画加点料，下面介绍一下 &lt;code&gt;transform&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-transform&#34;&gt;3. transform&lt;/h2&gt;
+&lt;p&gt;transform 直译为变换，虽然名字和 transition 有点像，但是它和动画无关。transition 是一个状态到另一个状态的变化过程，而 transform 仅仅是&lt;strong&gt;静止的最终状态&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;例如：如果想把蓝球从水平排列中，向下移动100px&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151581634.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;即可以使用&lt;strong&gt;相对定位&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.blueball {
+  ...
+  position: relative;
+  top: 100px;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以使用 &lt;strong&gt;transform&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.blueball {
+  ...
+  transform: translateY(100px);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;它们的效果是一致的，都是把蓝球向下移动 100px&lt;/p&gt;
+&lt;p&gt;除了位移，tranform 还可以做很多变换&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;matrix 矩阵变换&lt;/li&gt;
+&lt;li&gt;translate 位移&lt;/li&gt;
+&lt;li&gt;scale 缩放&lt;/li&gt;
+&lt;li&gt;rotate 绕轴旋转&lt;/li&gt;
+&lt;li&gt;skew 倾斜&lt;/li&gt;
+&lt;li&gt;perspective 透视距离&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;这里有几点需要说明:&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1-transform-原点位于元素中心&#34;&gt;1. transform 原点位于元素中心&lt;/h3&gt;
+&lt;p&gt;我们知道 CSS 元素默认的坐标系，原点在左上角；而 transform 变换的原点位于元素中心&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151713261.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+图中亦标识了绕轴旋转（rotate）时的默认方向，为了便于记忆，你可以理解为：你站在原点位置，看向正轴方向，默认旋转方向为&lt;strong&gt;逆时针旋转&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-理解-skew倾斜&#34;&gt;2. 理解 skew（倾斜）&lt;/h3&gt;
+&lt;p&gt;skew 倾斜变换并不直观，为了便于记忆，你可以这样想像：&lt;br&gt;
+你拉住了矩形的&lt;code&gt;右下角&lt;/code&gt;，左右横拉，即是沿X轴倾斜&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151914829.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+同样的，skewY 即是抓住右下角上下拉&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151918106.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-理解-perspective透视&#34;&gt;3. 理解 perspective（透视）&lt;/h3&gt;
+&lt;p&gt;perspective 表示透视距离，可简单理解为眼睛离屏幕的距离&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;transform: translateZ(100x); /* 向Z轴正向移动 100px */
+perspective: 200px; /* 透视距离 200px */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们用一张图来说明一下&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619151963081.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;d 为透视距离 200px&lt;/li&gt;
+&lt;li&gt;Z 为元素在Z轴上移动的距离 100px&lt;/li&gt;
+&lt;li&gt;虚线的圆表示元素实际的位置&lt;/li&gt;
+&lt;li&gt;而蓝色的圆，是元素在屏幕上的投影，也是最终展示的效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;15-css实现宽度自适应100宽高169的比例的矩形&#34;&gt;15. CSS实现宽度自适应100%，宽高16:9的比例的矩形&lt;/h1&gt;
 &lt;p&gt;第一步先计算高度，假设宽100%，那么高为h=9/16=56.25%&lt;/p&gt;
 &lt;p&gt;第二步利用之前所说设置padding-bottom方法实现矩形&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;  &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
@@ -12010,19 +12021,19 @@ ideal viewport 的意义在于，无论在何种分辨率的屏幕下，针对id
     }
   &amp;lt;/style&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;15-rem布局的优缺点&#34;&gt;15 rem布局的优缺点&lt;/h1&gt;
-&lt;h2 id=&#34;151-rem布局原理&#34;&gt;15.1 Rem布局原理&lt;/h2&gt;
+&lt;h1 id=&#34;16-rem布局的优缺点&#34;&gt;16. rem布局的优缺点&lt;/h1&gt;
+&lt;h2 id=&#34;161-rem布局原理&#34;&gt;16.1 Rem布局原理&lt;/h2&gt;
 &lt;p&gt;rem布局的本质是什么？这是我问过很多人的一个问题，但得到的回答都差强人意。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;其实rem布局的本质是等比缩放，一般是基于宽度&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;152-rem布局优点&#34;&gt;15.2 Rem布局优点&lt;/h2&gt;
+&lt;h2 id=&#34;162-rem布局优点&#34;&gt;16.2 Rem布局优点&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;rem的优点就是可以通过修改html里的文字大小来改变页面中元素的大小，可以整体进行控制。&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;153-rem布局缺点&#34;&gt;15.3 Rem布局缺点&lt;/h2&gt;
+&lt;h2 id=&#34;163-rem布局缺点&#34;&gt;16.3 Rem布局缺点&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;目前ie不支持 对pc页面来讲使用次数不多；&lt;/li&gt;
 &lt;li&gt;数据量大：所有的图片，盒子都需要我们去给一个准确的值；才能保证不同机型的适配；&lt;/li&gt;
 &lt;li&gt;字体的问题：字体的大小和字体宽度，并不成线性关系，所以字体大小不能使用rem&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;16-css画一个三角形&#34;&gt;16. CSS画一个三角形&lt;/h1&gt;
+&lt;h1 id=&#34;17-css画一个三角形&#34;&gt;17. CSS画一个三角形&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;CSS&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
         /* css3绘制三角形 */
@@ -12038,15 +12049,15 @@ ideal viewport 的意义在于，无论在何种分辨率的屏幕下，针对id
 &lt;p&gt;&lt;strong&gt;Html&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; &amp;lt;div class=&amp;quot;triangle&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614860077842.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h1 id=&#34;17-1像素边框问题&#34;&gt;17. 1像素边框问题&lt;/h1&gt;
-&lt;h2 id=&#34;171-为什么1px变粗了&#34;&gt;17.1 为什么1px变粗了？&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614860077842.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;18-1像素边框问题&#34;&gt;18. 1像素边框问题&lt;/h1&gt;
+&lt;h2 id=&#34;181-为什么1px变粗了&#34;&gt;18.1 为什么1px变粗了？&lt;/h2&gt;
 &lt;p&gt;UI设计师要求的1px是指设备的物理像素1px，而CSS里记录的像素是逻辑像素，它们之间存在一个比例关系，可以用javascript中的window.devicePixelRatio来获取&lt;/p&gt;
 &lt;p&gt;移动端开发常需要在html的header里添加如下一句：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&amp;quot;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这句话定义了本页面的viewport的宽度为设备宽度，初始缩放值和最大缩放值都为1，并禁止了用户缩放。&lt;/p&gt;
-&lt;h2 id=&#34;172-修改方案&#34;&gt;17.2 修改方案&lt;/h2&gt;
+&lt;h2 id=&#34;182-修改方案&#34;&gt;18.2 修改方案&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;viewport + rem 方案&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;该方案是对上述方案的优化，整体思路就是利用viewport + rem + js 动态的修改页面的缩放比例，实现小于1像素的显示。在页面初始化时，在头部引入原始默认状态如下：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html;charset=UTF-8&amp;quot;&amp;gt;  
@@ -12224,7 +12235,8 @@ docEl.style.fontSize = fontsize;
         this.array[n] = temp
       }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;21冒泡排序&#34;&gt;2.1.冒泡排序&lt;/h1&gt;
+&lt;h1 id=&#34;排序算法&#34;&gt;排序算法！！&lt;/h1&gt;
+&lt;h2 id=&#34;21冒泡排序&#34;&gt;2.1.冒泡排序&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;冒泡排序的思路：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;对未排序的各元素&lt;strong&gt;从头到尾&lt;/strong&gt;依次比较&lt;strong&gt;相邻的两个元素&lt;/strong&gt;大小关系；&lt;/li&gt;
@@ -12628,6 +12640,23 @@ console.log(QuickSort(arr));
 &lt;li&gt;快速排序最坏情况下的效率：每次选择的枢纽都是最左边或最右边的数据，此时效率等同于冒泡排序，时间复杂度为&lt;strong&gt;O(n^2)&lt;/strong&gt;。可根据不同的枢纽选择避免这一情况；&lt;/li&gt;
 &lt;li&gt;快速排序的平均效率：为&lt;strong&gt;O(N*logN)&lt;/strong&gt;，虽然其他算法效率也可达到O(N*logN)，但是其中快速排序是&lt;strong&gt;最好的&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;26-归并排序&#34;&gt;2.6 归并排序&lt;/h2&gt;
+&lt;p&gt;归并排序采用的是分治的思想，首先是“分”，将一个数组反复二分为两个小数组，直到每个数组只有一个元素；其次是“治”，从最小数组开始，两两按大小顺序合并，直到并为原始数组大小，下面是图解：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619613292190.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;观察下“治”的过程，可以看出，“治”实际上是将已经有序的数组合并为更大的有序数组。那么怎样将已经有序的数组合并为更大的有序数组？很简单，创建一个临时数组C，比较A[0]，B[0]，将较小值放到C[0]，再比较A[1]与B[0]（或者A[0]，B[1]），将较小值放到C[1]，直到对A，B都遍历一遍。可以看出数组A，B都只需遍历一遍，所以对两个有序数组的排序的时间复杂度为O(n)。&lt;/p&gt;
+&lt;p&gt;而“分”就是将原始数组逐次二分，直到每个数组只剩一个元素，一个元素的数组自然是有序的，所以就可以开始“治”的过程了。时间复杂度为 O(nlogn)。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;实现分析：
+将数组从中间切分为两个数组
+切分到最小之后，开始归并操作，即合并两个已排序的数组
+递归合并的过程，由于是从小到大合并，所以待合并的两个数组总是已排序的，一直做同样的归并操作就可以
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;对比归并排序与快速排序&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;都用了分治的思想。相比选择排序和冒泡排序，归并排序与快速排序使用了切分而不是直接遍历，这有效减少了交换次数。&lt;/li&gt;
+&lt;li&gt;归并排序是先切分、后排序，过程可以描述为：切分、切分、切分……排序、排序、排序……&lt;/li&gt;
+&lt;li&gt;快速排序是分区、排序交替进行，过程可以描述为：分区、排序、分区、排序……&lt;/li&gt;
+&lt;li&gt;上两条所说的“排序”，在归并排序与快速排序中并非同样的操作，归并排序中的操作是将两个数组合并为一（归并操作），而快速排序中的操作是交换。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;br&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/av86801505?from=search&amp;amp;seid=4967761411915016256&#34;&gt;参考资料：JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
 ">JavaScript实现排序算法</a>
