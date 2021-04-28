@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Hello Gridea | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1619615075867">
+<link rel="shortcut icon" href="/favicon.ico?v=1619617801148">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -8537,10 +8537,9 @@ Object.prototype.chargeObjectEqual = function(obj){
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;16-事件模型&#34;&gt;16. 事件模型&lt;/h1&gt;
-&lt;h2 id=&#34;161-事件委托-代理&#34;&gt;16.1 事件委托、代理&lt;/h2&gt;
-&lt;h3 id=&#34;1基本概念&#34;&gt;1.基本概念&lt;/h3&gt;
+&lt;h2 id=&#34;1基本概念&#34;&gt;1.基本概念&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;事件代理&lt;/strong&gt;（Event Delegation），又称之为事件委托。是JavaScript中常用绑定事件的常用技巧。顾名思义，“事件代理”即是把原本需要绑定在子元素的响应事件（click、keydown......）委托给父元素，让父元素担当事件监听的职务。事件代理的原理是DOM元素的事件冒泡。&lt;/p&gt;
-&lt;h3 id=&#34;2-事件冒泡&#34;&gt;2. 事件冒泡&lt;/h3&gt;
+&lt;h2 id=&#34;2-事件传播&#34;&gt;2. 事件传播&lt;/h2&gt;
 &lt;p&gt;一个事件触发后，会在子元素和父元素之间&lt;strong&gt;传播&lt;/strong&gt;（propagation）。这种传播分成三个阶段&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615169023216.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 如上图所示，事件传播分成三个阶段：&lt;/p&gt;
@@ -8549,98 +8548,93 @@ Object.prototype.chargeObjectEqual = function(obj){
 &lt;li&gt;目标阶段：在目标节点上触发，称为“目标阶段”&lt;/li&gt;
 &lt;li&gt;冒泡阶段：从目标节点传导回window对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。&lt;strong&gt;事件代理即是利用事件冒泡的机制把里层所需要响应的事件绑定到外层&lt;/strong&gt;；&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;3-事件委托的优点&#34;&gt;3. 事件委托的优点&lt;/h3&gt;
-&lt;p&gt;【1】&lt;strong&gt;可以大量节省内存占用，减少事件注册，比如在ul上代理所有li的click事件就非常棒&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;ul id=&amp;quot;list&amp;quot;&amp;gt;
-  &amp;lt;li&amp;gt;item 1&amp;lt;/li&amp;gt;
-  &amp;lt;li&amp;gt;item 2&amp;lt;/li&amp;gt;
-  &amp;lt;li&amp;gt;item 3&amp;lt;/li&amp;gt;
-  ......
-  &amp;lt;li&amp;gt;item n&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;
+&lt;h2 id=&#34;3-事件冒泡和捕获&#34;&gt;3. 事件冒泡和捕获&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;冒泡&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;就是从事件 目标 的事件处理函数开始，依次向外，直到 window 的事件处理函数触发（先执行目标元素事件，再依次执行父元素事件）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;捕获&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;就是从 window 的事件处理函数开始，依次向内，直到事件 目标 的事件处理函数执行（最后才执行目标元素）&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619616013812.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;阻止事件传播&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果想只触发当前点击对象的事件，不想让外层的事件触发 ，可以使用不冒泡&lt;strong&gt;e.cancelBubble=true&lt;/strong&gt;或不传播 &lt;strong&gt;e.stopPropagation()&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;var box = document.querySelector(&#39;.box&#39;)
+    var atr = document.querySelector(&#39;.atr&#39;)
+    box.onclick = function (e) {
+        e.stopPropagation() // 不传播
+        console.log(&#39;我被点击了box&#39;)
+    }
+    atr.onclick = function (e) {
+        e.cancelBubble=true //不冒泡
+        console.log(&#39;我被点击了atr&#39;)
+    }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如上面代码所示，如果给每个li列表项都绑定一个函数，那对内存的消耗是非常大的，因此较好的解决办法就是将li元素的点击事件绑定到它的父元素ul身上，执行事件的时候再去匹配判断目标元素。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;【2】可以实现当新增子对象时无需再次对其绑定（动态绑定事件）&lt;/strong&gt;&lt;br&gt;
-假设上述的例子中列表项li就几个，我们给每个列表项都绑定了事件；&lt;/p&gt;
-&lt;p&gt;在很多时候，我们需要通过 AJAX 或者用户操作动态的增加或者删除列表项li元素，那么在每一次改变的时候都需要重新给新增的元素绑定事件，给即将删去的元素解绑事件；&lt;/p&gt;
-&lt;p&gt;如果用了事件委托就没有这种麻烦了，因为事件是绑定在父层的，和目标元素的增减是没有关系的，执行到目标元素是在真正响应执行事件函数的过程中去匹配的；所以使用事件在动态绑定事件的情况下是可以减少很多重复工作的。&lt;/p&gt;
-&lt;h3 id=&#34;3-基本实现&#34;&gt;3. 基本实现&lt;/h3&gt;
-&lt;p&gt;【1】JavaScript原生实现事件委托&lt;/p&gt;
-&lt;p&gt;比如我们有这样的一个 HTML 片段：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;ul id=&amp;quot;myLinks&amp;quot;&amp;gt;
-  &amp;lt;li id=&amp;quot;goSomewhere&amp;quot;&amp;gt;Go somewhere&amp;lt;/li&amp;gt;
-  &amp;lt;li id=&amp;quot;doSomething&amp;quot;&amp;gt;Do something&amp;lt;/li&amp;gt;
-  &amp;lt;li id=&amp;quot;sayHi&amp;quot;&amp;gt;Say hi&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;
+&lt;h2 id=&#34;4-事件委托&#34;&gt;4. 事件委托&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;因为我们的冒泡机制，点击子元素的时候，也会同步触发父元素的相同事件 ，所以我们就可以把子元素的事件委托给父元素来做&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;点击子元素的时候，不管子元素有没有点击事件，只要父元素有点击事件，那么就可以触发父元素的点击事件&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt; atr.onclick = function (e) {
+        // e.stopPropagation()
+        var e = e || window.event //event兼容写法
+        var target = e.target || e.srcElement //target兼容写法
+        console.log(target,&#39;执行子盒子的点击事件&#39;)
+    }
+box.onclick = function (e) {
+        var e = e || window.event //event兼容写法
+        var target = e.target || e.srcElement //target兼容写法
+        console.log(target,&#39;执行父盒子的点击事件&#39;)
+    }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;使用事件委托，只需在 DOM 树中尽量最高的层次上添加一个事件处理程序，如下面的例子所示&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    var item1 = document.getElementById(&amp;quot;goSomewhere&amp;quot;);
-    var item2 = document.getElementById(&amp;quot;doSomething&amp;quot;);
-    var item3 = document.getElementById(&amp;quot;sayHi&amp;quot;);
- 
-    document.addEventListener(&amp;quot;click&amp;quot;, function (event) {
-      var target = event.target;
-      switch (target.id) {
-        case &amp;quot;doSomething&amp;quot;:
-          document.title = &amp;quot;事件委托&amp;quot;;
-          break;
-        case &amp;quot;goSomewhere&amp;quot;:
-          location.href = &amp;quot;http://www.baidu.com&amp;quot;;
-          break;
-        case &amp;quot;sayHi&amp;quot;: alert(&amp;quot;hi&amp;quot;);
-          break;
-      }
+&lt;p&gt;&lt;code&gt;target&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;target 这个属性是事件对象里面的属性，表示你点击的目标&lt;/li&gt;
+&lt;li&gt;当你触发点击事件的时候，你点击在哪个元素上，target 就是哪个元素&lt;/li&gt;
+&lt;li&gt;这个 target 也不兼容，在 IE 下要使用 srcElement&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;委托&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这个时候，当我们点击 box里面的元素的时候，也可以触发 box 的点事件&lt;/li&gt;
+&lt;li&gt;并且在事件内部，我们也可以拿到你点击的到底是哪个对象&lt;/li&gt;
+&lt;li&gt;这个时候，我们就可以把 li 的事件委托给 box 父级来做&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;var box = document.querySelector(&#39;.box&#39;)
+    var atr = document.querySelector(&#39;.atr&#39;)
+    
+    atr.onclick = function (e) {
+        var e = e || window.event //event兼容写法
+        var target = e.target || e.srcElement //target兼容写法
+        if(target.className==&#39;atr&#39;){
+            //这里面就找到需要操作的元素
+            console.log(111)
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5-事件委托的优点&#34;&gt;5. 事件委托的优点&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;【1】可以大量节省内存占用，减少事件注册，比如在ul上代理所有li的click事件就非常棒&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;【2】可以实现当新增子对象时无需再次对其绑定（动态绑定事件）&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;6-事件的默认行为&#34;&gt;6. 事件的默认行为&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;默认行为，就是不用我们注册，它自己就存在的事情&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比如我们点击鼠标右键的时候，会自动弹出一个菜单&lt;/li&gt;
+&lt;li&gt;比如我们点击 a 标签的时候，我们不需要注册点击事件，他自己就会跳转页面&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;这些不需要我们注册就能实现的事情，我们叫做默认事件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;阻止默认行为&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619617595767.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var oA = document.querySelector(&#39;a&#39;)
+    a.addEventListener(&#39;click&#39;, function (e) {
+        e = e || window.event
+        console.log(this.href)
+        //下面这个是兼容写法
+        e.preventDefault ? e.preventDefault() : e.returnValue = false
     })
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;【2】jQuery事件delegate()实现事件委托&lt;/p&gt;
-&lt;p&gt;delegate() 方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;格式：$(selector).delegate(childSelector, event, data, function)&lt;/strong&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;参数&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;childSelector&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;必需，规定要附加事件处理程序的一个或多个子元素。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;event&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;必需，规定附加到元素的一个或多个事件。由空格分隔多个事件值。必须是有效的事件。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;data&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;可选，规定传递到函数的额外数据。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;function&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;必需，规定当事件发生时运行的函数。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;body&amp;gt;
-  &amp;lt;ul id=&amp;quot;myLinks&amp;quot;&amp;gt;
-    &amp;lt;li id=&amp;quot;goSomewhere&amp;quot;&amp;gt;Go somewhere&amp;lt;/li&amp;gt;
-    &amp;lt;li id=&amp;quot;doSomething&amp;quot;&amp;gt;Do something&amp;lt;/li&amp;gt;
-    &amp;lt;li id=&amp;quot;sayHi&amp;quot;&amp;gt;Say hi&amp;lt;/li&amp;gt;
-  &amp;lt;/ul&amp;gt;
- 
-  &amp;lt;script&amp;gt;
-    $(document).ready(function () {
-      $(&amp;quot;#myLinks&amp;quot;).delegate(&amp;quot;#goSomewhere&amp;quot;, &amp;quot;click&amp;quot;, function () {
-        location.href = &amp;quot;http://www.baidu.com&amp;quot;;
-      });
-    });
-  &amp;lt;/script&amp;gt;
- 
-&amp;lt;/body&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;4-使用事件委托注意事项&#34;&gt;4. 使用事件委托注意事项&lt;/h3&gt;
-&lt;p&gt;使用“事件委托”时，并不是说把事件委托给的元素越靠近顶层就越好。事件冒泡的过程也需要耗时，越靠近顶层，事件的”事件传播链”越长，也就越耗时。如果DOM嵌套结构很深，事件冒泡通过大量祖先元素会导致性能损失。&lt;/p&gt;
-&lt;h2 id=&#34;162-如何让事件先冒泡后捕获&#34;&gt;16.2 如何让事件先冒泡后捕获&lt;/h2&gt;
+&lt;h2 id=&#34;7-如何让事件先冒泡后捕获&#34;&gt;7. 如何让事件先冒泡后捕获&lt;/h2&gt;
 &lt;p&gt;若要实现先冒泡后捕获，给一个元素绑定两个addEventListener，其中一个第三个参数设置为false（即冒泡），另一个第三个参数设置为true（即捕获），调整它们的代码顺序，将设置为false的监听事件放在设置为true的监听事件前面即可。&lt;/p&gt;
 &lt;h1 id=&#34;17-dom基本操作获取元素-节点的创建和添加-节点的替换和删除&#34;&gt;17. DOM基本操作（获取元素、节点的创建和添加、节点的替换和删除）&lt;/h1&gt;
 &lt;h2 id=&#34;1-获取元素&#34;&gt;1. 获取元素&lt;/h2&gt;
@@ -10047,7 +10041,7 @@ function flatten(arr) {
 &lt;p&gt;事件冒泡：从事件源逐级向上传播到DOM最顶层节点的过程。&lt;/p&gt;
 &lt;p&gt;事件捕获：从DOM最顶层节点逐级向下传播到事件源的过程。&lt;/p&gt;
 &lt;p&gt;addEventListener用于指定事件处理程序，共接收三个参数。分别是触发事件，事件处理程序函数以及一个布尔值。第三个参数默认为false，表示在该事件的处理函数会在冒泡阶段被调用。若改为true，则表示事件处理函数会在捕获阶段被调用。&lt;/p&gt;
-&lt;h3 id=&#34;7-如何让事件先冒泡后捕获&#34;&gt;7. 如何让事件先冒泡后捕获&lt;/h3&gt;
+&lt;h3 id=&#34;7-如何让事件先冒泡后捕获-2&#34;&gt;7. 如何让事件先冒泡后捕获&lt;/h3&gt;
 &lt;p&gt;对于&lt;code&gt;目标元素&lt;/code&gt;来说，如果DOM节点通过addEventListener同时绑定了两个事件监听函数，一个用于捕获，一个用于冒泡，那么两个事件的执行顺序是按照代码添加的顺序执行的。所以，先绑定冒泡的函数，再绑定捕获的函数，即可实现。&lt;/p&gt;
 &lt;p&gt;对于&lt;code&gt;非目标元素&lt;/code&gt;来说，可以给捕获事件的处理程序添加一个定时器，将处理程序推入下一个宏任务执行。&lt;/p&gt;
 &lt;h3 id=&#34;8-说一下事件代理&#34;&gt;8. 说一下事件代理：&lt;/h3&gt;
