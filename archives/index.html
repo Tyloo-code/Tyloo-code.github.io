@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1619158821918">
+<link rel="shortcut icon" href="/favicon.ico?v=1619576035527">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -5035,7 +5035,7 @@ HTTP1.1 新增了六种方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNE
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;5-http与https的区别及实现方式&#34;&gt;5. HTTP与HTTPS的区别及实现方式&lt;/h2&gt;
-&lt;h3 id=&#34;1-基本概念&#34;&gt;1. 基本概念&lt;/h3&gt;
+&lt;h3 id=&#34;0-基本概念&#34;&gt;0. 基本概念&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;HTTP是超文本传输协议&lt;/strong&gt;，是一个简单的&lt;code&gt;请求-响应协议&lt;/code&gt;，它默认工作在TCP的80端口。&lt;strong&gt;它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应&lt;/strong&gt;。协议以明文的方式进行发送，不提供任何方式的数据加密。因此HTTP协议不适合传输一些敏感信息&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;HTTPS是超文本传输安全协议&lt;/strong&gt;，是一种&lt;code&gt;安全通信&lt;/code&gt;的传输协议。&lt;strong&gt;HTTPS经由HTTP进行通信，但利用 SSL/TSL 来进行加密数据包&lt;/strong&gt;。HTTPS开发的主要目的是提供网站服务器的身份认证，保护数据交换的隐私与完整性。&lt;/p&gt;
 &lt;p&gt;HTTPS默认工作在 TCP 的443 端口，它的工作方式如下：&lt;/p&gt;
@@ -5046,6 +5046,15 @@ HTTP1.1 新增了六种方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNE
 &lt;li&gt;SSL 安全加密隧道协商完成&lt;/li&gt;
 &lt;li&gt;网页以加密的方式进行传输，用协商的对称加密算法和密钥加密，保障数据机密性；用协商的 hash 算法进行数据完整性保护，保证数据不被篡改。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;1-http的无状态&#34;&gt;1. HTTP的无状态&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;就是第二次来你无法识别它曾经来过&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;http的每次请求，在事务上和前后http请求没有任何关联，对上一次请求，下一次请求没有任何影响。这个是定义，从宏观上说的，实际上把无状态说成请求独立，无关联也对&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;HTTP 是一个无状态协议，这意味着&lt;code&gt;每个请求都是独立&lt;/code&gt;的，Keep-Alive 没能改变这个结果。&lt;/p&gt;
+&lt;p&gt;缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。&lt;/p&gt;
+&lt;p&gt;HTTP 协议这种特性有优点也有缺点，优点在于解放了服务器，每一次请求“点到为止”不会造成不必要连接占用，缺点在于每次请求会传输大量重复的内容信息。&lt;/p&gt;
+&lt;p&gt;HTTP 无状态的特性严重阻碍了这些应用程序的实现，于是两种用于保持 HTTP 连接状态的技术就应运而生了，一个是 &lt;code&gt;Cookie&lt;/code&gt;，而另一个则是 &lt;code&gt;Session&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619491336853.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619491341437.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;2-http-与-https-的区别&#34;&gt;2. HTTP 与 HTTPS 的区别&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;HTTP 使用明文传输，数据都是&lt;strong&gt;未加密&lt;/strong&gt;的，安全性较差；HTTPS 数据传输过程是加密的，安全性较好；&lt;/li&gt;
@@ -5189,6 +5198,18 @@ Vary: Origin
 &lt;p&gt;网络层：负责选择最佳路径、规划 IP 地址&lt;/p&gt;
 &lt;p&gt;数据链路层：帧的开始和结束、透明传输（数据中出现了帧的结束标志，需要采用转义字符）、差错校验（循环冗余检测）&lt;/p&gt;
 &lt;h2 id=&#34;10-tcp三次握手四次挥手机制及原因&#34;&gt;10. TCP三次握手四次挥手机制及原因&lt;/h2&gt;
+&lt;h3 id=&#34;0-连接中怎么找到对方&#34;&gt;0. 连接中怎么找到对方？&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;TCP头部为20字节&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;源端口号（16位）和目的端口号（16位）：&lt;code&gt;再加上Ip首部的源IP地址和目的IP地址可以唯一确定一个TCP连接&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;数据序号（16位）：表示在这个报文段中的第一个数据字节序号&lt;/li&gt;
+&lt;li&gt;确认序号：仅当ACK标志为1时有效，确认号表示期望收到的下一个字节的序号&lt;/li&gt;
+&lt;li&gt;偏移：就是头部长度，有4位，跟IP头部一样，以4字节为单位。最大是60个字节&lt;/li&gt;
+&lt;li&gt;保留位：6位，必须为0&lt;/li&gt;
+&lt;li&gt;6个标志位：URG-紧急指针有效；ACK-确认序号有效；PSH-接收方应尽快将这个报文交给应用层；RST-连接重置；SYN-同步序号用来发起一个连接；FIN-终止一个连接。&lt;/li&gt;
+&lt;li&gt;窗口字段：16位，代表的是窗口的字节容量，也就是TCP的标准窗口最大为2^16 - 1 = 65535个字节&lt;/li&gt;
+&lt;li&gt;校验和：源机器基于数据内容计算一个数值，收信息机要与源机器数值结果完全一样，从而证明数据的有效性。检验和覆盖了整个的TCP报文段：这是一个强制性的字段，一定是由发送端计算和存储，并由接收端进行验证的。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;1-三次握手&#34;&gt;1. 三次握手&lt;/h3&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1617869541484.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;为什么需要三次握手，两次行不行？&lt;/strong&gt;&lt;/p&gt;
@@ -6851,7 +6872,7 @@ foo.classMethod()
 &lt;h2 id=&#34;4-promise中的异步模式有哪些有什么区别&#34;&gt;4. Promise中的异步模式有哪些？有什么区别？&lt;/h2&gt;
 &lt;p&gt;回到问题本身，&lt;code&gt;Promise.all()&lt;/code&gt;和&lt;code&gt;Promise.race()&lt;/code&gt;的区别&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;all&lt;/code&gt;会将传入的数组中的所有promise全部决议以后，将决议值以数组的形式传入到观察回调中，任何一个promise决议为拒绝，那么就会调用拒绝回调。&lt;strong&gt;Promise.all获得的成功结果的数组里面的数据顺序和Promise.all接收到的数组顺序是一致的&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;all&lt;/code&gt;（&lt;code&gt;并行执行&lt;/code&gt;）会将传入的数组中的所有promise全部决议以后，将决议值以数组的形式传入到观察回调中，任何一个promise决议为拒绝，那么就会调用拒绝回调。&lt;strong&gt;Promise.all获得的成功结果的数组里面的数据顺序和Promise.all接收到的数组顺序是一致的&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;race&lt;/code&gt;会将传入的数组中的所有promise中第一个决议的决议值传递给观察回调，即使决议结果是拒绝。(超时取消)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
@@ -6907,6 +6928,7 @@ race会永远都不决议，程序卡死&lt;/p&gt;
 &lt;h3 id=&#34;3-promiseprototypethen方法&#34;&gt;3. Promise.prototype.then()方法&lt;/h3&gt;
 &lt;p&gt;Promise实例具有then方法，也就是说then方法时定义在原型对象上的。&lt;br&gt;
 它的作用是为&lt;code&gt;Promise实例添加状态改变时的回调函数&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;链式写法的本质&lt;/code&gt;其实是一直&lt;code&gt;往下传递返回一个新的Promise&lt;/code&gt;，也就是说&lt;code&gt;then在下一步接收的是上一步返回的Promise&lt;/code&gt;!!!&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）因此可以采用链式写法，即then方法后面再调用另一个then方法。&lt;/li&gt;
 &lt;li&gt;采用链式的then可以指定一组按照次序调用的回调函数。这时，前一个回调函数可能返回一个还是Promise对象（即有异步操作），这时候一个回调函数就会等该Promise对象的状态发生变化，才会被调用&lt;/li&gt;
@@ -6928,7 +6950,8 @@ race会永远都不决议，程序卡死&lt;/p&gt;
     console.log(&#39;发生错误&#39;, error)
 })
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;上面代码中，getJSON方法返回一个Promise对象，如果该对象状态变为resolved，则会调用then方法指定的回调函数；如果异步操作抛出错误，状态就会变为rejected，就会调用catch方法指定的回调函数。另外，then方法指定的回调函数，如果运行抛出错误，也会被catch方法捕获。&lt;/p&gt;
+&lt;p&gt;上面代码中，getJSON方法返回一个Promise对象，如果该对象状态变为resolved，则会调用then方法指定的回调函数；如果异步操作抛出错误，状态就会变为rejected，就会调用catch方法指定的回调函数。另外，then方法指定的回调函数，如果运行抛出错误，也会被catch方法捕获。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619485896060.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Promise对象的错误具有冒泡性质，会一直向后传递，直到被捕获为止，也就是说错误总会被下一个catch语句捕获。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;6-promise-在事件循环中的执行过程是怎样的&#34;&gt;6. Promise 在事件循环中的执行过程是怎样的？&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;1）事件循环&lt;/strong&gt;&lt;/p&gt;
@@ -6942,12 +6965,13 @@ race会永远都不决议，程序卡死&lt;/p&gt;
 &lt;h2 id=&#34;7-promise的问题解决办法&#34;&gt;7. Promise的问题？解决办法？&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;promise的问题为：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;promise一旦执行，无法中途取消&lt;/li&gt;
+&lt;li&gt;promise一旦执行，无法中途取消(停止)&lt;/li&gt;
 &lt;li&gt;promise的错误无法在外部被捕捉到，只能在内部进行预判处理&lt;/li&gt;
 &lt;li&gt;promise的内如何执行，监测起来很难&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;解决办法&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;停止可以通过返回新的promise进入pending状态，但是可能导致&lt;strong&gt;内存泄漏&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;正是因为这些原因，ES7引入了更加灵活多变的async，await来处理异步&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;8-手写promise与ajax的结合&#34;&gt;8. 手写Promise与ajax的结合？&lt;/h2&gt;
@@ -7057,8 +7081,9 @@ for (let value of gen1()) {
 &lt;h1 id=&#34;6-async和await&#34;&gt;6. async和await&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;async函数是Generator函数的语法糖，将Generator的&lt;code&gt;星号&lt;/code&gt;换成&lt;code&gt;async&lt;/code&gt;将&lt;code&gt;yield&lt;/code&gt;换成&lt;code&gt;await&lt;/code&gt;，async函数比Generator函数更好用。&lt;code&gt;async&lt;/code&gt; 表示函数里有异步操作，&lt;code&gt;await&lt;/code&gt; 表示紧跟在后面的表达式需要等待结果。&lt;/li&gt;
+&lt;li&gt;async必须&lt;strong&gt;声明的是一个function&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;await 只能出现在 async 函数中&lt;/li&gt;
-&lt;li&gt;async 函数返回的是一个 Promise 对象&lt;/li&gt;
+&lt;li&gt;async 函数返回的&lt;strong&gt;是一个 Promise 对象&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;如果它等到的不是一个 Promise 对象，那 await 表达式的运算结果就是它等到的东西。&lt;br&gt;
 如果它等到的是一个 Promise 对象，await 就会阻塞后面的代码，等着 Promise 对象 resolve或者reject方法，然后得到 resolve的值，作为 await 表达式的运算结果。&lt;/li&gt;
 &lt;li&gt;一般await都会用try/catch包起来&lt;/li&gt;
@@ -7163,6 +7188,7 @@ console.log(&#39;外部调用后&#39;) // 3
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;5-错误处理&#34;&gt;5. 错误处理&lt;/h2&gt;
+&lt;p&gt;因为async函数返回的是一个Promise，所以我们可以在外面catch住错误。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 2s 之后返回双倍的值
 function doubleAfter2seconds(num) {
     return new Promise((resolve, reject) =&amp;gt; {
@@ -7190,7 +7216,20 @@ testResult().then(res =&amp;gt; {
  console.log(&#39;err&#39;, err)
  console.log(&#39;data&#39;, data)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;6在接口中使用axios&#34;&gt;6.在接口中使用(axios)&lt;/h2&gt;
+&lt;h2 id=&#34;6-asyncawait的中断&#34;&gt;6. async/await的中断&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619487936845.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+实质就是直接&lt;code&gt;return&lt;/code&gt;返回了一个&lt;code&gt;Promise&lt;/code&gt;，相当于&lt;code&gt;return Promise.resolve(&#39;我退出了下面不进行了&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;7-asyncawait循环获取数据串行之for循环&#34;&gt;7. async/await循环获取数据(串行)之for循环&lt;/h2&gt;
+&lt;p&gt;现在就来介绍一下牛逼的async/await实战，上述的代码你是不是要看吐了，的确，我也觉得好麻烦啊，那么如果用&lt;code&gt;async/await&lt;/code&gt;能有什么改进吗？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(async ()=&amp;gt;{
+    arr = [timeout(2000), timeout(1000), timeout(1000)]
+    for (var i=0; i &amp;lt; arr.length; i++) {
+        result = await arr[i]();
+        console.log(result);
+    }
+})()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;8在接口中使用axios&#34;&gt;8.在接口中使用(axios)&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;created () {
     this.init()
 },
@@ -7527,9 +7566,12 @@ M.prototype === obj3._ proto _ 的结果为 true&lt;/p&gt;
 &lt;p&gt;typeof 对于基本数据类型（&lt;code&gt;null, undefined, string, number, boolean, symbol&lt;/code&gt;），除了 null 都会返回正确的类型。null 会返回 object。&lt;/p&gt;
 &lt;p&gt;typeof 对于对象类型，除了函数会返回 function，其他的都返回 object。&lt;/p&gt;
 &lt;h2 id=&#34;15-原型链&#34;&gt;1.5 原型链&lt;/h2&gt;
-&lt;p&gt;当访问 p 中的一个非自有属性的时候，就会通过 &lt;strong&gt;proto&lt;/strong&gt; 作为桥梁连接起来的一系列原型、原型的原型、原型的原型的原型直到 Object 构造函数为止。&lt;/p&gt;
-&lt;p&gt;这个搜索的过程形成的链状关系就是原型链&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614924650255.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;JS中每个函数都存在有一个原型对象属性prototype。并且所有函数的默认原型都是Object的实例。每个继承父函数的子函数的对象都包含一个内部属性proto。该属性包含一个指针，指向父函数的prototype。若父函数的原型对象的_proto_属性为再上一层函数。在此过程中就形成了原型链。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;原型链的作用是用来实现继承,比如我们新建一个数组,数组的方法就是从数组的原型上继承而来的&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;当访问对象a.b的时候，首先会查找当前对象的b属性，如果没有，然后依次按照prototype往上找直到找到Object.prototype为止，没有则返回undefined，所以说无处不在。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619259847019.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;js的想要调用公共类的方式就是继承原型。&lt;/p&gt;
+&lt;p&gt;比如原生的[].forEach()方法，之所以任意数组都能使用，是应为forEach()被定义在了数组的构造函数function Array(){}上，也就是数组的原型上；&lt;/p&gt;
 &lt;h2 id=&#34;例子&#34;&gt;例子&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;function F(){} var f = new F(); // 构造器 
 F.prototype.constructor === F; // true 
@@ -7771,6 +7813,8 @@ add(1, 2, 3)&lt;/p&gt;
 Result is 3&lt;br&gt;
 Result is 6&lt;/p&gt;
 &lt;h1 id=&#34;5-数据类型判断&#34;&gt;5. 数据类型判断&lt;/h1&gt;
+&lt;h2 id=&#34;50-null和undefined的区别&#34;&gt;5.0 null和undefined的区别&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619269681622.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;51-javascript-数据类型&#34;&gt;5.1 JavaScript 数据类型&lt;/h2&gt;
 &lt;p&gt;JavaScript 数据类型有两种，分别是基本数据类型和引用数据类型。&lt;/p&gt;
 &lt;ul&gt;
@@ -7905,7 +7949,7 @@ t();
 &lt;p&gt;当执行s时，将创建函数s的执行环境(调用对象),并将该对象置于链表开头，然后将函数t的调用对象链接在之后，最后是全局对象。然后从链表开头寻找变量name,很明显name是&amp;quot;slwy&amp;quot;。&lt;/p&gt;
 &lt;p&gt;但执行ss()时，作用域链是： ss()-&amp;gt;t()-&amp;gt;window,所以name是”tlwy&amp;quot;&lt;/p&gt;
 &lt;h2 id=&#34;63-闭包&#34;&gt;6.3 闭包&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614941970240.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614941970240.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;1-闭包的定义&#34;&gt;1. 闭包的定义&lt;/h3&gt;
 &lt;p&gt;一个函数对其周围状态(变量)的&lt;strong&gt;引用&lt;/strong&gt;并&lt;strong&gt;保存&lt;/strong&gt;周围变量，乃至函数执行完成后仍然可以访问的现象称之为闭包。&lt;/p&gt;
 &lt;h3 id=&#34;2-闭包的原理&#34;&gt;2. 闭包的原理&lt;/h3&gt;
@@ -8144,7 +8188,7 @@ console.log(b.jobs.first) // FE
 方法3：使用ajax实现预加载&lt;/p&gt;
 &lt;p&gt;常用的是&lt;code&gt;new Image()&lt;/code&gt;;设置其src来实现预载，再使用onload方法回调预载完成事件。只要浏览器把图片下载到本地，同样的src就会使用缓存，这是最基本也是最实用的预载方法。当Image下载完图片头后，会得到宽和高，因此可以在预载前得到图片的大小(方法是用记时器轮循宽高变化。)&lt;/p&gt;
 &lt;h1 id=&#34;10-实现页面加载进度条&#34;&gt;10. 实现页面加载进度条&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615011309891.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615011309891.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;101-html结构&#34;&gt;10.1 html结构：&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt; &amp;lt;div id=&amp;quot;progressBox&amp;quot;&amp;gt;
         &amp;lt;div id=&amp;quot;progressBar&amp;quot;&amp;gt;0%&amp;lt;/div&amp;gt;
@@ -8551,13 +8595,13 @@ Object.prototype.chargeObjectEqual = function(obj){
 &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;var aBox = document.getElementsByTagName(&amp;quot;div&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115504124.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115504124.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;blockquote&gt;
 &lt;p&gt;那么如何获取数组里面的值呢？？？&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;pre&gt;&lt;code&gt;var aBox = document.getElementsByTagName(&amp;quot;div&amp;quot;)[2];//通过下标来换取索引2的值
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115545753.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115545753.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;document.querySelectorAll&lt;/code&gt; 通过复合（层级）选择器获取节点 获取的是一个数组&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
         &amp;lt;ul&amp;gt;
@@ -8569,24 +8613,24 @@ Object.prototype.chargeObjectEqual = function(obj){
 &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt; var  aLi = document.querySelectorAll(&amp;quot;.box ul li&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115797303.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115797303.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;blockquote&gt;
 &lt;p&gt;那么如何获取数组里面的值呢？？？&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;pre&gt;&lt;code&gt;var aLi  = document.querySelectorAll(&amp;quot;.box ul li&amp;quot;)[1];
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115827067.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115827067.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;document.querySelector&lt;/code&gt; 通过复合（层级）选择器获取符合条件的第一个节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oLi = document.querySelector(&amp;quot;.box ul li&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115873612.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115873612.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;document.getElementsByName&lt;/code&gt; 通过name属性获取节点 获取的是一个数组&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;sex&amp;quot; value=&amp;quot;男&amp;quot;&amp;gt;男
 &amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;sex&amp;quot; value=&amp;quot;女&amp;quot;&amp;gt;女
 &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;var aInput = document.getElementsByName(&amp;quot;sex&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116016375.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116016375.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;获取特殊元素的方式&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;document.head&lt;/code&gt; 获取&lt;code&gt;head&lt;/code&gt;标签&lt;/li&gt;
@@ -8608,7 +8652,7 @@ Object.prototype.chargeObjectEqual = function(obj){
 var oDiv = document.createElement(&amp;quot;div&amp;quot;);
 oBox.appendChild(oDiv); 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116529080.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116529080.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;document.createTextNode&lt;/code&gt;创建文本节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oText = document.createTextNode(&amp;quot;heaven&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
@@ -8621,7 +8665,7 @@ oBox.appendChild(oDiv);
 var oText = document.createTextNode(&amp;quot;heaven&amp;quot;);
 oBox.appendChild(oText);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116715791.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116715791.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;document.createComment&lt;/code&gt; 创建注释节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oComment = document.createComment(&amp;quot;我是注释节点&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
@@ -8634,7 +8678,7 @@ oBox.appendChild(oText);
 var oComment = document.createComment(&amp;quot;我是注释节点&amp;quot;);
 obox.appendChild(oComment);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117356273.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117356273.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2-节点的添加-剪切操作&#34;&gt;2. 节点的添加、剪切操作&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;parentNode.appendChild(子节点)&lt;/code&gt; 把子节点插入到父节点的最后面&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;
@@ -8645,7 +8689,7 @@ obox.appendChild(oComment);
 var oDiv = document.createElement(&amp;quot;div&amp;quot;);
 oBox.appendChild(oDiv);//把oDiv插入到oBox的最后面是以字符串形式添加的
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117728592.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117728592.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;parentNode.insertBefore(A,B)&lt;/code&gt; 把节点A添加到节点B之前&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;
         &amp;lt;h2&amp;gt;我是标题&amp;lt;/h2&amp;gt;
@@ -8657,7 +8701,7 @@ oBox.appendChild(oDiv);//把oDiv插入到oBox的最后面是以字符串形式�
  var oDiv = document.createElement(&amp;quot;div&amp;quot;);
  oBox.insertBefore(oDiv,oSpan);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117898677.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117898677.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;结论：无论是appendChild方法还是insertBefore方法都可以对节点的 添加、剪切操作，都可以操作一次不能操作多次&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;3-节点的替换和删除&#34;&gt;3. 节点的替换和删除&lt;/h2&gt;
 &lt;h3 id=&#34;1节点的替换&#34;&gt;1.节点的替换&lt;/h3&gt;
@@ -8673,7 +8717,7 @@ var oH3 = document.getElementsByTagName(&amp;quot;h3&amp;quot;)[0]
 var oDiv = document.createElement(&amp;quot;div&amp;quot;);
 oBox.replaceChild(oDiv,oH3);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618119399959.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618119399959.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2-节点的删除-删除子节点&#34;&gt;2. 节点的删除 、删除子节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;parentNode.removeChild(子节点)&lt;/code&gt; 删除子节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;
@@ -8686,7 +8730,7 @@ oBox.replaceChild(oDiv,oH3);
 var oH3 = document.getElementsByTagName(&amp;quot;h3&amp;quot;);
 oBox.removeChild(oH3[0]);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618119515957.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618119515957.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;4-动态获取与静态获取&#34;&gt;4. 动态获取与静态获取&lt;/h2&gt;
 &lt;h3 id=&#34;1-get系列获取元素的方式是动态获取&#34;&gt;1. get系列获取元素的方式是动态获取&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -8730,7 +8774,7 @@ var oH3 = document.createElement(&amp;quot;h3&amp;quot;);
 oBox.appendChild(oH3);
 oH3.innerText = &amp;quot;我是h3节点&amp;quot;;//创建h3标签添加文本内容
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618120681297.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618120681297.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;那么如何读取元素节点的内容呢？？&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
 var oH3 = document.querySelectorAll(&amp;quot;h3&amp;quot;);
@@ -8742,7 +8786,7 @@ console.log(oH3[2].innerText);//读取节点的文本内容
 var oH3 = document.querySelectorAll(&amp;quot;h3&amp;quot;);
 oH3[0].innerText = &amp;quot;我是修改并赋值的节点&amp;quot;;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618121299074.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618121299074.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2-元素节点&#34;&gt;2. 元素节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;innerHTML&lt;/code&gt;可以设置节点的文本内容、也可以读取节点的内容、可以&lt;code&gt;解析&lt;/code&gt;标签&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;怎么样innerHTML方法解析字符串中的标签&lt;/strong&gt;&lt;/p&gt;
@@ -8763,7 +8807,7 @@ console.log(oH3[0].innerHTML);
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
         console.log(oBox.children[0].attributes);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618123899949.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618123899949.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2-设置属性节点&#34;&gt;2. 设置属性节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;setAttribute&lt;/code&gt;(属性节点名,属性节点值)、设置指定的属性节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;
@@ -8773,13 +8817,13 @@ console.log(oH3[0].innerHTML);
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
 oBox.children[0].setAttribute(&amp;quot;id&amp;quot;, &amp;quot;title&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124020361.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124020361.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;3-获取属性节点&#34;&gt;3. 获取属性节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;getAttribute&lt;/code&gt;(属性节点名)、获取指定属性节点名称的值&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
 console.log(oBox.children[0].getAttribute(&amp;quot;class&amp;quot;));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124061317.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;22&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124061317.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;4-删除属性节点&#34;&gt;4. 删除属性节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;removeAttribute&lt;/code&gt;(属性节点名)、删除指定属性节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;
@@ -8789,13 +8833,13 @@ console.log(oBox.children[0].getAttribute(&amp;quot;class&amp;quot;));
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
 oBox.children[0].removeAttribute(&amp;quot;class&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;22&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124130227.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;23&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124130227.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;5-判断有没有子节点&#34;&gt;5. 判断有没有子节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;hasChildNodes&lt;/code&gt; 判断元素节点有没有子节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
 console.log(oBox.children[0].hasChildNodes());
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;23&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124186614.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124186614.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ul&gt;
 &lt;li&gt;如果有则返回返回结果是true&lt;/li&gt;
 &lt;li&gt;如果没有则返回结果是是false&lt;/li&gt;
@@ -8915,7 +8959,7 @@ console.log(oBox.children[0].hasChildNodes());
 &lt;li&gt;window.navigate(&amp;quot;url&amp;quot;);: navigate对象包含有关浏览器的信息，也可以作为页面跳转，后面直接加要跳转的地方。&lt;/li&gt;
 &lt;li&gt;top.location= &#39;url&#39;;: 当页面中有内嵌框架时，指定最顶层的窗口跳转，及包含框架的最外层浏览器&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618478544386.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;25&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618478544386.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;2-js弹出框有哪些&#34;&gt;2. JS弹出框有哪些&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;第一种：alert()方法&lt;/strong&gt;&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618479050149.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
@@ -8937,7 +8981,7 @@ console.log(oBox.children[0].hasChildNodes());
 需要注意的是，它不对单引号’编码&lt;/p&gt;
 &lt;p&gt;它对应的解码函数是decodeURI()。&lt;/p&gt;
 &lt;h3 id=&#34;3-为什么两次编码&#34;&gt;3. 为什么两次编码&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;25&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618481823390.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;26&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618481823390.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;4-meta常用属性&#34;&gt;4. meta常用属性&lt;/h2&gt;
 &lt;h3 id=&#34;1-charset属性&#34;&gt;1. charset属性&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;!-- 定义网页文档的字符集 --&amp;gt;
@@ -9015,12 +9059,12 @@ console.log(oBox.children[0].hasChildNodes());
 &lt;p&gt;list-style、list-style-type、list-style-position、list-style-image&lt;/p&gt;
 &lt;h2 id=&#34;7-windowscroll方法&#34;&gt;7. window.scroll方法&lt;/h2&gt;
 &lt;h3 id=&#34;1-windowscroll到&#34;&gt;1. window.scroll（到）&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;26&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490087718.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;27&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490087718.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2windowscrollto&#34;&gt;2.window.scrollTo&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;27&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490106662.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;28&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490106662.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;与scroll一样&lt;/p&gt;
 &lt;h3 id=&#34;3-windowscrollby距离&#34;&gt;3. window.scrollBy（距离）&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;28&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490176094.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;29&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490176094.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;8-head头包含哪些标签&#34;&gt;8. head头包含哪些标签？&lt;/h2&gt;
 &lt;p&gt;head标签是所有头部元素的容器。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;内的元素可包含脚本，指示浏览器在何处可以找到样式表，提供元信息等。
@@ -9148,7 +9192,7 @@ console.log( sum );
 console.log( arr );
 // [0, 1, 2, 3, 4]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;29&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615256323803.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;30&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615256323803.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;3-arrayprototypefilter&#34;&gt;3. Array.prototype.filter&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;filter&lt;/code&gt;(过滤，筛选) 方法创建一个新数组,原始数组不发生改变。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;array.filter(callback,[ thisObject]);
@@ -9354,7 +9398,7 @@ Function.prototype.myBind = function(objThis,...params){
 比如上面的代码，如果没有被包裹在立即执行函数中，而是直接以非函数的形式直接写在&amp;lt;script&amp;gt;&lt;/script&gt;标签里面，虽然也会立即执行，但是临时变量todaydom,days,today,year,month,date,day,msg都将成为全局变量（初始化代码遗留的产物）。&lt;br&gt;
 而用立即执行函数之后，这些变量都不会在全局变量中存在，以后也不会其他地方使用，有效的避免了污染全局变量。&lt;/p&gt;
 &lt;h1 id=&#34;22-设计模式要求说出如何实现应用优缺点单例模式实现&#34;&gt;22. 设计模式(要求说出如何实现,应用,优缺点)/单例模式实现&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;30&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273736555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;31&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273736555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;1-创建型模式&#34;&gt;1. 创建型模式&lt;/h2&gt;
 &lt;h3 id=&#34;1-工厂模式&#34;&gt;1. 工厂模式&lt;/h3&gt;
 &lt;p&gt;工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象，用工厂方法代替new操作的一种模式。&lt;/p&gt;
@@ -9440,7 +9484,7 @@ console.log(obj.__proto__ === prototype)  //true
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;2-结构型模式&#34;&gt;2. 结构型模式&lt;/h2&gt;
 &lt;h3 id=&#34;1-适配器模式&#34;&gt;1. 适配器模式&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;31&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274391311.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;32&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274391311.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;pre&gt;&lt;code&gt;class GooleMap {
     show() {
         console.log(&#39;渲染谷歌地图&#39;)
@@ -10381,16 +10425,16 @@ avaScript语言是解释型语言，为了&lt;code&gt;提高性能&lt;/code&gt;�
 &lt;p&gt;&lt;code&gt;偏移信息查找&lt;/code&gt; - &lt;code&gt;C++&lt;/code&gt;查找偏移地址很简单，在编译代码阶段，对使用的某类型成员变量&lt;code&gt;直接设置偏移位置&lt;/code&gt;，&lt;code&gt;JavaScript&lt;/code&gt;中使用一个对象，需要通过&lt;code&gt;属性名匹配&lt;/code&gt;才能找到相应的值，需要更多的操作。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;32&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377366139.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;33&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377366139.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;5-工作过程&#34;&gt;5. 工作过程&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;33&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377457407.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;34&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377457407.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;编译阶段&#34;&gt;编译阶段&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;34&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377563413.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;35&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377563413.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;运行阶段&#34;&gt;运行阶段&lt;/h3&gt;
 &lt;p&gt;由于&lt;code&gt;V8缺少了生成中间代码这一环节&lt;/code&gt;，缺少了必要的优化，为了提升性能，V8会在&lt;code&gt;生成本地代码后&lt;/code&gt;，使用&lt;code&gt;数据分析器&lt;/code&gt;(profiler)&lt;code&gt;采集一些信息&lt;/code&gt;，然后根据这些数据将本地代码进行优化，生成更高效的本地代码，这是一个逐步改进的过程。同时，当发现优化后代码的性能还不如未优化的代码，V8将退回原来的代码，也就是优化回滚。&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377618319.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;优化回滚&#34;&gt;优化回滚&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;35&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377669446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;36&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377669446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 ">【面】前端知识点梳理（JS）</a>
       </div>
       
@@ -12717,7 +12761,7 @@ function Dictionary(){
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614686966585.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 可见，安装了广度优先搜索的顺序&lt;strong&gt;不重复&lt;/strong&gt;地遍历了&lt;strong&gt;所有&lt;/strong&gt;顶点。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;深度优先搜索&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;广度优先算法的思路：&lt;/p&gt;
+&lt;p&gt;深度优先算法的思路：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;深度优先搜索算法将会从指定的第一个顶点开始遍历图，沿着一条路径遍历直到该路径的最后一个顶点都被访问过为止；&lt;/li&gt;
 &lt;li&gt;接着沿原来路径回退并探索下一条路径，即&lt;strong&gt;先深后宽&lt;/strong&gt;地遍历图中的各个顶点；&lt;br&gt;
@@ -12945,6 +12989,9 @@ function Dictionary(){
       }
     }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;27-深度优先和广度优先区别&#34;&gt;2.7 深度优先和广度优先区别&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;bfs＝队列，入队列，出队列；dfs=栈，压栈，出栈&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619575966858.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;amp;seid=3912456004602554239&#34;&gt;参考资料:JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
 ">JavaScript实现图结构</a>
@@ -14393,6 +14440,65 @@ Node{
 &lt;li&gt;&lt;strong&gt;AVL树&lt;/strong&gt;：是最早的一种平衡树，它通过在每个节点多存储一个额外的数据来保持树的平衡。由于AVL树是平衡树，所以它的时间复杂度也是O（logN）。但是它的整体效率不如红黑树，开发中比较少用。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;红黑树&lt;/strong&gt;：同样通过一些&lt;strong&gt;特性&lt;/strong&gt;来保持树的平衡，时间复杂度也是O（logN）。进行插入/删除等操作时，性能优于AVL树，所以平衡树的应用基本都是红黑树。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h1 id=&#34;6-字典树&#34;&gt;6. 字典树&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;字典树适合查找，后缀树适合存储&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-定义&#34;&gt;1. 定义&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;定义：Trie树，即字典树，又称单词查找树或键树。是一种用于快速检索的多叉树结构。
+    Trie的核心思想是空间换时间。利用字符串的公共前缀来降低查询时间的开销以达到提高效率的目的。
+优点：最大限度地减少无谓的字符串比较。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果我们给定字符串集合为{b abc abd bcd abcd efg hii}，那么这个字符串的字典树为：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619572990429.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;对于一颗字典树来说，应该具有以下性质：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573241644.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+第二条性质中的到某个结点，就是指到红色结点。&lt;/p&gt;
+&lt;h2 id=&#34;2-字典树的构建&#34;&gt;2. 字典树的构建&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573363448.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在给出了，许多的字符串，我们从第一个字符串CAI开始构建。首先构建根节点，其次构建出CAI三个结点&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573381140.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在构建字符串CAO因为CA已经存在，所以遍历到A，发现O结点并不存在，生成O结点。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573403573.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+以此类推，最后生成的字典树，如上图所示。这个构建过程，每一次都相当于遍历了一个字符串的长度。&lt;br&gt;
+假如有n个字符串，那么它的&lt;code&gt;时间复杂度&lt;/code&gt;就是，&lt;code&gt;n乘上字符串的平均长度&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573434882.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+对于字典树，在空间上的花费为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;空间花费：平均单词长度*结点长度*单词数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-字典树的查询&#34;&gt;3. 字典树的查询&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573574154.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+首先我们根据给出的单词，构建出了相应的字典树。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573596240.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在，我们要对inn这个单词进行查询，当然是从根节点先开始。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573882704.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+按照结点进行查询，最后可以找到inn这个字符串。那么它的时间复杂度就是这个字符串的长度O(len)。&lt;/p&gt;
+&lt;h2 id=&#34;4-字典树的插入&#34;&gt;4. 字典树的插入&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573911453.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在我们要插入新的字符串atm，那应该怎么做呢？&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573929269.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+在走到t结点时，发现没有m结点，所以构造出m结点，并变为红色。&lt;/p&gt;
+&lt;h2 id=&#34;5-字典树的删除&#34;&gt;5. 字典树的删除&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573951867.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在我们要删除字典树中的ant字符串，当然是从根节点开始去做一个查询。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573969658.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+最后找到，结点t并且n结点也并没有其他分支，所以在删除时，会将n-&amp;gt;t全部删除。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619573985600.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+最后结果如图所示，时间复杂度也为O(len)。&lt;/p&gt;
+&lt;h2 id=&#34;6-字典树的应用&#34;&gt;6. 字典树的应用&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619574013354.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;7-后缀树&#34;&gt;7. 后缀树&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;定义：后缀树是一棵压缩字典树，其次，后缀树中存储的关键词为所有的后缀。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;1-后缀树的构建&#34;&gt;1. 后缀树的构建&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619574786201.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt;规则1：遇到叶子节点时只需往叶子所在的边上面的字符串后面插入字符就好了，不用改变树的结构；
+规则2：遇到内部节点的时候，先看看插入的字符是否出现在显式节点后紧跟的字符
+      集合中,如果插入的字符出现在集合中，那么什么也不要做（是指不用改变构），
+      因为已经存在了；如果没有出现，在显式节点后面增加一个叶子，边上标注为这个字符。
+规则3：遇到隐式节点时，先看看隐式节点后面的字符是不是当前将要插入的字符，
+      如果有则不用管了，没有则需要将当前隐式节点变为显式节点，再增加新叶子。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-后缀树的作用&#34;&gt;2. 后缀树的作用&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619575214408.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;br&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/av86801505?from=search&amp;amp;seid=4967761411915016256&#34;&gt;参考资料：JavaScript数据结构与算法&lt;/a&gt;&lt;/p&gt;
 ">JavaScript实现树结构</a>
