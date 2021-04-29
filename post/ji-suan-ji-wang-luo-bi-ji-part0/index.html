@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>计算机网络笔记Part0 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1619617801148">
+<link rel="shortcut icon" href="/favicon.ico?v=1619671895791">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -5124,6 +5124,41 @@ HTTP1.1 新增了六种方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNE
 （1）SSL服务器鉴别：允许用户证实服务器的身份。具有SSL功能的浏览器维持一个表，上面有一些可信赖的认证中心CA（Certificate Authority）和它们的公钥。&lt;br&gt;
 （2）加密的SSL会话：客户和服务器交互的所有数据都在发送方加密，在接收方解密。&lt;br&gt;
 （3）SSL客户鉴别：允许服务器证实客户的身份。&lt;/p&gt;
+&lt;h2 id=&#34;55-对称加密-非对称加密-公钥-私钥-数字签名-数字证书&#34;&gt;5.5 对称加密、非对称加密、公钥、私钥、数字签名、数字证书&lt;/h2&gt;
+&lt;h3 id=&#34;1-对称数据加密&#34;&gt;1. 对称数据加密&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619659703397.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+就像上图所示， 这加密和解密算法是公开的，那个密钥是保密的， 只有两人才知道， 这样生成的加密消息（密文） 别人就无法得知了。这叫对称加密算法，因为加密和解密用的是同一个密钥。&lt;/p&gt;
+&lt;p&gt;问题来了，这个密钥的双方必须得知道，但是通过网络发送又不安全，这该怎么办呢？这时候就出现了非对称数据加密。&lt;/p&gt;
+&lt;h3 id=&#34;2-rsa非对称加密&#34;&gt;2. RSA：非对称加密&lt;/h3&gt;
+&lt;p&gt;这个RSA算法非常有意思，它不是像之前的算法， 双方必须协商一个保密的密钥， 而是有一对儿钥匙， 一个是保密的，称为私钥，另外一个是公开的，称为公钥。&lt;/p&gt;
+&lt;p&gt;更有意思的是，用私钥加密的数据，只有对应的公钥才能解密，用公钥加密的数据， 只有对应的私钥才能解密。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619659810918.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+当张大胖给Bill发消息的时候， 就可以先用Bill的公钥去加密（反正Bill的公钥是公开的，地球人都知道）， 等到消息被Bill 收到后， 他就可以用自己的私钥去解密（只有Bill才能解开，私钥是保密的 ）【也就是A发送消息给B时候，利用B的公钥，然后B收到后利用私钥解密接收。】&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619659898143.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+反过来也是如此， 当Bill 想给张大胖发消息的时候，就用张大胖的公钥加密， 张大胖收到后，就用自己的私钥解密。&lt;/p&gt;
+&lt;h3 id=&#34;3-非对称加密对称加密&#34;&gt;3. 非对称加密+对称加密&lt;/h3&gt;
+&lt;p&gt;因为RSA的加密和解密的速度比较慢，RSA的算法比之前的对称密钥算法要慢上百倍。&lt;/p&gt;
+&lt;p&gt;回到咱们最初的问题，我们想用一个密钥来加密通信，那个对称加密算法是非常快的，但是苦于密钥无法安全传输， 现在有了RSA ，我想可以结合一下， 分两步走　(1) 我生成一个对称加密算法的密钥， 用RSA的方式安全发给你， (2) 我们随后就不用RSA了， 只用这个密钥，利用对称加密算法来通信，这样即可以保证安全又可以加快速度。【也就是只利用RSA传输密钥，保证密钥的安全。然后利用对称加密进行信息传输。】&lt;/p&gt;
+&lt;p&gt;这样以来既解决了密钥的传递问题， 又解决了RSA速度慢的问题，不错。&lt;/p&gt;
+&lt;p&gt;于是两人就安全地传递了对称加密的密钥， 用它来加密解密，果然快多了！&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;HTTPS就是使用上述混合加密的方法。&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;4-中间人攻击&#34;&gt;4. 中间人攻击&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619660545440.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;看来问题出现在公钥的分发上&lt;/strong&gt;虽然这个东西是公开的，但是在别有用心的人看来，截取以后还可以干坏事 ！&lt;br&gt;
+但是怎么安全地分发公钥呢？ 似乎又回到了最初的问题： 怎么安全的保护密钥（之前是利用非对称保护私钥的传输，现在是考虑如何保证公钥的发送方）？&lt;/p&gt;
+&lt;p&gt;可是似乎和最初的问题还不一样，这一次的公钥不用保密，但是一定得有个办法声明这个公钥确实是Bill的， 而不是别人的。&lt;/p&gt;
+&lt;h3 id=&#34;5-信息摘要-数字签名-数字证书&#34;&gt;5. 信息摘要、数字签名、数字证书&lt;/h3&gt;
+&lt;p&gt;简单来讲是这样的， Bill可以把他的公钥和个人信息用一个Hash算法生成一个消息摘要， 这个Hash算法有个极好的特性，只要输入数据有一点点变化，那生成的消息摘要就会有巨变，这样就可以防止别人修改原始内容。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619660931513.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+我们会让有公信力的认证中心（简称CA）用它的私钥对消息摘要加密，形成签名：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619660885193.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这还不算， 还把&lt;strong&gt;原始信息&lt;/strong&gt;和&lt;strong&gt;数据签名&lt;/strong&gt;合并， 形成一个全新的东西，叫做“数字证书”&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619660980624.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+张大胖接着说：当Bill把他的证书发给我的时候， 我就用同样的Hash 算法， 再次生成消息摘要，然后用CA的公钥对数字签名解密， 得到CA创建的消息摘要， 两者一比，就知道有没有人篡改了！&lt;/p&gt;
+&lt;p&gt;如果没人篡改， 我就可以安全的拿到Bill的公钥喽，有了公钥， 后序的加密工作就可以开始了。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619661151582.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+那么这个CA的公钥怎么保证他的安全性？&lt;/p&gt;
+&lt;p&gt;附注：我们利用上面数字证书保证传输安全的前提就是，我们默认CA的公钥是安全的。因为CA的公钥安全，所以得出的消息摘要是安全的，这就可以与Hash算法得出的消息摘要比较是否相同，从而确保消息的安全的。&lt;/p&gt;
 &lt;h2 id=&#34;6-http10与http11以及http20的区别&#34;&gt;6. HTTP1.0与HTTP1.1以及HTTP2，0的区别&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;长连接&lt;/strong&gt;&lt;/li&gt;
@@ -9490,6 +9525,16 @@ Function.prototype.myBind = function(objThis,...params){
 而用立即执行函数之后，这些变量都不会在全局变量中存在，以后也不会其他地方使用，有效的避免了污染全局变量。&lt;/p&gt;
 &lt;h1 id=&#34;22-设计模式要求说出如何实现应用优缺点单例模式实现&#34;&gt;22. 设计模式(要求说出如何实现,应用,优缺点)/单例模式实现&lt;/h1&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;31&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273736555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;0-为什么要用设计模式&#34;&gt;0. 为什么要用设计模式&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;高内聚低耦合!!&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;设计模式是一种代码设计思路，其最最本质的目的是为了解耦，延伸一点的话，还有为了可扩展性和健壮性，但是这都是建立在解耦的基础之上。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1-高内聚&#34;&gt;1. 高内聚&lt;/h3&gt;
+&lt;p&gt;系统中A、B两个模块进行交互，如果修改了A模块，不影响模块B的工作，那么认为A是高度内聚的。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619618717519.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-低耦合&#34;&gt;2. 低耦合&lt;/h3&gt;
+&lt;p&gt;那么当B发生改变时，A模块仍然可以正常工作，那么就认为A与B是低耦合的。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619620950653.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;所以解耦，本质上就是让不同的代码块各司其职，互不干扰&lt;/strong&gt;！&lt;/p&gt;
 &lt;h2 id=&#34;1-创建型模式&#34;&gt;1. 创建型模式&lt;/h2&gt;
 &lt;h3 id=&#34;1-工厂模式&#34;&gt;1. 工厂模式&lt;/h3&gt;
 &lt;p&gt;工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象，用工厂方法代替new操作的一种模式。&lt;/p&gt;
@@ -10531,62 +10576,198 @@ avaScript语言是解释型语言，为了&lt;code&gt;提高性能&lt;/code&gt;�
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/mian-23-tiao-qian-duan-xing-neng-you-hua/"" data-c="
-          &lt;h1 id=&#34;1-减少http请求次数&#34;&gt;1. 减少HTTP请求次数&lt;/h1&gt;
+          &lt;h1 id=&#34;1-前端性能优化&#34;&gt;1. 前端性能优化&lt;/h1&gt;
+&lt;h2 id=&#34;1-减少http请求次数&#34;&gt;1. 减少HTTP请求次数&lt;/h2&gt;
 &lt;p&gt;尽量合并图片、CSS、JS。比如加载一个页面，如果有5个css文件的话，那么会发出5次http请求，这样会让用户第一次访问你的页面的时候会长时间等待。而如果把这个5个文件合成一个的话，就只需要发出一次http请求，节省网络请求时间，加快页面的加载。&lt;/p&gt;
-&lt;h1 id=&#34;2-使用cdn&#34;&gt;2. 使用CDN&lt;/h1&gt;
+&lt;h2 id=&#34;2-使用cdn&#34;&gt;2. 使用CDN&lt;/h2&gt;
 &lt;p&gt;网站上静态资源即css、js全都使用cdn分发，图片亦然。&lt;/p&gt;
-&lt;h1 id=&#34;3-避免空的src和href&#34;&gt;3. 避免空的src和href&lt;/h1&gt;
+&lt;h2 id=&#34;3-避免空的src和href&#34;&gt;3. 避免空的src和href&lt;/h2&gt;
 &lt;p&gt;当link标签的href属性为空、script标签的src属性为空的时候，浏览器渲染的时候会把当前页面的URL作为它们的属性值，从而把页面的内容加载进来作为它们的值。所以要避免犯这样的疏忽。&lt;/p&gt;
-&lt;h1 id=&#34;4-为文件头指定expires&#34;&gt;4. 为文件头指定Expires&lt;/h1&gt;
+&lt;h2 id=&#34;4-为文件头指定expires&#34;&gt;4. 为文件头指定Expires&lt;/h2&gt;
 &lt;p&gt;Expires是用来设置文件的过期时间的，一般对css、js、图片资源有效。 他可以使内容具有缓存性，这样下回再访问同样的资源时就通过浏览器缓存区读取，不需要再发出http请求。如下例子：&lt;/p&gt;
 &lt;p&gt;新浪微博的这个css文件的Expires时间是2016-5-04 09:14:14.&lt;/p&gt;
-&lt;h1 id=&#34;5-使用gzip压缩内容&#34;&gt;5. 使用gzip压缩内容&lt;/h1&gt;
+&lt;h2 id=&#34;5-使用gzip压缩内容&#34;&gt;5. 使用gzip压缩内容&lt;/h2&gt;
 &lt;p&gt;gzip能够压缩任何一个文本类型的响应，包括html，xml，json。大大缩小请求返回的数据量。&lt;/p&gt;
-&lt;h1 id=&#34;6-把css放到顶部&#34;&gt;6. 把CSS放到顶部&lt;/h1&gt;
+&lt;h2 id=&#34;6-把css放到顶部&#34;&gt;6. 把CSS放到顶部&lt;/h2&gt;
 &lt;p&gt;网页上的资源加载时从上网下顺序加载的，所以css放在页面的顶部能够优先渲染页面，让用户感觉页面加载很快。&lt;/p&gt;
-&lt;h1 id=&#34;7-把js放到底部&#34;&gt;7. 把JS放到底部&lt;/h1&gt;
+&lt;h2 id=&#34;7-把js放到底部&#34;&gt;7. 把JS放到底部&lt;/h2&gt;
 &lt;p&gt;加载js时会对后续的资源造成阻塞，必须得等js加载完才去加载后续的文件 ，所以就把js放在页面底部最后加载。&lt;/p&gt;
-&lt;h1 id=&#34;8-避免使用css表达式&#34;&gt;8. 避免使用CSS表达式&lt;/h1&gt;
+&lt;h2 id=&#34;8-避免使用css表达式&#34;&gt;8. 避免使用CSS表达式&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;font-color: expression( (new Date()).getHours()%3 ? “#FFFFFF&amp;quot; : “#AAAAAA&amp;quot; );
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这个表达式会持续的在页面上计算样式，影响页面的性能。并且css表达式只被IE支持。&lt;/p&gt;
-&lt;h1 id=&#34;9-将css和js放到外部文件中&#34;&gt;9. 将CSS和JS放到外部文件中&lt;/h1&gt;
+&lt;h2 id=&#34;9-将css和js放到外部文件中&#34;&gt;9. 将CSS和JS放到外部文件中&lt;/h2&gt;
 &lt;p&gt;目的是缓存文件，可以参考原则4。 但有时候为了减少请求，也会直接写到页面里，需根据PV和IP的比例权衡。&lt;/p&gt;
-&lt;h1 id=&#34;10-权衡dns查找次数&#34;&gt;10. 权衡DNS查找次数&lt;/h1&gt;
+&lt;h2 id=&#34;10-权衡dns查找次数&#34;&gt;10. 权衡DNS查找次数&lt;/h2&gt;
 &lt;p&gt;减少主机名可以节省响应时间。但同时，需要注意，减少主机会减少页面中并行下载的数量。&lt;/p&gt;
 &lt;p&gt;IE浏览器在同一时刻只能从同一域名下载两个文件。当在一个页面显示多张图片时，IE 用户的图片下载速度就会受到影响。所以新浪会搞N个二级域名来放图片。&lt;/p&gt;
 &lt;p&gt;下面是新浪微博的图片域名，我们可以看到他有多个域名，这样可以保证这些不同域名能够同时去下载图片，而不用排队。不过如果当使用的域名过多时，响应时间就会慢，因为不用响应域名时间不一致。&lt;/p&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614914780547.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h1 id=&#34;11-精简css和js&#34;&gt;11.  精简CSS和JS&lt;/h1&gt;
+&lt;h2 id=&#34;11-精简css和js&#34;&gt;11.  精简CSS和JS&lt;/h2&gt;
 &lt;p&gt;这里就涉及到css和js的压缩了。比如下面的新浪的一个css文件，把空格回车全部去掉，减少文件的大小。现在的压缩工具有很多，基本主流的前端构建工具都能进行css和js文件的压缩，如grunt，glup等。&lt;/p&gt;
-&lt;h1 id=&#34;12-避免跳转&#34;&gt;12. 避免跳转&lt;/h1&gt;
+&lt;h2 id=&#34;12-避免跳转&#34;&gt;12. 避免跳转&lt;/h2&gt;
 &lt;p&gt;有种现象会比较坑爹，看起来没什么差别，其实多次了一次页面跳转。比如当URL本该有斜杠（/）却被忽略掉时。例如，当我们要访问 http://baidu.com 时，实际上返回的是一个包含301代码的跳转，它指向的是 http://baidu.com/（注意末尾的斜杠）。在&lt;code&gt;nginx服务器&lt;/code&gt;可以使用rewrite；&lt;code&gt;Apache服务器&lt;/code&gt;中可以使用Alias 或者 mod_rewrite或者the DirectorySlash来避免。&lt;/p&gt;
 &lt;p&gt;另一种是不用域名之间的跳转， 比如访问 http://baidu.com/bbs 跳转到http://bbs.baidu.com/。那么可以通过使用Alias或者mod_rewirte建立CNAME（保存一个域名和另外一个域名之间关系的DNS记录）来替代。&lt;/p&gt;
-&lt;h1 id=&#34;13-删除重复的js和css&#34;&gt;13. 删除重复的JS和CSS&lt;/h1&gt;
+&lt;h2 id=&#34;13-删除重复的js和css&#34;&gt;13. 删除重复的JS和CSS&lt;/h2&gt;
 &lt;p&gt;重复调用脚本，除了增加额外的HTTP请求外，多次运算也会浪费时间。在IE和Firefox中不管脚本是否可缓存，它们都存在重复运算JavaScript的问题。&lt;/p&gt;
-&lt;h1 id=&#34;14-配置etags&#34;&gt;14. 配置ETags&lt;/h1&gt;
+&lt;h2 id=&#34;14-配置etags&#34;&gt;14. 配置ETags&lt;/h2&gt;
 &lt;p&gt;它用来判断浏览器缓存里的元素是否和原来服务器上的一致。比last-modified date更具有弹性，例如某个文件在1秒内修改了10次，Etag可以综合Inode(文件的索引节点(inode)数)，MTime(修改时间)和Size来精准的进行判断，避开UNIX记录MTime只能精确到秒的问题。 服务器集群使用，可取后两个参数。使用ETags减少Web应用带宽和负载&lt;/p&gt;
-&lt;h1 id=&#34;15-可缓存的ajax&#34;&gt;15. 可缓存的AJAX&lt;/h1&gt;
+&lt;h2 id=&#34;15-可缓存的ajax&#34;&gt;15. 可缓存的AJAX&lt;/h2&gt;
 &lt;p&gt;异步请求同样的造成用户等待，所以使用ajax请求时，要主动告诉浏览器如果该请求有缓存就去请求缓存内容。如下代码片段, cache:true就是显式的要求如果当前请求有缓存的话，直接使用缓存&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614914923304.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;16-使用get来完成ajax请求&#34;&gt;16. 使用GET来完成AJAX请求&lt;/h1&gt;
+&lt;h2 id=&#34;16-使用get来完成ajax请求&#34;&gt;16. 使用GET来完成AJAX请求&lt;/h2&gt;
 &lt;p&gt;当使用XMLHttpRequest时，浏览器中的POST方法是一个“两步走”的过程：首先发送文件头，然后才发送数据。因此使用GET获取数据时更加有意义。&lt;/p&gt;
-&lt;h1 id=&#34;17-减少dom元素数量&#34;&gt;17. 减少DOM元素数量&lt;/h1&gt;
+&lt;h2 id=&#34;17-减少dom元素数量&#34;&gt;17. 减少DOM元素数量&lt;/h2&gt;
 &lt;p&gt;这是一门大学问，这里可以引申出一堆优化的细节。想要具体研究的可以看后面推荐书籍。总之大原则减少DOM数量，就会减少浏览器的解析负担。&lt;/p&gt;
-&lt;h1 id=&#34;18-避免404&#34;&gt;18. 避免404&lt;/h1&gt;
+&lt;h2 id=&#34;18-避免404&#34;&gt;18. 避免404&lt;/h2&gt;
 &lt;p&gt;比如外链的css、js文件出现问题返回404时，会破坏浏览器的并行加载。&lt;/p&gt;
-&lt;h1 id=&#34;19-减少cookie的大小&#34;&gt;19. 减少Cookie的大小&lt;/h1&gt;
+&lt;h2 id=&#34;19-减少cookie的大小&#34;&gt;19. 减少Cookie的大小&lt;/h2&gt;
 &lt;p&gt;Cookie里面别塞那么多东西，因为每个请求都得带着他跑。&lt;/p&gt;
-&lt;h1 id=&#34;20-使用无cookie的域&#34;&gt;20. 使用无cookie的域&lt;/h1&gt;
+&lt;h2 id=&#34;20-使用无cookie的域&#34;&gt;20. 使用无cookie的域&lt;/h2&gt;
 &lt;p&gt;比如CSS、js、图片等，客户端请求静态文件的时候，减少了 Cookie 的反复传输对主域名的影响。&lt;/p&gt;
-&lt;h1 id=&#34;21-不要使用滤镜&#34;&gt;21. 不要使用滤镜&lt;/h1&gt;
+&lt;h2 id=&#34;21-不要使用滤镜&#34;&gt;21. 不要使用滤镜&lt;/h2&gt;
 &lt;p&gt;IE独有属性AlphaImageLoader用于修正7.0以下版本中显示PNG图片的半透明效果。这个滤镜的问题在于浏览器加载图片时它会终止内容的呈现并且冻结浏览器。在每一个元素（不仅仅是图片）它都会运算一次，增加了内存开支，因此它的问题是多方面的。&lt;/p&gt;
 &lt;p&gt;完全避免使用AlphaImageLoader的最好方法就是使用PNG8格式来代替，这种格式能在IE中很好地工作。如果你确实需要使用AlphaImageLoader，请使用下划线_filter又使之对IE7以上版本的用户无效。&lt;/p&gt;
-&lt;h1 id=&#34;22-不要在html中缩放图片&#34;&gt;22. 不要在HTML中缩放图片&lt;/h1&gt;
+&lt;h2 id=&#34;22-不要在html中缩放图片&#34;&gt;22. 不要在HTML中缩放图片&lt;/h2&gt;
 &lt;p&gt;比如你需要的图片尺寸是50* 50&lt;/p&gt;
 &lt;p&gt;那就不用用一张500*500的大尺寸图片，影响加载&lt;/p&gt;
-&lt;h1 id=&#34;23-缩小faviconico并缓存&#34;&gt;23. 缩小favicon.ico并缓存&lt;/h1&gt;
-">【面】23条前端性能优化</a>
+&lt;h2 id=&#34;23-缩小faviconico并缓存&#34;&gt;23. 缩小favicon.ico并缓存&lt;/h2&gt;
+&lt;h1 id=&#34;2-前端监控和前端埋点方案设计&#34;&gt;2. 前端监控和前端埋点方案设计&lt;/h1&gt;
+&lt;p&gt;在线上项目中,需要统计产品中用户行为和使用情况，从而可以从用户和产品的角度去了解用户群体，从而升级和迭代产品，使其更加贴近用户。用户行为数据可以通过&lt;strong&gt;前端数据监控&lt;/strong&gt;的方式获得，除此之外，前端还需要实现&lt;strong&gt;性能监控&lt;/strong&gt;和&lt;strong&gt;异常监控&lt;/strong&gt;。性能监控包括首屏加载时间、白屏时间、http请求时间和http响应时间。异常监控包括前端脚本执行报错等。&lt;/p&gt;
+&lt;p&gt;实现前端监控有三个步骤：&lt;code&gt;前端埋点和上报&lt;/code&gt;、&lt;code&gt;数据处理&lt;/code&gt;和&lt;code&gt;数据分析&lt;/code&gt;。本文针对整个前端监控，设计适用的方案。本文的主要内容分为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;为什么需要前端监控&lt;/li&gt;
+&lt;li&gt;常用前端埋点方案总结&lt;/li&gt;
+&lt;li&gt;前端埋点方案选型和前端上报方案设计&lt;/li&gt;
+&lt;li&gt;前端监控结果可视化展示系统的设计&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1-为什么需要前端监控&#34;&gt;1. 为什么需要前端监控&lt;/h2&gt;
+&lt;p&gt;前端监控的目的是：&lt;br&gt;
+&lt;strong&gt;获取用户行为以及跟踪产品在用户端的使用情况，并以监控数据为基础，指明产品优化的方向&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;前端监控可以分为三类：&lt;code&gt;数据监控&lt;/code&gt;、&lt;code&gt;性能监控&lt;/code&gt;和&lt;code&gt;异常监控&lt;/code&gt;。下面我们来一一的了解。&lt;/p&gt;
+&lt;h3 id=&#34;1-数据监控&#34;&gt;1. 数据监控&lt;/h3&gt;
+&lt;p&gt;数据监控，顾名思义就是监听&lt;code&gt;用户的行为&lt;/code&gt;。常见的数据监控包括：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619663303697.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+统计这些数据是有意义的，比如我们知道了&lt;code&gt;用户来源的渠道&lt;/code&gt;，可以促进产品的推广，知道用户在&lt;code&gt;每一个页面停留的时间&lt;/code&gt;，可以针对停留较长的页面，&lt;code&gt;增加广告推送&lt;/code&gt;等等。&lt;/p&gt;
+&lt;h3 id=&#34;2-性能监控&#34;&gt;2. 性能监控&lt;/h3&gt;
+&lt;p&gt;性能监控指的是监听前端的性能，主要包括监听网页或者说产品在用户端的体验。常见的性能监控数据包括：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619663360531.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这些性能监控的结果，可以展示前端性能的好坏，根据性能监测的结果可以进一步的去优化前端性能，比如兼容低版本浏览器的动画效果，&lt;code&gt;加快首屏加载&lt;/code&gt;等等。&lt;/p&gt;
+&lt;h3 id=&#34;3-异常监控&#34;&gt;3. 异常监控&lt;/h3&gt;
+&lt;p&gt;此外，产品的前端代码在执行过程中也会发生异常，因此需要引入异常监控。及时的上报异常情况，可以避免线上故障的发上。虽然大部分异常可以通过try catch的方式捕获，但是比如内存泄漏以及其他偶现的异常难以捕获。常见的需要监控的异常包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Javascript的异常监控&lt;/li&gt;
+&lt;li&gt;样式丢失的异常监控&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-常用前端埋点方案总结&#34;&gt;2. 常用前端埋点方案总结&lt;/h2&gt;
+&lt;p&gt;首要的步骤就是前端埋点和上报，也就是&lt;code&gt;数据的收集阶段&lt;/code&gt;。数据收集的丰富性和准确性会影响对产品线上效果的判别结果。&lt;/p&gt;
+&lt;p&gt;目前常见的前端埋点方法分为三种：&lt;code&gt;代码埋点&lt;/code&gt;、&lt;code&gt;可视化埋点&lt;/code&gt;和&lt;code&gt;无痕埋点&lt;/code&gt;。下面一一介绍每一种埋点的方法。&lt;/p&gt;
+&lt;h3 id=&#34;1-代码埋点&#34;&gt;1. 代码埋点&lt;/h3&gt;
+&lt;p&gt;代码埋点，就是以&lt;code&gt;嵌入代码的形式进行埋点&lt;/code&gt;，比如需要监控用户的点击事件，会选择在&lt;strong&gt;用户点击时，插入一段代码，保存这个监听行为&lt;/strong&gt;或者直接将监听行为以某一种数据格式直接传递给server端。此外比如需要统计产品的PV和UV的时候，需要在网页的初始化时，发送用户的访问信息等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代码埋点的优点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以在任意时刻，精确的发送或保存所需要的数据信息。&lt;br&gt;
+&lt;strong&gt;缺点：&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;工作量较大，每一个组件的埋点都需要添加相应的代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-可视化埋点&#34;&gt;2. 可视化埋点&lt;/h3&gt;
+&lt;p&gt;通过可视化交互的手段，代替代码埋点。将&lt;code&gt;业务代码&lt;/code&gt;和&lt;code&gt;埋点代码&lt;/code&gt;分离，提供一个可视化交互的页面，输入为业务代码，通过这个可视化系统，可以在业务代码中自定义的增加埋点事件等等，最后输出的代码耦合了业务代码和埋点代码。&lt;/p&gt;
+&lt;p&gt;可视化埋点听起来比较高大上，实际上跟代码埋点还是区别不大。&lt;strong&gt;也就是用一个系统来实现手动插入代码埋点的过程。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可视化埋点可以埋点的控件有限，不能手动定制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-无埋点&#34;&gt;3. 无埋点&lt;/h3&gt;
+&lt;p&gt;无埋点并不是说不需要埋点，而是&lt;code&gt;全部埋点&lt;/code&gt;，前端的任意一个事件都被绑定一个标识，所有的事件都别记录下来。通过定期上传记录文件，配合文件解析，解析出来我们想要的数据，并生成可视化报告供专业人员分析因此实现“无埋点”统计。&lt;/p&gt;
+&lt;p&gt;从语言层面实现无埋点也很简单，比如&lt;strong&gt;从页面的js代码中，找出dom上被绑定的事件，然后进行全埋点&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;无埋点的优点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;由于采集的是全量数据，所以产品迭代过程中是不需要关注埋点逻辑的，也不会出现漏埋、误埋等现象&lt;br&gt;
+&lt;strong&gt;缺点：&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;无埋点采集全量数据，给数据传输和服务器增加压力&lt;/li&gt;
+&lt;li&gt;无法灵活的定制各个事件所需要上传的数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-前端埋点方案选型和前端上报方案设计&#34;&gt;3. 前端埋点方案选型和前端上报方案设计&lt;/h2&gt;
+&lt;p&gt;第一章中介绍了前端所需要&lt;code&gt;监听的信息&lt;/code&gt;，在第二章中介绍了前端&lt;code&gt;埋点&lt;/code&gt;的常见方式，本文来根据需求，来定制我们的埋点和&lt;code&gt;上报方案&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;1-监控数据&#34;&gt;1. 监控数据&lt;/h3&gt;
+&lt;p&gt;首先我们需要明确一个产品或者网页，普遍需要监控和上报的数据。监控的分为三个阶段：&lt;code&gt;用户进入网页首页&lt;/code&gt;、&lt;code&gt;用户在网页内部交互&lt;/code&gt;和&lt;code&gt;交互中报错&lt;/code&gt;。每一个阶段需要监控和上报的数据如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619671671411.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-埋点方案&#34;&gt;2. 埋点方案&lt;/h3&gt;
+&lt;p&gt;在实际项目中考虑到上报数据的灵活定制，以及减少数据传输和服务器的压力，在所需埋点处不多的情况下，常用的方式是&lt;code&gt;代码埋点&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;以用户进入首页为例，我们在首页渲染完成后会发送事件类型和类型相关的数据给server端，告知首页的监控信息。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619671695601.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-上报周期和上报数据类型&#34;&gt;3. 上报周期和上报数据类型&lt;/h3&gt;
+&lt;p&gt;如果埋点的事件&lt;code&gt;不是很多&lt;/code&gt;，上报可以&lt;code&gt;时时进行&lt;/code&gt;，比如监控用户的交互事件，可以在用户触发事件后，立刻上报用户所触发的事件类型。如果埋点的&lt;code&gt;事件较多&lt;/code&gt;，或者说网页内部交互频繁，可以通过&lt;code&gt;本地存储的方式先缓存上报信息，然后定期上报&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;接着来确定需要埋点上报的数据，上报的信息包括用户个人信息以及用户行为，主要数据可以分为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;who: appid(系统或者应用的id),userAgent(用户的系统、网络等信息)&lt;/li&gt;
+&lt;li&gt;when: timestamp(上报的时间戳)&lt;/li&gt;
+&lt;li&gt;from where: currentUrl(用户当前url)，fromUrl(从哪一个页面跳转到当前页面)，type(上报的事件类型),element(触发上报事件的元素）&lt;/li&gt;
+&lt;li&gt;what: 上报的自定义扩展数据data:{},扩展数据中可以按需求定制，比如包含uid等信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;上报数据的对象为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{   
+    ----------------上报接口本身提供--------------------
+    currentUrl,  
+    fromUrl,
+    timestamp,
+    userAgent:{
+       os,
+       netWord,
+    }
+    ----------------业务代码配置和自定义上报数据------------
+    type,
+    appid,
+    element,
+    data:{
+        uid,
+        uname
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;4-埋点和上报举例&#34;&gt;4. 埋点和上报举例&lt;/h3&gt;
+&lt;p&gt;我们以上报&lt;code&gt;首屏加载&lt;/code&gt;事件为例，DOM提供了&lt;code&gt;document&lt;/code&gt;的&lt;code&gt;DOMContentLoaded&lt;/code&gt;事件来监听dom挂载，提供了window的load事件来监听页面所有资源加载渲染完毕。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+  var start=Date.now();
+  document.addEventListener(&#39;DOMContentLoaded&#39;, function() {
+     fetch(&#39;some api&#39;,{
+         type:&#39;dom complete&#39;,
+         data:{
+           domCompletedTime:Date.now()-start
+         }
+     })
+  });
+  window.addEventListener(&#39;load&#39;, function() {
+     fetch(&#39;some api&#39;,{
+         type:&#39;load complete&#39;,
+         data:{
+           LoadCompletedTime:Date.now()-start
+         }
+     })
+  });
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;5-前端埋点系统的前后端通信加密&#34;&gt;5. 前端埋点系统的前后端通信加密&lt;/h3&gt;
+&lt;p&gt;在上报数据的前后端通信中，需要和server端协商加密机制，利用 OpenSSL库来实现的加密，OpenSSL已经是一个广泛被采用的加密算法。前端可以采用node的crypto模块。&lt;/p&gt;
+&lt;p&gt;首先来看hash算法，crypto.createHash() 来创建一个Hash实例，可利用的hash算法如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;md5&lt;/li&gt;
+&lt;li&gt;sha1&lt;/li&gt;
+&lt;li&gt;sha256&lt;/li&gt;
+&lt;li&gt;sha512&lt;/li&gt;
+&lt;li&gt;ripemd160&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以sha256算法加密为例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const str=&amp;quot;123445&amp;quot;;//需要加密的字段
+const hash=crypto.createHash(&#39;sha256&#39;);//指定加密算法
+hash.update(str); //通过算法加密相应的字段
+const result=hash.digest(&#39;hex&#39;);//转化成十六进制
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-前端监控结果可视化展示系统的设计&#34;&gt;4. 前端监控结果可视化展示系统的设计&lt;/h2&gt;
+&lt;p&gt;当后端得到前端上报的信息之后，经过数据分析和处理，&lt;strong&gt;需要前端可视化的展示数据分析后的结果&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;可以在开源中后台系统ant-design-pro的基础上进行二次开发，首先要明确展示信息。展示的信息包括单个用户和整体应用。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619671886590.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+">【面】前端性能优化与埋点监控</a>
       </div>
       
       <div class="item">
