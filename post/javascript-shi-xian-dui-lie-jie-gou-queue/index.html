@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>JavaScript实现队列结构（Queue） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1619671895791">
+<link rel="shortcut icon" href="/favicon.ico?v=1620447154906">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -39,7 +39,7 @@
 
 
   <meta name="description" content="JavaScript实现队列结构（Queue）" />
-  <meta name="keywords" content="" />
+  <meta name="keywords" content="Data Structure" />
 </head>
 
 <body>
@@ -92,7 +92,7 @@
               
               
                 <a href="/archives/" target="_self">
-                  <i class="fa fa-archive"></i> 归档
+                  <i class="fa fa-archive"></i> 博客
                 </a>
               
             </li>
@@ -105,7 +105,7 @@
               
               
                 <a href="/tags/" target="_self">
-                  <i class="fa fa-tags"></i> 标签
+                  <i class="fa fa-tags"></i> 分类
                 </a>
               
             </li>
@@ -202,19 +202,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">50</span>
+        <span class="site-item-stat-count">47</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">4</span>
+        <span class="site-item-stat-count">9</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">4</span>
+        <span class="site-item-stat-count">9</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -530,6 +530,19 @@
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://Tyloo-code.github.io/tag/hkkI9QIxg/">
+        <span>Data Structure</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
       <span>8<span class="language" data-lan="minute">分钟</span></span>
     </span>
@@ -823,6 +836,8 @@
     </li>
   </ul>
   <div class="tags">
+    
+      <a href="https://Tyloo-code.github.io/tag/hkkI9QIxg/"># Data Structure</a>
     
   </div>
   <div class="nav">
@@ -1330,6 +1345,1583 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/typescript-xia-mian-xiang-dui-xiang/"" data-c="
+          &lt;p&gt;面向对象是程序中一个非常重要的思想，它被很多同学理解成了一个比较难，比较深奥的问题，其实不然。面向对象很简单，简而言之就是程序之中所有的操作都需要通过对象来完成。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;举例来说：
+&lt;ul&gt;
+&lt;li&gt;操作浏览器要使用window对象&lt;/li&gt;
+&lt;li&gt;操作网页要使用document对象&lt;/li&gt;
+&lt;li&gt;操作控制台要使用console对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一切操作都要通过对象，也就是所谓的面向对象，那么对象到底是什么呢？这就要先说到程序是什么，计算机程序的本质就是对现实事物的抽象，抽象的反义词是具体，比如：照片是对一个具体的人的抽象，汽车模型是对具体汽车的抽象等等。程序也是对事物的抽象，在程序中我们可以表示一个人、一条狗、一把枪、一颗子弹等等所有的事物。一个事物到了程序中就变成了一个对象。&lt;/p&gt;
+&lt;p&gt;在程序中所有的对象都被分成了两个部分数据和功能，以人为例，人的姓名、性别、年龄、身高、体重等属于数据，人可以说话、走路、吃饭、睡觉这些属于人的功能。数据在对象中被成为属性，而功能就被称为方法。所以简而言之，在程序中一切皆是对象。&lt;/p&gt;
+&lt;h2 id=&#34;1-类class&#34;&gt;1、类（class）&lt;/h2&gt;
+&lt;p&gt;要想面向对象，操作对象，首先便要拥有对象，那么下一个问题就是如何创建对象。要创建对象，必须要先定义类，所谓的类可以理解为对象的模型，程序中可以根据类创建指定类型的对象，举例来说：可以通过Person类来创建人的对象，通过Dog类创建狗的对象，通过Car类来创建汽车的对象，不同的类可以用来创建不同的对象。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class 类名 {
+	属性名: 类型;
+	
+	constructor(参数: 类型){
+		this.属性名 = 参数;
+	}
+	
+	方法名(){
+		....
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Person{
+    name: string;
+    age: number;
+
+    constructor(name: string, age: number){
+        this.name = name;
+        this.age = age;
+    }
+
+    sayHello(){
+        console.log(`大家好，我是${this.name}`);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;const p = new Person(&#39;孙悟空&#39;, 18);
+p.sayHello();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-面向对象的特点&#34;&gt;2、面向对象的特点&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;封装&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;对象实质上就是属性和方法的容器，它的主要作用就是存储属性和方法，这就是所谓的封装&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;默认情况下，对象的属性是可以任意的修改的，为了确保数据的安全性，在TS中可以对属性的权限进行设置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;只读属性（readonly）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果在声明属性时添加一个readonly，则属性便成了只读属性无法修改&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TS中属性具有三种修饰符：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;public（默认值），可以在类、子类和对象中修改&lt;/li&gt;
+&lt;li&gt;protected ，可以在类、子类中修改&lt;/li&gt;
+&lt;li&gt;private ，可以在类中修改&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;public&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Person{
+    public name: string; // 写或什么都不写都是public
+    public age: number;
+
+    constructor(name: string, age: number){
+        this.name = name; // 可以在类中修改
+        this.age = age;
+    }
+
+    sayHello(){
+        console.log(`大家好，我是${this.name}`);
+    }
+}
+
+class Employee extends Person{
+    constructor(name: string, age: number){
+        super(name, age);
+        this.name = name; //子类中可以修改
+    }
+}
+
+const p = new Person(&#39;孙悟空&#39;, 18);
+p.name = &#39;猪八戒&#39;;// 可以通过对象修改
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;protected&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Person{
+    protected name: string;
+    protected age: number;
+
+    constructor(name: string, age: number){
+        this.name = name; // 可以修改
+        this.age = age;
+    }
+
+    sayHello(){
+        console.log(`大家好，我是${this.name}`);
+    }
+}
+
+class Employee extends Person{
+
+    constructor(name: string, age: number){
+        super(name, age);
+        this.name = name; //子类中可以修改
+    }
+}
+
+const p = new Person(&#39;孙悟空&#39;, 18);
+p.name = &#39;猪八戒&#39;;// 不能修改
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;private&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Person{
+    private name: string;
+    private age: number;
+
+    constructor(name: string, age: number){
+        this.name = name; // 可以修改
+        this.age = age;
+    }
+
+    sayHello(){
+        console.log(`大家好，我是${this.name}`);
+    }
+}
+
+class Employee extends Person{
+
+    constructor(name: string, age: number){
+        super(name, age);
+        this.name = name; //子类中不能修改
+    }
+}
+
+const p = new Person(&#39;孙悟空&#39;, 18);
+p.name = &#39;猪八戒&#39;;// 不能修改
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;属性存取器&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;对于一些不希望被任意修改的属性，可以将其设置为private&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;直接将其设置为private将导致无法再通过对象修改其中的属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;我们可以在类中定义一组读取、设置属性的方法，这种对属性读取或设置的属性被称为属性的存取器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;读取属性的方法叫做setter方法，设置属性的方法叫做getter方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Person{
+    private _name: string;
+
+    constructor(name: string){
+        this._name = name;
+    }
+
+    get name(){
+        return this._name;
+    }
+
+    set name(name: string){
+        this._name = name;
+    }
+
+}
+
+const p1 = new Person(&#39;孙悟空&#39;);
+console.log(p1.name); // 通过getter读取name属性
+p1.name = &#39;猪八戒&#39;; // 通过setter修改name属性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;静态属性&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;静态属性（方法），也称为类属性。使用静态属性无需创建实例，通过类即可直接使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;静态属性（方法）使用static开头&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Tools{
+    static PI = 3.1415926;
+    
+    static sum(num1: number, num2: number){
+        return num1 + num2
+    }
+}
+
+console.log(Tools.PI);
+console.log(Tools.sum(123, 456));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;this&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在类中，使用this表示当前对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;继承&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;继承时面向对象中的又一个特性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过继承可以将其他类中的属性和方法引入到当前类中&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Animal{
+    name: string;
+    age: number;
+
+    constructor(name: string, age: number){
+        this.name = name;
+        this.age = age;
+    }
+}
+
+class Dog extends Animal{
+
+    bark(){
+        console.log(`${this.name}在汪汪叫！`);
+    }
+}
+
+const dog = new Dog(&#39;旺财&#39;, 4);
+dog.bark();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过继承可以在不修改类的情况下完成对类的扩展&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重写&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;发生继承时，如果子类中的方法会替换掉父类中的同名方法，这就称为方法的重写&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Animal{
+    name: string;
+    age: number;
+
+    constructor(name: string, age: number){
+        this.name = name;
+        this.age = age;
+    }
+
+    run(){
+        console.log(`父类中的run方法！`);
+    }
+}
+
+class Dog extends Animal{
+
+    bark(){
+        console.log(`${this.name}在汪汪叫！`);
+    }
+
+    run(){
+        console.log(`子类中的run方法，会重写父类中的run方法！`);
+    }
+}
+
+const dog = new Dog(&#39;旺财&#39;, 4);
+dog.bark();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在子类中可以使用super来完成对父类的引用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;抽象类（abstract class）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;抽象类是专门用来被其他类所继承的类，它只能被其他类所继承不能用来创建实例&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;abstract class Animal{
+    abstract run(): void;
+    bark(){
+        console.log(&#39;动物在叫~&#39;);
+    }
+}
+
+class Dog extends Animals{
+    run(){
+        console.log(&#39;狗在跑~&#39;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用abstract开头的方法叫做抽象方法，抽象方法没有方法体只能定义在抽象类中，继承抽象类时抽象方法必须要实现&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-接口interface&#34;&gt;3、接口（Interface）&lt;/h2&gt;
+&lt;p&gt;接口的作用类似于抽象类，不同点在于接口中的所有方法和属性都是没有实值的，换句话说接口中的所有方法都是抽象方法。接口主要负责定义一个类的结构，接口可以去限制一个对象的接口，对象只有包含接口中定义的所有属性和方法时才能匹配接口。同时，可以让一个类去实现接口，实现接口时类中要保护接口中的所有属性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;示例（检查对象类型）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;interface Person{
+    name: string;
+    sayHello():void;
+}
+
+function fn(per: Person){
+    per.sayHello();
+}
+
+fn({name:&#39;孙悟空&#39;, sayHello() {console.log(`Hello, 我是 ${this.name}`)}});
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例（实现）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;interface Person{
+    name: string;
+    sayHello():void;
+}
+
+class Student implements Person{
+    constructor(public name: string) {
+    }
+
+    sayHello() {
+        console.log(&#39;大家好，我是&#39;+this.name);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-泛型generic&#34;&gt;4、泛型（Generic）&lt;/h2&gt;
+&lt;p&gt;定义一个函数或类时，有些情况下无法确定其中要使用的具体类型（返回值、参数、属性的类型不能确定），此时泛型便能够发挥作用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;举个例子：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;function test(arg: any): any{
+	return arg;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上例中，test函数有一个参数类型不确定，但是能确定的时其返回值的类型和参数的类型是相同的，由于类型不确定所以参数和返回值均使用了any，但是很明显这样做是不合适的，首先使用any会关闭TS的类型检查，其次这样设置也不能体现出参数和返回值是相同的类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用泛型：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;function test&amp;lt;T&amp;gt;(arg: T): T{
+	return arg;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;这里的&lt;code&gt;&amp;lt;T&amp;gt;&lt;/code&gt;就是泛型，T是我们给这个类型起的名字（不一定非叫T），设置泛型后即可在函数中使用T来表示该类型。所以泛型其实很好理解，就表示某个类型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;那么如何使用上边的函数呢？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;方式一（直接使用）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;test(10)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用时可以直接传递参数使用，类型会由TS自动推断出来，但有时编译器无法自动推断时还需要使用下面的方式&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;方式二（指定类型）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;test&amp;lt;number&amp;gt;(10)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;也可以在函数后手动指定泛型&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以同时指定多个泛型，泛型间使用逗号隔开：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;function test&amp;lt;T, K&amp;gt;(a: T, b: K): K{
+    return b;
+}
+
+test&amp;lt;number, string&amp;gt;(10, &amp;quot;hello&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用泛型时，完全可以将泛型当成是一个普通的类去使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类中同样可以使用泛型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class MyClass&amp;lt;T&amp;gt;{
+    prop: T;
+
+    constructor(prop: T){
+        this.prop = prop;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;除此之外，也可以对泛型的范围进行约束&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;interface MyInter{
+    length: number;
+}
+
+function test&amp;lt;T extends MyInter&amp;gt;(arg: T): number{
+    return arg.length;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用T extends MyInter表示泛型T必须是MyInter的子类，不一定非要使用接口类和抽象类同样适用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+">TypeScript （下）面向对象</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/typescript-shang-kuai-su-ru-men/"" data-c="
+          &lt;h2 id=&#34;0-typescript简介&#34;&gt;0、TypeScript简介&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;TypeScript是JavaScript的超集。&lt;/li&gt;
+&lt;li&gt;它对JS进行了扩展，向JS中引入了类型的概念，并添加了许多新的特性。&lt;/li&gt;
+&lt;li&gt;TS代码需要通过编译器编译为JS，然后再交由JS解析器执行。&lt;/li&gt;
+&lt;li&gt;TS完全兼容JS，换言之，任何的JS代码都可以直接当成JS使用。&lt;/li&gt;
+&lt;li&gt;相较于JS而言，TS拥有了静态类型，更加严格的语法，更强大的功能；TS可以在代码执行前就完成代码的检查，减小了运行时异常的出现的几率；TS代码可以编译为任意版本的JS代码，可有效解决不同JS运行环境的兼容问题；同样的功能，TS的代码量要大于JS，但由于TS的代码结构更加清晰，变量类型更加明确，在后期代码的维护中TS却远远胜于JS。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;1-typescript-开发环境搭建&#34;&gt;1、TypeScript 开发环境搭建&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;下载Node.js&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;64位：https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi&lt;/li&gt;
+&lt;li&gt;32位：https://nodejs.org/dist/v14.15.1/node-v14.15.1-x86.msi&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装Node.js&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用npm全局安装typescript&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进入命令行&lt;/li&gt;
+&lt;li&gt;输入：npm i -g typescript&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建一个ts文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用tsc对ts文件进行编译&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;进入命令行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入ts文件所在目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;执行命令：tsc xxx.ts&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-基本类型&#34;&gt;2、基本类型&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;类型声明&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;类型声明是TS非常重要的一个特点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过类型声明可以指定TS中变量（参数、形参）的类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;指定类型后，当为变量赋值时，TS编译器会自动检查值是否符合类型声明，符合则赋值，否则报错&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;简而言之，类型声明给变量设置了类型，使得变量只能存储某种类型的值&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let 变量: 类型;
+
+let 变量: 类型 = 值;
+
+function fn(参数: 类型, 参数: 类型): 类型{
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自动类型判断&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TS拥有自动的类型判断机制&lt;/li&gt;
+&lt;li&gt;当对变量的声明和赋值是同时进行的，TS编译器会自动判断变量的类型&lt;/li&gt;
+&lt;li&gt;所以如果你的变量的声明和赋值时同时进行的，可以省略掉类型声明&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类型：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;类型&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;例子&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;number&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1, -33, 2.5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;任意数字&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;string&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&#39;hi&#39;, &amp;quot;hi&amp;quot;, &lt;code&gt;hi&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;任意字符串&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;boolean&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;true、false&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;布尔值true或false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;字面量&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;其本身&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;限制变量的值就是该字面量的值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;any&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;*&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;任意类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;unknown&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;*&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;类型安全的any&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;void&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;空值（undefined）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;没有值（或undefined）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;never&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;没有值&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;不能是任何值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;object&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;{name:&#39;孙悟空&#39;}&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;任意的JS对象&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;array&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;[1,2,3]&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;任意JS数组&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;tuple&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;[4,5]&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;元素，TS新增类型，固定长度数组&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;enum&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;enum{A, B}&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;枚举，TS中新增类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;number&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let decimal: number = 6;
+let hex: number = 0xf00d;
+let binary: number = 0b1010;
+let octal: number = 0o744;
+let big: bigint = 100n;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;boolean&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let isDone: boolean = false;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;string&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let color: string = &amp;quot;blue&amp;quot;;
+color = &#39;red&#39;;
+
+let fullName: string = `Bob Bobbington`;
+let age: number = 37;
+let sentence: string = `Hello, my name is ${fullName}.
+
+I&#39;ll be ${age + 1} years old next month.`;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字面量&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;也可以使用字面量去指定变量的类型，通过字面量可以确定变量的取值范围&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let color: &#39;red&#39; | &#39;blue&#39; | &#39;black&#39;;
+let num: 1 | 2 | 3 | 4 | 5;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;any&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let d: any = 4;
+d = &#39;hello&#39;;
+d = true;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;unknown&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let notSure: unknown = 4;
+notSure = &#39;hello&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;void&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let unusable: void = undefined;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;never&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;function error(message: string): never {
+  throw new Error(message);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;object（没啥用）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let obj: object = {};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;array&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let list: number[] = [1, 2, 3];
+let list: Array&amp;lt;number&amp;gt; = [1, 2, 3];
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;tuple&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let x: [string, number];
+x = [&amp;quot;hello&amp;quot;, 10]; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;enum&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;enum Color {
+  Red,
+  Green,
+  Blue,
+}
+let c: Color = Color.Green;
+
+enum Color {
+  Red = 1,
+  Green,
+  Blue,
+}
+let c: Color = Color.Green;
+
+enum Color {
+  Red = 1,
+  Green = 2,
+  Blue = 4,
+}
+let c: Color = Color.Green;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类型断言&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;有些情况下，变量的类型对于我们来说是很明确，但是TS编译器却并不清楚，此时，可以通过类型断言来告诉编译器变量的类型，断言有两种形式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;第一种&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let someValue: unknown = &amp;quot;this is a string&amp;quot;;
+let strLength: number = (someValue as string).length;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第二种&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;let someValue: unknown = &amp;quot;this is a string&amp;quot;;
+let strLength: number = (&amp;lt;string&amp;gt;someValue).length;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-编译选项&#34;&gt;3、编译选项&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;自动编译文件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;编译文件时，使用 -w 指令后，TS编译器会自动监视文件的变化，并在文件发生变化时对文件进行重新编译。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-powershell&#34;&gt;tsc xxx.ts -w
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自动编译整个项目&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如果直接使用tsc指令，则可以自动将当前项目下的所有ts文件编译为js文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;但是能直接使用tsc命令的前提时，要先在项目根目录下创建一个ts的配置文件 tsconfig.json&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;tsconfig.json是一个JSON文件，添加配置文件后，只需只需 tsc 命令即可完成对整个项目的编译&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置选项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;include&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义希望被编译文件所在的目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;默认值：[&amp;quot;**/*&amp;quot;]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;include&amp;quot;:[&amp;quot;src/**/*&amp;quot;, &amp;quot;tests/**/*&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上述示例中，所有src目录和tests目录下的文件都会被编译&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;exclude&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义需要排除在外的目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;默认值：[&amp;quot;node_modules&amp;quot;, &amp;quot;bower_components&amp;quot;, &amp;quot;jspm_packages&amp;quot;]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;exclude&amp;quot;: [&amp;quot;./src/hello/**/*&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上述示例中，src下hello目录下的文件都不会被编译&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;extends&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义被继承的配置文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;extends&amp;quot;: &amp;quot;./configs/base&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上述示例中，当前配置文件中会自动包含config目录下base.json中的所有配置信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;files&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;指定被编译文件的列表，只有需要编译的文件少时才会用到&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;files&amp;quot;: [
+    &amp;quot;core.ts&amp;quot;,
+    &amp;quot;sys.ts&amp;quot;,
+    &amp;quot;types.ts&amp;quot;,
+    &amp;quot;scanner.ts&amp;quot;,
+    &amp;quot;parser.ts&amp;quot;,
+    &amp;quot;utilities.ts&amp;quot;,
+    &amp;quot;binder.ts&amp;quot;,
+    &amp;quot;checker.ts&amp;quot;,
+    &amp;quot;tsc.ts&amp;quot;
+  ]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;列表中的文件都会被TS编译器所编译&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;compilerOptions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;编译选项是配置文件中非常重要也比较复杂的配置选项&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在compilerOptions中包含多个子选项，用来完成对编译的配置&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;项目选项&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;target&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;设置ts代码编译的目标版本&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可选值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ES3（默认）、ES5、ES6/ES2015、ES7/ES2016、ES2017、ES2018、ES2019、ES2020、ESNext&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;target&amp;quot;: &amp;quot;ES6&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如上设置，我们所编写的ts代码将会被编译为ES6版本的js代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;lib&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;指定代码运行时所包含的库（宿主环境）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可选值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ES5、ES6/ES2015、ES7/ES2016、ES2017、ES2018、ES2019、ES2020、ESNext、DOM、WebWorker、ScriptHost ......&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;target&amp;quot;: &amp;quot;ES6&amp;quot;,
+    &amp;quot;lib&amp;quot;: [&amp;quot;ES6&amp;quot;, &amp;quot;DOM&amp;quot;],
+    &amp;quot;outDir&amp;quot;: &amp;quot;dist&amp;quot;,
+    &amp;quot;outFile&amp;quot;: &amp;quot;dist/aa.js&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;module&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;设置编译后代码使用的模块化系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可选值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CommonJS、UMD、AMD、System、ES2020、ESNext、None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;&amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;module&amp;quot;: &amp;quot;CommonJS&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;outDir&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;编译后文件的所在目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;默认情况下，编译后的js文件会和ts文件位于相同的目录，设置outDir后可以改变编译后文件的位置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;outDir&amp;quot;: &amp;quot;dist&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置后编译后的js文件将会生成到dist目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;outFile&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;将所有的文件编译为一个js文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;默认会将所有的编写在全局作用域中的代码合并为一个js文件，如果module制定了None、System或AMD则会将模块一起合并到文件之中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;outFile&amp;quot;: &amp;quot;dist/app.js&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rootDir&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;指定代码的根目录，默认情况下编译后文件的目录结构会以最长的公共目录为根目录，通过rootDir可以手动指定根目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;rootDir&amp;quot;: &amp;quot;./src&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;allowJs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;是否对js文件编译&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;checkJs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;是否对js文件进行检查&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;allowJs&amp;quot;: true,
+    &amp;quot;checkJs&amp;quot;: true
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;removeComments&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;是否删除注释&lt;/li&gt;
+&lt;li&gt;默认值：false&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;noEmit&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不对代码进行编译&lt;/li&gt;
+&lt;li&gt;默认值：false&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;sourceMap&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;是否生成sourceMap&lt;/li&gt;
+&lt;li&gt;默认值：false&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;严格检查&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;strict
+&lt;ul&gt;
+&lt;li&gt;启用所有的严格检查，默认值为true，设置后相当于开启了所有的严格检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;alwaysStrict
+&lt;ul&gt;
+&lt;li&gt;总是以严格模式对代码进行编译&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;noImplicitAny
+&lt;ul&gt;
+&lt;li&gt;禁止隐式的any类型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;noImplicitThis
+&lt;ul&gt;
+&lt;li&gt;禁止类型不明确的this&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;strictBindCallApply
+&lt;ul&gt;
+&lt;li&gt;严格检查bind、call和apply的参数列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;strictFunctionTypes
+&lt;ul&gt;
+&lt;li&gt;严格检查函数的类型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;strictNullChecks
+&lt;ul&gt;
+&lt;li&gt;严格的空值检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;strictPropertyInitialization
+&lt;ul&gt;
+&lt;li&gt;严格检查属性是否初始化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;额外检查&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;noFallthroughCasesInSwitch
+&lt;ul&gt;
+&lt;li&gt;检查switch语句包含正确的break&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;noImplicitReturns
+&lt;ul&gt;
+&lt;li&gt;检查函数没有隐式的返回值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;noUnusedLocals
+&lt;ul&gt;
+&lt;li&gt;检查未使用的局部变量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;noUnusedParameters
+&lt;ul&gt;
+&lt;li&gt;检查未使用的参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;高级&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;allowUnreachableCode
+&lt;ul&gt;
+&lt;li&gt;检查不可达代码&lt;/li&gt;
+&lt;li&gt;可选值：
+&lt;ul&gt;
+&lt;li&gt;true，忽略不可达代码&lt;/li&gt;
+&lt;li&gt;false，不可达代码将引起错误&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;noEmitOnError
+&lt;ul&gt;
+&lt;li&gt;有错误的情况下不进行编译&lt;/li&gt;
+&lt;li&gt;默认值：false&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-webpack&#34;&gt;4、webpack&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;通常情况下，实际开发中我们都需要使用构建工具对代码进行打包，TS同样也可以结合构建工具一起使用，下边以webpack为例介绍一下如何结合构建工具使用TS。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;初始化项目&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进入项目根目录，执行命令 &lt;code&gt;npm init -y&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;主要作用：创建package.json文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下载构建工具&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;npm i -D webpack webpack-cli webpack-dev-server typescript ts-loader clean-webpack-plugin&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;共安装了7个包
+&lt;ul&gt;
+&lt;li&gt;webpack
+&lt;ul&gt;
+&lt;li&gt;构建工具webpack&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;webpack-cli
+&lt;ul&gt;
+&lt;li&gt;webpack的命令行工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;webpack-dev-server
+&lt;ul&gt;
+&lt;li&gt;webpack的开发服务器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;typescript
+&lt;ul&gt;
+&lt;li&gt;ts编译器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ts-loader
+&lt;ul&gt;
+&lt;li&gt;ts加载器，用于在webpack中编译ts文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;html-webpack-plugin
+&lt;ul&gt;
+&lt;li&gt;webpack中html插件，用来自动创建html文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;clean-webpack-plugin
+&lt;ul&gt;
+&lt;li&gt;webpack中的清除插件，每次构建都会先清除目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;根目录下创建webpack的配置文件webpack.config.js&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const path = require(&amp;quot;path&amp;quot;);
+const HtmlWebpackPlugin = require(&amp;quot;html-webpack-plugin&amp;quot;);
+const { CleanWebpackPlugin } = require(&amp;quot;clean-webpack-plugin&amp;quot;);
+
+module.exports = {
+    optimization:{
+        minimize: false // 关闭代码压缩，可选
+    },
+
+    entry: &amp;quot;./src/index.ts&amp;quot;,
+    
+    devtool: &amp;quot;inline-source-map&amp;quot;,
+    
+    devServer: {
+        contentBase: &#39;./dist&#39;
+    },
+
+    output: {
+        path: path.resolve(__dirname, &amp;quot;dist&amp;quot;),
+        filename: &amp;quot;bundle.js&amp;quot;,
+        environment: {
+            arrowFunction: false // 关闭webpack的箭头函数，可选
+        }
+    },
+
+    resolve: {
+        extensions: [&amp;quot;.ts&amp;quot;, &amp;quot;.js&amp;quot;]
+    },
+    
+    module: {
+        rules: [
+            {
+                test: /\.ts$/,
+                use: {
+                   loader: &amp;quot;ts-loader&amp;quot;     
+                },
+                exclude: /node_modules/
+            }
+        ]
+    },
+
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title:&#39;TS测试&#39;
+        }),
+    ]
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;根目录下创建tsconfig.json，配置可以根据自己需要&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+    &amp;quot;compilerOptions&amp;quot;: {
+        &amp;quot;target&amp;quot;: &amp;quot;ES2015&amp;quot;,
+        &amp;quot;module&amp;quot;: &amp;quot;ES2015&amp;quot;,
+        &amp;quot;strict&amp;quot;: true
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改package.json添加如下配置&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  ...略...
+  &amp;quot;scripts&amp;quot;: {
+    &amp;quot;test&amp;quot;: &amp;quot;echo \&amp;quot;Error: no test specified\&amp;quot; &amp;amp;&amp;amp; exit 1&amp;quot;,
+    &amp;quot;build&amp;quot;: &amp;quot;webpack&amp;quot;,
+    &amp;quot;start&amp;quot;: &amp;quot;webpack serve --open chrome.exe&amp;quot;
+  },
+  ...略...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在src下创建ts文件，并在并命令行执行&lt;code&gt;npm run build&lt;/code&gt;对代码进行编译，或者执行&lt;code&gt;npm start&lt;/code&gt;来启动开发服务器&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;5-babel&#34;&gt;5、Babel&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;经过一系列的配置，使得TS和webpack已经结合到了一起，除了webpack，开发中还经常需要结合babel来对代码进行转换以使其可以兼容到更多的浏览器，在上述步骤的基础上，通过以下步骤再将babel引入到项目中。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装依赖包：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;npm i -D @babel/core @babel/preset-env babel-loader core-js&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;共安装了4个包，分别是：
+&lt;ul&gt;
+&lt;li&gt;@babel/core
+&lt;ul&gt;
+&lt;li&gt;babel的核心工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;@babel/preset-env
+&lt;ul&gt;
+&lt;li&gt;babel的预定义环境&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;@babel-loader
+&lt;ul&gt;
+&lt;li&gt;babel在webpack中的加载器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;core-js
+&lt;ul&gt;
+&lt;li&gt;core-js用来使老版本的浏览器支持新版ES语法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改webpack.config.js配置文件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;...略...
+module: {
+    rules: [
+        {
+            test: /\.ts$/,
+            use: [
+                {
+                    loader: &amp;quot;babel-loader&amp;quot;,
+                    options:{
+                        presets: [
+                            [
+                                &amp;quot;@babel/preset-env&amp;quot;,
+                                {
+                                    &amp;quot;targets&amp;quot;:{
+                                        &amp;quot;chrome&amp;quot;: &amp;quot;58&amp;quot;,
+                                        &amp;quot;ie&amp;quot;: &amp;quot;11&amp;quot;
+                                    },
+                                    &amp;quot;corejs&amp;quot;:&amp;quot;3&amp;quot;,
+                                    &amp;quot;useBuiltIns&amp;quot;: &amp;quot;usage&amp;quot;
+                                }
+                            ]
+                        ]
+                    }
+                },
+                {
+                    loader: &amp;quot;ts-loader&amp;quot;,
+
+                }
+            ],
+            exclude: /node_modules/
+        }
+    ]
+}
+...略...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如此一来，使用ts编译后的文件将会再次被babel处理，使得代码可以在大部分浏览器中直接使用，可以在配置选项的targets中指定要兼容的浏览器版本。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+">TypeScript （上）快速入门</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/javascript-shi-xian-dui-jie-gou/"" data-c="
@@ -19656,29 +21248,6 @@ RTT=传播时延x2+处理时间(有时可能直接忽略)&lt;/p&gt;
       </div>
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/ji-suan-ji-wang-luo-bi-ji-part0/"" data-c="
-          &lt;h1 id=&#34;计算机网络的概念&#34;&gt;计算机网络的概念&lt;/h1&gt;
-&lt;p&gt;计算机网络是&lt;code&gt;互连&lt;/code&gt;的、&lt;code&gt;自治&lt;/code&gt;的计算机集合。(互连：互联互通，自治：无助从关系)&lt;/p&gt;
-&lt;h1 id=&#34;计算机网络的功能&#34;&gt;计算机网络的功能&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609226192060.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h1 id=&#34;计算机网络的组成&#34;&gt;计算机网络的组成&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609226327918.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h1 id=&#34;计算机网络的分类&#34;&gt;计算机网络的分类&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609226484564.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h1 id=&#34;总结一&#34;&gt;总结一&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609226548838.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h1 id=&#34;标准化工作&#34;&gt;标准化工作&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609226653873.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h1 id=&#34;标准化工作流程&#34;&gt;标准化工作流程&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609226712307.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h1 id=&#34;标准化相关组织&#34;&gt;标准化相关组织&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609226782253.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h1 id=&#34;总结二&#34;&gt;总结二&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1609226812168.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-">计算机网络笔记Part0</a>
-      </div>
-      
-      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/vueandmock-mo-ni-shu-ju/"" data-c="
           &lt;h1 id=&#34;mock在vue里怎么用&#34;&gt;mock在vue里怎么用？&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/nuysoft/Mock/wiki/Getting-Started&#34;&gt;https://github.com/nuysoft/Mock/wiki/Getting-Started&lt;/a&gt;&lt;br&gt;
@@ -20204,362 +21773,7 @@ http.createServer((req,res)=&amp;gt;{
 &lt;h1 id=&#34;3-nodejs-创建一个-web-服务器&#34;&gt;3、Nodejs 创建一个 WEB 服务器。&lt;/h1&gt;
 &lt;p&gt;1、可以让我们访问 web 服务器上面的网站&lt;br&gt;
 2、可以让我们下载 web 服务器上面的文件&lt;/p&gt;
-">NodeJs从零单排(6)</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-5/"" data-c="
-          &lt;h1 id=&#34;一-es6-常见语法的使用&#34;&gt;一、 Es6 常见语法的使用&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;let const&lt;/li&gt;
-&lt;li&gt;箭头函数&lt;/li&gt;
-&lt;li&gt;对象、属性的简写&lt;/li&gt;
-&lt;li&gt;模板字符串&lt;/li&gt;
-&lt;li&gt;Promise&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;二-async-await-和-promise-的使用&#34;&gt;二、 Async、Await 和 Promise 的使用&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;async&lt;/strong&gt; 是“异步”的简写，而 await 可以认为是 async wait 的简写。所以应该很好理解 async 用于申明一个异步的 function ，而 await 用于等待一个异步方法执行完成。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;简单理解：&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;async&lt;/strong&gt; 是让方法变成异步。&lt;br&gt;
-&lt;strong&gt;await&lt;/strong&gt; 是等待异步方法执行完成。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;详细说明：&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;async 是让方法变成异步&lt;/strong&gt;，在终端里用 node 执行这段代码，你会发现输出了 Promise {‘Hello async’ }，这时候会发现它返回的是 Promise。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;async function testAsync(){ 
-    return &#39;Hello async&#39;; 
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;const result = testAsync(); 
-console.log(result);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;PS E:\code\BXShop&amp;gt; node async.js 
-Promise { &#39;Hello async&#39; }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;await 在等待 async 方法执行完毕&lt;/strong&gt;，其实 await 等待的只是一个表达式，这个表达式在官方 文档里说的是 Promise 对象，但是它也可以接受普通值。 &lt;span style=&#34;color:red&#34;&gt;注意：&lt;/span&gt;await 必须在 async 方法中 才可以使用因为 await 访问本身就会造成程序停止堵塞，所以必须在异步方法中才可以使用。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function getData(){ 
-    return &#39;zhangsan&#39;; 
-}
-async function testAsync(){ 
-    return &#39;Hello async&#39;; 
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;async function test(){ 
-    const v1=await getData(); 
-    const v2=await testAsync(); 
-    console.log(v1,v2);
-}
-test();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;async/await 同时使用&lt;/strong&gt;&lt;br&gt;
-async 会将其后的函数（函数表达式或 Lambda）的返回值封装成一个 Promise 对象，而 await 会等待这个 Promise 完成，并将其 resolve 的结果返回出来。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function findData() { 
-    return new Promise(resolve =&amp;gt; { 
-        setTimeout(() =&amp;gt; resolve(&amp;quot;long_time_value&amp;quot;), 1000); 
-    });
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;async function test() { 
-    const v = await findData(); 
-    console.log(v);
-}
-test();
-&lt;/code&gt;&lt;/pre&gt;
-">NodeJs从零单排(5)</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-4/"" data-c="
-          &lt;h1 id=&#34;1-fsstat-检测是文件还是目录&#34;&gt;1. fs.stat 检测是文件还是目录&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
-fs.stat(&#39;hello.js&#39;, (error, stats) =&amp;gt;{ 
-    if(error){
-         console.log(error) 
-         } else {
-        console.log(stats) 
-        console.log(`文件：${stats.isFile()}`) 
-        console.log(`目录：${stats.isDirectory()}`) 
-        } 
-})
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;2-fsmkdir-创建目录&#34;&gt;2. fs.mkdir 创建目录&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;)
-fs.mkdir(&#39;logs&#39;, (error) =&amp;gt; { 
-    if(error){ 
-       console.log(error) 
-   } else { 
-    console.log(&#39;成功创建目录：logs&#39;) 
-     } 
- })
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;3-fswritefile-创建写入文件&#34;&gt;3. fs.writeFile 创建写入文件&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;fs.writeFile(&#39;logs/hello.log&#39;, &#39;您好 ~ \n&#39;, (error) =&amp;gt; { 
-    if(error) { 
-        console.log(error) 
-   } else { 
-        console.log(&#39;成功写入文件&#39;) 
-    } 
- })
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;4-fsappendfile-追加文件&#34;&gt;4. fs.appendFile 追加文件&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
-fs.appendFile(&#39;logs/hello.log&#39;, &#39;hello ~ \n&#39;, (error) =&amp;gt; { 
-    if(error) { 
-    console.log(error) 
-    } else { 
-        console.log(&#39;成功写入文件&#39;) 
-    } 
-})
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;5fsreadfile-读取文件&#34;&gt;5.fs.readFile 读取文件&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
-fs.readFile(&#39;logs/hello.log&#39;, &#39;utf8&#39;, (error, data) =&amp;gt;{ 
-    if (error) { 
-     console.log(error) 
-} else { 
-    console.log(data) 
-    } 
-})
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;6fsreaddir-读取目录&#34;&gt;6.fs.readdir 读取目录&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
-fs.readdir(&#39;logs&#39;, (error, files) =&amp;gt; { 
-   if (error) { 
-     console.log(error) 
-  } else { 
-    console.log(files) 
-    }
- })
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;7fsrename-重命名&#34;&gt;7.fs.rename 重命名&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
-fs.rename(&#39;js/hello.log&#39;, &#39;js/greeting.log&#39;, (error) =&amp;gt;{ 
- if (error) { 
-     console.log(error) 
-  } else { 
-console.log(&#39;重命名成功&#39;) 
-    }
- })
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;8-fsrmdir-删除目录&#34;&gt;8. fs.rmdir 删除目录&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
-fs.rmdir(&#39;logs&#39;, (error) =&amp;gt;{ 
- if (error) { 
-    console.log(error) 
-    } else { 
-    console.log(&#39;成功的删除了目录：logs&#39;) 
-     } 
- })
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;9-fsunlink-删除文件&#34;&gt;9. fs.unlink 删除文件&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
-fs.unlink(`logs/${file}`, (error) =&amp;gt; { 
-  if (error) { 
-    console.log(error) 
-    } else { 
-    console.log(`成功的删除了文件: ${file}`) 
-    } 
- })
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;10-fscreatereadstream-从文件流中读取数据&#34;&gt;10. fs.createReadStream 从文件流中读取数据&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
-var fileReadStream = fs.createReadStream(&#39;data.json&#39;) 
-let count=0; 
-var str=&#39;&#39;; 
-fileReadStream.on(&#39;data&#39;, (chunk) =&amp;gt; { 
-    console.log(`${ ++count } 接收到：${chunk.length}`);
-     str+=chunk
-     })
-fileReadStream.on(&#39;end&#39;, () =&amp;gt; { 
-    console.log(&#39;--- 结束 ---&#39;); 
-    console.log(count); 
-    console.log(str); 
-})
-fileReadStream.on(&#39;error&#39;, (error) =&amp;gt; { 
-    console.log(error)
-})
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;11-fscreatewritestream-写入文件&#34;&gt;11. fs.createWriteStream 写入文件&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;var fs = require(&amp;quot;fs&amp;quot;); 
-var data = &#39;我是从数据库获取的数据，我要保存起来&#39;; 
-// 创建一个可以写入的流，写入到文件 output.txt 中
-var writerStream = fs.createWriteStream(&#39;output.txt&#39;); 
-// 使用 utf8 编码写入数据 
-writerStream.write(data,&#39;UTF8&#39;); 
-// 标记文件末尾 
-writerStream.end();
-// 处理流事件 --&amp;gt; finish 事件
-writerStream.on(&#39;finish&#39;, function() { 
-    /*finish - 所有数据已被写入到底层系统时触发。*/
-console.log(&amp;quot;写入完成。&amp;quot;); 
-}); 
-writerStream.on(&#39;error&#39;, function(err){ 
-    console.log(err.stack); 
-}); 
-console.log(&amp;quot;程序执行完毕&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;12-管道流&#34;&gt;12. 管道流&lt;/h1&gt;
-&lt;p&gt;管道提供了一个输出流到输入流的机制。通常我们用于从一个流中获取数据并将数据传 递到另外一个流中。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608779085554.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-如上面的图片所示，我们把文件比作装水的桶，而水就是文件里的内容，我们用一根管子(pipe)连接两个桶使得水从一个桶流入另一个桶，这样就慢慢的实现了大文件的复制过程。 以下实例我们通过读取一个文件内容并将内容写入到另外一个文件中。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var fs = require(&amp;quot;fs&amp;quot;); 
-// 创建一个可读流 
-var readerStream = fs.createReadStream(&#39;input.txt&#39;); 
-// 创建一个可写流 
-var writerStream = fs.createWriteStream(&#39;output.txt&#39;); 
-// 管道读写操作 
-// 读取 input.txt 文件内容，并将内容写入到 output.txt 文件中 
-readerStream.pipe(writerStream);
-console.log(&amp;quot;程序执行完毕&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-">NodeJs从零单排(4)</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-3/"" data-c="
-          &lt;h1 id=&#34;一-包与-npm&#34;&gt;一、包与 NPM&lt;/h1&gt;
-&lt;h3 id=&#34;1-包&#34;&gt;1. 包&lt;/h3&gt;
-&lt;p&gt;Nodejs 中除了它自己提供的&lt;span style=&#34;color:red&#34;&gt;核心模块&lt;/span&gt;外，我们可以&lt;span style=&#34;color:red&#34;&gt;自定义模块&lt;/span&gt;，也可以使用&lt;span style=&#34;color:red&#34;&gt;第三方的模块&lt;/span&gt;。Nodejs 中第三方模块由包组成，可以通过包来对一组具有相互依赖关系的模块进行统一管理。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608777425715.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;p&gt;完全符合CommonJs规范的&lt;span style=&#34;color:red&#34;&gt;包目录&lt;/span&gt;一般包含如下这些文件。&lt;br&gt;
-• package.json :包描述文件。&lt;br&gt;
-• bin :用于存放可执行二进制文件的目录。&lt;br&gt;
-• lib :用于存放 JavaScript 代码的目录。&lt;br&gt;
-• doc :用于存放文档的目录。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;在 NodeJs 中通过 NPM 命令来下载第三方的模块（包）。&lt;/code&gt;&lt;br&gt;
-&lt;a href=&#34;https://www.npmjs.com/package/silly-datetime&#34;&gt;https://www.npmjs.com/package/silly-datetime&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;npm i silly-datetime –save 
-var sd = require(&#39;silly-datetime&#39;); 
-sd.format(new Date(), &#39;YYYY-MM-DD HH:mm&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;br&gt;
-&lt;h3 id=&#34;2-npm-介绍&#34;&gt;2. NPM 介绍&lt;/h3&gt;
-&lt;p&gt;npm 是&lt;code&gt;世界上最大的开放源代码&lt;/code&gt;的生态系统。我们可以通过 npm 下载各种各样的包， 这些源代码（包）我们可以在&lt;a href=&#34;https://www.npmjs.com&#34;&gt;https://www.npmjs.com&lt;/a&gt;找到。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;npm 是随同 NodeJS 一起安装的包管理工具，能解决 NodeJS 代码部署上的很多问题， 常见的使用场景有以下几种：&lt;/strong&gt;&lt;br&gt;
- 允许用户从 NPM 服务器下载别人编写的第三方包到本地使用。(silly-datetime)&lt;br&gt;
- 允许用户从 NPM 服务器下载并安装别人编写的命令行程序(工具)到本地使用。 （supervisor）&lt;br&gt;
- 允许用户将自己编写的包或命令行程序上传到 NPM 服务器供别人使用。&lt;/p&gt;
-&lt;h1 id=&#34;二-npm-命令详解&#34;&gt;二、NPM 命令详解。&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;npm -v 查看 npm 版本&lt;/li&gt;
-&lt;li&gt;使用 npm 命令安装模块&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;npm install Module Name 
-如安装 jq 模块：
-npm install jquery
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;npm uninstall moudleName &lt;strong&gt;卸载模块&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;npm uninstall ModuleName
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;4&#34;&gt;
-&lt;li&gt;npm list 查看当前目录下已安装的 node 包&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;npm list
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;5&#34;&gt;
-&lt;li&gt;npm info jquery 查看 jquery 的版本&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;npm info 模块 //查看模块的版本
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;6&#34;&gt;
-&lt;li&gt;&lt;code&gt;指定版本安装 npm install jquery@1.8.0&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;三-packagejson&#34;&gt;三、package.json&lt;/h1&gt;
-&lt;p&gt;package.json定义了这个项目所需要的各种模块,以及项目的配置信息(比如名称、版本、 许可证等元数据)&lt;br&gt;
-1、&lt;code&gt;创建 package.json&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;npm init 或者 npm init –yes
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;2、&lt;code&gt;package.json 文件&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{
-     &amp;quot;name&amp;quot;: &amp;quot;test&amp;quot;, 
-     &amp;quot;version&amp;quot;: &amp;quot;1.0.0&amp;quot;, 
-     &amp;quot;description&amp;quot;: &amp;quot;test&amp;quot;, 
-     &amp;quot;main&amp;quot;: &amp;quot;main.js&amp;quot;, 
-     &amp;quot;keywords&amp;quot;: [ &amp;quot;test&amp;quot; ],
-     &amp;quot;author&amp;quot;: &amp;quot;wade&amp;quot;,
-     &amp;quot;license&amp;quot;: &amp;quot;MIT&amp;quot;, 
-     &amp;quot;dependencies&amp;quot;: { 
-        &amp;quot;express&amp;quot;: &amp;quot;^4.10.1&amp;quot;
-        },
-        &amp;quot;devDependencies&amp;quot;: {
-        &amp;quot;jslint&amp;quot;: &amp;quot;^0.6.5&amp;quot; 
-     }
- }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;3、安装模块并把模块写入 package.json(依赖)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;npm install babel-cli --save-dev 
-npm install 模块 --save 
-npm install 模块 --save-dev
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;4、&lt;code&gt;dependencies 与 devDependencies 之间的区别?&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;使用 npm install node_module –save 自动更新 dependencies 字段值;&lt;br&gt;
-使用 npm install node_module –save-dev 自动更新 devDependencies 字段值;&lt;/p&gt;
-&lt;p&gt;dependencie 配置当前程序所依赖的其他包。&lt;br&gt;
-devDependencie 配置当前程序所依赖的其他包，比如一些工具之类的配置在这里&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;quot;dependencies&amp;quot;: { 
-    &amp;quot;ejs&amp;quot;: &amp;quot;^2.3.4&amp;quot;, 
-    &amp;quot;express&amp;quot;: &amp;quot;^4.13.3&amp;quot;,
-     &amp;quot;formidable&amp;quot;: &amp;quot;^1.0.17&amp;quot;
- }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;div style=&#34;color:red&#34;&gt;
-^表示第一位版本号不变，后面两位取最新的&lt;br&gt;
-~表示前两位不变，最后一个取最新&lt;br&gt;
-*表示全部取最新
-&lt;/div&gt;
-&lt;h1 id=&#34;四-安装淘宝镜像&#34;&gt;四、安装淘宝镜像&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.npmjs.org&#34;&gt;http://www.npmjs.org&lt;/a&gt;  npm 包官网&lt;br&gt;
-&lt;a href=&#34;https://npm.taobao.org/&#34;&gt;https://npm.taobao.org/&lt;/a&gt; 淘宝 npm 镜像官网&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;淘宝 NPM 镜像&lt;/strong&gt;是一个完整 &lt;strong&gt;npmjs.org&lt;/strong&gt; 镜像，你可以用此代替官方版本(只读)，同步频 率目前为 10 分钟 一次以保证尽量与官方服务同步。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;我们可以使用我们定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;npm install -g cnpm --registry=https://registry.npm.taobao.org
-&lt;/code&gt;&lt;/pre&gt;
-">NodeJs从零单排(3)</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/nodejs-cong-ling-dan-pai-2/"" data-c="
-          &lt;h1 id=&#34;一-什么是-commonjs&#34;&gt;一、什么是 CommonJs？&lt;/h1&gt;
-&lt;p&gt;JavaScript 是一个强大面向对象语言，它有很多快速高效的解释器。然而， JavaScript 标准定义的 API 是为了构建基于浏览器的应用程序。并没有制定一个用于更广泛的应用程序 的标准库。&lt;code&gt;CommonJS 规范的提出,主要是为了弥补当前 JavaScript 没有标准库的缺陷。它的 终极目标就是：提供一个类似 Python，Ruby 和 Java 语言的标准库&lt;/code&gt;，而不只是让 JavaScript 停 留在小脚本程序的阶段。用 CommonJS API 编写出的应用，不仅可以利用 JavaScript 开发客户端应用，&lt;strong&gt;而且还可以编写以下应用。&lt;/strong&gt;&lt;br&gt;
-     •服务器端 JavaScript 应用程序。（nodejs）&lt;br&gt;
-     •命令行工具。&lt;br&gt;
-     •桌面图形界面应用程序。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;CommonJS 就是模块化的标准，nodejs 就是 CommonJS（模块化）的实现。&lt;/code&gt;&lt;/p&gt;
-&lt;h1 id=&#34;二-nodejs-中的模块化&#34;&gt;二、Nodejs 中的模块化&lt;/h1&gt;
-&lt;p&gt;Node 应用由模块组成，采用 CommonJS 模块规范。&lt;/p&gt;
-&lt;h2 id=&#34;21-在-node-中模块分为两类&#34;&gt;2.1 在 Node 中，模块分为两类:&lt;/h2&gt;
-&lt;p&gt;一类是 Node 提供的模块,称为&lt;strong&gt;核心模块&lt;/strong&gt;；另一类是用户编写的模块，称为&lt;strong&gt;文件模块&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;    • 核心模块部分在 Node 源代码的编译过程中，编译进了二进制执行文件。在 Node 进 程启动时，部分核心模块就被直接加载进内存中，所以这部分核心模块引入时，文件定位和 编译执行这两个步骤可以省略掉，并且在路径分析中优先判断，所以它的加载速度是最快的。 &lt;strong&gt;如：HTTP 模块 、URL 模块、Fs 模块都是 nodejs 内置的核心模块，可以直接引入使用。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;    • 文件模块则是在运行时动态加载，需要完整的路径分析、文件定位、编译执行过程、 速度相比核心模块稍微慢一些，但是用的非常多。&lt;strong&gt;这些模块需要我们自己定义。接下来我 们看一下 nodejs 中的自定义模块。&lt;/strong&gt;&lt;br&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;h2 id=&#34;22-commonjsnodejs中自定义模块的规定&#34;&gt;2.2 CommonJS（Nodejs）中自定义模块的规定：&lt;/h2&gt;
-&lt;p&gt;1.我们可以把公共的功能&lt;strong&gt;抽离成为一个单独的 js 文件作为&lt;/strong&gt;一个模块，默认情况下面这 个模块里面的方法或者属性，外面是没法访问的。如果要让外部可以访问模块里面的方法或 者属性，就必须在模块里面通过 exports 或者 module.exports 暴露属性或者方法。&lt;/p&gt;
-&lt;p&gt;2.在需要使用这些模块的文件中，通过 require 的方式引入这个模块。这个时候就可 以使用模块里面暴露的属性和方法。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608774648876.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;23-定义使用模块&#34;&gt;2.3 定义使用模块：&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;// 定义一个 tools.js 的模块 
-//模块定义
-var tools = {
-     sayHello: function() {
-        return &#39;hello NodeJS&#39;;
-        },
-        add: function(x, y) {
-            return x + y; 
-            } 
- };// 模块接口的暴露 
-// module.exports = tools; 
-    exports.sayHello = tools.sayHello; 
-    exports.add = tools.add;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;var http = require(&#39;http&#39;); 
-// 引入自定义的 tools.js 模块
-var tools= require(&#39;./tools&#39;); 
-tools.sayHello(); //使用模块
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;三-npm-init-生成-packagejson&#34;&gt;三、npm init 生成 package.json&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;npm init --yes
-&lt;/code&gt;&lt;/pre&gt;
-">NodeJs从零单排(2)</a>
+">NodeJs从零单排（下）</a>
       </div>
       
       <div class="item">
@@ -20646,7 +21860,290 @@ url.resolve(from, to) 添加或者替换地址
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608773581099.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-">NodeJs从零单排(1)</a>
+&lt;h1 id=&#34;五-什么是-commonjs&#34;&gt;五、什么是 CommonJs？&lt;/h1&gt;
+&lt;p&gt;JavaScript 是一个强大面向对象语言，它有很多快速高效的解释器。然而， JavaScript 标准定义的 API 是为了构建基于浏览器的应用程序。并没有制定一个用于更广泛的应用程序 的标准库。&lt;code&gt;CommonJS 规范的提出,主要是为了弥补当前 JavaScript 没有标准库的缺陷。它的 终极目标就是：提供一个类似 Python，Ruby 和 Java 语言的标准库&lt;/code&gt;，而不只是让 JavaScript 停 留在小脚本程序的阶段。用 CommonJS API 编写出的应用，不仅可以利用 JavaScript 开发客户端应用，&lt;strong&gt;而且还可以编写以下应用。&lt;/strong&gt;&lt;br&gt;
+     •服务器端 JavaScript 应用程序。（nodejs）&lt;br&gt;
+     •命令行工具。&lt;br&gt;
+     •桌面图形界面应用程序。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;CommonJS 就是模块化的标准，nodejs 就是 CommonJS（模块化）的实现。&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;六-nodejs-中的模块化&#34;&gt;六、Nodejs 中的模块化&lt;/h1&gt;
+&lt;p&gt;Node 应用由模块组成，采用 CommonJS 模块规范。&lt;/p&gt;
+&lt;h2 id=&#34;21-在-node-中模块分为两类&#34;&gt;2.1 在 Node 中，模块分为两类:&lt;/h2&gt;
+&lt;p&gt;一类是 Node 提供的模块,称为&lt;strong&gt;核心模块&lt;/strong&gt;；另一类是用户编写的模块，称为&lt;strong&gt;文件模块&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;    • 核心模块部分在 Node 源代码的编译过程中，编译进了二进制执行文件。在 Node 进 程启动时，部分核心模块就被直接加载进内存中，所以这部分核心模块引入时，文件定位和 编译执行这两个步骤可以省略掉，并且在路径分析中优先判断，所以它的加载速度是最快的。 &lt;strong&gt;如：HTTP 模块 、URL 模块、Fs 模块都是 nodejs 内置的核心模块，可以直接引入使用。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;    • 文件模块则是在运行时动态加载，需要完整的路径分析、文件定位、编译执行过程、 速度相比核心模块稍微慢一些，但是用的非常多。&lt;strong&gt;这些模块需要我们自己定义。接下来我 们看一下 nodejs 中的自定义模块。&lt;/strong&gt;&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&#34;22-commonjsnodejs中自定义模块的规定&#34;&gt;2.2 CommonJS（Nodejs）中自定义模块的规定：&lt;/h2&gt;
+&lt;p&gt;1.我们可以把公共的功能&lt;strong&gt;抽离成为一个单独的 js 文件作为&lt;/strong&gt;一个模块，默认情况下面这 个模块里面的方法或者属性，外面是没法访问的。如果要让外部可以访问模块里面的方法或 者属性，就必须在模块里面通过 exports 或者 module.exports 暴露属性或者方法。&lt;/p&gt;
+&lt;p&gt;2.在需要使用这些模块的文件中，通过 require 的方式引入这个模块。这个时候就可 以使用模块里面暴露的属性和方法。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608774648876.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;23-定义使用模块&#34;&gt;2.3 定义使用模块：&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 定义一个 tools.js 的模块 
+//模块定义
+var tools = {
+     sayHello: function() {
+        return &#39;hello NodeJS&#39;;
+        },
+        add: function(x, y) {
+            return x + y; 
+            } 
+ };// 模块接口的暴露 
+// module.exports = tools; 
+    exports.sayHello = tools.sayHello; 
+    exports.add = tools.add;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;var http = require(&#39;http&#39;); 
+// 引入自定义的 tools.js 模块
+var tools= require(&#39;./tools&#39;); 
+tools.sayHello(); //使用模块
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;七-npm-init-生成-packagejson&#34;&gt;七、npm init 生成 package.json&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;npm init --yes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;八-包与-npm&#34;&gt;八、包与 NPM&lt;/h1&gt;
+&lt;h2 id=&#34;1-包&#34;&gt;1. 包&lt;/h2&gt;
+&lt;p&gt;Nodejs 中除了它自己提供的&lt;span style=&#34;color:red&#34;&gt;核心模块&lt;/span&gt;外，我们可以&lt;span style=&#34;color:red&#34;&gt;自定义模块&lt;/span&gt;，也可以使用&lt;span style=&#34;color:red&#34;&gt;第三方的模块&lt;/span&gt;。Nodejs 中第三方模块由包组成，可以通过包来对一组具有相互依赖关系的模块进行统一管理。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608777425715.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;完全符合CommonJs规范的&lt;span style=&#34;color:red&#34;&gt;包目录&lt;/span&gt;一般包含如下这些文件。&lt;br&gt;
+• package.json :包描述文件。&lt;br&gt;
+• bin :用于存放可执行二进制文件的目录。&lt;br&gt;
+• lib :用于存放 JavaScript 代码的目录。&lt;br&gt;
+• doc :用于存放文档的目录。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;在 NodeJs 中通过 NPM 命令来下载第三方的模块（包）。&lt;/code&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.npmjs.com/package/silly-datetime&#34;&gt;https://www.npmjs.com/package/silly-datetime&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm i silly-datetime –save 
+var sd = require(&#39;silly-datetime&#39;); 
+sd.format(new Date(), &#39;YYYY-MM-DD HH:mm&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;h2 id=&#34;2-npm-介绍&#34;&gt;2. NPM 介绍&lt;/h2&gt;
+&lt;p&gt;npm 是&lt;code&gt;世界上最大的开放源代码&lt;/code&gt;的生态系统。我们可以通过 npm 下载各种各样的包， 这些源代码（包）我们可以在&lt;a href=&#34;https://www.npmjs.com&#34;&gt;https://www.npmjs.com&lt;/a&gt;找到。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;npm 是随同 NodeJS 一起安装的包管理工具，能解决 NodeJS 代码部署上的很多问题， 常见的使用场景有以下几种：&lt;/strong&gt;&lt;br&gt;
+ 允许用户从 NPM 服务器下载别人编写的第三方包到本地使用。(silly-datetime)&lt;br&gt;
+ 允许用户从 NPM 服务器下载并安装别人编写的命令行程序(工具)到本地使用。 （supervisor）&lt;br&gt;
+ 允许用户将自己编写的包或命令行程序上传到 NPM 服务器供别人使用。&lt;/p&gt;
+&lt;h1 id=&#34;九-npm-命令详解&#34;&gt;九、NPM 命令详解。&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;npm -v 查看 npm 版本&lt;/li&gt;
+&lt;li&gt;使用 npm 命令安装模块&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;npm install Module Name 
+如安装 jq 模块：
+npm install jquery
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;npm uninstall moudleName &lt;strong&gt;卸载模块&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;npm uninstall ModuleName
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;npm list 查看当前目录下已安装的 node 包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;npm list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;npm info jquery 查看 jquery 的版本&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;npm info 模块 //查看模块的版本
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;&lt;code&gt;指定版本安装 npm install jquery@1.8.0&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;十-packagejson&#34;&gt;十、package.json&lt;/h1&gt;
+&lt;p&gt;package.json定义了这个项目所需要的各种模块,以及项目的配置信息(比如名称、版本、 许可证等元数据)&lt;br&gt;
+1、&lt;code&gt;创建 package.json&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm init 或者 npm init –yes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2、&lt;code&gt;package.json 文件&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+     &amp;quot;name&amp;quot;: &amp;quot;test&amp;quot;, 
+     &amp;quot;version&amp;quot;: &amp;quot;1.0.0&amp;quot;, 
+     &amp;quot;description&amp;quot;: &amp;quot;test&amp;quot;, 
+     &amp;quot;main&amp;quot;: &amp;quot;main.js&amp;quot;, 
+     &amp;quot;keywords&amp;quot;: [ &amp;quot;test&amp;quot; ],
+     &amp;quot;author&amp;quot;: &amp;quot;wade&amp;quot;,
+     &amp;quot;license&amp;quot;: &amp;quot;MIT&amp;quot;, 
+     &amp;quot;dependencies&amp;quot;: { 
+        &amp;quot;express&amp;quot;: &amp;quot;^4.10.1&amp;quot;
+        },
+        &amp;quot;devDependencies&amp;quot;: {
+        &amp;quot;jslint&amp;quot;: &amp;quot;^0.6.5&amp;quot; 
+     }
+ }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3、安装模块并把模块写入 package.json(依赖)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm install babel-cli --save-dev 
+npm install 模块 --save 
+npm install 模块 --save-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;4、&lt;code&gt;dependencies 与 devDependencies 之间的区别?&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;使用 npm install node_module –save 自动更新 dependencies 字段值;&lt;br&gt;
+使用 npm install node_module –save-dev 自动更新 devDependencies 字段值;&lt;/p&gt;
+&lt;p&gt;dependencie 配置当前程序所依赖的其他包。&lt;br&gt;
+devDependencie 配置当前程序所依赖的其他包，比如一些工具之类的配置在这里&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;dependencies&amp;quot;: { 
+    &amp;quot;ejs&amp;quot;: &amp;quot;^2.3.4&amp;quot;, 
+    &amp;quot;express&amp;quot;: &amp;quot;^4.13.3&amp;quot;,
+     &amp;quot;formidable&amp;quot;: &amp;quot;^1.0.17&amp;quot;
+ }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div style=&#34;color:red&#34;&gt;
+^表示第一位版本号不变，后面两位取最新的&lt;br&gt;
+~表示前两位不变，最后一个取最新&lt;br&gt;
+*表示全部取最新
+&lt;/div&gt;
+&lt;h1 id=&#34;十一-安装淘宝镜像&#34;&gt;十一、安装淘宝镜像&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.npmjs.org&#34;&gt;http://www.npmjs.org&lt;/a&gt;  npm 包官网&lt;br&gt;
+&lt;a href=&#34;https://npm.taobao.org/&#34;&gt;https://npm.taobao.org/&lt;/a&gt; 淘宝 npm 镜像官网&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;淘宝 NPM 镜像&lt;/strong&gt;是一个完整 &lt;strong&gt;npmjs.org&lt;/strong&gt; 镜像，你可以用此代替官方版本(只读)，同步频 率目前为 10 分钟 一次以保证尽量与官方服务同步。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;我们可以使用我们定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm install -g cnpm --registry=https://registry.npm.taobao.org
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;十二-node文件操作&#34;&gt;十二、 node文件操作&lt;/h1&gt;
+&lt;h2 id=&#34;1-fsstat-检测是文件还是目录&#34;&gt;1. fs.stat 检测是文件还是目录&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
+fs.stat(&#39;hello.js&#39;, (error, stats) =&amp;gt;{ 
+    if(error){
+         console.log(error) 
+         } else {
+        console.log(stats) 
+        console.log(`文件：${stats.isFile()}`) 
+        console.log(`目录：${stats.isDirectory()}`) 
+        } 
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-fsmkdir-创建目录&#34;&gt;2. fs.mkdir 创建目录&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;)
+fs.mkdir(&#39;logs&#39;, (error) =&amp;gt; { 
+    if(error){ 
+       console.log(error) 
+   } else { 
+    console.log(&#39;成功创建目录：logs&#39;) 
+     } 
+ })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-fswritefile-创建写入文件&#34;&gt;3. fs.writeFile 创建写入文件&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;fs.writeFile(&#39;logs/hello.log&#39;, &#39;您好 ~ \n&#39;, (error) =&amp;gt; { 
+    if(error) { 
+        console.log(error) 
+   } else { 
+        console.log(&#39;成功写入文件&#39;) 
+    } 
+ })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-fsappendfile-追加文件&#34;&gt;4. fs.appendFile 追加文件&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
+fs.appendFile(&#39;logs/hello.log&#39;, &#39;hello ~ \n&#39;, (error) =&amp;gt; { 
+    if(error) { 
+    console.log(error) 
+    } else { 
+        console.log(&#39;成功写入文件&#39;) 
+    } 
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5fsreadfile-读取文件&#34;&gt;5.fs.readFile 读取文件&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
+fs.readFile(&#39;logs/hello.log&#39;, &#39;utf8&#39;, (error, data) =&amp;gt;{ 
+    if (error) { 
+     console.log(error) 
+} else { 
+    console.log(data) 
+    } 
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6fsreaddir-读取目录&#34;&gt;6.fs.readdir 读取目录&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
+fs.readdir(&#39;logs&#39;, (error, files) =&amp;gt; { 
+   if (error) { 
+     console.log(error) 
+  } else { 
+    console.log(files) 
+    }
+ })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;7fsrename-重命名&#34;&gt;7.fs.rename 重命名&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
+fs.rename(&#39;js/hello.log&#39;, &#39;js/greeting.log&#39;, (error) =&amp;gt;{ 
+ if (error) { 
+     console.log(error) 
+  } else { 
+console.log(&#39;重命名成功&#39;) 
+    }
+ })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;8-fsrmdir-删除目录&#34;&gt;8. fs.rmdir 删除目录&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
+fs.rmdir(&#39;logs&#39;, (error) =&amp;gt;{ 
+ if (error) { 
+    console.log(error) 
+    } else { 
+    console.log(&#39;成功的删除了目录：logs&#39;) 
+     } 
+ })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;9-fsunlink-删除文件&#34;&gt;9. fs.unlink 删除文件&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
+fs.unlink(`logs/${file}`, (error) =&amp;gt; { 
+  if (error) { 
+    console.log(error) 
+    } else { 
+    console.log(`成功的删除了文件: ${file}`) 
+    } 
+ })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;10-fscreatereadstream-从文件流中读取数据&#34;&gt;10. fs.createReadStream 从文件流中读取数据&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;) 
+var fileReadStream = fs.createReadStream(&#39;data.json&#39;) 
+let count=0; 
+var str=&#39;&#39;; 
+fileReadStream.on(&#39;data&#39;, (chunk) =&amp;gt; { 
+    console.log(`${ ++count } 接收到：${chunk.length}`);
+     str+=chunk
+     })
+fileReadStream.on(&#39;end&#39;, () =&amp;gt; { 
+    console.log(&#39;--- 结束 ---&#39;); 
+    console.log(count); 
+    console.log(str); 
+})
+fileReadStream.on(&#39;error&#39;, (error) =&amp;gt; { 
+    console.log(error)
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;11-fscreatewritestream-写入文件&#34;&gt;11. fs.createWriteStream 写入文件&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var fs = require(&amp;quot;fs&amp;quot;); 
+var data = &#39;我是从数据库获取的数据，我要保存起来&#39;; 
+// 创建一个可以写入的流，写入到文件 output.txt 中
+var writerStream = fs.createWriteStream(&#39;output.txt&#39;); 
+// 使用 utf8 编码写入数据 
+writerStream.write(data,&#39;UTF8&#39;); 
+// 标记文件末尾 
+writerStream.end();
+// 处理流事件 --&amp;gt; finish 事件
+writerStream.on(&#39;finish&#39;, function() { 
+    /*finish - 所有数据已被写入到底层系统时触发。*/
+console.log(&amp;quot;写入完成。&amp;quot;); 
+}); 
+writerStream.on(&#39;error&#39;, function(err){ 
+    console.log(err.stack); 
+}); 
+console.log(&amp;quot;程序执行完毕&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;12-管道流&#34;&gt;12. 管道流&lt;/h2&gt;
+&lt;p&gt;管道提供了一个输出流到输入流的机制。通常我们用于从一个流中获取数据并将数据传 递到另外一个流中。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1608779085554.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如上面的图片所示，我们把文件比作装水的桶，而水就是文件里的内容，我们用一根管子(pipe)连接两个桶使得水从一个桶流入另一个桶，这样就慢慢的实现了大文件的复制过程。 以下实例我们通过读取一个文件内容并将内容写入到另外一个文件中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var fs = require(&amp;quot;fs&amp;quot;); 
+// 创建一个可读流 
+var readerStream = fs.createReadStream(&#39;input.txt&#39;); 
+// 创建一个可写流 
+var writerStream = fs.createWriteStream(&#39;output.txt&#39;); 
+// 管道读写操作 
+// 读取 input.txt 文件内容，并将内容写入到 output.txt 文件中 
+readerStream.pipe(writerStream);
+console.log(&amp;quot;程序执行完毕&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;十三&#34;&gt;十三、&lt;/h1&gt;
+">NodeJs从零单排（上）</a>
       </div>
       
       <div class="item">
