@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>Vue&amp;markdown编辑器--mavonEditor | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1621343776245">
+<link rel="shortcut icon" href="/favicon.ico?v=1621398816890">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1200,6 +1200,10 @@ exports default {
 &lt;p&gt;本文题目源自&lt;a href=&#34;https://www.nowcoder.com/ta/coding-interviews?page=1&#34;&gt;牛客网&lt;/a&gt;，与&lt;a href=&#34;https://leetcode-cn.com/problemset/lcof/&#34;&gt;Leetcode&lt;/a&gt;上有些许差异&lt;br&gt;
 文章部分内容来自互联网，如有版权问题欢迎与我联系~&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;特别鸣谢 以下几位大佬的图解和思路(包括但不完全)&lt;br&gt;
+&lt;a href=&#34;https://leetcode-cn.com/u/jyd/&#34;&gt;Krahets&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h1 id=&#34;1-二维数组中的查找&#34;&gt;1. 二维数组中的查找&lt;/h1&gt;
 &lt;h2 id=&#34;1题目描述&#34;&gt;1.🎨题目描述&lt;/h2&gt;
 &lt;p&gt;在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。&lt;br&gt;
@@ -1384,14 +1388,256 @@ NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。&lt;
   return rotateArray[left];
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;7&#34;&gt;7.&lt;/h1&gt;
+&lt;h1 id=&#34;7-斐波那契数列&#34;&gt;7. 斐波那契数列&lt;/h1&gt;
 &lt;h2 id=&#34;1-题目描述-6&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0，第1项是1）。n≤39&lt;/p&gt;
 &lt;h2 id=&#34;2-解题思路-7&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;动态规划&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;原理： 以斐波那契数列性质 f(n + 1) = f(n) + f(n - 1) 为转移方程。&lt;/li&gt;
+&lt;li&gt;从计算效率、空间复杂度上看，动态规划是本题的最佳解法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;动态规划解析&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;状态定义： 设 dp 为一维数组，其中 dp[i] 的值代表 斐波那契数列第 i 个数字 。&lt;/li&gt;
+&lt;li&gt;转移方程： dp[i + 1] = dp[i] + dp[i - 1]，即对应数列定义 f(n + 1) = f(n) + f(n - 1) ；&lt;/li&gt;
+&lt;li&gt;初始状态： dp[0] = 0, dp[1] = 1 ，即初始化前两个数字；&lt;/li&gt;
+&lt;li&gt;返回值： dp[n] ，即斐波那契数列的第 n 个数字。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;空间复杂度优化&lt;/strong&gt;：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;若新建长度为 nn 的 dpdp 列表，则空间复杂度为 O(N)。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;由于 dp 列表第 i 项只与第 i-1 和第 i-2 项有关，因此只需要初始化三个整形变量 sum, a, b ，利用辅助变量 sum 使 a, b 两数字交替前进即可 （具体实现见代码） 。&lt;/li&gt;
+&lt;li&gt;节省了 dp 列表空间，因此空间复杂度降至 O(1) 。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;3-复杂度与代码-7&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
-&lt;h1 id=&#34;8&#34;&gt;8.&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度&lt;/strong&gt; O(N) ： 计算 f(n) 需循环 n 次，每轮循环内计算操作使用 O(1) 。&lt;br&gt;
+&lt;strong&gt;空间复杂度&lt;/strong&gt; O(1)： 几个标志变量使用常数大小的额外空间。&lt;br&gt;
+&lt;code&gt;动态规划&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;每一次计算结果都能得到利用，易于理解，只保存前两个计算结果，性能最优
+function Fibonacci(n)
+{
+  let a = 0, b = 1;
+  let sum = 0;
+  for(let i = 0; i &amp;lt; n; i++){
+      sum = a + b;
+      a = b;
+      b = sum;
+  }
+    return a;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;备忘录算法&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Fibonacci(n)
+{
+    const cache = {
+        0: 0,
+        1: 1
+    };
+    return _Fibonacci(n);
+    
+    function _Fibonacci(n){
+        if(cache[n] !== undefined){
+            return cache[n];
+        }
+        cache[n] = _Fibonacci(n-1) + _Fibonacci(n-2);
+        return cache[n]
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;8-跳台阶&#34;&gt;8. 跳台阶&lt;/h1&gt;
 &lt;h2 id=&#34;1-题目描述-7&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。&lt;/p&gt;
 &lt;h2 id=&#34;2-解题思路-8&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;此类求 多少种可能性 的题目一般都有&lt;strong&gt;递推性质&lt;/strong&gt; ，即 f(n) 和 f(n-1)…f(1) 之间是有联系的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;设跳上 n 级台阶有 f(n) 种跳法。在所有跳法中，青蛙的最后一步只有两种情况： 跳上 1 级或 2 级台阶。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当为 1 级台阶： 剩 n-1 个台阶，此情况共有 f(n-1) 种跳法；&lt;/li&gt;
+&lt;li&gt;当为 2 级台阶： 剩 n-2 个台阶，此情况共有 f(n-2) 种跳法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;f(n) 为以上两种情况之和，即 f(n)=f(n-1)+f(n-2) ，以上递推性质为斐波那契数列。本题可转化为 &lt;strong&gt;求斐波那契数列第 n 项的值&lt;/strong&gt; ，与 斐波那契数列 等价，唯一的不同在于起始数字不同。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;青蛙跳台阶问题： f(0)=1 , f(1)=1 , f(2)=2 ；&lt;/li&gt;
+&lt;li&gt;斐波那契数列问题： f(0)=0 , f(1)=1 , f(2)=1 。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1621384519106.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;3-复杂度与代码-8&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度&lt;/strong&gt; O(N) ： 计算 f(n) 需循环 n 次，每轮循环内计算操作使用 O(1) 。&lt;br&gt;
+&lt;strong&gt;空间复杂度&lt;/strong&gt; O(1)： 几个标志变量使用常数大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var numWays = function(n) {
+    let a = 1, b = 1;
+    let sum = 0;
+    for(let i = 0; i &amp;lt; n; i++){
+        sum = a + b;
+        a = b;
+        b = sum;
+    }
+    return a;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;9-跳台阶扩展问题&#34;&gt;9. 跳台阶扩展问题&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-8&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-9&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;假设跳 n 级台阶的跳法数量是 f(n)个。&lt;/p&gt;
+&lt;p&gt;那么根据题意，青蛙可能从 n-1 级直接跳上来，也可能从 n-2 级直接跳上来，依次类推：f(n) = f(n - 1) + f(n - 2) + ... + f(1)&lt;br&gt;
+同理：f(n - 1) = f(n - 2) + f(n - 3) + ... + f(1)&lt;br&gt;
+所以，将公式 1 中的f(n - 2) + f(n - 3) + ... + f(1)替换为f(n - 1)。公式 1 变为：f(n) = f(n - 1) + f(n - 1) = f(n - 1) * 2 （公式 3）&lt;br&gt;
+同理：f(n - 1) = f(n - 2) + f(n - 2) = f(n - 2) * 2（公式 4）&lt;/p&gt;
+&lt;p&gt;结合公式 3 和公式 4: f(n) = f(n - 2) * 2 * 2。因此可以推出：f(n) = 2^(n - 1)&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-9&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;function jumpFloorII(number)
+{
+    return Math.pow(2,number - 1)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;10-矩形覆盖&#34;&gt;10. 矩形覆盖&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-9&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2*1的小矩形无重叠地覆盖一个2*n的大矩形，从同一个方向看总共有多少种不同的方法？&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-10&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;迭代&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;涂掉最后一级矩形的时候，是用什么方式完成的？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;n = 1 的时候
+&lt;ul&gt;
+&lt;li&gt;只能横着覆盖，一种&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;n = 2 的时候
+&lt;ul&gt;
+&lt;li&gt;可以横着和竖着覆盖，两种&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;n = 3 的时候
+&lt;ul&gt;
+&lt;li&gt;第三级横着覆盖，用了一级，剩下 n = 2，有两种覆盖方法&lt;/li&gt;
+&lt;li&gt;第三季竖着覆盖，用了两级，剩下 n = 1，有一种覆盖方法&lt;/li&gt;
+&lt;li&gt;总共有 3 种&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;n = 4 的时候
+&lt;ul&gt;
+&lt;li&gt;第 4 级横着覆盖，用了一级，剩下 n = 3，有三种覆盖方法&lt;/li&gt;
+&lt;li&gt;第 4 级竖着覆盖，用了两级，剩下 n = 2，有两种覆盖方法&lt;/li&gt;
+&lt;li&gt;总共有 5 种方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;n = n 的时候
+&lt;ul&gt;
+&lt;li&gt;第 n 级横着覆盖，用了一级，剩下 n = n - 1，所以关注第 n - 1 种有几种覆盖方法&lt;/li&gt;
+&lt;li&gt;第 n 级竖着覆盖，用了两级，剩下 n = n - 2，所以关注第 n - 2 种有几种覆盖方法&lt;/li&gt;
+&lt;li&gt;总和为两种情况的总和&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从 n = 3 和 n = 4 的示意图如下：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1621386677240.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1621386681434.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-10&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度&lt;/strong&gt;：O（n）&lt;br&gt;
+&lt;strong&gt;空间复杂度&lt;/strong&gt;：O（1）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function rectCover(number)
+{
+ if(number&amp;lt;=2)
+     return number
+  let a = 1
+  let b = 2
+  let sum = 0
+  for(let i=3;i&amp;lt;=number;i++){
+      sum = a+b;
+      a = b;
+      b = sum
+  }
+    return sum;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;11-二进制中1的个数&#34;&gt;11. 二进制中1的个数&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-10&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一个整数，输出该数32位二进制表示中1的个数。其中负数用补码表示。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-11&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;巧用 n&amp;amp;(n−1)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(n−1) 解析： 二进制数字 n 最右边的 1 变成 0 ，此 1 右边的 0 都变成 1 。&lt;/li&gt;
+&lt;li&gt;n&amp;amp;(n−1) 解析： 二进制数字 n &lt;strong&gt;最右边的 1 变成 0&lt;/strong&gt; ，其余不变。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1621390431142.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;算法流程&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化数量统计变量 res 。&lt;/li&gt;
+&lt;li&gt;循环消去最右边的 1 ：当 n = 0 时跳出。
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;res += 1&lt;/strong&gt; ： 统计变量加 1 ；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;n &amp;amp;= n - 1&lt;/strong&gt; ： 消去数字 n 最右边的 1 。&lt;br&gt;
+返回统计数量 res 。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-11&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;时间复杂度&lt;/strong&gt; O(M) ： n&amp;amp;(n−1) 操作仅有减法和与运算，占用 O(1) ；设 M 为二进制数字 n 中 1 的个数，则需循环 M 次（每轮消去一个 1 ），占用 O(M) 。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;空间复杂度&lt;/strong&gt; O(1) ： 变量 res 使用常数大小额外空间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;var hammingWeight = function(n) {
+    let count = 0;
+    while(n){
+        n = n &amp;amp; (n - 1);
+        count++;
+    }
+    return count;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;12-数值的整数次方&#34;&gt;12. 数值的整数次方&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-11&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;实现 pow(x, n) ，即计算 x 的 n 次幂函数（即，x^n）。不得使用库函数，同时不需要考虑大数问题。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-12&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;快速幂解析（二分法角度）：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;快速幂实际上是二分思想的一种应用。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1621392122524.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1621392145517.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;转化为位运算&lt;/strong&gt;：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;向下整除 n // 2 等价于 右移一位 n &amp;gt;&amp;gt; 1 ；&lt;/li&gt;
+&lt;li&gt;取余数 n % 2 等价于 判断二进制最右一位值 n&amp;amp;1 ；&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1621392947278.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-复杂度与代码-12&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度&lt;/strong&gt; O(log2n)​ ： 二分的时间复杂度为对数级别。&lt;br&gt;
+&lt;strong&gt;空间复杂度&lt;/strong&gt; O(logn) ： 采用递归结构。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var myPow = function(x, n) {
+  if(x === 0) return 0;
+  let res = 1;
+  if(n &amp;lt; 0){
+    x = 1 / x;
+    n = -n;
+  }
+  while(n &amp;gt; 0){
+    // 等价于n%2取余数 余1为奇数
+    if(n &amp;amp; 1) res *= x;
+    x *= x;
+    n = n &amp;gt;&amp;gt;&amp;gt; 1;
+  }
+  return res;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/solution/jsjie-ti-yu-dao-de-keng-he-ji-by-wangfei-cc6w/&#34;&gt;js位运算与超时&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;8&#34;&gt;8.&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-12&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;h2 id=&#34;2-解题思路-13&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;h2 id=&#34;3-复杂度与代码-13&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
 ">【JS】手撕剑指offerⅡ</a>
       </div>
       
