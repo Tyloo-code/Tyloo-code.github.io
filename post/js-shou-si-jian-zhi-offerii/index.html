@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【JS】手撕剑指offerⅡ | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624848542272">
+<link rel="shortcut icon" href="/favicon.ico?v=1624959146447">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">45</span>
+        <span class="site-item-stat-count">47</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1912,6 +1912,674 @@ function isSubTree(pRoot1, pRoot2){
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/diary-ru-he-yong-git-dai-chuan-yi-lu/"" data-c="
+          &lt;h2 id=&#34;零-前言&#34;&gt;零. 前言&lt;/h2&gt;
+&lt;p&gt;最近在网上有个真实发生的案例比较火，说的是一个新入职的员工，不会用 Git 拉代码，第二天被开除。由此，可见 Git 对我们工作的重要性，无论是前端后端，都是离不开 Git 的，下面就让我们一探究竟吧。&lt;/p&gt;
+&lt;p&gt;上面的案例引申出一个问题，入职一家新公司，你的 leader 给你分配了仓库的权限后，如何配置本地的 Git 环境并拉取代码？莫慌，按照下面我讲的四个步骤走，保证你可以顺利使用 Git 进行拉取代码！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载 Git 下载地址 (https://git-scm.com/downloads) ，选择自己系统对应的版本下载即可。&lt;/li&gt;
+&lt;li&gt;在你的电脑上生成 &lt;code&gt;ssh&lt;/code&gt; 秘钥，打开终端，执行 &lt;code&gt;ssh-keygen -t rsa -C &amp;quot;你公司内部邮箱地址&amp;quot;&lt;/code&gt;，如果执行成功，切换到 &lt;code&gt;~/.ssh&lt;/code&gt; 目录下，此时目录应该如下所示。复制 &lt;code&gt;id_rsa.pub&lt;/code&gt; 的内容。&lt;/li&gt;
+&lt;li&gt;这里以 Github 为例，如下图所示，进入 &lt;code&gt;settings -&amp;gt; SSH and GPG keys&lt;/code&gt; 通过 &lt;code&gt;cat&lt;/code&gt; 命令查看文件 &lt;code&gt;id_rsa.pub&lt;/code&gt; 的内容，然后复制过来，点击 &lt;code&gt;add ssh key&lt;/code&gt;，这一步等于说把你的公钥放到了 Github 上进行托管。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624949967724.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;全局配置 Git 的用户名和邮箱&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;quot;xxx&amp;quot;
+git config --global user.email &amp;quot;xxx@xx.com&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;完成以上四步，你就可以愉快 pull 代码开发了。和 &lt;code&gt;https&lt;/code&gt; 拉取方式不同的是，https 方式需要每次提交前都&lt;code&gt;手动输入用户名和密码&lt;/code&gt;，&lt;code&gt;ssh&lt;/code&gt; 的方式配置完毕后 Git 都会使用你本地的私钥和远程仓库的公钥进行验证是否是一对秘钥，从而&lt;code&gt;简化了操作&lt;/code&gt;流程。&lt;/p&gt;
+&lt;h2 id=&#34;一-git简介&#34;&gt;一. Git简介&lt;/h2&gt;
+&lt;p&gt;在介绍 Git 的相关操作前，我觉得非常有必要了解 Git 的由来，以及 Git 是用来解决什么问题的。Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。Linus Torvalds ，这个人我相信大家都知道吧，开源 Linux 系统的发明人。如今，你看到的大部分服务器其实都是运行在 Linux 系统上，令人感到称叹的是，这位大神级别的程序员不仅创造了 Linux 系统。那 Linux 的代码是如何管理的呢？2002年之前，世界各地的志愿者把源代码文件通过 diff 的方式发给 Linus，然后由 Linus 本人通过手工方式合并代码！要知道，当时的 Linux 的代码量已经很大了，通过人工管理的方式，一是容易出错，二是效率低。于是 Linus 选择了一个商业的版本控制系统 BitKeeper，BitKeeper 的东家 BitMover 公司出于人道主义精神，授权 Linux 社区免费使用这个版本控制系统。最后，出于某种原因，BitMover 公司收回了 Linux 社区的免费使用权，于是 Linus 花了两周时间自己用 C 语言写了一个分布式版本控制系统，这就是 Git 的由来了。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624952157608.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Git的定义是：&lt;strong&gt;分布式版本控制系统&lt;/strong&gt;，用于项目开发中的版本控制。&lt;/p&gt;
+&lt;p&gt;从本质上来讲 Git 是一个&lt;strong&gt;内容寻址（content-addressable）文件系统&lt;/strong&gt;，并在此之上提供了一个版本控制系统的用户界面。&lt;/p&gt;
+&lt;p&gt;Git 的核心部分是一个简单的&lt;strong&gt;键值对数据库&lt;/strong&gt;（key-value data store）。你可以向该数据库插入任意类型的内容，它会返回一个键值，通过该键值可以在任意时刻再次检索（retrieve）该内容。&lt;/p&gt;
+&lt;p&gt;git管理的项目工作目录下的每一个文件都不外乎这两种状态：已跟踪或未跟踪。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;已跟踪的文件&lt;/strong&gt;是指那些被纳入了版本控制的文件，在上一次快照中有它们的记录，在工作一段时间后，它们的状态可能处于未修改，已修改或已放入暂存区。&lt;/li&gt;
+&lt;li&gt;工作目录中除已跟踪文件以外的所有其它文件都属于&lt;strong&gt;未跟踪文件&lt;/strong&gt;，它们既不存在于上次快照的记录中，也没有放入暂存区。&lt;/li&gt;
+&lt;li&gt;初次克隆某个仓库的时候，工作目录中的所有文件都属于已跟踪文件，并处于未修改状态。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;Git 保存的不是文件的变化或者差异，而是一系列不同时刻的文件快照。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在进行提交操作时，Git 会保存一个&lt;strong&gt;提交对象&lt;/strong&gt;（commit object）。该提交对象会包含一个指向暂存内容快照的指针。但不仅仅是这样，该提交对象还包含了作者的姓名和邮箱、提交时输入的信息以及指向它的父对象的指针。&lt;/p&gt;
+&lt;h2 id=&#34;二-git-的工作区域和流程&#34;&gt;二. Git 的工作区域和流程&lt;/h2&gt;
+&lt;p&gt;要想弄懂 Git 是怎么对我们的代码进行管理的，那首当其冲的是了解 Git 的工作区域是如何构成的。因为，只有彻底弄懂了 Git 工作区域的构成，你才可以在适当的区域使用合适的命令。如下图所示，此图包含了 Git 的 4 个工作区和一些常见的操作。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624952803223.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Workspace&lt;/strong&gt;：工作区，就是平时进行开发改动的地方，是当前看到最新的内容，在开发的过程也就是对工作区的操作。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Index&lt;/strong&gt;：暂存区，当执行 &lt;code&gt;git add&lt;/code&gt; 的命令后，工作区的文件就会被移入暂存区，暂存区标记了当前工作区中哪些内容是被 Git 管理的，当完成某个需求或者功能后需要提交代码，第一步就是通过 &lt;code&gt;git add&lt;/code&gt; 先提交到暂存区。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Repository&lt;/strong&gt;：本地仓库，位于自己的电脑上，通过 &lt;code&gt;git commit&lt;/code&gt; 提交暂存区的内容，会进入本地仓库。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Remote&lt;/strong&gt;：远程仓库，用来托管代码的服务器，远程仓库的内容能够被分布在多个地点的处于协作关系的本地仓库修改，本地仓库修改完代码后通过 &lt;code&gt;git push&lt;/code&gt; 命令同步代码到远程仓库。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;一般来说，Git 的工作流程分为以下几步&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在工作区开发，添加，修改文件。&lt;/li&gt;
+&lt;li&gt;将修改后的文件放入暂存区。&lt;/li&gt;
+&lt;li&gt;将暂存区域的文件提交到本地仓库。&lt;/li&gt;
+&lt;li&gt;将本地仓库的修改推送到远程仓库。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;三-git-基本操作&#34;&gt;三. Git 基本操作&lt;/h2&gt;
+&lt;h3 id=&#34;1-git-add&#34;&gt;1. git add&lt;/h3&gt;
+&lt;p&gt;添加文件到暂存区&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 添加某个文件到暂存区，后面可以跟多个文件，以空格区分
+git add xxx
+# 添加当前更改的所有文件到暂存区。
+git add .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-git-commit&#34;&gt;2. git commit&lt;/h3&gt;
+&lt;p&gt;提交代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 提交暂存的更改，会新开编辑器进行编辑
+git commit 
+# 提交暂存的更改，并记录下备注
+git commit -m &amp;quot;you message&amp;quot;
+# 等同于 git add . &amp;amp;&amp;amp; git commit -m
+git commit -am
+# 对最近一次的提交的信息进行修改,此操作会修改 commit 的 hash 值
+git commit --amend
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-git-pull&#34;&gt;3. git pull&lt;/h3&gt;
+&lt;p&gt;拉取代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 从远程仓库拉取代码并合并到本地，可简写为 git pull 等同于 git fetch &amp;amp;&amp;amp; git merge 
+git pull &amp;lt;远程主机名&amp;gt; &amp;lt;远程分支名&amp;gt;:&amp;lt;本地分支名&amp;gt;
+# 使用 rebase 的模式进行合并
+git pull --rebase &amp;lt;远程主机名&amp;gt; &amp;lt;远程分支名&amp;gt;:&amp;lt;本地分支名&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;4-git-fetch&#34;&gt;4. git fetch&lt;/h3&gt;
+&lt;p&gt;与 &lt;code&gt;git pull&lt;/code&gt;不同的是 &lt;code&gt;git fetch&lt;/code&gt; 操作仅仅只会拉取远程的&lt;code&gt;更改&lt;/code&gt;，不会自动进行 &lt;code&gt;merge&lt;/code&gt; 操作。对你当前的代码没有影响&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 获取远程仓库特定分支的更新
+git fetch &amp;lt;远程主机名&amp;gt; &amp;lt;分支名&amp;gt;
+# 获取远程仓库所有分支的更新
+git fetch --all
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;5-git-branch&#34;&gt;5. git branch&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# 新建本地分支，但不切换
+git branch &amp;lt;branch-name&amp;gt; 
+# 查看本地分支
+git branch
+# 查看远程分支
+git branch -r
+# 查看本地和远程分支
+git branch -a
+# 删除本地分支
+git branch -D &amp;lt;branch-nane&amp;gt;
+# 重新命名分支
+git branch -m &amp;lt;old-branch-name&amp;gt; &amp;lt;new-branch-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;四-工作中使用-git-解决问题的场景&#34;&gt;四. 工作中使用 Git 解决问题的场景&lt;/h2&gt;
+&lt;h3 id=&#34;1-git-rebase-让你的提交记录更加清晰可读&#34;&gt;1. git rebase 让你的提交记录更加清晰可读&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;git rebase 的使用&lt;/strong&gt;&lt;br&gt;
+&lt;code&gt;rebase&lt;/code&gt; 翻译为变基，他的作用和 &lt;code&gt;merge&lt;/code&gt; 很相似，用于把一个分支的修改合并到当前分支上。&lt;br&gt;
+如下图所示，下图介绍了经过 &lt;code&gt;rebase&lt;/code&gt; 后提交历史的变化情况。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624954131955.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在我们来用一个例子来解释一下上面的过程。&lt;/p&gt;
+&lt;p&gt;假设我们现在有 2 条分支，一个为 master，一个为 feature/1，他们都基于初始的一个提交 add readme 进行检出分支，之后，master 分支增加了 3.js ,和 4.js 的文件，分别进行了 2 次提交，feature/1 也增加了 1.js 和 2.js 的文件，分别对应以下 2 条提交记录。&lt;/p&gt;
+&lt;p&gt;此时，对应分支的提交记录如下。&lt;/p&gt;
+&lt;p&gt;master 分支如下图：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624955213531.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+feature/1 分支如下图:&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624955223788.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+结合起来看是这样的&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624955240607.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+此时，切换到 feature/1 分支下，执行 &lt;code&gt;git rebase master&lt;/code&gt;，成功之后，通过 &lt;code&gt;git log&lt;/code&gt; 查看记录。&lt;/p&gt;
+&lt;p&gt;如下图所示：可以看到先是逐个应用了 mater 分支的更改，然后以 master 分支最后的提交作为基点，再逐个应用 feature/1 的每个更改。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624955270432.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;所以，我们的提交记录就会非常清晰，没有分叉，上面演示的是比较顺利的情况，但是大部分情况下，rebase 的过程中会产生冲突的，此时，就需要手动解决冲突，然后使用依次 &lt;code&gt;git add&lt;/code&gt; 、&lt;code&gt;git rebase --continue&lt;/code&gt; 的方式来处理冲突，完成 rebase 的过程，如果不想要某次 rebase 的结果，那么需要使用 &lt;code&gt;git rebase --skip&lt;/code&gt; 来跳过这次 rebase 操作。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;git merge 和 git rebase 的区别&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;不同于 &lt;code&gt;git rebase&lt;/code&gt; 的是，&lt;code&gt;git merge&lt;/code&gt; 在不是 fast-forward（快速合并）的情况下，会产生一条额外的合并记录，类似 &lt;code&gt;Merge branch &#39;xxx&#39; into &#39;xxx&#39;&lt;/code&gt; 的一条提交信息。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624955493449.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+另外，在解决冲突的时候，用 merge 只需要解决一次冲突即可，简单粗暴，而用 rebase 的时候 ，需要依次解决每次的冲突，才可以提交。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;git rebase 交互模式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在开发中，常会遇到在一个分支上产生了很多的无效的提交，这种情况下使用 rebase 的交互式模式可以把已经发生的多次提交压缩成一次提交，得到了一个干净的提交历史，例如某个分支的提交历史情况如下：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624955745963.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+进入交互式模式的方式是执行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git rebase -i &amp;lt;base-commit&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参数 &lt;code&gt;base-commit&lt;/code&gt; 就是指明操作的基点提交对象，基于这个基点进行 rebase 的操作，对于上述提交历史的例子，我们要把最后的一个提交对象（ ac18084 ）之前的提交压缩成一次提交，我们需要执行的命令格式是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git rebase -i ac18084
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此时会进入一个 vim 的交互式页面，编辑器列出的信息像下列这样。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624955780038.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+想要合并这一堆更改，我们要使用 Squash 策略进行合并，即把当前的 commit 和它的上一个 commit 内容进行合并， 大概可以表示为下面这样，在交互模式的 rebase 下，至少保留一个 pick，，否则命令会执行失败。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pick  ... ...
+s     ... ... 
+s     ... ... 
+s     ... ... 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改文件后 按下 &lt;code&gt;:&lt;/code&gt; 然后 &lt;code&gt;wq&lt;/code&gt; 保存退出，此时又会弹出一个编辑页面，这个页面是用来编辑提交的信息，修改为 &lt;code&gt;feat: 更正&lt;/code&gt;，最后保存一下，接着使用 &lt;code&gt;git branch&lt;/code&gt; 查看提交的 commit 信息，rebase 后的提交记录如下图所示，是不是清爽了很多？rebase 操作可以让我们的提交历史变得更加清晰。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624955816867.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;特别注意，只能在自己使用的 feature 分支上进行 rebase 操作，不允许在集成分支上进行 rebase，因为这种操作会修改集成分支的历史记录。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;2-使用-git-cherry-pick-获取指定的-commit&#34;&gt;2. 使用 git cherry-pick 获取指定的 commit&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;git cherry-pick&lt;/code&gt; 可以理解为”挑拣”提交，和 merge 合并一个分支的所有提交不同的是，它会获取某一个分支的单笔提交，并作为一个新的提交引入到你当前分支上。当我们需要在本地合入其他分支的提交时，如果我们不想对整个分支进行合并，而是只想将某一次提交合入到本地当前分支上，那么就要使用 &lt;code&gt;git cherry-pick&lt;/code&gt; 了。&lt;/p&gt;
+&lt;p&gt;如下场景，以下有三条分支，feature/cherry-pick1 和 feature/cherry-pick2 都是基于 master 检出的两条功能性分支，对应的分支 log 记录如下&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624955876350.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624955881190.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+master 分支的提交如下&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624955889975.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;现在 master 只需要 feature/cherry-pick1 和 feature/cherry-pick2 有关 change 的修改，并不关心有关 fix 内容的修改。此时就可以用 cherry-pick 指令了。&lt;/p&gt;
+&lt;p&gt;语法：&lt;code&gt;git cherry-pick [commit-hash]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;commit-hash 表示的是某次 commit 的 hash 值。现在，依次执行以下两条指令&lt;code&gt;git cherry-pick e0bb7f3&lt;/code&gt;、&lt;code&gt;git cherry-pick c9a3101&lt;/code&gt;，过程中，如果出现冲突，解决冲突后 进行 &lt;code&gt;git add&lt;/code&gt;，接着执行 &lt;code&gt;git cherry-pick --continue&lt;/code&gt;，最后，master 上的提交如下&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624956129071.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;此时，master 分支上应用了需要的提交，就达到了我们想要的效果。如果需要多个 cherry-pick 需要同步到目标分支，可以简写为&lt;code&gt;git cherry-pick &amp;lt;first-commit-id&amp;gt;...&amp;lt;last-commit-id&amp;gt;&lt;/code&gt;，这是一个左开右闭的区间，也就时说 first-commit-id 提交带来的代码的改动不会被合并过去，如果需要合并过去，可以使用 &lt;code&gt;git cherry-pick &amp;lt;first-commit-id&amp;gt;^...&amp;lt;last-commit-id&amp;gt;&lt;/code&gt;，它表示包含 &lt;code&gt;first-commit-id&lt;/code&gt; 到 &lt;code&gt;last-commit-id&lt;/code&gt; 在内的提交都会被合并过去。&lt;/p&gt;
+&lt;h3 id=&#34;3-使用-git-revert-回滚某次的提交&#34;&gt;3. 使用 git revert 回滚某次的提交&lt;/h3&gt;
+&lt;p&gt;想象这么一个场景，你的项目最近有2个版本要上线，这两个版本还伴随着之前遗留的 bug 的修复，一开始的时候，你将 bug 修复在了第一个版本的 release 分支上，突然在发版前一天，测试那边反馈，需要把第一个版本修复 bug 的内容改在第二个版本上，这个时候，第一个版本的集成分支的提交应该包括了第一个版本的功能内容，遗留 bug 修复的提交和其他同事提交的内容，想要通过 reset 的方式粗暴摘除之前的关于 bug 修复的 commit 肯定是不行的，同时，这种做法比较危险，此时，我们既不想破坏之前的提交记录，又想撤回我们遗留 bug 的 commit 记录应该怎么做呢？git revert 就派上了用场。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git revert&lt;/code&gt; 撤销某次操作，此操作不会修改原本的提交记录，而是会新增一条提交记录来抵消某次操作。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git revert &amp;lt;commit-id&amp;gt;&lt;/code&gt; 针对普通 commit&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git revert &amp;lt;commit-id&amp;gt; -m&lt;/code&gt; 针对 merge 的 commit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面就用一个案例来理解一下这个命令，如下图所示，假设被红框框起来的地方是会引起 bug 的一次提交，在他的提交之后，又进行了 2 次提交，其中包含了其它同事的提交。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624956264728.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;此时想把引起提交的 bug 的干掉，执行 &lt;code&gt;git revert 1121932&lt;/code&gt;，执行操作后，再打开查看日志，如下图所示，可以看到是新增了一条 commit 记录，这个 commit 的产生的 msg 是自动生成的，Revert 开头，后面跟撤回的 commit-msg 信息之前的 commit 记录并没有消失，此时也达到了代码回退的效果&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624956436866.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+此外 git revert 也可以回滚多次的提交&lt;/p&gt;
+&lt;p&gt;语法：&lt;code&gt;git revert [commit-id1] [commit-id2] ...&lt;/code&gt; 注意这是一个前开后闭区间，即不包括 commit1 ，但包括 commit2 。&lt;/p&gt;
+&lt;p&gt;回滚我们的提交有二种方式，一种是上文提到的&lt;code&gt;git revert&lt;/code&gt;命令外，还可以使用 &lt;code&gt;git reset&lt;/code&gt; 命令，那么它们两者有什么区别呢？&lt;br&gt;
+&lt;code&gt;git revert&lt;/code&gt; 会新建一条 commit 信息，来撤回之前的修改。&lt;br&gt;
+&lt;code&gt;git reset&lt;/code&gt; 会直接将提交记录退回到指定的 commit 上。&lt;/p&gt;
+&lt;p&gt;对于个人的 feature 分支而言，可以使用 &lt;code&gt;git reset&lt;/code&gt; 来回退历史记录，之后使用 &lt;code&gt;git push --force&lt;/code&gt; 进行推送到远程，但是如果是在多人协作的集成分支上，不推荐直接使用 &lt;code&gt;git reset&lt;/code&gt; 命令，而是使用更加安全的 &lt;code&gt;git revert&lt;/code&gt; 命令进行撤回提交。这样，提交的历史记录不会被抹去，可以安全的进行撤回。&lt;/p&gt;
+&lt;h3 id=&#34;4-使用-git-stash-来暂存文件&#34;&gt;4. 使用 git stash 来暂存文件&lt;/h3&gt;
+&lt;p&gt;会有这么一个场景，现在你正在用你的 feature 分支上开发新功能。这时，生产环境上出现了一个 bug 需要紧急修复，但是你这部分代码还没开发完，不想提交，怎么办？这个时候可以用 &lt;code&gt;git stash&lt;/code&gt; 命令先把工作区已经修改的文件暂存起来，然后切换到 hotfix 分支上进行 bug 的修复，修复完成后，切换回 feature 分支，从堆栈中恢复刚刚保存的内容。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git stash //把本地的改动暂存起来
+git stash save &amp;quot;message&amp;quot; 执行存储时，添加备注，方便查找。
+git stash pop // 应用最近一次暂存的修改，并删除暂存的记录
+git stash apply  // 应用某个存储,但不会把存储从存储列表中删除，默认使用第一个存储,即 stash@{0}，如果要使用其他个，git stash apply stash@{$num} 。
+git stash list // 查看 stash 有哪些存储
+git stash clear // 删除所有缓存的 stash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下面通过几幅图对 stash 的命令做进一步了解。&lt;/p&gt;
+&lt;p&gt;此时，我正在开发一个新功能，修改了 1.js 文件里的内容&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624956848229.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+还没开发完成，这个时候，我想切换到 hotfix 分支上修复 bug，得暂停下开发切换到 hotfix 分支，但是现在工作区还有内容，此时如果切换分支 Git 会报出下面的错误&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;error: Your local changes to the following files would be overwritten by checkout:        1.jsPlease commit your changes or stash them before you switch branches.Aborting
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上面那句话的意思就是说工作区有文件修改，不能提交，需要先进行 commit 或者 stash 操作，执行 &lt;code&gt;git stash&lt;/code&gt;，结果如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Saved working directory and index state WIP on stash: 22e561c feat: add 1.js
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此时，我们的工作区已经干净了，可以切换到 hotfix 分支进行 bug 修复的工作，假设我们现在 bug 修复完成了，继续切回 feature 分支进行原本功能的开发，此时只需要执行 &lt;code&gt;git stash pop&lt;/code&gt;，之前我们暂存的修改就会恢复到工作区，如下图所示。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624956908826.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+当我们想要暂存文件，切换分支做某些事的时候，可以用 &lt;code&gt;git stash&lt;/code&gt; 这种机制帮助开发。&lt;/p&gt;
+&lt;p&gt;推荐在使用 stash 的相关命令时，每一次暂存的时候，不要直接使用 &lt;code&gt;git stash&lt;/code&gt; 命令进行暂存下来，而是使用&lt;code&gt;git stash save &amp;quot;message...&amp;quot;&lt;/code&gt; 这种方式，给本次的提交做一个信息的记录。这样，想应用更改的时候，先通过&lt;code&gt;git stash list&lt;/code&gt; 查看一下所有的暂存列表。之后，推荐使用 &lt;code&gt;git stash apply stash@${num}&lt;/code&gt; 的方式进行应用对应的 stash，这样不会清空已有的 stash 的列表项，并且能应用到当前的工作区，不需要这个暂存的话，再手动清除就可以了。&lt;/p&gt;
+&lt;h3 id=&#34;5-不同的工作区域撤销更改&#34;&gt;5. 不同的工作区域撤销更改&lt;/h3&gt;
+&lt;p&gt;开发中，我们经常需要回退代码的操作，在不同的工作区域中，回退代码的方式也是不相同的。如下图所示，假设现在要在 feature/revoke 分支上进行开发,&lt;/p&gt;
+&lt;p&gt;首先通过 &lt;code&gt;git status&lt;/code&gt; 查看下现在的状态。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624957014180.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+目前我们的工作区是很干净的，没有任何修改的操作，此时，修改一下代码再次查看状态，可以看到，1.js 这个文件被修改了。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624958714729.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+现在我们想把 1.js 这个文件恢复到修改前的状态，即撤回工作区的修改，就可以使用 &lt;code&gt;git checkout -- &amp;lt;filename&amp;gt;&lt;/code&gt; 的命令，如果要撤回多个文件的修改，文件之间使用空格隔开，如下图所示，我们撤回了 1.js 文件的修改，工作区也恢复干净了。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624958738833.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如果说现在我们对文件进行了修改，并且已经提交到暂存区了，这部分文件我们不想要的话，那么就可以通过 &lt;code&gt;git reset &amp;lt;filename&amp;gt;&lt;/code&gt; 的命令来对特定的文件进行撤销，&lt;code&gt;git reset&lt;/code&gt; 会撤回所有存在暂存区的文件，如下图所示，查看前后的状态可知，文件最后成功撤回到工作区了。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624958768134.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;6-配置-git-alias-提升工作效率&#34;&gt;6. 配置 git alias 提升工作效率&lt;/h3&gt;
+&lt;p&gt;一般我们在工作中，接到开发任务后，需要新创建一个分支进行开发 此时需要 用到 &lt;code&gt;git branch&lt;/code&gt;、&lt;code&gt;git checkout&lt;/code&gt;、 &lt;code&gt;git pull&lt;/code&gt; 等命令，在我们一顿操作后，开发完成，到了提交代码的阶段，又要诸如此类 &lt;code&gt;git add&lt;/code&gt; 、&lt;code&gt;git commit&lt;/code&gt;、&lt;code&gt;git push&lt;/code&gt; 等命令，虽然简单，但是输入起来也是不够简洁，作为一个程序员，开发程序就是为了提高我们的效率的，懒是人类进步的源泉，所以我们可以通过配置别名的方式，简化这些命令。&lt;/p&gt;
+&lt;p&gt;它的基本用法是 &lt;code&gt;git config --global alias.&amp;lt;简化的字符&amp;gt; 原始命令&lt;/code&gt;&lt;br&gt;
+如下面的例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git config --global alias.co checkout
+$ git config --global alias.ci commit
+$ git config --global alias.br branch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里将 co 表示 checkout，ci 表示 commit，br 表示 branch，以后提交就可以简写成&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624958918235.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;code&gt;--global&lt;/code&gt; 是全局参数，也就是配置一次后，这些命令可以在这台电脑下的所有仓库都适用。这些命令其实是更新你全局的 .gitconfig 文件，该文件用来保存全局的 git 配置，&lt;code&gt;vim ~/.gitconfig&lt;/code&gt;，执行这段命令后，显示如下，下图展示了刚才通过 &lt;code&gt;git config --global alias&lt;/code&gt; 添加的 &lt;code&gt;alias&lt;/code&gt;。&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624958960798.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;除了上面那种直接通过命令的方式外，也可以通过修改这个文件的 &lt;code&gt;alias&lt;/code&gt; 项来设置别名。&lt;/p&gt;
+&lt;p&gt;这里分享一个我自己常用的别名设置，把以下配置替换到 .gitconfig 文件里的 &lt;code&gt;[alias]&lt;/code&gt; 所属的区域，然后就可以愉快的使用了~&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[alias]
+st = status -sb
+co = checkout
+br = branch
+mg = merge
+ci = commit
+ds = diff --staged
+dt = difftool
+mt = mergetool
+last = log -1 HEAD
+latest = for-each-ref --sort=-committerdate --format=\&amp;quot;%(committername)@%(refname:short) [%(committerdate:short)] %(contents)\&amp;quot;
+ls = log --pretty=format:\&amp;quot;%C(yellow)%h %C(blue)%ad %C(red)%d %C(reset)%s %C(green)[%cn]\&amp;quot; --decorate --date=short
+hist = log --pretty=format:\&amp;quot;%C(yellow)%h %C(red)%d %C(reset)%s %C(green)[%an] %C(blue)%ad\&amp;quot; --topo-order --graph --date=short
+type = cat-file -t
+dump = cat-file -p
+lg = log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset&#39; --abbrev-commit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样，我们每次想查看 Git 的历史记录,就不用输入那么一长串命令 直接使用 &lt;code&gt;git lg&lt;/code&gt; ，下图是 axios 源码里的提交记录，使用封装后的 &lt;code&gt;git lg&lt;/code&gt; 查看的效果图&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624959011554.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+分支之间的关系一眼就很明了，在哪个 commit 上进行的 merge 操作也很清晰，可以帮助我们很好的追溯历史的提交和解决问题。&lt;/p&gt;
+&lt;h2 id=&#34;五-总结&#34;&gt;五. 总结&lt;/h2&gt;
+&lt;p&gt;本文由浅入深的的讲解了 Git 的环境搭建，基本用法，以及工作中使用较为高频的 Git 命令的用法，无论你是前端后端还是其它端的开发，日常工作中少不了对 Git 的使用，我们不仅要会用，还要用的漂亮，用的灵活，用的稳健。这样才能在和同事协作项目的时候更加得心应手，学会了本文这些 Git 的使用技巧后，在日常工作中多多练习，相信会给你带来很大的收获！&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;来源 https://mp.weixin.qq.com/s/v9p9f9Cz_Hetcgn94GuUjw&lt;br&gt;
+https://zhuanlan.zhihu.com/p/94008510&lt;/p&gt;
+&lt;/blockquote&gt;
+">【Diary】如何用 Git 带穿一路</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/diary-zhan-sha-js-yuan-xing-yu-yuan-xing-lian/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;说说你对JS原型和原型链的理解？&lt;br&gt;
+这句话和“谈谈你对闭包的理解”在面试中出现频率几乎都是拉满 (这儿挖个坑，下次填)&lt;br&gt;
+网络上对此答案可谓百花齐放，在广泛阅读整理之后，总结此文仅供自己复习。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624867988861.png&#34; alt=&#34;JS原型链经典老图&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;JS原型链经典老图&lt;/center&gt; 
+&lt;h2 id=&#34;零-从三个重要属性开始&#34;&gt;零. 从三个重要属性开始&lt;/h2&gt;
+&lt;p&gt;见名知意，所谓的&amp;quot;&lt;strong&gt;链&lt;/strong&gt;&amp;quot;描述的其实是一种关系，加上&lt;strong&gt;原型&lt;/strong&gt;两个字，可以理解为原型之间的关系，既然是一种关系，就需要维系，就好比我们走亲访友，亲情就是一种纽带，类比在JavaScript当中——&lt;strong&gt;函数&lt;/strong&gt;、&lt;strong&gt;对象实例&lt;/strong&gt;、&lt;strong&gt;实例原型&lt;/strong&gt;&lt;br&gt;
+也有自身的联系，而他们之间的纽带就是下面这三个重要的属性：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三个重要的属性&lt;/strong&gt;：&lt;code&gt;prototype&lt;/code&gt;、&lt;code&gt;__proto__&lt;/code&gt;、&lt;code&gt;constructor&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614923904668.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;center style=&#34;font-size:14px;color:#C0C0C0;text-decoration:null;padding-bottom:4px&#34;&gt;三个属性间关系&lt;/center&gt; 
+&lt;p&gt;&lt;code&gt;原型链的作用是用来实现继承,比如我们新建一个数组,数组的方法就是从数组的原型上继承而来的&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当访问对象a.b的时候，首先会查找当前对象的b属性，如果没有，然后依次按照prototype往上找直到找到Object.prototype为止，没有则返回undefined，所以说无处不在。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;一-普通对象与函数对象&#34;&gt;一. 普通对象与函数对象&lt;/h2&gt;
+&lt;p&gt;JavaScript 中，万物皆对象！但对象也是有区别的。分为&lt;strong&gt;普通对象&lt;/strong&gt;和&lt;strong&gt;函数对象&lt;/strong&gt;，Object 、Function 是 JS 自带的函数对象。下面举例说明&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var o1 = {}; 
+var o2 =new Object();
+var o3 = new f1();
+
+function f1(){}; 
+var f2 = function(){};
+var f3 = new Function(&#39;str&#39;,&#39;console.log(str)&#39;);
+
+console.log(typeof Object); //function 
+console.log(typeof Function); //function  
+
+console.log(typeof f1); //function 
+console.log(typeof f2); //function 
+console.log(typeof f3); //function   
+
+console.log(typeof o1); //object 
+console.log(typeof o2); //object 
+console.log(typeof o3); //object
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在上面的例子中 o1 o2 o3 为普通对象，f1 f2 f3 为函数对象。&lt;br&gt;
+怎么区分，其实很简单，&lt;strong&gt;凡是通过 new Function() 创建的对象都是函数对象，其他的都是普通对象。f1,f2,归根结底都是通过 new Function()的方式进行创建的。Function Object 也都是通过 New Function()创建的&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;二-构造函数&#34;&gt;二. 构造函数&lt;/h2&gt;
+&lt;p&gt;我们先复习一下构造函数的知识：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(name, age, job) {
+ this.name = name;
+ this.age = age;
+ this.job = job;
+ this.sayName = function() { alert(this.name) } 
+}
+var person1 = new Person(&#39;Zaxlct&#39;, 28, &#39;Software Engineer&#39;);
+var person2 = new Person(&#39;Mick&#39;, 23, &#39;Doctor&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上面的例子中 person1 和 person2 都是 Person 的&lt;strong&gt;实例&lt;/strong&gt;。这两个&lt;strong&gt;实例&lt;/strong&gt;都有一个 constructor （构造函数）属性，该属性（是一个指针）指向 Person。 即：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(person1.constructor == Person); //true
+console.log(person2.constructor == Person); //true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们要记住两个概念（&lt;code&gt;构造函数&lt;/code&gt;，&lt;code&gt;实例&lt;/code&gt;）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;person1 和 person2 都是 &lt;strong&gt;构造函数&lt;/strong&gt; Person 的&lt;strong&gt;实例&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;一个公式：&lt;strong&gt;实例&lt;/strong&gt;的&lt;strong&gt;构造函数属性&lt;/strong&gt;（constructor）指向&lt;strong&gt;构造函数&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;三-原型对象&#34;&gt;三. 原型对象&lt;/h2&gt;
+&lt;p&gt;在 JavaScript 中，每当定义一个对象（函数也是对象）时候，对象中都会包含一些预定义的属性。其中每个&lt;strong&gt;函数对象&lt;/strong&gt;都有一个prototype 属性，这个属性指向函数的&lt;strong&gt;原型对象&lt;/strong&gt;。（先用不管什么是 _&lt;em&gt;proto&lt;/em&gt;_ 第二节的课程会详细的剖析）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person() {}
+Person.prototype.name = &#39;Zaxlct&#39;;
+Person.prototype.age  = 28;
+Person.prototype.job  = &#39;Software Engineer&#39;;
+Person.prototype.sayName = function() {
+  alert(this.name);
+}
+  
+var person1 = new Person();
+person1.sayName(); // &#39;Zaxlct&#39;
+
+var person2 = new Person();
+person2.sayName(); // &#39;Zaxlct&#39;
+
+console.log(person1.sayName == person2.sayName); //true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们得到了本文第一个「定律」：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;每个对象都有 __proto__ 属性，但只有函数对象才有 prototype 属性&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;那什么是&lt;strong&gt;原型对象&lt;/strong&gt;呢？ 我们把上面的例子改一改你就会明白了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Person.prototype = {
+   name:  &#39;Zaxlct&#39;,
+   age: 28,
+   job: &#39;Software Engineer&#39;,
+   sayName: function() {
+     alert(this.name);
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原型对象，顾名思义，它就是一个普通对象。从现在开始你要牢牢记住&lt;code&gt;原型对象&lt;/code&gt;就是 &lt;code&gt;Person.prototype&lt;/code&gt; ，如果你还是害怕它，那就把它想想成一个字母 A： var A = Person.prototype&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;在上面我们给 A 添加了 四个属性：name、age、job、sayName。其实它还有一个默认的属性：&lt;code&gt;constructor&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在默认情况下，所有的&lt;strong&gt;原型对象&lt;/strong&gt;都会&lt;strong&gt;自动获得&lt;/strong&gt;一个 &lt;code&gt;constructor&lt;/code&gt;（构造函数）属性，这个属性（是一个指针）指向 &lt;code&gt;prototype&lt;/code&gt; 属性所在的函数（Person）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上面这句话有点拗口，我们「翻译」一下：A 有一个默认的 &lt;code&gt;constructor&lt;/code&gt; 属性，这个属性是一个指针，指向 Person。即：&lt;code&gt;Person.prototype.constructor == Person&lt;/code&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;在上面第二小节《构造函数》里，我们知道&lt;strong&gt;实例的构造函数属性（constructor）指向构造函数&lt;/strong&gt;  ：&lt;code&gt;person1.constructor == Person&lt;/code&gt;&lt;br&gt;
+这两个「公式」好像有点联系：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;person1.constructor == Person
+Person.prototype.constructor == Person
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;person1 为什么有 constructor 属性？那是因为 person1 是 Person 的实例。 那 Person.prototype 为什么有 constructor 属性？？同理， Person.prototype （你把它想象成 A） 也是Person 的实例。 也就是在 Person 创建的时候，创建了一个它的实例对象并赋值给它的 prototype，基本过程如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; var A = new Person();
+ Person.prototype = A;
+// 注：上面两行代码只是帮助理解，并不能正常运行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;结论：原型对象（Person.prototype）是 构造函数（Person）的一个实例&lt;/strong&gt;。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;原型对象&lt;/strong&gt;其实就是普通对象（但 Function.prototype 除外，它是函数对象，但它很特殊，他没有prototype属性（前面说道函数对象都有prototype属性））。看下面的例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; function Person(){};
+ console.log(Person.prototype) //Person{}
+ console.log(typeof Person.prototype) //Object
+ console.log(typeof Function.prototype) // Function，这个特殊
+ console.log(typeof Object.prototype) // Object
+ console.log(typeof Function.prototype.prototype) //undefined
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;Function.prototype&lt;/code&gt; 为什么是函数对象呢？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; var A = new Function ();
+Function.prototype = A;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上文提到凡是通过 new Function( ) 产生的对象都是函数对象**。因为 A 是函数对象，所以&lt;code&gt;Function.prototype&lt;/code&gt; 是函数对象。&lt;/p&gt;
+&lt;p&gt;那原型对象是用来做什么的呢？主要作用是用于&lt;strong&gt;继承&lt;/strong&gt;。举个例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; var Person = function(name){
+    this.name = name; // tip: 当函数执行时这个 this 指的是谁？
+  };
+  Person.prototype.getName = function(){
+    return this.name;  // tip: 当函数执行时这个 this 指的是谁？
+  }
+  var person1 = new person(&#39;Mick&#39;);
+  person1.getName(); //Mick
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从这个例子可以看出，通过给 &lt;code&gt;Person.prototype&lt;/code&gt; 设置了一个函数对象的属性，那有 Person 的实例（person1）出来的普通对象就继承了这个属性。具体是怎么实现的继承，就要讲到下面的原型链了。&lt;/p&gt;
+&lt;p&gt;小问题，上面两个 this 都指向谁？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; var person1 = new person(&#39;Mick&#39;);
+ person1.name = &#39;Mick&#39;; // 此时 person1 已经有 name 这个属性了
+ person1.getName(); //Mick  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;故两次 this  在函数执行时都指向 person1&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;四-proto&#34;&gt;四. proto&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;person1._&lt;em&gt;proto&lt;/em&gt;_ == Person.prototype;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;JS 在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做&lt;code&gt;__proto__&lt;/code&gt;的内置属性，用于指向创建它的构造函数的原型对象。 对象 person1 有一个&lt;code&gt;__proto__&lt;/code&gt;属性，创建它的构造函数是 Person，构造函数的原型对象是 Person.prototype ，所以：&lt;code&gt;person1.__proto__ == Person.prototype&lt;/code&gt;&lt;br&gt;
+&lt;strong&gt;请看下图：&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624888821003.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+根据上面这个连接图，我们能得到：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Person.prototype.constructor == Person;
+person1.__proto__ == Person.prototype;
+person1.constructor == Person;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不过，要明确的真正重要的一点就是，这个连接存在于实例（&lt;code&gt;person1&lt;/code&gt;）与构造函数（&lt;code&gt;Person&lt;/code&gt;）的原型对象（&lt;code&gt;Person.prototype&lt;/code&gt;）之间，而不是存在于实例（&lt;code&gt;person1&lt;/code&gt;）与构造函数（&lt;code&gt;Person&lt;/code&gt;）之间。&lt;/p&gt;
+&lt;h2 id=&#34;五-构造器&#34;&gt;五. 构造器&lt;/h2&gt;
+&lt;p&gt;熟悉 Javascript 的童鞋都知道，我们可以这样创建一个对象：&lt;code&gt;var obj = {}&lt;/code&gt; 它等同于下面这样：&lt;code&gt;var obj = new Object()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;obj 是构造函数（Object）的一个实例。所以：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;obj.constructor === Object&lt;/li&gt;
+&lt;li&gt;obj._&lt;em&gt;proto&lt;/em&gt;_ === Object.prototype&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;新对象 obj 是使用 new 操作符后跟一个&lt;strong&gt;构造函数&lt;/strong&gt;来创建的。构造函数（Object）本身就是一个函数（就是上面说的函数对象），它和上面的构造函数 Person 差不多。只不过该函数是出于创建新对象的目的而定义的。所以不要被 Object 吓倒。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;同理，可以创建对象的构造器不仅仅有 Object，也可以是 Array，Date，Function等。 所以我们也可以构造函数来创建 Array、 Date、Function&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var b = new Array();
+b.constructor === Array;
+b.__proto__ === Array.prototype;
+
+var c = new Date(); 
+c.constructor === Date;
+c.__proto__ === Date.prototype;
+
+var d = new Function();
+d.constructor === Function;
+d.__proto__ === Function.prototype;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这些构造器都是函数对象：&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624889415132.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;六-原型链&#34;&gt;六.  原型链&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;原型链的作用是用来实现继承,比如我们新建一个数组,数组的方法就是从数组的原型上继承而来的&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;小测试来检验一下你理解的怎么样：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;person1._&lt;em&gt;proto&lt;/em&gt;_ 是什么？&lt;/li&gt;
+&lt;li&gt;Person._&lt;em&gt;proto&lt;/em&gt;_ 是什么？&lt;/li&gt;
+&lt;li&gt;Person.prototype._&lt;em&gt;proto&lt;/em&gt;_ 是什么？&lt;/li&gt;
+&lt;li&gt;Object._&lt;em&gt;proto&lt;/em&gt;_ 是什么？&lt;/li&gt;
+&lt;li&gt;Object.prototype_&lt;em&gt;proto&lt;/em&gt;_ 是什么？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;答案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一题：因为 person1的构造函数 === Person 所以 person1._&lt;em&gt;proto&lt;/em&gt;_ === Person.prototype&lt;/li&gt;
+&lt;li&gt;第二题： 因为 Person的构造函数 === Function所以 Person._&lt;em&gt;proto&lt;/em&gt;_ === Function.prototype&lt;/li&gt;
+&lt;li&gt;第三题：Person.prototype 是一个普通对象，我们无需关注它有哪些属性，只要记住它是一个普通对象。 因为一个普通对象的构造函数 === Object 所以 Person.prototype._&lt;em&gt;proto&lt;/em&gt;_ === Object.prototype&lt;/li&gt;
+&lt;li&gt;第四题，参照第二题，因为 Person 和 Object 一样都是构造函数&lt;/li&gt;
+&lt;li&gt;第五题：Object.prototype 对象也有proto属性，但它比较特殊，为 null 。因为 null 处于原型链的顶端，这个只能记住。Object.prototype._&lt;em&gt;proto&lt;/em&gt;_ === null&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;七-函数对象-复习一下前面的知识点&#34;&gt;七. 函数对象 （复习一下前面的知识点）&lt;/h2&gt;
+&lt;p&gt;所有&lt;strong&gt;函数对象&lt;/strong&gt;的&lt;code&gt;proto&lt;/code&gt;都指向&lt;code&gt;Function.prototype&lt;/code&gt;，它是一个空函数（Empty function）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Number.__proto__ === Function.prototype  // true
+Number.constructor == Function //true
+Boolean.__proto__ === Function.prototype // true
+Boolean.constructor == Function //true
+String.__proto__ === Function.prototype  // true
+String.constructor == Function //true
+// 所有的构造器都来自于Function.prototype，甚至包括根构造器Object及Function自身Object.__proto__ === Function.prototype  // true
+Object.constructor == Function // true
+// 所有的构造器都来自于Function.prototype，甚至包括根构造器Object及Function自身Function.__proto__ === Function.prototype // true
+Function.constructor == Function //true
+Array.__proto__ === Function.prototype   // true
+Array.constructor == Function //true
+RegExp.__proto__ === Function.prototype  // true
+RegExp.constructor == Function //true
+Error.__proto__ === Function.prototype   // true
+Error.constructor == Function //true
+Date.__proto__ === Function.prototype    // true
+Date.constructor == Function //true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这说明什么呢？&lt;br&gt;
+&lt;strong&gt;所有的构造器都来自于 Function.prototype，甚至包括根构造器Object及Function自身。所有构造器都继承了·Function.prototype·的属性及方法。如length、call、apply、bind&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Function.prototype&lt;/code&gt;也是唯一一个&lt;code&gt;typeof XXX.prototype&lt;/code&gt;为 &lt;code&gt;function&lt;/code&gt;的&lt;code&gt;prototype&lt;/code&gt;。其它的构造器的&lt;code&gt;prototype&lt;/code&gt;都是一个对象（原因第三节里已经解释过了）。如下（又复习了一遍）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(typeof Function.prototype) // function
+console.log(typeof Object.prototype)   // object
+console.log(typeof Number.prototype)   // object
+console.log(typeof Boolean.prototype)  // object
+console.log(typeof String.prototype)   // object
+console.log(typeof Array.prototype)    // object
+console.log(typeof RegExp.prototype)   // object
+console.log(typeof Error.prototype)    // object
+console.log(typeof Date.prototype)     // object
+console.log(typeof Object.prototype)   // object
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;噢，上面还提到它是一个空的函数，&lt;code&gt;console.log(Function.prototype)&lt;/code&gt; 下看看（留意，下一节会再说一下这个）&lt;/p&gt;
+&lt;p&gt;知道了所有构造器（含内置及自定义）的&lt;code&gt;__proto__&lt;/code&gt;都是&lt;code&gt;Function.prototype&lt;/code&gt;，那&lt;code&gt;Function.prototype&lt;/code&gt;的&lt;code&gt;__proto__&lt;/code&gt;是谁呢？ 相信都听说过JavaScript中函数也是一等公民，那从哪能体现呢？如下&lt;code&gt;console.log(Function.prototype.__proto__ === Object.prototype) // true&lt;/code&gt;这说明所有的构造器也都是一个普通 JS 对象，可以给构造器添加/删除属性等。同时它也继承了&lt;code&gt;Object.prototype&lt;/code&gt;上的所有方法：toString、valueOf、hasOwnProperty等。&lt;/p&gt;
+&lt;p&gt;最后&lt;code&gt;Object.prototype&lt;/code&gt;的&lt;code&gt;proto&lt;/code&gt;是谁？&lt;code&gt;Object.prototype.__proto__ === null // true&lt;/code&gt;已经到顶了，为null。(读到现在，再回过头看第五章，能明白吗？)&lt;/p&gt;
+&lt;h2 id=&#34;八-prototype&#34;&gt;八. Prototype&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在 ECMAScript 核心所定义的全部属性中，最耐人寻味的就要数 &lt;code&gt;prototype&lt;/code&gt; 属性了。对于 ECMAScript 中的引用类型而言，&lt;code&gt;prototype&lt;/code&gt; 是保存着它们所有实例方法的真正所在。换句话所说，诸如 &lt;code&gt;toString()&lt;/code&gt;和 &lt;code&gt;valuseOf()&lt;/code&gt; 等方法实际上都保存在 &lt;code&gt;prototype&lt;/code&gt; 名下，只不过是通过各自对象的实例访问罢了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我们知道 JS 内置了一些方法供我们使用，比如： 对象可以用 &lt;code&gt;constructor/toString()/valueOf()&lt;/code&gt; 等方法; 数组可以用 &lt;code&gt;map()/filter()/reducer()&lt;/code&gt; 等方法； 数字可用用 &lt;code&gt;parseInt()/parseFloat()&lt;/code&gt;等方法； Why ？？？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;当我们创建一个函数时：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;var Person = new Object()&lt;/code&gt; Person 是 Object 的实例，所以 &lt;code&gt;Person&lt;/code&gt; &lt;strong&gt;继承&lt;/strong&gt;了&lt;code&gt;Object&lt;/code&gt; 的原型对象&lt;code&gt;Object.prototype&lt;/code&gt;上所有的方法&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624890289296.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;Object 的每个实例都具有以上的属性和方法&lt;/strong&gt;。所以我可以用 &lt;code&gt;Person.constructor&lt;/code&gt; 也可以用 &lt;code&gt;Person.hasOwnProperty&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;当我们创建一个数组时：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;var num = new Array()&lt;/code&gt; num 是 Array 的实例，所以 &lt;code&gt;num&lt;/code&gt; &lt;strong&gt;继承&lt;/strong&gt;了&lt;code&gt;Array&lt;/code&gt; 的原型对象&lt;code&gt;Array.prototype&lt;/code&gt;上所有的方法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们可以用一个 ES5 提供的新方法：&lt;code&gt;Object.getOwnPropertyNames&lt;/code&gt;获取所有（&lt;strong&gt;包括不可枚举的属性&lt;/strong&gt;）的属性名&lt;strong&gt;不包括&lt;/strong&gt; &lt;code&gt;prototy&lt;/code&gt; &lt;strong&gt;中的属性&lt;/strong&gt;，返回一个数组：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;var arrayAllKeys = Array.prototype; // [] 空数组
+// 只得到 arrayAllKeys 这个对象里所有的属性名(不会去找 arrayAllKeys.prototype 中的属性)
+console.log(Object.getOwnPropertyNames(arrayAllKeys)); 
+/* 输出：
+[&amp;quot;length&amp;quot;, &amp;quot;constructor&amp;quot;, &amp;quot;toString&amp;quot;, &amp;quot;toLocaleString&amp;quot;, &amp;quot;join&amp;quot;, &amp;quot;pop&amp;quot;, &amp;quot;push&amp;quot;, 
+&amp;quot;concat&amp;quot;, &amp;quot;reverse&amp;quot;, &amp;quot;shift&amp;quot;, &amp;quot;unshift&amp;quot;, &amp;quot;slice&amp;quot;, &amp;quot;splice&amp;quot;, &amp;quot;sort&amp;quot;, &amp;quot;filter&amp;quot;, &amp;quot;forEach&amp;quot;, 
+&amp;quot;some&amp;quot;, &amp;quot;every&amp;quot;, &amp;quot;map&amp;quot;, &amp;quot;indexOf&amp;quot;, &amp;quot;lastIndexOf&amp;quot;, &amp;quot;reduce&amp;quot;, &amp;quot;reduceRight&amp;quot;, 
+&amp;quot;entries&amp;quot;, &amp;quot;keys&amp;quot;, &amp;quot;copyWithin&amp;quot;, &amp;quot;find&amp;quot;, &amp;quot;findIndex&amp;quot;, &amp;quot;fill&amp;quot;]
+*/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样你就明白了随便声明一个数组，它为啥能用那么多方法了。&lt;/p&gt;
+&lt;p&gt;细心的你肯定发现了&lt;code&gt;Object.getOwnPropertyNames(arrayAllKeys)&lt;/code&gt; 输出的数组里并没有 &lt;code&gt;constructor/hasOwnPrototype&lt;/code&gt;等&lt;strong&gt;对象的&lt;/strong&gt;方法（你肯定没发现）。 但是随便定义的数组也能用这些方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var num = [1];
+console.log(num.hasOwnPrototype()) // false (输出布尔值而不是报错)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;因为 &lt;code&gt;Array.prototype&lt;/code&gt; 虽然没这些方法，但是它有原型对象（&lt;code&gt;__proto__&lt;/code&gt;）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 上面我们说了 Object.prototype 就是一个普通对象。Array.prototype.__proto__ == Object.prototype
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所以&lt;code&gt;Array.prototype&lt;/code&gt; 继承了对象的所有方法，当你用&lt;code&gt;num.hasOwnPrototype()&lt;/code&gt;时，JS 会先查一下它的构造函数 （Array） 的原型对象 &lt;code&gt;Array.prototype&lt;/code&gt; 有没有&lt;code&gt;hasOwnPrototype()&lt;/code&gt;方法，没查到的话继续查一下 &lt;code&gt;Array.prototype&lt;/code&gt; 的原型对象 &lt;code&gt;Array.prototype.__proto__&lt;/code&gt;有没有这个方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;当我们创建一个函数时：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var f = new Function(&amp;quot;x&amp;quot;,&amp;quot;return x*x;&amp;quot;);
+console.log(f.arguments) // arguments 方法从哪里来的？
+console.log(f.call(window)) // call 方法从哪里来的？
+console.log(Function.prototype) // function() {} （一个空的函数）
+console.log(Object.getOwnPropertyNames(Function.prototype)); 
+/* 输出
+[&amp;quot;length&amp;quot;, &amp;quot;name&amp;quot;, &amp;quot;arguments&amp;quot;, &amp;quot;caller&amp;quot;, &amp;quot;constructor&amp;quot;, &amp;quot;bind&amp;quot;, &amp;quot;toString&amp;quot;, &amp;quot;call&amp;quot;, &amp;quot;apply&amp;quot;]
+*/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们再复习第八小节这句话：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所有函数对象&lt;code&gt;__proto__&lt;/code&gt;都指向 &lt;code&gt;Function.prototype&lt;/code&gt;，它是一个空函数（Empty function）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;嗯，我们验证了它就是空函数。不过不要忽略前半句。我们枚举出了它的所有的方法，所以所有的&lt;strong&gt;函数对象&lt;/strong&gt;都能用，比如:&lt;br&gt;
+&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1624894908254.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如果你还没搞懂啥是函数对象？&lt;/p&gt;
+&lt;p&gt;还有，我建议你可以再复习下为什么：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Function.prototype 是唯一一个typeof XXX.prototype为 “function”的prototype&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;九-复习一下&#34;&gt;九. 复习一下&lt;/h2&gt;
+&lt;p&gt;第八小节我们总结了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;所有`函数`对象的 __proto__ 都指向 Function.prototype，它是一个空函数（Empty function）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是你可别忘了在第三小节我们总结的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;所有对象的 __proto__ 都指向其构造器的 prototype
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们下面再复习下这句话。&lt;/p&gt;
+&lt;p&gt;先看看 JS 内置构造器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var obj = {name: &#39;jack&#39;}
+var arr = [1,2,3]
+var reg = /hello/g
+var date = new Date
+var err = new Error(&#39;exception&#39;)
+ 
+console.log(obj.__proto__ === Object.prototype) // true
+console.log(arr.__proto__ === Array.prototype)  // true
+console.log(reg.__proto__ === RegExp.prototype) // true
+console.log(date.__proto__ === Date.prototype)  // true
+console.log(err.__proto__ === Error.prototype)  // true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再看看自定义的构造器，这里定义了一个 Person：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(name) {
+  this.name = name;
+}
+var p = new Person(&#39;jack&#39;)
+console.log(p.__proto__ === Person.prototype) // true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;p&lt;/code&gt; 是 &lt;code&gt;Person&lt;/code&gt; 的实例对象，&lt;code&gt;p&lt;/code&gt; 的内部原型总是指向其构造器&lt;code&gt;Person&lt;/code&gt; 的原型对象 &lt;code&gt;prototype&lt;/code&gt;。&lt;br&gt;
+每个对象都有一个 &lt;code&gt;constructor&lt;/code&gt; 属性，可以获取它的构造器，因此以下打印结果也是恒等的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(name) {
+    this.name = name
+}
+var p = new Person(&#39;jack&#39;)
+console.log(p.__proto__ === p.constructor.prototype) // true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上面的&lt;code&gt;Person&lt;/code&gt;没有给其原型添加属性或方法，这里给其原型添加一个&lt;code&gt;getName&lt;/code&gt;方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(name) {
+    this.name = name
+}
+// 修改原型
+Person.prototype.getName = function() {}
+var p = new Person(&#39;jack&#39;)
+console.log(p.__proto__ === Person.prototype) // true
+console.log(p.__proto__ === p.constructor.prototype) // true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到&lt;code&gt;p.__proto__&lt;/code&gt;与&lt;code&gt;Person.prototype&lt;/code&gt;，&lt;code&gt;p.constructor.prototype&lt;/code&gt;都是恒等的，即都指向同一个对象。&lt;/p&gt;
+&lt;p&gt;如果换一种方式设置原型，结果就有些不同了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(name) {
+    this.name = name
+}
+// 重写原型
+Person.prototype = {
+    getName: function() {}
+}
+var p = new Person(&#39;jack&#39;)
+console.log(p.__proto__ === Person.prototype) // true
+console.log(p.__proto__ === p.constructor.prototype) // false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里直接重写了 &lt;code&gt;Person.prototype&lt;/code&gt;（注意：上一个示例是修改原型）。输出结果可以看出&lt;code&gt;p.__proto__&lt;/code&gt;仍然指向的是&lt;code&gt;Person.prototype&lt;/code&gt;，而不是&lt;code&gt;p.constructor.prototype&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;这也很好理解，给&lt;code&gt;Person.prototype&lt;/code&gt;赋值的是一个对象直接量{getName: function(){}}，使用对象直接量方式定义的对象其构造器（&lt;code&gt;constructor&lt;/code&gt;）指向的是根构造器&lt;code&gt;Object&lt;/code&gt;，&lt;code&gt;Object.prototype&lt;/code&gt;是一个空对象{}，{}自然与{getName: function(){}}不等。如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var p = {}
+console.log(Object.prototype) // 为一个空的对象{}
+console.log(p.constructor === Object) // 对象直接量方式定义的对象其constructor为Object
+console.log(p.constructor.prototype === Object.prototype) // 为true，不解释
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;十-原型链再复习一下&#34;&gt;十. 原型链（再复习一下：）&lt;/h2&gt;
+&lt;p&gt;下面这个例子你应该能明白了！&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(){}
+var person1 = new Person();
+console.log(person1.__proto__ === Person.prototype); // true
+console.log(Person.prototype.__proto__ === Object.prototype) //true
+console.log(Object.prototype.__proto__) //null
+
+Person.__proto__ == Function.prototype; //true
+console.log(Function.prototype)// function(){} (空函数)
+
+var num = new Array()
+console.log(num.__proto__ == Array.prototype) // true
+console.log( Array.prototype.__proto__ == Object.prototype) // true
+console.log(Array.prototype) // [] (空数组)
+console.log(Object.prototype.__proto__) //null
+
+console.log(Array.__proto__ == Function.prototype)// true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;疑点解惑：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Object.__proto__ === Function.prototype&lt;/code&gt; // true&lt;br&gt;
+Object 是函数对象，是通过new Function()创建的，所以&lt;code&gt;Object.__proto__&lt;/code&gt;指向&lt;code&gt;Function.prototype&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Function.__proto__ === Function.prototype&lt;/code&gt; // true&lt;br&gt;
+Function 也是对象函数，也是通过new Function()创建，所以&lt;code&gt;Function.__proto__&lt;/code&gt;指向&lt;code&gt;Function.prototype&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Function.prototype.__proto__ === Object.prototype&lt;/code&gt; //true&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;十一-总结&#34;&gt;十一. 总结&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;原型和原型链是JS实现继承的一种模型。&lt;/li&gt;
+&lt;li&gt;原型链的形成是真正是靠&lt;code&gt;__proto__&lt;/code&gt;而非&lt;code&gt;prototype&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要深入理解这句话，我们再举个例子，看看前面你真的理解了吗？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; var animal = function(){};
+ var dog = function(){};
+
+ animal.price = 2000;
+ dog.prototype = animal;
+ var tidy = new dog();
+ console.log(dog.price) //undefined
+ console.log(tidy.price) // 2000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里解释一下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var dog = function(){};
+dog.prototype.price = 2000;
+var tidy = new dog();
+console.log(tidy.price); // 2000
+console.log(dog.price); //undefined
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt; var dog = function(){};
+var tidy = new dog();
+tidy.price = 2000;
+console.log(dog.price); //undefined
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个明白吧？想一想我们上面说过这句话：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实例（tidy）和 原型对象（dog.prototype）存在一个连接。不过，要明确的真正重要的一点就是，这个连接存在于实例（tidy）与构造函数的原型对象（dog.prototype）之间，而不是存在于实例（tidy）与构造函数（dog）之间。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;来源 https://www.jianshu.com/p/a4e1e7b6f4f8&lt;br&gt;
+https://www.jianshu.com/p/dee9f8b14771&lt;br&gt;
+https://segmentfault.com/a/1190000018070678&lt;/p&gt;
+&lt;/blockquote&gt;
+">【Diary】如何用 JS原型链 打出优势</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://Tyloo-code.github.io/post/fu-wu-qi-ruan-jian-zheng-li/"" data-c="
@@ -11142,13 +11810,18 @@ M.prototype === obj3._ proto _ 的结果为 true&lt;/p&gt;
 &lt;h2 id=&#34;13-instanceof-的原理&#34;&gt;1.3 instanceof 的原理&lt;/h2&gt;
 &lt;p&gt;instanceof 的原理是判断&lt;strong&gt;实例对象的&lt;/strong&gt; &lt;strong&gt;proto&lt;/strong&gt; 是否与&lt;strong&gt;构造函数的prototype&lt;/strong&gt;指向同一个引用。&lt;/p&gt;
 &lt;h2 id=&#34;14-instanceof-和-typeof-的区别&#34;&gt;1.4 instanceof 和 typeof 的区别&lt;/h2&gt;
-&lt;p&gt;typeof 对于基本数据类型（&lt;code&gt;null, undefined, string, number, boolean, symbol&lt;/code&gt;），除了 null 都会返回正确的类型。null 会返回 object。&lt;/p&gt;
-&lt;p&gt;typeof 对于对象类型，除了函数会返回 function，其他的都返回 object。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;typeof 对于基本数据类型（&lt;code&gt;null, undefined, string, number, boolean, symbol&lt;/code&gt;），除了 null 都会返回正确的类型。null 会返回 object。&lt;/li&gt;
+&lt;li&gt;typeof 对于对象类型，除了函数会返回 function，其他的都返回 object。&lt;/li&gt;
+&lt;li&gt;typeof会返回一个变量的基本类型, instanceof返回的是一个布尔值&lt;/li&gt;
+&lt;li&gt;需要注意的是，instanceof只能用来判断对象和函数，不能用来判断字符串和数字等&lt;/li&gt;
+&lt;li&gt;typeof不能用于判断是否为数组，因为都会返回object&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;15-原型链&#34;&gt;1.5 原型链&lt;/h2&gt;
 &lt;p&gt;JS中每个函数都存在有一个原型对象属性prototype。并且所有函数的默认原型都是Object的实例。每个继承父函数的子函数的对象都包含一个内部属性proto。该属性包含一个指针，指向父函数的prototype。若父函数的原型对象的_proto_属性为再上一层函数。在此过程中就形成了原型链。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;原型链的作用是用来实现继承,比如我们新建一个数组,数组的方法就是从数组的原型上继承而来的&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;当访问对象a.b的时候，首先会查找当前对象的b属性，如果没有，然后依次按照prototype往上找直到找到Object.prototype为止，没有则返回undefined，所以说无处不在。&lt;br&gt;
-&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619259847019.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;当访问对象a.b的时候，首先会查找当前对象的b属性，如果没有，然后依次按照prototype往上找直到找到Object.prototype为止，没有则返回undefined，所以说无处不在。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619259847019.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;js的想要调用公共类的方式就是继承原型。&lt;/p&gt;
 &lt;p&gt;比如原生的[].forEach()方法，之所以任意数组都能使用，是应为forEach()被定义在了数组的构造函数function Array(){}上，也就是数组的原型上；&lt;/p&gt;
 &lt;h2 id=&#34;例子&#34;&gt;例子&lt;/h2&gt;
@@ -11159,7 +11832,7 @@ Function.prototype.__proto__ === Object.prototype; // true Object.prototype.__pr
 f.__proto__ === F.prototype; // true 
 F.prototype.__proto__ === Object.prototype; // true Object.prototype.__proto__ === null;// true
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614925004509.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614925004509.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h1 id=&#34;2-有几种方式可以实现继承&#34;&gt;2. 有几种方式可以实现继承&lt;/h1&gt;
 &lt;p&gt;ES5实现继承有6种方式：&lt;/p&gt;
 &lt;ul&gt;
@@ -11393,7 +12066,7 @@ Result is 3&lt;br&gt;
 Result is 6&lt;/p&gt;
 &lt;h1 id=&#34;5-数据类型判断&#34;&gt;5. 数据类型判断&lt;/h1&gt;
 &lt;h2 id=&#34;50-null和undefined的区别&#34;&gt;5.0 null和undefined的区别&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619269681622.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1619269681622.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;51-javascript-数据类型&#34;&gt;5.1 JavaScript 数据类型&lt;/h2&gt;
 &lt;p&gt;JavaScript 数据类型有两种，分别是基本数据类型和引用数据类型。&lt;/p&gt;
 &lt;ul&gt;
@@ -11528,7 +12201,7 @@ t();
 &lt;p&gt;当执行s时，将创建函数s的执行环境(调用对象),并将该对象置于链表开头，然后将函数t的调用对象链接在之后，最后是全局对象。然后从链表开头寻找变量name,很明显name是&amp;quot;slwy&amp;quot;。&lt;/p&gt;
 &lt;p&gt;但执行ss()时，作用域链是： ss()-&amp;gt;t()-&amp;gt;window,所以name是”tlwy&amp;quot;&lt;/p&gt;
 &lt;h2 id=&#34;63-闭包&#34;&gt;6.3 闭包&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614941970240.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1614941970240.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;1-闭包的定义&#34;&gt;1. 闭包的定义&lt;/h3&gt;
 &lt;p&gt;一个函数对其周围状态(变量)的&lt;strong&gt;引用&lt;/strong&gt;并&lt;strong&gt;保存&lt;/strong&gt;周围变量，乃至函数执行完成后仍然可以访问的现象称之为闭包。&lt;/p&gt;
 &lt;h3 id=&#34;2-闭包的原理&#34;&gt;2. 闭包的原理&lt;/h3&gt;
@@ -11767,7 +12440,7 @@ console.log(b.jobs.first) // FE
 方法3：使用ajax实现预加载&lt;/p&gt;
 &lt;p&gt;常用的是&lt;code&gt;new Image()&lt;/code&gt;;设置其src来实现预载，再使用onload方法回调预载完成事件。只要浏览器把图片下载到本地，同样的src就会使用缓存，这是最基本也是最实用的预载方法。当Image下载完图片头后，会得到宽和高，因此可以在预载前得到图片的大小(方法是用记时器轮循宽高变化。)&lt;/p&gt;
 &lt;h1 id=&#34;10-实现页面加载进度条&#34;&gt;10. 实现页面加载进度条&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615011309891.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615011309891.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;101-html结构&#34;&gt;10.1 html结构：&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt; &amp;lt;div id=&amp;quot;progressBox&amp;quot;&amp;gt;
         &amp;lt;div id=&amp;quot;progressBar&amp;quot;&amp;gt;0%&amp;lt;/div&amp;gt;
@@ -12168,13 +12841,13 @@ box.onclick = function (e) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;var aBox = document.getElementsByTagName(&amp;quot;div&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115504124.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115504124.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;blockquote&gt;
 &lt;p&gt;那么如何获取数组里面的值呢？？？&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;pre&gt;&lt;code&gt;var aBox = document.getElementsByTagName(&amp;quot;div&amp;quot;)[2];//通过下标来换取索引2的值
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115545753.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115545753.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;document.querySelectorAll&lt;/code&gt; 通过复合（层级）选择器获取节点 获取的是一个数组&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
         &amp;lt;ul&amp;gt;
@@ -12186,24 +12859,24 @@ box.onclick = function (e) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt; var  aLi = document.querySelectorAll(&amp;quot;.box ul li&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115797303.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115797303.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;blockquote&gt;
 &lt;p&gt;那么如何获取数组里面的值呢？？？&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;pre&gt;&lt;code&gt;var aLi  = document.querySelectorAll(&amp;quot;.box ul li&amp;quot;)[1];
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115827067.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115827067.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;document.querySelector&lt;/code&gt; 通过复合（层级）选择器获取符合条件的第一个节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oLi = document.querySelector(&amp;quot;.box ul li&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115873612.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618115873612.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;document.getElementsByName&lt;/code&gt; 通过name属性获取节点 获取的是一个数组&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;sex&amp;quot; value=&amp;quot;男&amp;quot;&amp;gt;男
 &amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;sex&amp;quot; value=&amp;quot;女&amp;quot;&amp;gt;女
 &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;var aInput = document.getElementsByName(&amp;quot;sex&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116016375.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116016375.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;获取特殊元素的方式&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;document.head&lt;/code&gt; 获取&lt;code&gt;head&lt;/code&gt;标签&lt;/li&gt;
@@ -12225,7 +12898,7 @@ box.onclick = function (e) {
 var oDiv = document.createElement(&amp;quot;div&amp;quot;);
 oBox.appendChild(oDiv); 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116529080.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116529080.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;document.createTextNode&lt;/code&gt;创建文本节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oText = document.createTextNode(&amp;quot;heaven&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
@@ -12238,7 +12911,7 @@ oBox.appendChild(oDiv);
 var oText = document.createTextNode(&amp;quot;heaven&amp;quot;);
 oBox.appendChild(oText);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116715791.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618116715791.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;document.createComment&lt;/code&gt; 创建注释节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oComment = document.createComment(&amp;quot;我是注释节点&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
@@ -12251,7 +12924,7 @@ oBox.appendChild(oText);
 var oComment = document.createComment(&amp;quot;我是注释节点&amp;quot;);
 obox.appendChild(oComment);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117356273.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117356273.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2-节点的添加-剪切操作&#34;&gt;2. 节点的添加、剪切操作&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;parentNode.appendChild(子节点)&lt;/code&gt; 把子节点插入到父节点的最后面&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;
@@ -12262,7 +12935,7 @@ obox.appendChild(oComment);
 var oDiv = document.createElement(&amp;quot;div&amp;quot;);
 oBox.appendChild(oDiv);//把oDiv插入到oBox的最后面是以字符串形式添加的
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117728592.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117728592.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;parentNode.insertBefore(A,B)&lt;/code&gt; 把节点A添加到节点B之前&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;
         &amp;lt;h2&amp;gt;我是标题&amp;lt;/h2&amp;gt;
@@ -12274,7 +12947,7 @@ oBox.appendChild(oDiv);//把oDiv插入到oBox的最后面是以字符串形式�
  var oDiv = document.createElement(&amp;quot;div&amp;quot;);
  oBox.insertBefore(oDiv,oSpan);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117898677.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618117898677.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;结论：无论是appendChild方法还是insertBefore方法都可以对节点的 添加、剪切操作，都可以操作一次不能操作多次&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;3-节点的替换和删除&#34;&gt;3. 节点的替换和删除&lt;/h2&gt;
 &lt;h3 id=&#34;1节点的替换&#34;&gt;1.节点的替换&lt;/h3&gt;
@@ -12290,7 +12963,7 @@ var oH3 = document.getElementsByTagName(&amp;quot;h3&amp;quot;)[0]
 var oDiv = document.createElement(&amp;quot;div&amp;quot;);
 oBox.replaceChild(oDiv,oH3);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618119399959.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618119399959.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2-节点的删除-删除子节点&#34;&gt;2. 节点的删除 、删除子节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;parentNode.removeChild(子节点)&lt;/code&gt; 删除子节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;
@@ -12303,7 +12976,7 @@ oBox.replaceChild(oDiv,oH3);
 var oH3 = document.getElementsByTagName(&amp;quot;h3&amp;quot;);
 oBox.removeChild(oH3[0]);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618119515957.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618119515957.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;4-动态获取与静态获取&#34;&gt;4. 动态获取与静态获取&lt;/h2&gt;
 &lt;h3 id=&#34;1-get系列获取元素的方式是动态获取&#34;&gt;1. get系列获取元素的方式是动态获取&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -12347,7 +13020,7 @@ var oH3 = document.createElement(&amp;quot;h3&amp;quot;);
 oBox.appendChild(oH3);
 oH3.innerText = &amp;quot;我是h3节点&amp;quot;;//创建h3标签添加文本内容
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618120681297.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618120681297.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;那么如何读取元素节点的内容呢？？&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
 var oH3 = document.querySelectorAll(&amp;quot;h3&amp;quot;);
@@ -12359,7 +13032,7 @@ console.log(oH3[2].innerText);//读取节点的文本内容
 var oH3 = document.querySelectorAll(&amp;quot;h3&amp;quot;);
 oH3[0].innerText = &amp;quot;我是修改并赋值的节点&amp;quot;;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618121299074.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618121299074.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2-元素节点&#34;&gt;2. 元素节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;innerHTML&lt;/code&gt;可以设置节点的文本内容、也可以读取节点的内容、可以&lt;code&gt;解析&lt;/code&gt;标签&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;怎么样innerHTML方法解析字符串中的标签&lt;/strong&gt;&lt;/p&gt;
@@ -12380,7 +13053,7 @@ console.log(oH3[0].innerHTML);
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
         console.log(oBox.children[0].attributes);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618123899949.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618123899949.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2-设置属性节点&#34;&gt;2. 设置属性节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;setAttribute&lt;/code&gt;(属性节点名,属性节点值)、设置指定的属性节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;
@@ -12390,13 +13063,13 @@ console.log(oH3[0].innerHTML);
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
 oBox.children[0].setAttribute(&amp;quot;id&amp;quot;, &amp;quot;title&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124020361.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;22&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124020361.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;3-获取属性节点&#34;&gt;3. 获取属性节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;getAttribute&lt;/code&gt;(属性节点名)、获取指定属性节点名称的值&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
 console.log(oBox.children[0].getAttribute(&amp;quot;class&amp;quot;));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;22&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124061317.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;23&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124061317.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;4-删除属性节点&#34;&gt;4. 删除属性节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;removeAttribute&lt;/code&gt;(属性节点名)、删除指定属性节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;
@@ -12406,13 +13079,13 @@ console.log(oBox.children[0].getAttribute(&amp;quot;class&amp;quot;));
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
 oBox.children[0].removeAttribute(&amp;quot;class&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;23&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124130227.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124130227.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;5-判断有没有子节点&#34;&gt;5. 判断有没有子节点&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;hasChildNodes&lt;/code&gt; 判断元素节点有没有子节点&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var oBox = document.getElementById(&amp;quot;box&amp;quot;);
 console.log(oBox.children[0].hasChildNodes());
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124186614.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;25&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618124186614.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ul&gt;
 &lt;li&gt;如果有则返回返回结果是true&lt;/li&gt;
 &lt;li&gt;如果没有则返回结果是是false&lt;/li&gt;
@@ -12532,7 +13205,7 @@ console.log(oBox.children[0].hasChildNodes());
 &lt;li&gt;window.navigate(&amp;quot;url&amp;quot;);: navigate对象包含有关浏览器的信息，也可以作为页面跳转，后面直接加要跳转的地方。&lt;/li&gt;
 &lt;li&gt;top.location= &#39;url&#39;;: 当页面中有内嵌框架时，指定最顶层的窗口跳转，及包含框架的最外层浏览器&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;25&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618478544386.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;26&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618478544386.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;2-js弹出框有哪些&#34;&gt;2. JS弹出框有哪些&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;第一种：alert()方法&lt;/strong&gt;&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618479050149.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
@@ -12554,7 +13227,7 @@ console.log(oBox.children[0].hasChildNodes());
 需要注意的是，它不对单引号’编码&lt;/p&gt;
 &lt;p&gt;它对应的解码函数是decodeURI()。&lt;/p&gt;
 &lt;h3 id=&#34;3-为什么两次编码&#34;&gt;3. 为什么两次编码&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;26&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618481823390.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;27&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618481823390.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;4-meta常用属性&#34;&gt;4. meta常用属性&lt;/h2&gt;
 &lt;h3 id=&#34;1-charset属性&#34;&gt;1. charset属性&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;!-- 定义网页文档的字符集 --&amp;gt;
@@ -12632,12 +13305,12 @@ console.log(oBox.children[0].hasChildNodes());
 &lt;p&gt;list-style、list-style-type、list-style-position、list-style-image&lt;/p&gt;
 &lt;h2 id=&#34;7-windowscroll方法&#34;&gt;7. window.scroll方法&lt;/h2&gt;
 &lt;h3 id=&#34;1-windowscroll到&#34;&gt;1. window.scroll（到）&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;27&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490087718.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;28&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490087718.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;2windowscrollto&#34;&gt;2.window.scrollTo&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;28&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490106662.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;29&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490106662.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;与scroll一样&lt;/p&gt;
 &lt;h3 id=&#34;3-windowscrollby距离&#34;&gt;3. window.scrollBy（距离）&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;29&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490176094.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;30&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1618490176094.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;8-head头包含哪些标签&#34;&gt;8. head头包含哪些标签？&lt;/h2&gt;
 &lt;p&gt;head标签是所有头部元素的容器。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;内的元素可包含脚本，指示浏览器在何处可以找到样式表，提供元信息等。
@@ -12765,7 +13438,7 @@ console.log( sum );
 console.log( arr );
 // [0, 1, 2, 3, 4]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;30&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615256323803.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;31&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615256323803.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;3-arrayprototypefilter&#34;&gt;3. Array.prototype.filter&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;filter&lt;/code&gt;(过滤，筛选) 方法创建一个新数组,原始数组不发生改变。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;array.filter(callback,[ thisObject]);
@@ -12971,7 +13644,7 @@ Function.prototype.myBind = function(objThis,...params){
 比如上面的代码，如果没有被包裹在立即执行函数中，而是直接以非函数的形式直接写在&amp;lt;script&amp;gt;&lt;/script&gt;标签里面，虽然也会立即执行，但是临时变量todaydom,days,today,year,month,date,day,msg都将成为全局变量（初始化代码遗留的产物）。&lt;br&gt;
 而用立即执行函数之后，这些变量都不会在全局变量中存在，以后也不会其他地方使用，有效的避免了污染全局变量。&lt;/p&gt;
 &lt;h1 id=&#34;22-设计模式要求说出如何实现应用优缺点单例模式实现&#34;&gt;22. 设计模式(要求说出如何实现,应用,优缺点)/单例模式实现&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;31&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273736555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;32&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615273736555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;0-为什么要用设计模式&#34;&gt;0. 为什么要用设计模式&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;高内聚低耦合!!&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;设计模式是一种代码设计思路，其最最本质的目的是为了解耦，延伸一点的话，还有为了可扩展性和健壮性，但是这都是建立在解耦的基础之上。&lt;/strong&gt;&lt;/p&gt;
@@ -13067,7 +13740,7 @@ console.log(obj.__proto__ === prototype)  //true
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;2-结构型模式&#34;&gt;2. 结构型模式&lt;/h2&gt;
 &lt;h3 id=&#34;1-适配器模式&#34;&gt;1. 适配器模式&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;32&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274391311.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;33&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1615274391311.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;pre&gt;&lt;code&gt;class GooleMap {
     show() {
         console.log(&#39;渲染谷歌地图&#39;)
@@ -14008,16 +14681,16 @@ avaScript语言是解释型语言，为了&lt;code&gt;提高性能&lt;/code&gt;�
 &lt;p&gt;&lt;code&gt;偏移信息查找&lt;/code&gt; - &lt;code&gt;C++&lt;/code&gt;查找偏移地址很简单，在编译代码阶段，对使用的某类型成员变量&lt;code&gt;直接设置偏移位置&lt;/code&gt;，&lt;code&gt;JavaScript&lt;/code&gt;中使用一个对象，需要通过&lt;code&gt;属性名匹配&lt;/code&gt;才能找到相应的值，需要更多的操作。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;33&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377366139.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;34&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377366139.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;5-工作过程&#34;&gt;5. 工作过程&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;34&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377457407.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;35&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377457407.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;编译阶段&#34;&gt;编译阶段&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;35&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377563413.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;36&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377563413.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;运行阶段&#34;&gt;运行阶段&lt;/h3&gt;
 &lt;p&gt;由于&lt;code&gt;V8缺少了生成中间代码这一环节&lt;/code&gt;，缺少了必要的优化，为了提升性能，V8会在&lt;code&gt;生成本地代码后&lt;/code&gt;，使用&lt;code&gt;数据分析器&lt;/code&gt;(profiler)&lt;code&gt;采集一些信息&lt;/code&gt;，然后根据这些数据将本地代码进行优化，生成更高效的本地代码，这是一个逐步改进的过程。同时，当发现优化后代码的性能还不如未优化的代码，V8将退回原来的代码，也就是优化回滚。&lt;br&gt;
 &lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377618319.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;优化回滚&#34;&gt;优化回滚&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;36&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377669446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;37&#34;&gt;&lt;img src=&#34;https://Tyloo-code.github.io/post-images/1616377669446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 ">【面】前端知识点梳理（JS）</a>
       </div>
       
