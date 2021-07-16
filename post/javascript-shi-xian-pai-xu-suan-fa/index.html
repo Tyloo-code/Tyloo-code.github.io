@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>JavaScript实现排序算法 | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624959500486">
+<link rel="shortcut icon" href="/favicon.ico?v=1626401963908">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -202,7 +202,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">47</span>
+        <span class="site-item-stat-count">48</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1640,6 +1640,183 @@ console.log(QuickSort(arr));
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ttarea.com/post/diary-ru-he-yong-event-loop-li-jie-yi-bu/"" data-c="
+          &lt;h2 id=&#34;零-前言&#34;&gt;零. 前言&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Event Loop&lt;/code&gt;即事件循环，是指浏览器或Node的一种解决javaScript单线程运行时不会阻塞的一种机制，也就是我们经常使用&lt;strong&gt;异步&lt;/strong&gt;的原理。&lt;/p&gt;
+&lt;h2 id=&#34;一-进程和线程&#34;&gt;一. 进程和线程&lt;/h2&gt;
+&lt;p&gt;线程，是程序执行流的最小单位。线程可与同属一个进程的其他线程共享所拥有的全部资源，同一进程中的多个线程之间可以并发执行。线程有&lt;code&gt;就绪&lt;/code&gt;，&lt;code&gt;阻塞&lt;/code&gt;，&lt;code&gt;运行&lt;/code&gt;三种基本状态。&lt;/p&gt;
+&lt;p&gt;阮一峰大神针对进程和线程的类比，很是形象：&lt;code&gt;计算机的核心CPU&lt;/code&gt;，是个工厂，时刻运转着，工厂里有很多个车间（进程），一个车间开工其他车间不能开工，就是说：&lt;code&gt;单核CPU一次只能运行一个进程。任何时候，CPU总是运行一个进程&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;而一个车间里面有很多工人（线程），协同完成一个任务。所以：&lt;code&gt;一个进程可以包括多个线程&lt;/code&gt;。车间空间是工人共享的，&lt;code&gt;一个进程中的内存空间是所有线程共享的&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;但是房间大小不同个，容纳量不同，有些线程进去了，其他线程就不能再进去使用了。这就是：&lt;code&gt;一个线程使用某些共享内存时，其他线程得等它结束后才能使用共享内存&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;内存可以上锁，防止其他线程进来，【互斥锁】也就是防止多个线程读写同一块内存区域。&lt;/p&gt;
+&lt;p&gt;还有些共享内存比较大，可以容纳多个线程，但是也是有限的，只能容纳固定数目的线程使用。如何保证多个线程不冲突呢？内存门口有个钥匙架，如果发现钥匙架空了，那就不能再进去了【信号量】。&lt;/p&gt;
+&lt;h2 id=&#34;二-堆-栈-队列&#34;&gt;二. 堆、栈、队列&lt;/h2&gt;
+&lt;h3 id=&#34;堆heap&#34;&gt;堆（Heap）&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;堆&lt;/strong&gt;是一种数据结构，是利用完全二叉树维护的一组数据，堆分为&lt;strong&gt;两种&lt;/strong&gt;，一种为&lt;strong&gt;最大堆&lt;/strong&gt;，一种为&lt;strong&gt;最小堆&lt;/strong&gt;，将&lt;code&gt;根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆&lt;/code&gt;。堆是&lt;code&gt;线性数据结构&lt;/code&gt;，&lt;code&gt;相当于一维数组&lt;/code&gt;，有唯一后继。&lt;/p&gt;
+&lt;p&gt;如最大堆&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625984818364.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;栈stack&#34;&gt;栈（Stack）&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;栈&lt;/strong&gt;在计算机科学中是限定仅在&lt;strong&gt;表尾&lt;/strong&gt;进行&lt;code&gt;插入&lt;/code&gt;或&lt;code&gt;删除&lt;/code&gt;操作的线性表。 栈是一种数据结构，它按照&lt;code&gt;后进先出&lt;/code&gt;的原则存储数据，先进入的数据被压入栈底，最后的数据在栈顶，需要读数据的时候从栈顶开始弹出数据。&lt;code&gt;栈&lt;/code&gt;是只能在&lt;strong&gt;某一端插入&lt;/strong&gt;和&lt;strong&gt;删除&lt;/strong&gt;的特殊线性表。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625984901213.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;队列queue&#34;&gt;队列（Queue）&lt;/h3&gt;
+&lt;p&gt;特殊之处在于它只允许在表的&lt;strong&gt;前端&lt;/strong&gt;（&lt;code&gt;front&lt;/code&gt;）进行&lt;code&gt;删除&lt;/code&gt;操作，而在表的&lt;strong&gt;后端&lt;/strong&gt;（&lt;code&gt;rear&lt;/code&gt;）进行&lt;code&gt;插入&lt;/code&gt;操作，和栈一样，队列是一种操作受限制的线性表。进行&lt;strong&gt;插入&lt;/strong&gt;操作的端称为&lt;strong&gt;队尾&lt;/strong&gt;，进行&lt;strong&gt;删除&lt;/strong&gt;操作的端称为&lt;strong&gt;队头&lt;/strong&gt;。 队列中没有元素时，称为&lt;strong&gt;空队列&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;队列&lt;/strong&gt;的数据元素又称为&lt;strong&gt;队列元素&lt;/strong&gt;。在队列中插入一个队列元素称为&lt;strong&gt;入队&lt;/strong&gt;，从队列中删除一个队列元素称为&lt;strong&gt;出队&lt;/strong&gt;。因为队列只允许在一端插入，在另一端删除，所以只有最早进入队列的元素才能最先从队列中删除，故队列又称为&lt;strong&gt;先进先出&lt;/strong&gt;（FIFO—first in first out）&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625985003579.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;三-函数调用栈与任务队列&#34;&gt;三. 函数调用栈与任务队列&lt;/h2&gt;
+&lt;p&gt;Javascript有一个main thread &lt;strong&gt;主进程&lt;/strong&gt;和call-stack（一个&lt;strong&gt;调用堆栈&lt;/strong&gt;），在对一个调用堆栈中的task处理的时候，其他的都要等着。当在执行过程中遇到一些类似于setTimeout等异步操作的时候，会交给浏览器的其他模块(以webkit为例，是webcore模块)进行处理，当到达setTimeout指定的延时执行的时间之后，task(&lt;strong&gt;回调函数&lt;/strong&gt;)会放入到任务队列之中。一般不同的异步任务的回调函数会放入不同的任务队列之中。等到调用栈中所有task执行完毕之后，接着去执行任务队列之中的task(回调函数)。&lt;/p&gt;
+&lt;p&gt;任务队列是“先进先出”的数据结构，先来的优先被主线程读取。&lt;/p&gt;
+&lt;p&gt;调用栈中遇到DOM操作、ajax请求以及setTimeout等WebAPIs的时候就会交给浏览器内核的其他模块进行处理，webkit内核在Javasctipt执行引擎之外，有一个重要的模块是webcore模块。对于图中WebAPIs提到的三种API，webcore分别提供了DOM Binding、network、timer模块来处理底层实现。等到这些模块处理完这些操作的时候将回调函数放入任务队列中，之后等栈中的task执行完之后再去执行任务队列之中的回调函数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;小结：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;所有的代码都要通过函数调用栈中调用执行。&lt;/li&gt;
+&lt;li&gt;当遇到前文中提到的APIs的时候，会交给浏览器内核的其他模块进行处理。&lt;/li&gt;
+&lt;li&gt;任务队列中存放的是回调函数。&lt;/li&gt;
+&lt;li&gt;等到调用栈中的task执行完之后再回去执行任务队列之中的task。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;四-宏任务与微任务&#34;&gt;四. 宏任务与微任务&lt;/h2&gt;
+&lt;p&gt;其中setTimeout叫做&lt;strong&gt;macro-task&lt;/strong&gt;(宏任务)，当然如我们所想，还有如promise的&lt;strong&gt;micro-task&lt;/strong&gt;(微任务)。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;macro-task包括：script(整体代码), setTimeout, setInterval, setImmediate, I/O, UI rendering。&lt;/li&gt;
+&lt;li&gt;micro-task包括：process.nextTick, Promise, Object.observe, MutationObserver&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;事件循环的顺序是从script开始第一次循环，随后全局上下文进入函数调用栈，碰到macro-task就将其交给处理它的模块处理完之后将回调函数放进macro-task的队列之中，碰到micro-task也是将其回调函数放进micro-task的队列之中。直到函数调用栈清空只剩全局执行上下文，然后开始执行所有的micro-task。当所有可执行的micro-task执行完毕之后。循环再次执行macro-task中的一个任务队列，执行完之后再执行所有的micro-task，就这样一直循环。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不同的任务会放进不同的任务队列之中。&lt;/li&gt;
+&lt;li&gt;先执行macro-task，等到函数调用栈清空之后再执行所有在队列之中的micro-task。&lt;/li&gt;
+&lt;li&gt;等到所有micro-task执行完之后再从macro-task中的一个任务队列开始执行，就这样一直循环。&lt;/li&gt;
+&lt;li&gt;当有多个macro-task(micro-task)队列时，事件循环的顺序是按上文macro-task(micro-task)的分类中书写的顺序执行的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;五-浏览器中的event-loop&#34;&gt;五. 浏览器中的Event Loop&lt;/h2&gt;
+&lt;h3 id=&#34;一-同步任务和异步任务&#34;&gt;一. 同步任务和异步任务&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Javascript&lt;/code&gt;单线程任务被分为&lt;strong&gt;同步任务&lt;/strong&gt;和&lt;strong&gt;异步任务&lt;/strong&gt;，同步任务会在调用栈中按照顺序等待主线程依次执行，异步任务会在异步任务有了结果后，将注册的回调函数放入任务队列中等待主线程空闲的时候（调用栈被清空），被读取到栈内等待主线程的执行。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625986142169.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+任务队列&lt;code&gt;Task Queue&lt;/code&gt;，即队列，是一种先进先出的一种数据结构。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625986190795.webp&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;二-事件循环的进程模型&#34;&gt;二. 事件循环的进程模型&lt;/h3&gt;
+&lt;p&gt;执行栈在执行完&lt;strong&gt;同步任务&lt;/strong&gt;后，查看&lt;strong&gt;执行栈&lt;/strong&gt;是否为空，如果执行栈为空，就会去检查&lt;strong&gt;微任务&lt;/strong&gt;(&lt;code&gt;microTask&lt;/code&gt;)队列是否为空，如果为空的话，就执行&lt;strong&gt;宏任务&lt;/strong&gt;（&lt;code&gt;Task&lt;/code&gt;），否则就一次性执行完所有微任务。每次单个&lt;strong&gt;宏任务&lt;/strong&gt;执行完毕后，检查&lt;strong&gt;微任务&lt;/strong&gt;(microTask)队列是否为空，如果不为空的话，会按照&lt;strong&gt;先入先出&lt;/strong&gt;的规则全部执行完&lt;code&gt;微任务&lt;/code&gt;(microTask)后，设置&lt;code&gt;微任务&lt;/code&gt;(microTask)队列为&lt;code&gt;null&lt;/code&gt;，然后再执行&lt;code&gt;宏任务&lt;/code&gt;，如此循环。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1625986819310.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;先执行同步阻塞任务，同步任务会等待上一个执行完毕以后执行下一个，当同步任务执行完毕，再执行异步任务，遇到异步任务会将异步任务的回调函数注册在异步任务队列里。注意，如果主线程上没有同步任务会直接调用异步任务的微任务。&lt;/li&gt;
+&lt;li&gt;执行宏任务，遇到微任务将都添加到微任务队列里。&lt;/li&gt;
+&lt;li&gt;开始执行微任务队列，当宏任务执行完后执行微任务队列，直到微任务队列全部执行完，微任务队列为空。&lt;/li&gt;
+&lt;li&gt;执行宏任务，如果在执行宏任务期间有微任务，将微任务添加到微任务队列里，执行完宏任务之后执行微任务，直到微任务队列全部执行完。&lt;/li&gt;
+&lt;li&gt;继续执行宏任务队列。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;重复2, 3, 4，5……直到宏微任务为空&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;六-nexttick-的实现原理&#34;&gt;六. $nextTick 的实现原理&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;从字面意思理解，next 下一个，tick 滴答（钟表）来源于定时器的周期性中断（输出脉冲），一次中断表示一个 tick，也被称做一个“时钟滴答”），nextTick 顾名思义就是下一个时钟滴答。看源码，在 Vue 2.x 版本中，nextTick 在 src\core\util 中的一个单独的文件 next-tick.js ，可见 nextTick 的重要性，虽然短短 200 多行，尤大却单独创建一个文件去维护。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接下来我们来看整个文件。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;声明了三个全局变量，&lt;strong&gt;callbacks: []&lt;/strong&gt;，&lt;strong&gt;pending: Boolean&lt;/strong&gt;，&lt;strong&gt;timerFunc: undefined&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;声明了一个函数** flushCallbacks**。&lt;/li&gt;
+&lt;li&gt;一堆 &lt;strong&gt;if，else if&lt;/strong&gt; 判断。&lt;/li&gt;
+&lt;li&gt;抛出了一个函数 &lt;strong&gt;nextTick&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;一-nexttick-函数&#34;&gt;一. nextTick 函数&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1625988595919.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;声明一个局部变量 &lt;strong&gt;_resolve&lt;/strong&gt; 。&lt;/li&gt;
+&lt;li&gt;把所有回调函数压进 &lt;strong&gt;callbacks&lt;/strong&gt; 中，以栈的形式的存储所有 &lt;strong&gt;callback&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;当 &lt;strong&gt;pending&lt;/strong&gt; 为 &lt;strong&gt;false&lt;/strong&gt; 时，执行 &lt;strong&gt;timerFunc&lt;/strong&gt; 函数。&lt;/li&gt;
+&lt;li&gt;当没有 &lt;strong&gt;callback&lt;/strong&gt; 的时候，返回一个 &lt;strong&gt;Promise&lt;/strong&gt; 的调用方式，可以用 &lt;strong&gt;.then&lt;/strong&gt; 接收。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;二-timerfunc-函数&#34;&gt;二. timerFunc 函数&lt;/h3&gt;
+&lt;p&gt;我们开始说了，timerFunc 为全局变量，现在调用 timerFunc ，timerFunc 是什么时候被赋值为一个函数，并且函数里执行代码又是什么？&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625988797925.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+我们看到，这段判断代码总共有四个分支，四个分支里对 timerFunc 有不同的赋值，我们先来看第一个分支。&lt;br&gt;
+&lt;strong&gt;Promise 分支&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if (typeof Promise !== &#39;undefined&#39; &amp;amp;&amp;amp; isNative(Promise)) {
+  const p = Promise.resolve()
+  timerFunc = () =&amp;gt; {
+    p.then(flushCallbacks)
+    // In problematic UIWebViews, Promise.then doesn&#39;t completely break, but
+    // it can get stuck in a weird state where callbacks are pushed into the
+    // microtask queue but the queue isn&#39;t being flushed, until the browser
+    // needs to do some other work, e.g. handle a timer. Therefore we can
+    // &amp;quot;force&amp;quot; the microtask queue to be flushed by adding an empty timer.
+    if (isIOS) setTimeout(noop)
+  }
+  isUsingMicroTask = true
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;判断环境是否支持 Promise 并且 &lt;strong&gt;Promise&lt;/strong&gt; 是否为原生。&lt;/li&gt;
+&lt;li&gt;使用 &lt;strong&gt;Promise&lt;/strong&gt; 异步调用 &lt;strong&gt;flushCallbacks&lt;/strong&gt; 函数。&lt;/li&gt;
+&lt;li&gt;当执行环境是 &lt;strong&gt;iPhone&lt;/strong&gt; 等，使用 &lt;strong&gt;setTimeout&lt;/strong&gt; 异步调用 &lt;strong&gt;noop&lt;/strong&gt; ，&lt;strong&gt;iOS 中在一些异常的webview&lt;/strong&gt; 中，&lt;strong&gt;promise&lt;/strong&gt; 结束后任务队列并没有刷新所以强制执行 &lt;strong&gt;setTimeout&lt;/strong&gt; 刷新任务队列。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;MutationObserver 分支&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;else if (!isIE &amp;amp;&amp;amp; typeof MutationObserver !== &#39;undefined&#39; &amp;amp;&amp;amp; (
+  isNative(MutationObserver) ||
+  // PhantomJS and iOS 7.x
+  MutationObserver.toString() === &#39;[object MutationObserverConstructor]&#39;
+)) {
+  // Use MutationObserver where native Promise is not available,
+  // e.g. PhantomJS, iOS7, Android 4.4
+  // (#6466 MutationObserver is unreliable in IE11)
+  let counter = 1
+  const observer = new MutationObserver(flushCallbacks)
+  const textNode = document.createTextNode(String(counter))
+  observer.observe(textNode, {
+    characterData: true
+  })
+  timerFunc = () =&amp;gt; {
+    counter = (counter + 1) % 2
+    textNode.data = String(counter)
+  }
+  isUsingMicroTask = true
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;对非IE浏览器和是否可以使用 &lt;strong&gt;HTML5&lt;/strong&gt; 新特性 &lt;strong&gt;MutationObserver&lt;/strong&gt; 进行判断。&lt;/li&gt;
+&lt;li&gt;实例一个 &lt;strong&gt;MutationObserver&lt;/strong&gt; 对象，这个对象主要是对浏览器 &lt;strong&gt;DOM&lt;/strong&gt; 变化进行监听，当实例化 &lt;strong&gt;MutationObserver&lt;/strong&gt; 对象并且执行对象 &lt;strong&gt;observe&lt;/strong&gt;，设置 &lt;strong&gt;DOM&lt;/strong&gt; 节点发生改变时自动触发回调。&lt;/li&gt;
+&lt;li&gt;把 &lt;strong&gt;timerFunc&lt;/strong&gt; 赋值为一个改变 &lt;strong&gt;DOM&lt;/strong&gt; 节点的方法，当 &lt;strong&gt;DOM&lt;/strong&gt; 节点发生改变，触发 &lt;strong&gt;flushCallbacks&lt;/strong&gt; 。（这里其实就是想用利用 &lt;strong&gt;MutationObserver&lt;/strong&gt; 的特性进行异步操作）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;setImmediate 分支&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;else if (typeof setImmediate !== &#39;undefined&#39; &amp;amp;&amp;amp; isNative(setImmediate)) {
+  // Fallback to setImmediate.
+  // Technically it leverages the (macro) task queue,
+  // but it is still a better choice than setTimeout.
+  timerFunc = () =&amp;gt; {
+    setImmediate(flushCallbacks)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;判断 &lt;strong&gt;setImmediate&lt;/strong&gt; 是否存在，&lt;strong&gt;setImmediate&lt;/strong&gt; 是高版本 IE （IE10+） 和 edge 才支持的。&lt;/li&gt;
+&lt;li&gt;如果存在，传入 &lt;strong&gt;flushCallbacks&lt;/strong&gt; 执行 &lt;strong&gt;setImmediate&lt;/strong&gt; 。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;setTimeout 分支&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;else {
+  // Fallback to setTimeout.
+  timerFunc = () =&amp;gt; {
+    setTimeout(flushCallbacks, 0)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当以上所有分支异步 &lt;strong&gt;api&lt;/strong&gt; 都不支持的时候，使用 &lt;strong&gt;macro task&lt;/strong&gt;（宏任务）的 &lt;strong&gt;setTimeout&lt;/strong&gt; 执行 &lt;strong&gt;flushCallbacks&lt;/strong&gt; 。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;执行降级&lt;/strong&gt;&lt;br&gt;
+&lt;code&gt;我们可以发现，给 timerFunc 赋值是一个降级的过程。为什么呢，因为 Vue 在执行的过程中，执行环境不同，所以要适配环境。&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625989069791.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这张图便于我们更清晰的了解到降级的过程。&lt;/p&gt;
+&lt;h3 id=&#34;三-flushcallbacks-函数&#34;&gt;三. flushCallbacks 函数&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function flushCallbacks () {
+  pending = false
+  const copies = callbacks.slice(0)
+  callbacks.length = 0
+  for (let i = 0; i &amp;lt; copies.length; i++) {
+    copies[i]()
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;四-总结&#34;&gt;四. 总结&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;nextTick&lt;/strong&gt; 的原理就是利用** Event loop** 事件线程去异步重新渲染，分支判断首要选择 &lt;strong&gt;Promise&lt;/strong&gt; 的原因是当同步JS代码执行完毕，执行栈清空会首先查看 &lt;strong&gt;micro task&lt;/strong&gt; （微任务）队列是否为空，不为空首先执行微任务。在我们 &lt;strong&gt;DOM&lt;/strong&gt; 依赖数据发生变化的时候，会异步重新渲染 &lt;strong&gt;DOM&lt;/strong&gt; ，但是比如像 &lt;strong&gt;echarts&lt;/strong&gt; ，&lt;strong&gt;canvas&lt;/strong&gt;……这些 Vue 无法在初始状态下收集依赖的 DOM ，我们就需要手动执行 &lt;strong&gt;nextTick&lt;/strong&gt; 方法使其重新渲染。&lt;/p&gt;
+">【Diary】如何用 Event Loop 理解异步</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://ttarea.com/post/diary-ru-he-yong-git-dai-chuan-yi-lu/"" data-c="
           &lt;h2 id=&#34;零-前言&#34;&gt;零. 前言&lt;/h2&gt;
 &lt;p&gt;最近在网上有个真实发生的案例比较火，说的是一个新入职的员工，不会用 Git 拉代码，第二天被开除。由此，可见 Git 对我们工作的重要性，无论是前端后端，都是离不开 Git 的，下面就让我们一探究竟吧。&lt;/p&gt;
@@ -2008,7 +2185,7 @@ Person.prototype.constructor == Person
 &lt;pre&gt;&lt;code&gt; var A = new Function ();
 Function.prototype = A;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;上文提到凡是通过 new Function( ) 产生的对象都是函数对象**。因为 A 是函数对象，所以&lt;code&gt;Function.prototype&lt;/code&gt; 是函数对象。&lt;/p&gt;
+&lt;p&gt;上文提到凡是通过 new Function( ) 产生的对象都是&lt;strong&gt;函数对象&lt;/strong&gt;。因为 A 是函数对象，所以&lt;code&gt;Function.prototype&lt;/code&gt; 是函数对象。&lt;/p&gt;
 &lt;p&gt;那原型对象是用来做什么的呢？主要作用是用于&lt;strong&gt;继承&lt;/strong&gt;。举个例子：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; var Person = function(name){
     this.name = name; // tip: 当函数执行时这个 this 指的是谁？
@@ -2563,7 +2740,10 @@ server {
 &lt;p&gt;特别鸣谢 以下几位大佬的图解和思路(包括但不完全)&lt;br&gt;
 &lt;a href=&#34;https://leetcode-cn.com/u/jyd/&#34;&gt;Krahets&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://leetcode-cn.com/u/xin-tan/&#34;&gt;心谭&lt;/a&gt;&lt;br&gt;
-&lt;a href=&#34;https://leetcode-cn.com/u/xiao_ben_zhu/&#34;&gt;笨猪爆破组&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://leetcode-cn.com/u/xiao_ben_zhu/&#34;&gt;笨猪爆破组&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://leetcode-cn.com/u/sweetiee/&#34;&gt;Sweetiee&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://leetcode-cn.com/u/sdwwld/&#34;&gt;数据结构和算法&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://leetcode-cn.com/u/liweiwei1419/&#34;&gt;liweiwei1419&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;1-二维数组中的查找&#34;&gt;1. 二维数组中的查找&lt;/h1&gt;
 &lt;h2 id=&#34;1题目描述&#34;&gt;1.🎨题目描述&lt;/h2&gt;
@@ -3218,18 +3398,1112 @@ function isSubTree(pRoot1, pRoot2){
   return res;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;17&#34;&gt;17.&lt;/h1&gt;
+&lt;h1 id=&#34;20-包含min函数的栈&#34;&gt;20. 包含min函数的栈&lt;/h1&gt;
 &lt;h2 id=&#34;1-题目描述-19&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数，并且调用 min函数、push函数 及 pop函数 的时间复杂度都是 O(1)&lt;br&gt;
+push(value):将value压入栈中&lt;br&gt;
+pop():弹出栈顶元素&lt;br&gt;
+top():获取栈顶元素&lt;br&gt;
+min():获取栈中最小元素&lt;/p&gt;
 &lt;h2 id=&#34;2-解题思路-20&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;普通栈的 push() 和 pop() 函数的复杂度为 O(1) ；而获取栈最小值 min() 函数需要遍历整个栈，复杂度为 O(N) 。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;本题难点&lt;/strong&gt;： 将 min() 函数复杂度降为 O(1) ，可通过建立辅助栈实现；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据栈 A ： 栈 A 用于存储所有元素，保证入栈 push() 函数、出栈 pop() 函数、获取栈顶 top() 函数的正常逻辑。&lt;/li&gt;
+&lt;li&gt;辅助栈 B ： 栈 B 中存储栈 A 中所有 非严格降序 的元素，则栈 A 中的最小元素始终对应栈 B 的栈顶元素，即 min() 函数只需返回栈 B 的栈顶元素即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;因此&lt;/strong&gt;，只需设法维护好 栈 B 的元素，使其保持非严格降序，即可实现 min() 函数的 O(1) 复杂度。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625038523972.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;3-复杂度与代码-20&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
-&lt;h1 id=&#34;17-2&#34;&gt;17.&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(1)&lt;/strong&gt; ： push(), pop(), top(), min() 四个函数的时间复杂度均为常数级别。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt;： 当共有 N 个待入栈元素时，辅助栈 B 最差情况下存储 N 个元素，使用 O(N) 额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const data_Stack = [];
+const min_Stack = [];
+
+function push(x){
+  data_Stack.push(x);
+  if(!min_Stack.length || x &amp;lt;= min_Stack[min_Stack.length - 1]) min_Stack.push(x);
+}
+
+function pop(){
+  if(min_Stack[min_Stack.length - 1] === data_Stack[data_Stack.length - 1]) min_Stack.pop();
+  data_Stack.pop();
+}
+
+function top(){
+  return data_Stack[data_Stack.length - 1];
+}
+
+function min(){
+  return min_Stack[min_Stack.length - 1];
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;21-栈的压入-弹出序列&#34;&gt;21. 栈的压入、弹出序列&lt;/h1&gt;
 &lt;h2 id=&#34;1-题目描述-20&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否可能为该栈的弹出顺序。假设压入栈的所有数字均不相等。&lt;/p&gt;
 &lt;h2 id=&#34;2-解题思路-21&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;解题思路构造一个辅助栈 stack 模拟出栈行为&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;入栈操作： 按照压栈序列的顺序执行&lt;/li&gt;
+&lt;li&gt;出栈操作： 每次入栈后，循环判断 “栈顶元素 = 弹出序列的当前元素” 是否成立，将符合弹出序列顺序的栈顶元素全部弹出&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2 id=&#34;3-复杂度与代码-21&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
-&lt;h1 id=&#34;17-3&#34;&gt;17.&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： 其中 N 为列表 pushed 的长度；每个元素最多入栈与出栈一次，即最多共 2N 次出入栈操作。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 辅助栈 stack 最多同时存储 N 个元素。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var validateStackSequences = function(pushed, popped) {
+  const stack = [];                 //辅助栈
+  let index = 0,                    //指向popped当前的下标
+      len = pushed.length;
+  for (let i = 0; i &amp;lt; len; i++) {
+    stack.push(pushed[i]);          //把pushed的元素一个一个入栈
+    //把入栈的当前元素和pushed当前指向的元素进行对比 相等话就把辅助栈出栈 pushed下标往右移动
+    while(stack.length &amp;amp;&amp;amp; stack[stack.length - 1] === popped[index]){
+      stack.pop();
+      index++;
+    }                              
+  }
+  return !stack.length;             //如果stack为空，说明符合题目
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;22-从上往下打印二叉树&#34;&gt;22. 从上往下打印二叉树&lt;/h1&gt;
 &lt;h2 id=&#34;1-题目描述-21&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。&lt;/p&gt;
 &lt;h2 id=&#34;2-解题思路-22&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;层序遍历需要使用一个队列来存储有用的节点。整体的思路如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将 root 放入队列&lt;/li&gt;
+&lt;li&gt;取出队首元素，将 val 放入返回的数组中&lt;/li&gt;
+&lt;li&gt;检查队首元素的子节点，若不为空，则将子节点放入队列&lt;/li&gt;
+&lt;li&gt;检查队列是否为空，为空，结束并返回数组；不为空，回到第二步&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2 id=&#34;3-复杂度与代码-22&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： N 为二叉树的节点数量，即 BFS 需循环 N 次。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 最差情况下，即当树为平衡二叉树时，最多有 N/2 个树节点同时在 queue 中，使用 O(N) 大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function PrintFromTopToBottom(root)
+{
+  if(!root) return [];
+  const res = [];
+  const queue = [root];
+  while(queue.length){
+    const first = queue.shift();
+    res.push(first.val);
+    first.left &amp;amp;&amp;amp; queue.push(first.left);
+    first.right &amp;amp;&amp;amp; queue.push(first.right);
+  }
+  return res;
+} 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;23-二叉搜索树的后序遍历序列&#34;&gt;23. 二叉搜索树的后序遍历序列&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-22&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则返回true,否则返回false。假设输入的数组的任意两个数字都互不相同。（ps：我们约定空树不是二叉搜索树）&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-23&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1625453305346.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+在题目没有重复数字的前提下，二叉搜索树的左子树均小于根节点，右子树均大于根节点。&lt;br&gt;
+判断二叉搜索树的后续遍历是否合法，只需判断右子树是否均大于根节点，左子树是否均小于根节点。&lt;br&gt;
+显然对于每个节点的操作都是一样的(问题拆解成子问题))，所以使用递归来实现。&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-23&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N^2)&lt;/strong&gt;： 每次调用 递归函数 减去一个根节点，因此递归占用 O(N) ；最差情况下（即当树退化为链表），每轮递归都需遍历树所有节点，占用 O(N) 。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 最差情况下（即当树退化为链表），递归深度将达到 N 。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function VerifySquenceOfBST(postorder){
+  if(!postorder || postorder.length === 0) return false;
+    else return _VerifySquenceOfBST(postorder);
+}
+function _VerifySquenceOfBST(postorder){
+  let len = postorder.length;
+  if(len &amp;lt; 2) return true;          // 若为叶子节点，则返回 true
+  let root = postorder[len - 1];    // 后序遍历的最后一个元素为根节点
+  for(var i = 0; i &amp;lt; len - 1; i++){
+    if(postorder[i] &amp;gt; root) break;  //postorder[0,i]为左子树   postorder[i,len-1]为右子树 
+  }
+  // 判断右子树中的元素是否都大于 root，此处用到 every (数组 API，数组的每个元素都返回 true 则整体返回 true)
+  let result = postorder.slice(i, len - 1).every(item =&amp;gt; item &amp;gt; root);
+  if(result){
+    // 对左右子树进行递归调用,左右子树通过 i 进行分割
+    return _VerifySquenceOfBST(postorder.slice(0, i)) &amp;amp;&amp;amp; _VerifySquenceOfBST(postorder.slice(i, len - 1));
+  }else{
+    return false;
+  }
+ }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;24-二叉树中和为某一值的路径&#34;&gt;24. 二叉树中和为某一值的路径&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-23&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一颗二叉树的根节点和一个整数，按字典序打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-24&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;先序遍历&lt;/strong&gt;： 按照 “根、左、右” 的顺序，遍历树的所有节点。&lt;br&gt;
+&lt;strong&gt;路径记录&lt;/strong&gt;： 在先序遍历中，记录从根节点到当前节点的路径。当路径为 ① 根节点到叶节点形成的路径 且 ② 各节点值的和等于目标值 sum 时，将此路径加入结果列表。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;递推参数&lt;/strong&gt;： 当前节点 root ，当前目标值 sum - root.val 。&lt;br&gt;
+&lt;strong&gt;终止条件&lt;/strong&gt;： 若节点 root 为空，则直接返回。&lt;br&gt;
+&lt;strong&gt;递推工作&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;路径更新： 将当前节点值 root.val 加入路径 tmp ；&lt;/li&gt;
+&lt;li&gt;目标值更新： sum = sum - root.val（即目标值 从 sum 减至 0 ）；&lt;/li&gt;
+&lt;li&gt;路径记录： 当 ① root 为叶节点 且 ② 路径和等于目标值 ，则将此路径 tmp[] 加入 res 。&lt;/li&gt;
+&lt;li&gt;先序遍历： 递归左 / 右子节点。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-24&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： N 为二叉树的节点数，先序遍历需要遍历所有节点。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 最差情况下，即树退化为链表时，tmp 存储所有树节点，使用 O(N) 额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var pathSum = function(root, sum) {
+  if(!root) return [];
+  const res = [];
+  const dfs = (root, sum, tmp) =&amp;gt; {
+    if(root.val === sum &amp;amp;&amp;amp; !root.left &amp;amp;&amp;amp; !root.right) res.push(tmp)  // 如果满足节点值等于目标值，且该节点为叶子节点时，添加结果
+    tmp.push(root.val);
+    if(root.left) dfs(root.left, sum - root.val, [...tmp]);
+    if(root.right) dfs(root.right, sum - root.val, [...tmp]);
+  }
+  dfs(root, sum, []);
+  return res;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;25-复杂链表的复制&#34;&gt;25. 复杂链表的复制&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-24&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针random指向一个随机节点），请对此链表进行深拷贝，并返回拷贝后的头结点。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）。 下图是一个含有5个结点的复杂链表。图中实线箭头表示next指针，虚线箭头表示random指针。为简单起见，指向null的指针没有画出。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625465310051.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-25&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;利用哈希表的查询特点，考虑构建 原链表节点 和 新链表对应节点 的键值对映射关系，再遍历构建新链表各节点的 next 和 random 引用指向即可。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;算法流程：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;若头节点 head 为空节点，直接返回 null ；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;初始化&lt;/strong&gt;： 哈希表 dic ， 节点 cur 指向头节点；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;复制链表&lt;/strong&gt;：&lt;br&gt;
+* 建立新节点，并向 dic 添加键值对 (原 cur 节点, 新 cur 节点） ；&lt;br&gt;
+* cur 遍历至原链表下一节点；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;构建新链表的引用指向&lt;/strong&gt;：&lt;br&gt;
+* 构建新节点的 next 和 random 引用指向；&lt;br&gt;
+* cur 遍历至原链表下一节点；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;返回值&lt;/strong&gt;： 新链表的头节点 dic[cur] ；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-25&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt;： 两轮遍历链表，使用 O(N) 时间。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 哈希表 dic 使用线性大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Clone(head)
+{
+ if(!head) return null;
+  let m = new Map();
+  let node = head;
+  while(node){                         // 复制节点
+    m.set(node, new RandomListNode(node.label));   // 构建源节点，新节点的键值对
+    node = node.next;
+  }
+  node = head;
+  while(node){
+    m.get(node).next = node.next ? m.get(node.next) : null;
+    m.get(node).random = node.random ? m.get(node.random) : null;
+    node = node.next;
+  }
+  return m.get(head);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;26-二叉搜索树与双向链表&#34;&gt;26. 二叉搜索树与双向链表&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-25&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。如下图所示&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625468801097.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-26&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;将 二叉搜索树 转换成一个 “排序的循环双向链表” ，其中包含两个要素：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;排序链表&lt;/strong&gt;： 节点应从小到大排序，因此应使用 &lt;strong&gt;中序遍历&lt;/strong&gt; “从小到大”访问树的节点。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;双向链表&lt;/strong&gt;： 在构建相邻节点的引用关系时，设前驱节点 pre 和当前节点 cur ，不仅应构建 pre.right = cur ，也应构建 cur.left = pre 。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-26&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt;： N 为二叉树的节点数，中序遍历需要访问所有节点。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 最差情况下，即树退化为链表时，递归深度达到 N，系统使用 O(N) 栈空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Convert(root)
+{
+  let pre = null;
+  let head = null;
+  dfs(root);
+  function dfs(cur) {
+    if(!cur) return null;
+    dfs(cur.left);             // 中序遍历 左根右
+    if(!pre) head = cur;       // 初始化head
+    else pre.right = cur;      // 如果存在pre 向右添加 下一个节点
+    cur.left = pre;            // 双向链表 向左添加前一个节点指针
+    pre = cur;                 // pre next 向下继续 递归
+    dfs(cur.right);
+  };
+  return head;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;27-字符串的排列&#34;&gt;27. 字符串的排列&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-26&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则按字典序打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-27&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;首先给定一个字符串，这个字符串里每一个字符是构成排列的元素之一，我们的回溯代码里，选择和回退就确定了是这每个字符。&lt;br&gt;
+给定的字符串有几个字符，那么我们的结束条件就应该是当前选择的字符串的字符数量等于给定的字符串的数量。&lt;br&gt;
+由于要求不能有重复元素，我们还需要过滤剪枝掉可能会重复的选择，这里由于给定的字符串里面可能也会包含重复的字符，那么我们用字符串来是否出现过这个字符来判断显然是不合理的，参考我们上一道题单词搜索，我们可以采用一个bool数组来记录是否访问过。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625538744355.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-27&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N!N)&lt;/strong&gt; ： N 为字符串 s 的长度；时间复杂度和字符串排列的方案数成线性关系，方案数为 N×(N−1)×(N−2)…×2×1 ，即复杂度为 O(N!) ；字符串拼接操作 join() 使用 O(N) ；因此总体时间复杂度为 O(N!N) 。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N^2)&lt;/strong&gt; ： 全排列的递归深度为 N ，系统累计使用栈空间大小为 O(N) ；递归中辅助 Set 累计存储的字符数量最多为 N+(N−1)+...+2+1=(N+1)N/2 ，即占用 O(N^2) 的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Permutation(str)
+{
+  const res = new Set();
+  const visit = [];
+  function dfs(path){
+    if (path.length === str.length) return res.add(path);     //结束条件，如果当前选择字符串和题目给定字符串的长度一致则结束。
+    for(let i = 0; i &amp;lt; str.length; i++){
+      if(visit[i]) continue;       //过滤掉已经选择的。
+      visit[i] = true;             //做出选择
+      dfs(path + str[i]);          // 进入下一层， 需要注意path这里也是做了选择和回退选择，因为是直接path + chars[i]，等递归结束之后path还是path，默认也就做了回退，比较取巧。
+      visit[i] = false;            //回退选择
+    }
+  }
+  dfs(&#39;&#39;);
+  return [...res]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;28-数组中出现次数超过一半的数字&#34;&gt;28. 数组中出现次数超过一半的数字&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-27&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组[1,2,3,2,2,2,5,4,2]。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。你可以假设数组是非空的，并且给定的数组总是存在多数元素。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-28&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;想象一下，假如数组是一个投票箱，数组元素是一张写了选举人编号的一张选票。&lt;br&gt;
+题目要求我们找出哪个数字，超过了数组的一半！&lt;br&gt;
+是否就可以想象为，哪个人成为了最终选举的胜利者呢？&lt;br&gt;
+那么，接下来我们要做的事情，就是找到票数最多的那个人的编号即可。&lt;/p&gt;
+&lt;p&gt;经过以上实例分析，我们可以得出 3 个要点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不同候选人的选票之间，可以一一抵消。&lt;/li&gt;
+&lt;li&gt;若当前胜利者存在多张选票时，不同的候选人的票，只能抵消一张当前胜利者的票。&lt;/li&gt;
+&lt;li&gt;若当前双方的选票被抵消为零，下一次抽出的候选人，将作为暂时的胜利者领先。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-28&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： N 为数组 nums 长度。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(1)&lt;/strong&gt; ： count 变量使用常数大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function MoreThanHalfNum_Solution(nums)
+{
+  let ans = 0, count = 0;
+  for(let i = 0; i &amp;lt; nums.length; i++){
+    if(!count){
+      ans = nums[i];
+      count++;
+    }else{
+      count += nums[i] === ans ? 1 : -1;
+    }
+  }
+  return ans;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;28_番外-回文链表&#34;&gt;28_番外.  回文链表&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-28&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;请判断一个链表是否为回文链表。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-29&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;快慢指针，起初都指向表头，快指针一次走两步，慢指针一次走一步，遍历结束时：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;要么，slow 正好指向中间两个结点的后一个。&lt;/li&gt;
+&lt;li&gt;要么，slow 正好指向中间结点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;用 prev 保存 slow 的前一个结点，通过prev.next = null断成两个链表。&lt;/p&gt;
+&lt;p&gt;将后半段链表翻转，和前半段从头比对。空间复杂度降为O(1)。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625707829215.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;如何翻转单链表&lt;/strong&gt;&lt;br&gt;
+可以这么思考：一次迭代中，有哪些指针需要变动：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个结点的 next 指针要变动。&lt;/li&gt;
+&lt;li&gt;指向表头的 slow 指针要变动。&lt;/li&gt;
+&lt;li&gt;需要有指向新链表表头的 head2 指针，它也要变。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1625707850174.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;3-复杂度与代码-29&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度O(N)&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;空间复杂度O(1)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const isPalindrome = (head) =&amp;gt; {
+  if (head == null || head.next == null) {
+    return true;
+  }
+  let fast = head;
+  let slow = head;
+  let prev;
+  while (fast &amp;amp;&amp;amp; fast.next) {
+    prev = slow;
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  prev.next = null;  // 断成两个链表
+  // 翻转后半段
+  let head2 = null;
+  while (slow) {
+    const tmp = slow.next;
+    slow.next = head2;
+    head2 = slow;
+    slow = tmp;
+  }
+  // 比对
+  while (head &amp;amp;&amp;amp; head2) {
+    if (head.val != head2.val) {
+      return false;
+    }
+    head = head.next;
+    head2 = head2.next;
+  }
+  return true;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;29-最小的k个数&#34;&gt;29. 最小的K个数&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-29&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;给定一个数组，找出其中最小的K个数。例如数组元素是4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4。如果K&amp;gt;数组的长度，那么返回一个空的数组&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-30&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;题目只要求返回最小的 k 个数，对这 k 个数的顺序并没有要求。因此，只需要将数组划分为 &lt;strong&gt;最小的 k 个数&lt;/strong&gt; 和 &lt;strong&gt;其他数字&lt;/strong&gt; 两部分即可，而快速排序的哨兵划分可完成此目标。&lt;/p&gt;
+&lt;p&gt;根据快速排序原理，如果某次哨兵划分后 &lt;strong&gt;基准数正好是第 k+1k+1 小的数字&lt;/strong&gt; ，那么此时基准数左边的所有数字便是题目所求的 &lt;strong&gt;最小的 k 个数&lt;/strong&gt; 。&lt;/p&gt;
+&lt;p&gt;根据此思路，考虑在每次哨兵划分后，判断基准数在数组中的索引是否等于 kk ，若 truetrue 则直接返回此时数组的前 kk 个数字即可。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625713224386.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625713229853.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;哨兵划分：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;划分完毕后，基准数为 arr[i] ，左 / 右子数组区间分别为 [l, i - 1] , [i + 1, r]；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;递归或返回：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;若 k &amp;lt; i ，代表第 k + 1 小的数字在 &lt;strong&gt;左子数组&lt;/strong&gt; 中，则递归左子数组；&lt;/li&gt;
+&lt;li&gt;若 k &amp;gt; i ，代表第 k + 1 小的数字在 &lt;strong&gt;右子数组&lt;/strong&gt; 中，则递归右子数组；&lt;/li&gt;
+&lt;li&gt;若 k = i ，代表此时 arr[k] 即为第 k + 1 小的数字，则直接返回数组前 k 个数字即可；&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625713286563.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-复杂度与代码-30&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： 其中 N 为数组元素数量；对于长度为 N 的数组执行哨兵划分操作的时间复杂度为 O(N)&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(logN)&lt;/strong&gt; ： 划分函数的平均递归深度为 O(logN) 。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function GetLeastNumbers_Solution(input, k){
+    if(input.length == 0 || k &amp;gt; input.length) return [];
+    quickSort(input, 0, input.length - 1);
+    return input.slice(0, k);
+}
+function quickSort(input, left, right){
+    if(left &amp;gt;= right) return;
+    let i = left, j = right;
+    while(i &amp;lt; j){
+        while(i &amp;lt; j &amp;amp;&amp;amp; input[j] &amp;gt;= input[left]) j--;
+        while(i &amp;lt; j &amp;amp;&amp;amp; input[i] &amp;lt;= input[left]) i++;
+        [input[i], input[j]] = [input[j], input[i]];          // 根据基准交换大小，左小右大
+    }
+    [input[left], input[i]] = [input[i], input[left]];        //交换基准
+    quickSort(input, left, i-1);
+    quickSort(input, i+1, right);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;30-连续子数组的最大和&#34;&gt;30. 连续子数组的最大和&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-30&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一个整型数组，数组里有正数也有负数。数组中的一个或连续多个整数组成一个子数组。求所有子数组的和的最大值。要求时间复杂度为 O(n).&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-31&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1625727249997.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1625727254778.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-31&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： 线性遍历数组 nums 即可获得结果，使用 O(N) 时间。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(1)&lt;/strong&gt; ： 使用常数大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var maxSubArray = function(nums) {
+  let res = nums[0];
+  for(let i = 1; i &amp;lt; nums.length; i++){
+    nums[i] = Math.max(0, nums[i - 1]) + nums[i];
+    res = Math.max(res, nums[i]);
+  } 
+  return res;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;31-整数中1出现的次数&#34;&gt;31.  整数中1出现的次数&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-31&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一个整数 n ，求1～n这n个整数的十进制表示中1出现的次数&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-32&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626080722601.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;3-复杂度与代码-32&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;**时间复杂度 O(logn) **： 循环内的计算操作使用 O(1) 时间；循环次数为数字 n 的位数，即 log10^n ，因此循环使用 O(logn) 时间。&lt;br&gt;
+**空间复杂度 O(1) **： 几个变量使用常数大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var countDigitOne = function(n) {
+  let count = 0;
+  for (let i = 1; i &amp;lt;= n; i *= 10) {
+      let divide = i * 10;
+      let p = Math.floor(n / divide), k = n % divide, rest = 0;
+      count += p * i;
+      rest = (k &amp;gt; (2 * i - 1)) ? i : ((k &amp;lt; i) ? 0 : k - i + 1);
+      count += rest;
+  }
+  return count;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;32-把数组排成最小的数&#34;&gt;32. 把数组排成最小的数&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-32&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-33&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;此题求拼接起来的最小数字，本质上是一个排序问题。设数组 nums 中任意两数字的字符串为 x 和 y ，则规定 &lt;strong&gt;排序判断规则&lt;/strong&gt; 为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若拼接字符串 x + y &amp;gt; y + x ，则 x 大于”y ；&lt;/li&gt;
+&lt;li&gt;反之，若 x + y &amp;lt; y + x ，则 x“小于”y ；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626082655702.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;3-复杂度与代码-33&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度是O(NlogN)&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;空间复杂度是O(1)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var minNumber = function(numbers) {
+  numbers.sort((a, b) =&amp;gt; {
+      const s1 = a + &amp;quot;&amp;quot; + b;
+      const s2 = b + &amp;quot;&amp;quot; + a;
+      if (s1 &amp;lt; s2) return -1;   // 表示 &#39;ab&#39; &amp;lt; &#39;ba&#39;，即 a &amp;lt; b ，a 在 b 前边
+      if (s1 &amp;gt; s2) return 1;    // 表示 &#39;ab&#39; &amp;gt; &#39;ba&#39;，即 a &amp;gt; b ，a 在 b 后边
+      return 0;
+  });
+  return numbers.join(&amp;quot;&amp;quot;);
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;33-丑数&#34;&gt;33. 丑数&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-33&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;把只包含质因子2、3和5的数称作丑数（Ugly Number）。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-34&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;设置3个索引a, b, c，分别记录前几个数已经被乘2， 乘3， 乘5了，比如a表示前(a-1)个数都已经乘过一次2了，下次应该乘2的是第a个数；b表示前(b-1)个数都已经乘过一次3了，下次应该乘3的是第b个数；c表示前(c-1)个数都已经乘过一次5了，下次应该乘5的是第c个数；&lt;/p&gt;
+&lt;p&gt;对于某个状态下的丑数序列，我们知道此时第a个数还没有乘2(有没有乘3或者乘5不知道）， 第b个数还没有乘3(有没有乘2或者乘5不知道），第c个数还没有乘5(有没有乘2或者乘3不知道), 下一个丑数一定是从第a丑数乘2， 第b个数乘3， 第c个数乘5中获得，他们三者最小的那个就是下个丑数。&lt;/p&gt;
+&lt;p&gt;求得下个丑数后就得判断这个丑数是谁，是某个数通过乘2得到的，还是某个数乘3得到的，又或是说某个数通过乘5得到的。我们可以比较一下这个新的丑数等于究竟是等于第a个丑数乘2, 还是第b个数乘3， 还是第c个数乘5， 通过比较我们肯定可以知道这个新的丑数到底是哪个数通过乘哪个数得到的。假设这个新的丑数是通过第a个数乘2得到的，说明此时第a个数已经通过乘2得到了一个新的丑数，那下个通过乘2得到一个新的丑数的数应该是第(a+1)个数，此时我们可以说前 a 个数都已经乘过一次2了，下次应该乘2的是第 （a+1） 个数, 所以a++；如果新的丑数是通过第b个数乘3得到的, 说明此时第 b个数已经通过乘3得到了一个新的丑数，那下个需要通过乘3得到一个新的丑数的数应该是第(b+1)个数，此时我们可以说前 b 个数都已经乘过一次3了，下次应该乘3的是第 （b+1） 个数, 所以 b++；同理，如果这个这个新的丑数是通过第c个数乘5得到的, 那么c++;&lt;/p&gt;
+&lt;p&gt;但是注意，如果第a个数乘2后等于第b个数乘3，或者等于第c个数乘5， 说明这个新的丑数是有两种或者三种方式可以得到，这时应该给得到这个新丑数的组合对应的索引都加一，比如新丑数是第a个数乘2后和第b个数乘3得到的，那么 a 和 b都应该加一， 因为此时第a个数已经通过乘2得到了一个新的丑数，第b个数已经通过乘3得到了一个新的丑数, 只不过这两个数相等而已。所以我们给计数器加一的时候不能使用 if else else if， 而应该使用if, if, if, 这样才不会把应该加一的计数器漏掉&lt;/p&gt;
+&lt;p&gt;经过n次循环，就能得到第n 个丑数了。&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-34&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt;： 其中 N=n ，动态规划需遍历计算 dp 列表。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 长度为 N 的 dp 列表使用 O(N) 的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function GetUglyNumber_Solution(n){
+  if(n === 0) return 0;
+  const dp = new Array(n);             // 使用dp数组来存储丑数序列
+  dp[0] = 1;                           // dp[0]已知为1
+  let pt2 = 0, pt3 = 0, pt5 = 0;       // 下个应该通过乘2来获得新丑数的数据
+  for(let i = 1; i &amp;lt; n; i++){
+    dp[i] = Math.min(dp[pt2] * 2, dp[pt3] * 3, dp[pt5] * 5);
+    if(dp[i] === dp[pt2] * 2) pt2++;   // 第pt2个数已经通过乘2得到了一个新的丑数，那下个需要通过乘2得到一个新的丑数的数应该是第(pt2+1)个数
+    if(dp[i] === dp[pt3] * 3) pt3++;
+    if(dp[i] === dp[pt5] * 5) pt5++;
+  }
+  return dp[n - 1];
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;34-第一个只出现一次的字符&#34;&gt;34. 第一个只出现一次的字符&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-34&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;在一个字符串(0&amp;lt;=字符串长度&amp;lt;=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置, 如果没有则返回 -1（需要区分大小写）.（从0开始计数）&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-35&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;遍历字符串，通过 indexOf 和 lastindexOf 获取字符第一次和最后一次出现的位置，如果不同则说明该字符在字符串中出现次数不唯一，如果相同则说明该字符只出现一次。&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-35&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;**时间复杂度 O(N^2) **： N 为字符串 s 的长度；需遍历 s 两轮，使用 O(N) ；indexOf 查找操作的复杂度为 O(N)；&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(1)&lt;/strong&gt; ： 由于题目指出 s 只包含小写字母，因此最多有 26 个不同字符，HashMap 存储需占用 O(26)=O(1) 的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function FirstNotRepeatingChar(str){
+  for(let i=0;i&amp;lt;str.length;i++){
+    if(str.indexOf(str[i]) === str.lastIndexOf(str[i])){
+        return i;
+    }
+  }
+  return -1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;35-数组中的逆序对&#34;&gt;35. 数组中的逆序对&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-35&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-36&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;说明：理解这个算法需要对「归并排序」比较熟悉。掌握如果编写递归函数，每一次都一分为二拆分数组的子区间，然后在方法栈弹出的时候，一步一步合并两个有序数组，最后完成排序工作。&lt;/p&gt;
+&lt;p&gt;而计算逆序数就发生在排序的过程中，利用了「排序」以后数组的有序性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利用「归并排序」计算逆序对，是非常经典的做法；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关键在于「合并两个有序数组」的步骤，利用数组的部分有序性&lt;/strong&gt;，一下子计算出一个数之前或者之后元素的逆序的个数；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前面「分」的时候什么都不做，「合」的过程中计算「逆序对」的个数&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;「排序」的工作是必要的，正是因为「排序」才能在下一轮利用顺序关系加快逆序数的计算，也能避免重复计算；&lt;/li&gt;
+&lt;li&gt;在代码实现上，只需要在「归并排序」代码的基础上，加上「逆序对」个数的计算，计算公式需要自己在草稿纸上推导。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;思想是「分治算法」，所有的「逆序对」来源于 3 个部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;左边区间的逆序对；&lt;/li&gt;
+&lt;li&gt;右边区间的逆序对；&lt;/li&gt;
+&lt;li&gt;横跨两个区间的逆序对。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626266797275.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;3-复杂度与代码-36&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;时间复杂度：O(NlogN)，这里 N 是数组的长度。复杂度是归并排序的时间复杂度，直接看递归树的结点个数或者使用主定理分析，归并的回收每一步计算逆序对的个数是 O(1) 的；&lt;br&gt;
+空间复杂度：O(N)。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function InversePairs(nums) {
+  let sum = 0;            // 定义变量存储逆序对的数量
+  mergeSort(nums);        // 归并排序的返回结果赋值给sum
+  return sum % 1000000007;
+  // 归并排序函数(分)
+  function mergeSort (nums) {
+    if(nums.length &amp;lt; 2) return nums;                        // 一个元素的时候，我们返回这个数组，即递归的结束条件
+    let mid = Math.floor(nums.length / 2);                  // 如果数组的长度不小于2，说明还没有分彻底 ，下面继续分
+    let left = nums.slice(0, mid);                          // 左边的子数组
+    let right = nums.slice(mid);                            // 右边的子数组
+    return merge(mergeSort(left), mergeSort(right));    // 将拆分好的左右子数组投入到合并函数中
+  }
+  // 合并函数（用户将拆分好的子数组进行合并）
+  function merge(left, right) {
+    const res = [];                   // 定义一个存储合并排好顺序的总数组（包含左右子数组的）
+    const leftLen = left.length;
+    const rightLen = right.length;
+    // 开始循环遍历，是以res的下标为基础进行遍历的(i是左子数组的下标，j是右子树组的下标，index是res的下标)
+    for(let i = 0, j = 0, index = 0; index &amp;lt; leftLen + rightLen; index++) {
+      if(i &amp;gt;= leftLen) res.push(right[j++]); // 如果i越界说明，左子数组已经遍历完，此时res直接添加右子数组的下标指向的元素即可
+      else if(j &amp;gt;= rightLen) res.push(left[i++]); // 如果j越界，说明右子数组已经遍历完了，此时res直接添加左子数组下标指向的元素即可
+      else if(left[i] &amp;lt;= right[j]) res.push(left[i++]);  // 如果左子数组下标指向的元素小于等于右子数组下标指向的元素，此时不存在逆序对，将左子数组对应的结果加到res数组即可
+      else {
+        res.push(right[j++]); // 如果左子数组下标指向的元素大于右子数组下标指向的元素，此时是存在逆序对的
+        sum += leftLen - i;
+      }
+    }
+    return res; 
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;36-两个链表的第一个公共结点&#34;&gt;36. 两个链表的第一个公共结点&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-36&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入两个无环的单链表，找出它们的第一个公共结点。（注意因为传入数据是链表，所以错误测试数据的提示是用其他方式显示的，保证传入数据是正确的）&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-37&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;我们使用两个指针 node1，node2 分别指向两个链表 headA，headB 的头结点，然后同时分别逐结点遍历，当 node1 到达链表 headA 的末尾时，重新定位到链表 headB 的头结点；当 node2 到达链表 headB 的末尾时，重新定位到链表 headA 的头结点。&lt;/p&gt;
+&lt;p&gt;这样，当它们相遇时，所指向的结点就是第一个公共结点。&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-37&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度&lt;/strong&gt;：O(M+N)。&lt;br&gt;
+&lt;strong&gt;空间复杂度&lt;/strong&gt;：O(1)。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function FindFirstCommonNode(pHead1, pHead2)
+{
+    let h1 = pHead1;
+    let h2 = pHead2;
+    while(h1 !== h2){
+      h1 = h1 === null ? pHead2 : h1.next;
+      h2 = h2 === null ? pHead1 : h2.next;
+    }
+    return h1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;37-数字在升序数组中出现的次数&#34;&gt;37. 数字在升序数组中出现的次数&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-37&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;统计一个数字在升序数组中出现的次数。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-38&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;显然是利用二分查找。因为有序，所以目标值target如果有多个，肯定是连在一起。又已知我们可以在有序数组中查找任意一个值，因此我们可以先查找目标范围的下界和上界。&lt;br&gt;
+下界定义为：如果存在目标值，则指向第一个目标值，否则，如果不存在， 则指向大于目标值的第一个值。&lt;br&gt;
+上界定义为：不管目标值存在与否，都指向大于目标值的第一个值。&lt;br&gt;
+如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626271708852.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626271712155.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+最后的结果就是：right - left&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-38&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度O(logN)&lt;/strong&gt;,&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(1)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function GetNumberOfK(data, k)
+{
+  if(!data.length) return 0;
+  let left = 0, right = data.length - 1;
+  while(left &amp;lt; right){
+    let mid = Math.floor((left + right) / 2);
+    if(data[mid] &amp;gt;= k) right = mid;
+    else left = mid + 1;
+  }
+  while(data[right] === k) right++;
+  return right - left;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;38-二叉树的深度&#34;&gt;38. 二叉树的深度&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-38&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-39&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;树的后序遍历 / 深度优先搜索往往利用 &lt;strong&gt;递归&lt;/strong&gt; 或 &lt;strong&gt;栈&lt;/strong&gt; 实现，本文使用递归实现。&lt;br&gt;
+&lt;strong&gt;关键点：&lt;/strong&gt; 此树的深度和其左（右）子树的深度之间的关系。显然，&lt;strong&gt;此树的深度&lt;/strong&gt; 等于 &lt;strong&gt;左子树的深度&lt;/strong&gt; 与** 右子树的深度** 中的 最大值 &lt;strong&gt;+1&lt;/strong&gt; 。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626271942911.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-39&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： N 为树的节点数量，计算树的深度需要遍历所有节点。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 最差情况下（当树退化为链表时），递归深度可达到 N 。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function TreeDepth(pRoot){
+  return pRoot === null ? 0 : Math.max(TreeDepth(pRoot.left),TreeDepth(pRoot.right)) + 1
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;39-平衡二叉树&#34;&gt;39. 平衡二叉树&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-39&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一棵二叉树，判断该二叉树是否是平衡二叉树。&lt;br&gt;
+在这里，我们只需要考虑其平衡性，不需要考虑其是不是排序二叉树&lt;br&gt;
+平衡二叉树（Balanced Binary Tree），具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-40&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;思路是对二叉树做后序遍历，从底至顶返回子树深度，若判定某子树不是平衡树则 “剪枝” ，直接向上返回。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;算法流程&lt;/strong&gt;：&lt;br&gt;
+&lt;strong&gt;recur(root) 函数&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;返回值：
+&lt;ol&gt;
+&lt;li&gt;当节点root 左 / 右子树的深度差 ≤1 ：则返回当前子树的深度，即节点 root 的左 / 右子树的深度最大值 +1 （ max(left, right) + 1 ）；&lt;/li&gt;
+&lt;li&gt;当节点root 左 / 右子树的深度差 &amp;gt; 2 ：则返回 -1，代表 &lt;strong&gt;此子树不是平衡树&lt;/strong&gt; 。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;终止条件：
+&lt;ol&gt;
+&lt;li&gt;当 root 为空：说明越过叶节点，因此返回高度 0 ；&lt;/li&gt;
+&lt;li&gt;当左（右）子树深度为 -1 ：代表此树的 &lt;strong&gt;左（右）子树&lt;/strong&gt; 不是平衡树，因此&lt;code&gt;剪枝&lt;/code&gt;，直接返回 -1；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;isBalanced(root) 函数&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;返回值&lt;/strong&gt;： 若 recur(root) != -1 ，则说明此树平衡，返回 true ； 否则返回 false 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-复杂度与代码-40&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt;： N 为树的节点数；最差情况下，需要递归遍历树的所有节点。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt;： 最差情况下（树退化为链表时），系统递归需要使用 O(N) 的栈空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var isBalanced = function(root) {
+  return recur(root) != -1;
+};
+
+const recur = root =&amp;gt; {
+  if(root === null) return 0;
+  let left = recur(root.left);
+  let right = recur(root.right);
+  if(left === -1) return -1;
+  if(right === -1) return -1;
+  return Math.abs(left - right) &amp;lt; 2 ? Math.max(left, right) + 1 : -1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;40-数组中只出现一次的两个数字&#34;&gt;40. 数组中只出现一次的两个数字&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-40&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;一个整型数组里除了两个数字只出现一次，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-41&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;遍历 numsnums 执行异或&lt;/strong&gt;：&lt;br&gt;
+设整型数组 nums = [a, a, b, b, ..., x, y] ，对 nums 中所有数字执行异或，得到的结果为 x⊕y&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;循环左移计算 m&lt;/strong&gt; ：&lt;br&gt;
+初始化一个辅助变量 m = 1 ，通过与运算从右向左循环判断，可 &lt;strong&gt;获取整数 x⊕y 首位 1&lt;/strong&gt; ，记录于 m 中&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;拆分 nums 为两个子数组&lt;/strong&gt;：&lt;br&gt;
+通过遍历判断 nums 中各数字和 m 做与运算的结果，可将数组拆分为两个子数组，并分别对两个子数组遍历求异或，则可得到两个只出现一次的数字&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分别遍历两个子数组执行异或&lt;/strong&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;返回值&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626328358988.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-41&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;//因为相同的数字异或为0，任何数字与0异或结果是其本身。
+//所以遍历异或整个数组最后得到的结果就是两个只出现一次的数字异或的结果：即 z = x ^ y
+//我们根据异或的性质可以知道：z中至少有一位是1，否则x与y就是相等的。
+//我们通过一个辅助变量m来保存z中哪一位为1.（可能有多个位都为1，我们找到最低位的1即可）。
+//举个例子：z = 10 ^ 2 = 1010 ^ 0010 = 1000,第四位为1.
+//我们将m初始化为1，如果（z &amp;amp; m）的结果等于0说明z的最低为是0
+//我们每次将m左移一位然后跟z做与操作，直到结果不为0.
+//此时m应该等于1000，同z一样，第四位为1.
+//我们遍历数组，将每个数跟m进行与操作，结果为0的作为一组，结果不为0的作为一组
+//例如对于数组：[1,2,10,4,1,4,3,3]，我们把每个数字跟1000做与操作，可以分为下面两组：
+//nums1存放结果为0的: [1, 2, 4, 1, 4, 3, 3]
+//nums2存放结果不为0的: [10] (碰巧nums2中只有一个10，如果原数组中的数字再大一些就不会这样了)
+//此时我们发现问题已经退化为数组中有一个数字只出现了一次
+//分别对nums1和nums2遍历异或就能得到我们预期的x和y
+function FindNumsAppearOnce( nums ) {
+  let x = 0, y = 0, z = 0, m = 1;
+  for(let num of nums) z ^= num;
+  while((z &amp;amp; m) === 0) m &amp;lt;&amp;lt;= 1;
+  for(let num of nums) {
+    if((num &amp;amp; m) != 0) x ^= num;
+    else y ^= num;
+  }
+  return x &amp;gt; y ? [y, x] : [x, y]
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;41-和为s的连续正数序列&#34;&gt;41. 和为S的连续正数序列&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-41&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;小明很喜欢数学,有一天他在做数学作业时,要求计算出9~16的和,他马上就写出了正确答案是100。但是他并不满足于此,他在想究竟有多少种连续的正数序列的和为100(至少包括两个数)。没多久,他就得到另一组连续正数和为100的序列:18,19,20,21,22。现在把问题交给你,你能不能也很快的找出所有和为S的连续正数序列?&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-42&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;什么是滑动窗口？&lt;/strong&gt;&lt;br&gt;
+顾名思义，首先是一个窗口，既然是一个窗口，就需要用窗口的左边界i和右边界j来唯一表示一个窗口，其次，滑动代表，窗口始终从左往右移动，这也表明左边界i和右边界j始终会往后移动，而不会往左移动。&lt;br&gt;
+这里我用左闭右开区间来表示一个窗口。比如&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626331149464.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;滑动窗口的操作&lt;/strong&gt;&lt;br&gt;
+扩大窗口，j += 1&lt;br&gt;
+缩小窗口，i += 1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;算法步骤&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化，i=1,j=1, 表示窗口大小为0&lt;/li&gt;
+&lt;li&gt;如果窗口中值的和小于目标值sum， 表示需要扩大窗口，j += 1&lt;/li&gt;
+&lt;li&gt;否则，如果狂口值和大于目标值sum，表示需要缩小窗口，i += 1&lt;/li&gt;
+&lt;li&gt;否则，等于目标值，存结果，缩小窗口，继续进行步骤2,3,4&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-42&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度&lt;/strong&gt;：O(N)&lt;br&gt;
+&lt;strong&gt;空间复杂度&lt;/strong&gt;：O(1)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function FindContinuousSequence(sum) {
+  let l = 1, r = 1;
+  let res = [];
+  let tmp = 0;
+  while(l &amp;lt; sum / 2) {
+    if(tmp &amp;lt; sum){
+      tmp += r;                //如果窗口中值的和小于目标值sum， 表示需要扩大窗口，j += 1
+      r++                      //扩大窗口，j += 1
+    }else if(tmp &amp;gt; sum) {
+      tmp -= l;                //否则，如果窗口值和大于目标值sum，表示需要缩小窗口，i += 1
+      l++;                     //缩小窗口，i += 1
+    }else{
+      let ans = [];
+      for(let i = l; i &amp;lt; r; i++) ans.push(i);
+      res.push(ans);
+      tmp -= l;                //否则，等于目标值，存结果，缩小窗口，继续进行步骤
+      ++l;
+    }
+  }
+  return res;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;42-和为s的两个数字&#34;&gt;42. 和为S的两个数字&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-42&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，返回两个数的乘积最小的，如果无法找出这样的数字，返回一个空数组即可。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-43&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;既然是递增数组，那么我们可以利用双指针来做这道题。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;指针 i 指向数组首位数字，指针 j 指向数组末位数字。&lt;/li&gt;
+&lt;li&gt;若两数字之和大于了 target，则指针 j 往左移一位。&lt;/li&gt;
+&lt;li&gt;若两数字之和小于了 target，则指针 i 往右移一位。&lt;/li&gt;
+&lt;li&gt;若两数字之和等于了 target，返回结果 [i, j] 即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-43&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N&lt;/strong&gt;)： N 为数组 nums 的长度；双指针共同线性遍历整个数组。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(1)&lt;/strong&gt;： 变量 i, j 使用常数大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function FindNumbersWithSum(nums, target){
+  let l = 0, r = nums.length - 1;
+  while(l &amp;lt; r){
+      if(nums[l] + nums[r] === target) return [nums[l], nums[r]];
+      else if (nums[l] + nums[r] &amp;gt; target) r--;
+      else l++;
+  }
+  return [];
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;43-左旋转字符串&#34;&gt;43. 左旋转字符串&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-43&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。对于一个给定的字符序列 S，请你把其循环左移 K 位后的序列输出（保证 K 小于等于 S 的长度）。例如，字符序列S=”abcXYZdef”,要求输出循环左移 3 位后的结果，即“XYZdefabc”。是不是很简单？OK，搞定它！&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-44&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;应用字符串切片函数，可方便实现左旋转字符串。&lt;br&gt;
+获取字符串 s[n:] 切片和 s[:n] 切片，使用 &amp;quot;+&amp;quot; 运算符拼接并返回即可。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626333828951.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-44&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： 其中 N 为字符串 s 的长度，字符串切片函数为线性时间复杂度；&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt;： 两个字符串切片的总长度为 N 。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function LeftRotateString(str, n){
+  return str ? str.slice(n) + str.slice(0,n) : &#39;&#39;   
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;44-翻转单词序列&#34;&gt;44. 翻转单词序列&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-44&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;牛客最近来了一个新员工Fish，每天早晨总是会拿着一本英文杂志，写些句子在本子上。同事Cat对Fish写的内容颇感兴趣，有一天他向Fish借来翻看，但却读不懂它的意思。例如，“nowcoder. a am I”。后来才意识到，这家伙原来把句子单词的顺序翻转了，正确的句子应该是“I am a nowcoder.”。Cat对一一的翻转这些单词顺序可不在行，你能帮助他么？&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-45&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;我们发现其实不需要两次反转，一次就够了，还是以&amp;quot; hello world! &amp;quot;为例：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;数据清理， 即将左右空格去掉， 变为&amp;quot;hello world!&amp;quot;&lt;/li&gt;
+&lt;li&gt;按空格拆分单词，变为&amp;quot; [&amp;quot;hello&amp;quot;, &amp;quot;world!&amp;quot;]&lt;/li&gt;
+&lt;li&gt;单词列表执行一次反转，变为 [world!&amp;quot;, &amp;quot;hello&amp;quot;]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-45&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度&lt;/strong&gt;：O(N)&lt;br&gt;
+&lt;strong&gt;空间复杂度&lt;/strong&gt;：O(N)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function ReverseSentence(s){
+    return s.split(&#39; &#39;).filter(item =&amp;gt; item !== &#39;&#39;).reverse().join(&#39; &#39;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;45-扑克牌顺子&#34;&gt;45. 扑克牌顺子&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-45&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;从扑克牌中随机抽5张牌，判断是不是一个顺子，即这5张牌是不是连续的。2～10为数字本身，A为1，J为11，Q为12，K为13，而大、小王为 0 ，可以看成任意数字。A 不能视为 14。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-46&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;根据题意，此 5 张牌是顺子的 &lt;strong&gt;充分条件&lt;/strong&gt; 如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;除大小王外，所有牌 无重复 ；&lt;/li&gt;
+&lt;li&gt;设此 5 张牌中最大的牌为 max ，最小的牌为 min （大小王除外），则需满足：&lt;br&gt;
+max - min &amp;lt; 5&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626336802028.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;集合 Set + 遍历&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;遍历五张牌，遇到大小王（即 0 ）直接跳过。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;判别重复&lt;/strong&gt;： 利用 Set 实现遍历判重， Set 的查找方法的时间复杂度为 O(1)；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;获取最大 / 最小的牌&lt;/strong&gt;： 借助辅助变量 max 和 min ，遍历统计即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-复杂度与代码-46&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; = O(5) = O(1)： 其中 N 为 nums 长度，本题中 N≡5 ；遍历数组使用 O(N)时间。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; = O(5) = O(1)： 用于判重的辅助 Set 使用 O(N) 额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var isStraight = function(nums) {
+  const set = new Set();
+  let min = 14, max = 0;            // min和max的初始值是两个边界值[0, 13]
+  for(const num of nums){
+    if(!num) continue               // 遇到大小王 跳过
+    if(set.has(num)) return false;  // 遇到重复则直接 返回false
+    set.add(num);
+    min = Math.min(min, num);
+    max = Math.max(max, num);
+  }
+  return max - min &amp;lt; 5;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;46-圆圈中最后剩下的数字&#34;&gt;46. 圆圈中最后剩下的数字&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-46&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;0,1,···,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字（删除后从下一个数字开始计数）。求出这个圆圈里剩下的最后一个数字。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-47&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626340197825.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+总结一下反推的过程，就是 (当前index + m) % 上一轮剩余数字的个数。&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-47&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(n)&lt;/strong&gt; ： 状态转移循环 n - 1 次使用 O(n) 时间，状态转移方程计算使用 O(1) 时间；&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(1)&lt;/strong&gt; ： 使用常数大小的额外空间；&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function LastRemaining_Solution(n, m){
+    let ans = 0;
+    for(let i = 2; i &amp;lt;= n; i++){
+      ans = (ans + m) % i;
+    }
+    return ans;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;47-求123n&#34;&gt;47. 求1+2+3+...+n&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-47&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;求1+2+3+...+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-48&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626344611159.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+本题需要实现 “&lt;strong&gt;当 n = 1 时终止递归&lt;/strong&gt;” 的需求，可通过短路效应实现。&lt;br&gt;
+n &amp;gt; 1 &amp;amp;&amp;amp; sumNums(n - 1) // 当 n = 1 时 n &amp;gt; 1 不成立 ，此时 “短路” ，终止后续递归&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-48&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(n)&lt;/strong&gt; ： 计算 n + (n-1) + ... + 2 + 1 需要开启 n 个递归函数。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(n)&lt;/strong&gt; ： 递归深度达到 n ，系统使用 O(n) 大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Sum_Solution(n){
+    return n &amp;amp;&amp;amp; Sum_Solution(n - 1) + n;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;47-不用加减乘除做加法&#34;&gt;47. 不用加减乘除做加法&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-48&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-49&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;观察发现，&lt;strong&gt;无进位和&lt;/strong&gt; 与 &lt;strong&gt;异或运算&lt;/strong&gt; 规律相同，&lt;strong&gt;进位&lt;/strong&gt; 和 &lt;strong&gt;与运算&lt;/strong&gt; 规律相同（并需左移一位）。因此，无进位和 n 与进位 c 的计算公式如下；&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626353011855.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626353020936.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-49&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(1)&lt;/strong&gt; ： 最差情况下（例如 a = 0x7fffffff , b = 1 时），需循环 32 次，使用 O(1) 时间；每轮中的常数次位操作使用 O(1)时间。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(1)&lt;/strong&gt;： 使用常数大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Add(num1, num2){
+    while(num2){
+      let c = (num1 &amp;amp; num2) &amp;lt;&amp;lt; 1;     // c = 进位
+      num1 ^= num2;                   // num1 = 非进位和
+      num2 = c;                       // num2 = 进位
+    }
+    return num1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;48-把字符串转换成整数&#34;&gt;48. 把字符串转换成整数&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-49&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;将一个字符串转换成一个整数，要求不能使用字符串转换整数的库函数。 数值为0或者字符串不是一个合法的数值则返回0&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-50&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626354461073.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;3-复杂度与代码-50&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： 其中 N 为字符串长度，线性遍历字符串占用 O(N) 时间。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 删除首尾空格后需建立新字符串，最差情况下占用 O(N) 额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function StrToInt(str){
+    let reg =/^(\-|\+)?\d+?$/
+    return reg.test(str)?Number(str):0
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;47-数组中重复的数字&#34;&gt;47. 数组中重复的数字&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-50&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任一一个重复的数字。 例如，如果输入长度为7的数组[2,3,1,0,2,5,3]，那么对应的输出是2或者3。存在不合法的输入的话输出-1&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-51&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;通过题意，我们可以使用哈希表来实现，分析如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;遍历数组，若当前数字不存在与哈希表，则添加到哈希表即可。&lt;/li&gt;
+&lt;li&gt;若当前数字哈希表中已存在，则返回结果。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-51&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： 遍历数组使用 O(N) ，HashSet 添加与查找元素皆为 O(1) 。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： HashSet 占用 O(N) 大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function duplicate( nums ) {
+  let map = new Map();
+  for(let i of nums){
+    if(map.has(i)) return i;
+    map.set(i, 1);
+  }
+  return -1;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;51-构建乘积数组&#34;&gt;51. 构建乘积数组&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-51&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;给定一个数组 A[0,1,…,n-1]，请构建一个数组 B[0,1,…,n-1]，其中 B[i] 的值是数组 A 中除了下标 i 以外的元素的积, 即 B[i]=A[0]×A[1]×…×A[i-1]×A[i+1]×…×A[n-1]。不能使用除法。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-52&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;这题要求的是&lt;strong&gt;每个元素的值是除自己以外其他所有元素的乘积&lt;/strong&gt;。最简单的一种方式就是把所有元素都相乘，然后再用这个乘积除以每一个元素即可。但题中要求的是不能使用除法，所以这种方式是行不通的。&lt;/p&gt;
+&lt;p&gt;如果我们能计算&lt;strong&gt;每个元素左边所有元素的乘积和右边所有元素的乘积&lt;/strong&gt;，只需要把他们相乘就可以满足这题的要求，就像下面这样，如果我们要求元素4的值&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626358044698.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-52&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： 其中 N 为数组长度，两轮遍历数组 a ，使用 O(N) 时间。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(1)&lt;/strong&gt; ： 变量 tmp 使用常数大小额外空间（数组 b 作为返回值，不计入复杂度考虑）。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function multiply(array) {
+  if (array === null || array.length === 0)  return array;
+    // 先乘这个数的左边，在成这个数的右边，最后相成，避免掉当前数
+    let n = array.length;
+    let res = new Array(n);
+    res[0] = 1;
+    for(let i = 1; i &amp;lt; n; i++){             //当前元素左边的所有元素乘积（不包含当前元素）
+      res[i] = res[i - 1] * array[i - 1];
+    }
+    let right = 1;                          //right表示当前元素右边所有元素的乘积（不包含当前元素）,
+    for(let i = n - 1; i &amp;gt;= 0; i--){
+      res[i] *= right;                      //res[i]表示的是左边的乘积，他俩相乘就是除了自己以外数组的乘积
+      right *= array[i];
+    }
+    return res;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;51-正则表达式匹配&#34;&gt;51. 正则表达式匹配&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-52&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;请实现一个函数用来匹配包含&#39;. &#39;和&#39;&lt;em&gt;&#39;的正则表达式。模式中的字符&#39;.&#39;表示任意一个字符，而&#39;&lt;/em&gt;&#39;表示它前面的字符可以出现任意次（含0次）。在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串&amp;quot;aaa&amp;quot;与模式&amp;quot;a.a&amp;quot;和&amp;quot;ab&lt;em&gt;ac&lt;/em&gt;a&amp;quot;匹配，但与&amp;quot;aa.a&amp;quot;和&amp;quot;ab*a&amp;quot;均不匹配。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-53&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626398679406.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;3-复杂度与代码-53&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(MN)&lt;/strong&gt; ： 其中 M, N 分别为 s 和 p 的长度，状态转移需遍历整个 dp 矩阵。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(MN)&lt;/strong&gt; ： 状态矩阵 dp 使用 O(MN) 的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function match( str ,  pattern ) {
+  // let pat = new RegExp(&#39;^&#39; + pattern + &#39;$&#39;, &#39;g&#39;);
+  // return pat.test(str);
+  let m = str.length + 1, n = pattern.length + 1;
+  let dp = Array.from({length: m + 1},x =&amp;gt; new Array(n + 1).fill(false));
+  dp[0][0] = true;
+  for(let j = 2; j &amp;lt; n; j += 2){
+    dp[0][j] = dp[0][j-2] &amp;amp;&amp;amp; pattern.charAt(j-1) === &#39;*&#39;;
+  }
+  for(let i = 1; i &amp;lt; m; i++){
+    for(let j = 1; j &amp;lt; n; j++){
+      dp[i][j] = pattern.charAt(j-1) === &#39;*&#39; ? 
+      dp[i][j-2] || dp[i-1][j] &amp;amp;&amp;amp; (str.charAt(i-1) === pattern.charAt(j-2) || pattern.charAt(j-2) === &#39;.&#39;) 
+      : dp[i-1][j-1] &amp;amp;&amp;amp; (pattern.charAt(j-1) === &#39;.&#39; || str.charAt(i-1) === pattern.charAt(j-1));
+    }
+  }
+  return dp[m-1][n-1]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;51-表示数值的字符串&#34;&gt;51. 表示数值的字符串&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-53&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，字符串&amp;quot;+100&amp;quot;,&amp;quot;5e2&amp;quot;,&amp;quot;-123&amp;quot;,&amp;quot;3.1416&amp;quot;和&amp;quot;-1E-16&amp;quot;都表示数值。 但是&amp;quot;12e&amp;quot;,&amp;quot;1a3.14&amp;quot;,&amp;quot;1.2.3&amp;quot;,&amp;quot;+-5&amp;quot;和&amp;quot;12e+4.3&amp;quot;都不是。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-54&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626399377728.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;我首先想到的是判断否false而不是判断是true，毕竟有这么多条件满足才能判断true，但是只要有一个条件不满足就可以判断false&lt;/strong&gt;，最后代码的效率也还可以，那么接下来进入正题吧：&lt;/p&gt;
+&lt;p&gt;首先定义了四个flag，对应四种字符&lt;br&gt;
+是否有数字：hasNum&lt;br&gt;
+是否有e：hasE&lt;br&gt;
+是否有正负符号：hasSign&lt;br&gt;
+是否有点：hasDot&lt;br&gt;
+其余还定义了字符串长度n以及字符串索引index&lt;br&gt;
+先处理一下开头的空格，index相应的后移&lt;br&gt;
+然后进入循环，遍历字符串&lt;br&gt;
+如果当前字符c是数字：将hasNum置为true，index往后移动一直到非数字或遍历到末尾位置；如果已遍历到末尾(index == n)，结束循环&lt;br&gt;
+如果当前字符c是&#39;e&#39;或&#39;E&#39;：如果e已经出现或者当前e之前没有出现过数字，返回false；否则令hasE = true，并且将其他3个flag全部置为false，因为要开始遍历e后面的新数字了&lt;br&gt;
+如果当前字符c是+或-：如果已经出现过+或-或者已经出现过数字或者已经出现过&#39;.&#39;，返回false；否则令hasSign = true&lt;br&gt;
+如果当前字符c是&#39;.&#39;：如果已经出现过&#39;.&#39;或者已经出现过&#39;e&#39;或&#39;E&#39;，返回false；否则令hasDot = true&lt;br&gt;
+如果当前字符c是&#39; &#39;：结束循环，因为可能是末尾的空格了，但也有可能是字符串中间的空格，在循环外继续处理&lt;br&gt;
+如果当前字符c是除了上面5种情况以外的其他字符，直接返回false&lt;br&gt;
+处理空格，index相应的后移&lt;br&gt;
+如果当前索引index与字符串长度相等，说明遍历到了末尾，但是还要满足hasNum为true才可以最终返回true，因为如果字符串里全是符号没有数字的话是不行的，而且e后面没有数字也是不行的，但是没有符号是可以的，所以4个flag里只要判断一下hasNum就行；所以最后返回的是hasNum &amp;amp;&amp;amp; index == n&lt;br&gt;
+如果字符串中间有空格，按以上思路是无法遍历到末尾的，index不会与n相等，返回的就是false&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-54&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： 其中 N 为字符串 s 的长度，判断需遍历字符串，每轮状态转移的使用 O(1) 时间。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(1)&lt;/strong&gt; ： states 和 p 使用常数大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function isNumeric( str ) {
+  // return str.match(/^[\+-]?\d*(\.\d+)?([eE][-\+]?\d+)?$/)
+  // return !isNaN(str)
+   let n = str.length;
+   let index = 0;
+   let hasNum = false, hasE = false, hasSign = false, hasDot = false;
+   while(index &amp;lt; n &amp;amp;&amp;amp; str.charAt(index) === &#39; &#39;) index++;
+   while(index &amp;lt; n){
+     while(index &amp;lt; n &amp;amp;&amp;amp; str.charAt(index) &amp;gt;= &#39;0&#39; &amp;amp;&amp;amp; str.charAt(index) &amp;lt;= &#39;9&#39;){
+       index++;
+       hasNum = true;
+     }
+     if(index === n) break;
+     let c = str.charAt(index);
+     if(c === &#39;e&#39; || c === &#39;E&#39;){
+       if(hasE || !hasNum) return false;
+       hasE = true;
+       hasNum = false;
+       hasSign = false;
+       hasDot = false;
+     }else if(c === &#39;+&#39; || c === &#39;-&#39;){
+        if(hasSign || hasNum || hasDot) return false;
+        hasSign = true;
+     }else if(c === &#39;.&#39;){
+       if(hasDot || hasE) return false;
+       hasDot = true;
+     }else if(c === &#39; &#39;){
+       break;
+     }else{
+       return false;
+     } 
+     index++;
+   }
+   while(index &amp;lt; n &amp;amp;&amp;amp; str.charAt(index) === &#39;&#39;) index++;
+   return hasNum &amp;amp;&amp;amp; index === n;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;53_1-最长不含重复字符的子字符串&#34;&gt;53_1. 最长不含重复字符的子字符串&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-54&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;请从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长子字符串的长度。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-55&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;哈希表 dic 统计&lt;/strong&gt;： 指针 j 遍历字符 s ，哈希表统计字符 s[j] 最后一次出现的索引 。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;更新左指针 i&lt;/strong&gt; ： 根据上轮左指针 i 和 dic[s[j]] ，每轮更新左边界 i ，保证区间 [i+1,j] 内无重复字符且最大。&lt;br&gt;
+i=max(dic[s[j]],i)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;更新结果 res&lt;/strong&gt; ： 取上轮 res 和本轮双指针区间 [i+1,j] 的宽度（即 j - i ）中的最大值。&lt;br&gt;
+res=max(res,j−i)&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626400568726.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626400572547.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626400576165.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626400579117.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-复杂度与代码-55&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： 其中 N 为字符串长度，动态规划需遍历计算 dp 列表。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(1)&lt;/strong&gt; ： 字符的 ASCII 码范围为 0 ~ 127 ，哈希表 dicdic 最多使用 O(128) = O(1) 大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var lengthOfLongestSubstring = function(s) {
+  let dic = new Map();
+  let i = -1, res = 0;
+  for(let j = 0; j &amp;lt; s.length; j++) {
+    if(dic.has(s[j])){
+      i = Math.max(i, dic.get(s[j]));
+    }
+    dic.set(s[j], j);
+    res = Math.max(res, j - i);
+  }
+  return res;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;54-字符流中第一个不重复的字符&#34;&gt;54. 字符流中第一个不重复的字符&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-55&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符&amp;quot;go&amp;quot;时，第一个只出现一次的字符是&amp;quot;g&amp;quot;。当从该字符流中读出前六个字符“google&amp;quot;时，第一个只出现一次的字符是&amp;quot;l&amp;quot;。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-56&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;对于一道题，如果没有思路，就要针对题目给自己问问题。然后针对问题，来考虑需要什么样的算法或者数据结构。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A1：对于“重复问题”，惯性思维应该想到哈希或者set。对于“字符串问题”，大多会用到哈希。因此一结合，应该可以想到，判断一个字符是否重复，可以选择用哈希&lt;/li&gt;
+&lt;li&gt;A2：对于字符流，源源不断的往池子中添加字符，然后还要返回第一个满足什么条件的字符，显然设计到了“顺序”，也就是先来的先服务，这种先进先出的数据结构不就是队列嘛。因此，这里可以用队列。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;假如你已经知道了要用hash 和 queue 这两个数据结构，你可以试着自己想一想，接下来的算法过程是怎么样的？&lt;br&gt;
+这里我提供一个算法过程，如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;对于Insert(char ch)操作， 如果ch是第一次出现，则添加到q中，然后在mp中记录一下次数，如果不是第一次出现，也就是重复了，那么我们就没必要添加到q中，但是还是需要在mp中更新一下次数，因为之后要根据次数来判断是否重复。&lt;/li&gt;
+&lt;li&gt;对于FirstAppearingOnce()操作，我们直接判断q的头部，然后在mp中检查一下，是否重复，如果没有重复，那就是我们想要的数据。否则，如果重复了，那就应该弹出头部，然后判断下一个头部是否满足要求。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-56&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度：O(N)&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;空间复杂度：O(N)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let map = {};
+function Init(){
+    map = {};
+}
+function Insert(ch){
+    map[ch] = map[ch] ? map[ch] + 1 : 1;
+}
+function FirstAppearingOnce(){
+    for(const i in map){
+      if(map[i] === 1) return i;
+    }
+    return &#39;#&#39;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;55-链表中环的入口结点&#34;&gt;55. 链表中环的入口结点&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-56&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，返回null。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-57&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;h2 id=&#34;3-复杂度与代码-57&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;h1 id=&#34;54-字符流中第一个不重复的字符-2&#34;&gt;54. 字符流中第一个不重复的字符&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-57&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;h2 id=&#34;2-解题思路-58&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;h2 id=&#34;3-复杂度与代码-58&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;h1 id=&#34;54-字符流中第一个不重复的字符-3&#34;&gt;54. 字符流中第一个不重复的字符&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-58&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;h2 id=&#34;2-解题思路-59&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;h2 id=&#34;3-复杂度与代码-59&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;h1 id=&#34;54-字符流中第一个不重复的字符-4&#34;&gt;54. 字符流中第一个不重复的字符&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-59&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;h2 id=&#34;2-解题思路-60&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;h2 id=&#34;3-复杂度与代码-60&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
 ">【JS】手撕剑指offerⅡ</a>
       </div>
       
