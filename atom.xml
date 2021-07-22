@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ttarea.com</id>
     <title>Tyloo</title>
-    <updated>2021-07-16T02:31:53.353Z</updated>
+    <updated>2021-07-22T06:45:57.724Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ttarea.com"/>
     <link rel="self" href="https://ttarea.com/atom.xml"/>
@@ -74,7 +74,7 @@
         <updated>2021-03-13T11:54:50.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[【面】前端知识点梳理（工具与算法）]]></title>
+        <title type="html"><![CDATA[【面】前端知识点梳理（打包工具）]]></title>
         <id>https://ttarea.com/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/</id>
         <link href="https://ttarea.com/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/">
         </link>

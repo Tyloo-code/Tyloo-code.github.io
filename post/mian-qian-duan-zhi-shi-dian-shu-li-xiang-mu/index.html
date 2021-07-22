@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（Vue项目） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1626401963908">
+<link rel="shortcut icon" href="/favicon.ico?v=1626936135563">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -629,12 +629,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>42<span class="language" data-lan="minute">分钟</span></span>
+      <span>43<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>10321<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>10556<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -809,7 +809,16 @@ TypeScript 的结合变得很容易。</p>
   }
 </code></pre>
 <h1 id="8-vue-jwt后台登录权限">8. Vue - JWT后台登录权限</h1>
-<figure data-type="image" tabindex="1"><img src="https://ttarea.com/post-images/1618468865167.png" alt="" loading="lazy"></figure>
+<p>在前后端完全分离的情况下，Vue项目中实现token验证大致思路如下：</p>
+<p>1、第一次登录的时候，前端调后端的登陆接口，发送用户名和密码<br>
+2、后端收到请求，验证用户名和密码，验证成功，就给前端返回一个token<br>
+3、前端拿到token，将token存储到localStorage和vuex中，并跳转路由页面<br>
+4、前端每次跳转路由，就判断 localStroage 中有无 token ，没有就跳转到登录页面，有则跳转到对应路由页面<br>
+5、每次调后端接口，都要在请求头中加token<br>
+6、后端判断请求头中有无token，有token，就拿到token并验证token，验证成功就返回数据，验证失败（例如：token过期）就返回401，请求头中没有token也返回401<br>
+7、如果前端拿到状态码为401，就清除token信息并跳转到登录页面<br>
+<img src="https://ttarea.com/post-images/1619086516830.png" alt="" loading="lazy"><br>
+<img src="https://ttarea.com/post-images/1618468865167.png" alt="" loading="lazy"></p>
 <h2 id="1-令牌组成">1. 令牌组成</h2>
 <blockquote>
 <p>header.payload.signature</p>
@@ -910,7 +919,7 @@ HMACSHA256(base64UrlEncode(header) + &quot;.&quot; + base64UrlEncode(payload) , 
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<figure data-type="image" tabindex="2"><img src="https://ttarea.com/post-images/1615980095840.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://ttarea.com/post-images/1615980095840.png" alt="" loading="lazy"></figure>
 <h2 id="2-检测拖动事件">2. 检测拖动事件</h2>
 <p>首先让页面支持文件拖拽，在 Vue 的<code>mounted()</code> 函数中添加代码：</p>
 <pre><code>mounted: function () {
@@ -1193,7 +1202,7 @@ btn.onclick=function(){
 也就是说，<strong>v-model就是绑定了一个名为value的props和一个事件input</strong></p>
 <pre><code>注意：所以在子组件中可以通过props中定义value接受值，然后通过$emit触发input事件传新值并修改。
 </code></pre>
-<figure data-type="image" tabindex="3"><img src="https://ttarea.com/post-images/1616570989198.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://ttarea.com/post-images/1616570989198.png" alt="" loading="lazy"></figure>
 <h2 id="1-最简单的实现方法">1. 最简单的实现方法</h2>
 <p>综合上述特性，我们可以认为我们要实现自定义组件的双向绑定，其实需要的功能其实是：</p>
 <ul>
@@ -1481,7 +1490,7 @@ export default {
 <p>优点是优化了表格渲染的性能。可以和假分页真分页一起使用。可以摆脱复杂的分页实现方式，只用单页渲染不卡顿。</p>
 <p>缺点是实现起来比较复杂。</p>
 <h2 id="6-总结">6. 总结</h2>
-<figure data-type="image" tabindex="4"><img src="https://ttarea.com/post-images/1618378715611.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://ttarea.com/post-images/1618378715611.png" alt="" loading="lazy"></figure>
 <h1 id="14-前端性能监控你会监控哪些数据">14. 前端性能监控你会监控哪些数据?</h1>
 <h2 id="1-为什么要做性能监控">1. 为什么要做性能监控</h2>
 <p>对于公司来说，性能在一定程度上与利益直接相关</p>
@@ -3166,7 +3175,8 @@ server {
 &lt;a href=&#34;https://leetcode-cn.com/u/xiao_ben_zhu/&#34;&gt;笨猪爆破组&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://leetcode-cn.com/u/sweetiee/&#34;&gt;Sweetiee&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://leetcode-cn.com/u/sdwwld/&#34;&gt;数据结构和算法&lt;/a&gt;&lt;br&gt;
-&lt;a href=&#34;https://leetcode-cn.com/u/liweiwei1419/&#34;&gt;liweiwei1419&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://leetcode-cn.com/u/liweiwei1419/&#34;&gt;liweiwei1419&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://leetcode-cn.com/u/fuxuemingzhu/&#34;&gt;负雪明烛&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;1-二维数组中的查找&#34;&gt;1. 二维数组中的查找&lt;/h1&gt;
 &lt;h2 id=&#34;1题目描述&#34;&gt;1.🎨题目描述&lt;/h2&gt;
@@ -4914,19 +4924,597 @@ function FirstAppearingOnce(){
 &lt;h2 id=&#34;1-题目描述-56&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
 &lt;p&gt;给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，返回null。&lt;/p&gt;
 &lt;h2 id=&#34;2-解题思路-57&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;双指针法&lt;/strong&gt;&lt;br&gt;
+根据：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;f=2s （快指针每次2步，路程刚好2倍）&lt;/li&gt;
+&lt;li&gt;f = s + nb (相遇时，刚好多走了n圈）&lt;br&gt;
+推出：s = nb&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;从head结点走到入环点需要走 ： a + nb， 而slow已经走了nb，那么slow再走a步就是入环点了。&lt;br&gt;
+如何知道slow刚好走了a步？ 从head开始，和slow指针一起走，相遇时刚好就是a步&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626412923358.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626412926902.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626412931760.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626412935065.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;3-复杂度与代码-57&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
-&lt;h1 id=&#34;54-字符流中第一个不重复的字符-2&#34;&gt;54. 字符流中第一个不重复的字符&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ：第二次相遇中，慢指针须走步数 a &amp;lt; a + b；第一次相遇中，慢指针须走步数 a + b - x &amp;lt; a + b，其中 x 为双指针重合点与环入口距离；因此总体为线性复杂度；&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(1)&lt;/strong&gt; ：双指针使用常数大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var detectCycle = function(head) {
+  let fast = head, slow = head;
+  while(true) {
+    if(!fast || !fast.next) return null;
+    fast = fast.next.next;
+    slow = slow.next;
+    if(fast === slow) break;
+  }
+  fast = head;
+  while(slow != fast){
+    slow = slow.next;
+    fast = fast.next;
+  }
+  return fast;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;56-删除链表中重复的结点&#34;&gt;56. 删除链表中重复的结点&lt;/h1&gt;
 &lt;h2 id=&#34;1-题目描述-57&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。 例如，链表1-&amp;gt;2-&amp;gt;3-&amp;gt;3-&amp;gt;4-&amp;gt;4-&amp;gt;5 处理后为 1-&amp;gt;2-&amp;gt;5&lt;/p&gt;
 &lt;h2 id=&#34;2-解题思路-58&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.1 递归函数定义&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;递归最基本的是要明白递归函数的定义&lt;/strong&gt;！&lt;br&gt;
+递归函数直接使用题目给出的函数 deleteDuplicates(head) ，它的含义是 删除以 head 作为开头的有序链表中，值出现重复的节点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.2 递归终止条件&lt;/strong&gt;&lt;br&gt;
+终止条件就是能想到的基本的、不用继续递归处理的case。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果 head 为空，那么肯定没有值出现重复的节点，直接返回 head；&lt;/li&gt;
+&lt;li&gt;如果 head.next 为空，那么说明链表中只有一个节点，也没有值出现重复的节点，也直接返回 head。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;1.3 递归调用&lt;/strong&gt;&lt;br&gt;
+什么时候需要递归呢？我们想一下这两种情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果 head.val != head.next.val ，说明头节点的值不等于下一个节点的值，所以当前的 head 节点必须保留；但是 head.next 节点要不要保留呢？我们还不知道，需要对 head.next 进行递归，即对 head.next 作为头节点的链表，去除值重复的节点。所以 head.next = self.deleteDuplicates(head.next).&lt;/li&gt;
+&lt;li&gt;如果 head.val == head.next.val ，说明头节点的值等于下一个节点的值，所以当前的 head 节点必须删除，并且 head 之后所有与 head.val 相等的节点也都需要删除；删除到哪个节点为止呢？需要用 move 指针一直向后遍历寻找到与 head.val 不等的节点。此时 move 之前的节点都不保留了，因此返回 deleteDuplicates(move);&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;1.4 返回结果&lt;/strong&gt;&lt;br&gt;
+题目让我们返回删除了值重复的节点后剩余的链表，结合上面两种递归调用的情况。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果 head.val != head.next.val ，头结点需要保留，因此返回的是 head；&lt;/li&gt;
+&lt;li&gt;如果 head.val == head.next.val ，头结点需要删除，需要返回的是deleteDuplicates(move);。&lt;br&gt;
+对链表 1 -&amp;gt; 2 -&amp;gt; 2 -&amp;gt; 3 递归的过程如下。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626416239662.jpeg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;3-复杂度与代码-58&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
-&lt;h1 id=&#34;54-字符流中第一个不重复的字符-3&#34;&gt;54. 字符流中第一个不重复的字符&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度：O(N)&lt;/strong&gt;，每个节点访问了一次。&lt;br&gt;
+&lt;strong&gt;空间复杂度：O(N)&lt;/strong&gt;，递归调用的时候会用到了系统的栈。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function deleteDuplication(pHead) {
+  if (!pHead || !pHead.next) return pHead;
+  if (pHead.val !== pHead.next.val) pHead.next = deleteDuplication(pHead.next);
+  else {
+    let move = pHead.next;
+    while (move &amp;amp;&amp;amp; pHead.val === move.val) {
+      move = move.next;
+    }
+    return deleteDuplication(move);
+  }
+  return pHead;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;56_1-删除排序链表中的重复元素&#34;&gt;56_1. 删除排序链表中的重复元素&lt;/h1&gt;
 &lt;h2 id=&#34;1-题目描述-58&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;存在一个按升序排列的链表，给你这个链表的头节点 head ，请你删除所有重复的元素，使每个元素 &lt;strong&gt;只出现一次&lt;/strong&gt; 。&lt;/p&gt;
 &lt;h2 id=&#34;2-解题思路-59&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;指定 cur 指针指向头部 head&lt;br&gt;
+当 cur 和 cur.next 的存在为循环结束条件，当二者有一个不存在时说明链表没有去重复的必要了&lt;br&gt;
+当 cur.val 和 cur.next.val 相等时说明需要去重，则将 cur 的下一个指针指向下一个的下一个，这样就能达到去重复的效果&lt;br&gt;
+如果不相等则 cur 移动到下一个位置继续循环&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626416958181.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626416961385.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626416964543.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;3-复杂度与代码-59&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
-&lt;h1 id=&#34;54-字符流中第一个不重复的字符-4&#34;&gt;54. 字符流中第一个不重复的字符&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度：O(N)&lt;/strong&gt;，每个节点访问了一次。&lt;br&gt;
+&lt;strong&gt;空间复杂度：O(N)&lt;/strong&gt;，递归调用的时候会用到了系统的栈。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var deleteDuplicates = function(head) {
+  let cur = head;
+  while(cur &amp;amp;&amp;amp; cur.next){
+    if(cur.val === cur.next.val) cur.next === cur.next.next;
+    else cur = cur.next;
+  }
+  return head;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;57-二叉树的下一个结点&#34;&gt;57. 二叉树的下一个结点&lt;/h1&gt;
 &lt;h2 id=&#34;1-题目描述-59&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;给定一个二叉树其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的next指针。下图为一棵有9个节点的二叉树。树中从父节点指向子节点的指针用实线表示，从子节点指向父节点的用虚线表示&lt;/p&gt;
 &lt;h2 id=&#34;2-解题思路-60&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626510575523.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+红色数字是中序遍历的顺序。接下来，我们就假设，如果当前结点分别是1,2 ... 7，下一结点看有什么规律没？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 =&amp;gt; 2 // 显然下一结点是 1 的父亲结点&lt;/li&gt;
+&lt;li&gt;2 =&amp;gt; 3 // 下一节点是当前结点右孩子的左孩子结点，其实你也应该想到了，应该是一直到左孩子为空的那个结点&lt;/li&gt;
+&lt;li&gt;3 =&amp;gt; 4 // 跟 2 的情况相似，当前结点右孩子结点的左孩子为空的那个结点&lt;/li&gt;
+&lt;li&gt;4 =&amp;gt; 5 // 5 是父亲结点 3 的父亲结点，发现和1有点像，因为 1，3,同样是父亲结点的左孩子&lt;/li&gt;
+&lt;li&gt;5 =&amp;gt; 6 // 跟 4=&amp;gt;5 一样的道理&lt;/li&gt;
+&lt;li&gt;6 =&amp;gt; 7 // 跟 3=&amp;gt;4 一样的道理&lt;/li&gt;
+&lt;li&gt;7 =&amp;gt; null // 因为属于最尾结点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;如果结点有右子树，右子树最左的结点为该节点的下一个结点；&lt;/li&gt;
+&lt;li&gt;如果结点没有右子树，且该结点为它父结点的左子结点，那么该结点的下一个结点是它的父结点；&lt;/li&gt;
+&lt;li&gt;如果结点没有右子树，且该结点为它父结点的右子结点，那么沿其父节点向上寻找，其中有父结点为上个父节点的左子节点，那么这上个父节点为该节点的下一个节点；&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2 id=&#34;3-复杂度与代码-60&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度：O(n)&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;空间复杂度：O(1)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function GetNext(pNode){
+  if(!pNode) return null;
+  //情况一：如果该节点有右子树,一直找到所属右子树最左的节点就是下一个节点
+  if(pNode.right !== null) {
+    pNode = pNode.right;
+    while(pNode.left !== null) pNode = pNode.left;
+    return pNode;
+  }
+  //情况二：没有右子树,且是该节点父节点的左子树，那么下一个节点就是其父节点
+  while(pNode.next !== null){
+    if(pNode === pNode.next.left) return pNode.next;
+    //情况三：当前节点是右节点的情况,接着向上寻找
+    pNode = pNode.next;
+  }
+  //如果循环完都没有找到，证明当前节点是最后一个节点了，返回 null
+  return null;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;58-对称的二叉树&#34;&gt;58. 对称的二叉树&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-60&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;请实现一个函数，用来判断一棵二叉树是不是对称的。注意，如果一个二叉树同此二叉树的镜像是同样的，定义其为对称的。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-61&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626516309660.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;isSymmetric(root)&lt;/strong&gt; ：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;特例处理： 若根节点 root 为空，则直接返回 truetrue 。&lt;/li&gt;
+&lt;li&gt;返回值： 即 recur(root.left, root.right) ;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;recur(L, R)&lt;/strong&gt; ：&lt;br&gt;
+&lt;code&gt;终止条件&lt;/code&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当 L 和 R 同时越过叶节点： 此树从顶至底的节点都对称，因此返回 true ；&lt;/li&gt;
+&lt;li&gt;当 L 或 R 中只有一个越过叶节点： 此树不对称，因此返回 false ；&lt;/li&gt;
+&lt;li&gt;当节点 L 值 不等于 节点 R 值： 此树不对称，因此返回 false ；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;递推工作&lt;/code&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;判断两节点 L.left 和 R.right 是否对称，即 recur(L.left, R.right) ；&lt;/li&gt;
+&lt;li&gt;判断两节点 L.right 和 R.left 是否对称，即 recur(L.right, R.left) ；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;返回值&lt;/code&gt;： 两对节点都对称时，才是对称树，因此用与逻辑符 &amp;amp; 连接。&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-61&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： 其中 N 为二叉树的节点数量，每次执行 recur() 可以判断一对节点是否对称，因此最多调用 N/2 次 recur() 方法。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 最差情况下 二叉树退化为链表，系统使用 O(N) 大小的栈空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function isSymmetrical(pRoot){
+  return pRoot === null ? true : recur(pRoot.left, pRoot.right);
+}
+function recur(L,R){
+  if(L === null &amp;amp;&amp;amp; R === null) return true;
+  if(L === null || R === null || L.val !== R.val) return false;
+  return recur(L.left, R.right) &amp;amp;&amp;amp; recur(L.right, R.left);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;59_1-从上到下打印二叉树一行&#34;&gt;59_1. 从上到下打印二叉树（一行）&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-61&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-62&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626523551296.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;特例处理&lt;/strong&gt;： 当树的根节点为空，则直接返回空列表 [] ；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;初始化&lt;/strong&gt;： 打印结果列表 res = [] ，包含根节点的队列 queue = [root] ；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BFS 循环&lt;/strong&gt;： 当队列 queue 为空时跳出；&lt;br&gt;
+* &lt;strong&gt;出队&lt;/strong&gt;： 队首元素出队，记为 node；&lt;br&gt;
+* &lt;strong&gt;打印&lt;/strong&gt;： 将 node.val 添加至列表 res 尾部；&lt;br&gt;
+* &lt;strong&gt;添加子节点&lt;/strong&gt;： 若 node 的左（右）子节点不为空，则将左（右）子节点加入队列 queue ；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;返回值&lt;/strong&gt;： 返回打印结果列表 res 即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-62&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： N 为二叉树的节点数量，即 BFS 需循环 N 次。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 最差情况下，即当树为平衡二叉树时，最多有 N/2 个树节点同时在 queue 中，使用 O(N) 大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var levelOrder = function(root) {
+  if(!root) return [];
+  let res = [];
+  let queue = [root];
+  while(queue.length){
+    let node = queue.shift();
+    res.push(node.val);
+    node.left &amp;amp;&amp;amp; queue.push(node.left);
+    node.right &amp;amp;&amp;amp; queue.push(node.right);
+  }
+  return res;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;59_2-从上到下打印二叉树分行&#34;&gt;59_2. 从上到下打印二叉树（分行）&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-62&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-63&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626523891340.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;特例处理&lt;/strong&gt;： 当根节点为空，则返回空列表 [] ；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;初始化&lt;/strong&gt;： 打印结果列表 res = [] ，包含根节点的队列 queue = [root] ；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BFS 循环&lt;/strong&gt;： 当队列 queue 为空时跳出；
+&lt;ul&gt;
+&lt;li&gt;新建一个临时列表 tmp ，用于存储当前层打印结果；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;当前层打印循环&lt;/strong&gt;： 循环次数为当前层节点数（即队列 queue 长度）；
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;出队&lt;/strong&gt;： 队首元素出队，记为 node；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;打印&lt;/strong&gt;： 将 node.val 添加至 tmp 尾部；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;添加子节点&lt;/strong&gt;： 若 node 的左（右）子节点不为空，则将左（右）子节点加入队列 queue ；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;将当前层结果 tmp 添加入 res 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;返回值&lt;/strong&gt;： 返回打印结果列表 res 即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-复杂度与代码-63&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： N 为二叉树的节点数量，即 BFS 需循环 N 次。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 最差情况下，即当树为平衡二叉树时，最多有 N/2 个树节点同时在 queue 中，使用 O(N) 大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var levelOrder = function(root) {
+  if(!root) return [];
+  const res = [];
+  const queue = [root];
+  while(queue.length){
+    let tmp = [];
+    let len = queue.length;
+    while(len--){
+      let node = queue.shift();
+      tmp.push(node.val);
+      node.left &amp;amp;&amp;amp; queue.push(node.left);
+      node.right &amp;amp;&amp;amp; queue.push(node.right);
+    }
+    res.push(tmp);    
+  }
+  return res;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;59_3-之字形打印二叉树分行&#34;&gt;59_3. 之字形打印二叉树（分行）&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-63&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-64&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;偶数层倒序&lt;/strong&gt;： 若 res 的长度为 &lt;strong&gt;奇数&lt;/strong&gt; ，说明当前是偶数层，则对 tmp 执行 &lt;strong&gt;倒序&lt;/strong&gt; 操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-复杂度与代码-64&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： NN 为二叉树的节点数量，即 BFS 需循环 N 次，占用 O(N) 。共完成 少于 N 个节点的倒序操作，占用 O(N) 。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt; ： 最差情况下，即当树为满二叉树时，最多有 N/2 个树节点同时在 queue 中，使用 O(N) 大小的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var levelOrder = function(root) {
+  if(!root) return [];
+  const res = [];
+  const queue = [root];
+  while(queue.length){
+    const tmp = [];
+    let len = queue.length;
+    while(len--){
+      const node = queue.shift();
+      tmp.push(node.val);
+      node.left &amp;amp;&amp;amp; queue.push(node.left);
+      node.right &amp;amp;&amp;amp; queue.push(node.right);
+    }
+    res.length % 2 === 1 ? res.push(tmp.reverse()) : res.push(tmp); // 余数为0，第一层（奇数层）正常放入，余数为1，第二层（偶数层）取反再放入
+  }
+  return res;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;61-序列化二叉树&#34;&gt;61. 序列化二叉树&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-64&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;请实现两个函数，分别用来序列化和反序列化二叉树，不对序列化之后的字符串进行约束，但要求能够根据序列化之后的字符串重新构造出一棵与原二叉树相同的树。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-65&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;h3 id=&#34;序列化&#34;&gt;序列化&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;递归遍历一棵树，重点关注当前节点，它的子树的遍历交给递归完成：&lt;br&gt;
+&lt;strong&gt;“serialize函数，请帮我分别序列化我的左右子树，我等你的返回结果，再拼接一下。”&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;选择前序遍历，是因为 根|左|右根∣左∣右 的打印顺序，在反序列化时更容易定位出根节点的值。&lt;/li&gt;
+&lt;li&gt;遇到 null 节点也要翻译成特定符号，反序列化时才知道这里是 null。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626529082759.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;反序列化&#34;&gt;反序列化&lt;/h3&gt;
+&lt;p&gt;前序遍历的序列化字符串，就像下图右一：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626529266234.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定义函数 buildTree 用于还原二叉树，传入由序列化字符串转成的 list 数组。&lt;/li&gt;
+&lt;li&gt;逐个 pop 出 list 的首项，构建当前子树的根节点，顺着 list，构建顺序是根节点 &amp;gt; 左子树 &amp;gt; 右子树。&lt;br&gt;
+1. 如果弹出的字符为 &amp;quot;X&amp;quot;，则返回 null 节点。&lt;br&gt;
+2. 如果弹出的字符是数值，则创建root节点，并递归构建root的左右子树，最后返回root。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626529302558.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-复杂度与代码-65&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt; ： N 为二叉树的节点数，层序遍历需要访问所有节点，最差情况下需要访问 N + 1 个 null ，总体复杂度为 O(2N + 1) = O(N 。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt;： 最差情况下，队列 queue 同时存储 (N+1)/2 个节点（或 N+1 个 null ），使用 O(N) ；列表 res 使用 O(N)。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var serialize = function(root) {
+  if(!root) return &#39;X&#39;;
+  const left = serialize(root.left);
+  const right = serialize(root.right);
+  return root.val + &#39;,&#39; + left + &#39;,&#39; + right; // 按  根,左,右  拼接字符串
+};
+
+var deserialize = function(data) {
+  const list = data.split(&#39;,&#39;);               // split成数组
+  const buildTree = list =&amp;gt; {                 // 基于list构建当前子树
+    const rootVal = list.shift();             // 弹出首项，获取它的“数据”
+    if(rootVal === &#39;X&#39;) return null;          // 是X，返回null节点
+    const root = new TreeNode(rootVal);       // 不是X，则创建节点
+    root.left = buildTree(list);              // 递归构建左子树
+    root.right = buildTree(list);             // 递归构建右子树
+    return root;                              // 返回当前构建好的root
+  }
+  return buildTree(list);
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;62-二叉搜索树的第k个结点&#34;&gt;62. 二叉搜索树的第k个结点&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-65&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;给定一棵二叉搜索树，请找出其中的第k小的TreeNode结点。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-66&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626577327421.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+可以看到，4是按大小排序时，第3个节点。如果K=3，即4为所求的值。而对应大小排序的就是中序遍历，中序遍历结果是{2,3,4,5,6,7,8}，&lt;strong&gt;所以本题核心需要使用到中序遍历&lt;/strong&gt;。然后对中序遍历的结果中，取第K个元素即可。这里可以使用数字或者集合存储遍历结果，然后取第k个，但是会产生额外的空间复杂度，当然也可以使用一个变量记录遍历的节点数，当遍历到K个节点时即为所求。&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-66&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(N)&lt;/strong&gt;：使用数组存储，代码看起来非常的清晰。这个代码还有优化空间，因为完成了所有的遍历，事实上可以在遍历到K时，让遍历退出。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(N)&lt;/strong&gt;： 使用数组存储&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function KthNode(pRoot, k){
+  if(!pRoot || !k) return null;
+  const res = [];
+  centerSort(pRoot, res);
+  return res[k - 1];
+}
+const centerSort = (root, list) =&amp;gt; {
+  if(!root) return null;
+  centerSort(root.left, list);
+  list.push(root);
+  centerSort(root.right, list);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;63-数据流中的中位数&#34;&gt;63. 数据流中的中位数&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-66&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数值排序之后中间两个数的平均值。我们使用Insert()方法读取数据流，使用GetMedian()方法获取当前读取数据的中位数。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-67&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;其实不需要每次添加元素的时候，都对全部元素重新排序。如果之前一直保证元素是有序的，那么添加新元素的时候，只需要将元素插入到正确位置即可，查找正确位置可以通过「二分搜索」来完成。&lt;/p&gt;
+&lt;p&gt;为了保证之前的元素有序，针对每个新添加的元素都将其放入正确位置。&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-67&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度O(N)&lt;/strong&gt; : 二分查找需要O(logN)的复杂度，移动元素需要O(N)复杂度，所以时间复杂度是O(N)。&lt;br&gt;
+&lt;strong&gt;空间复杂度O(N)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let arr = [];
+function Insert(num)
+{
+  if(!arr.length){
+    arr.push(num);
+    return;
+  }
+  let left = 0, right = arr.length - 1;
+  while(left &amp;lt;= right){
+    let mid = Math.floor((left + right) / 2);
+    if(arr[mid] === num){
+      arr.splice(mid, 0, num);
+      return
+    }else if(arr[mid] &amp;lt; num){
+      left = mid + 1;
+    }else {
+      right = mid - 1;
+    }
+  }
+  arr.splice(right + 1, 0, num);
+}
+function GetMedian(){
+  const length = arr.length;
+  if(!length) return null;
+  const mid = Math.floor((length - 1) / 2);
+  if(length % 2) return arr[mid];
+  return (arr[mid] + arr[mid + 1]) / 2; 
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;64-滑动窗口的最大值&#34;&gt;64. 滑动窗口的最大值&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-67&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;给定一个数组和滑动窗口的大小，找出所有滑动窗口里数值的最大值。&lt;/p&gt;
+&lt;p&gt;例如，如果输入数组{2,3,4,2,6,2,5,1}及滑动窗口的大小3，那么一共存在6个滑动窗口，他们的最大值分别为{4,4,6,6,6,5}； 针对数组{2,3,4,2,6,2,5,1}的滑动窗口有以下6个： {[2,3,4],2,6,2,5,1}， {2,[3,4,2],6,2,5,1}， {2,3,[4,2,6],2,5,1}， {2,3,4,[2,6,2],5,1}， {2,3,4,2,[6,2,5],1}， {2,3,4,2,6,[2,5,1]}。&lt;/p&gt;
+&lt;p&gt;窗口大于数组长度的时候，返回空&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-68&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;看题中给的数据&lt;br&gt;
+1  3  -1 -3  5  3  6  7&lt;br&gt;
+我们给一个窗口队列，来存放进入的数据&lt;/p&gt;
+&lt;p&gt;首先是1进入，队列为[1]，然后3进入，这时候3进入的时候先和它前面的数据进行比较，发现3&amp;gt;1，这时候把队列中1抛出&lt;/p&gt;
+&lt;p&gt;这时候-1进入队列，发现-1小于3，所以-1进入以后不进行任何操作。这时候队列为[3,-1]这时候其实窗口的大小已经为3啦&lt;/p&gt;
+&lt;p&gt;因为我们前面抛出一个1所以看着是两个数据。然后-3进入，这时候就要判断，窗口队列的长度是不是大于k，当大于k的时候&lt;/p&gt;
+&lt;p&gt;就要把队列的首元素抛出。-3进入的时候，明显长度没有超出，所以不用管，然后-3和队尾元素比较，小于队尾。进入队里无操作。&lt;/p&gt;
+&lt;p&gt;这时候队列是[3,-1,-3],随后5进入，这时候，队列的长度大于k，把队列头元素3抛出，然后进行判断，发现5比队尾元素大，这时候&lt;br&gt;
+抛出队尾的-3，这时候队尾元素变成-1，5还是大于-1，继续抛出，这时候队列中只有[5].然后6准备进入。&lt;/p&gt;
+&lt;p&gt;发现6大于队尾5,5抛出，6进入。7的操作同上。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;上面的操作结果为：队列的头元素永远是最大的，所以后面的(nums.length-k)次进入，只需要队列的头放入输出数组即可&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-68&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度O(n)&lt;/strong&gt; : 因为只有每次进入的时候，有时间复杂度，里面的判断和抛出都是O(1)的操作&lt;br&gt;
+&lt;strong&gt;空间复杂度O(n)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function maxInWindows(num, size){
+  if(!size) return [];
+  const numLength = num.length;
+  let window = [],       //队列用来存放下标
+      res = [];
+  for(let i = 0; i &amp;lt; numLength; i++){
+    if(i &amp;gt;= size + window[0]) window.shift();    // 如果 i 比窗口最大范围大, 移除队头
+    while(window &amp;amp;&amp;amp; num[i] &amp;gt; num[window[window.length - 1]]){
+      window.pop();                   // 如果 nums[i] 比窗口中的值大，将窗口中的值删除
+    }
+    window.push(i);                   // 窗口中加入当前元素
+    if(i &amp;gt;= size - 1) res.push(num[window[0]])   // 如果 i &amp;gt; size - 1，每次都记录最大值
+  }
+ return res;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;65-矩阵中的路径&#34;&gt;65. 矩阵中的路径&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-68&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-69&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;深度优先搜索&lt;/strong&gt;： 可以理解为暴力法遍历矩阵中所有字符串可能性。DFS 通过递归，先朝一个方向搜到底，再回溯至上个节点，沿另一个方向搜索，以此类推。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;剪枝&lt;/strong&gt;： 在搜索中，遇到 这条路不可能和目标字符串匹配成功 的情况（例如：此矩阵元素和目标字符不同、此元素已被访问），则应立即返回，称之为 可行性剪枝 。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626588797412.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;递归参数&lt;/strong&gt;： 当前元素在矩阵 board 中的行列索引 i 和 j ，当前目标字符在 word 中的索引 k 。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;终止条件&lt;/strong&gt;：&lt;br&gt;
+1. 返回 falsefalse ： (1) 行或列索引越界 &lt;code&gt;或&lt;/code&gt; (2) 当前矩阵元素与目标字符不同 &lt;code&gt;或&lt;/code&gt; (3) 当前矩阵元素已访问过 （ (3) 可合并至 (2) ） 。&lt;br&gt;
+2. 返回 truetrue ： k = len(word) - 1 ，即字符串 word 已全部匹配。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;递推工作&lt;/strong&gt;：&lt;br&gt;
+1. 标记当前矩阵元素： 将 board[i][j] 修改为 &lt;strong&gt;空字符&lt;/strong&gt; &#39;&#39; ，代表此元素已访问过，防止之后搜索时重复访问。&lt;br&gt;
+2. 搜索下一单元格： 朝当前元素的 &lt;strong&gt;上、下、左、右&lt;/strong&gt; 四个方向开启下层递归，使用 或 连接 （代表只需找到一条可行路径就直接返回，不再做后续 DFS ），并记录结果至 res 。&lt;br&gt;
+3. 还原当前矩阵元素： 将 board[i][j] 元素还原至初始值，即 word[k] 。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;返回值&lt;/strong&gt;： 返回布尔量 res ，代表是否搜索到目标字符串。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-复杂度与代码-69&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(3^K*MN)&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(K)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function hasPath( matrix ,  word ) {
+  let row = matrix.length;
+  let col = matrix[0].length;
+  let dfs = function(i, j, matrix, word, index){
+    if(i&amp;lt;0 || i&amp;gt;=row || j&amp;lt;0 || j&amp;gt;col || matrix[i][j] !== word[index]) return false;// 判断不符合条件
+    if(index === word.length - 1) return true;  // word遍历完了
+    let tmp = matrix[i][j];                     // 记录到board的值
+    matrix[i][j] = &#39;&#39;;                         // 锁上，因为后续的递归是4个方向上的，无法保证上一个方向的值
+    let res = dfs(i-1, j, matrix, word, index+1) || dfs(i+1, j, matrix, word, index+1) || 
+              dfs(i, j-1, matrix, word, index+1) || dfs(i, j+1, matrix, word, index+1)
+    matrix[i][j] = tmp;                         // 恢复现场
+    return res;
+  }
+  // 遍历整个board，找到初始位置点
+  for(let i = 0; i &amp;lt; row; i++){
+    for(let j = 0; j &amp;lt; col; j++){
+      if(dfs(i, j, matrix, word, 0 )) return true
+    }
+  }
+  // 没找到
+  return false;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;66-机器人的运动范围&#34;&gt;66. 机器人的运动范围&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-69&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;地上有一个rows行和cols列的方格。坐标从 [0,0] 到 [rows-1,cols-1]。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于threshold的格子。 例如，当threshold为18时，机器人能够进入方格[35,37]，因为3+5+3+7 = 18。但是，它不能进入方格[35,38]，因为3+5+3+8 = 19。请问该机器人能够达到多少个格子？&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-70&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;深度优先搜索&lt;/strong&gt;： 可以理解为暴力法遍历矩阵中所有字符串可能性。DFS 通过递归，先朝一个方向搜到底，再回溯至上个节点，沿另一个方向搜索，以此类推。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;剪枝&lt;/strong&gt;： 在搜索中，遇到 这条路不可能和目标字符串匹配成功 的情况（例如：此矩阵元素和目标字符不同、此元素已被访问），则应立即返回，称之为 可行性剪枝 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;算法解析&lt;/code&gt;：&lt;br&gt;
+&lt;strong&gt;递归参数&lt;/strong&gt;： 当前元素在矩阵中的行列索引 i 和 j ，两者的数位和 si, sj 。&lt;br&gt;
+&lt;strong&gt;终止条件&lt;/strong&gt;： 当 ① 行列索引越界 &lt;code&gt;或&lt;/code&gt; ② 数位和超出目标值 k &lt;code&gt;或&lt;/code&gt; ③ 当前元素已访问过 时，返回 00 ，代表不计入可达解。&lt;br&gt;
+&lt;strong&gt;递推工作&lt;/strong&gt;：&lt;br&gt;
+1. &lt;strong&gt;标记当前单元格&lt;/strong&gt; ：将索引 (i, j) 存入 Set visited 中，代表此单元格已被访问过。&lt;br&gt;
+2. &lt;strong&gt;搜索下一单元格&lt;/strong&gt;： 计算当前元素的 &lt;code&gt;下、右&lt;/code&gt; 两个方向元素的数位和，并开启下层递归 。&lt;br&gt;
+&lt;strong&gt;回溯返回值&lt;/strong&gt;： 返回 1 + 右方搜索的可达解总数 + 下方搜索的可达解总数，代表从本单元格递归搜索的可达解总数。&lt;/p&gt;
+&lt;h2 id=&#34;3-复杂度与代码-70&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度 O(MN)&lt;/strong&gt;： 最差情况下，机器人遍历矩阵所有单元格，此时时间复杂度为 O(MN) 。&lt;br&gt;
+&lt;strong&gt;空间复杂度 O(MN)&lt;/strong&gt; ： 最差情况下，Set visited 内存储矩阵所有单元格的索引，使用 O(MN) 的额外空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function movingCount(threshold, rows, cols){
+    let flag = new Array(rows).fill(0).map(x =&amp;gt; Array(cols).fill(false));
+    return getRes(flag, rows, cols, 0, 0, threshold);
+}
+function getRes(flag, row, col, x, y, k){
+    // i &amp;gt;= m || j &amp;gt;= n是边界条件的判断     
+    // k &amp;lt; sum(i, j)判断当前格子坐标是否满足条件    
+    // flag[i][j]判断这个格子是否被访问过
+    if(x &amp;lt; 0 || y &amp;lt; 0 || x &amp;gt;= row || y &amp;gt;= col || flag[x][y] || sum(x, y) &amp;gt; k) return 0;
+    flag[x][y] = true;     // 标注这个格子被访问过
+    return 1 + getRes(flag, row, col, x+1, y, k) + getRes(flag, row, col, x, y+1, k);  // 沿着当前格子的右边和下边继续访问
+}
+// 按位求和
+function sum(row, col){
+    let str = row + &#39;&#39; + col;
+    let res = 0;
+    for(let i = 0; i &amp;lt; str.length; i++){
+        res += parseInt(str[i]);
+    }
+    return res;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;67-剪绳子&#34;&gt;67. 剪绳子&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-70&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;给你一根长度为n的绳子，请把绳子剪成整数长的m段（m、n都是整数，n&amp;gt;1并且m&amp;gt;1，m&amp;lt;=n），每段绳子的长度记为k[1],...,k[m]。请问k[1]x...xk[m]可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-71&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;前面提到：8 拆分为 3+3+2，此时乘积是最大的。然后就推测出来一个整数，要拆成多个 2 和 3 的和，保证乘积最大。原理很容易理解，因为 2 和 3 可以合成任何数字，例如5=2+3，但是5 &amp;lt; 2&lt;em&gt;3；例如6=3+3，但是6&amp;lt;3&lt;/em&gt;3。所以根据贪心算法，就尽量将原数拆成更多的 3，然后再拆成更多的 2，保证拆出来的整数的乘积结果最大。&lt;/p&gt;
+&lt;p&gt;但上面的解法还有不足。如果整数 n 的形式是 3k+1，例如 7。按照上面规则，会拆分成“3 + 3 + 1”。但是在乘法操作中，1 是没作用的。此时，应该将 1 和 3 变成 4，也就是“3 + 3 + 1”变成“3 + 4”。此时乘积最大。&lt;/p&gt;
+&lt;p&gt;综上所述，算法的整体思路是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;n 除 3 的结果为 a，余数是 b&lt;/li&gt;
+&lt;li&gt;当 b 为 0，直接将 a 个 3 相乘&lt;/li&gt;
+&lt;li&gt;当 b 为 1，将（a-1）个 3 相乘，再乘以 4&lt;/li&gt;
+&lt;li&gt;当 b 为 2，将 a 个 3 相乘，再乘以 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-复杂度与代码-71&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度是 O(1)&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;空间复杂度是 O(1)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function cutRope(number)
+{
+  if(number === 2) return 1;
+  if(number === 3) return 2;
+  // a的含义：n能拆成的3的个数
+  const a = Math.floor(number / 3);
+  const b = number % 3;
+  if(b === 0) return Math.pow(3, a);
+  // n是 3k + 1，例如7。拆成3、3、1。由于有1对结果无法有贡献，所以最后的3、1换成4
+  if(b === 1) return Math.pow(3, a-1) * 4;
+  return Math.pow(3, a) * 2
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;68-回文链表&#34;&gt;68. 回文链表&lt;/h1&gt;
+&lt;h2 id=&#34;1-题目描述-71&#34;&gt;1. 🎨题目描述&lt;/h2&gt;
+&lt;p&gt;请判断一个链表是否为回文链表。&lt;/p&gt;
+&lt;h2 id=&#34;2-解题思路-72&#34;&gt;2. 🧠解题思路&lt;/h2&gt;
+&lt;p&gt;快慢指针，起初都指向表头，快指针一次走两步，慢指针一次走一步，遍历结束时：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;要么，slow 正好指向中间两个结点的后一个。&lt;/li&gt;
+&lt;li&gt;要么，slow 正好指向中间结点。&lt;/li&gt;
+&lt;li&gt;用 prev 保存 slow 的前一个结点，通过prev.next = null断成两个链表。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;将后半段链表翻转，和前半段从头比对。空间复杂度降为O(1)。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626591769578.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如何翻转单链表&lt;/strong&gt;&lt;br&gt;
+可以这么思考：一次迭代中，有哪些指针需要变动：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个结点的 next 指针要变动。&lt;/li&gt;
+&lt;li&gt;指向表头的 slow 指针要变动。&lt;/li&gt;
+&lt;li&gt;需要有指向新链表表头的 head2 指针，它也要变。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626591819088.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-复杂度与代码-72&#34;&gt;3. 🍭复杂度与代码&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度&lt;/strong&gt; : O(n)&lt;br&gt;
+&lt;strong&gt;空间复杂度&lt;/strong&gt; : O(1)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var isPalindrome = function (head) {
+  if(!head || !head.next) return true;
+  let fast = head;
+  let slow = head;
+  let prev;
+  while(fast &amp;amp;&amp;amp; fast.next){
+    prev = slow;
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  prev = null;
+  let head2 = null;
+  while(slow){
+    let tmp = slow.next;
+    slow.next = head2;
+    head2 = slow;
+    slow = tmp;
+  }
+  while(head &amp;amp;&amp;amp; head2){
+    if(head.val !== head2.val) return false;
+    head = head.next;
+    head2 =head2.next;
+  }
+  return true;
+};
+&lt;/code&gt;&lt;/pre&gt;
 ">【JS】手撕剑指offerⅡ</a>
       </div>
       
@@ -6908,7 +7496,16 @@ TypeScript 的结合变得很容易。&lt;/p&gt;
   }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;8-vue-jwt后台登录权限&#34;&gt;8. Vue - JWT后台登录权限&lt;/h1&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1618468865167.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;在前后端完全分离的情况下，Vue项目中实现token验证大致思路如下：&lt;/p&gt;
+&lt;p&gt;1、第一次登录的时候，前端调后端的登陆接口，发送用户名和密码&lt;br&gt;
+2、后端收到请求，验证用户名和密码，验证成功，就给前端返回一个token&lt;br&gt;
+3、前端拿到token，将token存储到localStorage和vuex中，并跳转路由页面&lt;br&gt;
+4、前端每次跳转路由，就判断 localStroage 中有无 token ，没有就跳转到登录页面，有则跳转到对应路由页面&lt;br&gt;
+5、每次调后端接口，都要在请求头中加token&lt;br&gt;
+6、后端判断请求头中有无token，有token，就拿到token并验证token，验证成功就返回数据，验证失败（例如：token过期）就返回401，请求头中没有token也返回401&lt;br&gt;
+7、如果前端拿到状态码为401，就清除token信息并跳转到登录页面&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1619086516830.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1618468865167.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;1-令牌组成&#34;&gt;1. 令牌组成&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;header.payload.signature&lt;/p&gt;
@@ -7009,7 +7606,7 @@ HMACSHA256(base64UrlEncode(header) + &amp;quot;.&amp;quot; + base64UrlEncode(pay
 &amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1615980095840.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1615980095840.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;2-检测拖动事件&#34;&gt;2. 检测拖动事件&lt;/h2&gt;
 &lt;p&gt;首先让页面支持文件拖拽，在 Vue 的&lt;code&gt;mounted()&lt;/code&gt; 函数中添加代码：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;mounted: function () {
@@ -7292,7 +7889,7 @@ btn.onclick=function(){
 也就是说，&lt;strong&gt;v-model就是绑定了一个名为value的props和一个事件input&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;注意：所以在子组件中可以通过props中定义value接受值，然后通过$emit触发input事件传新值并修改。
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1616570989198.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1616570989198.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;1-最简单的实现方法&#34;&gt;1. 最简单的实现方法&lt;/h2&gt;
 &lt;p&gt;综合上述特性，我们可以认为我们要实现自定义组件的双向绑定，其实需要的功能其实是：&lt;/p&gt;
 &lt;ul&gt;
@@ -7580,7 +8177,7 @@ export default {
 &lt;p&gt;优点是优化了表格渲染的性能。可以和假分页真分页一起使用。可以摆脱复杂的分页实现方式，只用单页渲染不卡顿。&lt;/p&gt;
 &lt;p&gt;缺点是实现起来比较复杂。&lt;/p&gt;
 &lt;h2 id=&#34;6-总结&#34;&gt;6. 总结&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1618378715611.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1618378715611.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h1 id=&#34;14-前端性能监控你会监控哪些数据&#34;&gt;14. 前端性能监控你会监控哪些数据?&lt;/h1&gt;
 &lt;h2 id=&#34;1-为什么要做性能监控&#34;&gt;1. 为什么要做性能监控&lt;/h2&gt;
 &lt;p&gt;对于公司来说，性能在一定程度上与利益直接相关&lt;/p&gt;
@@ -8181,12 +8778,14 @@ console.log(&#39;hello&#39;.repeatify(3));
         <a class="result-title" style="opacity: 0;" href="https://ttarea.com/post/mian-qian-duan-zhi-shi-dian-shu-li-gong-ju-yu-zu-jian/"" data-c="
           &lt;h1 id=&#34;1-关于webpack的面试题总结&#34;&gt;1. 关于webpack的面试题总结&lt;/h1&gt;
 &lt;ol&gt;
+&lt;li&gt;Webpcak搭建vue环境&lt;/li&gt;
 &lt;li&gt;webpack与grunt、gulp的不同？&lt;/li&gt;
-&lt;li&gt;与webpack类似的工具还有哪些？谈谈你为什么最终选择（或放弃）使用webpack？&lt;/li&gt;
+&lt;li&gt;谈谈你为什么最终选择（或放弃）使用webpack，webpack都有那些作用？&lt;/li&gt;
 &lt;li&gt;有哪些常见的Loader？他们是解决什么问题的？&lt;/li&gt;
 &lt;li&gt;有哪些常见的Plugin？他们是解决什么问题的？&lt;/li&gt;
 &lt;li&gt;Loader和Plugin的不同？&lt;/li&gt;
 &lt;li&gt;webpack的构建流程是什么?从读取配置到输出文件这个过程尽量说全&lt;/li&gt;
+&lt;li&gt;你知道sourceMap是什么吗？&lt;/li&gt;
 &lt;li&gt;是否写过Loader和Plugin？描述一下编写loader或plugin的思路？&lt;/li&gt;
 &lt;li&gt;webpack的热更新是如何做到的？说明其原理？&lt;/li&gt;
 &lt;li&gt;如何利用webpack来优化前端性能？（提高性能和体验）&lt;/li&gt;
@@ -8195,46 +8794,63 @@ console.log(&#39;hello&#39;.repeatify(3));
 &lt;li&gt;npm打包时需要注意哪些？如何利用webpack来更好的构建？&lt;/li&gt;
 &lt;li&gt;如何在vue项目中实现按需加载？&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;1-webpack与grunt-gulp的不同&#34;&gt;1. webpack与grunt、gulp的不同？&lt;/h2&gt;
+&lt;h2 id=&#34;1-webpcak搭建vue环境&#34;&gt;1. Webpcak搭建vue环境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;vue-loader： 用于解析.vue文件&lt;/li&gt;
+&lt;li&gt;vue-template-compiler：用于编译模板&lt;/li&gt;
+&lt;li&gt;webpack-dev-server：用于热更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;区分开发环境与生产环境&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;webpack.dev.js&lt;/code&gt; 开发环境配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;开发环境主要实现的是热更新,不要压缩代码，完整的sourceMap
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;code&gt;webpack.prod.js&lt;/code&gt; 生产环境配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;生产环境主要实现的是压缩代码、提取css文件、合理的sourceMap、分割代码
+需要安装以下模块:
+npm i -D  webpack-merge copy-webpack-plugin optimize-css-assets-webpack-plugin uglifyjs-webpack-plugin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-webpack与grunt-gulp的不同&#34;&gt;2. webpack与grunt、gulp的不同？&lt;/h2&gt;
 &lt;p&gt;三者都是前端构建工具，grunt和gulp在早期比较流行，现在webpack相对来说比较主流，不过一些轻量化的任务还是会用gulp来处理，比如单独打包CSS文件等。&lt;/p&gt;
-&lt;p&gt;grunt和gulp是基于任务和流（Task、Stream）的。类似jQuery，找到一个（或一类）文件，对其做一系列链式操作，更新流上的数据， 整条链式操作构成了一个任务，多个任务就构成了整个web的构建流程。&lt;/p&gt;
-&lt;p&gt;webpack是基于入口的。webpack会自动地递归解析入口所需要加载的所有资源文件，然后用不同的Loader来处理不同的文件，用Plugin来扩展webpack功能。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;grunt和gulp是基于任务和流（Task、Stream）的。类似jQuery，找到一个（或一类）文件，对其做一系列链式操作，更新流上的数据， 整条链式操作构成了一个任务，多个任务就构成了整个web的构建流程。&lt;/li&gt;
+&lt;li&gt;webpack是基于入口的。webpack会自动地递归解析入口所需要加载的所有资源文件，然后用不同的Loader来处理不同的文件，用Plugin来扩展webpack功能。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;所以总结一下：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;从构建思路来说&lt;/strong&gt;：gulp和grunt需要开发者将整个前端构建过程拆分成多个&lt;code&gt;Task&lt;/code&gt;，并合理控制所有&lt;code&gt;Task&lt;/code&gt;的调用关系；webpack需要开发者找到入口，并需要清楚对于不同的资源应该使用什么Loader做何种解析和加工&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;对于知识背景来说&lt;/strong&gt;：gulp更像后端开发者的思路，需要对于整个流程了如指掌 webpack更倾向于前端开发者的思路&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;2-与webpack类似的工具还有哪些谈谈你为什么最终选择或放弃使用webpack&#34;&gt;2. 与webpack类似的工具还有哪些？谈谈你为什么最终选择（或放弃）使用webpack？&lt;/h2&gt;
-&lt;p&gt;同样是基于入口的打包工具还有以下几个主流的：&lt;/p&gt;
+&lt;h2 id=&#34;3-谈谈你为什么最终选择或放弃使用webpackwebpack都有那些作用&#34;&gt;3. 谈谈你为什么最终选择（或放弃）使用webpack，webpack都有那些作用？&lt;/h2&gt;
+&lt;p&gt;从官网上的描述我们其实不难理解，webpack的作用其实有以下几点：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;webpack&lt;/li&gt;
-&lt;li&gt;rollup&lt;/li&gt;
-&lt;li&gt;parcel&lt;/li&gt;
+&lt;li&gt;模块打包。可以将不同模块的文件打包整合在一起，并且保证它们之间的引用正确，执行有序。利用打包我们就可以在开发的时候根据我们自己的业务自由划分文件模块，保证项目结构的清晰和可读性。&lt;/li&gt;
+&lt;li&gt;编译兼容。在前端的“上古时期”，手写一堆浏览器兼容代码一直是令前端工程师头皮发麻的事情，而在今天这个问题被大大的弱化了，通过webpack的Loader机制，不仅仅可以帮助我们对代码做polyfill，还可以编译转换诸如&lt;code&gt;.less, .vue, .jsx&lt;/code&gt;这类在浏览器无法识别的格式文件，让我们在开发的时候可以使用新特性和新语法做开发，提高开发效率。&lt;/li&gt;
+&lt;li&gt;能力扩展。通过webpack的Plugin机制，我们在实现模块化打包和编译兼容的基础上，可以进一步实现诸如按需加载，代码压缩等一系列功能，帮助我们进一步提高自动化程度，工程效率以及打包输出的质量。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;从应用场景上来看：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;webpack适用于大型复杂的前端站点构建&lt;/li&gt;
-&lt;li&gt;rollup适用于基础库的打包，如vue、react&lt;/li&gt;
-&lt;li&gt;parcel适用于简单的实验性项目，他可以满足低门槛的快速看到效果&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;3-有哪些常见的loader他们是解决什么问题的&#34;&gt;3. 有哪些常见的Loader？他们是解决什么问题的？&lt;/h2&gt;
+&lt;h2 id=&#34;4-有哪些常见的loader他们是解决什么问题的&#34;&gt;4. 有哪些常见的Loader？他们是解决什么问题的？&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;file-loader：把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件&lt;/li&gt;
 &lt;li&gt;url-loader：和 file-loader 类似，但是能在文件很小的情况下以 base64 的方式把文件内容注入到代码中去&lt;/li&gt;
-&lt;li&gt;source-map-loader：加载额外的 Source Map 文件，以方便断点调试&lt;/li&gt;
 &lt;li&gt;image-loader：加载并且压缩图片文件&lt;/li&gt;
-&lt;li&gt;babel-loader：把 ES6 转换成 ES5&lt;/li&gt;
+&lt;li&gt;babel-loader：为了使我们的js代码兼容更多的环境，ES6/7/8语法转换为ES5语法&lt;/li&gt;
+&lt;li&gt;babel-polyfill：转换新api，如：promise、Generator、Set、Maps、Proxy&lt;/li&gt;
 &lt;li&gt;css-loader：加载 CSS，支持模块化、压缩、文件导入等特性&lt;/li&gt;
 &lt;li&gt;style-loader：把 CSS 代码注入到 JavaScript 中，通过 DOM 操作去加载 CSS。&lt;/li&gt;
 &lt;li&gt;eslint-loader：通过 ESLint 检查 JavaScript 代码&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;4-有哪些常见的plugin他们是解决什么问题的&#34;&gt;4. 有哪些常见的Plugin？他们是解决什么问题的？&lt;/h2&gt;
+&lt;h2 id=&#34;5-有哪些常见的plugin他们是解决什么问题的&#34;&gt;5. 有哪些常见的Plugin？他们是解决什么问题的？&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;define-plugin：定义环境变量&lt;/li&gt;
 &lt;li&gt;commons-chunk-plugin：提取公共代码&lt;/li&gt;
 &lt;li&gt;uglifyjs-webpack-plugin：通过UglifyES压缩ES6代码&lt;/li&gt;
+&lt;li&gt;html-webpack-plugin：打包出来的js文件我们需要引入到html中，自动修改js文件名&lt;/li&gt;
+&lt;li&gt;clean-webpack-plugin：dist文件夹里会残留上次打包的文件，插件自动删除上次文件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;5-loader和plugin的不同&#34;&gt;5. Loader和Plugin的不同？&lt;/h2&gt;
+&lt;h2 id=&#34;6-loader和plugin的不同&#34;&gt;6. Loader和Plugin的不同？&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;不同的作用&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Loader直译为&amp;quot;加载器&amp;quot;。Webpack将一切文件视为模块，但是webpack原生是只能解析js文件，如果想将其他文件也打包的话，就会用到loader。 所以Loader的作用是让webpack拥有了&lt;code&gt;加载和解析非JavaScript文件的能力&lt;/code&gt;。&lt;/li&gt;
@@ -8245,7 +8861,7 @@ console.log(&#39;hello&#39;.repeatify(3));
 &lt;li&gt;Loader在&lt;code&gt;module.rules&lt;/code&gt;中配置，也就是说他作为模块的解析规则而存在。 类型为数组，每一项都是一个Object，里面描述了对于什么类型的文件（test），使用什么加载(loader)和使用的参数（options）&lt;/li&gt;
 &lt;li&gt;Plugin在&lt;code&gt;plugins&lt;/code&gt;中单独配置。 类型为数组，每一项是一个plugin的实例，参数都通过构造函数传入。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;6-webpack的构建流程是什么从读取配置到输出文件这个过程尽量说全&#34;&gt;6. webpack的构建流程是什么?从读取配置到输出文件这个过程尽量说全&lt;/h2&gt;
+&lt;h2 id=&#34;7-webpack的构建流程是什么从读取配置到输出文件这个过程尽量说全&#34;&gt;7. webpack的构建流程是什么?从读取配置到输出文件这个过程尽量说全&lt;/h2&gt;
 &lt;p&gt;Webpack 的运行流程是一个串行的过程，从启动到结束会依次执行以下流程：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;初始化参数：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数；&lt;/li&gt;
@@ -8257,14 +8873,66 @@ console.log(&#39;hello&#39;.repeatify(3));
 &lt;li&gt;输出完成：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;在以上过程中，Webpack 会在特定的时间点广播出特定的事件，插件在监听到感兴趣的事件后会执行特定的逻辑，并且插件可以调用 Webpack 提供的 API 改变 Webpack 的运行结果。&lt;/p&gt;
-&lt;h2 id=&#34;7-是否写过loader和plugin描述一下编写loader或plugin的思路&#34;&gt;7. 是否写过Loader和Plugin？描述一下编写loader或plugin的思路？&lt;/h2&gt;
+&lt;p&gt;其中文件的解析与构建是一个比较复杂的过程，在webpack源码中主要依赖于&lt;code&gt;compiler&lt;/code&gt;和&lt;code&gt;compilation&lt;/code&gt;两个核心对象实现。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;compiler 、compilation是什么？&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;compiler&lt;/code&gt; 对象包含了 Webpack 环境所有的的配置信息。这个对象在启动 webpack 时被一次性建立，并配置好所有可操作的设置，包括 &lt;code&gt;options，loader 和 plugin&lt;/code&gt;。当在 webpack 环境中应用一个插件时，插件将收到此 compiler 对象的引用。可以使用它来访问 webpack 的主环境。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;compilation&lt;/code&gt; 对象包含了当前的模块资源、编译生成资源、变化的文件等。当运行webpack 开发环境中间件时，每当检测到一个文件变化，就会创建一个新的 &lt;code&gt;compilation&lt;/code&gt;，从而生成一组新的编译资源。compilation 对象也提供了很多关键时机的回调，以供插件做自定义处理时选择使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;compiler和 compilation的区别在于&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;compiler代表了整个webpack从启动到关闭的生命周期，而compilation 只是代表了一次新的编译过程&lt;/li&gt;
+&lt;li&gt;compiler和compilation暴露出许多钩子，我们可以根据实际需求的场景进行自定义处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;8-你知道sourcemap是什么吗&#34;&gt;8. 你知道sourceMap是什么吗？&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;sourceMap&lt;/code&gt;是一项将&lt;strong&gt;编译、打包、压缩后的代码映射回源代码的技术&lt;/strong&gt;，由于打包压缩后的代码并没有阅读性可言，一旦在开发中报错或者遇到问题，直接在混淆代码中debug问题会带来非常糟糕的体验，&lt;code&gt;sourceMap&lt;/code&gt;可以帮助我们快速定位到源代码的位置，提高我们的开发效率。sourceMap其实并不是Webpack特有的功能，而是Webpack支持sourceMap，像JQuery也支持souceMap。&lt;/p&gt;
+&lt;p&gt;既然是一种源码的映射，那必然就需要有一份映射的文件，来标记混淆代码里对应的源码的位置，通常这份映射文件以&lt;code&gt;.map&lt;/code&gt;结尾，里边的数据结构大概长这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;version&amp;quot; : 3,                          // Source Map版本
+  &amp;quot;file&amp;quot;: &amp;quot;out.js&amp;quot;,                       // 输出文件（可选）
+  &amp;quot;sourceRoot&amp;quot;: &amp;quot;&amp;quot;,                       // 源文件根目录（可选）
+  &amp;quot;sources&amp;quot;: [&amp;quot;foo.js&amp;quot;, &amp;quot;bar.js&amp;quot;],        // 源文件列表
+  &amp;quot;sourcesContent&amp;quot;: [null, null],         // 源内容列表（可选，和源文件列表顺序一致）
+  &amp;quot;names&amp;quot;: [&amp;quot;src&amp;quot;, &amp;quot;maps&amp;quot;, &amp;quot;are&amp;quot;, &amp;quot;fun&amp;quot;], // mappings使用的符号名称列表
+  &amp;quot;mappings&amp;quot;: &amp;quot;A,AAAB;;ABCDE;&amp;quot;            // 带有编码映射数据的字符串
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;有了这份映射文件，我们只需要在我们的压缩代码的最末端加上这句注释，即可让sourceMap生效：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//# sourceURL=/path/to/file.js.map
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;有了这段注释后，浏览器就会通过&lt;code&gt;sourceURL&lt;/code&gt;去获取这份映射文件，通过解释器解析后，实现源码和混淆代码之间的映射。因此&lt;code&gt;sourceMap&lt;/code&gt;其实也是一项需要浏览器支持的技术。&lt;/p&gt;
+&lt;h2 id=&#34;9-是否写过loader和plugin描述一下编写loader或plugin的思路&#34;&gt;9. 是否写过Loader和Plugin？描述一下编写loader或plugin的思路？&lt;/h2&gt;
+&lt;h3 id=&#34;1-loader&#34;&gt;1. Loader&lt;/h3&gt;
 &lt;p&gt;Loader像一个&amp;quot;翻译官&amp;quot;把读到的源文件内容转义成新的文件内容，并且每个Loader通过链式操作，将源文件一步步翻译成想要的样子。&lt;/p&gt;
-&lt;p&gt;编写Loader时要遵循单一原则，每个Loader只做一种&amp;quot;转义&amp;quot;工作。 每个Loader的拿到的是源文件内容（source），可以通过返回值的方式将处理后的内容输出，也可以调用this.callback()方法，将内容返回给webpack。 还可以通过 this.async()生成一个callback函数，再用这个callback将处理后的内容输出出去。 此外webpack还为开发者准备了开发loader的工具函数集——loader-utils。&lt;/p&gt;
-&lt;p&gt;相对于Loader而言，Plugin的编写就灵活了许多。 webpack在运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。&lt;/p&gt;
-&lt;h2 id=&#34;8-webpack的热更新是如何做到的说明其原理&#34;&gt;8. webpack的热更新是如何做到的？说明其原理？&lt;/h2&gt;
-&lt;p&gt;webpack的热更新又称热替换（Hot Module Replacement），缩写为HMR。 这个机制可以做到不用刷新浏览器而将新变更的模块替换掉旧的模块。&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617701765337.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;strong&gt;首先要知道server端和client端都做了处理工作&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;loader编写原则&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;单一原则: 每个 &lt;code&gt;Loader&lt;/code&gt; 只做一件事；&lt;/li&gt;
+&lt;li&gt;链式调用: Webpack 会按顺序链式调用每个 &lt;code&gt;Loader&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;统一原则: 遵循 Webpack 制定的设计规则和结构，输入与输出均为字符串，各个 &lt;code&gt;Loader&lt;/code&gt; 完全独立，即插即用；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-plugin&#34;&gt;2. Plugin&lt;/h3&gt;
+&lt;p&gt;相对于Loader而言，Plugin的编写就灵活了许多。 webpack在运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。那么它与loader的区别是什么呢？上面我们也提到了loader的单一原则,loader只能一件事，比如说less-loader,只能解析less文件，plugin则是针对整个流程执行广泛的任务。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class firstPlugin {
+  constructor (options) {
+    console.log(&#39;firstPlugin options&#39;, options)
+  }
+  apply (compiler) {
+    compiler.plugin(&#39;done&#39;, compilation =&amp;gt; {
+      console.log(&#39;firstPlugin&#39;)
+    ))
+  }
+}
+
+module.exports = firstPlugin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;10-webpack的热更新是如何做到的说明其原理&#34;&gt;10. webpack的热更新是如何做到的？说明其原理？&lt;/h2&gt;
+&lt;h3 id=&#34;概括&#34;&gt;概括：&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;webpack&lt;/code&gt;的热更新又称热替换（&lt;code&gt;Hot Module Replacement&lt;/code&gt;），缩写为&lt;code&gt;HMR&lt;/code&gt;。 这个机制可以做到不用刷新浏览器而将新变更的模块替换掉旧的模块。&lt;/p&gt;
+&lt;p&gt;webpack是通过&lt;code&gt;webpack-dev-server(WDS)&lt;/code&gt;来实现自动刷新。WDS是一个运行在内存中的开发服务器。启动之后，它会检测文件是否发生改变并再自动编译一次。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;HMR&lt;/code&gt;的核心就是客户端从服务端拉取更新后的文件，当本地资源发生变化时，WDS 会向浏览器推送更新，并带上构建时的 hash，&lt;strong&gt;让客户端与上一次资源进行对比&lt;/strong&gt;。客户端对比出差异后会向 WDS 发起 &lt;code&gt;Ajax&lt;/code&gt; 请求来获取更改内容(文件列表、hash)，这样客户端就可以再借助这些信息继续向 WDS 发起 &lt;code&gt;jsonp&lt;/code&gt; 请求获取该chunk的增量更新。&lt;/p&gt;
+&lt;h3 id=&#34;具体流程&#34;&gt;具体流程：&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617701765337.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;首先要知道server端和client端都做了处理工作&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;第一步，在 webpack 的 watch 模式下，文件系统中某一个文件发生修改，webpack 监听到文件变化，根据配置文件对模块重新编译打包，并将打包后的代码通过简单的 JavaScript 对象保存在内存中。&lt;/li&gt;
 &lt;li&gt;第二步是 webpack-dev-server 和 webpack 之间的接口交互，而在这一步，主要是 dev-server 的中间件 webpack-dev-middleware 和 webpack 之间的交互，webpack-dev-middleware 调用 webpack 暴露的 API对代码变化进行监控，并且告诉 webpack，将代码打包到内存中。&lt;/li&gt;
@@ -8275,7 +8943,7 @@ console.log(&#39;hello&#39;.repeatify(3));
 &lt;li&gt;而第 10 步是决定 HMR 成功与否的关键步骤，在该步骤中，HotModulePlugin 将会对新旧模块进行对比，决定是否更新模块，在决定更新模块后，检查模块之间的依赖关系，更新模块的同时更新模块间的依赖引用。&lt;/li&gt;
 &lt;li&gt;最后一步，当 HMR 失败后，回退到 live reload 操作，也就是进行浏览器刷新来获取最新打包代码。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;9-如何利用webpack来优化前端性能提高性能和体验&#34;&gt;9. 如何利用webpack来优化前端性能？（提高性能和体验）&lt;/h2&gt;
+&lt;h2 id=&#34;11-如何利用webpack来优化前端性能提高性能和体验&#34;&gt;11. 如何利用webpack来优化前端性能？（提高性能和体验）&lt;/h2&gt;
 &lt;p&gt;用webpack优化前端性能是指优化webpack的&lt;code&gt;输出结果&lt;/code&gt;，让打包的最终结果在浏览器运行快速高效。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;压缩代码。删除多余的代码、注释、简化代码的写法等等方式。可以利用webpack的UglifyJsPlugin和ParallelUglifyPlugin来压缩JS文件， 利用cssnano（css-loader?minimize）来压缩css&lt;/li&gt;
@@ -8283,23 +8951,22 @@ console.log(&#39;hello&#39;.repeatify(3));
 &lt;li&gt;删除死代码（Tree Shaking）。将代码中永远不会走到的片段删除掉。可以通过在启动webpack时追加参数--optimize-minimize来实现&lt;/li&gt;
 &lt;li&gt;提取公共代码。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;10-如何提高webpack的构建速度&#34;&gt;10. 如何提高webpack的构建速度？&lt;/h2&gt;
+&lt;h2 id=&#34;12-如何提高webpack的构建速度&#34;&gt;12. 如何提高webpack的构建速度？&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;多入口情况下，使用CommonsChunkPlugin来提取公共代码&lt;/li&gt;
-&lt;li&gt;通过externals配置来提取常用库&lt;/li&gt;
-&lt;li&gt;利用DllPlugin和DllReferencePlugin预编译资源模块 通过DllPlugin来对那些我们引用但是绝对不会修改的npm包来进行预编译，再通过DllReferencePlugin将预编译的模块加载进来。&lt;/li&gt;
-&lt;li&gt;使用Happypack 实现多线程加速编译&lt;/li&gt;
-&lt;li&gt;使用webpack-uglify-parallel来提升uglifyPlugin的压缩速度。 原理上webpack-uglify-parallel采用了多核并行压缩来提升压缩速度&lt;/li&gt;
-&lt;li&gt;使用Tree-shaking和Scope Hoisting来剔除多余代码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多入口情况&lt;/strong&gt;下，使用CommonsChunkPlugin来提取公共代码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;使用Happypack&lt;/strong&gt;：HappyPack的基本原理是将这部分任务（css，图片，字体，文件）分解到多个子进程中去并行处理，子进程处理完成后把结果发送到主进程中，从而减少总的构建时间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缩小文件的搜索范围&lt;/strong&gt;：&lt;code&gt;alias&lt;/code&gt; 当我们代码中出现 import &#39;vue&#39;时， webpack会采用向上递归搜索的方式去node_modules 目录下找。为了减少搜索范围我们可以直接告诉webpack去哪个路径下查找。也就是别名(alias)的配置。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;抽离第三方模块&lt;/strong&gt;: 类似于我们的elementUi、vue全家桶等等。因为很少会变更，所以我们不希望这些依赖要被集成到每一次的构建逻辑中去。 这样做的好处是每次更改我本地代码的文件的时候，webpack只需要打包我项目本身的文件代码，而不会再去编译第三方库。这里我们使用webpack内置的&lt;code&gt;DllPlugin DllReferencePlugin进行抽离&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配置缓存&lt;/strong&gt;: 我们可以通过&lt;code&gt;cache-loader&lt;/code&gt; ，它所做的事情很简单，就是 babel-loader 开启 cache 后做的事情，将 loader 的编译结果写入硬盘缓存。再次构建会先比较一下，如果文件较之前的没有发生变化则会直接使用缓存。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;11-怎么配置单页应用怎么配置多页应用&#34;&gt;11. 怎么配置单页应用？怎么配置多页应用？&lt;/h2&gt;
+&lt;h2 id=&#34;13-怎么配置单页应用怎么配置多页应用&#34;&gt;13. 怎么配置单页应用？怎么配置多页应用？&lt;/h2&gt;
 &lt;p&gt;单页应用可以理解为webpack的标准模式，直接在entry中指定单页应用的入口即可，这里不再赘述&lt;/p&gt;
 &lt;p&gt;多页应用的话，可以使用webpack的 AutoWebPlugin来完成简单自动化的构建，但是前提是项目的目录结构必须遵守他预设的规范。 多页应用中要注意的是：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;每个页面都有公共的代码，可以将这些代码抽离出来，避免重复的加载。比如，每个页面都引用了同一套css样式表&lt;/li&gt;
 &lt;li&gt;随着业务的不断扩展，页面可能会不断的追加，所以一定要让入口的配置足够灵活，避免每次添加新页面还需要修改构建配置&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;12-npm打包时需要注意哪些如何利用webpack来更好的构建&#34;&gt;12. npm打包时需要注意哪些？如何利用webpack来更好的构建？&lt;/h2&gt;
+&lt;h2 id=&#34;14-npm打包时需要注意哪些如何利用webpack来更好的构建&#34;&gt;14. npm打包时需要注意哪些？如何利用webpack来更好的构建？&lt;/h2&gt;
 &lt;p&gt;NPM模块需要注意以下问题：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;要支持CommonJS模块化规范，所以要求打包后的最后结果也遵守该规则。&lt;/li&gt;
@@ -8339,7 +9006,7 @@ module.exports = {
   ],
 };
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;13-如何在vue项目中实现按需加载&#34;&gt;13. 如何在vue项目中实现按需加载？&lt;/h2&gt;
+&lt;h2 id=&#34;15-如何在vue项目中实现按需加载&#34;&gt;15. 如何在vue项目中实现按需加载？&lt;/h2&gt;
 &lt;p&gt;Vue UI组件库的按需加载 为了快速开发前端项目，经常会引入现成的UI组件库如ElementUI、iView等，但是他们的体积和他们所提供的功能一样，是很庞大的。 而通常情况下，我们仅仅需要少量的几个组件就足够了，但是我们却将庞大的组件库打包到我们的源码中，造成了不必要的开销。&lt;/p&gt;
 &lt;p&gt;不过很多组件库已经提供了现成的解决方案，如Element出品的babel-plugin-component和AntDesign出品的babel-plugin-import 安装以上插件后，在.babelrc配置中或babel-loader的参数中进行设置，即可实现组件按需加载了。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;{
@@ -8357,7 +9024,7 @@ module.exports = {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;单页应用的按需加载&lt;/strong&gt; 现在很多前端项目都是通过单页应用的方式开发的，但是随着业务的不断扩展，会面临一个严峻的问题——首次加载的代码量会越来越多，影响用户的体验。&lt;/p&gt;
 &lt;p&gt;通过&lt;code&gt;import(*)&lt;/code&gt;语句来控制加载时机，webpack内置了对于import(*)的解析，会将import(*)中引入的模块作为一个新的入口在生成一个chunk。 当代码执行到import(*)语句时，会去加载Chunk对应生成的文件。import()会返回一个Promise对象，所以为了让浏览器支持，需要事先注入Promise polyfill&lt;/p&gt;
-&lt;h1 id=&#34;2-git命令&#34;&gt;2. Git命令&lt;/h1&gt;
+&lt;h1 id=&#34;3-git命令&#34;&gt;3. Git命令&lt;/h1&gt;
 &lt;h2 id=&#34;1-什么是-rebase&#34;&gt;1. 什么是 rebase?&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;git rebase&lt;/strong&gt;你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。&lt;/p&gt;
 &lt;p&gt;原理很简单：rebase需要基于一个分支来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最新的跟踪分支的最后面，这样你的当前分支就是最新的跟踪分支。这里的操作是基于文件事务处理的，所以你不用怕中间失败会影响文件的一致性。在中间的过程中你可以随时取消rebase 事务。&lt;/p&gt;
@@ -8393,458 +9060,7 @@ module.exports = {
 &lt;img src=&#34;https://ttarea.com/post-images/1618473857337.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;3-原生js实现轮播图&#34;&gt;3. 原生js实现轮播图&lt;/h1&gt;
-&lt;h2 id=&#34;步骤一建立html基本布局&#34;&gt;步骤一：建立html基本布局&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
-    &amp;lt;title&amp;gt;轮播图&amp;lt;/title&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-    &amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
-        &amp;lt;div class=&amp;quot;wrap&amp;quot; style=&amp;quot;left:-600px;&amp;quot;&amp;gt;
-            &amp;lt;img src=&amp;quot;./img/5.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
-            &amp;lt;img src=&amp;quot;./img/1.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
-            &amp;lt;img src=&amp;quot;./img/2.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
-            &amp;lt;img src=&amp;quot;./img/3.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
-            &amp;lt;img src=&amp;quot;./img/4.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
-            &amp;lt;img src=&amp;quot;./img/5.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
-            &amp;lt;img src=&amp;quot;./img/1.jpg&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;
-        &amp;lt;/div&amp;gt;
-        &amp;lt;div class=&amp;quot;buttons&amp;quot;&amp;gt;
-            &amp;lt;span&amp;gt;1&amp;lt;/span&amp;gt;
-            &amp;lt;span&amp;gt;2&amp;lt;/span&amp;gt;
-            &amp;lt;span&amp;gt;3&amp;lt;/span&amp;gt;
-            &amp;lt;span&amp;gt;4&amp;lt;/span&amp;gt;
-            &amp;lt;span&amp;gt;5&amp;lt;/span&amp;gt;
-        &amp;lt;/div&amp;gt;
-        &amp;lt;a href=&amp;quot;javascript:;&amp;quot; class=&amp;quot;arrow arrow_left&amp;quot;&amp;gt;&amp;amp;lt;&amp;lt;/a&amp;gt;
-        &amp;lt;a href=&amp;quot;javascript:;&amp;quot; class=&amp;quot;arrow arrow_right&amp;quot;&amp;gt;&amp;amp;gt;&amp;lt;/a&amp;gt;
-    &amp;lt;/div&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;只有五张图片，却使用7张来轮播，这是为了实现无缝轮播&lt;/p&gt;
-&lt;h2 id=&#34;步骤二-css布局&#34;&gt;步骤二： css布局&lt;/h2&gt;
-&lt;p&gt;首先，resetcss，如下所示：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;* {
-            margin:0;
-            padding:0;
-        }
-        a{
-            text-decoration: none;
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;接着，我们为了让图片只在container中，所以需要限定其宽度和高度并且使用overflow:hidden；将其余的图片隐藏起来，并且我们希望wrap相对于container左右移动，所以设置为relative，如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.container {
-            position: relative;
-            width: 600px;
-            height: 400px;
-            margin:100px auto 0 auto;
-            box-shadow: 0 0 5px green;
-            overflow: hidden;
-        }            
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我们设置wrap是绝对定位的，所以,我们就可以通过控制Left和Right来控制图片的移动了。设置z-index:1;以对后面将要放置的buttons作为参考。 因为共有七张图片，所以width为4200px（每张图片我们设置为600X400）,我们只需让图片左浮动即可实现占满一排了。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; .wrap {
-            position: absolute;
-            width: 4200px;
-            height: 400px;
-            z-index: 1;
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;然后我们把图片设置位左浮动，并限定其大小，如下所示：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    .container .wrap img {
-            float: left;
-            width: 600px;
-            height: 400px;
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;即这时已经显示出了第一张图片。并且充满了整个container(container是有box-shadow的);&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1615789086547.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-然后我们把显示次序的buttons放在图片的右下角。并且设置z-index:2;以保证buttons是在图片的上面&lt;br&gt;
-的。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; .container .buttons {
-            position: absolute;
-            right: 150px;
-            bottom:20px;
-            width: 100px;
-            height: 10px;
-            z-index: 2;
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;然后将buttons下面的span做一个简单的修饰，并且给和图片对应的span设置一个on类，如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.container .buttons span {
-            margin-left: 5px;
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: green;
-            text-align: center;
-            color:white;
-            cursor: pointer;
-        }
-        .container .buttons span.on{
-            background-color: red;
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;接下来，我们把左右切换的箭头加上，然后做简单的修饰，注意：因为这里使用实体来表示左右箭头，所以设置font-size才能改变其大小，&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; .container .arrow {
-            position: absolute;
-            top: 35%;
-            color: green;
-            padding:0px 14px;
-            border-radius: 50%;
-            font-size: 50px;
-            z-index: 2;
-            display: none;
-        }
-        .container .arrow_left {
-            left: 10px;
-        }
-        .container .arrow_right {
-            right: 10px;
-        }
-        .container:hover .arrow {
-            display: block;
-        }
-        .container .arrow:hover {
-            background-color: rgba(0,0,0,0.2);
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;步骤三添加js逻辑&#34;&gt;步骤三：添加js逻辑&lt;/h2&gt;
-&lt;p&gt;我们首先获取到 wrap（因为要设置其left才能控制轮播图），然后获取到左右两个箭头，并实现手动轮播，如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var wrap = document.querySelector(&amp;quot;.wrap&amp;quot;);
-        var next = document.querySelector(&amp;quot;.arrow_right&amp;quot;);
-        var prev = document.querySelector(&amp;quot;.arrow_left&amp;quot;);
-        next.onclick = function () {
-            next_pic();
-        }
-        prev.onclick = function () {
-            prev_pic();
-        }
-        function next_pic () {
-            var newLeft = parseInt(wrap.style.left)-600;
-            wrap.style.left = newLeft + &amp;quot;px&amp;quot;;
-        }
-        function prev_pic () {
-            var newLeft = parseInt(wrap.style.left)+600;
-            wrap.style.left = newLeft + &amp;quot;px&amp;quot;;
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;值得注意的是，这里wrap.style.left是一个字符串，所以要转化为数字才能进行计算，而设定left时就要加上px成为一个字符串了。&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1615789317683.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-可以看到，在第一页时，left值为-600，所以我们可以点击一次上一张，但是当再点击一次时，就出现了空白。同样的，下一张点击，到-3600是最后一张，就不能再继续点击了。　　&lt;br&gt;
-&lt;strong&gt;也就是说，当我们点击下一张到-3600px（这是第一张图片）时，我们需要下次跳转到第二张，即-1200px；这样才能正常跳转；&lt;/strong&gt;&lt;br&gt;
-同理，当我们点击上一张到0px（这是第五张图片时），我们希望下次跳转到第四张，即-2400px；&lt;br&gt;
-按照这样的思路我们重新将next_pic和prev_pic函数修改如下&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function next_pic () {
-            var newLeft;
-            if(wrap.style.left === &amp;quot;-3600px&amp;quot;){
-                newLeft = -1200;
-            }else{
-                newLeft = parseInt(wrap.style.left)-600;
-            }
-            wrap.style.left = newLeft + &amp;quot;px&amp;quot;;
-        }
-        function prev_pic () {
-            var newLeft;
-            if(wrap.style.left === &amp;quot;0px&amp;quot;){
-                newLeft = -2400;
-            }else{
-                newLeft = parseInt(wrap.style.left)+600;
-            }
-            wrap.style.left = newLeft + &amp;quot;px&amp;quot;;
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;但是，这时我们仅仅时手动循环播放的，我们如果希望自动播放，使用setInterval()即可，如下所示：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; var timer = null;
-        function autoPlay () {
-            timer = setInterval(function () {
-                next_pic();
-            },1000);
-        }
-        autoPlay();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;即先设定一个计时器，然后创建一个可以自动播放的函数，最后调用这个函数即可。 现在它就可以自动播放了，效果如下：&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1615789447895.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-但是如果我们想要仔细看其中一个图片的时候，我们希望轮播图停止播放，只要clearInterval()即可，如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;
-        var container = document.querySelector(&amp;quot;.container&amp;quot;);
-        container.onmouseenter = function () {
-            clearInterval(timer);
-        }
-        container.onmouseleave = function () {
-            autoPlay();    
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;原理很简单，即设置buttons的index初始值为0，即第一个span的class为on，然后触发next_pic函数时，index加1，当触发prev_pic函数时，inex减1， 并设置当前index的小圆点的class为on， 这就要求index必须设置为全局变量，才能保证它在每一个函数的作用域中。&lt;/p&gt;
-&lt;p&gt;添加showCurrentDot函数：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; var index = 0;
-        var dots = document.getElementsByTagName(&amp;quot;span&amp;quot;);
-        function showCurrentDot () {
-            for(var i = 0, len = dots.length; i &amp;lt; len; i++){
-                dots[i].className = &amp;quot;&amp;quot;;
-            }
-            dots[index].className = &amp;quot;on&amp;quot;;
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;在next_pic中添加代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;            index++;
-            if(index &amp;gt; 4){
-                index = 0;
-            }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;在prev_pic中添加代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;            index--;
-            if(index &amp;lt; 0){
-                index = 4;
-            }
-            showCurrentDot();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这样，轮播图就可以自动切换，并且小圆点也在随着图片的变化而变化了。&lt;/p&gt;
-&lt;p&gt;但是，这距离我们经常看到的轮播图还有一定距离 - - - 当点击小圆点时， 就可跳转到相应图片。 实现原理即：  点击小圆点，就使wrap的Left变成相应的值。代码如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;
-  for (var i = 0, len = dots.length; i &amp;lt; len; i++){
-            (function(i){
-                dots[i].onclick = function () {
-                    var dis = index - i;
-                    if(index == 4 &amp;amp;&amp;amp; parseInt(wrap.style.left)!==-3000){
-                        dis = dis - 5;     
-                    }
-                    //和使用prev和next相同，在最开始的照片5和最终的照片1在使用时会出现问题，导致符号和位数的出错，做相应地处理即可
-                    if(index == 0 &amp;amp;&amp;amp; parseInt(wrap.style.left)!== -600){
-                        dis = 5 + dis;
-                    }
-                    wrap.style.left = (parseInt(wrap.style.left) +  dis * 600)+&amp;quot;px&amp;quot;;
-                    index = i;
-                    showCurrentDot();
-                }
-            })(i);            
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;原理就是当点击到小圆点时，得到相应的i值，这个i值也就是span的index值，我们拿他和全局变量index作比较，然后重新设置wrap.style.left的值，然后把i值复制给全局变量index，最后显示当前的小原点即可。值得注意的是：这里涉及到了闭包的概念，如果直接使用for循环，则不能得到正确的结果。&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1615789605021.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;4-排序算法&#34;&gt;4. 排序算法&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;实现枢纽选择：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;//交换两个位置的数据
-let swap = function(arr, m, n){
-    let temp  = arr[m]
-    arr[m] = arr[n]
-    arr[n] = temp
-}
-
-//快速排序
-//1.选择枢纽
-let median = function(arr){
-  //1.取出中间的位置
-  let center = Math.floor(arr.length / 2)
-  let right = arr.length - 1 
-  let left = 0
-
-  //2.判断大小并进行交换
-  if (arr[left] &amp;gt; arr[center]) {
-    swap(arr, left, center)
-  }
-  if (arr[center] &amp;gt; arr[right]){
-    swap(arr, center, right)
-  }
-  if (arr[left] &amp;gt; arr[right]) {
-    swap(arr, left, right)
-  }
-  //3.返回枢纽
-  return center
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;快速排序代码实现：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;//2.快速排序
-let QuickSort = function(arr){
-  if (arr.length == 0) {
-    return []
-  }
-  let center = median(arr)
-  let c = arr.splice(center, 1)
-  let l = []
-  let r = []
-
-  for (let i = 0; i &amp;lt; arr.length; i++) {
-      if (arr[i] &amp;lt; c) {
-        l.push(arr[i])
-      }else{
-        r.push(arr[i])
-      }        
-  }
-  return QuickSort(l).concat(c, QuickSort(r))
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;5-二叉树的先序中序后序遍历&#34;&gt;5. 二叉树的先序，中序，后序遍历&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;function TreeNode(x){
-    this.val=val;
-    this.left=null;
-    this.right=null;
-}
-// 递归方法
-function threeOrders(root){
-    let preArray=[],middleArray=[],lastArray=[];
-    //先序遍历：根、左、右
-    function preOrder(root){
-        if(root){
-            preArray.push(root.val);
-            preOrder(root.left);
-            preOrder(root.right);
-        }
-    }
-    //中序遍历 ： 左 根 右   
-    function inOrder(root){
-            if(root){
-                inOrder(root.left)
-                middleArray.push(root.val);
-                inOrder(root.right);
-            }
-    }
-    //后序遍历：左右根
-    function lastOrder(root){
-        if(root){
-            lastOrder(root.left);
-            lastOrder(root.right);
-            lastArray.push(root.val);
-        }
-    }
-    preOrder(root);
-    inOrder(root);
-    lastOrder(root);
-    return [preArray,middleArray,lastArray]
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;6-加油站问题贪心算法&#34;&gt;6. 加油站问题(贪心算法)&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;基本要素：&lt;/strong&gt;&lt;br&gt;
-&lt;code&gt;贪心选择&lt;/code&gt;：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的局部最优解。&lt;br&gt;
-&lt;code&gt;最优子结构&lt;/code&gt;：当一个问题的最优解包含其子问题的最优解时，称此问题具有最优子结构性质。&lt;/p&gt;
-&lt;h2 id=&#34;汽车加油问题&#34;&gt;汽车加油问题&lt;/h2&gt;
-&lt;p&gt;一辆汽车加满油后可行驶 n公里。旅途中有若干个加油站。设计一个有效算法，指出应 在哪些加油站停靠加油，使沿途加油次数最少。&lt;/p&gt;
-&lt;h2 id=&#34;输入格式&#34;&gt;输入格式:&lt;/h2&gt;
-&lt;p&gt;第一行有 2 个正整数n和 k（k&amp;lt;=1000 )，表示汽车加满油后可行驶n公里，且旅途中有 k个加油站。 第二行有 k+1 个整数，表示第 k 个加油站与第k-1 个加油站之间的距离。 第 0 个加油站表示出发地，汽车已加满油。 第 k+1 个加油站表示目的地。&lt;/p&gt;
-&lt;h2 id=&#34;输出格式&#34;&gt;输出格式:&lt;/h2&gt;
-&lt;p&gt;输出最少加油次数。如果无法到达目的地，则输出“No Solution!”。&lt;/p&gt;
-&lt;h2 id=&#34;贪心性质分析&#34;&gt;贪心性质分析：&lt;/h2&gt;
-&lt;p&gt;找到汽车满油量时可以行驶的最大路程范围内的最后一个加油站，加油后则继续用此方法前进。需要检查每一小段路程是否超过汽车满油量时的最大支撑路程。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function greedy(n, k, arr){ // n:加满可以行驶的公里数; k:加油站数量; arr:每个加油站之间的距离数组
-  　　if (n == 0 || k == 0 || arr.length == 0 || arr[0] &amp;gt; n) {
-  　　return &amp;quot;No Solution!&amp;quot;; // arr[0] &amp;gt; n ：如果第一个加油站距离太远，也无法到达
-  　　};
-  
-  　　let res = 0, distance = 0; // res：加油次数;distance：已行驶距离
-  　　for(let i = 0; i &amp;lt;= k; i++){
-  　　distance += arr[i];
-  　　if (distance &amp;gt; n) { // 已行驶距离 &amp;gt; 加满可以行驶的公里数
-   　 if(arr[i] &amp;gt; n){ // 如果目前加油站和前一个加油站的距离 &amp;gt; 加满可以行驶的公里数，则无法到达
-   　 return &amp;quot;No Solution!&amp;quot;;
-  　　};
-  
-  　　// 可以在上一个加油站加油，行驶到目前的加油站i：
-  　　distance = arr[i];
-  　　res++; // 加油次数+1
-  　　}
-  　}
-  　　return res;
-  }
-  
-  　　let arr = [1,2,3,4,5,1,6,6];
-  　　console.log(greedy(7,7,arr)) // 4
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;7-二分法数组查找&#34;&gt;7. 二分法数组查找&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;二分法实现原理：二分查找可以解决已经排好序数组的查找问题：只要数组中包含target（即要查找的值），那么通过不断缩小包含target数组的范围，最终就可以找到它。&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function indexOf(arr,target,start,end){
-	 start = start || 0;
-	 end = end || arr.length - 1;
-	 if(start &amp;gt; end){
-	 	return -1;
-	 }
-	let mid = Math.floor((start + end)/2);
-		if(arr[mid] &amp;gt; target) {
-			end = mid-1;
-			return indexOf(arr,target,start,end);
-		}
-		else if(arr[mid] &amp;lt; target){
-			start = mid + 1;
-			return indexOf(arr,target,start,end);
-		}
-		else {
-			return mid;
-		}
-}
-let a = [0,1,2,3,4,5,6,434,435];
-console.log(indexOf(a,12));     //打印结果为-1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;8-反转单链表&#34;&gt;8. 反转单链表&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;var reverseList = function (head) {
-    // 闭包
-    if (head === undefined || head === null) return null
-    var originalHead = head
-    var reverseHead
-    var reverse = function (head) {
-        if (head.next === null) {
-            reverseHead = head
-            return head
-        } else {
-            var node = reverse(head.next)
-            node.next = head
-            if (originalHead === head) {
-                head.next = null
-                return reverseHead
-            } else {
-                return head
-            }
-        }
-    }
-    return reverse(head)
-};
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;9-取出1000内所有质数&#34;&gt;9. 取出1000内所有质数&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;let num = 1000;
-	let res_arr = []; 
-	for (var i = 1; i &amp;lt; num; i++) {
-		let e = i;
-		let noDivision = !divisionItem(res_arr, e)
-		if (e != 1 &amp;amp;&amp;amp; noDivision) {
-			res_arr.push(e)
-		}
-	}
-
-	console.log(res_arr);
-
-	// 每一个数字 和已有的自然数进行对比是否可以整除
-	function divisionItem(arr, item) {
-		let res = false;
-		for (var i = 0; i &amp;lt; arr.length; i++) {
-			let e = arr[i];
-			if (item % e === 0) {
-				res = true
-				break;
-			}
-		}
-		return res;
-	}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;10-找出数组中和为给定值的两个元素&#34;&gt;10. 找出数组中和为给定值的两个元素&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;function sameSum(arr, num){
-  for (var i =0 ;i&amp;lt;arr.length;i++){
-      for (var j = i+1;j&amp;lt;arr.length;j++){
-          if (arr[i]+arr[j]==num){
-              console.log(&#39;数组中两个元素和为&#39;+num+&#39;的两个数为：&#39;+arr[i]+&#39;和&#39;+arr[j]);
-              break;
-          }
-          //break;
-          //如果只要输出一组这样的组合就只要在内层循环里break就可以
-      }
-  }
-}
-var arr =[1,2,3,4];
-sameSum(arr,5);
-&lt;/code&gt;&lt;/pre&gt;
-">【面】前端知识点梳理（工具与算法）</a>
+">【面】前端知识点梳理（打包工具）</a>
       </div>
       
       <div class="item">
@@ -9515,91 +9731,7 @@ const { mapState, mapActions } = createNamespacedHelpers(&#39;moduleB&#39;) // m
 &lt;h3 id=&#34;52-在带命名空间的模块内访问全局内容&#34;&gt;5.2 在带命名空间的模块内访问全局内容&lt;/h3&gt;
 &lt;p&gt;如果你希望使用全局 state 和 getter，rootState 和 rootGetter 会作为第三和第四参数传入 getter，也会通过 context 对象的属性传入 action。&lt;/p&gt;
 &lt;p&gt;若需要在全局命名空间内分发 action 或提交 mutation，将 { root: true } 作为第三参数传给 dispatch 或 commit 即可&lt;/p&gt;
-&lt;h1 id=&#34;9-defineproperty对数组和对象的监听&#34;&gt;9. defineProperty对数组和对象的监听&lt;/h1&gt;
-&lt;h2 id=&#34;1-objectdefineproperty-对象属性监听&#34;&gt;1. Object.defineProperty 对象属性监听&lt;/h2&gt;
-&lt;p&gt;现在我们有这样一个对象&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let obj = {
-	name:&#39;码不停息&#39;,
-    age:18,
-    love:[&#39;吃饭&#39;,&#39;睡觉&#39;,&#39;打豆豆&#39;]
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我们想实现只要是对象里面的任何数据改变,都要跟新视图或者执行我们自己的逻辑,那我们需要怎么办呢?&lt;/p&gt;
-&lt;p&gt;我们似乎需要解决以下几个问题:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;obj&lt;/code&gt;对象有多个属性,可能需要__循环__添加到&lt;code&gt;Object.defineProperty&lt;/code&gt;里面&lt;br&gt;
-*&lt;code&gt;obj&lt;/code&gt;的属性也可能是对象或者数组,可能需要__递归__&lt;/li&gt;
-&lt;li&gt;用户可能给&lt;code&gt;obj&lt;/code&gt;赋值新的属性,这种情况可能需要 &lt;strong&gt;单独处理&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;let a = {&#39;b&#39;: 1};
-Object.defineProperty(a, &#39;b&#39;, {
-    enumerable: false,
-    configurable: false,
-    get: function(){
-        console.log(&#39;b&#39; + &#39;被访问&#39;);
-    },
-    set: function(newVal){
-        console.log(&#39;b&#39; + &#39;被修改，新&#39; + &#39;b&#39; + &#39;=&#39; + newVal);
-    }
-});
-
-a.b = 2;   // b被修改，新b=2
-a.b;       // b被访问
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我们可能会有对象中属性的值还是对象这种嵌套情况，可以通过递归解决&lt;/p&gt;
-&lt;h2 id=&#34;2-objectdefineproperty-数组属性监听&#34;&gt;2. Object.defineProperty 数组属性监听&lt;/h2&gt;
-&lt;p&gt;Object.defineProperty 是对象的方法监听不到数组的变更的，重写&lt;code&gt;Array&lt;/code&gt;的原型方法来实现&lt;/p&gt;
-&lt;p&gt;原理就是&lt;code&gt;重写数组的七个原始方法&lt;/code&gt;，当使用者执行这些方法时，我们就可以监听到数据的变化，然后做些更新操作，下面我们在&lt;code&gt;observer&lt;/code&gt;中加上关于对数组的判断&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;const orginalProto = Array.prototype;
-const arrayProto = Object.create(orginalProto); // 先克隆一份Array的原型出来
-const methodsToPatch = [
-  &#39;push&#39;,
-  &#39;pop&#39;,
-  &#39;shift&#39;,
-  &#39;unshift&#39;,
-  &#39;splice&#39;,
-  &#39;sort&#39;,
-  &#39;reverse&#39;
-]
-methodsToPatch.forEach(method =&amp;gt; {
-  arrayProto[method] = function () {
-    // 执行原始操作
-    orginalProto[method].apply(this, arguments)
-    console.log(&#39;监听赋值成功&#39;, method)
-  }
-})
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;10-proxy-相比于-defineproperty-的优势&#34;&gt;10. Proxy 相比于 defineProperty 的优势&lt;/h1&gt;
-&lt;p&gt;Proxy 是 ES6 提供的一个对象代理，简单来说就是我们不直接对一个（私有）对象进行读写，而是通过这个对象代理对这个对象进行读写，通过对象代理可以对这个对象的&lt;strong&gt;数据作过滤保护&lt;/strong&gt;，使得这个对象可以成为&lt;strong&gt;私有属性&lt;/strong&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;1-objectdefineproperty只能劫持对象的属性而proxy是直接代理对象&#34;&gt;1. Object.defineProperty只能劫持对象的属性，而Proxy是直接代理对象。&lt;/h2&gt;
-&lt;p&gt;由于 &lt;code&gt;Object.defineProperty&lt;/code&gt; 只能对属性进行劫持，需要遍历对象的每个属性，如果属性值也是对象，则需要深度遍历。而 &lt;code&gt;Proxy&lt;/code&gt; 直接代理对象，不需要遍历操作。&lt;/p&gt;
-&lt;h2 id=&#34;2-objectdefineproperty对新增属性需要手动进行observe&#34;&gt;2. Object.defineProperty对新增属性需要手动进行Observe。&lt;/h2&gt;
-&lt;p&gt;由于 &lt;code&gt;Object.defineProperty&lt;/code&gt; 劫持的是对象的属性，所以新增属性时，需要重新遍历对象，对其新增属性再使用 &lt;code&gt;Object.defineProperty&lt;/code&gt; 进行劫持。&lt;/p&gt;
-&lt;p&gt;也正是因为这个原因，使用vue给 &lt;code&gt;data&lt;/code&gt; 中的数组或对象新增属性时，需要使用 &lt;code&gt;vm.$set&lt;/code&gt; 才能保证新增的属性也是响应式的。&lt;/p&gt;
-&lt;p&gt;在 set 方法中，对 &lt;code&gt;target&lt;/code&gt; 是&lt;strong&gt;数组&lt;/strong&gt;和&lt;strong&gt;对象&lt;/strong&gt;做了分别的处理：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;target 是数组时，会调用重写过的 splice 方法进行手动 Observe 。&lt;/li&gt;
-&lt;li&gt;对于对象，如果 key 本来就是对象的属性，则直接修改值触发更新，否则调用 defineReactive 方法重新定义响应式对象。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;如果采用 proxy 实现， &lt;code&gt;Proxy&lt;/code&gt; 通过 set(target, propKey, value, receiver) 拦截对象属性的设置，是可以拦截到对象的新增属性的。&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1616222994837.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-不止如此， Proxy 对数组的方法也可以监测到，不需要像上面vue2.x源码中那样进行 hack 。&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1616223001054.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;3-proxy支持13种拦截操作这是defineproperty所不具有的&#34;&gt;3. Proxy支持13种拦截操作，这是defineProperty所不具有的&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;get(target, propKey, receiver)：拦截对象属性的读取，比如 proxy.foo 和 proxy[&#39;foo&#39;] 。&lt;/li&gt;
-&lt;li&gt;set(target, propKey, value, receiver)：拦截对象属性的设置，比如 proxy.foo = v 或 proxy[&#39;foo&#39;] = v ，返回一个布尔值。&lt;/li&gt;
-&lt;li&gt;has(target, propKey)：拦截 propKey in proxy 的操作，返回一个布尔值。&lt;/li&gt;
-&lt;li&gt;deleteProperty(target, propKey)：拦截 delete proxy[propKey] 的操作，返回一个布尔值。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;优势一：Proxy 可以直接&lt;code&gt;监听对象本身&lt;/code&gt;，而 defineProperty 只能&lt;code&gt;监听属性&lt;/code&gt;，只有通过递归调用才能监听对象；&lt;br&gt;
-优势二：当我们使用数组方法来操作数组后，Proxy 可以直接监听&lt;code&gt;数组变化&lt;/code&gt;，而 defineProperty 是无法监听到数组下标变化的，常用八种数组方法 push, pop, shift, unshift, splice, sort, reverse 在 vue 中能监听得到，是因为 vue 源码中使用了 defineReactive 方法来渲染页面；&lt;br&gt;
-优势三：Proxy 有 13 中拦截方式，多于 defineProperty；&lt;br&gt;
-优势四：Proxy 返回一个新对象，可以只&lt;code&gt;操作新对象&lt;/code&gt;，不会污染原对象，而 defineProperty 只能遍历对象属性&lt;code&gt;直接修改&lt;/code&gt;。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;而 defineProperty 的兼容性更好，vue 3.0 版本将会用 Proxy 代替 definProperty。&lt;/p&gt;
-&lt;h1 id=&#34;11-computed-和-watch-区别&#34;&gt;11、computed 和 watch 区别&lt;/h1&gt;
+&lt;h1 id=&#34;9-computed-和-watch-区别&#34;&gt;9、computed 和 watch 区别&lt;/h1&gt;
 &lt;h2 id=&#34;1-计算属性computed&#34;&gt;1. 计算属性computed :&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;支持缓存，只有依赖数据发生改变，才会重新进行计算&lt;/li&gt;
@@ -9643,18 +9775,158 @@ watch: {
   }
 })
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;12-vue-router-hash-html5-新增的-pushstate&#34;&gt;12. vue-router (hash， HTML5 新增的 pushState)&lt;/h1&gt;
+&lt;h1 id=&#34;10-vue-router-hash-html5-新增的-pushstate&#34;&gt;10. vue-router (hash， HTML5 新增的 pushState)&lt;/h1&gt;
 &lt;h2 id=&#34;1-单页应用如何实现其路由功能-路由原理&#34;&gt;1. 单页应用，如何实现其路由功能---路由原理&lt;/h2&gt;
-&lt;p&gt;vue-router 默认启用 &lt;code&gt;hash&lt;/code&gt; 模式，如果只是 hash 的改变在任何时候都不会向后端发起请求，如果想要在一个页面中跳转到一个区域，有两种方法：设置一个锚点：使用 a 标签的 name 属性，二是使用 id 元素，可以在任何元素上使用。&lt;/p&gt;
-&lt;p&gt;核心原理是利用了 hash 的 &lt;code&gt;onhashchange&lt;/code&gt;事件，一旦 hash 发生改变就会触发这个事件&lt;br&gt;
-还可以在路由配置中，用 mode 配置项，值为 history，就可以改成 history 模式，实际上就是使用了浏览器的 history API&lt;/p&gt;
-&lt;p&gt;通过这种模式可以去掉 hash 的丑陋，但是也有一个问题，如果用户刷新或者手动输入 URL 按回车，那么就会向后端发起请求，如果后端没有匹配的路径，就会报 404 错误，所以后端要配置支持。&lt;br&gt;
-&lt;code&gt;核心原理&lt;/code&gt;（跟使用何种模式无关）：利用的的是 history.pushState 和 history.replaceState 方法，并且在后退和前进以及跳转时利用的是 popstate 事件&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1624848524017.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1624848528088.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1624848531673.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1624848534874.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1624848538467.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;大型单页应用最显著特点之一就是采用的&lt;code&gt;前端路由&lt;/code&gt;跳转子页面系统，通过改变页面的URL，在&lt;code&gt;不重新请求页面&lt;/code&gt;的情况下，更新页面视图。&lt;/p&gt;
+&lt;p&gt;更新视图但是浏览器不重新渲染整个页面，只是重新渲染部分子页面，加载速度快，页面反应灵活，这是 SPA 的优势，这也是前端路由原理的核心，这会给人一种仿佛在操作 APP 一样的感觉，目前在浏览器环境中实现这一功能的方式主要有两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利用 URL 的 hash(#)&lt;/li&gt;
+&lt;li&gt;利用 H5 新增方法 History interface&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-利用url的hash&#34;&gt;1. 利用URL的Hash(#)&lt;/h3&gt;
+&lt;p&gt;在 H5 还没有流行开来时，一般 SPA 都采用 url 的 hash(#) 作为锚点，获取到 # 之后的值，并监听其改变，再进行渲染对应的子页面。&lt;/p&gt;
+&lt;p&gt;例如，你的地址为http://localhost:8888/#/abc 那么利用 location.hash 输出的内容就为 #/abc。&lt;/p&gt;
+&lt;p&gt;那么我就先从 location 这个对象说起。&lt;br&gt;
+先来看看location的官方属性有哪些&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;属性&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;hash&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;设置或返回从 # 开始的 URL （锚）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;host&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;设置或返回主机名和当前 URL 的端口号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;hostname&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;设置或返回当前 URL 的主机名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;href&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;设置或返回完整的 URL&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;pathname&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;设置或返回当前 URL 的路径部分&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;port&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;设置或返回当前 URL 的端口号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;protocol&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;设置或返回当前 URL 的协议&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;search&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;设置或返回从 ? 开始的 URL 部分&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;由上表格可以知道，我们可以轻易的获取到 # 之后的部分，那么拿到这个部分我们怎么监听其变化以及对应的子页面进行改变呢？&lt;/p&gt;
+&lt;p&gt;window 对象中有一个事件是专门监听hash的变化，那就是onhashchange，首先我们需要 监听此事件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;body&amp;gt;
+  &amp;lt;h1 id=&amp;quot;id&amp;quot;&amp;gt;&amp;lt;/h1&amp;gt;
+  &amp;lt;a href=&amp;quot;#/id1&amp;quot;&amp;gt;id1&amp;lt;/a&amp;gt;
+  &amp;lt;a href=&amp;quot;#/id2&amp;quot;&amp;gt;id2&amp;lt;/a&amp;gt;
+  &amp;lt;a href=&amp;quot;#/id3&amp;quot;&amp;gt;id3&amp;lt;/a&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;script&amp;gt;
+  window.addEventListener(&#39;hashchange&#39;, e =&amp;gt; {
+    e.preventDefault()
+    document.querySelector(&#39;#id&#39;).innerHTML = location.hash
+  })
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可见此时我们已经完全监听到了 URL 的变化，页面上的内容也对应改变了。&lt;br&gt;
+那么，该如何载入不同的页面呢，目前来说有三种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;寻找节点内容并改变（也就是上面我们演示的内容）&lt;/li&gt;
+&lt;li&gt;import 一个 JS 文件，文件内部 export 模版字符串&lt;/li&gt;
+&lt;li&gt;利用 AJAX 加载对应的 HTML 模版&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-利用-h5-新增方法-history-interface&#34;&gt;2. 利用 H5 新增方法 History interface&lt;/h3&gt;
+&lt;p&gt;如果在微信或者其他不显示 URL 的 APP 中使用，倒也无所谓，但是如果在一般的浏览器中使用就会遇到问题了。&lt;br&gt;
+由此，H5 的 History 模式，解决了这一问题。&lt;/p&gt;
+&lt;p&gt;在 H5 之前， History 仅仅只有一下几个 API：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;API&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;back()&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;回退到上次访问的 URL （与浏览器点击后退按钮相同）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;forward()&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;前进到回退之前的 URL （与浏览器点击向前按钮相同）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;go(n)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;n 接收一个整数，移动到该整数指定的页面，比如go(1)相当于forward()，go(-1) 相当于 back()，go(0)相当于刷新当前页面&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;如果移动的位置超出了访问历史的边界，以上三个方法并不报错，而是静默失败&lt;/strong&gt;。&lt;br&gt;
+然而，到了 H5 的时代，新的 H5 则赋予了其更多的新特性：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;往返缓存&lt;/code&gt;&lt;br&gt;
+默认情况下，浏览器会缓存当前会话页面，这样当下一个页面点击后退按钮，或前一个页面点击前进按钮，浏览器便会从缓存中提取并加载此页面，这个特性被称为“往返缓存”。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;PS: 此缓存会保留页面数据、DOM和js状态，实际上是将整个页面完好无缺地保留。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;往历史记录栈中添加记录：&lt;code&gt;pushState(state, title, url)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;state: 一个 JS 对象（不大于640kB），主要用于在 popstate 事件中作为参数被获取。如果不需要这个对象，此处可以填 null&lt;/li&gt;
+&lt;li&gt;title: 新页面的标题，部分浏览器(比如 Firefox )忽略此参数，因此一般为 null&lt;/li&gt;
+&lt;li&gt;url: 新历史记录的地址，可为页面地址，也可为一个锚点值，新 url 必须与当前 url 处于同一个域，否则将抛出异常，此参数若没有特别标注，会被设为当前文档 url&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;除此之外，仍有几点需要注意&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将 url 设为锚点值时不会触发 hashchange&lt;/li&gt;
+&lt;li&gt;根据同源策略，如果设置不同域名地址，会报错，这样做的目的是：防止用户以为它们是同一个网站，若没有此限制，将很容易进行 XSS 、 CSRF 等攻击方式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;改变当前的历史记录：&lt;code&gt;replaceState(state, title, url)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;参数含义同 pushstate&lt;/li&gt;
+&lt;li&gt;改变当前的历史记录而不是添加新的记录&lt;/li&gt;
+&lt;li&gt;同样不会触发 popstate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;code&gt;popstate&lt;/code&gt;&lt;br&gt;
+定义：每当同一个文档的浏览历史（即 history 对象）出现变化时，就会触发 popstate 事件。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注意：若仅仅调用 pushState 方法或 replaceState 方法 ，并不会触发该事件，只有用户点击浏览器&lt;strong&gt;倒退&lt;/strong&gt;按钮和&lt;strong&gt;前进&lt;/strong&gt;按钮，或者使用 JavaScript 调用 back 、 forward 、 go 方法时才会触发。另外，该事件只针对同一个文档，如果浏览历史的切换，导致加载不同的文档，该事件也不会触发。&lt;/p&gt;
+&lt;h3 id=&#34;3-总结&#34;&gt;3. 总结&lt;/h3&gt;
+&lt;p&gt;一般场景下，hash 和 history 都可以，除非你更在意颜值，# 符号夹杂在 URL 里看起来确实有些不太美丽。&lt;br&gt;
+另外，调用 &lt;code&gt;history.pushState()&lt;/code&gt; 相比于直接修改 &lt;code&gt;hash&lt;/code&gt;，存在以下优势：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pushState() 设置的新 URL 可以是与当前 URL 同源的任意 URL；而 hash 只可修改 # 后面的部分，因此只能设置与当前 URL 同文档的 URL&lt;/li&gt;
+&lt;li&gt;pushState() 设置的新 URL 可以与当前 URL 一模一样，这样也会把记录添加到栈中；而 hash 设置的新值必须与原来不一样才会触发动作将记录添加到栈中&lt;/li&gt;
+&lt;li&gt;pushState() 通过 stateObject 参数可以添加任意类型的数据到记录中；而 hash 只可添加短字符串；&lt;/li&gt;
+&lt;li&gt;pushState() 可额外设置 title 属性供后续使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但其实 history 也不是样样都好，虽然在浏览器里游刃有余，但真要通过 URL 向后端发起 HTTP 请求时，两者的差异就来了。尤其在用户手动输入 URL 后回车，或者刷新（重启）浏览器的时候。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hash 模式下，仅 hash 符号之前的内容会被包含在请求中，如 http://www.qqq.com，因此对于后端来说，即使没有做到对路由的全覆盖，也不会返回 404 错误。&lt;/li&gt;
+&lt;li&gt;history 模式下，前端的 URL &lt;strong&gt;必须&lt;/strong&gt;和实际向后端发起请求的 URL 一致，如 http://www.qqq.com/book/id。如果后端缺少对 /book/id 的路由处理，将返回 404 错误。Vue-Router 官网里如此描述：“不过这种模式要玩好，还需要后台配置支持……所以呢，你要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 index.html 页面，这个页面就是你 app 依赖的页面。”&lt;/li&gt;
+&lt;li&gt;需在后端（Apache 或 Nginx）进行简单的路由配置，同时搭配前端路由的 404 页面支持。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;2-vue-router-如何做用户登录权限等&#34;&gt;2. vue-router 如何做用户登录权限等&lt;/h2&gt;
 &lt;p&gt;使用 meta 来检测一个目标页面是否需要登陆权限，然后向服务器发送一个带有 Cookie 字段的请求，询问浏览器端的 cookie 中的 sessionID 是否已过期（因为 session 是保存在服务器端的），如果过期就需要重新登陆，跳转到登陆页面，否则表示已是登陆状态，进入目标页面。&lt;/p&gt;
 &lt;h2 id=&#34;3-你在项目中怎么实现路由的嵌套&#34;&gt;3. 你在项目中怎么实现路由的嵌套&lt;/h2&gt;
@@ -9690,7 +9962,7 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 3）定义路由配置，配置是一个数组，元素是对象&lt;br&gt;
 4）创建一个 vue-router 实例，new vueRouter({})&lt;br&gt;
 5）创建 vue 根实例，将 router 作为配置参数传入&lt;/p&gt;
-&lt;h1 id=&#34;13-vue中v-if与v-show的区别以及使用场景&#34;&gt;13. vue中v-if与v-show的区别以及使用场景&lt;/h1&gt;
+&lt;h1 id=&#34;11-vue中v-if与v-show的区别以及使用场景&#34;&gt;11. vue中v-if与v-show的区别以及使用场景&lt;/h1&gt;
 &lt;h2 id=&#34;1-区别&#34;&gt;1. 区别&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;手段：v-if是通过控制dom节点的&lt;code&gt;存在&lt;/code&gt;与否来控制元素的显隐；v-show是通过设置DOM元素的&lt;code&gt;display样式&lt;/code&gt;，block为显示，none为隐藏；&lt;/li&gt;
@@ -9702,19 +9974,9 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 &lt;p&gt;而 v-show ，这是无论表达式返回值是否是 true 都会在&lt;code&gt;create 生命周期&lt;/code&gt;，无条件消耗资源生成对应的 Virtual DOM，并挂载到HTML页面中，只是再根据表达式返回值，切换 display 这个 CSS 属性。&lt;/p&gt;
 &lt;h2 id=&#34;2-使用场景&#34;&gt;2. 使用场景&lt;/h2&gt;
 &lt;p&gt;基于以上区别，因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。&lt;/p&gt;
-&lt;h2 id=&#34;3-总结&#34;&gt;3. 总结&lt;/h2&gt;
+&lt;h2 id=&#34;3-总结-2&#34;&gt;3. 总结&lt;/h2&gt;
 &lt;p&gt;v-if判断是否加载，可以减轻服务器的压力，在需要时加载,但有更高的切换开销;v-show调整DOM元素的CSS的dispaly属性，可以使客户端操作更加流畅，但有更高的初始渲染开销。如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。&lt;/p&gt;
-&lt;h1 id=&#34;14-vue项目中实现token验证&#34;&gt;14. Vue项目中实现token验证&lt;/h1&gt;
-&lt;p&gt;在前后端完全分离的情况下，Vue项目中实现token验证大致思路如下：&lt;/p&gt;
-&lt;p&gt;1、第一次登录的时候，前端调后端的登陆接口，发送用户名和密码&lt;br&gt;
-2、后端收到请求，验证用户名和密码，验证成功，就给前端返回一个token&lt;br&gt;
-3、前端拿到token，将token存储到localStorage和vuex中，并跳转路由页面&lt;br&gt;
-4、前端每次跳转路由，就判断 localStroage 中有无 token ，没有就跳转到登录页面，有则跳转到对应路由页面&lt;br&gt;
-5、每次调后端接口，都要在请求头中加token&lt;br&gt;
-6、后端判断请求头中有无token，有token，就拿到token并验证token，验证成功就返回数据，验证失败（例如：token过期）就返回401，请求头中没有token也返回401&lt;br&gt;
-7、如果前端拿到状态码为401，就清除token信息并跳转到登录页面&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1619086516830.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;15-vue插槽v-slot&#34;&gt;15. Vue插槽（v-slot）&lt;/h1&gt;
+&lt;h1 id=&#34;12-vue插槽v-slot&#34;&gt;12. Vue插槽（v-slot）&lt;/h1&gt;
 &lt;h2 id=&#34;1-匿名插槽&#34;&gt;1. 匿名插槽&lt;/h2&gt;
 &lt;p&gt;匿名插槽，我们也可以叫它单个插槽或者默认插槽。和具名插槽相对，它是不需要设置  name 属性的，它隐藏的name属性为default。&lt;/p&gt;
 &lt;p&gt;在使用的时候还有一个问题要注意的 如果是有2个以上的匿名插槽是会child标签里面的内容全部都替换到每个slot；&lt;/p&gt;
@@ -9722,7 +9984,7 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 &lt;p&gt;顾名思义就是slot 是带有name的 ，定义：&amp;lt;slot name=&amp;quot;header&amp;quot; /&amp;gt;  或者使用简单缩写的定义 #header&lt;br&gt;
 使用：要用一个 template标签包裹&lt;/p&gt;
 &lt;p&gt;这里说一下多个具名插槽的使用 &lt;code&gt;多个具名插槽，插槽的位置不是使用插槽的位置而定的，是在定义的时候的位置来替换的&lt;/code&gt;&lt;/p&gt;
-&lt;h1 id=&#34;16-vue的scoped属性&#34;&gt;16. Vue的Scoped属性&lt;/h1&gt;
+&lt;h1 id=&#34;13-vue的scoped属性&#34;&gt;13. Vue的Scoped属性&lt;/h1&gt;
 &lt;h2 id=&#34;1-什么是scoped&#34;&gt;1. 什么是scoped&lt;/h2&gt;
 &lt;p&gt;在Vue文件中的style标签上有一个特殊的属性，scoped。当一个style标签拥有scoped属性时候，它的css样式只能用于&lt;code&gt;当前&lt;/code&gt;的Vue组件，可以使组件的样式不相互污染。如果一个项目的&lt;code&gt;所有style标签&lt;/code&gt;都加上了scoped属性，相当于实现了样式的&lt;code&gt;模块化&lt;/code&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;2-scoped的实现原理&#34;&gt;2. Scoped的实现原理&lt;/h2&gt;
@@ -9779,6 +10041,350 @@ this.$route相当于当前正在跳转的路由对象。可以从里面获取nam
 &lt;li&gt;在vue组建中使用两个style标签，一个加上scoped属性，一个不加scoped属性，把需要覆盖的css样式写在不加scoped属性的style标签里&lt;/li&gt;
 &lt;li&gt;建立一个reset.css(基础全局样式)文件，里面写覆盖的css样式，在入口文件main.js 中引入&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h1 id=&#34;14-defineproperty-和-proxy-对象代理的区别&#34;&gt;14. defineProperty 和 Proxy 对象代理的区别 ！！！&lt;/h1&gt;
+&lt;h2 id=&#34;1defineproperty-对对象和数组的监听&#34;&gt;1.defineproperty 对对象和数组的监听&lt;/h2&gt;
+&lt;h3 id=&#34;1-objectdefineproperty-对象属性监听&#34;&gt;1. Object.defineProperty 对象属性监听&lt;/h3&gt;
+&lt;p&gt;现在我们有这样一个对象&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let obj = {
+	name:&#39;码不停息&#39;,
+    age:18,
+    love:[&#39;吃饭&#39;,&#39;睡觉&#39;,&#39;打豆豆&#39;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们想实现只要是对象里面的任何数据改变,都要跟新视图或者执行我们自己的逻辑,那我们需要怎么办呢?&lt;/p&gt;
+&lt;p&gt;我们似乎需要解决以下几个问题:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;obj&lt;/code&gt;对象有多个属性,可能需要__循环__添加到&lt;code&gt;Object.defineProperty&lt;/code&gt;里面&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;obj&lt;/code&gt;的属性也可能是对象或者数组,可能需要__递归__&lt;/li&gt;
+&lt;li&gt;用户可能给&lt;code&gt;obj&lt;/code&gt;赋值新的属性,这种情况可能需要 &lt;strong&gt;单独处理&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;let a = {&#39;b&#39;: 1};
+Object.defineProperty(a, &#39;b&#39;, {
+    enumerable: false,
+    configurable: false,
+    get: function(){
+        console.log(&#39;b&#39; + &#39;被访问&#39;);
+    },
+    set: function(newVal){
+        console.log(&#39;b&#39; + &#39;被修改，新&#39; + &#39;b&#39; + &#39;=&#39; + newVal);
+    }
+});
+a.b = 2;   // b被修改，新b=2
+a.b;       // b被访问
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们可能会有对象中属性的值还是对象这种嵌套情况，可以通过递归解决&lt;/p&gt;
+&lt;h3 id=&#34;2-objectdefineproperty-数组属性监听&#34;&gt;2. Object.defineProperty 数组属性监听&lt;/h3&gt;
+&lt;p&gt;Object.defineProperty 是对象的方法监听不到数组的变更的，&lt;strong&gt;！重写 ！&lt;/strong&gt;&lt;code&gt;Array&lt;/code&gt;的原型方法来实现&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Vue将data中的数组进行了原型链重写，指向了自己定义的数组原型方法。这样当调用数组api时，可以通知依赖更新。如果数组中包含着引用类型，会对数组中的引用类型再次递归遍历进行监控。这样就实现了监测数组变化。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;下面我们在&lt;code&gt;observer&lt;/code&gt;中加上关于对数组的判断&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const orginalProto = Array.prototype;
+const arrayProto = Object.create(orginalProto); // 先克隆一份Array的原型出来
+const methodsToPatch = [
+  &#39;push&#39;,
+  &#39;pop&#39;,
+  &#39;shift&#39;,
+  &#39;unshift&#39;,
+  &#39;splice&#39;,
+  &#39;sort&#39;,
+  &#39;reverse&#39;
+]
+methodsToPatch.forEach(method =&amp;gt; {
+  arrayProto[method] = function () {
+    // 执行原始操作
+    orginalProto[method].apply(this, arguments)
+    console.log(&#39;监听赋值成功&#39;, method)
+  }
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-不存在的对象属性&#34;&gt;3. 不存在的对象属性&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  {{ obj.c }}
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+export default {
+  data: {
+    obj: { a: 1 },
+  },
+  mounted() {
+    this.obj.c = 3
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个例子中，我们对obj上原本不存在的&lt;code&gt;c&lt;/code&gt;属性进行了一个赋值，但是在Vue2中，这是&lt;code&gt;不会触发视图&lt;/code&gt;的响应式更新的，&lt;br&gt;
+这是因为Object.defineProperty必须对于确定的&lt;code&gt;key&lt;/code&gt;值进行响应式的定义，&lt;br&gt;
+这就导致了如果data在初始化的时候没有&lt;code&gt;c&lt;/code&gt;属性，那么后续对于&lt;code&gt;c&lt;/code&gt;属性的赋值都不会触发Object.defineProperty中对于&lt;code&gt;set&lt;/code&gt;的劫持，&lt;br&gt;
+在Vue2中，这里只能用一个额外的api Vue.set来解决，&lt;/p&gt;
+&lt;h2 id=&#34;2-proxy-代理实现&#34;&gt;2. Proxy 代理实现&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const raw = {}
+const data = new Proxy(raw, {
+    get(target, key) { },
+    set(target, key, value) { }
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看出来，Proxy在定义的时候并不用关心key值，&lt;br&gt;
+只要你定义了get方法，那么后续对于data上任何属性的访问（哪怕是不存在的），&lt;br&gt;
+都会触发&lt;code&gt;get&lt;/code&gt;的劫持，&lt;code&gt;set&lt;/code&gt;也是同理。&lt;br&gt;
+这样Vue3中，对于需要定义响应式的值，初始化时候的要求就没那么高了，只要保证它是个可以被Proxy接受的对象或者数组类型即可。&lt;br&gt;
+当然，Proxy对于数据拦截带来的便利还不止于此，往下看就知道。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proxy只会代理对象的第一层，Vue3又是怎样处理这个问题的呢？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;判断当前Reflect.get的返回值是否为Object，如果是则再通过reactive方法做代理， 这样就实现了深度观测&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1-思路&#34;&gt;1. 思路&lt;/h3&gt;
+&lt;p&gt;首先响应式的思路无外乎这样一个模型：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;定义某个数据为&lt;code&gt;响应式数据&lt;/code&gt;，它会拥有收集&lt;code&gt;访问它的函数&lt;/code&gt;的能力。&lt;/li&gt;
+&lt;li&gt;定义观察函数，在这个函数内部去访问&lt;code&gt;响应式数据&lt;/code&gt;，访问到&lt;code&gt;响应式数据&lt;/code&gt;的某个key的时候，会建立一个依赖关系&lt;code&gt;key -&amp;gt; reaction观察函数&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;检测到&lt;code&gt;响应式数据&lt;/code&gt;的&lt;code&gt;key&lt;/code&gt;的值更新的时候，会去重新执行一遍它所收集的所有&lt;code&gt;reaction&lt;/code&gt;观察函数。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-reactive的实现定义响应式数据&#34;&gt;2. reactive的实现（定义响应式数据）&lt;/h3&gt;
+&lt;p&gt;首先是定义proxy&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const reactive = new Proxy(raw, baseHandlers)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个baseHandlers里就是对于数据的&lt;code&gt;get&lt;/code&gt;、&lt;code&gt;set&lt;/code&gt;之类的劫持，&lt;br&gt;
+这里有两个&lt;code&gt;WeakMap&lt;/code&gt;： &lt;code&gt;proxyToRaw&lt;/code&gt;和&lt;code&gt;rawToProxy&lt;/code&gt;，&lt;br&gt;
+可以看到在定义响应式数据为一个Proxy的时候，会进行一个&lt;code&gt;双向的存储&lt;/code&gt;，&lt;br&gt;
+这样后续无论是拿到原始对象还是拿到响应式&lt;code&gt;proxy&lt;/code&gt;，都可以很容易的拿到它们的&lt;code&gt;另一半&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;之后&lt;code&gt;storeObservable&lt;/code&gt;，是用原始对象建立一个map：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const connectionStore = new WeakMap&amp;lt;Raw, ReactionForRaw&amp;gt;()
+
+function storeObservable(value: object) {
+  // 存储对象和它内部的key -&amp;gt; reaction的映射
+  connectionStore.set(value, new Map() as ReactionForRaw)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这是一个&lt;code&gt;Raw -&amp;gt; ReactionForRaw&lt;/code&gt;的&lt;code&gt;map&lt;/code&gt;。&lt;br&gt;
+也就是&lt;code&gt;原始数据&lt;/code&gt; -&amp;gt; &lt;code&gt;这个数据收集到的观察函数依赖&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-proxy的handler&#34;&gt;3. proxy的handler&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;get收集依赖&lt;/strong&gt;&lt;br&gt;
+这里做的一系列操作，就是把用&lt;code&gt;原始数据&lt;/code&gt;从&lt;code&gt;connectionStore&lt;/code&gt;里拿到依赖收集的map，&lt;br&gt;
+然后在&lt;code&gt;reaction&lt;/code&gt;观察函数把对于某个&lt;code&gt;key&lt;/code&gt;访问的时候，把&lt;code&gt;reaction&lt;/code&gt;观察函数本身增加到这个&lt;code&gt;key&lt;/code&gt;的观察函数集合里，对于&lt;code&gt;observe(() =&amp;gt; console.log(counter.num));&lt;/code&gt;这个例子来说，就会收集到 &lt;code&gt;{ num -&amp;gt; Set&amp;lt;Reaction &amp;gt;}&lt;/code&gt;。&lt;br&gt;
+注意这里对于数组来说，也是一样的流程，只是数组访问的key是下标数字而已。 所以会收集类似于&lt;code&gt;{ 1 -&amp;gt; Set&amp;lt;Reaction&amp;gt;}&lt;/code&gt;这样的结构。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;set触发更新&lt;/strong&gt;&lt;br&gt;
+&lt;code&gt;set&lt;/code&gt;赋值操作的时候，本质上就是去检查这个&lt;code&gt;key&lt;/code&gt;收集到了哪些&lt;code&gt;reaction&lt;/code&gt;观察函数，然后依次触发。（数组也是同理）&lt;/p&gt;
+&lt;h3 id=&#34;4-observe-观察函数&#34;&gt;4. observe 观察函数&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;observe&lt;/code&gt;这个api接受一个用户传入的函数，在这个函数内访问响应式数据才会去收集观察函数作为自己的依赖。&lt;/p&gt;
+&lt;p&gt;简化后的核心逻辑很简单，&lt;br&gt;
+把&lt;code&gt;reaction&lt;/code&gt;推入&lt;code&gt;reactionStack&lt;/code&gt;后开始执行用户传入的函数，&lt;br&gt;
+在函数内访问&lt;code&gt;响应式proxy&lt;/code&gt;的属性，又会触发&lt;code&gt;get&lt;/code&gt;的拦截，&lt;br&gt;
+这时候&lt;code&gt;get&lt;/code&gt;去&lt;code&gt;reactionStack&lt;/code&gt;找当前正在运行的&lt;code&gt;reaction&lt;/code&gt;，就可以成功的收集到依赖了。&lt;/p&gt;
+&lt;h2 id=&#34;3-边界情况&#34;&gt;3. 边界情况&lt;/h2&gt;
+&lt;p&gt;以上实现只是一个最基础的响应式模型，还没有实现的点有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;深层数据的劫持&lt;/li&gt;
+&lt;li&gt;数组和对象新增、删除项的响应&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接下来在上面的代码的基础上来实现这两种情况：&lt;/p&gt;
+&lt;h3 id=&#34;1-深层数据的劫持&#34;&gt;1. 深层数据的劫持&lt;/h3&gt;
+&lt;p&gt;在刚刚的代码实现中，我们只对Proxy的第一层属性做了拦截，假设有这样的一个场景&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const counter = reactive({ data: { num: 0 } });
+// 会在控制台打印出0
+const counterReaction = observe(() =&amp;gt; console.log(counter.data.num));
+counter.data.num = 1;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那么思路其实也有了，就是在&lt;code&gt;深层访问的时候&lt;/code&gt;，如果访问的数据是个对象，就把这个对象也用&lt;code&gt;reactive&lt;/code&gt;包装成proxy再返回，这样在进行&lt;code&gt;counter.data.num = 1;&lt;/code&gt;赋值的时候，其实也是针对一个&lt;code&gt;响应式proxy&lt;/code&gt;赋值了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/** 劫持get访问 收集依赖 */
+function get(target: Raw, key: Key, receiver: ReactiveProxy) {
+  const result = Reflect.get(target, key, receiver)
+  // 收集依赖
+  registerRunningReaction({ target, key, receiver, type: &amp;quot;get&amp;quot; })
+
+ // 如果访问的是对象 则返回这个对象的响应式proxy
+  if (isObject(result)) {
+   return reactive(result)
+}
+  return result
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-数组和对象新增属性的响应&#34;&gt;2. 数组和对象新增属性的响应&lt;/h3&gt;
+&lt;p&gt;这里需要注意的是，如果我们在观察函数中对数据做了遍历操作，那么后续加入对数据进行了&lt;strong&gt;新增&lt;/strong&gt;或&lt;strong&gt;删除&lt;/strong&gt;操作，也需要触发它的重新执行，这是很合理的，&lt;/p&gt;
+&lt;p&gt;这里又有一个知识点，对于数组遍历的操作，都会触发它对&lt;code&gt;length&lt;/code&gt;的读取，然后把观察函数收集到&lt;code&gt;length&lt;/code&gt;这个key的依赖中，比如&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;observe(() =&amp;gt; proxyArray.forEach(() =&amp;gt; {}))
+// 会访问proxyArray的length。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所以在触发更新的时候，&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果目标是个数组，那就从length的依赖里收集。&lt;/li&gt;
+&lt;li&gt;如果目标是对象，就从ITERATION_KEY的依赖里收集。（也就是刚刚所说的，对于对象做Object.keys读取时收集的依赖）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如此一来，就实现了对遍历和新增属性这些边界情况的支持。&lt;/p&gt;
+&lt;h3 id=&#34;3-删除属性的拦截&#34;&gt;3. 删除属性的拦截&lt;/h3&gt;
+&lt;p&gt;基本是同一个套路，只是&lt;code&gt;queueReactionsForOperation&lt;/code&gt;寻找收集观察函数的时候，&lt;code&gt;type&lt;/code&gt;换成了&lt;code&gt;delete&lt;/code&gt;，所以会触发内部做了循环操作的观察函数重新执行。&lt;/p&gt;
+&lt;h1 id=&#34;15-vue3新特性&#34;&gt;15. Vue3新特性！！！&lt;/h1&gt;
+&lt;h2 id=&#34;1-vue3-为什么要重写&#34;&gt;1. vue3 为什么要重写&lt;/h2&gt;
+&lt;p&gt;两个主要原因考虑重写vue新版本主要功能：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;主流浏览器对新的JavaScript语言特性的普遍支持。&lt;/li&gt;
+&lt;li&gt;当前Vue代码库随着时间的推移而暴露出来的设计和体系架构问题。&lt;/li&gt;
+&lt;li&gt;对一些方法及API进行优化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以下是一些原理上的分析：&lt;/p&gt;
+&lt;h3 id=&#34;1-浏览器性能提升&#34;&gt;1. 浏览器性能提升&lt;/h3&gt;
+&lt;p&gt;首先，随着ES6的发展已及广泛使用，浏览器对这些新的特性逐渐增加，性能不断优化，这就给vue3优化提供了一个机会，通过重写来优化提升vue的性能。&lt;/p&gt;
+&lt;h3 id=&#34;2-底层实现方法&#34;&gt;2. 底层实现方法&lt;/h3&gt;
+&lt;p&gt;其次，在框架设计上，&lt;strong&gt;vue2.0 是采用Object.defineProperty来实现双向绑定原理&lt;/strong&gt;，这个属性本身就存在一些不足的地方，比如：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Object.defineProperty无法监控到数组下标的变化，导致直接通过数组的下标给数组设置值，不能实时响应。 为了解决这个问题，经过vue内部处理后可以使用以下几种方法来监听数组，push()，pop()，shift()，unshift()，splice()，sort()，reverse()；由于只针对了以上八种方法进行了hack处理,所以其他数组的属性也是检测不到的，还是具有一定的局限性。&lt;/li&gt;
+&lt;li&gt;Object.defineProperty只能劫持对象的属性,因此我们需要对每个对象的每个属性进行遍历。Vue 2.x里，是通过 递归 + 遍历 data 对象来实现对数据的监控的，如果属性值也是对象那么需要深度遍历,显然如果能劫持一个完整的对象是才是更好的选择，新增的属性还行通过set方法来添加监听，有一定的局限性。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;vue3主要采用的Proxy特性，相比之下有以下优点&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以劫持整个对象，并返回一个新的对象&lt;/li&gt;
+&lt;li&gt;有13种劫持操作&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;但同时Proxy作为ES6的新特性，有一定的兼容问题，最主要的是这个属性无法用polyfill来兼容，这个需要在vue3中需要解决的问题。&lt;/p&gt;
+&lt;h3 id=&#34;3-切换到typescript&#34;&gt;3. 切换到TypeScript&lt;/h3&gt;
+&lt;p&gt;Vue 2最初是用纯ES（Javascript）写成的。在原型设计阶段之后不久，我们意识到一个类型系统（Type system）对于这样一个规模的项目非常有用。类型检查（Type check）大大减少了在重构过程中引入意外错误的机会，并帮助贡献者更有信心进行大范围的更改。我们采用了Facebook的Flow type checker，因为它可以逐渐添加到现有的纯ES项目中。Flow type checker在一定程度上起到了帮助作用，但我们并没有从中得到我们所希望的那么多好处。特别是，持续的重大改变使得升级成为一种痛苦。相比较TypeScript与Visual Studio Code集成开发工具的深度集成，Flow type checker对集成开发环境的支持也不理想。&lt;/p&gt;
+&lt;p&gt;我们还注意到，用户越来越多地同时使用Vue和TypeScript。为了支持它们的用例，我们必须独立于使用不同类型系统的源代码来编写和维护TypeScript声明。切换到TypeScript将允许我们自动生成声明文件，从而减轻维护负担。&lt;/p&gt;
+&lt;p&gt;性能对前端框架至关重要。尽管Vue 2号称具有良好的性能，但重写提供了一个机会，可以通过试验新的渲染策略来更提供更好的性能。&lt;/p&gt;
+&lt;h3 id=&#34;4-克服虚拟dom的瓶颈&#34;&gt;4. 克服虚拟DOM的瓶颈&lt;/h3&gt;
+&lt;p&gt;另一个更好的办法是去掉不必要的虚拟DOM树遍历和属性比较，这在更新期间往往会产生最大的性能开销。为了实现这一点，编译器和运行时需要协同工作：编译器分析模板并生成带有优化提示的代码，而运行时尽可能获取提示并采用快速路径。这里有&lt;code&gt;三个主要的优化&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;首先，在DOM树级别。我们注意到，在没有动态改变节点结构的模板指令（例如v-if和v-for）的情况下，节点结构保持完全静态。如果我们将一个模板分成由这些结构指令分隔的嵌套“块”，则每个块中的节点结构将再次完全静态。当我们更新块中的节点时，我们不再需要递归遍历DOM树 - 该块内的动态绑定可以在一个平面数组中跟踪。这种优化通过将需要执行的树遍历量减少一个数量级来规避虚拟DOM的大部分开销。&lt;/p&gt;
+&lt;p&gt;其次，编译器积极地检测模板中的静态节点、子树甚至数据对象，并在生成的代码中将它们提升到渲染函数之外。这样可以避免在每次渲染时重新创建这些对象，从而大大提高内存使用率并减少垃圾回收的频率。&lt;/p&gt;
+&lt;p&gt;第三，在元素级别。编译器还根据需要执行的更新类型，为每个具有动态绑定的元素生成一个优化标志。例如，具有动态类绑定和许多静态属性的元素将收到一个标志，提示只需要进行类检查。运行时将获取这些提示并采用专用的快速路径。&lt;/p&gt;
+&lt;p&gt;综合起来，这些技术大大改进了我们的渲染更新基准，Vue 3有时占用的CPU时间不到Vue 2的十分之一。&lt;/p&gt;
+&lt;h2 id=&#34;2-setup&#34;&gt;2. Setup&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;setup&lt;/code&gt;函数是一个新的组件选项。作为在组件内使用&lt;code&gt;Composition Api&lt;/code&gt;的入口点。下面我们分为4个方面来讲解它&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调用时机&lt;/li&gt;
+&lt;li&gt;this指向&lt;/li&gt;
+&lt;li&gt;函数参数&lt;/li&gt;
+&lt;li&gt;返回值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-调用时机&#34;&gt;1. 调用时机&lt;/h3&gt;
+&lt;p&gt;创建组件实例，然后初始化&lt;code&gt;props&lt;/code&gt;，紧接着就调用&lt;code&gt;setup&lt;/code&gt;函数。 从生命周期的角度来看，它会在&lt;code&gt;beforeCreate&lt;/code&gt;之前执行。也就是创建组件先执行&lt;code&gt;setup&lt;/code&gt;、&lt;code&gt;beforeCreate&lt;/code&gt;、&lt;code&gt;create&lt;/code&gt;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;蛙人&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+export default {
+  name: &#39;App&#39;,
+  setup() {
+    console.log(&amp;quot;hey 蛙人&amp;quot;)
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-this指向&#34;&gt;2. this指向&lt;/h3&gt;
+&lt;p&gt;由于不能在&lt;code&gt;setup&lt;/code&gt;函数中使用&lt;code&gt;data&lt;/code&gt;、&lt;code&gt;methods&lt;/code&gt;，为了避免使用Vue出错，所以把setup函数中&lt;code&gt;this&lt;/code&gt;修改为了&lt;code&gt;undefined&lt;/code&gt;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;蛙人&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+export default {
+  name: &#39;App&#39;,
+  setup() {
+    console.log(this); // undefined
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-函数参数&#34;&gt;3. 函数参数&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;props&lt;/li&gt;
+&lt;li&gt;context&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;props&lt;/code&gt;&lt;br&gt;
+接收组件传递过来的所有数据，并且都是响应式的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;蛙人&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+export default {
+  name: &#39;App&#39;,
+  props: {
+      title: {
+          type: String
+      }
+  },
+  setup(props) {
+    console.log(props.title)
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意一点，props数据不能使用解构，否则响应式数据失效&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;context&lt;/code&gt;&lt;br&gt;
+该参数提供一个上下文对象，从原来的2.x中选择性的暴露了一些属性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;attrs&lt;/li&gt;
+&lt;li&gt;slots&lt;/li&gt;
+&lt;li&gt;emit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;蛙人&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+export default {
+  name: &#39;App&#39;,
+  props: {
+      title: {
+          type: String
+      }
+  },
+  setup(props, { attrs, slots, emit } ) {
+    console.log(attrs) 
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上面，&lt;code&gt;attrs&lt;/code&gt;和&lt;code&gt;slots&lt;/code&gt;都是内部组件实例上对应项的代理，可以确保在更新后仍然还是最新的值。所以这里可以使用解构语法。&lt;/p&gt;
+&lt;h3 id=&#34;4-返回值&#34;&gt;4. 返回值&lt;/h3&gt;
+&lt;p&gt;可以将&lt;code&gt;setup&lt;/code&gt;函数返回值渲染到页面上。但前提是，&lt;code&gt;setup&lt;/code&gt;返回值必须是一个对象，否则返回其它值则渲染无效。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;蛙人&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+export default {
+  name: &#39;App&#39;,
+  props: {
+      title: {
+          type: String
+      }
+  },
+  setup() {
+    const name = &amp;quot;蛙人&amp;quot;
+    return {
+       name
+    }
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-reactive&#34;&gt;3. Reactive&lt;/h2&gt;
+&lt;p&gt;该方法接收一个参数{}创建一个响应式对象。跟&lt;code&gt;Vue2.x&lt;/code&gt;的&lt;code&gt;Vue.observable&lt;/code&gt;一样。如果该参数不是对象的话，也可以渲染到模板上，但不是响应式的数据。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div class=&amp;quot;test&amp;quot;&amp;gt;
+    姓名:  {{ name.value }}
+    {{ test() }}
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+import { reactive } from &amp;quot;vue&amp;quot;
+export default {
+ name: &#39;test&#39;,
+  data() {
+    return {
+
+    }
+  },
+  setup() {
+    let name = reactive({value: &amp;quot;蛙人&amp;quot;})
+    function test() {
+        name.value = &amp;quot;abc&amp;quot;; // 该方法测试响应式数据，可以看到执行完该方法视图也会发生改变
+    }
+    return {
+        name,
+        test
+    }
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 ">【面】前端知识点梳理（Vue）</a>
       </div>
       
@@ -10107,8 +10713,8 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;li&gt;用户请求全局负载均衡服务器，服务器根据ip返回所在区域的负载均衡服务器ip给用户&lt;/li&gt;
 &lt;li&gt;用户请求区域负载均衡服务器，负载均衡服务器根据用户ip选择距离近的，并且存在用户所需内容的，负载比较合适的一台缓存服务器ip给用户。当没有对应内容的时候，会去上一级缓存服务器去找，直到找到资源所在的源站服务器，并且缓存在缓存服务器中。用户下一次在请求该资源，就可以就近拿缓存了。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;注意： 因为cdn的负载均衡和就近选择缓存都是根据用户的ip来的，服务器只能拿到local dns的ip，也就是网络设置中设置的dns ip，如果这个设置的不合理，那么可能起不到加速的效果。可能就近找到的缓存服务器实际离得很远。&lt;/p&gt;
-&lt;p&gt;cdn的原理主要答出&lt;code&gt;负载均衡&lt;/code&gt;和&lt;code&gt;缓存&lt;/code&gt;再就是&lt;code&gt;dns解析&lt;/code&gt;这三部分就行了吧，通过&lt;code&gt;dns解析&lt;/code&gt;到&lt;code&gt;全局负载均衡服务器&lt;/code&gt;，然后再到&lt;code&gt;区域的负载均衡&lt;/code&gt;，之后根据一些条件来找合适的&lt;code&gt;缓存服务器&lt;/code&gt;，如果第一次访问就从源站拿过来缓存。 需要注意的是一切都是根据请求的ip来的，如果ip不合理，那么可能起不到加速效果。缓存和负载均衡的思想在减轻服务器压力方面其实是很常见的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1626742657399.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+cdn的原理主要答出&lt;code&gt;负载均衡&lt;/code&gt;和&lt;code&gt;缓存&lt;/code&gt;再就是&lt;code&gt;dns解析&lt;/code&gt;这三部分就行了吧，通过&lt;code&gt;dns解析&lt;/code&gt;到&lt;code&gt;全局负载均衡服务器&lt;/code&gt;，然后再到&lt;code&gt;区域的负载均衡&lt;/code&gt;，之后根据一些条件来找合适的&lt;code&gt;缓存服务器&lt;/code&gt;，如果第一次访问就从源站拿过来缓存。 需要注意的是一切都是根据请求的ip来的，如果ip不合理，那么可能起不到加速效果。缓存和负载均衡的思想在减轻服务器压力方面其实是很常见的。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;从这个例子可以了解到：&lt;/strong&gt;&lt;br&gt;
 （1）CDN的加速资源是跟域名绑定的。&lt;br&gt;
 （2）通过域名访问资源，首先是通过DNS分查找离用户最近的CDN节点（边缘服务器）的IP&lt;br&gt;
@@ -10121,87 +10727,15 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;h2 id=&#34;4-cdn-优势&#34;&gt;4. CDN 优势&lt;/h2&gt;
 &lt;p&gt;CDN节点解决了跨运营商和跨地域访问的问题，访问延时大大降低。&lt;br&gt;
 大部分请求在CDN边缘节点完成，CDN起到了分流作用，减轻了源服务器的负载。&lt;/p&gt;
-&lt;h1 id=&#34;5-计算机网络重点知识汇总&#34;&gt;5. 计算机网络重点知识汇总&lt;/h1&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;层级&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;名称&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;数据格式&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;功能与连接方式&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;包含的协议&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;典型设备&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;7&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;应用层 Application&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;数据Data&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;网络服务与使用者应用程序间的一个接口&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;如HTTP、FTP、SMTP&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;文件传输，电子邮件，文件服务，虚拟终端&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;终端设备（PC、手机、平板等）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;6&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;表示层 Presentation&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;数据Data&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;数据表示、数据安全、数据压缩&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;如XDR、ASN.1、SMB、AFP、NCP&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;数据格式化，代码转换，数据加密&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;终端设备（PC、手机、平板等）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;会话层 Session&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;数据Data&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;会话层连接到传输层的映射；会话连接的流量控制；数据传输；会话连接恢复与释放；会话连接管理、差错控制&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;如ASAP、TLS、SSH、ISO 8327 / CCITT X.225、RPC&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;解除或建立与别的结点的联系&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;终端设备（PC、手机、平板等）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;传输层 Transport&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;数据组织成数据段Segment&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;用一个寻址机制来标识一个特定的应用程序（端口号）&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;如TCP、UDP、RTP、SCTP、SPX、ATP、IL&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;提供端对端的接口&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;终端设备（PC、手机、平板等）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;网络层 Network&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;分割和重新组合数据包Packet&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;基于网络层地址（IP地址）进行不同网络系统间的路径选择&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;如IP、ICMP、IGMP、IPX、BGP、OSPF&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;为数据包选择路由&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;路由器&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;数据链路层 Data Link&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;将比特信息封装成数据帧Frame&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;在物理层上建立、撤销、标识逻辑链接和链路复用、以及差错校验等功能。通过使用接收系统的硬件地址或物理地址来寻址&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;如以太网、令牌环、HDLC、帧中继、ISDN、ATM、IEEE 802.11&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;传输有地址的帧以及错误检测功能&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;网桥、交换机、中继器&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;物理层 Physical&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;传输比特（bit）流&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;建立、维护、取消物理连接&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;如线路、无线电、光纤、信鸽&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;以二进制数据形式在物理媒体上传输数据&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;光纤、同轴电缆、 双绞线、网卡&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1616399158170.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;0-http轮询即时通讯&#34;&gt;0. HTTP轮询（即时通讯）&lt;/h2&gt;
+&lt;h1 id=&#34;5-网络结构-与-http-协议&#34;&gt;5. 网络结构 与 HTTP 协议&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1616399158170.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+有两套参考模型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OSI参考模型（Open Systems Interconnection Reference Model，七层）：模型过于理想化，未能在因特网上进行广泛推广。&lt;/li&gt;
+&lt;li&gt;TCP/IP参考模型(或TCP/IP协议，四层)：事实上的国际标准。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1615458129735.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1-http轮询即时通讯&#34;&gt;1. HTTP轮询（即时通讯）&lt;/h2&gt;
 &lt;h3 id=&#34;1-轮询&#34;&gt;1. 轮询&lt;/h3&gt;
 &lt;p&gt;短轮询的基本思路就是&lt;strong&gt;浏览器每隔一段时间向浏览器发送http请求，服务器端在收到请求后，不论是否有数据更新，都直接进行响应&lt;/strong&gt;。这种方式实现的即时通信，本质上还是浏览器发送请求，服务器接受请求的一个过程，通过让客户端不断的进行请求，使得客户端能够模拟实时地收到服务器端的数据的变化。&lt;/p&gt;
 &lt;p&gt;这种方式的优点是比较简单，易于理解，实现起来也没有什么技术难点。缺点是显而易见的，这种方式由于需要不断的建立http连接，&lt;strong&gt;严重浪费了服务器端和客户端的资源&lt;/strong&gt;。尤其是在客户端，距离来说，如果有数量级想对比较大的人同时位于基于短轮询的应用中，那么每一个用户的客户端都会疯狂的向服务器端发送http请求，而且不会间断。人数越多，服务器端压力越大，这是很不合理的。&lt;/p&gt;
@@ -10228,7 +10762,25 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
     }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;轮询与长轮询都是基于HTTP的，两者本身存在着缺陷：轮询需要更快的处理速度；长轮询则更要求处理并发的能力；两者都是“&lt;strong&gt;被动型服务器&lt;/strong&gt;”的体现：服务器不会主动推送信息，而是在客户端发送ajax请求后进行返回的响应。而理想的模型是&amp;quot;在服务器端数据有了变化后，可以主动推送给客户端&amp;quot;，这种&amp;quot;&lt;strong&gt;主动型&lt;/strong&gt;&amp;quot;服务器是解决这类问题的很好的方案。&lt;/p&gt;
-&lt;h2 id=&#34;1-http报文结构&#34;&gt;1. HTTP报文结构&lt;/h2&gt;
+&lt;h2 id=&#34;2-http建立持久连接的意义&#34;&gt;2. HTTP建立持久连接的意义&lt;/h2&gt;
+&lt;p&gt;在 HTTP1.0 中每发送一次请求都要重新建立 TCP 连接并且关闭连接。这样做是很耗费时间的。而在HTTP1.1 中默认开启长连接，一次TCP连接可以发送多个HTTP请求，避免了重复建立释放连接的开销，加速了数据的传输，节省了时间和带宽。&lt;/p&gt;
+&lt;h3 id=&#34;1那么长连接什么时候会释放呢&#34;&gt;1.那么长连接什么时候会释放呢？&lt;/h3&gt;
+&lt;p&gt;客户端的长连接不可能一直拿着，会有一个超时时间，服务器会告诉客户端超时时间，譬如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Access-Control-Allow-Origin: http://mall.sillywa.com
+Connection: keep-alive
+Content-Length: 43574
+Content-Type: application/json; charset=utf-8
+Date: Wed, 03 Mar 2021 07:34:49 GMT
+Keep-Alive: timeout=5
+Vary: Origin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Keep-Alive: timeout=5&lt;/strong&gt; &lt;strong&gt;表示这个 TCP 通道可以保持 5s&lt;/strong&gt;。另外还可能有 max=xxx，表示这个长连接&lt;strong&gt;最多接受xxx次请求就断开&lt;/strong&gt;。对于客户端来说，如果服务端没有告诉是客户端超时时间也没关系，服务端可能主动发起四次挥手断开TCP连接，客户端就能够知道该TCP连接已经无效。&lt;/p&gt;
+&lt;h3 id=&#34;2-长连接数据传送完成识别&#34;&gt;2. 长连接数据传送完成识别：&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;判断传输的数据是否达到了 Content-Length 指示的大小&lt;/li&gt;
+&lt;li&gt;没有 Content-Length，由于数据是分块传输的，这时候就要根据块的编码来判断了，最后一个一个编码的数据是一个空块，表明本次传输结束&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-http报文结构&#34;&gt;3. HTTP报文结构&lt;/h2&gt;
 &lt;p&gt;HTTP报文由&lt;strong&gt;报文首部&lt;/strong&gt;和&lt;strong&gt;报文主体&lt;/strong&gt;构成，中间由一个&lt;strong&gt;空行分隔&lt;/strong&gt;。&lt;strong&gt;报文首部包含请求行和请求头部&lt;/strong&gt;，报文主体主要包含被发送的信息。&lt;/p&gt;
 &lt;p&gt;报文首部是客户端或服务端需要处理请求或响应的内容及属性，可以传递额外的信息。&lt;/p&gt;
 &lt;h3 id=&#34;11-http请求报文&#34;&gt;1.1 HTTP请求报文&lt;/h3&gt;
@@ -10253,8 +10805,8 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 ③响应报文头，也是由多个属性组成；&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;响应体：&lt;/strong&gt;&lt;br&gt;
 ④响应报文体，即我们真正要的“干货”&lt;/p&gt;
-&lt;h2 id=&#34;2-http首部字段&#34;&gt;2. HTTP首部字段&lt;/h2&gt;
-&lt;h3 id=&#34;21-http通用首部字段&#34;&gt;2.1. HTTP通用首部字段&lt;/h3&gt;
+&lt;h2 id=&#34;4-http首部字段&#34;&gt;4. HTTP首部字段&lt;/h2&gt;
+&lt;h3 id=&#34;1-http通用首部字段&#34;&gt;1. HTTP通用首部字段&lt;/h3&gt;
 &lt;p&gt;通用首部字段是请求报文和响应报文都会使用的字段，例如：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -10304,7 +10856,7 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;22-http请求首部字段&#34;&gt;2.2 HTTP请求首部字段&lt;/h3&gt;
+&lt;h3 id=&#34;2-http请求首部字段&#34;&gt;2 HTTP请求首部字段&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -10383,7 +10935,7 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;23-http响应首部字段&#34;&gt;2.3. HTTP响应首部字段&lt;/h3&gt;
+&lt;h3 id=&#34;3-http响应首部字段&#34;&gt;3. HTTP响应首部字段&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -10408,7 +10960,7 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;24-http实体消息体首部字段&#34;&gt;2.4 HTTP实体（消息体）首部字段&lt;/h3&gt;
+&lt;h3 id=&#34;4-http实体消息体首部字段&#34;&gt;4 HTTP实体（消息体）首部字段&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -10463,206 +11015,58 @@ DiskCache顾名思义，就是将资源缓存到磁盘中，等待下次访问�
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;3-http方法&#34;&gt;3. HTTP方法&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;根据 HTTP 标准，HTTP 请求可以使用多种请求方法&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;HTTP1.0 定义了三种请求方法：GET、POST 和 HEAD 方法&lt;br&gt;
-HTTP1.1 新增了六种方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNECT 方法&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;方法&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;GET&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;用于从服务器获取数据&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;HEAD&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;类似于 GET 请求，只不过响应中没有具体的内容，&lt;strong&gt;用户获取报头&lt;/strong&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;POST&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;向指定资源提交数据进行处理请求。数据被包含在请求体中，POST请求可能导致新的资源的建立或已有资源的修改&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;PUT&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;客户端向服务器传送的数据取代指定的文档内容&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;DELETE&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;请求服务器删除指定的资源&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;OPTIONS&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;允许客户端查看服务器的性能&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;CONNECT&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;TRACE&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;回显服务器收到的请求，主要用于测试或诊断。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;PATCH&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;是对 PUT 方法的补充，用来对已知资源进行局部更新 。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;GET与POST方法的区别：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;get 是从指定的资源请求数据，post 是向指定的资源提交要处理的数据&lt;/li&gt;
-&lt;li&gt;get 请求可以被缓存，post 请求不会被缓存&lt;/li&gt;
-&lt;li&gt;get 请求传输的数据有长度限制，一般为 2048 字符，post 请求传输的数据没有大小限制&lt;/li&gt;
-&lt;li&gt;get 请求的数据一般追加在 URL 的末尾，post 请求的数据在 http 请求体中&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;一般不使用 GET 请求发送如密码这样的敏感信息。我认为 get 请求比 post 请求更安全。&lt;/p&gt;
-&lt;h2 id=&#34;4-常见的http状态码&#34;&gt;4. 常见的HTTP状态码&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;状态码&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;200&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;请求成功&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;204&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;无内容。服务器处理成功，但未返回内容。在未更新网页的情况下可确保浏览器继续显示当前文档&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;206&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;服务器成功处理了部分 GET 请求&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;301&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;永久移除。请求的资源已被永久移动到新 URI，返回的信息包括新的 URI，浏览器会自动定向到新 URI。今后任何请求都应该使用新的 URI 代替&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;302&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;临时移除。资源被临时移除，客户端应继续使用当前 URI&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;304&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;未修改。资源未修改，服务器不会返回任何资源，告诉浏览器使用本地缓存&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;400&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;客户端请求的语法错误，服务端无法理解&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;401&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;要求用户进行身份认证&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;403&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;服务器拒绝请求&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;404&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;资源未找到&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;500&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;服务器内部错误&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;502&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;服务器作为网关或者代理，从远程服务器接收到了一个无效的响应&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;504&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;网关超时，服务器作为网关或者代理，但是没有及时从远程服务器收到请求&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;5-http与https的区别及实现方式&#34;&gt;5. HTTP与HTTPS的区别及实现方式&lt;/h2&gt;
-&lt;h3 id=&#34;0-基本概念&#34;&gt;0. 基本概念&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;HTTP是超文本传输协议&lt;/strong&gt;，是一个简单的&lt;code&gt;请求-响应协议&lt;/code&gt;，它默认工作在TCP的80端口。&lt;strong&gt;它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应&lt;/strong&gt;。协议以明文的方式进行发送，不提供任何方式的数据加密。因此HTTP协议不适合传输一些敏感信息&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;HTTPS是超文本传输安全协议&lt;/strong&gt;，是一种&lt;code&gt;安全通信&lt;/code&gt;的传输协议。&lt;strong&gt;HTTPS经由HTTP进行通信，但利用 SSL/TSL 来进行加密数据包&lt;/strong&gt;。HTTPS开发的主要目的是提供网站服务器的身份认证，保护数据交换的隐私与完整性。&lt;/p&gt;
-&lt;p&gt;HTTPS默认工作在 TCP 的443 端口，它的工作方式如下：&lt;/p&gt;
+&lt;h2 id=&#34;5-http10与http11以及http20相关知识&#34;&gt;5. HTTP1.0与HTTP1.1以及HTTP2.0相关知识&lt;/h2&gt;
+&lt;h3 id=&#34;1-http-10&#34;&gt;1. HTTP 1.0&lt;/h3&gt;
+&lt;p&gt;HTTP 协议老的标准是HTTP/1.0，是一种无状态，无连接的应用层协议。 为了提高系统的效率，HTTP 1.0规定浏览器与服务器只保持&lt;strong&gt;短暂的连接&lt;/strong&gt;，浏览器的每次请求都需要与服务器建立一个TCP连接，服务器完成请求处理后立即断开TCP连接，服务器不跟踪每个客户也不记录过去的请求。&lt;/p&gt;
+&lt;p&gt;在HTTP1.0默认是短连接；简单来说就是：每次与服务器交互，都需要新开一个连接！&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626872405629.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626872408887.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;基于此会发现，http1.0被抱怨最多的就是&lt;strong&gt;连接无法复用&lt;/strong&gt;和&lt;strong&gt;队头阻塞（head of line blocking）&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于HTTP1.0规定下一个请求必须在前一个请求响应到达之前才能发送，假设前一个请求响应一直不到达，那么下一个请求就不发送，后面的请求就阻塞了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;2-http-11&#34;&gt;2. HTTP 1.1&lt;/h3&gt;
+&lt;p&gt;在HTTP1.1中默认就使用持久化连接来解决：&lt;strong&gt;建立一次连接，多次请求均由这个连接完成！&lt;/strong&gt;(如果阻塞了，还是会开新的TCP连接的)&lt;/p&gt;
+&lt;p&gt;HTTP1.1增加Connection字段，通过设置&lt;strong&gt;Keep-Alive&lt;/strong&gt;保持HTTP连接不断。避免每次客户端与服务器请求都要重复建立释放建立TCP连接。提高了网络的利用率。&lt;/p&gt;
+&lt;p&gt;如果客户端想关闭HTTP连接，可以在请求头中携带Connection:false来告知服务器关闭请求。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626872730153.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;HTTP 1.1还允许客户端不用等待上一次请求结果返回，就可以发出下一次请求，但服务器端必须按照接收到客户端请求的先后顺序依次回送响应结果，以保证客户端能够区分出每次请求的响应内容，这样也显著地减少了整个下载过程所需要的时间。&lt;/p&gt;
+&lt;p&gt;相对于持久化连接还有另外比较重要的改动：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;TCP三次同步握手&lt;/li&gt;
-&lt;li&gt;客户端验证服务端数字证书&lt;/li&gt;
-&lt;li&gt;DH 算法协商对称加密加密算法的密钥、hash 算法的密钥&lt;/li&gt;
-&lt;li&gt;SSL 安全加密隧道协商完成&lt;/li&gt;
-&lt;li&gt;网页以加密的方式进行传输，用协商的对称加密算法和密钥加密，保障数据机密性；用协商的 hash 算法进行数据完整性保护，保证数据不被篡改。&lt;/li&gt;
+&lt;li&gt;HTTP 1.1增加host字段&lt;/li&gt;
+&lt;li&gt;HTTP 1.1中引入了Chunked transfer-coding，范围请求，实现断点续传(实际上就是利用HTTP消息头使用分块传输编码，将实体主体分块传输)&lt;/li&gt;
+&lt;li&gt;HTTP 1.1管线化(pipelining)理论，客户端可以同时发出多个HTTP请求，而不用一个个等待响应之后再请求&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;1-http的无状态&#34;&gt;1. HTTP的无状态&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;就是第二次来你无法识别它曾经来过&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;http的每次请求，在事务上和前后http请求没有任何关联，对上一次请求，下一次请求没有任何影响。这个是定义，从宏观上说的，实际上把无状态说成请求独立，无关联也对&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;HTTP 是一个无状态协议，这意味着&lt;code&gt;每个请求都是独立&lt;/code&gt;的，Keep-Alive 没能改变这个结果。&lt;/p&gt;
-&lt;p&gt;缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。&lt;/p&gt;
-&lt;p&gt;HTTP 协议这种特性有优点也有缺点，优点在于解放了服务器，每一次请求“点到为止”不会造成不必要连接占用，缺点在于每次请求会传输大量重复的内容信息。&lt;/p&gt;
-&lt;p&gt;HTTP 无状态的特性严重阻碍了这些应用程序的实现，于是两种用于保持 HTTP 连接状态的技术就应运而生了，一个是 &lt;code&gt;Cookie&lt;/code&gt;，而另一个则是 &lt;code&gt;Session&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1619491336853.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1619491341437.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;2-http-与-https-的区别&#34;&gt;2. HTTP 与 HTTPS 的区别&lt;/h3&gt;
+&lt;h3 id=&#34;3-http-20&#34;&gt;3. HTTP 2.0&lt;/h3&gt;
+&lt;p&gt;在说HTTP2之前，不如先直观比较一下HTTP2和HTTP1.1的区别：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626874953559.gif&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+上面也已经说了，HTTP 1.1提出了&lt;strong&gt;管线化(pipelining)理论&lt;/strong&gt;，但是仅仅是限于理论的阶段上，这个功能默认还是&lt;code&gt;关闭&lt;/code&gt;了的。&lt;/p&gt;
+&lt;p&gt;所以说，无论是HTTP1.0还是HTTP1.1提出了Pipelining理论，还是会出现阻塞的情况。从专业的名词上说这种情况，叫做&lt;strong&gt;线头阻塞&lt;/strong&gt;（Head of line blocking）简称：HOLB&lt;/p&gt;
+&lt;h4 id=&#34;1-多路复用-与-二进制传输&#34;&gt;1. 多路复用 与 二进制传输&lt;/h4&gt;
+&lt;p&gt;HTTP2与HTTP1.1最重要的区别就是解决了线头阻塞的问题！其中最重要的改动是：&lt;strong&gt;多路复用 (Multiplexing)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;而HTTP2所有性能增强的&lt;code&gt;核心&lt;/code&gt;在于新的&lt;code&gt;二进制分帧&lt;/code&gt;层(不再以文本格式来传输了)，它定义了如何封装http消息并在客户端与服务器之间传输。&lt;/p&gt;
+&lt;p&gt;HTTP/2 采用二进制格式传输数据，而非HTTP/1.x 里纯文本形式的报文 ，二进制协议解析起来更高效。&lt;strong&gt;HTTP/2 将请求和响应数据分割为更小的帧，并且它们采用二进制编码。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;它把TCP协议的部分特性挪到了应用层，把原来的&amp;quot;Header+Body&amp;quot;的消息&amp;quot;打散&amp;quot;为数个小片的二进制&amp;quot;帧&amp;quot;(Frame)，用&amp;quot;HEADERS&amp;quot;帧存放头数据、&amp;quot;DATA&amp;quot;帧存放实体数据。HTP/2数据分帧后&amp;quot;Header+Body&amp;quot;的报文结构就完全消失了，协议看到的只是一个个的&amp;quot;碎片&amp;quot;。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626875923219.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626875879453.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+HTTP/2 中，同域名下所有通信都在单个连接上完成，该连接可以承载任意数量的双向数据流。每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。&lt;strong&gt;多个帧之间可以乱序发送，根据帧首部的流标识可以重新组装&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1616381290207.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如上图所示，多路复用的技术可以只通过一个 TCP 连接就可以传输所有的请求数据。&lt;/p&gt;
+&lt;h4 id=&#34;2-header-压缩&#34;&gt;2. Header 压缩&lt;/h4&gt;
+&lt;p&gt;HTTP/2并没有使用传统的压缩算法，而是开发了专门的&amp;quot;HPACK”算法，在客户端和服务器两端建立“字典”，用索引号表示重复的字符串，还采用哈夫曼编码来压缩整数和字符串，可以达到50%~90%的高压缩率。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;具体来说:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;HTTP 使用明文传输，数据都是&lt;strong&gt;未加密&lt;/strong&gt;的，安全性较差；HTTPS 数据传输过程是加密的，安全性较好；&lt;/li&gt;
-&lt;li&gt;使用 HTTPS 一般需要到 &lt;strong&gt;CA 申请证书&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;HTTP页面的响应比 HTTPS &lt;strong&gt;快&lt;/strong&gt;，主要是因为 HTTPS 除了 TCP 的三个包之外，还要加上 ssl 握手的 9 个包&lt;/li&gt;
-&lt;li&gt;HTTP 和 HTTPS 是完全不同连接方式，用的端口也不一样， 前者是80， 后者是 443&lt;/li&gt;
-&lt;li&gt;HTTPS 其实就是建构在 SSL/TSL 之上的 HTTP 协议，所以要比 HTTP &lt;strong&gt;更消耗服务器资源&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;在客户端和服务器端使用“首部表”来跟踪和存储之前发送的键-值对，对于相同的数据，不再通过每次请求和响应发送；&lt;/li&gt;
+&lt;li&gt;每次只发送改变的（需要更新的）数据字段即可&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;3-https-的工作方式&#34;&gt;3. HTTPS 的工作方式&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617862416374.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;客户端发起 HTTPS 请求&lt;br&gt;
-建立TCP连接之后，客户端发起请求&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;服务端的配置&lt;br&gt;
-服务端收到请求之后，会有一套公钥和私钥，这对公钥和私钥其实就是一套数字证书，一般都是由受信任的证书颁发机构进行签发。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;传送公钥&lt;br&gt;
-服务端将公钥传递给客户端，里面包含很多信息，如证书的颁发机构，证书的过期时间&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;客户端解析证书&lt;br&gt;
-这部分工作由客户端的 TSL 来完成，首先验证证书是否有效。如果没有问题，就会随机生成一个 key，然后利用公钥对 key 的值进行加密。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;传送加密的信息（key）&lt;br&gt;
-将加密过后的 key 传递给服务器&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;使用私钥解析加密信息（key）&lt;br&gt;
-服务器使用自己的私钥解密加密信息得到 key&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;使用客户端的 key，利用对称加密加密信息，并发送给客户端&lt;br&gt;
-把内容通过该 key 进行对称加密，并传输给客户端&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;客户端使用 key 解密信息&lt;br&gt;
-客户端收到信息之后利用 key 进行解密&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;重点：客户端会生成 key，key 的传输使用非对称加密，而数据的传输使用 key 进行对称加密。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;对称加密：加密密钥和解密密钥是同一个，效率较高&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;非对称加密：加密密钥和解密密钥不是同一个，效率较低&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;由于&lt;code&gt;非对称加密的效率比较低&lt;/code&gt;，因此我们通常不使用非对称加密对整个文件进行加密，而采用&lt;code&gt;对称加密对文件加密&lt;/code&gt;，&lt;code&gt;非对称加密对对称加密的密钥加密&lt;/code&gt;，然后将&lt;code&gt;对称加密后的文件和非对称加密后的密钥&lt;/code&gt;一起在网上传送。&lt;/p&gt;
-&lt;h3 id=&#34;4-ssl-的位置&#34;&gt;4. SSL 的位置&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617863364032.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-在发送方，SSL接受应用层的数据（如HTTP或者IMAP报文），对数据进行加密，然后把加了密的数据送往TCP套接字。&lt;/p&gt;
-&lt;p&gt;在接收方，SSL从TCP套接字读取数据，解密后把数据交给应用层。&lt;/p&gt;
-&lt;p&gt;使用非对称加密进行文件传输。通信双方在传输时需要交换各自的公钥。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;SSL提供以下三个功能：&lt;/strong&gt;&lt;br&gt;
-（1）SSL服务器鉴别：允许用户证实服务器的身份。具有SSL功能的浏览器维持一个表，上面有一些可信赖的认证中心CA（Certificate Authority）和它们的公钥。&lt;br&gt;
-（2）加密的SSL会话：客户和服务器交互的所有数据都在发送方加密，在接收方解密。&lt;br&gt;
-（3）SSL客户鉴别：允许服务器证实客户的身份。&lt;/p&gt;
-&lt;h2 id=&#34;55-对称加密-非对称加密-公钥-私钥-数字签名-数字证书&#34;&gt;5.5 对称加密、非对称加密、公钥、私钥、数字签名、数字证书&lt;/h2&gt;
+&lt;p&gt;例如下图中的两个请求， 请求一发送了所有的头部字段，第二个请求则只需要发送差异数据，这样可以减少冗余数据，降低开销&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1616380864613.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1626876168090.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-服务器推送&#34;&gt;3. 服务器推送&lt;/h3&gt;
+&lt;p&gt;服务器除了最初请求的响应外，服务器还可以额外向客户端推送资源，而无需客户端明确的需求。&lt;/p&gt;
+&lt;p&gt;可以在客户端请求index.html的时候，就主动推送后面需要用到的所有静态资源给客户端，并存储在缓存中，大大改善加载时间。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1617865820470.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;6-对称加密-非对称加密-公钥-私钥-数字签名-数字证书&#34;&gt;6. 对称加密、非对称加密、公钥、私钥、数字签名、数字证书&lt;/h2&gt;
 &lt;h3 id=&#34;1-对称数据加密&#34;&gt;1. 对称数据加密&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1619659703397.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 就像上图所示， 这加密和解密算法是公开的，那个密钥是保密的， 只有两人才知道， 这样生成的加密消息（密文） 别人就无法得知了。这叫对称加密算法，因为加密和解密用的是同一个密钥。&lt;/p&gt;
@@ -10697,93 +11101,76 @@ HTTP1.1 新增了六种方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNE
 &lt;img src=&#34;https://ttarea.com/post-images/1619661151582.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 那么这个CA的公钥怎么保证他的安全性？&lt;/p&gt;
 &lt;p&gt;附注：我们利用上面数字证书保证传输安全的前提就是，我们默认CA的公钥是安全的。因为CA的公钥安全，所以得出的消息摘要是安全的，这就可以与Hash算法得出的消息摘要比较是否相同，从而确保消息的安全的。&lt;/p&gt;
-&lt;h2 id=&#34;6-http10与http11以及http20的区别&#34;&gt;6. HTTP1.0与HTTP1.1以及HTTP2，0的区别&lt;/h2&gt;
+&lt;h2 id=&#34;7-http与https的区别及实现方式&#34;&gt;7. HTTP与HTTPS的区别及实现方式&lt;/h2&gt;
+&lt;h3 id=&#34;1-基本概念&#34;&gt;1. 基本概念&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;HTTP是超文本传输协议&lt;/strong&gt;，是一个简单的&lt;code&gt;请求-响应协议&lt;/code&gt;，它默认工作在TCP的80端口。&lt;strong&gt;它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应&lt;/strong&gt;。协议以明文的方式进行发送，不提供任何方式的数据加密。因此HTTP协议不适合传输一些敏感信息&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HTTPS是超文本传输安全协议&lt;/strong&gt;，是一种&lt;code&gt;安全通信&lt;/code&gt;的传输协议。&lt;strong&gt;HTTPS经由HTTP进行通信，但利用 SSL/TSL 来进行加密数据包&lt;/strong&gt;。HTTPS开发的主要目的是提供网站服务器的身份认证，保护数据交换的隐私与完整性。&lt;/p&gt;
+&lt;p&gt;HTTPS默认工作在 TCP 的443 端口，它的工作方式如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TCP三次同步握手&lt;/li&gt;
+&lt;li&gt;客户端验证服务端数字证书&lt;/li&gt;
+&lt;li&gt;DH 算法协商对称加密加密算法的密钥、hash 算法的密钥&lt;/li&gt;
+&lt;li&gt;SSL 安全加密隧道协商完成&lt;/li&gt;
+&lt;li&gt;网页以加密的方式进行传输，用协商的对称加密算法和密钥加密，保障数据机密性；用协商的 hash 算法进行数据完整性保护，保证数据不被篡改。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-http的无状态&#34;&gt;2. HTTP的无状态&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;就是第二次来你无法识别它曾经来过&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;http的每次请求，在事务上和前后http请求没有任何关联，对上一次请求，下一次请求没有任何影响。这个是定义，从宏观上说的，实际上把无状态说成请求独立，无关联也对&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;HTTP 是一个无状态协议，这意味着&lt;code&gt;每个请求都是独立&lt;/code&gt;的，Keep-Alive 没能改变这个结果。&lt;/p&gt;
+&lt;p&gt;缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。&lt;/p&gt;
+&lt;p&gt;HTTP 协议这种特性有优点也有缺点，优点在于解放了服务器，每一次请求“点到为止”不会造成不必要连接占用，缺点在于每次请求会传输大量重复的内容信息。&lt;/p&gt;
+&lt;p&gt;HTTP 无状态的特性严重阻碍了这些应用程序的实现，于是两种用于保持 HTTP 连接状态的技术就应运而生了，一个是 &lt;code&gt;Cookie&lt;/code&gt;，而另一个则是 &lt;code&gt;Session&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1619491336853.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1619491341437.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-http-与-https-的区别&#34;&gt;3. HTTP 与 HTTPS 的区别&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;HTTP 使用明文传输，数据都是&lt;strong&gt;未加密&lt;/strong&gt;的，安全性较差；HTTPS 数据传输过程是加密的，安全性较好；&lt;/li&gt;
+&lt;li&gt;使用 HTTPS 一般需要到 &lt;strong&gt;CA 申请证书&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;HTTP页面的响应比 HTTPS &lt;strong&gt;快&lt;/strong&gt;，主要是因为 HTTPS 除了 TCP 的三个包之外，还要加上 ssl 握手的 9 个包&lt;/li&gt;
+&lt;li&gt;HTTP 和 HTTPS 是完全不同连接方式，用的端口也不一样， 前者是80， 后者是 443&lt;/li&gt;
+&lt;li&gt;HTTPS 其实就是建构在 SSL/TSL 之上的 HTTP 协议，所以要比 HTTP &lt;strong&gt;更消耗服务器资源&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-https-的工作方式&#34;&gt;4. HTTPS 的工作方式&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617862416374.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;长连接&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;客户端发起 HTTPS 请求&lt;br&gt;
+建立TCP连接之后，客户端发起请求&lt;/li&gt;
+&lt;li&gt;服务端的配置&lt;br&gt;
+服务端收到请求之后，会有一套公钥和私钥，这对公钥和私钥其实就是一套数字证书，一般都是由受信任的证书颁发机构进行签发。&lt;/li&gt;
+&lt;li&gt;传送公钥&lt;br&gt;
+服务端将公钥传递给客户端，里面包含很多信息，如证书的颁发机构，证书的过期时间&lt;/li&gt;
+&lt;li&gt;客户端解析证书&lt;br&gt;
+这部分工作由客户端的 TSL 来完成，首先验证证书是否有效。如果没有问题，就会随机生成一个 key，然后利用公钥对 key 的值进行加密。&lt;/li&gt;
+&lt;li&gt;传送加密的信息（key）&lt;br&gt;
+将加密过后的 key 传递给服务器&lt;/li&gt;
+&lt;li&gt;使用私钥解析加密信息（key）&lt;br&gt;
+服务器使用自己的私钥解密加密信息得到 key&lt;/li&gt;
+&lt;li&gt;使用客户端的 key，利用对称加密加密信息，并发送给客户端&lt;br&gt;
+把内容通过该 key 进行对称加密，并传输给客户端&lt;/li&gt;
+&lt;li&gt;客户端使用 key 解密信息&lt;br&gt;
+客户端收到信息之后利用 key 进行解密&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;在HTTP1.0中，TCP每建立一次连接就只能发送一个 HTTP 请求并得到一个响应，当需要再次发送请求的时候，又得重新建立 TCP 连接，这样就会很耗时间，传输效率较低。&lt;/p&gt;
-&lt;p&gt;HTTP1.1中支持长连接和流水线传输，在一个 TCP 连接中可以传送多个 HTTP 请求和响应，减少了建立和关闭连接的消耗和延迟。在 HTTP1.1 中默认开启 Connection: Keep-Alive，一定程度上弥补了 HTTP1.0 的缺点&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;&lt;strong&gt;缓存处理&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;在 HTTP1.0 中主要使用 Expires、Last-Modified、If-Modified-Since 头部字段来作为缓存判断的标准&lt;/p&gt;
-&lt;p&gt;在 HTTP1.1 中增加了 Cache-Control、Etag、If-None-Match、If-Match 等头部字段来提供可选的更多的缓存策略&lt;/p&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;&lt;strong&gt;带宽优化及网络连接的使用&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;HTTP1.0中，存在一些浪费带宽的现象，例如客户端只是需要某个对象的一部分，而服务器却将整个对象送过来了。&lt;/p&gt;
-&lt;p&gt;HTTP1.1 中引入了 Range 头部字段，它允许只请求资源的某个部分，即返回状态码是 206&lt;/p&gt;
-&lt;ol start=&#34;4&#34;&gt;
-&lt;li&gt;&lt;strong&gt;Host头处理&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;在 HTTP1.0 中认为每台服务器绑定一个唯一的 IP 地址，因此，请求消息中的 URL 并没有传递主机名。但随着虚拟技术的发展，在一台物理设备上可以存在多台虚拟主机，并且他们共享同一 IP 地址 。在 HTTP1.1 的请求消息和响应消息中都应支持 HOST 头域，且请求消息中没有 HOST 头域会报一个错误。&lt;/p&gt;
-&lt;ol start=&#34;5&#34;&gt;
-&lt;li&gt;&lt;strong&gt;错误通知的管理&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;HTTP1.1 中新增了 24 个错误状态码，如 409 表示请求的资源与资源的当前状态发生冲突；410表示服务器上的某个资源被永久性删除。&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617865423190.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;7-http20&#34;&gt;7. http2.0&lt;/h2&gt;
-&lt;h3 id=&#34;1-二进制传输&#34;&gt;1. 二进制传输&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;HTTP/2传输数据量的大幅减少,主要有两个原因：以二进制方式传输和Header 压缩&lt;/strong&gt;。HTTP/2 采用二进制格式传输数据，而非HTTP/1.x 里纯文本形式的报文 ，二进制协议解析起来更高效。&lt;strong&gt;HTTP/2 将请求和响应数据分割为更小的帧，并且它们采用二进制编码。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;它把TCP协议的部分特性挪到了应用层，把原来的&amp;quot;Header+Body&amp;quot;的消息&amp;quot;打散&amp;quot;为数个小片的二进制&amp;quot;帧&amp;quot;(Frame),用&amp;quot;HEADERS&amp;quot;帧存放头数据、&amp;quot;DATA&amp;quot;帧存放实体数据。HTP/2数据分帧后&amp;quot;Header+Body&amp;quot;的报文结构就完全消失了，协议看到的只是一个个的&amp;quot;碎片&amp;quot;。&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1616380446582.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;p&gt;HTTP/2 中，同域名下所有通信都在单个连接上完成，该连接可以承载任意数量的双向数据流。每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。&lt;strong&gt;多个帧之间可以乱序发送，根据帧首部的流标识可以重新组装&lt;/strong&gt;。&lt;/p&gt;
-&lt;h3 id=&#34;2-header-压缩&#34;&gt;2. Header 压缩&lt;/h3&gt;
-&lt;p&gt;HTTP/2并没有使用传统的压缩算法，而是开发了专门的&amp;quot;HPACK”算法，在客户端和服务器两端建立“字典”，用索引号表示重复的字符串，还采用哈夫曼编码来压缩整数和字符串，可以达到50%~90%的高压缩率。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;具体来说:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在客户端和服务器端使用“首部表”来跟踪和存储之前发送的键-值对，对于相同的数据，不再通过每次请求和响应发送；&lt;/li&gt;
-&lt;li&gt;首部表在HTTP/2的连接存续期内始终存在，由客户端和服务器共同渐进地更新;&lt;/li&gt;
-&lt;li&gt;每个新的首部键-值对要么被追加到当前表的末尾，要么替换表中之前的值&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;例如下图中的两个请求， 请求一发送了所有的头部字段，第二个请求则只需要发送差异数据，这样可以减少冗余数据，降低开销&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1616380864613.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;3-多路复用&#34;&gt;3. 多路复用&lt;/h3&gt;
-&lt;p&gt;在 HTTP/2 中引入了多路复用的技术。多路复用很好的解决了浏览器限制同一个域名下的请求数量的问题，同时也接更容易实现全速传输，毕竟新开一个 TCP 连接都需要慢慢提升传输速度。&lt;/p&gt;
-&lt;p&gt;在 HTTP/2 中，有了二进制分帧之后，HTTP /2 不再依赖 TCP 链接去实现多流并行了，在 HTTP/2中,&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;同域名下所有通信都在单个连接上完成。&lt;/li&gt;
-&lt;li&gt;单个连接可以承载任意数量的双向数据流。&lt;/li&gt;
-&lt;li&gt;数据流以消息的形式发送，而消息又由一个或多个帧组成，多个帧之间可以乱序发送，因为根据帧首部的流标识可以重新组装。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这一特性，使性能有了极大提升：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;同个域名只需要占用一个 TCP 连接，使用一个连接并行发送多个请求和响应,这样整个页面资源的下载过程只需要一次慢启动，同时也避免了多个TCP连接竞争带宽所带来的问题。&lt;/li&gt;
-&lt;li&gt;并行交错地发送多个请求/响应，请求/响应之间互不影响。&lt;/li&gt;
-&lt;li&gt;在HTTP/2中，每个请求都可以带一个31bit的优先值，0表示最高优先级， 数值越大优先级越低。有了这个优先值，客户端和服务器就可以在处理不同的流时采取不同的策略，以最优的方式发送流、消息和帧。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1616381290207.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
-如上图所示，多路复用的技术可以只通过一个 TCP 连接就可以传输所有的请求数据。&lt;/p&gt;
-&lt;h3 id=&#34;4-服务器推送&#34;&gt;4. 服务器推送&lt;/h3&gt;
-&lt;p&gt;服务端推送是一种在客户端请求之前发送数据的机制。&lt;/p&gt;
-&lt;p&gt;在HTTP1.1中这些资源每一个都必须明确地请求。这是一个很慢的过程。浏览器从获取HTML开始，然后在它解析和评估页面的时候，增量地获取更多的资源。因为服务器必须等待浏览器做每一个请求，网络经常是空闲的和未充分使用的。&lt;/p&gt;
-&lt;p&gt;为了改善延迟，HTTP2.0引入了server push，它允许服务端推送资源给浏览器，在浏览器明确地请求之前，免得客户端再次创建连接发送请求到服务器端获取。这样客户端可以直接从本地加载这些资源，不用再通过网络。&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1617865820470.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;8-http建立持久连接的意义&#34;&gt;8. HTTP建立持久连接的意义&lt;/h2&gt;
-&lt;p&gt;在 HTTP1.0 中每发送一次请求都要重新建立 TCP 连接并且关闭连接。这样做是很耗费时间的。而在HTTP1.1 中默认开启长连接，一次TCP连接可以发送多个HTTP请求，避免了重复建立释放连接的开销，加速了数据的传输，节省了时间和带宽。&lt;/p&gt;
-&lt;h3 id=&#34;1那么长连接什么时候会释放呢&#34;&gt;1.那么长连接什么时候会释放呢？&lt;/h3&gt;
-&lt;p&gt;客户端的长连接不可能一直拿着，会有一个超时时间，服务器会告诉客户端超时时间，譬如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Access-Control-Allow-Origin: http://mall.sillywa.com
-Connection: keep-alive
-Content-Length: 43574
-Content-Type: application/json; charset=utf-8
-Date: Wed, 03 Mar 2021 07:34:49 GMT
-Keep-Alive: timeout=5
-Vary: Origin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;Keep-Alive: timeout=5&lt;/strong&gt; &lt;strong&gt;表示这个 TCP 通道可以保持 5s&lt;/strong&gt;。另外还可能有 max=xxx，表示这个长连接&lt;strong&gt;最多接受xxx次请求就断开&lt;/strong&gt;。对于客户端来说，如果服务端没有告诉是客户端超时时间也没关系，服务端可能主动发起四次挥手断开TCP连接，客户端就能够知道该TCP连接已经无效。&lt;/p&gt;
-&lt;h3 id=&#34;2-长连接数据传送完成识别&#34;&gt;2. 长连接数据传送完成识别：&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;判断传输的数据是否达到了 Content-Length 指示的大小&lt;/li&gt;
-&lt;li&gt;没有 Content-Length，由于数据是分块传输的，这时候就要根据块的编码来判断了，最后一个一个编码的数据是一个空块，表明本次传输结束&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;9-tcpip-协议分层管理&#34;&gt;9. TCP/IP 协议分层管理&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;重点：客户端会生成 key，key 的传输使用非对称加密，而数据的传输使用 key 进行对称加密。&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;对称加密：加密密钥和解密密钥是同一个，效率较高&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;非对称加密：加密密钥和解密密钥不是同一个，效率较低&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由于&lt;code&gt;非对称加密的效率比较低&lt;/code&gt;，因此我们通常不使用非对称加密对整个文件进行加密，而采用&lt;code&gt;对称加密对文件加密&lt;/code&gt;，&lt;code&gt;非对称加密对对称加密的密钥加密&lt;/code&gt;，然后将&lt;code&gt;对称加密后的文件和非对称加密后的密钥&lt;/code&gt;一起在网上传送。&lt;/p&gt;
+&lt;h3 id=&#34;5-ssl-的位置&#34;&gt;5. SSL 的位置&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617863364032.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+在发送方，SSL接受应用层的数据（如HTTP或者IMAP报文），对数据进行加密，然后把加了密的数据送往TCP套接字。&lt;/p&gt;
+&lt;p&gt;在接收方，SSL从TCP套接字读取数据，解密后把数据交给应用层。&lt;/p&gt;
+&lt;p&gt;使用非对称加密进行文件传输。通信双方在传输时需要交换各自的公钥。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SSL提供以下三个功能：&lt;/strong&gt;&lt;br&gt;
+（1）SSL服务器鉴别：允许用户证实服务器的身份。具有SSL功能的浏览器维持一个表，上面有一些可信赖的认证中心CA（Certificate Authority）和它们的公钥。&lt;br&gt;
+（2）加密的SSL会话：客户和服务器交互的所有数据都在发送方加密，在接收方解密。&lt;br&gt;
+（3）SSL客户鉴别：允许服务器证实客户的身份。&lt;/p&gt;
+&lt;h1 id=&#34;6-tcpip-和-udp-协议&#34;&gt;6. TCP/IP 和 UDP 协议&lt;/h1&gt;
+&lt;h2 id=&#34;1-tcpip-协议分层管理&#34;&gt;1. TCP/IP 协议分层管理&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617869165303.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 传输层：可靠传输（丢包重发） 、流量控制、不可靠传输（只需要发送一个数据包）&lt;/p&gt;
 &lt;p&gt;网络层：负责选择最佳路径、规划 IP 地址&lt;/p&gt;
 &lt;p&gt;数据链路层：帧的开始和结束、透明传输（数据中出现了帧的结束标志，需要采用转义字符）、差错校验（循环冗余检测）&lt;/p&gt;
-&lt;h2 id=&#34;10-tcp三次握手四次挥手机制及原因&#34;&gt;10. TCP三次握手四次挥手机制及原因&lt;/h2&gt;
-&lt;h3 id=&#34;0-连接中怎么找到对方&#34;&gt;0. 连接中怎么找到对方？&lt;/h3&gt;
+&lt;h2 id=&#34;2-tcp三次握手四次挥手机制及原因&#34;&gt;2. TCP三次握手四次挥手机制及原因&lt;/h2&gt;
+&lt;h3 id=&#34;1-连接中怎么找到对方&#34;&gt;1. 连接中怎么找到对方？&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;TCP头部为20字节&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;源端口号（16位）和目的端口号（16位）：&lt;code&gt;再加上Ip首部的源IP地址和目的IP地址可以唯一确定一个TCP连接&lt;/code&gt;&lt;/li&gt;
@@ -10795,11 +11182,12 @@ Vary: Origin
 &lt;li&gt;窗口字段：16位，代表的是窗口的字节容量，也就是TCP的标准窗口最大为2^16 - 1 = 65535个字节&lt;/li&gt;
 &lt;li&gt;校验和：源机器基于数据内容计算一个数值，收信息机要与源机器数值结果完全一样，从而证明数据的有效性。检验和覆盖了整个的TCP报文段：这是一个强制性的字段，一定是由发送端计算和存储，并由接收端进行验证的。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;1-三次握手&#34;&gt;1. 三次握手&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617869541484.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;2-三次握手&#34;&gt;2. 三次握手&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617869541484.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;strong&gt;为什么需要三次握手，两次行不行？&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;假设是两次握手，客户端刚开始发送第一个建立连接的请求，但是由于该请求在某一个路由器中停留时间过长，客户端一段时间没收到服务器的响应消息，就会再发一个建立连接的请求，这个请求达到服务器，并成功建立连接，之后数据传输完成，关闭连接。这时候先前发送的第一个建立连接的请求，终于通过网络传到了服务器，服务器收到请求，返回一个数据包，并立即打开连接，这是客户端已经关闭了，对服务端的数据包不予理睬，这样就会导致服务端资源的浪费。&lt;/p&gt;
-&lt;p&gt;**为什么不能四次握手？**四次握手的流程：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;为什么不能四次握手？&lt;/strong&gt;&lt;br&gt;
+四次握手的流程：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;客户端发送：SYN=1,ACK=0,seq=x&lt;/li&gt;
 &lt;li&gt;服务端收到客户端消息，发送：ACK = 1, 确认号=x+1,seq=y&lt;/li&gt;
@@ -10807,13 +11195,13 @@ Vary: Origin
 &lt;li&gt;客户端收到发送：ACK=1，确认号=w+1,seq = x+1&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;在这个过程中，显然第二步和第三步可以合并，不需要单独发送一个 SYN&lt;/p&gt;
-&lt;h3 id=&#34;2-四次挥手&#34;&gt;2. 四次挥手&lt;/h3&gt;
+&lt;h3 id=&#34;3-四次挥手&#34;&gt;3. 四次挥手&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617870529977.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 既然握手的时候，服务端发送的两个请求可以合并，&lt;strong&gt;那么释放连接的时候，是否也能合并，只需三次握手呢？&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;我们的回答是不能够，因为当服务器收到客户端关闭连接的请求的时候，服务端可能还在继续发送数据，但是他又必须先给客户端一个回应，说我收到了请求。等服务端的数据发送完毕之后，再发一个数据包说我已经可以关闭请求了。客户端收到之后再作出回应。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;客户端为什么要有TIME-WAIT阶段&lt;/strong&gt;？&lt;/p&gt;
 &lt;p&gt;防止最后一个数据包丢失而导致服务器接收不到，一段时间后服务器会重新发送第三个数据包。如果此时客户端已经关闭了，则收不到第三个数据包，服务端也就无法正常关闭了。&lt;/p&gt;
-&lt;h2 id=&#34;11tcpudp-的区别&#34;&gt;11.TCP/UDP 的区别&lt;/h2&gt;
+&lt;h2 id=&#34;3tcpudp-的区别&#34;&gt;3.TCP/UDP 的区别&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -10848,16 +11236,7 @@ Vary: Origin
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;12-扫码登录如何实现&#34;&gt;12.  扫码登录如何实现&lt;/h2&gt;
-&lt;p&gt;扫码登陆要求已经用户在手机端登录&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;用户在浏览器点击扫码登录，浏览器向服务端发送一个请求，服务端生成一个唯一 id，并将这个 id 写入二维码并且返回这个二维码给浏览器&lt;/li&gt;
-&lt;li&gt;浏览器收到之后，开始带上这个 id 轮询后台提供的一个接口，判断用户是否扫码并确认登陆了&lt;/li&gt;
-&lt;li&gt;用户拿出手机扫描二维码，得到这个 id，并确认登陆，然后会将用户信息和 id 传给服务器&lt;/li&gt;
-&lt;li&gt;服务器拿到用户信息 和 id 之后，写入数据库&lt;/li&gt;
-&lt;li&gt;这时候服务器轮询就会得到结果，说明用户已经确认登陆，并且得到服务器返回的 token 和用户信息。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;8-getpostputdeleteoptions等请求方式&#34;&gt;8. GET,POST,PUT,DELETE,OPTIONS等请求方式&lt;/h1&gt;
+&lt;h1 id=&#34;7-getpostputdeleteoptions等请求方式&#34;&gt;7. GET,POST,PUT,DELETE,OPTIONS等请求方式&lt;/h1&gt;
 &lt;h2 id=&#34;1-不同请求方式区别&#34;&gt;1. 不同请求方式区别&lt;/h2&gt;
 &lt;h3 id=&#34;1-get&#34;&gt;1. GET&lt;/h3&gt;
 &lt;p&gt;get请求是用来获取数据的，只是用来&lt;code&gt;查询数据&lt;/code&gt;，不对服务器的数据做任何的修改，新增，删除等操作。&lt;/p&gt;
@@ -10934,8 +11313,8 @@ GET http://foo.com/books/:bookId  根据bookId获取一本具体的书
 &lt;p&gt;除了浏览器，服务器这边也有限制，比如apache的LimieRequestLine指令。&lt;/p&gt;
 &lt;p&gt;apache实际上限制的是HTTP请求第一行“Request Line“的长度，即&amp;lt;METHOD&amp;gt;&amp;lt;URL&amp;gt; &amp;lt;VERSION&amp;gt;那一行。再比如nginx用&lt;code&gt;large_client_header_buffers&lt;/code&gt; 指令来分配请求头中的很长数据的buffer。这个buffer可以用来处理url，header value等。&lt;/p&gt;
 &lt;p&gt;为啥要限制呢？如果写过解析一段字符串的代码就能明白，解析的时候要分配内存。对于一个字节流的解析，必须分配buffer来保存所有要存储的数据。而URL这种东西必须当作一个整体看待，无法一块一块处理，于是就处理一个请求时必须分配一整块足够大的内存。如果URL太长，而并发又很高，就容易挤爆服务器的内存；同时，超长URL的好处并不多，我也只有处理老系统的URL时因为不敢碰原来的逻辑，又得追加更多数据，才会使用超长URL。&lt;/p&gt;
-&lt;h1 id=&#34;9-ajax-axios库&#34;&gt;9. ajax、 axios库&lt;/h1&gt;
-&lt;h2 id=&#34;1ajax&#34;&gt;1.ajax&lt;/h2&gt;
+&lt;h1 id=&#34;8-ajax-axios库&#34;&gt;8. ajax、 axios库&lt;/h1&gt;
+&lt;h2 id=&#34;1-ajax&#34;&gt;1. ajax&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;创建XMLHttpRequest类型的对象&lt;/li&gt;
 &lt;li&gt;准备发送，打开与网址之间的连接&lt;/li&gt;
@@ -10984,7 +11363,7 @@ xhr.onreadystatechange = function () {
   console.log(res.data)
 })
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;10-前端安全xss-csrf&#34;&gt;10. 前端安全XSS、CSRF&lt;/h1&gt;
+&lt;h1 id=&#34;9-前端安全xss-csrf&#34;&gt;9. 前端安全XSS、CSRF&lt;/h1&gt;
 &lt;h2 id=&#34;1-xss&#34;&gt;1. XSS&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;跨网站指令码（英语：Cross-site scripting，通常简称为：XSS）XSS 攻击是指攻击者在网站上注入恶意的客户端代码，通过恶意脚本对客户端网页进行篡改，从而在用户浏览网页时，对用户浏览器进行控制或者获取用户隐私数据的一种攻击方式。&lt;/p&gt;
@@ -11087,7 +11466,7 @@ user 对应的值是用户 ID。然后构造一个页面 A：&lt;/p&gt;
 &lt;p&gt;Referer Check 不仅能防范 CSRF 攻击，另一个应用场景是 “防止图片盗链”。&lt;/p&gt;
 &lt;h3 id=&#34;3-添加-token-验证token令牌&#34;&gt;3. 添加 token 验证(token==令牌)&lt;/h3&gt;
 &lt;p&gt;CSRF 攻击之所以能够成功，是因为攻击者可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于 Cookie 中，因此攻击者可以在不知道这些验证信息的情况下直接利用用户自己的 Cookie 来通过安全验证。要抵御 CSRF，关键在于在请求中放入攻击者所不能伪造的信息，并且该信息不存在于 Cookie 之中。可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。&lt;/p&gt;
-&lt;h1 id=&#34;11-websocket&#34;&gt;11. Websocket&lt;/h1&gt;
+&lt;h1 id=&#34;10-websocket&#34;&gt;10. Websocket&lt;/h1&gt;
 &lt;p&gt;webSocket是一项可以让服务器将数据主动推送给客户端的技术。&lt;/p&gt;
 &lt;h2 id=&#34;1-websocket简介&#34;&gt;1. Websocket简介&lt;/h2&gt;
 &lt;p&gt;它的最大特点就是，服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，是真正的双向平等对话，属于服务器推送技术的一种。&lt;br&gt;
@@ -11103,7 +11482,7 @@ user 对应的值是用户 ID。然后构造一个页面 A：&lt;/p&gt;
 &lt;/ol&gt;
 &lt;pre&gt;&lt;code&gt;ws://example.com:80/some/path
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617946965265.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1617946965265.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;2-websocket客户端示例&#34;&gt;2. Websocket客户端示例&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;var ws = new WebSocket(&amp;quot;wss://echo.websocket.org&amp;quot;);
 
@@ -11127,32 +11506,7 @@ ws.onclose = function(evt) {
 3、协同编辑文档&lt;br&gt;
 4、数据流状态&lt;br&gt;
 5、多人聊天&lt;/p&gt;
-&lt;h1 id=&#34;12-http请求中的keep-alive&#34;&gt;12. Http请求中的keep-alive&lt;/h1&gt;
-&lt;h2 id=&#34;1-keep-alive模式&#34;&gt;1. Keep-Alive模式&lt;/h2&gt;
-&lt;p&gt;我们都知道HTTP是基于TCP的，每一个HTTP请求都需要进行三步握手。如果一个页面对某一个域名有多个请求，就会进行频繁的建立连接和断开连接。所以HTTP 1.0中出现了&lt;code&gt;Connection: keep-alive&lt;/code&gt;，用于建立长连接，即我们所说的Keep-Alive模式。下图是普通模式和长连接模式的请求对比：&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1615457244881.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;HTTP/1.0中默认使用Connection: close。在HTTP/1.1中已经默认使用Connection: keep-alive。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;通过对比可以看出，Keep-Alive模式更加高效，因为避免了连接建立和释放的开销。但是，如果一个连接是不会断开的，那么多个请求之间如何进行区分呢？也就是说浏览器是如何知道当前请求已经完成了呢？为了解决这个问题，HTTP对header中又添加了一个Content-Length字段。&lt;/p&gt;
-&lt;h2 id=&#34;2-content-length解决静态&#34;&gt;2. Content-Length(解决静态)&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;Content-Length&lt;/code&gt;表示实体内容的长度。浏览器通过这个字段来判断当前请求的数据是否已经全部接收。所以，当浏览器请求的是一个静态资源时，即服务器能明确知道返回内容的长度时，可以设置&lt;code&gt;Content-Length&lt;/code&gt;来控制请求的结束。但当服务器并不知道请求结果的长度时，如一个动态的页面或者数据，&lt;code&gt;Content-Length&lt;/code&gt;就无法解决上面的问题，这个时候就需要用到&lt;code&gt;Transfer-Encoding&lt;/code&gt;字段。&lt;/p&gt;
-&lt;h2 id=&#34;3-transfer-encoding解决动态&#34;&gt;3. Transfer-Encoding(解决动态)&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;Transfer-Encoding&lt;/code&gt;是指传输编码，还有一个类似的字段叫做：&lt;code&gt;Content-Encoding&lt;/code&gt;。两者的区别是Content-Encoding用于对实体内容的&lt;code&gt;压缩编码&lt;/code&gt;，比如Content-Encoding: gzip；Transfer-Encoding则改变了&lt;code&gt;报文的格式&lt;/code&gt;，比如上面的问题中，当服务端无法知道实体内容的长度时，就可以通过指定&lt;code&gt;Transfer-Encoding: chunked&lt;/code&gt;来告知浏览器当前的编码是将数据分成一块一块传递的。当然, 还可以指定&lt;code&gt;Transfer-Encoding: gzip, chunked&lt;/code&gt;表明实体内容不仅是gzip压缩的，还是分块传递的。最后，当浏览器接收到一个长度为&lt;code&gt;0的chunked时&lt;/code&gt;， 知道当前请求内容已全部接收。&lt;/p&gt;
-&lt;h1 id=&#34;13-网络分层&#34;&gt;13. 网络分层&lt;/h1&gt;
-&lt;p&gt;有两套参考模型：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;OSI参考模型（Open Systems Interconnection Reference Model，七层）：模型过于理想化，未能在因特网上进行广泛推广。&lt;/li&gt;
-&lt;li&gt;TCP/IP参考模型(或TCP/IP协议，四层)：事实上的国际标准。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1615458129735.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;strong&gt;网际层（internet layer）&lt;/strong&gt;&lt;br&gt;
-在OSI模型中，网际层使用了一个更一般的名字，称为网络层（network layer）。网络层协议定义了数据位和字节如何组织为更大的分组，称为包，还定义了寻址机制，不同的计算机要按照这个寻址机制查找对方。网际协议（IP）是世界上使用最广发的网络层协议，也是Java唯一理解的网络层协议。实际上，这是两个协议：IPv4 和 IPv6。在 IPv4 和 IPv6 中，数据按包在网际层上传输，这些包称为数据报（datagram）。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;传输层&lt;/strong&gt;&lt;br&gt;
-传输层（transport layer）负责确保各包已发送的顺序接收，并保证没有数据对视或破坏。如果丢包，传输层会请求发送方重换这个包。为实现这个目标，IP网络会给每个数据报添加一个附加首部，其中包含有更多信息。这一层上主要有两个协议。第一个是传输控制协议（Transmission Control Protocol，TCP）,这是一个开销很高的协议，支持对丢失或破坏的数据进行重换，并按照发送时的顺序进行传送。第二个协议是用户数据报协议（User Datagram Protocol，UDP），它允许接收方检测被破坏的包，但不保证这些包以正确的顺序传送（或者包有可能根本未传送）。但是 UDP 通常比TCP 快。TCP称为可靠的（reliable）协议；UDP 是不可靠的（unreliable）协议。后面我们将看到，不可靠的协议要比听起来有用得多。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;应用层&lt;/strong&gt;&lt;br&gt;
-向用户传送数据的层称为应用层（application layer）。它下面的三层定义了数据如何从一台计算机传输到另一台计算机。应用层确定了数据传输后的操作。例如，应用层协议如 HTTP（用于国际互联网）可以确保 Web 浏览器将图像显示为图片，而不是一长串数据。你的程序中的有关网络的部分大多都是在应用层花费时间。除了用户 Web 的 HTTP ，还有用于电子邮件的 SMTP ，POP ，IMAP；用于文件传输的 FTP、FSP 和 TFTP；用于文件访问的 NFS；用于文件共享的 Gnutella 和 BitTorrent；用于语音通信的会话启动协议（Session Initiation Protocol, SIP）和 Skype 等。此外，你的程序可以在必要时自定义自己的应用层协议。&lt;/p&gt;
-&lt;h1 id=&#34;14-即时通信&#34;&gt;14. 即时通信&lt;/h1&gt;
+&lt;h1 id=&#34;11-即时通信&#34;&gt;11. 即时通信&lt;/h1&gt;
 &lt;h2 id=&#34;sse&#34;&gt;SSE&lt;/h2&gt;
 &lt;p&gt;ajax和JSONP 都是 client-fetch的操作. 但是有时候, 我们更需要服务器主动给我们发信息. 比如，现在的APP应用，完全可以实现服务器发送, 然后Client再处理。而SSE就是帮助我们向webapp靠近&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;SSE 全称就是 Server-Sent Events&lt;/strong&gt;，，中译为 &lt;code&gt;服务器推送&lt;/code&gt;&lt;br&gt;
@@ -11160,7 +11514,7 @@ ws.onclose = function(evt) {
 比如，在nodeJS， 只要我不执行res.end()，并且一定时间持续发送信息的话，那么该连接就会持续打开(keep-alive)&lt;br&gt;
 其实通俗来说，就是一个长连接。 所以，以前我们通常使用ajax，iframe长轮询来代替他。但是这样有个缺点就是，可操控性弱， 错误率高。&lt;br&gt;
 所以，正对于这点W3C, 觉得需要在客户端另外指定一个机制–能够保证服务器推送, 实现连接的keep-alive，操作简单… 在这样背景下SSE诞生了&lt;/p&gt;
-&lt;h1 id=&#34;15-模块化commonjses6cmdamd&#34;&gt;15. 模块化，commonJS，es6，cmd，amd&lt;/h1&gt;
+&lt;h1 id=&#34;12-模块化commonjses6cmdamd&#34;&gt;12. 模块化，commonJS，es6，cmd，amd&lt;/h1&gt;
 &lt;h2 id=&#34;1-es6-moudle&#34;&gt;1. ES6 Moudle&lt;/h2&gt;
 &lt;p&gt;这个是目前前端小伙伴接触的最多的，是浏览器和服务端通用的模块化解决方案，主要命令为：export和import&lt;br&gt;
 export用于导出本模块对外的接口，import用于导入某个模块的功能。&lt;/p&gt;
