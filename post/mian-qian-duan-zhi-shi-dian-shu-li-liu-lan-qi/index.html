@@ -9,7 +9,7 @@
 <meta name="description" content="知行合一">
 <meta name="theme-color" content="#000">
 <title>【面】前端知识点梳理（浏览器） | Tyloo</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1626936135563">
+<link rel="shortcut icon" href="/favicon.ico?v=1628733669706">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -316,13 +316,7 @@
 <li><a href="#7-localstorage%E4%B8%8Esessionstorage%E7%9A%84%E5%8C%BA%E5%88%AB">7. localStorage与sessionStorage的区别</a></li>
 </ul>
 </li>
-<li><a href="#5-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8">5. 浏览器内核</a>
-<ul>
-<li><a href="#1-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9E%84%E6%88%90">1. 浏览器构成</a></li>
-<li><a href="#2-%E4%B8%BB%E6%B5%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%86%85%E6%A0%B8">2. 主流浏览器的内核</a></li>
-</ul>
-</li>
-<li><a href="#6-%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3">6. 跨域问题详解</a>
+<li><a href="#5-%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3">5. 跨域问题详解</a>
 <ul>
 <li><a href="#1-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5">1. 同源策略</a></li>
 <li><a href="#2-%E4%BB%80%E4%B9%88%E6%98%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F">2. 什么是浏览器跨域</a></li>
@@ -346,7 +340,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#7-%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%88%B0js%E5%8D%95%E7%BA%BF%E7%A8%8B">7. 从浏览器多进程到JS单线程</a>
+<li><a href="#6-%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%88%B0js%E5%8D%95%E7%BA%BF%E7%A8%8B">6. 从浏览器多进程到JS单线程</a>
 <ul>
 <li><a href="#1-%E5%8C%BA%E5%88%86%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B">1. 区分进程和线程</a></li>
 <li><a href="#2-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%9A%84">2. 浏览器是多进程的</a>
@@ -660,12 +654,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>64<span class="language" data-lan="minute">分钟</span></span>
+      <span>60<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>17176<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>16271<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -1194,35 +1188,7 @@ cookie绑定到单个域。foo.com域产生的cookie无法被bar.com域读取。
 <ul>
 <li>localStorage生命周期是永久的，除非被清除，否则永久保存，而sessionStorage仅在当前会话下有效，关闭页面或浏览器后被清除</li>
 </ul>
-<h1 id="5-浏览器内核">5. 浏览器内核</h1>
-<p>浏览器内核可以分为两部分：<code>渲染引擎</code>（Layout Engine或Rendering Engine）和<code>JS引擎</code>。由于JS引擎越来越独立，内核就倾向于只指渲染引擎。</p>
-<h2 id="1-浏览器构成">1. 浏览器构成</h2>
-<p>浏览器一般由七个模块组成，User Interface（用户界面）、Browser engine（浏览器引擎）、Rendering engine（渲染引擎）、Networking（网络）、JavaScript Interpreter（js解释器）、UI Backend（UI 后端）、Date Persistence（数据持久化存储）<br>
-<img src="https://ttarea.com/post-images/1615442013118.png" alt="" loading="lazy"></p>
-<ul>
-<li>用户界面 －包括地址栏、后退/前进按钮、书签目录等，也就是你-所看到的除了页面显示窗口之外的其他部分</li>
-<li>浏览器引擎 －可以在用户界面和渲染引擎之间传送指令或在客户端本地缓存中读写数据等，是浏览器中各个部分之间相互通信的核心</li>
-<li>渲染引擎 －解析DOM文档和CSS规则并将内容排版到浏览器中显示有样式的界面，也有人称之为排版引擎，我们常说的浏览器内核主要指的就是渲染引擎</li>
-<li>网络 －用来完成网络调用或资源下载的模块</li>
-<li>UI 后端 －用来绘制基本的浏览器窗口内控件，如输入框、按钮、单选按钮等，根据浏览器不同绘制的视觉效果也不同，但功能都是一样的。</li>
-<li>JS解释器 －用来解释执行JS脚本的模块，如 V8 引擎、JavaScriptCore</li>
-<li>数据存储 －浏览器在硬盘中保存 cookie、localStorage等各种数据，可通过浏览器引擎提供的API进行调用</li>
-</ul>
-<h2 id="2-主流浏览器的内核">2. 主流浏览器的内核</h2>
-<p><strong>IE内核(Trident)</strong><br>
-Trident内核代表产品Internet Explorer，又称其为IE内核。Trident（又称为MSHTML），是微软开发的一种排版引擎。国内很多的双核浏览器其中之一就是Trident，美名其曰“兼容模式”。<br>
-代表：IE、傲游、世界之窗浏览器、Avant、猎豹安全浏览器、360极速浏览器、百度浏览器等。<br>
-Window10发布后，IE将其内置浏览器命名为Edge（原名斯巴达），使用了新内核Edge引擎。</p>
-<p><strong>Firefox（Gecko）</strong><br>
-Gecko内核代表作品Mozilla FirefoxGecko是一套开放源代码的、以C++编写的网页排版引擎。Gecko是最流行的排版引擎之一，仅次于Trident。使用它的最著名浏览器有Firefox、Netscape6至9。可惜这几年已经没落了，比如打开速度慢、升级频繁、猪一样的队友flash、神一样的对手Chrome。</p>
-<p><strong>Safari（Webkit）</strong><br>
-苹果公司自己的内核，也是苹果的Safari浏览器使用的内核。<br>
-WebKit内核代表作品Safari、Chromewebkit 是一个开源项目，包含了来自KDE项目和苹果公司的一些组件，主要用于Mac OS系统，它的特点在于源码结构清晰、渲染速度极快。缺点是对网页代码的兼容性不高，导致一些编写不标准的网页无法正常显示。主要代表作品有Safari和Google的浏览器Chrome。</p>
-<p><strong>Chrome（Blink）</strong><br>
-有Google和Opera Software开发的浏览器排版引擎，2013年4月发布，现在Chrome内核是Blink。Blink其实是webkit的分支，大部分国产浏览器最新版都采用Blink内核。</p>
-<p><strong>Opera（Presto）</strong><br>
-Presto内核代表作品OperaPresto是由Opera Software开发的浏览器排版引擎，供Opera 7.0及以上使用。它取代了旧版Opera 4至6版本使用的Elektra排版引擎，包括加入动态功能，例如网页或其部分可随着DOM及Script语法的事件而重新排版。在13年之后，Opera宣布加入谷歌阵营，弃用了Presto。</p>
-<h1 id="6-跨域问题详解">6. 跨域问题详解</h1>
+<h1 id="5-跨域问题详解">5. 跨域问题详解</h1>
 <h2 id="1-同源策略">1. 同源策略</h2>
 <blockquote>
 <p>同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。<br>
@@ -1457,7 +1423,7 @@ fetch('http://localhost:9099/api/iframePost', {
 比如主域名是http://crossdomain.com:9099，子域名是http://child.crossdomain.com:9099，这种情况下给两个页面指定一下document.domain即document.domain = crossdomain.com就可以访问各自的window对象了。</p>
 <h3 id="3canvas操作图片的跨域问题">3.canvas操作图片的跨域问题</h3>
 <p>这个应该是一个比较冷门的跨域问题</p>
-<h1 id="7-从浏览器多进程到js单线程">7. 从浏览器多进程到JS单线程</h1>
+<h1 id="6-从浏览器多进程到js单线程">6. 从浏览器多进程到JS单线程</h1>
 <h2 id="1-区分进程和线程">1. 区分进程和线程</h2>
 <p><strong>进程是cpu资源分配的最小单位（系统会给它分配内存）</strong></p>
 <p>最后，再用较为官方的术语描述一遍：</p>
@@ -7728,8 +7694,16 @@ TypeScript 的结合变得很容易。&lt;/p&gt;
 5、每次调后端接口，都要在请求头中加token&lt;br&gt;
 6、后端判断请求头中有无token，有token，就拿到token并验证token，验证成功就返回数据，验证失败（例如：token过期）就返回401，请求头中没有token也返回401&lt;br&gt;
 7、如果前端拿到状态码为401，就清除token信息并跳转到登录页面&lt;br&gt;
+8、创建vue实例的时候将vue-router挂载，但这个时候vue-router挂载一些登录或者不用权限的公用的页面。&lt;br&gt;
+9、当用户登录后，获取用role，将role和路由表每个页面的需要的权限作比较，生成最终用户可访问的路由表。&lt;br&gt;
+10、调用router.addRoutes(store.getters.addRouters)添加用户可访问的路由。&lt;br&gt;
+11、使用vuex管理路由表，根据vuex中可访问的路由渲染侧边栏组件。&lt;br&gt;
 &lt;img src=&#34;https://ttarea.com/post-images/1619086516830.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 &lt;img src=&#34;https://ttarea.com/post-images/1618468865167.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;0-用户权限信息&#34;&gt;0. 用户权限信息&lt;/h2&gt;
+&lt;p&gt;用户登录成功之后，我们会在全局钩子router.beforeEach中&lt;code&gt;拦截路由&lt;/code&gt;，判断是否已获得token，在获得token之后我们就要去获取用户的基本信息了&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;主体思路&lt;/code&gt;：前端会有一份路由表，它表示了每一个路由可访问的权限。当用户登录之后，通过token获取用户的role，动态根据用户的role算出其对应有权限的路由，再通过router.addRoutes动态挂载路由。但这些控制都只是页面级的，说白了前端再怎么做权限控制都不是绝对安全的，后端的权限验证是逃不掉的。&lt;/p&gt;
+&lt;p&gt;前端来控制页面级的权限，不同权限的用户显示不同的侧边栏和限制其所能进入的页面(也做了少许按钮级别的权限控制)，后端则会验证每一个涉及请求的操作，验证其是否有该操作的权限，每一个后台的请求不管是 get 还是 post 都会让前端在请求header里面携带用户的token，后端会根据该token来验证用户是否有权限执行该操作。若没有权限则抛出一个对应的状态码，前端检测到该状态码，做出相对应的操作。&lt;/p&gt;
 &lt;h2 id=&#34;1-令牌组成&#34;&gt;1. 令牌组成&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;header.payload.signature&lt;/p&gt;
@@ -8448,6 +8422,14 @@ export default {
 &lt;li&gt;可操作时间指Document.onready时间&lt;/li&gt;
 &lt;li&gt;总下载时间指Document.onload时间&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h1 id=&#34;15-谈谈对前后端分离的理解&#34;&gt;15. 谈谈对前后端分离的理解&lt;/h1&gt;
+&lt;p&gt;前后端分离，应该是&lt;code&gt;分离业务&lt;/code&gt;、&lt;code&gt;分离开发&lt;/code&gt;、&lt;code&gt;分离部署&lt;/code&gt;，前后端之间只有HTTP(S)上的JSON通信，做到松耦合。后台只需以REST或GraphQL的API向前端提供服务。&lt;/p&gt;
+&lt;p&gt;简单来说，前后端分离，后端主要处理业务逻辑，提供api接口，前端就是调用后端的接口，实现前端页面的交互逻辑，运用nodejs或者ajax进行交互。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优势，整个项目的开发权重向前移，实现真正的前后端解耦，静态资源和动态资源分离，提高了性能和扩展性&lt;/li&gt;
+&lt;li&gt;减少后端服务器压力，不再是全局刷新，实现异步加载，局部刷新。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;前后端分离的初衷是用「&lt;code&gt;单一职责&lt;/code&gt;」原则把代码质量提上去，很难想象为什么之前的开发者连这么基本的原则都不知道吧，其实是因为以前没有AJAX这项技术，而且前端代码太少了，不值得花时间分离。后来突然Web 大爆发，JS代码和CSS代码从几百行跃升到几千行甚至几万行，不分一下就说不过去了。&lt;/p&gt;
 ">【面】前端知识点梳理（Vue项目）</a>
       </div>
       
@@ -9248,6 +9230,151 @@ module.exports = {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;单页应用的按需加载&lt;/strong&gt; 现在很多前端项目都是通过单页应用的方式开发的，但是随着业务的不断扩展，会面临一个严峻的问题——首次加载的代码量会越来越多，影响用户的体验。&lt;/p&gt;
 &lt;p&gt;通过&lt;code&gt;import(*)&lt;/code&gt;语句来控制加载时机，webpack内置了对于import(*)的解析，会将import(*)中引入的模块作为一个新的入口在生成一个chunk。 当代码执行到import(*)语句时，会去加载Chunk对应生成的文件。import()会返回一个Promise对象，所以为了让浏览器支持，需要事先注入Promise polyfill&lt;/p&gt;
+&lt;h1 id=&#34;2-webpack5新特性&#34;&gt;2. Webpack5新特性&lt;/h1&gt;
+&lt;p&gt;此版本重点关注以下内容：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;减小打包后的文件体积&lt;/li&gt;
+&lt;li&gt;按需加载支持文件名模式&lt;/li&gt;
+&lt;li&gt;使用long-term caching解决生产环境下moduleIds &amp;amp; chunkIds变化的问题&lt;/li&gt;
+&lt;li&gt;使用cache: {type: &amp;quot;filesystem&amp;quot;}配置实现持久化缓存，提高构建速度&lt;/li&gt;
+&lt;li&gt;优化minSize&amp;amp;maxSize的配置方式&lt;/li&gt;
+&lt;li&gt;Node.js polyfills 自动加载功能被移除&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;1-模块联邦&#34;&gt;1. 模块联邦&lt;/h2&gt;
+&lt;p&gt;先说结论：Webpack5 模块联邦让 Webpack 达到了线上 Runtime 的效果，让代码直接在项目间利用 CDN 直接共享，不再需要本地安装 Npm 包、构建再发布了！&lt;/p&gt;
+&lt;h3 id=&#34;1-npm-方式共享模块&#34;&gt;1. NPM 方式共享模块&lt;/h3&gt;
+&lt;p&gt;想象一下正常的共享模块方式，对，就是 NPM。&lt;/p&gt;
+&lt;p&gt;如下图所示，正常的代码共享需要将依赖作为 Lib 安装到项目，进行 Webpack 打包构建再上线，如下图：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628587908280.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+对于项目 Home 与 Search，需要共享一个模块时，最常见的办法就是将其抽成通用依赖并分别安装在各自项目中。&lt;/p&gt;
+&lt;p&gt;虽然 Monorepo 可以一定程度解决重复安装和修改困难的问题，但依然需要走本地编译。&lt;/p&gt;
+&lt;h3 id=&#34;2-umd-方式共享模块&#34;&gt;2. UMD 方式共享模块&lt;/h3&gt;
+&lt;p&gt;真正 Runtime 的方式可能是 UMD 方式共享代码模块，即将模块用 Webpack UMD 模式打包，并输出到其他项目中。这是非常普遍的模块共享方式：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628587954785.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+对于项目 Home 与 Search，直接利用 UMD 包复用一个模块。但这种技术方案问题也很明显，就是包体积无法达到本地编译时的优化效果，且库之间容易冲突。&lt;/p&gt;
+&lt;h3 id=&#34;3-微前端方式共享模块&#34;&gt;3. 微前端方式共享模块&lt;/h3&gt;
+&lt;p&gt;微前端：micro-frontends (MFE) 也是最近比较火的模块共享管理方式，微前端就是要解决多项目并存问题，多项目并存的最大问题就是模块共享，不能有冲突。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628587982901.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+由于微前端还要考虑样式冲突、生命周期管理，所以本文只聚焦在资源加载方式上。微前端一般有两种打包方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;子应用独立打包，模块更解耦，但无法抽取公共依赖等。&lt;/li&gt;
+&lt;li&gt;整体应用一起打包，很好解决上面的问题，但打包速度实在是太慢了，不具备水平扩展能力。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-模块联邦方式&#34;&gt;4. 模块联邦方式&lt;/h3&gt;
+&lt;p&gt;终于提到本文的主角了，作为 Webpack5 内置核心特性之一的 Federated Module：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628588023289.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+从图中可以看到，这个方案是直接将一个应用的包应用于另一个应用，同时具备整体应用一起打包的公共依赖抽取能力。&lt;/p&gt;
+&lt;p&gt;让应用具备模块化输出能力，其实开辟了一种新的应用形态，即 “中心应用”，这个中心应用用于在线动态分发 Runtime 子模块，并不直接提供给用户使用：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628588047483.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+对微前端而言，这张图就是一个完美的主应用，因为所有子应用都可以利用 Runtime 方式复用主应用的 Npm 包和模块，更好的集成到主应用中。&lt;/p&gt;
+&lt;p&gt;模块联邦的使用方式如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const HtmlWebpackPlugin = require(&amp;quot;html-webpack-plugin&amp;quot;);
+const ModuleFederationPlugin = require(&amp;quot;webpack/lib/container/ModuleFederationPlugin&amp;quot;);
+
+module.exports = {
+  // other webpack configs...
+  plugins: [
+    new ModuleFederationPlugin({
+      name: &amp;quot;app_one_remote&amp;quot;,
+      remotes: {
+        app_two: &amp;quot;app_two_remote&amp;quot;,
+        app_three: &amp;quot;app_three_remote&amp;quot;
+      },
+      exposes: {
+        AppContainer: &amp;quot;./src/App&amp;quot;
+      },
+      shared: [&amp;quot;react&amp;quot;, &amp;quot;react-dom&amp;quot;, &amp;quot;react-router-dom&amp;quot;]
+    }),
+    new HtmlWebpackPlugin({
+      template: &amp;quot;./public/index.html&amp;quot;,
+      chunks: [&amp;quot;main&amp;quot;]
+    })
+  ]
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模块联邦本身是一个普通的 Webpack 插件 &lt;strong&gt;ModuleFederationPlugin&lt;/strong&gt;，插件有几个重要参数：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;name 当前应用名称，需要全局唯一。&lt;/li&gt;
+&lt;li&gt;remotes 可以将其他项目的 name 映射到当前项目中。&lt;/li&gt;
+&lt;li&gt;exposes 表示导出的模块，只有在此申明的模块才可以作为远程依赖被使用。&lt;/li&gt;
+&lt;li&gt;shared 是非常重要的参数，制定了这个参数，可以让远程加载的模块对应依赖改为使用本地项目的 React 或 ReactDOM。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;5-总结&#34;&gt;5. 总结&lt;/h3&gt;
+&lt;p&gt;模块联邦为更大型的前端应用提供了开箱解决方案，并已经作为 Webpack5 官方模块内置，可以说是继 Externals 后最终的运行时代码复用解决方案。&lt;/p&gt;
+&lt;p&gt;另外 Webpack5 还内置了大量编译时缓存功能，可以看到，无论是性能还是多项目组织，Webpack5 都在尝试给出自己的最佳思路，期待 Webpack5 正式发布，前端工程化会迈向一个新的阶段。&lt;/p&gt;
+&lt;h2 id=&#34;2-自动删除-nodejs-polyfills&#34;&gt;2. 自动删除 Node.js Polyfills&lt;/h2&gt;
+&lt;p&gt;早期，webpack 的目标是允许在浏览器中运行大多数 node.js 模块，但是模块格局发生了变化，许多模块用途现在主要是为前端目的而编写的。webpack &amp;lt;= 4 附带了许多 node.js 核心模块的 polyfill，一旦模块使用任何核心模块（即 crypto 模块），这些模块就会自动应用。&lt;/p&gt;
+&lt;p&gt;尽管这使使用为 node.js 编写的模块变得容易，但它会将这些巨大的 polyfill 添加到包中。在许多情况下，这些 polyfill 是不必要的。&lt;/p&gt;
+&lt;p&gt;webpack 5 会自动停止填充这些核心模块，并专注于与前端兼容的模块。&lt;br&gt;
+&lt;strong&gt;迁移：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;尽可能尝试使用与前端兼容的模块。&lt;/li&gt;
+&lt;li&gt;可以为 node.js 核心模块手动添加一个 polyfill。错误消息将提示如何实现该目标。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-chunk-和模块-id&#34;&gt;3. Chunk 和模块 ID&lt;/h2&gt;
+&lt;p&gt;添加了用于长期缓存的新算法。在生产模式下默认情况下启用这些功能。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chunkIds: &amp;quot;deterministic&amp;quot;, moduleIds: &amp;quot;deterministic&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;你可以不用使用 import(/* webpackChunkName: &amp;quot;name&amp;quot; */ &amp;quot;module&amp;quot;) 在开发环境来为 chunk 命名，生产环境还是有必要的&lt;/p&gt;
+&lt;p&gt;webpack 内部有 chunk 命名规则，不再是以 id(0, 1, 2)命名了&lt;/p&gt;
+&lt;h2 id=&#34;4-tree-shaking&#34;&gt;4. Tree Shaking&lt;/h2&gt;
+&lt;h3 id=&#34;1-webpack-现在能够处理对嵌套模块的-tree-shaking&#34;&gt;1. webpack 现在能够处理对嵌套模块的 tree shaking&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;// inner.js
+export const a = 1;
+export const b = 2;
+
+// module.js
+import * as inner from &#39;./inner&#39;;
+export { inner };
+
+// user.js
+import * as module from &#39;./module&#39;;
+console.log(module.inner.a);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在生产环境中, inner 模块暴露的 b 会被删除&lt;/p&gt;
+&lt;h3 id=&#34;2-webpack-现在能够多个模块之前的关系&#34;&gt;2. webpack 现在能够多个模块之前的关系&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;import { something } from &#39;./something&#39;;
+
+function usingSomething() {
+  return something;
+}
+
+export function test() {
+  return usingSomething();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当设置了&amp;quot;sideEffects&amp;quot;: false时，一旦发现test方法没有使用，不但删除test，还会删除&amp;quot;./something&amp;quot;&lt;/p&gt;
+&lt;h3 id=&#34;3-webpack-现在能处理对-commonjs-的-tree-shaking&#34;&gt;3. webpack 现在能处理对 Commonjs 的 tree shaking&lt;/h3&gt;
+&lt;h2 id=&#34;5-output&#34;&gt;5. Output&lt;/h2&gt;
+&lt;p&gt;webpack 4 默认只能输出 ES5 代码&lt;/p&gt;
+&lt;p&gt;webpack 5 开始新增一个属性 output.ecmaVersion, 可以生成 ES5 和 ES6 / ES2015 代码.&lt;/p&gt;
+&lt;p&gt;如：output.ecmaVersion: 2015&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SplitChunk&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;// webpack4
+minSize: 30000;
+// webpack5
+minSize: {
+  javascript: 30000,
+  style: 50000,
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-caching&#34;&gt;6. Caching&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 配置缓存
+cache: {
+  // 磁盘存储
+  type: &amp;quot;filesystem&amp;quot;,
+  buildDependencies: {
+    // 当配置修改时，缓存失效
+    config: [__filename]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;缓存将存储到 node_modules/.cache/webpack&lt;/p&gt;
+&lt;h2 id=&#34;7-监视输出文件&#34;&gt;7. 监视输出文件&lt;/h2&gt;
+&lt;p&gt;之前 webpack 总是在第一次构建时输出全部文件，但是监视重新构建时会只更新修改的文件。&lt;/p&gt;
+&lt;p&gt;此次更新在第一次构建时会找到输出文件看是否有变化，从而决定要不要输出全部文件。&lt;/p&gt;
 &lt;h1 id=&#34;3-git命令&#34;&gt;3. Git命令&lt;/h1&gt;
 &lt;h2 id=&#34;1-什么是-rebase&#34;&gt;1. 什么是 rebase?&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;git rebase&lt;/strong&gt;你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。&lt;/p&gt;
@@ -11772,6 +11899,27 @@ export用于导出本模块对外的接口，import用于导入某个模块的�
 &lt;pre&gt;&lt;code&gt;define(factory)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;factory为函数时，表示是模块的构造方法。执行该构造方法，可以得到模块向外提供的接口。factory 方法在执行时，默认会传入三个参数：require、exports 和 module.&lt;/p&gt;
+&lt;h1 id=&#34;13-负载均衡&#34;&gt;13. 负载均衡&lt;/h1&gt;
+&lt;h2 id=&#34;1-负载均衡概念&#34;&gt;1. 负载均衡概念&lt;/h2&gt;
+&lt;p&gt;是指单台服务器性能达到极限时通过服务器集群来横向增加系统的吞吐量和性能。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628733553835.jpeg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-服务器负载均衡&#34;&gt;2. 服务器负载均衡&lt;/h2&gt;
+&lt;p&gt;服务器负载均衡就是我们平时说的负载均衡，是指在服务器上游做服务分发，常用的方式有一下几种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DNS域名解析负载均衡&lt;/strong&gt;：假设我们的域名指向了多个IP地址，当一个域名请求来时，DNS服务器机进行域名解析将域名转换为IP地址是，在1:N的映射转换中实现负载均衡。DNS服务器提供简单的负载均衡算法，但当其中某台服务器出现故障时，通知DNS服务器移除当前故障IP。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;反向代理负载均衡&lt;/strong&gt;：反向代理只值对服务器的代理，代理服务器接受请求，通过负载均衡算法，将请求转发给后端服务器，后端服务返回给代理服务器然后代理服务器返回到客户端。反向代理服务器的优点是隔离后端服务器和客户端，使用双网卡屏蔽真实服务器网络，安全性更好，相比较于DNS域名解决负载均衡，反向代理在故障处理方面更灵活，支持负载均衡算法的横向扩展。目前使用非常广泛。当然反向代理也需要考虑很多问题，比如单点故障，集群部署等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IP负载均衡&lt;/strong&gt;：我们都知道反向代理工作到HTTP层，本身开销相对大一些，对性能有一定影响，LVS-NAT是一种卫浴传输层的负载均衡，它通过修改接受的数据包目标地址的方式实现负载均衡。Linux2.6.x以后版本内置了IPVS，专注用于实现IP负载均衡，故而在Linux上IP负载均衡使用非常广泛。LVS-DR工作在数据链路层，比LVS-NAT更霸道的时候它直接修改数据包的MAC地址。LVS-TUN——基于IP隧道的请求转发机制，将调度器收到的IP数据包进行封装，转交给服务器，然后服务器返回数据，通过调度器实现负载均衡。这种方式支持跨网段调度。总结一下，LVS-DR和LVS-TUN都适合响应和请求不对称的Web服务器，如何从它们中做出选择，取决于你的网络部署需要，因为LVS-TUN可具有跨地域性，有类似这种需求的，就应该选择LVS-TUN。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-客户端负载均衡&#34;&gt;3. 客户端负载均衡&lt;/h2&gt;
+&lt;p&gt;相比较服务器负载均衡而言，客户端负载均衡是一个非常小众的概念，但是面试在问道负载均衡相关知识的时候却会刻意了解候选人的知识广度。客户端负载均衡是在spring-cloud分布式框架组件Ribbon中定义的。我们在使用spring-cloud分布式框架时，同一个service大概率同时启动多个，当一个请求奔过来时，那么这多个service，Ribbon通过策略决定本次请求使用哪个service的方式就是客户端负载均衡。在spring-cloud分布式框架中客户端负载均衡对开发者是透明的，添加@LoadBalanced注解就可以了。客户端负载均衡和服务器负载均衡的核心差异在服务列表本身，客户端负载均衡服务列表在通过客户端维护，服务器负载均衡服务列表由中间服务单独维护。&lt;/p&gt;
+&lt;p&gt;通过对以上知识的理解，大家能够对负载均衡有的较为全面的认识，下来我再简单的和面试官聊一聊常见的负载均衡算法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;随机，通过随机选择服务进行执行，一般这种方式使用较少;&lt;/li&gt;
+&lt;li&gt;轮训，负载均衡默认实现方式，请求来之后排队处理;&lt;/li&gt;
+&lt;li&gt;加权轮训，通过对服务器性能的分型，给高配置，低负载的服务器分配更高的权重，均衡各个服务器的压力;&lt;/li&gt;
+&lt;li&gt;地址Hash，通过客户端请求的地址的HASH值取模映射进行服务器调度。&lt;/li&gt;
+&lt;li&gt;最小链接数;即使请求均衡了，压力不一定会均衡，最小连接数法就是根据服务器的情况，比如请求积压数等参数，将请求分配到当前压力最小的服务器上。&lt;/li&gt;
+&lt;/ul&gt;
 ">【面】前端知识点梳理（服务端与网络）</a>
       </div>
       
@@ -12292,35 +12440,7 @@ cookie绑定到单个域。foo.com域产生的cookie无法被bar.com域读取。
 &lt;ul&gt;
 &lt;li&gt;localStorage生命周期是永久的，除非被清除，否则永久保存，而sessionStorage仅在当前会话下有效，关闭页面或浏览器后被清除&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;5-浏览器内核&#34;&gt;5. 浏览器内核&lt;/h1&gt;
-&lt;p&gt;浏览器内核可以分为两部分：&lt;code&gt;渲染引擎&lt;/code&gt;（Layout Engine或Rendering Engine）和&lt;code&gt;JS引擎&lt;/code&gt;。由于JS引擎越来越独立，内核就倾向于只指渲染引擎。&lt;/p&gt;
-&lt;h2 id=&#34;1-浏览器构成&#34;&gt;1. 浏览器构成&lt;/h2&gt;
-&lt;p&gt;浏览器一般由七个模块组成，User Interface（用户界面）、Browser engine（浏览器引擎）、Rendering engine（渲染引擎）、Networking（网络）、JavaScript Interpreter（js解释器）、UI Backend（UI 后端）、Date Persistence（数据持久化存储）&lt;br&gt;
-&lt;img src=&#34;https://ttarea.com/post-images/1615442013118.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;用户界面 －包括地址栏、后退/前进按钮、书签目录等，也就是你-所看到的除了页面显示窗口之外的其他部分&lt;/li&gt;
-&lt;li&gt;浏览器引擎 －可以在用户界面和渲染引擎之间传送指令或在客户端本地缓存中读写数据等，是浏览器中各个部分之间相互通信的核心&lt;/li&gt;
-&lt;li&gt;渲染引擎 －解析DOM文档和CSS规则并将内容排版到浏览器中显示有样式的界面，也有人称之为排版引擎，我们常说的浏览器内核主要指的就是渲染引擎&lt;/li&gt;
-&lt;li&gt;网络 －用来完成网络调用或资源下载的模块&lt;/li&gt;
-&lt;li&gt;UI 后端 －用来绘制基本的浏览器窗口内控件，如输入框、按钮、单选按钮等，根据浏览器不同绘制的视觉效果也不同，但功能都是一样的。&lt;/li&gt;
-&lt;li&gt;JS解释器 －用来解释执行JS脚本的模块，如 V8 引擎、JavaScriptCore&lt;/li&gt;
-&lt;li&gt;数据存储 －浏览器在硬盘中保存 cookie、localStorage等各种数据，可通过浏览器引擎提供的API进行调用&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;2-主流浏览器的内核&#34;&gt;2. 主流浏览器的内核&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;IE内核(Trident)&lt;/strong&gt;&lt;br&gt;
-Trident内核代表产品Internet Explorer，又称其为IE内核。Trident（又称为MSHTML），是微软开发的一种排版引擎。国内很多的双核浏览器其中之一就是Trident，美名其曰“兼容模式”。&lt;br&gt;
-代表：IE、傲游、世界之窗浏览器、Avant、猎豹安全浏览器、360极速浏览器、百度浏览器等。&lt;br&gt;
-Window10发布后，IE将其内置浏览器命名为Edge（原名斯巴达），使用了新内核Edge引擎。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Firefox（Gecko）&lt;/strong&gt;&lt;br&gt;
-Gecko内核代表作品Mozilla FirefoxGecko是一套开放源代码的、以C++编写的网页排版引擎。Gecko是最流行的排版引擎之一，仅次于Trident。使用它的最著名浏览器有Firefox、Netscape6至9。可惜这几年已经没落了，比如打开速度慢、升级频繁、猪一样的队友flash、神一样的对手Chrome。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Safari（Webkit）&lt;/strong&gt;&lt;br&gt;
-苹果公司自己的内核，也是苹果的Safari浏览器使用的内核。&lt;br&gt;
-WebKit内核代表作品Safari、Chromewebkit 是一个开源项目，包含了来自KDE项目和苹果公司的一些组件，主要用于Mac OS系统，它的特点在于源码结构清晰、渲染速度极快。缺点是对网页代码的兼容性不高，导致一些编写不标准的网页无法正常显示。主要代表作品有Safari和Google的浏览器Chrome。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Chrome（Blink）&lt;/strong&gt;&lt;br&gt;
-有Google和Opera Software开发的浏览器排版引擎，2013年4月发布，现在Chrome内核是Blink。Blink其实是webkit的分支，大部分国产浏览器最新版都采用Blink内核。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Opera（Presto）&lt;/strong&gt;&lt;br&gt;
-Presto内核代表作品OperaPresto是由Opera Software开发的浏览器排版引擎，供Opera 7.0及以上使用。它取代了旧版Opera 4至6版本使用的Elektra排版引擎，包括加入动态功能，例如网页或其部分可随着DOM及Script语法的事件而重新排版。在13年之后，Opera宣布加入谷歌阵营，弃用了Presto。&lt;/p&gt;
-&lt;h1 id=&#34;6-跨域问题详解&#34;&gt;6. 跨域问题详解&lt;/h1&gt;
+&lt;h1 id=&#34;5-跨域问题详解&#34;&gt;5. 跨域问题详解&lt;/h1&gt;
 &lt;h2 id=&#34;1-同源策略&#34;&gt;1. 同源策略&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。&lt;br&gt;
@@ -12555,7 +12675,7 @@ fetch(&#39;http://localhost:9099/api/iframePost&#39;, {
 比如主域名是http://crossdomain.com:9099，子域名是http://child.crossdomain.com:9099，这种情况下给两个页面指定一下document.domain即document.domain = crossdomain.com就可以访问各自的window对象了。&lt;/p&gt;
 &lt;h3 id=&#34;3canvas操作图片的跨域问题&#34;&gt;3.canvas操作图片的跨域问题&lt;/h3&gt;
 &lt;p&gt;这个应该是一个比较冷门的跨域问题&lt;/p&gt;
-&lt;h1 id=&#34;7-从浏览器多进程到js单线程&#34;&gt;7. 从浏览器多进程到JS单线程&lt;/h1&gt;
+&lt;h1 id=&#34;6-从浏览器多进程到js单线程&#34;&gt;6. 从浏览器多进程到JS单线程&lt;/h1&gt;
 &lt;h2 id=&#34;1-区分进程和线程&#34;&gt;1. 区分进程和线程&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;进程是cpu资源分配的最小单位（系统会给它分配内存）&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;最后，再用较为官方的术语描述一遍：&lt;/p&gt;
@@ -18151,40 +18271,108 @@ perspective: 200px; /* 透视距离 200px */
 &lt;li&gt;虚线的圆表示元素实际的位置&lt;/li&gt;
 &lt;li&gt;而蓝色的圆，是元素在屏幕上的投影，也是最终展示的效果&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;15-css实现宽度自适应100宽高169的比例的矩形&#34;&gt;15. CSS实现宽度自适应100%，宽高16:9的比例的矩形&lt;/h1&gt;
-&lt;p&gt;第一步先计算高度，假设宽100%，那么高为h=9/16=56.25%&lt;/p&gt;
-&lt;p&gt;第二步利用之前所说设置padding-bottom方法实现矩形&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;scale&amp;quot;&amp;gt;
-      &amp;lt;/div&amp;gt;
-  &amp;lt;/div&amp;gt;
+&lt;h1 id=&#34;15-css性能优化&#34;&gt;15. CSS性能优化&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;下面我们开始介绍&lt;strong&gt;实践型&lt;/strong&gt;的3个优化技巧，先从首屏关键CSS开始。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;1-内联首屏关键csscritical-css&#34;&gt;1. 内联首屏关键CSS（Critical CSS）&lt;/h2&gt;
+&lt;p&gt;性能优化中有一个重要的指标——&lt;code&gt;首次有效绘制&lt;/code&gt;（First Meaningful Paint，简称FMP）即指页面的首要内容（primary content）出现在屏幕上的时间。这一指标影响用户看到页面前所需等待的时间，而**内联首屏关键CSS（即Critical CSS，可以称之为首屏关键CSS）**能减少这一时间。&lt;/p&gt;
+&lt;p&gt;大家应该都习惯于通过link标签引用外部CSS文件。但需要知道的是，将CSS直接内联到HTML文档中能使CSS更快速地下载。而使用外部CSS文件时，需要在HTML文档下载完成后才知道所要引用的CSS文件，然后才下载它们。所以说，内联CSS能够使浏览器开始页面渲染的时间提前，因为在HTML下载完成之后就能渲染了。&lt;/p&gt;
+&lt;p&gt;既然已经知道内联首屏关键CSS能够优化性能了，那下一步就是如何确定首屏关键CSS了。显然，我们不需要手动确定哪些内容是首屏关键CSS。Github上有一个项目Critical CSS4，可以将属于首屏的关键样式提取出来，大家可以看一下该项目，结合自己的构建工具进行使用。当然为了保证正确，大家最好再亲自确认下提取出的内容是否有缺失。&lt;/p&gt;
+&lt;h2 id=&#34;2-异步加载css&#34;&gt;2. 异步加载CSS&lt;/h2&gt;
+&lt;p&gt;CSS会阻塞渲染，在CSS文件请求、下载、解析完成之前，浏览器将不会渲染任何已处理的内容。有时，这种阻塞是必须的，因为我们并不希望在所需的CSS加载之前，浏览器就开始渲染页面。那么将首屏关键CSS内联后，剩余的CSS内容的阻塞渲染就不是必需的了，可以使用外部CSS，并且异步加载。&lt;/p&gt;
+&lt;p&gt;第一种方式是使用JavaScript动态创建样式表link元素，并插入到DOM中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建link标签
+const myCSS = document.createElement( &amp;quot;link&amp;quot; );
+myCSS.rel = &amp;quot;stylesheet&amp;quot;;
+myCSS.href = &amp;quot;mystyles.css&amp;quot;;
+// 插入到header的最后位置
+document.head.insertBefore( myCSS, document.head.childNodes[ document.head.childNodes.length - 1 ].nextSibling );
 &lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
-   .box {
-        width: 20%;
-    }
-    .scale {
-        width: 100%;
-        height: 0px;
-        /* scale 用来实现宽高等比例 1:1 padding-bottom:100%; 4:3 padding-bottom:75%; 16:9 padding-bottom:56.25%; */
-        padding-bottom: 56.25%;
-        position: relative;
-        background-color: pink;
-    }
-  &amp;lt;/style&amp;gt;
+&lt;p&gt;现在，&lt;code&gt;rel=&amp;quot;preload&amp;quot;&lt;/code&gt;这一Web标准指出了如何异步加载资源，包括CSS类资源。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;link rel=&amp;quot;preload&amp;quot; href=&amp;quot;mystyles.css&amp;quot; as=&amp;quot;style&amp;quot; onload=&amp;quot;this.rel=&#39;stylesheet&#39;&amp;quot;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;16-rem布局的优缺点&#34;&gt;16. rem布局的优缺点&lt;/h1&gt;
-&lt;h2 id=&#34;161-rem布局原理&#34;&gt;16.1 Rem布局原理&lt;/h2&gt;
-&lt;p&gt;rem布局的本质是什么？这是我问过很多人的一个问题，但得到的回答都差强人意。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;其实rem布局的本质是等比缩放，一般是基于宽度&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;162-rem布局优点&#34;&gt;16.2 Rem布局优点&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;rem的优点就是可以通过修改html里的文字大小来改变页面中元素的大小，可以整体进行控制。&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;163-rem布局缺点&#34;&gt;16.3 Rem布局缺点&lt;/h2&gt;
+&lt;p&gt;注意，&lt;code&gt;as&lt;/code&gt;是必须的。忽略&lt;code&gt;as&lt;/code&gt;属性，或者错误的&lt;code&gt;as&lt;/code&gt;属性会使&lt;code&gt;preload&lt;/code&gt;等同于&lt;code&gt;XHR&lt;/code&gt;请求，浏览器不知道加载的是什么内容，因此此类资源加载&lt;strong&gt;优先级会非常低&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;看起来，rel=&amp;quot;preload&amp;quot;的用法和上面两种没什么区别，都是通过更改某些属性，使得浏览器异步加载CSS文件但不解析，直到加载完成并将修改还原，然后开始解析。&lt;/p&gt;
+&lt;p&gt;但是它们之间其实有一个很重要的不同点，那就是使用&lt;code&gt;preload&lt;/code&gt;，比使用不匹配的media方法能够更早地开始加载CSS。所以尽管这一标准的支持度还不完善，仍建议优先使用该方法。&lt;/p&gt;
+&lt;h2 id=&#34;3-文件压缩&#34;&gt;3. 文件压缩&lt;/h2&gt;
+&lt;p&gt;性能优化时有一个最容易想到，也最常使用的方法，那就是文件压缩，这一方案往往效果显著。&lt;/p&gt;
+&lt;p&gt;文件的大小会直接影响浏览器的加载速度，这一点在网络较差时表现地尤为明显。相信大家都早已习惯对CSS进行压缩，现在的构建工具，如webpack、gulp/grunt、rollup等也都支持CSS压缩功能。压缩后的文件能够明显减小，可以大大降低了浏览器的加载时间。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;前面已经说完了实践型的3个优化技巧，下面我们介绍下&lt;strong&gt;建议型&lt;/strong&gt;的3个技巧。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;1-有选择地使用选择器&#34;&gt;1. 有选择地使用选择器&lt;/h2&gt;
+&lt;p&gt;我们在使用选择器时，只需要记住以下几点，其他的可以全凭喜好。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;保持简单，不要使用嵌套过多过于复杂的选择器。&lt;/li&gt;
+&lt;li&gt;通配符和属性选择器效率最低，需要匹配的元素最多，尽量避免使用。&lt;/li&gt;
+&lt;li&gt;不要使用类选择器和ID选择器修饰元素标签，如h3#markdown-content，这样多此一举，还会降低效率。&lt;/li&gt;
+&lt;li&gt;不要为了追求速度而放弃可读性与可维护性。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-优化重排与重绘&#34;&gt;2. 优化重排与重绘&lt;/h2&gt;
+&lt;h3 id=&#34;1-减少重排&#34;&gt;1. 减少重排&lt;/h3&gt;
+&lt;p&gt;重排会导致浏览器重新计算整个文档，重新构建渲染树，这一过程会降低浏览器的渲染速度。如下所示，有很多操作会触发重排，我们应该避免频繁触发这些操作。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;改变font-size和font-family&lt;/li&gt;
+&lt;li&gt;改变元素的内外边距&lt;/li&gt;
+&lt;li&gt;通过JS改变CSS类&lt;/li&gt;
+&lt;li&gt;通过JS获取DOM元素的位置相关属性（如width/height/left等）&lt;/li&gt;
+&lt;li&gt;CSS伪类激活&lt;/li&gt;
+&lt;li&gt;滚动滚动条或者改变窗口大小&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;值得一提的是，某些CSS属性具有更好的重排性能。如使用Flex时，比使用inline-block和float时重排更快，所以在布局时可以优先考虑&lt;code&gt;Flex&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;2-避免不必要的重绘&#34;&gt;2. 避免不必要的重绘&lt;/h3&gt;
+&lt;p&gt;当元素的外观（如color，background，visibility等属性）发生改变时，会触发重绘。在网站的使用过程中，&lt;strong&gt;重绘是无法避免的&lt;/strong&gt;。不过，浏览器对此做了优化，它会将多次的重排、重绘操作合并为一次执行。不过我们仍需要&lt;strong&gt;避免不必要的重绘&lt;/strong&gt;，如页面滚动时触发的hover事件，可以在滚动的时候禁用hover事件，这样页面在滚动时会更加流畅。&lt;/p&gt;
+&lt;p&gt;如果需要在移动端访问的，最好将速度限制更低，因为移动端的性能往往更差。&lt;/p&gt;
+&lt;h2 id=&#34;3-不要使用import&#34;&gt;3. 不要使用@import&lt;/h2&gt;
+&lt;p&gt;最后提一下，不要使用@import引入CSS，相信大家也很少使用。&lt;/p&gt;
+&lt;p&gt;不建议使用@import主要有以下两点原因。&lt;/p&gt;
+&lt;p&gt;首先，使用@import引入CSS会影响浏览器的并行下载。使用@import引用的CSS文件只有在引用它的那个css文件被下载、解析之后，浏览器才会知道还有另外一个css需要下载，这时才去下载，然后下载后开始解析、构建render tree等一系列操作。这就导致浏览器无法并行下载所需的样式文件。&lt;/p&gt;
+&lt;p&gt;其次，多个@import会导致下载顺序紊乱。在IE中，@import会引发资源文件的下载顺序被打乱，即&lt;strong&gt;排列在@import后面的js文件先于@import下载，并且打乱甚至破坏@import自身的并行下载。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所以不要使用这一方法，使用link标签就行了。&lt;/p&gt;
+&lt;h1 id=&#34;16-移动端dom优化&#34;&gt;16. 移动端dom优化&lt;/h1&gt;
+&lt;h2 id=&#34;1-原因&#34;&gt;1. 原因&lt;/h2&gt;
+&lt;p&gt;从上面可以看出随着dom的增加 ，HTMLLIElement占用的内存逐渐增加，这是由于下拉加载过程中在页面中添加了LI元素。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Shallow Size：&lt;br&gt;
+Shallow size就是对象本身占用内存的大小，不包含其引用的对象。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;ul&gt;
-&lt;li&gt;目前ie不支持 对pc页面来讲使用次数不多；&lt;/li&gt;
-&lt;li&gt;数据量大：所有的图片，盒子都需要我们去给一个准确的值；才能保证不同机型的适配；&lt;/li&gt;
-&lt;li&gt;字体的问题：字体的大小和字体宽度，并不成线性关系，所以字体大小不能使用rem&lt;/li&gt;
+&lt;li&gt;常规对象（非数组）的 Shallow size 由其成员变量的数量和类型决定。&lt;/li&gt;
+&lt;li&gt;数组的shallow size有数组元素的类型（对象类型、基本类型）和数组长度决定。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Retained Size:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;对象的Retained Size = 对象本身的Shallow Size + 对象能直接或间接访问到的对象的Shallow Size&lt;/li&gt;
+&lt;li&gt;也就是说 Retained Size 就是该对象被 GC（Garbage Collection） 之后所能回收内存的总和。&lt;br&gt;
+这里GC是指垃圾回收，浏览器的主流垃圾回收机制时标记清除（ie中存在引用计数清除）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;除了dom节点内存增大，监听事件占用的内存也逐渐加大&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;随着内存的占用增大，到一定程度时，网页就出现了卡顿。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-解决办法&#34;&gt;2. 解决办法：&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;重复利用dom结构，创建虚拟列表&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;使用事件委托，将监听事件绑定到父元素上&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;虚拟 dom 渲染&lt;/strong&gt;：长列表方案，手动假分页，只渲染当前和上下两页数据&lt;br&gt;
+&lt;strong&gt;清理页面&lt;/strong&gt;：删除不必要或者暂时隐藏的元素，调整图片大小。如果可以的话，调整一下页面设计，两数据分开展示，避免一次渲染过多。可以考虑滚动加载&lt;/p&gt;
+&lt;h2 id=&#34;3-实现思路&#34;&gt;3. 实现思路&lt;/h2&gt;
+&lt;p&gt;因为 DOM 元素的创建和渲染需要的时间成本很高，在大数据的情况下，完整渲染列表所需要的时间不可接收。其中一个解决思路就是在任何情况下只对「可见区域」进行渲染，可以达到极高的初次渲染性能。&lt;/p&gt;
+&lt;p&gt;虚拟列表指的就是「可视区域渲染」的列表，重要的基本就是两个概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可滚动区域：假设有 1000 条数据，每个列表项的高度是 30，那么可滚动的区域的高度就是 1000 * 30。当用户改变列表的滚动条的当前滚动值的时候，会造成可见区域的内容的变更。&lt;/li&gt;
+&lt;li&gt;可见区域：比如列表的高度是 300，右侧有纵向滚动条可以滚动，那么视觉可见的区域就是可见区域。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;实现虚拟列表就是处理滚动条滚动后的可见区域的变更，其中具体步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;计算当前可见区域起始数据的 startIndex&lt;/li&gt;
+&lt;li&gt;计算当前可见区域结束数据的 endIndex&lt;/li&gt;
+&lt;li&gt;计算当前可见区域的数据，并渲染到页面中&lt;/li&gt;
+&lt;li&gt;计算 startIndex 对应的数据在整个列表中的偏移位置 startOffset，并设置到列表上&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1627194719639.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h1 id=&#34;17-css画一个三角形&#34;&gt;17. CSS画一个三角形&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;CSS&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
@@ -18201,7 +18389,7 @@ perspective: 200px; /* 透视距离 200px */
 &lt;p&gt;&lt;strong&gt;Html&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; &amp;lt;div class=&amp;quot;triangle&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1614860077842.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1614860077842.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h1 id=&#34;18-1像素边框问题&#34;&gt;18. 1像素边框问题&lt;/h1&gt;
 &lt;h2 id=&#34;181-为什么1px变粗了&#34;&gt;18.1 为什么1px变粗了？&lt;/h2&gt;
 &lt;p&gt;UI设计师要求的1px是指设备的物理像素1px，而CSS里记录的像素是逻辑像素，它们之间存在一个比例关系，可以用javascript中的window.devicePixelRatio来获取&lt;/p&gt;
@@ -18269,6 +18457,317 @@ docEl.style.fontSize = fontsize;
     -webkit-transform-origin: top left;
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;19-移动端适配&#34;&gt;19. 移动端适配&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;meta标签到底做了什么事情&lt;/strong&gt;&lt;br&gt;
+做过移动端适配的小伙伴一定有遇到过这行代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是，很多小伙伴只是感性的认识：噢，我加了这行代码，然后页面的宽度就会跟我的设备宽度一致。然而，这种理解是很片面的。那么，这句话的本质到底是什么呢？&lt;/p&gt;
+&lt;p&gt;不急，我们先往下面看，这里先留个悬念。&lt;/p&gt;
+&lt;h2 id=&#34;1-几个专有名词和单位&#34;&gt;1. 几个专有名词和单位&lt;/h2&gt;
+&lt;p&gt;这里，我们先来辨析一下在适配的时候经常会遇到的一些名词、数值单位。&lt;/p&gt;
+&lt;p&gt;首先，先来看一下&lt;strong&gt;物理像素&lt;/strong&gt;。&lt;br&gt;
+以iphone6为例，可知道：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;分辨率&lt;/strong&gt;：1334pt x 750pt&lt;br&gt;
+指的是屏幕上垂直有1334个物理像素，水平有750个物理像素。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;屏幕尺寸&lt;/strong&gt;：4.7in&lt;br&gt;
+注意英寸是长度单位，不是面积单位。4.7英寸指的是屏幕对角线的长度，1英寸等于2.54cm。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;屏幕像素密度&lt;/strong&gt;：326ppi&lt;br&gt;
+指的是每英寸屏幕所拥有的像素数，在显示器中，dpi=ppi。dpi强调的是每英寸多少点。同时，&lt;strong&gt;屏幕像素密度=分辨率/屏幕尺寸&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接着，我们来看一下其他的单位。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;设备独立像素&lt;/strong&gt;：设备独立像素，不同于设备像素（物理像素），它是虚拟化的。比如说css像素，我们常说的10px其实指的就是它。需要注意的是，&lt;strong&gt;物理像素&lt;/strong&gt;开发者是无法获取的，它是自然存在的一种东西，该是多少就是多少。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设备像素比&lt;/strong&gt;：缩写简称dpr，也就是我们经常在谷歌控制台移动端调试顶端会看到的一个值。&lt;strong&gt;设备像素比 = 设备像素 / css像素&lt;/strong&gt;（垂直方向或水平方向）。可以通过JS来获取：&lt;code&gt;window.devicePixelRatio&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-pc和移动端不同的视口&#34;&gt;2. PC和移动端不同的视口&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;注：以下涉及的像素均为CSS像素。并且默认不考虑缩放。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1-布局视口&#34;&gt;1. 布局视口&lt;/h3&gt;
+&lt;p&gt;写过css的小伙伴应该知道，我们在&lt;code&gt;html、body&lt;/code&gt;设置&lt;code&gt;width:100%;height:100%&lt;/code&gt;;的时候，它并不是无效的。我们都知道&lt;code&gt;100%&lt;/code&gt;这种百分数应该是继承父元素而来的。那在这里是继承哪里的呢？&lt;/p&gt;
+&lt;p&gt;在&lt;strong&gt;PC浏览器&lt;/strong&gt;中，有一个用来约束CSS布局视口的东西，又叫做初始包含块。这也就是所有宽高继承的由来。除去&lt;code&gt;margin&lt;/code&gt;、&lt;code&gt;padding&lt;/code&gt;，布局视口和浏览器可视窗口宽度是一致的，同时也和浏览器本身的宽度一致。&lt;/p&gt;
+&lt;p&gt;但是在移动端，就大不一样了。&lt;br&gt;
+以下的例子是在不加&lt;code&gt;meta&lt;/code&gt;标签的前提下进行演示的。&lt;br&gt;
+假如我们现在做一个二八分的左右布局，那么如果在PC端上面的话，显示的效果非常完美，这没什么好说的。&lt;br&gt;
+那如果是在手机端呢，这里以iphone6为例子来讲解：&lt;br&gt;
+图例如下：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628424884711.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+代码如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.left {
+    float: left;
+    width: 20%;
+    height: 100%;
+    background: red;
+}
+
+.right {
+    float: right;
+    width: 80%;
+    height: 100%;
+    background: green;
+}
+----
+&amp;lt;body&amp;gt;
+    &amp;lt;div class=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里我们会看到，为什么body的宽度是980px，而浏览器的宽度只有375px，那么这个980px到底是从哪里来的呢？&lt;br&gt;
+其实，这里的980px就是移动端所谓的&lt;strong&gt;布局视口&lt;/strong&gt;了。&lt;/p&gt;
+&lt;p&gt;在移动端，默认的情况下，布局视口的宽度是要远远大于浏览器的宽度的。这两个视口不同于PC端，是&lt;strong&gt;相互独立存在&lt;/strong&gt;的。为什么呢？试想一下，如果一个网页不对移动端进行适配，用户进行阅读的时候，如果默认情况下布局视口的宽度等于浏览器宽度，那是不是展示起来更加的不友好。也就是说，如果一个&lt;code&gt;div&lt;/code&gt;的宽度为20%，那么它在布局视口宽度为&lt;code&gt;980px&lt;/code&gt;的时候，展示给用户的像素还有196px，而如果宽度只有&lt;code&gt;375px&lt;/code&gt;的情况下，宽度只有&lt;code&gt;75px&lt;/code&gt;，展示的大小相差特别大。&lt;/p&gt;
+&lt;p&gt;所以，浏览器厂商为了让用户在小屏幕下网页也能够显示地很好，所以把布局视口宽度设置地很大，一般在&lt;code&gt;768px ~ 1024px&lt;/code&gt;之间，最常见的宽度是&lt;code&gt;980px&lt;/code&gt;。这个宽度可以通过&lt;code&gt;document.documentElement.clientWidth&lt;/code&gt;得到。&lt;/p&gt;
+&lt;h3 id=&#34;2-视觉视口&#34;&gt;2. 视觉视口&lt;/h3&gt;
+&lt;p&gt;对于视觉视口来说，这个东西是呈现给用户的，它是用户看到网页区域内CSS像素的数量。由于用户可以自行进行缩放控制，所以这个视口并不是开发者需要重点关注的。&lt;/p&gt;
+&lt;p&gt;值得注意的是，在&lt;strong&gt;移动端&lt;/strong&gt;缩放不会改变布局视口的宽度，当缩小的时候，屏幕覆盖的css像素变多，视觉视口变大，反之亦然。&lt;br&gt;
+而在&lt;strong&gt;PC端&lt;/strong&gt;，缩放对应布局宽度和视觉窗口宽度都是&lt;strong&gt;联动&lt;/strong&gt;的。而浏览器宽度本身是固定的，无论怎么缩放都不受影响。&lt;/p&gt;
+&lt;p&gt;如果对上面的宽度还是很乱，那么这里有一个表格可以帮助你理清思路。&lt;br&gt;
+以下表格横向都以浏览器窗口的宽度作为基准：&lt;br&gt;
+对于PC端来说：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628425034633.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+对于移动端来说：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628425041492.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-理想视口&#34;&gt;3. 理想视口&lt;/h3&gt;
+&lt;p&gt;以上，布局视口很明显对用户十分的不友好，完全忽略了手机本来的尺寸。&lt;/p&gt;
+&lt;p&gt;所以苹果引入了理想视口的概念，它是对设备来说最理想的布局视口尺寸。理想视口中的网页用户最理想的宽度，用户进入页面的时候不需要缩放。&lt;/p&gt;
+&lt;p&gt;那么很明显，所谓的理想宽度就是浏览器（屏幕）的宽度了。&lt;br&gt;
+所以就有了下面的这段代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然而，这段代码其实也并不完美，在IE浏览器中，由于横屏竖屏的切换会对其造成影响，为了解决这个兼容性的问题，最后再加上一句，就有了现在的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;width=device-width&lt;/code&gt; 这句代码可以把布局视口设置成为浏览器（屏幕）的宽度。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;initial-scale=1&lt;/code&gt; 的意思是初始缩放的比例是1，使用它的时候，同时也会将布局视口的尺寸设置为缩放后的尺寸。而缩放的尺寸就是基于屏幕的宽度来的，也就起到了和&lt;code&gt;width=device-width&lt;/code&gt;同样的效果。&lt;/p&gt;
+&lt;p&gt;另外，值得一提的是，我们在进行媒体查询的时候，查询的宽度值其实也是布局视口的宽度值。&lt;/p&gt;
+&lt;h2 id=&#34;3-retina屏幕普通屏幕模糊的由来&#34;&gt;3. Retina屏幕&amp;amp;普通屏幕，模糊的由来&lt;/h2&gt;
+&lt;h3 id=&#34;1-dpr的具体表现&#34;&gt;1. dpr的具体表现&lt;/h3&gt;
+&lt;p&gt;有时候我们会发现，当我们在适某一机型的时候，显示上没什么问题。但是一旦我换到另外一部手机，发现出现了模糊的情况，尤其以图片更为显著。&lt;/p&gt;
+&lt;p&gt;其实这个问题，就是涉及到了上面讲到的一个属性：&lt;strong&gt;设备像素比&lt;/strong&gt;，即我们经常说的&lt;strong&gt;dpr&lt;/strong&gt;。下面先来看&lt;strong&gt;dpr&lt;/strong&gt;的表现：&lt;/p&gt;
+&lt;p&gt;假设现在有一台iphone6，那么它的设备独立像素是375x667，dpr为2，尺寸是4.7in，那么物理像素就是750x1334。&lt;br&gt;
+同样的我们也有一台不知名的设备，它的设备独立像素刚好也是375x667，尺寸也是4.7in，但是dpr为1，此时的物理像素就是375x667。&lt;/p&gt;
+&lt;p&gt;于是，它们的屏幕表现如下：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628425204251.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+在不同的屏幕上，无论是普通屏幕还是retina屏幕，&lt;strong&gt;css像素所呈现的大小是一致的&lt;/strong&gt;。（如果不理解这句话，可以写一个2px的正方形使用谷歌控制台移动设备调试，在不同的设备之间来回切换，你会发现大小其实是一样的。一开始我总以为这个css像素的实际宽高因为受到dpr的影响而在不同设备上的长宽是不一致的。）&lt;br&gt;
+不同的是，1个css像素对应（覆盖）的物理像素个数。&lt;/p&gt;
+&lt;p&gt;所以，如果我们想要在这两个屏幕显示这么一个css样式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;width: 2px;
+heigth: 2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在普通屏幕下，也就是dpr为1的屏幕中，1个css像素对应（覆盖）的是一个物理像素。在retina屏幕下，1个css像素对应（覆盖）的是4个物理像素。换句话说，就是dpr为2的设备。看下面这张图：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628425251728.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+浅显的理解就是可以看作是2cmx2cm的正方形被切割成四块，然后遇到dpr为2的时候，被切割的四块又被分别切割成四块，但是总面积不变。&lt;/p&gt;
+&lt;h3 id=&#34;2-模糊的产生&#34;&gt;2. 模糊的产生&lt;/h3&gt;
+&lt;p&gt;知道了1个css像素覆盖的物理像素可能不同，就好理解为什么会出现模糊的情况了。&lt;/p&gt;
+&lt;p&gt;这里又讲到一个名词：&lt;strong&gt;位图像素&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;位图像素是栅格图像（如：png,jpg,gif等）最小的数据单元。每一个位图像素都包含着一些自身的显示信息。（如：显示位置，颜色值，透明度等）&lt;/p&gt;
+&lt;p&gt;理论上来说，&lt;strong&gt;1个位图像素对应1个物理像素，图片才能达到完美清晰的展示&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;但是上面说过，在retina屏幕上，会出现1个位图像素对应多个物理像素。&lt;/p&gt;
+&lt;p&gt;还是以iphone6为例，1个位图像素对应4个物理像素。由于单个位图像素已经是最小的数据单位了，它不能再被进行切割。于是为了能够显示出来，就只能就近取色，从而导致所谓的图片模糊问题。如下：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628425292725.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-如何解决&#34;&gt;3. 如何解决&lt;/h3&gt;
+&lt;p&gt;很明显，由于位图像素不够分而产生模糊的情况，解决的办法十分简单，就是使用跟dpr同个倍数大小的图片。比如iphone6，一个200x300的&lt;code&gt;img&lt;/code&gt;标签，原图就要提供400x600的大小。&lt;/p&gt;
+&lt;p&gt;那么当加载到&lt;code&gt;img&lt;/code&gt;标签中，浏览器会自动对每1px的css像素减半，可以理解为此时还是维持着1:1的css像素:物理像素，不产生模糊。&lt;/p&gt;
+&lt;p&gt;这个做法其实就是手淘团队在做retina适配的一个重要的原理之一，后面会讲到，这里先放着不说。&lt;/p&gt;
+&lt;h3 id=&#34;4-其他&#34;&gt;4. 其他&lt;/h3&gt;
+&lt;p&gt;反向思考一下，如果普通屏幕，也就是dpr为1的屏幕，也使用了两倍的图片，会发生什么样的情况呢？&lt;/p&gt;
+&lt;p&gt;很明显，在普通屏幕下，200×300的&lt;code&gt;img&lt;/code&gt;标签，所对应的物理像素个数就是200×300个，而两倍图片的位图像素个数则是200x300x4，于是就出现一个物理像素点对应4个位图像素点，所以它的取色也只能通过一定的算法进行缩减，显示结果就是一张只有原图像素总数四分之一，肉眼看上去虽然图片不会模糊，但是会觉得有点色差。（其实就是模糊的逆向过程）&lt;br&gt;
+用图片来表示就是：&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628425382498.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这里摘取了网上一篇博文的demo来阐述上面所说的问题。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628425395928.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+以上是一张100x100的图片，分别放在了100x100，50x50，25x25的容器中，在retina屏幕下面的显示效果。&lt;/p&gt;
+&lt;p&gt;通过取色器放大镜可以看出边界像素点的差别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在图一中，边界像素点就近取色，色值介于红白之间，偏淡，图片看上去会模糊(可以理解为图片拉伸)。&lt;/li&gt;
+&lt;li&gt;在图二中，图片正常，很清晰。&lt;/li&gt;
+&lt;li&gt;在图三中，边界像素点就近取色，色值介于红白之间，偏浓，图片看上去有色差。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-手淘团队flexiblejs布局&#34;&gt;4. 手淘团队flexible.js布局&lt;/h2&gt;
+&lt;p&gt;现今，适配手机端的传统rem布局已经逐步被手淘团队的一套flexible布局代替。&lt;br&gt;
+具体的实现方式以及细节这里也不铺开来说，具体参考w3cplus的一篇文章，很容易读懂和理解。&lt;/p&gt;
+&lt;p&gt;这里我更想分析一下flexible.js做法的意义和原因。&lt;br&gt;
+读过文章之后，相信大家应该对整个开发适配的流程比较熟悉了。&lt;br&gt;
+假设现在要适配一个iphone6的设备。上面已经说过了iphone6的各个参数，这里不再赘述，需要的自行上移查看。&lt;br&gt;
+&lt;strong&gt;于是&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;设计师给了一个750px宽度的设计稿（注意这里是750px而不是375px）&lt;/li&gt;
+&lt;li&gt;前端工程师用750px的这个比例开始还原&lt;/li&gt;
+&lt;li&gt;把宽高是px的转换成rem&lt;/li&gt;
+&lt;li&gt;字体使用px而不使用rem&lt;/li&gt;
+&lt;li&gt;flexible.js会自动判断dpr进行整个布局视口的放缩&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;1-rem布局和字体的处理&#34;&gt;1. rem布局和字体的处理&lt;/h3&gt;
+&lt;p&gt;从flexible.js中可见，在宽高中使用的是rem，这是为了保证在不同宽度尺寸的设备中能够保证布局的等比例缩放。&lt;/p&gt;
+&lt;p&gt;而为什么字体不使用rem而是采用px呢？&lt;/p&gt;
+&lt;p&gt;首先，用过rem单位的小伙伴都会发现，使用rem后由于不同的尺寸，换算之后出现各种奇奇怪怪的数值，最为明显的就是更多的小数位，比如&lt;code&gt;13.755px&lt;/code&gt;之类的数值。在浏览器中，各浏览器中对小数点的计算存在偏差，而且有些带小数的&lt;code&gt;font-size&lt;/code&gt;值在特定的浏览器显示并不够清晰。&lt;/p&gt;
+&lt;p&gt;其次，我们希望在小屏幕下面显示跟大屏幕同等量的字体。并且如果使用rem的话，那么由于等比例的存在，在小屏幕下就会存在小屏幕字体更小的情况，不利于我们更好的去阅读，违背了适配的初衷。所以，对于字体的适配，更好的做法就是使用px和媒体查询来进行适配。&lt;/p&gt;
+&lt;p&gt;所以，也就不难解释为什么要对&lt;code&gt;font-size&lt;/code&gt;进行放大的处理了，如下的sass代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@mixin font-dpr($font-size) {
+    font-size: $font-size;
+    [data-dpr=&amp;quot;2&amp;quot;] &amp;amp; {
+        font-size: $font-size * 2;
+    }
+    [data-dpr=&amp;quot;3&amp;quot;] &amp;amp; {
+        font-size: $font-size * 3;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;由于retina屏幕下dpr的不同，我们又想显示的字体一样大，于是就给字体再增大dpr的倍数，这样当缩小dpr倍的时候，那么字体也就和设计稿所示的大小一样大了，在不同的手机中显示的大小也是一致的。&lt;/p&gt;
+&lt;h3 id=&#34;2-retina屏幕下的处理与安卓手机的适配&#34;&gt;2. Retina屏幕下的处理与安卓手机的适配&lt;/h3&gt;
+&lt;p&gt;从flexible.js的代码中可以知道，flexible布局仅仅只是针对iPhone进行适配，而默认所有的安卓设备都强制性设置dpr为1。&lt;/p&gt;
+&lt;p&gt;于是，因为这个缘故，很多小伙伴可能就会产生这样的问题：&lt;strong&gt;为什么安卓不用retina屏幕，安卓下面是不是就不会有模糊的问题？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;其实不然，&lt;strong&gt;模糊的本质是因为dpr&lt;/strong&gt;，而安卓手机不同的设备的dpr也是不尽相同的。也就是说，安卓手机下也存在模糊的情况。只不过它的屏幕不叫retina屏幕，没有这个叫法，所以很多小伙伴都误认为安卓手机没有这个毛病。&lt;/p&gt;
+&lt;p&gt;那么问题又来了？既然也有模糊的毛病，那么为什么安卓手机不进行适配呢？&lt;/p&gt;
+&lt;p&gt;问题就在这里了，有兴趣的小伙伴可以去看一下大中华的安卓手机，dpr参数五花八门，从1到4，连1.75、2.75这种奇葩的数字也有，所以个人觉得权衡之下，直接简单“粗暴”把安卓手机全部设置为1，是效率和收益更高的做法。&lt;/p&gt;
+&lt;p&gt;当然，也有人进行了flexible.js的改进，就是对dpr比较正常的安卓手机进行适配，也就是说只适配dpr为整数的安卓设备。对于那些奇葩的dpr为1.75的设备直接忽略。实现这个并不难，有兴趣的小伙伴们可以试下。&lt;/p&gt;
+&lt;h2 id=&#34;5-适配方案&#34;&gt;5. 适配方案：&lt;/h2&gt;
+&lt;p&gt;上面讲了一些基础概念，下面讲具体适配。&lt;/p&gt;
+&lt;p&gt;对于ui设计师给的一张设计稿，怎么将其还原到页面上？对于不同手机屏幕，其dpr不同，屏幕尺寸也不同，考虑到各种情况，有很多适配方案，所以不同的适配方案，实现方法不同，处理复杂度也不同，还原程度也不同。&lt;/p&gt;
+&lt;h3 id=&#34;方案一&#34;&gt;方案一：&lt;/h3&gt;
+&lt;p&gt;固定高度，宽度自适应。&lt;br&gt;
+这种方案是目前使用较多的方案，也是相对较简单的实现方案：&lt;br&gt;
+该方法使用了理想视口：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;垂直方向使用固定的值，水平方向使用弹性布局，元素采用定值、百分比、flex布局等。这种方案相对简单，还原度也非常低。&lt;/p&gt;
+&lt;h3 id=&#34;方案二&#34;&gt;方案二：&lt;/h3&gt;
+&lt;p&gt;固定布局视口宽度，使用viewport进行缩放&lt;/p&gt;
+&lt;p&gt;固定布局视口，宽度设置固定的值，总宽度为640px，根据屏幕宽度动态生成viewport。（设计稿应该是640px的）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=640, minimum-scale = 0.5625, maximum-scale = 0.5625, target-densitydpi=device-dpi&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这种方式布局如荔枝FM的网页宽度始终为640px。缩放比例scale为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var scale = window.screen.width / 640
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设计稿为640px时，正好可以1:1以px来写样式。但是1px所对应的物理像素就不一定是1了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(window.screen.width * dpr) / 640   // 1px对应的物理像素
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://ttarea.com/post-images/1628426387739.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;方案三&#34;&gt;方案三：&lt;/h3&gt;
+&lt;p&gt;根据不同屏幕动态写入font-size，以rem作为宽度单位，固定布局视口。&lt;br&gt;
+如网易新闻：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以640px设计稿和750px的视觉稿，网易这样处理的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var width = document.documentElement.clientWidth;   // 屏幕的布局视口宽度
+var rem = width / 7.5;                              // 750px设计稿将布局视口分为7.5份
+var rem = width / 6.4;                              // 640px设计稿将布局视口分为6.4份
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样不管是750px设计稿还是640px设计稿，1rem 等于设计稿上的100px。故px转换rem时：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rem = px * 0.01;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在750px设计稿上：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;75px 对应 0.75rem, 距离占设计稿的10%；
+
+在ipone6上：
+width = document.documentElement.clientWidth = 375px；
+rem = 375px / 7.5 = 50px;
+0.75rem = 37.5px;   (37.5/375=10%；占屏幕10%)
+                     
+在ipone5上：
+width = document.documentElement.clientWidth = 320px；
+rem = 320px / 7.5 = 42.667px;
+0.75rem = 32px; (32/320=10%；占屏幕10%)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;故对于设计稿上任何一个尺寸换成rem后，在任何屏下对应的尺寸占屏幕宽度的百分比相同。故这种布局可以百分比还原设计图。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628426475710.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;方案四&#34;&gt;方案四：&lt;/h3&gt;
+&lt;p&gt;以rem作为宽度单位，动态写入viewport和font-size进行缩放。&lt;/p&gt;
+&lt;p&gt;根据设置的dpr设置font-size。如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document.documentElement.style.fontSize = 50 * dpr;
+// dpr 为设置的设备像素比。（注意不是设备自身的设备像素比，而是认为设置的dpr）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这种情况下，dpr = 1时，1rem = 50px;&lt;br&gt;
+dpr = 2时， 1rem = 100px;&lt;br&gt;
+当设计以iphone6为标准，出750px的设计稿时，此时dpr=2，故1rem 等于100px，将图上的尺寸转换为rem非常方便，除以100就行。&lt;/p&gt;
+&lt;p&gt;所以该方案，1rem在所有屏幕上对应的肉眼距离相同，故不同屏幕下，总的rem数不同，大屏下总的rem数大于小屏下，如iphone6下，总宽度为7.5rem，iphone5下，总宽度为6.4rem。&lt;strong&gt;故此方案不能百分比还原设计稿，故写样式时，对于大块元素应该用百分比，flex等布局，不能直接用rem。&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628426585110.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;方案五&#34;&gt;方案五：&lt;/h3&gt;
+&lt;p&gt;根据不同屏幕动态写入font-size和viewport，以rem作为宽度单位&lt;br&gt;
+将屏幕分为固定的&lt;code&gt;块数10&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var width = document.documentElement.clientWidth;   // 屏幕的布局视口宽度
+var rem = width / 10;                               // 将布局视口分为10份
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样在任何屏幕下，总长度都为10rem。1rem对应的值也不固定，与屏幕的布局视口宽度有关。&lt;br&gt;
+对于动态生成viewport，他们原理差不多，根据dpr来设置缩放。看看淘宝的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var devicePixelRatio = window.devicePixelRatio;
+var isIPhone = window.navigator.appVersion.match(/iphone/gi);
+var dpr,scale;
+if (isIPhone) {
+  if (devicePixelRatio &amp;gt;=3) {
+    dpr = 3;
+  } else if (devicePixelRatio &amp;gt;=2) {
+    dpr = 2;
+  } else {
+    dpr = 1;
+  }
+} else {
+  dpr = 1;
+}
+scale = 1 / dpr;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;淘宝只对iphone做了缩放处理，对于android所有dpr=1，scale=1即没有缩放处理。&lt;/p&gt;
+&lt;p&gt;此方案与方案三相似，只是做了viewport缩放，能百分比还原设计稿。&lt;br&gt;
+&lt;img src=&#34;https://ttarea.com/post-images/1628426655488.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;适配中要解决的问题&#34;&gt;适配中要解决的问题 ：&lt;/h3&gt;
+&lt;p&gt;移动端适配最主要的是使在不同屏幕下不用缩放页面就能正常显示整个页面。以上方案都完成了这一需求。其次有几个需求：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;解决高清屏下1px的问题，其实有很多hack方法，这里只讲了缩放视口。先将布局视口设置为高清屏的物理像素。这样css中1px就是1个物理像素，这样看到的线条才是真正的1px。但是此时视口宽度大于设备的宽度，就会出现滚动条。故对视口进行缩放，使视口宽度缩放到设备宽度。&lt;br&gt;
+淘宝团队在处理安卓端的缩放存在很多问题，所以dpr都做1处理，所以安卓端就没有解决1px的问题。&lt;/li&gt;
+&lt;li&gt;在大屏手机中一行看到的段落文字应该比小屏手机的多。&lt;br&gt;
+由于淘宝和网易新闻rem都是百分比，故如果用rem一行显示的文字个数应该是相同的。故对于段落文本不能用rem作为单位，应该用px处理，对于不同的dpr下设置不同的字体。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;6-响应式与自适应的选择&#34;&gt;6. 响应式与自适应的选择&lt;/h2&gt;
+&lt;p&gt;最后，对于响应式和自适应的区别，网上有各种各样的解释。&lt;/p&gt;
+&lt;p&gt;个人认为，其实没必要把它讲得那么复杂，知乎上有个小伙伴讲我觉得就很白话文：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;响应式针对的是不同分辨率设备而进行的适配式设计，以利用@media规则为主要手段，而自适应则忽略@media以比例布局为主，目的是适应不同的浏览器窗口大小。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;于是我们会发现，现今大型网站，例如说淘宝网，已经没有做响应式了。什么意思呢？&lt;/p&gt;
+&lt;p&gt;我们会发现，淘宝网手机端和网页端使用的是两个域名，也就是说，不同的客户端已经不再共用一套dom结构了。而是区分开来做自适应。然后每次用户访问的时候它就根据客户端的类型重定向。&lt;/p&gt;
+&lt;p&gt;为什么呢？&lt;/p&gt;
+&lt;p&gt;试想一下淘宝这种大型网站，一个分页下的商品条目特别多，并且每个商品条目的dom结构又十分复杂，而且pc端往往显示的信息是要比手机端更多的。如果不分开做两套，而是直接用响应式的话，那么pc端上显示的很多dom就要在手机端上隐藏，结果这些dom都没有被用到，但是却加载了。在这个流量和速度至上的时代，代码冗余先不说，多加载的这些无用的代码而消耗的流量，从某种意义上来说就已经损失了很多的效益。&lt;/p&gt;
+&lt;h2 id=&#34;7-最后&#34;&gt;7. 最后&lt;/h2&gt;
+&lt;p&gt;考虑到兼容性的问题，原先我们在文章头部说到的那段代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从&lt;code&gt;Chrome32+&lt;/code&gt;版本开始是会默认禁用用户缩放的，但是考虑到兼容大部分设备，还是要加上其他设置，让&lt;code&gt;meta&lt;/code&gt;标签能够有更好的容错性。也就是下面这段代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, 
+ user-scalable=no;&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要注意的是，在ios10+以上，尽管开发者设置了&lt;code&gt;user-scalable=no&lt;/code&gt;，&lt;code&gt;Safari&lt;/code&gt;还是允许用户通过手势来缩放。（安卓手机各大厂商的内置浏览器也逐渐开放用户缩放，即使使用&lt;code&gt;meta&lt;/code&gt;标签进行设置）&lt;/p&gt;
+&lt;p&gt;解决的方法也很简单，只需要检测&lt;code&gt;touch&lt;/code&gt;相关事件来阻止事件的触发即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;window.onload = function() {
+    // 同时按下两个手指
+    document.addEventListener(&#39;touchstart&#39;, function(event) {
+        if(event.touches.length &amp;gt; 1) {
+            event.preventDefault()
+        }
+    })
+    var lastTouchEnd = 0;
+    // 特别注意300ms时差的设置
+    document.addEventListener(&#39;touchend&#39;, function(event) {
+        var now = (new Date()).getTime();
+        if(now-lastTouchEnd &amp;lt;= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    })
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上，就是本文的全部啦。&lt;/p&gt;
+&lt;p&gt;文章有借鉴，借鉴的链接都会在这里放出来。&lt;/p&gt;
+&lt;p&gt;前辈们的经验和知识很宝贵，我们需要做的，是站在巨人的肩膀上，去提炼这些东西，有自己更好的理解、思考和开拓新知识面。&lt;/p&gt;
 ">【面】前端知识点梳理（CSS）</a>
       </div>
       
